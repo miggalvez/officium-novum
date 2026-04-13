@@ -74,6 +74,15 @@ Format: `{SeasonCode}{WeekNumber}-{DayOfWeek}.txt`
 
 Day of week: 0 = Sunday, 1 = Monday, ... 6 = Saturday.
 
+**Additional Tempora patterns** found in the corpus that do not follow the `{Season}{Week}-{Day}` convention:
+
+| Pattern | Example | Meaning |
+|---------|---------|---------|
+| `Nat01` | `Nat01.txt` | Named Christmas-season file |
+| `XPRex` | `XPRex.txt` | Christ the King |
+| `{Season}{Week}-{Day}Feria` | `Pasc2-3Feria.txt` | Feria-specific variant |
+| `PentEpi{Week}-{Day}` | `PentEpi6-0.txt` | Post-Epiphany weeks (numbered after Pentecost) |
+
 #### Sancti files
 
 Format: `MM-DD[suffix].txt`
@@ -89,6 +98,9 @@ Format: `MM-DD[suffix].txt`
 | `m1`, `m2`, `m3` | Multiple Masses on same day | `12-25m1.txt` (Christmas midnight Mass) |
 | `bmv` | Blessed Virgin Mary variant | Various |
 | `g` | Gregorian variant | `01-08g.txt` |
+| `oct` | Octave file | Various |
+| `pl` | Plures (multiple saints) | Various |
+| `secm1`, `secm2` | Secondary Mass variants | `11-03secm1.txt` |
 
 ---
 
@@ -152,7 +164,7 @@ When multiple `[Rank]` (or other) sections exist in the same file, the engine se
 | `[Versum 0]`, `[Versum 1]`, `[Versum 2]` | Versicles |
 | `[Nocturn 1 Versum]`, `[Nocturn 2 Versum]`, `[Nocturn 3 Versum]` | Nocturn-specific versicles |
 | `[Oratio]` | Collect/prayer |
-| `[Commemoratio]`, `[Commemoratio2]`, `[Commemoratio4]` | Commemoration blocks |
+| `[Commemoratio]`, `[Commemoratio2]`, `[Commemoratio 3]`, `[Commemoratio4]` | Commemoration blocks |
 | `[Special Vespera 1]` | Special structural overrides |
 | `[Lectio4 in 2 loco]` ... `[Lectio9 in 2 loco]` | Alternative reading sets |
 
@@ -167,7 +179,7 @@ When multiple `[Rank]` (or other) sections exist in the same file, the engine se
 | `[GradualeP]` | Paschal gradual variant |
 | `[GradualeF]` | Ferial gradual variant |
 | `[Tractus]` | Tract (Lenten replacement for Alleluia) |
-| `[Evangelium]` | Gospel reading |
+| `[Evangelium]`, `[Evangelium1]` | Gospel reading (numbered variants for multi-reading days, e.g. Passion) |
 | `[Offertorium]` | Offertory antiphon |
 | `[Secreta]` | Secret prayer |
 | `[Communio]` | Communion antiphon |
@@ -175,6 +187,11 @@ When multiple `[Rank]` (or other) sections exist in the same file, the engine se
 | `[Prelude]` | Pre-Mass ceremonies (e.g., Candlemas blessing) |
 | `[Commemoratio Oratio]`, `[Commemoratio Secreta]`, `[Commemoratio Postcommunio]` | Commemoration propers |
 | `[LectioL1]`, `[GradualeL1]`, `[OratioL1]` | Variant readings for specific traditions |
+| `[Super populum]` | Prayer over the people (Lenten Masses) |
+| `[Post Missam]` | Post-Mass ceremonies or hymns |
+| `[Maundi]` | Maundy / washing of feet ceremony |
+| `[Rank1960]` | Alternative rank entry for 1960 rubrics (version-specific override) |
+| `[Oratio pro commemoratio]` | Prayer for commemoration (with optional parenthetical note) |
 
 #### Psalterium sections
 
@@ -200,17 +217,42 @@ The `@` directive includes content from another file or section. This is the pri
 
 | Pattern | Meaning | Example |
 |---------|---------|---------|
-| `@Path/File` | Include entire file | `@Tempora/Nat30` |
-| `@Path/File:Section` | Include specific section from file | `@Sancti/06-30:Responsory3` |
+| `@Path/File` | Include the **same-named section** from that file (section name defaults to the enclosing section's key) | `@Tempora/Nat30` |
+| `@Path/File:Section` | Include a specific section from file | `@Sancti/06-30:Responsory3` |
 | `@:Section` | Include section from current file | `@:Ant Vespera` |
 | `@Path/File:Section:s/OLD/NEW/g` | Include with regex substitution | `@:Ant Vespera 3:s/;;.*//g` |
+
+> **Important:** `@Path/File` without a `:Section` suffix does **not** include the entire file. The engine uses the current section's key as the implicit section name to look up in the target file (`SetupString.pl:670`: `$2 ? $2 : $key`). Whole-file inclusion is a separate mechanism — see **Preamble Includes** below.
+
+#### Preamble Includes (`__preamble`)
+
+Whole-file inclusion uses a special `__preamble` pseudo-section. When a file contains `@` directives in the preamble area (before or outside any named section), the engine treats them as whole-file includes: it loads all sections from the referenced file and merges them into the current file using `||=` (existing sections in the current file take precedence). The `__preamble` key is deleted after processing. This is primarily used for monastic daisy-chaining.
+
+#### Line/Range Selectors
+
+Include directives support line selection and inverse selection after the section reference:
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `:N` | Select only line N (1-based) | `@Sancti/12-27::1` |
+| `:N-M` | Select lines N through M | `@Sancti/12-27::1-5` |
+| `:!N-M` | Select all lines **except** N through M (inverse) | `@Sancti/12-27:Lectio2:!2-3` |
+
+Selectors and substitutions can be chained: `@Sancti/12-27::1-5 s/-5/-3/`
+
+Real examples from `SanctiOP/12-27.txt`:
+```
+@Sancti/12-27::1-5 s/-5/-3/
+@Sancti/12-27:Lectio1:6-7
+@Sancti/12-27:Lectio2:!2-3 s/6-10/8-10/
+```
 
 **Resolution rules:**
 - Path is relative to the language directory (e.g., `@Sancti/06-30` resolves to `{lang}/Sancti/06-30.txt`)
 - When a section contains only an `@` reference, the entire section content is replaced
 - An `@` reference can appear inline within a section (mixed content)
 - Resolution is recursive: a referenced section may itself contain `@` references
-- Language fallback: if not found in the requested language, falls back to Latin
+- Language fallback is layered (see §10.12)
 
 ### 3.2 Psalm References (`;;`)
 
@@ -350,6 +392,7 @@ Conditions appear in parentheses, either after section headers or as standalone 
 ```
 (rubrica X aut rubrica Y)             OR: matches X or Y
 (rubrica X aut rubrica Y aut ...)     Chained OR
+(rubrica X et tempore Y)              AND: both must hold
 (nisi rubrica X)                       NOT: matches everything except X
 (sed rubrica X omittitur)             This content is omitted under rubric X
 (sed rubrica X omittuntur)            Plural: these contents are omitted
@@ -357,7 +400,25 @@ Conditions appear in parentheses, either after section headers or as standalone 
 (sed die Epiphaniæ ... omittitur)     Conditional on specific feast day
 ```
 
-### 4.3 Flow Directives
+**Operator precedence:** `et` binds **tighter** than `aut`. The engine splits on `aut` first (outer loop), then evaluates `et`/`nisi` within each branch (inner loop). This means `A et B aut C` is evaluated as `(A et B) aut C` — any single `aut` branch succeeding makes the whole condition true. (Note: the source comment at `SetupString.pl:268` says "aut binds tighter" but the code does the opposite.)
+
+**Unknown predicates:** If a predicate is not recognized, it is treated as a case-insensitive regex and matched against the subject. For example, `(tempore Quadragesim)` matches any season string containing "Quadragesim".
+
+### 4.3 Stopwords and Scope
+
+Conditions can be preceded by **stopwords** that control backward/forward scoping — how many preceding (or following) lines are affected by the conditional result:
+
+| Stopword | Weight | Scope direction |
+|----------|--------|----------------|
+| `si` | 0 | Forward only |
+| `sed`, `vero` | 1 | Backward + forward |
+| `atque` | 2 | Backward + forward |
+| `attamen` | 3 | Backward + forward |
+| `deinde` | 1 | Forward only |
+
+Stopword weights are summed when multiple appear. Higher weight = larger backward scope (more preceding lines are suppressed/included).
+
+### 4.4 Flow Directives
 
 ```
 (deinde dicuntur)                      "Then these are said"
@@ -366,14 +427,35 @@ Conditions appear in parentheses, either after section headers or as standalone 
 (deinde rubrica monastica dicuntur)    Plural
 ```
 
-### 4.4 Condition Evaluation Context
+### 4.5 Escaped Conditional Lines (`~`)
 
-The Perl engine evaluates conditions against:
-- `rubricis` → the active version string
-- `tempore` → liturgical season (Advent, Lent, Easter, etc.)
-- `feria` → day of week (0=Sunday, 1=Monday, etc.)
-- `mense` → month (1-12)
-- `die` → special day identifiers
+A line beginning with `~` is **excluded from conditional parsing**. The `~` is stripped and the remaining text is output literally (assuming the enclosing block is affirmative). This prevents parenthesized liturgical rubric text from being misinterpreted as a conditional expression.
+
+Example from `Tempora/Quad6-6.txt`:
+```
+~(Tunc, detecto Calice, dicit:)~
+```
+
+Without the leading `~`, `(Tunc, detecto Calice, dicit:)` would be parsed as a conditional.
+
+### 4.6 Condition Evaluation Context
+
+The Perl engine evaluates conditions against a set of **subjects** (the `%subjects` hash in `SetupString.pl`). If the subject is omitted, it defaults to `tempore`.
+
+| Subject | Resolves to | Example condition |
+|---------|-------------|-------------------|
+| `rubricis`, `rubrica` | Active version string | `(rubrica 1960)` |
+| `tempore` | Liturgical season identifier | `(tempore Quadragesimæ)` |
+| `feria` | Day of week, **1-based**: 1=Sunday ... 7=Saturday (computed as `dayofweek + 1`) | `(feria 2)` |
+| `mense` | Month (1-12) | `(mense 12)` |
+| `die` | Special day name | `(die Epiphaniæ)` |
+| `missa` | Mass number (for days with multiple Masses) | `(missa brevior)` |
+| `communi` | Active version string (alias for `rubrica` in commune contexts) | `(communi Summorum Pontificum)` |
+| `commune` | Active commune identifier | `(commune C4)` |
+| `votiva` | Active votive identifier | `(votiva ...)` |
+| `officio` | Office/day name | `(officio feriali)` |
+| `ad` | `'missam'` during Mass, otherwise the current Hour name | `(ad Laudes)` |
+| `tonus`, `toni` | Chant tone (GABC-specific) | `(tonus solemnis)` |
 
 ---
 
@@ -445,7 +527,18 @@ Tridentine - 1570,1570,1570,1570
 Rubrics 1960 - 1960,1960,1960,1960,Reduced - 1955
 ```
 
-The `base` column enables inheritance: if a date is not found in the version's kalendarium, the engine checks the base version, recursively.
+Fields parsed by `Directorium.pm`:
+
+| Field | Variable | Purpose |
+|-------|----------|---------|
+| `version` | `$ver` | Version display name |
+| `kalendar` | `$kal` | Kalendarium file to use |
+| `transfer` | `$tra` | Transfer rules file |
+| `stransfer` | `$str` | Sanctoral transfer rules file |
+| `base` | `$base` | Base version for Kalendarium inheritance |
+| `transferbase` | `$tbase` | Base version for Transfer inheritance (may differ from `base`) |
+
+The `base` column enables inheritance for **kalendarium** lookups: if a date is not found in the version's kalendarium, the engine checks the base version, recursively. The `tbase` column does the same for **transfer** lookups. The engine selects which base to use based on the query subject (`'base'` for kalendar, `'tbase'` for transfers).
 
 ### 7.2 Kalendarium Files (`Kalendaria/{version}.txt`)
 
@@ -459,11 +552,23 @@ Calendar entries mapping dates to feasts:
 
 Format: `{date}={sancti-file}[~{alternate}]={feast-name}={rank}=[{commemoration}]`
 
+The loader does `split(/=/)` and captures only the first two tokens: the **date key** (`$day`) and the **file reference** (`$file`). Everything after the second `=` (feast name, rank, commemoration fields) is discarded at load time — those fields are used only by the calendar-display UI, not by the file-resolution engine. The `~` character within the file-reference token separates alternate feast assignments (e.g., `01-09~01-15`); these are split later during resolution (`horascommon.pl:156`).
+
 Lines with `XXXXX` suppress a feast that existed in a base version. The `#` prefix marks comments. `*Month*` lines are section headers.
 
 ### 7.3 Transfer Files (`Transfer/`)
 
 Rules for transferring impeded feasts to other dates, varying by year (since Easter moves).
+
+Transfer lines support **per-version filters** using `;;` as a delimiter:
+
+```
+01-02=Tempora/Nat2-0;;DA Newcal 1960 M1930 M1963B CAV
+01-09=01-08;;1570 1888 1906 M1617 M1930 C1951 CAV
+01-10=01-09~01-15;;M1930 C1951 CAV
+```
+
+The text after `;;` is a version filter: the transfer rule only applies if the active version's data matches the filter regex. If no `;;` is present, the rule applies to all versions.
 
 ---
 
@@ -496,10 +601,11 @@ When the engine resolves content for a given date, version, and hour:
 2. Load the Sancti file for the date
 3. Load the Tempora file for the date (computed from the temporal cycle)
 4. Run **occurrence** resolution: determine which takes precedence
-5. Load the winning file's sections, resolving all `@` cross-references recursively
-6. Apply conditional evaluation against the active version
+5. Load the winning file's sections, resolving `__preamble` whole-file includes first, then per-section `@` cross-references recursively
+6. Apply conditional evaluation against the active version (including stopword scoping, `~`-escaped lines)
 7. For sections not present in the feast file, fall back to `Commune/` files (via `ex` directive in `[Rule]`)
 8. For psalms and structural elements, load from `Psalterium/` and `Ordinarium/`
+9. Language fallback at each file-load step: requested lang → dashed parent → `langfb` → Latin; rite fallback: `Cist` → `M` → Roman, `OP` → Roman
 
 ---
 
@@ -518,8 +624,9 @@ The parser must handle:
 9. **Conditional evaluation** — `rubrica X`, `nisi`, `sed...omittitur`, `aut` chains
 10. **Rank parsing** — `;;`-delimited fields with weight and derivation
 11. **Rule directive parsing** — per-line key-value or key=value directives
-12. **Language fallback** — missing content falls back to Latin
-13. **Kalendarium lookup with version inheritance** — recursive base-version chain
+12. **Language fallback** — layered chain: requested language → dashed-parent language (e.g., `Latin-Bea` → `Latin`) → `langfb` (configured fallback language) → Latin
+13. **Rite-directory fallback** — when a file is not found in a rite-specific directory, the engine falls back through: `Cist` → `M` (Monastic/OSB) → Roman (no suffix); also `OP` → Roman
+14. **Kalendarium lookup with version inheritance** — recursive base-version chain (using `base` for kalendar, `tbase` for transfers)
 
 ---
 
