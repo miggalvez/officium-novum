@@ -39,7 +39,7 @@ Additionally, `horas/Ordinarium/` contains language-independent structural templ
 | `Sancti/` | Sanctoral cycle (fixed feasts) | Date-based: `MM-DD.txt` (e.g., `01-25.txt`) |
 | `Commune/` | Common texts (shared by categories of saints) | Named: `C1.txt` (Apostles), `C2.txt` (Martyrs), etc. |
 | `Psalterium/` | Psalter, canticles, hymns | Descriptive: `Psalmi/Psalmi major.txt` |
-| `Martyrologium/` | Daily martyrology readings | Date-based |
+| `Martyrologium/` | Daily martyrology readings | Date-based; Latin also has versioned directories such as `Martyrologium1960/` and `Martyrologium1955R/` |
 | `Appendix/` | Supplementary prayers (litanies, etc.) | Descriptive |
 | `Regula/` | Monastic rules | Descriptive |
 
@@ -94,13 +94,57 @@ Format: `MM-DD[suffix].txt`
 | `cc` | Commemoration entry | `01-05cc.txt` |
 | `n` | New/octave variant | `01-06n.txt` |
 | `o` | Old rubric variant | `12-25o.txt` |
-| `t` | Tertiary saint | `07-21t.txt` |
+| `t` | Legacy `t` variant; commonly 1570-specific or transfer-related in the corpus | `03-19t.txt` |
+| `da` | Divino Afflatu variant | `12-09-da.txt` |
+| `p` | Paschaltide variant | Various |
+| `q` | Lenten-use variant, usually appended to another suffix | Various |
 | `m1`, `m2`, `m3` | Multiple Masses on same day | `12-25m1.txt` (Christmas midnight Mass) |
 | `bmv` | Blessed Virgin Mary variant | Various |
 | `g` | Gregorian variant | `01-08g.txt` |
 | `oct` | Octave file | Various |
 | `pl` | Plures (multiple saints) | Various |
 | `secm1`, `secm2` | Secondary Mass variants | `11-03secm1.txt` |
+
+Compound legacy suffixes also occur, e.g. `06-30octt.txt`, `12-09-da.txt`, `02-02-quadp.txt`. A parser should treat the full basename literally rather than assuming the suffix taxonomy is closed.
+
+#### Commune files
+
+Commune files are keyed by a compact taxonomy rather than dates:
+
+| File | Meaning |
+|------|---------|
+| `C1` | Common of Apostles |
+| `C1a` | Common of Evangelists |
+| `C1v` | Vigil of an Apostle |
+| `C2` | Common of One Martyr-Bishop |
+| `C2a` | Common of One Martyr (not a bishop) |
+| `C2b` | Common of One Martyr-Pope |
+| `C3` | Common of Several Martyr-Bishops |
+| `C3a` | Common of Several Martyrs (not bishops) |
+| `C3b` | Common of Several Martyr-Popes |
+| `C4` | Common of Confessor, Bishop, or Pope |
+| `C4a` | Common of a Bishop-Doctor |
+| `C4b` | Common of Confessor-Popes |
+| `C4b-2` | Common of Doctor-Popes |
+| `C5` | Common of Confessor not Bishop |
+| `C5a` | Common of Doctor not Bishop |
+| `C5b` | Common of Abbots |
+| `C6` | Common of One Virgin Martyr |
+| `C6a` | Common of a Virgin |
+| `C6b` | Common of Several Virgins |
+| `C7` | Common of a Holy Woman Martyr |
+| `C7a` | Common of a Widow |
+| `C7b` | Common of Several Holy Women Martyrs |
+| `C8` | Common of the Dedication of a Church |
+| `C9` | Office of the Dead |
+| `C10` | Office of the Blessed Virgin for Saturday |
+| `C11` | Common of the Blessed Virgin Mary |
+| `C12` | Little Office of the Blessed Virgin Mary |
+
+Common filenames also take modifiers:
+
+- `-1` or `-2` select alternative Mass/Oration variants, e.g. `C2a-1.txt`
+- `p` selects an Eastertide office variant, e.g. `C1p.txt`, `C2ap.txt`
 
 ---
 
@@ -271,6 +315,12 @@ Bare psalm references (no antiphon):
 ;;62
 ```
 
+The same numeric namespace also includes canticles:
+
+- `210-216` = Lauds I canticles
+- `220-226` = Lauds II canticles
+- `231-234` = New Testament canticles plus `Quicumque`
+
 ### 3.3 Psalm Inclusion (`&psalm()`)
 
 Includes the full text of a psalm inline:
@@ -348,11 +398,15 @@ Format: `{:H-HymnID:}` followed by the first line of the hymn.
 
 ### 3.8 Verse/Response Markers
 
-| Marker | Role |
-|--------|------|
-| `v.` | Verse text (lower-case v for regular verse) |
-| `V.` | Versicle (upper-case V in responsorial pairs) |
-| `R.` | Response |
+| Marker | Role / Rendering |
+|--------|------------------|
+| `v.` | Verse text; the following first letter is rendered as a large red initial |
+| `r.` | Response-style text; the following first letter is rendered in regular red |
+| `V.` | Versicle prefix in responsorial pairs; rendered as a red prefix |
+| `R.` | Response prefix; rendered as a red prefix |
+| `R.br.` | Short responsory prefix; rendered as a red prefix |
+| `Ant.` | Antiphon prefix; rendered as a red prefix |
+| `Benedictio.` / `Absolutio.` / `Responsorium.` | Special liturgical prefixes rendered as red headings |
 | `M.` | Minister's part |
 | `S.` | Sacerdos (priest's part) |
 
@@ -363,8 +417,27 @@ Format: `{:H-HymnID:}` followed by the first line of the hymn.
 | `_` | Visual separator / blank line |
 | `#` | Major structural heading (e.g., `#Incipit`, `#Invitatorium`, `#Hymnus`) |
 | `*` | Antiphon mediation point (within antiphon text) |
+| `‡` | Verse-division marker (flexa / mediant depending display tradition) |
+| `~` at end of line | Line contraction: join this line to the next rendered line |
 | `++` | Sign of cross in Gospel reading (e.g., `Sequéntia ++ sancti Evangélii`) |
 | `+` | Sign of cross (blessing) |
+
+The end-of-line `~` contraction is distinct from the line-initial `~` escape described in §4.6.
+
+### 3.10 Gregorian Chant / GABC Notation
+
+Gregorian-chant content is primarily exposed through `Latin-gabc`. Chant data may appear in two forms:
+
+1. **Direct inline GABC blocks**, e.g. `{(c3) A(h)men.(h.) (::)}` or `{name:Amen;...;%%(c3) A(h)men.(h.) (::)}`
+2. **Indirect score references**, e.g. `{gabc:Commune/C1/hy--exsultet_orbis_gaudiis--solesmes_1961.1}`
+
+For antiphons, chant-bearing lines can also carry both the psalm/canticle reference and a psalm tone:
+
+```
+{... chant text ...};;92;;8G
+```
+
+In practice, antiphons, versicles, orations, and capitula often need direct inline notation because the code post-processes them contextually (for example, seasonal Alleluia handling, tone selection, and oration flexa/punctum adjustments).
 
 ---
 
@@ -418,7 +491,32 @@ Conditions can be preceded by **stopwords** that control backward/forward scopin
 
 Stopword weights are summed when multiple appear. Higher weight = larger backward scope (more preceding lines are suppressed/included).
 
-### 4.4 Flow Directives
+### 4.4 Scope Descriptors and Instructions
+
+Conditionals may also carry an explicit **scope descriptor** and/or an **instruction word**. The vocabulary accepted by the historical help page and current parser logic includes:
+
+| Component | Forms |
+|-----------|-------|
+| Scope descriptor | *(none)*, `loco hujus versus`, `loco horum versuum`, `hic versus`, `hoc versus`, `hi versus`, `hæc versus`, `haec versus` |
+| Instruction | `dicitur`, `dicuntur`, `omittitur`, `omittuntur` |
+| Modifier | `semper` (only with `dicitur` / `dicuntur`) |
+
+The intent is:
+
+- `omittitur` / `omittuntur` force **backward-only** omission scope
+- `dicitur` / `dicuntur` force **forward** scope and may also preserve backward scope unless followed by `semper`
+- `semper` suppresses the usual implicit backward scope of `sed` / `vero` / `atque` / `attamen`
+
+The technical page describes the common scope combinations as:
+
+- no scope descriptor: single-line backscope (depending on stopword); singular = single-line forward scope, plural = multi-paragraph forward scope
+- `loco hujus versus dicitur` / `dicuntur`: single-paragraph backward scope and single-paragraph forward scope
+- `loco horum versuum dicitur`: multi-paragraph backward scope and single-paragraph forward scope
+- `loco horum versuum dicuntur`: multi-paragraph backward scope and multi-paragraph forward scope
+
+The Perl implementation maps these to internal line/chunk/nested scopes in `SetupString.pl`; for parser compatibility, match the code's behavior rather than only the prose summary.
+
+### 4.5 Flow Directives
 
 ```
 (deinde dicuntur)                      "Then these are said"
@@ -427,7 +525,7 @@ Stopword weights are summed when multiple appear. Higher weight = larger backwar
 (deinde rubrica monastica dicuntur)    Plural
 ```
 
-### 4.5 Escaped Conditional Lines (`~`)
+### 4.6 Escaped Conditional Lines (`~`)
 
 A line beginning with `~` is **excluded from conditional parsing**. The `~` is stripped and the remaining text is output literally (assuming the enclosing block is affirmative). This prevents parenthesized liturgical rubric text from being misinterpreted as a conditional expression.
 
@@ -438,7 +536,7 @@ Example from `Tempora/Quad6-6.txt`:
 
 Without the leading `~`, `(Tunc, detecto Calice, dicit:)` would be parsed as a conditional.
 
-### 4.6 Condition Evaluation Context
+### 4.7 Condition Evaluation Context
 
 The Perl engine evaluates conditions against a set of **subjects** (the `%subjects` hash in `SetupString.pl`). If the subject is omitted, it defaults to `tempore`.
 
@@ -477,6 +575,8 @@ The `[Rank]` section has a specific delimited format:
 
 Separator: `;;` (double semicolon).
 
+**Important language rule:** precedence metadata is authoritative only in the **Latin** files. For non-Latin files, only the feast title before the first `;;` is significant; the remainder of `[Rank]` is ignored for precedence purposes.
+
 Multiple rank lines may appear, each optionally preceded by a condition:
 
 ```
@@ -488,6 +588,26 @@ Multiple rank lines may appear, each optionally preceded by a condition:
 ;;MM. maj.;;4.1;;ex Sancti/06-30
 ```
 
+Common precedence weights documented by the technical page include:
+
+| Weight | Rank / Usage |
+|--------|--------------|
+| `7.0` | Duplex / I classis (max. solemnitas); excludes all commemorations |
+| `6.9` | Feria privilegiata I ordinis |
+| `6.5` | Nativitatis I classis |
+| `6.0` | Duplex I classis secundarium |
+| `5.0` | Duplex II classis |
+| `4.9` | Feria privilegiata II ordinis |
+| `4.2` | III ordinis; always commemorated |
+| `4.0` | Duplex majus |
+| `3.0` | Duplex minus |
+| `2.9` | Dominica minor (Tridentine) |
+| `2.1` | Feria major / III ordinis |
+| `2.0` | Semiduplex communis / Simplex-level usage depending on rubric set |
+| `1.0` | Feria minor / Commemoratio |
+
+The corpus also uses intermediate and dynamic values, notably `6.01`, `4.99`, and `2.99`, plus stable intermediates such as `5.6`, `4.1`, `3.9`, `3.1`, `2.5`, `2.2`, `2.19`, `1.5`, `1.4`, `1.3`, `1.25`, `1.2`, and `1.15`.
+
 ---
 
 ## 6. Rule Field Directives
@@ -497,18 +617,37 @@ The `[Rule]` section contains processing instructions for the engine, one per li
 | Directive | Meaning |
 |-----------|---------|
 | `ex Sancti/12-25m3;` | Derive base content from another file |
-| `vide Sancti/01-01` | "See" — redirect entirely to another file |
+| `vide Sancti/01-01` | Selective fallback to another file / common, not a whole-file redirect; used for a narrower set of sections than `ex`, with caller-dependent behavior |
+| `vide C4a;mtv` | `vide` with modifier; `mtv` changes the third verse of `Iste confessor` |
 | `9 lectiones` | Matins has 9 readings |
+| `12 lectiones` | Matins has 12 readings (typically Monastic) |
 | `9 lectiones 1960` | 9 readings only under 1960 rubrics |
 | `1 nocturn` | Matins has 1 nocturn only |
+| `3 lectiones` | Ferial-style Matins under Monastic rules |
 | `Omit Hymnus Preces Suffragium Commemoratio` | Suppress specific sections |
+| `limit ...` | Apply hard-coded restrictions to named groups (e.g. All Souls, Triduum) |
 | `Minores sine Antiphona` | Minor Hours without antiphons |
+| `Psalmi minores ex Psalterio` | Minor Hours use the ferial psalms from the Psalterium |
 | `Capitulum Versum 2` | Use second versicle scheme for chapter |
+| `Capitulum Versum 2 ad Laudes et Vesperas` | Apply the same override only at Lauds and Vespers |
+| `Capitulum Versum 2 ad Laudes tantum` | Apply the same override only at Lauds |
 | `Psalmi Dominica` | Use Sunday psalm scheme |
 | `Psalm5Vespera=116` | Override: 5th Vespers psalm is 116 |
 | `Psalm5 Vespera3=138` | Override: 5th psalm of Vespers scheme 3 |
 | `Prima=53` | Override: Prime uses psalm 53 |
 | `Antiphonas horas` | Use proper antiphons for the Hours |
+| `Feria Te Deum` | Say `Te Deum` despite the day being ferial |
+| `Festum Domini` | Under 1960 rubrics, the feast still trumps a minor Sunday |
+| `Doxology=Nat` | Override hymn doxology by season |
+| `Lectio1 tempora` | Replace first-nocturn readings from temporal logic |
+| `Lectio1 OctNat` | Replace first-nocturn readings within the Nativity octave |
+| `scriptura1960` | Under 1960 rubrics, take first-nocturn lessons from occurring scripture |
+| `no secunda vespera` | Prevent the feast from winning / being commemorated at second Vespers |
+| `no prima vespera` | Prevent the feast from winning / being commemorated at first Vespers |
+| `OPapaM=...`, `CPapaC=...` | Inject papal names into office / commemoration text |
+| `Sub unica concl` | Join prayers under one conclusion |
+| `in 3 Nocturno Lectiones ex Commune in 3 loco` | Take lessons from a specific place in the Common |
+| `Una antiphona` | Major hours are prayed under one antiphon (e.g. Paschal usage) |
 | `Gloria` | Gloria is said |
 | `Credo` | Creed is said |
 | `Prefatio=Nat` | Use Nativity preface |
@@ -534,7 +673,7 @@ Fields parsed by `Directorium.pm`:
 | `version` | `$ver` | Version display name |
 | `kalendar` | `$kal` | Kalendarium file to use |
 | `transfer` | `$tra` | Transfer rules file |
-| `stransfer` | `$str` | Sanctoral transfer rules file |
+| `stransfer` | `$str` | Scripture-transfer rules file for Matins readings |
 | `base` | `$base` | Base version for Kalendarium inheritance |
 | `transferbase` | `$tbase` | Base version for Transfer inheritance (may differ from `base`) |
 
@@ -570,6 +709,34 @@ Transfer lines support **per-version filters** using `;;` as a delimiter:
 
 The text after `;;` is a version filter: the transfer rule only applies if the active version's data matches the filter regex. If no `;;` is present, the rule applies to all versions.
 
+Transfer files also contain special non-office reassignment entries:
+
+| Pattern | Meaning | Example |
+|---------|---------|---------|
+| `dirge1=...`, `dirge2=...`, `dirge3=...` | Schedule Office of the Dead after Vespers / Lauds on listed dates | `dirge1=01-23 02-03 02-20;;1570` |
+| `HyMM-DD=1` | Merge major hymns according to rule XX.3 | `Hy05-18=1;;DA` |
+| `HyMM-DD=2` | Shift major hymns according to rule XX.3 | `Hy04-13=2;;1888 1906` |
+
+### 7.4 Scripture Transfer Files (`Stransfer/`)
+
+`Stransfer` files mirror `Transfer/`, but they redirect or augment **Matins scripture lessons** rather than the office itself.
+
+Examples:
+
+```
+11-19=114-2~R;;1570 1888 1906 DA
+11-25=115-1~B;;1570
+11-28=115-6~A;;1570 1888 1906 DA
+```
+
+The suffix after `~` is an operation code:
+
+| Code | Meaning |
+|------|---------|
+| `R` | Replace the day's scripture lessons |
+| `B` | Insert the referenced lessons **before** the current day's lessons |
+| `A` | Insert the referenced lessons **after** the current day's lessons |
+
 ---
 
 ## 8. Commemoratio Block Structure
@@ -603,9 +770,9 @@ When the engine resolves content for a given date, version, and hour:
 4. Run **occurrence** resolution: determine which takes precedence
 5. Load the winning file's sections, resolving `__preamble` whole-file includes first, then per-section `@` cross-references recursively
 6. Apply conditional evaluation against the active version (including stopword scoping, `~`-escaped lines)
-7. For sections not present in the feast file, fall back to `Commune/` files (via `ex` directive in `[Rule]`)
+7. For sections not present in the feast file, fall back to `Commune/` files via `ex`, and for selected callers / sections via `vide`
 8. For psalms and structural elements, load from `Psalterium/` and `Ordinarium/`
-9. Language fallback at each file-load step: requested lang → dashed parent → `langfb` → Latin; rite fallback: `Cist` → `M` → Roman, `OP` → Roman
+9. Language fallback at each file-load step: requested lang → dashed parent → `langfb` (English by default in the web app) → Latin; rite fallback: `Cist` → `M` → Roman, `OP` → Roman
 
 ---
 
@@ -621,12 +788,15 @@ The parser must handle:
 6. **`&` macro expansion** — psalm includes and liturgical fragment references
 7. **`$` formula expansion** — common prayer conclusions
 8. **`!` citation parsing** — distinguish scripture refs from rubrical headings
-9. **Conditional evaluation** — `rubrica X`, `nisi`, `sed...omittitur`, `aut` chains
-10. **Rank parsing** — `;;`-delimited fields with weight and derivation
-11. **Rule directive parsing** — per-line key-value or key=value directives
+9. **Conditional evaluation** — `rubrica X`, `nisi`, `sed...omittitur`, `aut` chains, stopword weighting, scope descriptors, and `dicitur` / `dicuntur` / `omittitur` / `omittuntur`
+10. **Rank parsing** — `;;`-delimited fields with weight and derivation; precedence metadata comes from Latin files
+11. **Rule directive parsing** — per-line directives including `ex`, `vide`, omission / limit groups, hour-scoped overrides, and papal-name injectors
 12. **Language fallback** — layered chain: requested language → dashed-parent language (e.g., `Latin-Bea` → `Latin`) → `langfb` (configured fallback language) → Latin
 13. **Rite-directory fallback** — when a file is not found in a rite-specific directory, the engine falls back through: `Cist` → `M` (Monastic/OSB) → Roman (no suffix); also `OP` → Roman
 14. **Kalendarium lookup with version inheritance** — recursive base-version chain (using `base` for kalendar, `tbase` for transfers)
+15. **Line-initial and line-final `~` handling** — escaped conditionals versus line contraction
+16. **Transfer parsing** — `Transfer/` and `Stransfer/`, including `dirgeN` and `HyMM-DD` entries
+17. **GABC handling** — direct inline notation, indirect `{gabc:path}` references, and optional psalm-tone suffixes
 
 ---
 
