@@ -4,7 +4,7 @@ export interface CrossReference {
   path?: string;
   section?: string;
   lineSelector?: LineSelector;
-  substitution?: Substitution;
+  substitutions: Substitution[];
   isPreamble: boolean;
 }
 

@@ -7,12 +7,17 @@ import { parseRuleLine } from './rule-parser.js';
 import { splitSections } from './section-splitter.js';
 
 export function parseFile(content: string, path: string): ParsedFile {
-  const sections = splitSections(content).map((section) => parseSection(section));
+  const rawSections = splitSections(content);
+  const sections = parseRawSections(rawSections);
 
   return {
     path,
     sections
   };
+}
+
+export function parseRawSections(rawSections: readonly RawSection[]): ParsedSection[] {
+  return rawSections.map((section) => parseSection(section));
 }
 
 function parseSection(section: RawSection): ParsedSection {

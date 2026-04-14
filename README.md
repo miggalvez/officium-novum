@@ -68,7 +68,18 @@ officium-nova/
 
 ## Status
 
-**Phase 1 — Parser (in progress).** The specification and file format documentation are complete. The `@officium-nova/parser` package is scaffolded with working parsers for sections, directives, conditions, ranks, and rules. Reference resolution, corpus walking, and calendar parsing are stubbed. The upstream Divinum Officium repository is included as a submodule for reference and snapshot testing.
+**Phase 1 — Parser (complete).** The `@officium-nova/parser` package parses the full 34,000+ file corpus across 16 languages, resolves cross-references with language fallback, and builds an in-memory text index. All 64 tests pass, including a spot-check validation of 62 representative feast files across languages against resolved snapshots.
+
+Implemented:
+
+- Section splitter, directive parser, condition parser (recursive descent with `aut`/`et`/`nisi` precedence), rank parser, rule parser
+- Cross-reference resolver with path resolution, language fallback chains, line selectors, regex substitutions, cycle detection, and preamble merging
+- Corpus walker (horas/, missa/, Tabulae/ with rite variant detection), file loader, file cache
+- Calendar parsers (Kalendarium, feast transfers, version registry)
+- In-memory text index queryable by path and content directory
+- Corpus loader with integrated reference resolution
+
+**Next — Phase 2: Rubrical Engine.** The hardest phase: encoding the calendar, occurrence, concurrence, and commemoration logic as a pure function `(date, rubricSystem) → OrdoEntry` for the 1911, 1955, and 1960 rubrical systems.
 
 ## License
 

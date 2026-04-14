@@ -27,11 +27,13 @@ exports[`parseRuleSection > parses complex fixture directives including prefixed
       "lineSelector": undefined,
       "path": "Commune/C1",
       "section": "Rule",
-      "substitution": {
-        "flags": "g",
-        "pattern": "Festis",
-        "replacement": "Feriis",
-      },
+      "substitutions": [
+        {
+          "flags": "g",
+          "pattern": "Festis",
+          "replacement": "Feriis",
+        },
+      ],
     },
   },
   {

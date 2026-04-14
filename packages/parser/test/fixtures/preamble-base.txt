@@ -1,0 +1,12 @@
+[Officium]
+Base Office Name
+
+[Rank]
+;;Duplex;;3.0;;ex Commune/C1
+
+[Oratio]
+Deus, qui nos beati Petri glorificas.
+$Per Dominum
+
+[Ant Vespera]
+Ant. Beatus vir * qui suffert tentationem.;;109

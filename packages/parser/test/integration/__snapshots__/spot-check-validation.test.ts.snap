@@ -1,0 +1,1512 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast files across languages against resolved snapshots 1`] = `
+{
+  "digests": [
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Bohemice",
+      "path": "horas/Bohemice/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Jak podivuhodná směna! * Stvořitel lidského rodu přijal oduševnělé tělo a ráčil se naroditi z Panny; a tím, že se bez mužského semene stal člověkem, štědře nám nadělil své Božství.;;109",
+          "Když ses narodil, * to snad ani nelze říci: z Panny! Tehdy se naplnila Písma. Jako déšť do údolí jsi sestoupil, abys spasil lidský rod. V tebe doufáme, náš Bože.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "Bože, jenž jsi plodné panenství blahoslavené Panny Marie požehnal a tak lidstvu udělil milost věčně spásy, dej, prosíme, abychom se přesvědčovali, že se za nás přimlouvá ta, jejímž prostřednictvím jsme obdrželi původce života, našeho Pána, Ježíše Krista, tvého Syna.",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Die Octavae Nativitatis Domini|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [
+          "R. Hle, Beránek Boží, který snímá hříchy světa; hle, o něm jsem vám řekl, že Ten, který přišel po mě, byl učiněn přede mnou;",
+          "* A já nejsem hoden rozvázat řemínky jeho opánků.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 21,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Bohemice",
+      "path": "horas/Bohemice/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Začínají Šalamounova Přísloví",
+          "!Přís. 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. Na počátku Bůh, než stvořil zemi, dříve než ustanovil propasti, dříve než vyvedl ze země prameny vod, dříve než hory dostaly své místo;",
+          "* Přede všemi pahorky mě zrodil Hospodin.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Bohemice",
+      "path": "horas/Bohemice/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 3,
+      "warningCount": 0,
+    },
+    {
+      "domain": "missa",
+      "hasReferenceNodes": false,
+      "language": "Cesky-Schaller",
+      "path": "missa/Cesky-Schaller/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "Bože, jenž jsi plodným panenstvím blahoslavené Marie lidskému pokolení udělil dar věčné spásy, dej, prosíme, abychom pociťovali, že se za nás přimlouvá ta, skrze niž jsme zasloužili obdržeti původce života, Pána našeho Ježíše Krista, Syna tvého, jenž s tebou žije.",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "In Circumcisione Domini|Duplex II classis|5.1|ex Sancti/12-25m3",
+        ],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 11,
+      "warningCount": 0,
+    },
+    {
+      "domain": "missa",
+      "hasReferenceNodes": false,
+      "language": "Cesky-Schaller",
+      "path": "missa/Cesky-Schaller/Tempora/093-3.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Středa Suchých dnů v září",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Dansk",
+      "path": "horas/Dansk/Sancti/02-27.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 7,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Dansk",
+      "path": "horas/Dansk/Tempora/Adv1-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Læsning fra Esajas' bog",
+          "!Isa 1:1-3",
+        ],
+        "Officium": [
+          "Dominica I Adventus",
+        ],
+        "Oratio": [
+          "Herre, rejs dig i din vælde og kom, for at vi må findes værdige til ved din beskyttelse at udrives fra vores synders truende farer og ved din nåde at blive frelst.",
+          "$Qui vivis",
+        ],
+        "Rank": [],
+        "Responsory1": [
+          "R. Jeg skuer i det fjerne, og se, jeg skuer Guds magt, komme som en sky og dække landet, med alle hans folkeslags tropper: * Gå ud og mød ham og sig: * Hvis du er ham, sig os det, * Som skal regere over Guds folk, Israel.",
+          "V. Alle folkeslag i verden, alle i menneskebørn, høj og lav, rig såvel som fattig, hver og én. Gå ud og mød ham og sig.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 26,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Dansk",
+      "path": "horas/Dansk/Commune/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Commune Apostolorum",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Deutsch",
+      "path": "horas/Deutsch/Tempora/093-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Anfang des Buches Tobias.",
+          "!Tob 1,1-4",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. Ich bitte dich, o Herr, dass du mich von der Fessel dieses Gebrechens freimachst, oder wenigstens mich von der Erde wegnimmst:",
+          "* Denk nicht an meine Fehler, auch nicht an die meiner Eltern, und strafe mich nicht für meine Sünden, denn du bist ja Retter für die, die auf dich vertrauen, o Herr.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Deutsch",
+      "path": "horas/Deutsch/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 8,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "English",
+      "path": "horas/English/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O wondrous interchange! * the Creator of mankind, taking upon him a living body, vouchsafed to be born of a pure Virgin: and by his Humanity, which was begotten in no earthly wise, hath made us partakers of his Divinity.;;109",
+          "When thou wast born * all ineffably of a Virgin, then were the Scriptures fulfilled; thou camest down like the dew upon the fleece of wool, to bring salvation unto all mankind; we praise thee, O our God.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "O God, Who, by the fruitful virginity of the Blessed Mary, hast given unto mankind the rewards of everlasting life; grant, we beseech thee, that we may continually feel the might of her intercession, through whom we have worthily received the Author of our life, our Lord Jesus Christ, thy Son:",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Octave Day of the Nativity of the Lord|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [
+          "R. Behold the Lamb of God, behold Him Which taketh away the sins of the world; behold Him of Whom I said unto you: He That cometh after me is preferred before me",
+          "* Whose shoe's latchet I am not worthy to unloose.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 21,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "English",
+      "path": "horas/English/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Lesson from the book of Proverbs",
+          "!Prov 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. God possessed me in the beginning, before He made the earth, before He created the depths, before He caused the fountains of water to spring.",
+          "* Before the mountains were settled, before there were any hills, did the Lord beget me.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "English",
+      "path": "horas/English/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 8,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Espanol",
+      "path": "horas/Espanol/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "¡Qué admirable cambio! * El Creador del género humano, tomando un cuerpo vivo, se ha dignado nacer de una Virgen, y haciéndose hombre sin concurso de varón, nos ha regalado su divinidad.;;109",
+          "Cuando inefablemente naciste * de la Virgen, se cumplieron las Escrituras. Descendiste como lluvia sobre el vellón, para salvar a los hombres. Te alabamos, Dios nuestro.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "v. ¡Oh Dios, que por la maternidad virginal de santa María entregaste al género humano los tesoros de la salvación eterna!, concédenos la intercesión de la Madre de nuestro Redentor.",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Die Octavæ Nativitatis Domini|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [
+          "R. He aquí el Cordero de Dios, he aquí el que quita los pecados del mundo; he aquí aquel de quien os decía: El que viene después de mí, es superior a mí:",
+          "* De quien no soy digno de desatar la correa del calzado,",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 21,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Espanol",
+      "path": "horas/Espanol/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Empiezan las Parábolas de Salomón.",
+          "!Prov 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. En el principio, antes que Dios creara la tierra, antes que constituyera los abismos, antes que produjera las fuentes de las aguas,",
+          "* Antes que fueran fijados los montes, antes que existieran los collados, me engendró el Señor.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Espanol",
+      "path": "horas/Espanol/CommuneM/C2.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Francais",
+      "path": "horas/Francais/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O commerce admirable : * Le Créateur du genre humain prenant un corps et une âme, a daigné naître de la Vierge, et, devenu homme sans le concours de l’homme, il nous a fait part de sa divinité.;;109",
+          "Quand vous naquîtes * ineffablement d’une Vierge, alors s’accomplirent les Écritures. Comme la rosée sur la toison, vous descendîtes pour sauver le genre humain. Nous vous louons, ô notre Dieu !;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "O Dieu, qui, en rendant féconde la virginité de la bienheureuse Marie, avez procuré à l’humanité le salut éternel, accordez-nous, nous vous en supplions, de ressentir la puissante intercession de celle par laquelle nous avons reçu l’auteur de la vie Notre-Seigneur Jésus-Christ, votre Fils :",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Die Octavae Nativitatis Domini|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [
+          "R. Voici l’Agneau de Dieu, voici celui qui ôte les péchés du monde ; voici celui de qui je disais : Celui qui vient après moi, a été fait avant moi * Je ne suis pas digne de délier la courroie de sa chaussure.",
+          "V. Celui qui est de la terre, parle de la terre ; celui qui vient du Ciel, est au-dessus de tous.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 21,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Francais",
+      "path": "horas/Francais/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Lecture du livre de Proverbes",
+          "!Prov 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. Au commencement, avant que Dieu fît la terre, avant qu’il constituât les abîmes, avant qu’il fît jaillir les sources d’eau,",
+          "* Avant qu’il donnât leur place aux montagnes, avant toutes les collines, le Seigneur m’a engendrée.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Francais",
+      "path": "horas/Francais/CommuneM/C2.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Italiano",
+      "path": "horas/Italiano/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O ammirabile scambio: * il Creatore del genere umana, prendendo un corpo ed un'anima, si degno di nascere dalla Vergine e fattosi uomo senza concorso di uomo, ci ha largito la sua Divinità.;;109",
+          "Quando nascesti * ineffabilmente dalla Vergine, allora si adempirono le Scritture: come la rugiada sul vello tu discendesti per salvare il genere umano: noi ti lodiamo, o Dio nostro.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "O Dio, che mediante la verginità feconda della beata Maria hai concesso al genere umano la grazia dell'eterna salvezza: concedici di sentire l'intercessione di colei, per cui abbiamo meritato di ricevere l'autore della vita, nostro Signore Gesù Cristo tuo Figlio:",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Die Octavae Nativitatis Domini|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [
+          "R. Ecco l'Agnello di Dio, ecco colui che toglie i peccati del mondo: ecco colui di cui vi dicevo: Colui che viene dopo di me, è prima di me:",
+          "* Di cui io non son degno di sciogliere il legaccio dei calzari.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 21,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Italiano",
+      "path": "horas/Italiano/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Incominciano la Parabole di Salomone",
+          "!Prov 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. In principio, prima che Dio facesse la terra, prima che stabilisse gli abissi, prima che producesse le sorgenti delle acque,",
+          "* Prima che fossero collocati i monti, prima di tutte le colline il Signore mi generò.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Italiano",
+      "path": "horas/Italiano/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 2,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/Sancti/01-00.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Omnis * qui invocáverit nomen Dómini, salvus erit.",
+          "Sanctum et terríbile * nomen ejus, inítium sapiéntiæ timor Dómini.",
+        ],
+        "Lectio1": [
+          "De Actibus Apostolórum",
+          "!Act 3:1-8",
+        ],
+        "Officium": [
+          "Sanctissimi Nominis Jesu",
+        ],
+        "Oratio": [
+          "Deus, qui unigénitum Fílium tuum constituísti humáni géneris Salvatórem, et Jesum vocári jussísti: concéde propítius; ut, cujus sanctum nomen venerámur in terris, ejus quoque aspéctu perfruámur in cælis.",
+          "$Per eumdem",
+        ],
+        "Rank": [
+          "Sanctissimi Nominis Jesu|Duplex 2 class|5.91|",
+        ],
+        "Responsory1": [
+          "R. Ecce concípies, et paries fílium, et vocábis nomen ejus Jesum:",
+          "* Ipse enim salvum fáciet pópulum suum a peccátis eórum.",
+        ],
+        "Rule": [
+          "9 lectiones",
+          "Festum Domini",
+        ],
+      },
+      "sectionCount": 48,
+      "warningCount": 3,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Incípiunt Parábolæ Salomónis",
+          "!Prov 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. In princípio Deus ántequam terram fáceret, priúsquam abýssos constitúeret, priúsquam prodúceret fontes aquárum, antequam montes collocaréntur:",
+          "* Ante omnes colles generávit me Dóminus.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 16,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneOP/C10.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 55,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin-gabc",
+      "path": "horas/Latin-gabc/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.;;109",
+          "Quando natus es * ineffabíliter ex Vírgine, tunc implétæ sunt Scriptúræ: sicut plúvia in vellus descendísti, ut salvum fáceres genus humánum: te laudámus, Deus noster.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "gabc",
+          "$Qui tecum",
+        ],
+        "Rank": [],
+        "Responsory1": [
+          "R. Ecce Agnus Dei, ecce qui tollit peccáta mundi: ecce de quo dicébam vobis: Qui post me venit, ante me factus est:",
+          "* Cujus non sum dignus corrígiam calceaménti sólvere.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 15,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin-gabc",
+      "path": "horas/Latin-gabc/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Incípiunt Parábolæ Salomónis",
+          "!Prov 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [
+          "R. In princípio Deus ántequam terram fáceret, priúsquam abýssos constitúeret, priúsquam prodúceret fontes aquárum,",
+          "* Antequam montes collocaréntur, ante omnes colles generávit me Dóminus.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 14,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin-gabc",
+      "path": "horas/Latin-gabc/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 7,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Magyar",
+      "path": "horas/Magyar/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "How wonderful is the dealing here! * The Maker of man hath taken to Himself a living body, and hath been pleased to be born of the Virgin He is come forth conceived without seed, and hath made us partakers of His Divine nature;;109",
+          "When, in an unspeakable manner, * Thou wast born of a Virgin, the Scriptures were fulfilled; to save man, Thou camest down as dew upon the fleece we praise thee, O our God!;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [
+          "Karácsony nyolcada|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 4,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Magyar",
+      "path": "horas/Magyar/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Here begin the Proverbs of Solomon.",
+          "!Péld 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 4,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Magyar",
+      "path": "horas/Magyar/CommuneM/C6c.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Commune Virginum Commemoratum",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Nederlands",
+      "path": "horas/Nederlands/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O wondere ruil! * De Schepper van het menselijk geslacht heeft een ziel en een lichaam aangenomen en heeft zich gewaardigd uit een Maagd te worden geboren, is mens geworden zonder medewerking van een man, en heeft ons aan zijn Godheid deelachtig gemaakt.;;109",
+          "Toen Gij werdt geboren * uit de Maagd op wonderbare wijze, werden de schriften vervuld: gelijk de regen op de vacht, zo zijt Gij neergedaald om het mensdom te redden: U, onze God, loven wij.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "God, Gij hebt het voorrecht van de eeuwige zaligheid aan het mensdom geschonken door de vruchtbare maagdelijkheid van de heilige Maria. Wij vragen U, doe ons ondervinden, dat Zij voor ons ten beste spreekt, door wie wij de Gever van het leven mochten ontvangen, onze Heer Jezus Christus, uw Zoon.",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Die Octavæ Nativitatis Domini|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 7,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Nederlands",
+      "path": "horas/Nederlands/Tempora/093-3.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Feria Quarta Quattuor Temporum Septembris",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Nederlands",
+      "path": "horas/Nederlands/CommuneM/C6c.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Commune Virginum Commemoratum",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Polski",
+      "path": "horas/Polski/Sancti/01-01.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O cudowna zamiano: * Stworzyciel rodzaju ludzkiego przyjmując ciało z duszą, raczył się narodzić z Dziewicy: i stając się człowiekiem bez udziału człowieka, udzielił nam swego Bóstwa.;;109",
+          "Kiedyś się narodził * w niewymowny sposób z Dziewicy, wypełniły się Pisma. Zstąpiłeś jako rosa na runo, aby zbawić rodzaj ludzki! Ciebie chwalimy, Boże nasz.;;112",
+        ],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [
+          "Boże, któryś przez płodne dziewictwo Najświętszej Marji Panny, zgotował rodowi ludzkiemu nagrodę zbawienia wiecznego: spraw prosimy, abyśmy doznawali pośrednictwa Tej, przez którą zasłużyliśmy otrzymać Dawcę życia wiekuistego, Pana naszego Jezusa Chrystusa.",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Oktawa Bożego Narodzenia|Duplex I classis|6|ex Sancti/12-25",
+        ],
+        "Responsory1": [
+          "R. Oto Baranek Boży, oto który gładzi grzech świata: tenci jest, o którymem powiadał: Idzie za mną mąż, który stał się przedemną:",
+          "* Którego nie jestem godzien rozwiązać rzemyka bótów jego.",
+        ],
+        "Rule": [],
+      },
+      "sectionCount": 18,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Polski",
+      "path": "horas/Polski/Tempora/081-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "Początek Przysłów Salomona",
+          "!Prz 1:1-6",
+        ],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 7,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Polski",
+      "path": "horas/Polski/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 7,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Portugues",
+      "path": "horas/Portugues/Sancti/01-14.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "S. Hilarii Episcopi Confessoris Ecclesiæ Doctoris",
+          "(sed rubrica 1570 aut rubrica 1617)",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 2,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Portugues",
+      "path": "horas/Portugues/Tempora/093-3.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Feria Quarta Quattuor Temporum Septembris",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Portugues",
+      "path": "horas/Portugues/CommuneM/C6c.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Comum das Virgens Comemoradas",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Ukrainian",
+      "path": "horas/Ukrainian/Sancti/05-01r.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "S. Joseph Opificis",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Ukrainian",
+      "path": "horas/Ukrainian/Tempora/Adv1-0.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Dominica I Adventus",
+        ],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Ukrainian",
+      "path": "horas/Ukrainian/Commune/C2a.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [],
+        "Oratio": [],
+        "Rank": [],
+        "Responsory1": [],
+        "Rule": [],
+      },
+      "sectionCount": 1,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneOP/C10b.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Deus, qui salútis ætérnæ, beátæ Maríæ virginitáte fecúnda, humáno géneri prǽmia præstitísti: tríbue, quǽsumus; ut ipsam pro nobis intercédere sentiámus, per quam merúimus auctórem vitæ suscípere, Dóminum nostrum Jesum Christum Fílium tuum:",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 55,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneOP/C10Pasc.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 55,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneOP/C12.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Sancta Dei Génitrix, Virgo semper María, intercéde pro nobis ad Dóminum Deum nostrum.;;109;112;121;126;147",
+        ],
+        "Lectio1": [
+          "Sancta María, Virgo virginum, mater et filia Regis regum ómnium, tuum nobis impénde solátium: ut cæléstis regni per te mereámur habére præmium, et cum eléctis Dei regnáre in perpétuum.",
+        ],
+        "Officium": [
+          "Officium parvum Beatæ Maríæ Virginis",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1|ex C11",
+        ],
+        "Responsory1": [],
+        "Rule": [
+          "ex C11;",
+          "Ave only",
+        ],
+      },
+      "sectionCount": 58,
+      "warningCount": 47,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneOP/C12A.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Sancta Dei Génitrix, Virgo semper María, intercéde pro nobis ad Dóminum Deum nostrum.;;109;112;121;126;147",
+        ],
+        "Lectio1": [
+          "Sancta María, Virgo virginum, mater et filia Regis regum ómnium, tuum nobis impénde solátium: ut cæléstis regni per te mereámur habére præmium, et cum eléctis Dei regnáre in perpétuum.",
+        ],
+        "Officium": [
+          "Officium parvum Beatæ Maríæ Virginis",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "Officium Parvum Beatae Mariae Virginis tempore Adventus|Simplex|1|",
+        ],
+        "Responsory1": [],
+        "Rule": [
+          "ex C11;",
+          "Ave only",
+        ],
+      },
+      "sectionCount": 58,
+      "warningCount": 47,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneOP/C12N.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Sancta Dei Génitrix, Virgo semper María, intercéde pro nobis ad Dóminum Deum nostrum.;;109;112;121;126;147",
+        ],
+        "Lectio1": [
+          "Sancta María, Virgo virginum, mater et filia Regis regum ómnium, tuum nobis impénde solátium: ut cæléstis regni per te mereámur habére præmium, et cum eléctis Dei regnáre in perpétuum.",
+        ],
+        "Officium": [
+          "Officium parvum Beatæ Maríæ Virginis",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "Officium parvum Beatae Mariae Virginis Tempora Nativitatis|Simplex|1|",
+        ],
+        "Responsory1": [],
+        "Rule": [
+          "ex C11;",
+          "Ave only",
+        ],
+      },
+      "sectionCount": 58,
+      "warningCount": 47,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C1.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.",
+          "Majórem caritátem * nemo habet, ut ánimam suam ponat quis pro amícis suis.",
+        ],
+        "Lectio1": [
+          "De Epístola prima beáti Pauli Apóstoli ad Corínthios",
+          "!1 Cor 4:1-4",
+        ],
+        "Officium": [
+          "Commune Apostolorum",
+        ],
+        "Oratio": [
+          "!Oratio propria.",
+        ],
+        "Rank": [],
+        "Responsory1": [
+          "R. Ecce ego mitto vos sicut oves in médio lupórum, dicit Dóminus:",
+          "* Estóte ergo prudéntes sicut serpéntes, et símplices sicut colúmbæ.",
+        ],
+        "Rule": [
+          "Psalmi Dominica",
+          "Antiphonas horas",
+        ],
+      },
+      "sectionCount": 61,
+      "warningCount": 2,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C10.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "(nisi mense 4 et mense 6) De Canticis canticorum",
+          "1617 only",
+        ],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 111,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C10a.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "(nisi mense 4 et mense 6) De Canticis canticorum",
+          "1617 only",
+        ],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 111,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C10b.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "(nisi mense 4 et mense 6) De Canticis canticorum",
+          "1617 only",
+        ],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Deus, qui salútis ætérnæ, beátæ Maríæ virginitáte fecúnda, humáno géneri prǽmia præstitísti: tríbue, quǽsumus; ut ipsam pro nobis intercédere sentiámus, per quam merúimus auctórem vitæ suscípere, Dóminum nostrum Jesum Christum Fílium tuum:",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 111,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C10c.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "(nisi mense 4 et mense 6) De Canticis canticorum",
+          "1617 only",
+        ],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 111,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C10n.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "(nisi mense 4 et mense 6) De Canticis canticorum",
+          "1617 only",
+        ],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Deus, qui salútis ætérnæ, beátæ Maríæ virginitáte fecúnda, humáno géneri prǽmia præstitísti: tríbue, quǽsumus; ut ipsam pro nobis intercédere sentiámus, per quam merúimus auctórem vitæ suscípere, Dóminum nostrum Jesum Christum Fílium tuum:",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 111,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C10Pasc.txt",
+      "samples": {
+        "Ant Vespera": [],
+        "Lectio1": [
+          "(nisi mense 4 et mense 6) De Canticis canticorum",
+          "1617 only",
+        ],
+        "Officium": [
+          "Sanctæ Mariæ Sabbato",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [
+          "|Simplex|1.3|vide C10",
+        ],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "vide C10",
+          "Special Benedictio",
+        ],
+      },
+      "sectionCount": 111,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C11.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.;;109",
+          "Læva ejus * sub cápite meo, et déxtera illíus amplexábitur me.;;112",
+        ],
+        "Lectio1": [
+          "De Parábolis Salomónis",
+          "!Prov 8:12-17",
+        ],
+        "Officium": [
+          "In Festis Beatae Mariae Virginis",
+        ],
+        "Oratio": [
+          "Concéde nos fámulos tuos, quǽsumus, Dómine Deus, perpétua mentis et córporis sanitáte gaudére: et, gloriósa beátæ Maríæ semper Vírginis intercessióne, a præsénti liberári tristítia, et ætérna pérfrui lætítia.",
+          "$Per Dominum",
+        ],
+        "Rank": [],
+        "Responsory1": [
+          "R. Sancta et immaculáta virgínitas, quibus te láudibus éfferam, néscio:",
+          "* Quia quem cæli cápere non póterant, tuo grémio contulísti.",
+        ],
+        "Rule": [
+          "Psalmi Dominica",
+          "Antiphonas horas",
+        ],
+      },
+      "sectionCount": 75,
+      "warningCount": 0,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C12.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Beáta Mater * et intácta Virgo, gloriósa Regína mundi, intercéde pro nobis ad Dóminum.;;109\\n;;112\\n;;121\\n;;126",
+          ";;109\\n;;112\\n;;121\\n;;126",
+        ],
+        "Lectio1": [
+          "!Lectio brevis",
+          "!S. Aug. Serm. 18. de Sanctis",
+        ],
+        "Officium": [
+          "Officium parvum Beatæ Maríæ Virginis",
+        ],
+        "Oratio": [],
+        "Rank": [
+          "|Simplex|1|ex C11",
+        ],
+        "Responsory1": [
+          "_",
+          "$rubrica Matutinum parvum",
+        ],
+        "Rule": [
+          "Omit Incipit mute",
+          "Omit Suffragium mute",
+        ],
+      },
+      "sectionCount": 69,
+      "warningCount": 47,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C12A.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Missus est * Gábriel Angelus ad Maríam Vírginem desponsátam Joseph. (Allelúja.);;109",
+          "Ave, María, * grátia plena; Dóminus tecum: benedícta tu in muliéribus. (Allelúja.);;112",
+        ],
+        "Lectio1": [
+          "!Luc 1:26-28",
+          "26 Missus est Angelus Gabriel a Deo in civitatem Galilaeae, cui nomen Nazareth,",
+        ],
+        "Officium": [
+          "Officium parvum Beatae Mariae Virginis",
+        ],
+        "Oratio": [
+          "Deus, qui de beátæ Maríæ Vírginis útero Verbum tuum, Angelo nuntiánte, carnem suscípere voluísti: præsta supplícibus tuis; ut, qui vere eam Genetrícem Dei crédimus, ejus apud te intercessiónibus adjuvémur.",
+          "$Per eumdem",
+        ],
+        "Rank": [
+          "Officium Parvum Beatae Mariae Virginis tempore Adventus et in Annuntiationis|Simplex|1|",
+        ],
+        "Responsory1": [
+          "R. Missus est Gábriel Angelus ad Maríam Vírginem desponsátam Joseph, núntians ei verbum; et expavéscit Virgo de lúmine: ne tímeas, María, invenísti grátiam apud Dóminum:",
+          "* Ecce concípies et páries, et vocábitur Altíssimi Fílius. (Allelúja.)",
+        ],
+        "Rule": [
+          "@CommuneM/C12",
+        ],
+      },
+      "sectionCount": 36,
+      "warningCount": 18,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C12N.txt",
+      "samples": {
+        "Ant Vespera": [
+          "O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.;;109",
+          "Quando natus es * ineffabíliter ex Vírgine, tunc implétæ sunt Scriptúræ: sicut plúvia in vellus descendísti, ut salvum fáceres genus humánum: te laudámus, Deus noster.;;112",
+        ],
+        "Lectio1": [
+          "!Sir 24:11-13",
+          "11 In ómnibus réquiem quæsívi, et in hereditáte Dómini morábor.",
+        ],
+        "Officium": [
+          "Officium parvum Beatae Mariae Virginis Tempora Nativitatis",
+        ],
+        "Oratio": [
+          "Deus, qui salútis ætérnæ, beátæ Maríæ virginitáte fecúnda, humáno géneri prǽmia præstitísti: tríbue, quǽsumus; ut ipsam pro nobis intercédere sentiámus, per quam merúimus auctórem vitæ suscípere, Dóminum nostrum Jesum Christum Fílium tuum:",
+          "$Qui tecum",
+        ],
+        "Rank": [
+          "Officium parvum Beatae Mariae Virginis Tempora Nativitatis|Simplex|1|",
+        ],
+        "Responsory1": [],
+        "Rule": [
+          "@CommuneM/C12",
+        ],
+      },
+      "sectionCount": 57,
+      "warningCount": 56,
+    },
+    {
+      "domain": "horas",
+      "hasReferenceNodes": false,
+      "language": "Latin",
+      "path": "horas/Latin/CommuneM/C12Q.txt",
+      "samples": {
+        "Ant Vespera": [
+          "Beáta Mater * et intácta Virgo, gloriósa Regína mundi, intercéde pro nobis ad Dóminum.;;109\\n;;112\\n;;121\\n;;126",
+          ";;109\\n;;112\\n;;121\\n;;126",
+        ],
+        "Lectio1": [
+          "!Lectio brevis",
+          "!S. Aug. Serm. 18. de Sanctis",
+        ],
+        "Officium": [
+          "Officium parvum Beatæ Maríæ Virginis",
+        ],
+        "Oratio": [],
+        "Rank": [
+          "|Simplex|1|ex C11",
+        ],
+        "Responsory1": [
+          "_",
+          "$rubrica Matutinum parvum",
+        ],
+        "Rule": [
+          "Omit Incipit mute",
+          "Omit Suffragium mute",
+        ],
+      },
+      "sectionCount": 69,
+      "warningCount": 47,
+    },
+  ],
+  "skippedCount": 2,
+  "skippedPreview": [
+    {
+      "path": "horas/Cesky-Schaller/Commune/C10.txt",
+      "reason": "Rank line must contain at least three fields: 'Suffr=Spiritu;Ecclesiae,Papa;;'.",
+    },
+    {
+      "path": "horas/Deutsch/Sancti/01-00.txt",
+      "reason": "Rank line must contain at least three fields: 'Heiligster Namen Jesu'.",
+    },
+  ],
+}
+`;

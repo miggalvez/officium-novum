@@ -20,7 +20,7 @@ describe('parseRuleLine', () => {
         path: 'Commune/C1',
         section: 'Rule',
         lineSelector: undefined,
-        substitution: undefined,
+        substitutions: [],
         isPreamble: false
       },
       condition: undefined,

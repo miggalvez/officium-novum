@@ -106,7 +106,7 @@ describe('cross-reference parsers', () => {
       path: undefined,
       section: 'Commemoratio',
       lineSelector: undefined,
-      substitution: undefined,
+      substitutions: [],
       isPreamble: false
     });
 
@@ -114,8 +114,31 @@ describe('cross-reference parsers', () => {
       path: 'Tempora/Pent01-1',
       section: '__preamble',
       lineSelector: undefined,
-      substitution: undefined,
+      substitutions: [],
       isPreamble: true
+    });
+  });
+
+  it('parses selector plus chained substitutions', () => {
+    expect(
+      parseCrossReference('@Tempora/Adv1-0o:Lectio3:1-3 s/-15/-11/ s/.$/./')
+    ).toEqual({
+      path: 'Tempora/Adv1-0o',
+      section: 'Lectio3',
+      lineSelector: { type: 'range', start: 1, end: 3 },
+      substitutions: [
+        {
+          pattern: '-15',
+          replacement: '-11',
+          flags: ''
+        },
+        {
+          pattern: '.$',
+          replacement: '.',
+          flags: ''
+        }
+      ],
+      isPreamble: false
     });
   });
 });

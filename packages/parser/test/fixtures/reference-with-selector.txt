@@ -1,0 +1,6 @@
+[Lectio1]
+Line one of the reading.
+Line two of the reading.
+Line three of the reading.
+Line four of the reading.
+Line five of the reading.

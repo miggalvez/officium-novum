@@ -150,19 +150,18 @@ export function parseCrossReference(referenceLine: string): CrossReference {
     throw new DirectiveParseError('Reference directive cannot be empty.');
   }
 
-  const extractedSubstitution = extractSubstitution(body);
-  body = extractedSubstitution.remainder;
+  const extractedSubstitutions = extractSubstitutions(body);
+  body = extractedSubstitutions.remainder;
 
   const extractedSelector = extractLineSelector(body);
   body = extractedSelector.remainder;
 
   const parsedPathSection = parsePathAndSection(body);
-
   return {
     path: parsedPathSection.path,
     section: parsedPathSection.section,
     lineSelector: extractedSelector.value,
-    substitution: extractedSubstitution.value,
+    substitutions: extractedSubstitutions.values,
     isPreamble: parsedPathSection.section === '__preamble'
   };
 }
@@ -311,40 +310,71 @@ function isScriptureCitation(value: string): boolean {
   return /^(?:[1-4]\s*)?[A-Z][\p{L}.]{1,10}\s+\d+(?::\d+(?:[-,]\d+)?)?$/u.test(normalized);
 }
 
-function extractSubstitution(
+function extractSubstitutions(
   input: string
-): { remainder: string; value?: Substitution } {
-  const candidates: number[] = [];
+): { remainder: string; values: Substitution[] } {
+  const values: Substitution[] = [];
+  let remainder = input;
 
-  if (input.startsWith('s/')) {
-    candidates.push(0);
+  while (true) {
+    const extracted = extractTrailingSubstitution(remainder);
+    if (!extracted) {
+      break;
+    }
+
+    values.unshift(extracted.value);
+    remainder = extracted.remainder;
   }
 
-  let idx = input.indexOf(':s/');
-  while (idx >= 0) {
-    candidates.push(idx + 1);
-    idx = input.indexOf(':s/', idx + 1);
-  }
+  return { remainder, values };
+}
 
-  candidates.sort((a, b) => b - a);
+function extractTrailingSubstitution(
+  input: string
+): { remainder: string; value: Substitution } | undefined {
+  const trimmed = input.trimEnd();
+  let searchIndex = trimmed.length;
 
-  for (const start of candidates) {
-    const token = input.slice(start);
+  while (searchIndex > 0) {
+    const start = trimmed.lastIndexOf('s/', searchIndex - 1);
+    if (start < 0) {
+      return undefined;
+    }
+
+    if (!isValidSubstitutionBoundary(trimmed, start)) {
+      searchIndex = start;
+      continue;
+    }
+
+    const token = trimmed.slice(start);
+
     try {
       const value = parseSubstitution(token);
-      const remainder = input.slice(0, start > 0 ? start - 1 : 0);
+      const remainderEnd = start > 0 && trimmed[start - 1] === ':' ? start - 1 : start;
+
       return {
-        remainder,
+        remainder: trimmed.slice(0, remainderEnd).trimEnd(),
         value
       };
     } catch {
-      continue;
+      searchIndex = start;
     }
   }
 
-  return {
-    remainder: input
-  };
+  return undefined;
+}
+
+function isValidSubstitutionBoundary(input: string, start: number): boolean {
+  if (start === 0) {
+    return true;
+  }
+
+  const boundary = input[start - 1];
+  if (!boundary) {
+    return false;
+  }
+
+  return boundary === ':' || /\s/u.test(boundary);
 }
 
 function hasTrailingContractionMarker(line: string): boolean {
