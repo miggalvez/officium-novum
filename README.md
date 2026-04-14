@@ -65,6 +65,7 @@ officium-nova/
 
 - [Modernization Specification](docs/divinum-officium-modernization-spec.md) — full design document covering all phases, the rubrical engine interface, validation strategy, and migration plan
 - [File Format Specification](docs/file-format-specification.md) — detailed specification of the legacy `.txt` file format (section headers, directives, cross-references, language conventions)
+- [Phase 2 Rubrical Engine Design](docs/phase-2-rubrical-engine-design.md) — detailed design for the rubrical engine: pipeline stages, version/policy model, occurrence/concurrence/transfer/commemoration algorithms, Matins planning, and the top-level API
 
 ## Status
 
@@ -79,7 +80,7 @@ Implemented:
 - In-memory text index queryable by path and content directory
 - Corpus loader with integrated reference resolution
 
-**Next — Phase 2: Rubrical Engine.** The hardest phase: encoding the calendar, occurrence, concurrence, and commemoration logic as a pure function `(date, rubricSystem) → OrdoEntry` for the 1911, 1955, and 1960 rubrical systems.
+**Phase 2 — Rubrical Engine (design complete, implementation pending).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md). It specifies a pure pipeline of stages — Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring — that encodes the calendar, occurrence, concurrence, and commemoration logic as a pure function `(date, versionHandle) → OrdoEntry` for the 1911, 1955, and 1960 rubrical systems. Implementation will proceed in eight sub-phases (2a–2h), each independently testable.
 
 ## License
 
