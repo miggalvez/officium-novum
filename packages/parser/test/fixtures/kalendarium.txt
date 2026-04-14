@@ -1,0 +1,7 @@
+#Test kalendarium
+*January*
+01-18=01-18r=S Priscae Virginis=1=
+01-25=01-25r=In Conversione S. Pauli Apostoli=4=
+*February*
+05-06=XXXXX
+07-21=07-21r~07-21=S. Laurentii=3=S. Praxedis=1=

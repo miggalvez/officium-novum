@@ -1,0 +1,5 @@
+version,kalendar,transfer,stransfer,base,transferbase
+# comment line
+Tridentine - 1570,1570,1570,1570
+Rubrics 1960 - 1960,1960,1960,1960,Reduced - 1955
+Divino Afflatu - 1954,1954,1954,1954,Divino Afflatu - 1939,Divino Afflatu - 1939
