@@ -1,0 +1,9 @@
+[Rank]
+S. Joseph Sponsi B.M.V.;;Duplex I classis;;7.0
+S. Joseph Sponsi B.M.V.;;Duplex;;5.0;;ex Sancti/03-19
+
+[Rank] (rubrica 1960)
+S. Joseph Sponsi B.M.V.;;Commemoratio;;3.0;;ex Commune/C9
+
+[Rank] (nisi rubrica tridentina)
+S. Joseph Sponsi B.M.V.;;Semiduplex;;4.0

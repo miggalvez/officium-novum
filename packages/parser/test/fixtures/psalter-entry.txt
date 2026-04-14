@@ -1,0 +1,12 @@
+[Day0 Laudes1]
+Antiphona prima;;92
+&psalm(92)
+v. Deus, in adjutorium meum intende.
+R. Domine, ad adjuvandum me festina.
+
+[Day0 Laudes2]
+Antiphona secunda;;99;;8G
+&Deus_in_adjutorium
+{gabc:tones/8g.gabc}
+{(c3) Laudate Dominum omnes gentes}
+{:H-GR:}Initium sancti Evangelii

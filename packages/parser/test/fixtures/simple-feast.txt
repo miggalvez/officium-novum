@@ -1,0 +1,18 @@
+; Sample preamble comment
+
+[Rank]
+S. Polycarpi Episcopi et Martyris;;Duplex;;5.0;;ex Commune/C9
+
+[Oratio]
+~Deus, qui nos beati Polycarpi Martyris tui confessione glorificas.
+$Per Dominum
+
+[Commemoratio] (rubrica 1960)
+!Commemoratio S. Pauli Apostoli
+@Commune/C10:Oratio:s/Pauli/Petri/g
+
+[Ant Vespera]
+Antiphona prima;;109;;8G
+&psalm(109)
+_
+#In fine

@@ -1,0 +1,11 @@
+[Oratio] (si rubrica 1960 loco hujus versus dicitur)
+Deus, qui nos in tua custodia constituis.
+
+[Lectio] (rubrica 1960 et tempore paschali aut missa votiva)
+Lectio sancti Evangelii secundum Lucam.
+
+[Versus] (nisi tempore quadragesimae et feria vi)
+R. Deo gratias.
+
+[Antiphona] ((rubrica 1960 aut tempore adventus) et nisi missa votiva)
+Ant. Exspectetur sicut pluvia eloquium meum.

@@ -1,0 +1,8 @@
+[References]
+@Sancti/01-25
+@Sancti/01-25:Oratio
+@:Commemoratio
+@Tempora/Adv1-0:Lectio:3-5
+@Tempora/Adv1-0:Lectio:!2-4:s/Dominus/Christus/g
+@Tempora/Pent01-1:__preamble
+@Sancti/06-29:s/Petri/Pauli/g

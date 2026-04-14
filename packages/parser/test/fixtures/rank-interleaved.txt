@@ -1,0 +1,6 @@
+[Rank]
+;;Duplex majus;;4;;ex Sancti/06-30
+(sed rubrica innovata)
+;;Duplex Fest;;5;;ex Sancti/06-30
+(sed rubrica cisterciensis)
+;;MM. maj.;;4.1;;ex Sancti/06-30

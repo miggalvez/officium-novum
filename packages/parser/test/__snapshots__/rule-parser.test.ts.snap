@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`parseRuleSection > parses complex fixture directives including prefixed and suffixed conditions 1`] = `
+[
+  {
+    "args": [
+      "1960",
+    ],
+    "condition": undefined,
+    "keyword": "rubricae",
+    "kind": "action",
+    "raw": "rubricae 1960",
+  },
+  {
+    "condition": undefined,
+    "key": "Commemoratio",
+    "kind": "assignment",
+    "raw": "Commemoratio=Sancti/06-29",
+    "value": "Sancti/06-29",
+  },
+  {
+    "condition": undefined,
+    "kind": "reference",
+    "raw": "@Commune/C1:Rule:s/Festis/Feriis/g",
+    "reference": {
+      "isPreamble": false,
+      "lineSelector": undefined,
+      "path": "Commune/C1",
+      "section": "Rule",
+      "substitution": {
+        "flags": "g",
+        "pattern": "Festis",
+        "replacement": "Feriis",
+      },
+    },
+  },
+  {
+    "args": [
+      "omittitur",
+    ],
+    "condition": {
+      "expression": {
+        "left": {
+          "predicate": "1960",
+          "subject": "rubrica",
+          "type": "match",
+        },
+        "right": {
+          "predicate": "vi",
+          "subject": "feria",
+          "type": "match",
+        },
+        "type": "and",
+      },
+    },
+    "keyword": "Gloria",
+    "kind": "action",
+    "raw": "(rubrica 1960 et feria vi) Gloria omittitur",
+  },
+  {
+    "args": [
+      "dicitur",
+    ],
+    "condition": {
+      "expression": {
+        "left": {
+          "predicate": "1960",
+          "subject": "rubrica",
+          "type": "match",
+        },
+        "right": {
+          "predicate": "votiva",
+          "subject": "missa",
+          "type": "match",
+        },
+        "type": "or",
+      },
+    },
+    "keyword": "Credo",
+    "kind": "action",
+    "raw": "Credo dicitur (rubrica 1960 aut missa votiva)",
+  },
+  {
+    "condition": undefined,
+    "key": "TemporaTransfer",
+    "kind": "assignment",
+    "raw": "TemporaTransfer=Tempora/Adv1-0",
+    "value": "Tempora/Adv1-0",
+  },
+]
+`;

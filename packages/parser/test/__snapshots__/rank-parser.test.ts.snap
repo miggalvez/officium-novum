@@ -1,0 +1,117 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`parseRankSection > applies standalone parenthesized condition lines to the next rank line 1`] = `
+[
+  {
+    "rank": {
+      "classWeight": 4,
+      "condition": undefined,
+      "derivation": "ex Sancti/06-30",
+      "name": "Duplex majus",
+    },
+    "raw": ";;Duplex majus;;4;;ex Sancti/06-30",
+    "sourceLine": 2,
+    "title": "",
+  },
+  {
+    "rank": {
+      "classWeight": 5,
+      "condition": {
+        "expression": {
+          "predicate": "innovata",
+          "subject": "rubrica",
+          "type": "match",
+        },
+        "stopword": "sed",
+      },
+      "derivation": "ex Sancti/06-30",
+      "name": "Duplex Fest",
+    },
+    "raw": ";;Duplex Fest;;5;;ex Sancti/06-30",
+    "sourceLine": 4,
+    "title": "",
+  },
+  {
+    "rank": {
+      "classWeight": 4.1,
+      "condition": {
+        "expression": {
+          "predicate": "cisterciensis",
+          "subject": "rubrica",
+          "type": "match",
+        },
+        "stopword": "sed",
+      },
+      "derivation": "ex Sancti/06-30",
+      "name": "MM. maj.",
+    },
+    "raw": ";;MM. maj.;;4.1;;ex Sancti/06-30",
+    "sourceLine": 6,
+    "title": "",
+  },
+]
+`;
+
+exports[`parseRankSection > parses multiple rank variants with section-level conditions 1`] = `
+[
+  {
+    "rank": {
+      "classWeight": 7,
+      "condition": undefined,
+      "derivation": undefined,
+      "name": "Duplex I classis",
+    },
+    "raw": "S. Joseph Sponsi B.M.V.;;Duplex I classis;;7.0",
+    "sourceLine": 2,
+    "title": "S. Joseph Sponsi B.M.V.",
+  },
+  {
+    "rank": {
+      "classWeight": 5,
+      "condition": undefined,
+      "derivation": "ex Sancti/03-19",
+      "name": "Duplex",
+    },
+    "raw": "S. Joseph Sponsi B.M.V.;;Duplex;;5.0;;ex Sancti/03-19",
+    "sourceLine": 3,
+    "title": "S. Joseph Sponsi B.M.V.",
+  },
+  {
+    "rank": {
+      "classWeight": 3,
+      "condition": {
+        "expression": {
+          "predicate": "1960",
+          "subject": "rubrica",
+          "type": "match",
+        },
+      },
+      "derivation": "ex Commune/C9",
+      "name": "Commemoratio",
+    },
+    "raw": "S. Joseph Sponsi B.M.V.;;Commemoratio;;3.0;;ex Commune/C9",
+    "sourceLine": 6,
+    "title": "S. Joseph Sponsi B.M.V.",
+  },
+  {
+    "rank": {
+      "classWeight": 4,
+      "condition": {
+        "expression": {
+          "inner": {
+            "predicate": "tridentina",
+            "subject": "rubrica",
+            "type": "match",
+          },
+          "type": "not",
+        },
+      },
+      "derivation": undefined,
+      "name": "Semiduplex",
+    },
+    "raw": "S. Joseph Sponsi B.M.V.;;Semiduplex;;4.0",
+    "sourceLine": 9,
+    "title": "S. Joseph Sponsi B.M.V.",
+  },
+]
+`;

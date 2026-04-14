@@ -1,0 +1,8 @@
+[Rule]
+rubricae 1960
+Commemoratio=Sancti/06-29
+@Commune/C1:Rule:s/Festis/Feriis/g
+(rubrica 1960 et feria vi) Gloria omittitur
+Credo dicitur (rubrica 1960 aut missa votiva)
+# comment ignored
+TemporaTransfer=Tempora/Adv1-0

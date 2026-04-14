@@ -1,0 +1,148 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`parseDirectiveLine > parses cross-reference directives from fixture variants 1`] = `
+[
+  {
+    "ref": {
+      "isPreamble": false,
+      "lineSelector": undefined,
+      "path": "Sancti/01-25",
+      "section": undefined,
+      "substitution": undefined,
+    },
+    "type": "reference",
+  },
+  {
+    "ref": {
+      "isPreamble": false,
+      "lineSelector": undefined,
+      "path": "Sancti/01-25",
+      "section": "Oratio",
+      "substitution": undefined,
+    },
+    "type": "reference",
+  },
+  {
+    "ref": {
+      "isPreamble": false,
+      "lineSelector": undefined,
+      "path": undefined,
+      "section": "Commemoratio",
+      "substitution": undefined,
+    },
+    "type": "reference",
+  },
+  {
+    "ref": {
+      "isPreamble": false,
+      "lineSelector": {
+        "end": 5,
+        "start": 3,
+        "type": "range",
+      },
+      "path": "Tempora/Adv1-0",
+      "section": "Lectio",
+      "substitution": undefined,
+    },
+    "type": "reference",
+  },
+  {
+    "ref": {
+      "isPreamble": false,
+      "lineSelector": {
+        "end": 4,
+        "start": 2,
+        "type": "inverse",
+      },
+      "path": "Tempora/Adv1-0",
+      "section": "Lectio",
+      "substitution": {
+        "flags": "g",
+        "pattern": "Dominus",
+        "replacement": "Christus",
+      },
+    },
+    "type": "reference",
+  },
+  {
+    "ref": {
+      "isPreamble": true,
+      "lineSelector": undefined,
+      "path": "Tempora/Pent01-1",
+      "section": "__preamble",
+      "substitution": undefined,
+    },
+    "type": "reference",
+  },
+  {
+    "ref": {
+      "isPreamble": false,
+      "lineSelector": undefined,
+      "path": "Sancti/06-29",
+      "section": undefined,
+      "substitution": {
+        "flags": "g",
+        "pattern": "Petri",
+        "replacement": "Pauli",
+      },
+    },
+    "type": "reference",
+  },
+]
+`;
+
+exports[`parseDirectiveLine > parses psalm refs, macros, formulae, verse markers, and gabc notation 1`] = `
+[
+  {
+    "antiphon": "Antiphona prima",
+    "psalmNumber": 92,
+    "type": "psalmRef",
+  },
+  {
+    "psalmNumber": 92,
+    "type": "psalmInclude",
+  },
+  {
+    "marker": "v.",
+    "text": "Deus, in adjutorium meum intende.",
+    "type": "verseMarker",
+  },
+  {
+    "marker": "R.",
+    "text": "Domine, ad adjuvandum me festina.",
+    "type": "verseMarker",
+  },
+  {
+    "antiphon": "Antiphona secunda",
+    "psalmNumber": 99,
+    "tone": "8G",
+    "type": "psalmRef",
+  },
+  {
+    "name": "Deus_in_adjutorium",
+    "type": "macroRef",
+  },
+  {
+    "notation": {
+      "kind": "path",
+      "path": "tones/8g.gabc",
+    },
+    "type": "gabcNotation",
+  },
+  {
+    "notation": {
+      "kind": "inline",
+      "notation": "{(c3) Laudate Dominum omnes gentes}",
+    },
+    "type": "gabcNotation",
+  },
+  {
+    "notation": {
+      "kind": "header",
+      "notation": "{:H-GR:}",
+      "text": "Initium sancti Evangelii",
+    },
+    "type": "gabcNotation",
+  },
+]
+`;

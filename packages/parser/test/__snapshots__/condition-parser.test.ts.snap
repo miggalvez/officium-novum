@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`parseConditionExpression > parses nested groups and nisi negations 1`] = `
+{
+  "left": {
+    "left": {
+      "predicate": "1960",
+      "subject": "rubrica",
+      "type": "match",
+    },
+    "right": {
+      "predicate": "adventus",
+      "subject": "tempore",
+      "type": "match",
+    },
+    "type": "or",
+  },
+  "right": {
+    "inner": {
+      "predicate": "votiva",
+      "subject": "missa",
+      "type": "match",
+    },
+    "type": "not",
+  },
+  "type": "and",
+}
+`;
