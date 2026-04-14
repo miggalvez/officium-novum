@@ -43,12 +43,14 @@ The source `.txt` files remain the single source of truth, edited via standard G
 
 ```
 officium-nova/
+├── packages/
+│   └── parser/        # @officium-nova/parser — reads .txt files, emits typed objects
 ├── upstream/          # Divinum Officium as a Git submodule (source texts + legacy Perl app)
 ├── docs/              # Specifications and design documents
 │   ├── divinum-officium-modernization-spec.md
 │   └── file-format-specification.md
 ├── LICENSE            # GPL-3.0
-└── .gitmodules
+└── pnpm-workspace.yaml
 ```
 
 ## Design Principles
@@ -66,7 +68,7 @@ officium-nova/
 
 ## Status
 
-**Phase: Pre-implementation.** The specification and file format documentation are complete. The upstream Divinum Officium repository is included as a submodule for reference and snapshot testing.
+**Phase 1 — Parser (in progress).** The specification and file format documentation are complete. The `@officium-nova/parser` package is scaffolded with working parsers for sections, directives, conditions, ranks, and rules. Reference resolution, corpus walking, and calendar parsing are stubbed. The upstream Divinum Officium repository is included as a submodule for reference and snapshot testing.
 
 ## License
 
