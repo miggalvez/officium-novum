@@ -1,3 +1,6 @@
+import type { Rank } from '@officium-nova/parser';
+import type { LiturgicalSeason } from './model.js';
+
 /**
  * Stable identifier for a rubrical policy family.
  *
@@ -42,6 +45,19 @@ export type PolicyName =
   | 'cistercian-altovadense'
   | 'dominican-1962';
 
+export interface RankContext {
+  /** ISO date (`YYYY-MM-DD`) for the office being resolved. */
+  readonly date: string;
+  /** Stable feast path such as `Tempora/Pasc2-0` or `Sancti/01-25`. */
+  readonly feastPath: string;
+  /** The emitting cycle for the rank under normalization. */
+  readonly source: 'temporal' | 'sanctoral';
+  /** Active version handle as it appears in `data.txt`. */
+  readonly version: string;
+  /** Coarse liturgical season when available. */
+  readonly season?: LiturgicalSeason;
+}
+
 /**
  * Rubrical behaviour contract for a policy family.
  *
@@ -57,8 +73,21 @@ export type PolicyName =
 export interface RubricalPolicy {
   /** Stable identifier used in diagnostics, test snapshots, and version projections. */
   readonly name: PolicyName;
-  // PHASE 2c+: expand per design §11:
-  //   resolveRank, precedenceRow, applySeasonPreemption, compareCandidates,
+  /**
+   * Phase 2a normalizes raw parser ranks into a stable, policy-aware shape.
+   *
+   * The first implementation is intentionally simple: it preserves the raw
+   * class weight for naive Phase 2a winner selection and derives a lightweight
+   * class symbol from the textual rank name. Later phases will grow this into
+   * the fuller design-§11 contract.
+   */
+  resolveRank(raw: Rank, context: RankContext): {
+    readonly name: string;
+    readonly weight: number;
+    readonly classSymbol: string;
+  };
+  // PHASE 2c+: expand further per design §11:
+  //   precedenceRow, applySeasonPreemption, compareCandidates,
   //   resolveConcurrence, limitCommemorations, buildCelebrationRuleSet,
   //   hourDirectives, octavesEnabled, transferTarget.
 }

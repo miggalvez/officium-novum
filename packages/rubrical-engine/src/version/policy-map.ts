@@ -1,5 +1,6 @@
 import { asVersionHandle, type VersionHandle } from '../types/version.js';
 import type { PolicyName, RubricalPolicy } from '../types/policy.js';
+import { defaultResolveRank } from '../sanctoral/rank-normalizer.js';
 
 /**
  * Placeholder policy records: identity-only (`name`) objects used in Phase 2a.
@@ -10,16 +11,16 @@ import type { PolicyName, RubricalPolicy } from '../types/policy.js';
  * resolution, concurrence, rule-set building, and so on.
  */
 const POLICIES: Readonly<Record<PolicyName, RubricalPolicy>> = {
-  'tridentine-1570': { name: 'tridentine-1570' },
-  'divino-afflatu': { name: 'divino-afflatu' },
-  'reduced-1955': { name: 'reduced-1955' },
-  'rubrics-1960': { name: 'rubrics-1960' },
-  'monastic-tridentine': { name: 'monastic-tridentine' },
-  'monastic-divino': { name: 'monastic-divino' },
-  'monastic-1963': { name: 'monastic-1963' },
-  'cistercian-1951': { name: 'cistercian-1951' },
-  'cistercian-altovadense': { name: 'cistercian-altovadense' },
-  'dominican-1962': { name: 'dominican-1962' }
+  'tridentine-1570': { name: 'tridentine-1570', resolveRank: defaultResolveRank },
+  'divino-afflatu': { name: 'divino-afflatu', resolveRank: defaultResolveRank },
+  'reduced-1955': { name: 'reduced-1955', resolveRank: defaultResolveRank },
+  'rubrics-1960': { name: 'rubrics-1960', resolveRank: defaultResolveRank },
+  'monastic-tridentine': { name: 'monastic-tridentine', resolveRank: defaultResolveRank },
+  'monastic-divino': { name: 'monastic-divino', resolveRank: defaultResolveRank },
+  'monastic-1963': { name: 'monastic-1963', resolveRank: defaultResolveRank },
+  'cistercian-1951': { name: 'cistercian-1951', resolveRank: defaultResolveRank },
+  'cistercian-altovadense': { name: 'cistercian-altovadense', resolveRank: defaultResolveRank },
+  'dominican-1962': { name: 'dominican-1962', resolveRank: defaultResolveRank }
 };
 
 /**

@@ -83,27 +83,37 @@ Implemented:
 - In-memory text index queryable by path and content directory
 - Corpus loader with integrated reference resolution
 
-**Phase 2 — Rubrical Engine (in progress).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md), and implementation has started in [`packages/rubrical-engine`](packages/rubrical-engine). The target pipeline is still the same — Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring — but Phase 2a is now underway rather than merely planned.
+**Phase 2 — Rubrical Engine (in progress).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md). Pipeline: Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring. Phase 2 is broken into eight sub-phases (2a–2h) per §18 of the design.
 
-Implemented so far:
+**Phase 2a — Foundations (complete).** The end-to-end deliverable from design §18 is in place: `createRubricalEngine(config).resolveDayOfficeSummary(date)` returns temporal + sanctoral candidates with a naive (highest-raw-rank) winner for every date.
+
+Implemented:
 
 - `@officium-nova/rubrical-engine` package scaffold with build, typecheck, and Vitest setup
 - Version-layer foundations: branded `VersionHandle`, `ResolvedVersion`, `VersionDescriptor`, and immutable `VersionRegistry`
-- `data.txt` registry builder and version resolver
-- Policy binding map covering all 15 Breviary rows in `Tabulae/data.txt`
-- Clear rejection of missa-only identifiers, with Breviary-handle hints where upstream aliases make that possible
-- ADRs for the two key architectural decisions so far:
+- `data.txt` registry builder and version resolver with four-way error dispatch (unknown / missa-with-hint / missa-without-hint / unbound Breviary)
+- Policy binding map covering all 15 Breviary rows in `Tabulae/data.txt` across 10 distinct policy families
+- Temporal cycle: Meeus/Jones/Butcher Gregorian computus; `dayNameForDate`/`weekStemForDate` cross-checked against the upstream Perl `getweek` on a 550+ date matrix spanning 2020–2030; `LiturgicalSeason` classifier
+- Sanctoral kalendarium lookup that walks the inheritance chain via `ResolvedVersion.base`, replicating upstream `Directorium.pm`'s date-level override semantics and the bisextile Feb 24 remap
+- Policy-hookable rank normalization (`defaultResolveRank` for Phase 2a; pluggable for Phase 2c+)
+- Conditional evaluation for `aut`/`et`/`nisi` expressions against `rubrica`/`tempore`/`mense`/`die`/`feria` subjects
+- Canonical content-dir routing (`Tempora`, `TemporaM`, `TemporaCist`, `TemporaOP`, same for `Sancti`)
+- Candidate assembly with equal-rank tie-breaking in favor of the temporal cycle
+- `policyOverride` composite pattern: overrides augment the configured policy map rather than replacing it
+- ADRs for the key architectural decisions so far:
   - [`docs/adr/001-version-handle-primary-binding.md`](docs/adr/001-version-handle-primary-binding.md)
   - [`docs/adr/002-two-scope-rule-evaluation.md`](docs/adr/002-two-scope-rule-evaluation.md)
-- 53 rubrical-engine tests passing, including live integration against upstream `Tabulae/data.txt`
+- 173 rubrical-engine tests passing, including a 37-case live integration suite against upstream `Tabulae/data.txt` and the Perl-oracle day-name matrix
 
 Still pending in Phase 2:
 
-- Temporal/day-name/season logic
-- Sanctoral lookup and candidate assembly
-- Directorium overlay handling
-- Occurrence, concurrence, transfer, and commemoration resolution
-- Hour structuring and the final `resolveDayOfficeSummary()` / `OrdoEntry` pipeline
+- **2b** — Directorium overlay (per-date transfers, dirges, hymn overrides, scripture transfers)
+- **2c** — 1960 occurrence with precedence table
+- **2d** — Rule evaluation (`CelebrationRuleSet` / `HourRuleSet`, vide/ex chains, paragraph-scoped conditionals)
+- **2e** — Transfer computation and vigil handling
+- **2f** — Concurrence and Compline
+- **2g** — Hour structuring, Matins last
+- **2h** — 1911 (Divino Afflatu) and 1955 (Reduced) policies
 
 ## License
 

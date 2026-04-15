@@ -1524,6 +1524,7 @@ Phase 2 is large. It is broken into eight sub-phases, each independently shippab
 - `sanctoral/kalendarium-lookup.ts`, `sanctoral/rank-normalizer.ts`.
 - `candidates/assemble.ts` (simplest version — no transfers, no overlay yet).
 - **Deliverable**: `resolveDayOfficeSummary(date)` returns the list of candidates plus the "naive winner" (highest raw rank). Version resolution works for all 18 entries in `data.txt`.
+- **Phase 2a implementation note**: the summary currently also carries the day's `TemporalContext` (`dayName`, `weekStem`, `season`, etc.) as a diagnostic/testing aid. This is intentionally richer than the minimum deliverable and may remain as a stable convenience surface.
 - **Test**: day-name matches Perl `getweek` for every date across 5 liturgical years; candidate list matches for the same dates; every `data.txt` version resolves to a valid `ResolvedVersion` with a bound policy.
 
 ### Phase 2b — Directorium Overlay

@@ -4,16 +4,17 @@ import { describe, expect, it } from 'vitest';
 import {
   asVersionHandle,
   buildVersionRegistry,
+  defaultResolveRank,
   describeVersion,
   resolveVersion,
   type RubricalPolicy,
   type VersionHandle
 } from '../src/index.js';
 
-const TRIDENTINE: RubricalPolicy = { name: 'tridentine-1570' };
-const DIVINO: RubricalPolicy = { name: 'divino-afflatu' };
-const REDUCED: RubricalPolicy = { name: 'reduced-1955' };
-const R1960: RubricalPolicy = { name: 'rubrics-1960' };
+const TRIDENTINE: RubricalPolicy = { name: 'tridentine-1570', resolveRank: defaultResolveRank };
+const DIVINO: RubricalPolicy = { name: 'divino-afflatu', resolveRank: defaultResolveRank };
+const REDUCED: RubricalPolicy = { name: 'reduced-1955', resolveRank: defaultResolveRank };
+const R1960: RubricalPolicy = { name: 'rubrics-1960', resolveRank: defaultResolveRank };
 
 const TEST_DEFINITIONS: readonly VersionDefinition[] = [
   { version: 'Tridentine - 1570', kalendar: '1570', transfer: '1570', stransfer: '1570' },
