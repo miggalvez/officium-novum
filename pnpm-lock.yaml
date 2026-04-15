@@ -20,6 +20,22 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@22.19.17)
 
+  packages/rubrical-engine:
+    dependencies:
+      '@officium-nova/parser':
+        specifier: workspace:*
+        version: link:../parser
+    devDependencies:
+      '@types/node':
+        specifier: ^22.15.3
+        version: 22.19.17
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@22.19.17)
+
 packages:
 
   '@esbuild/aix-ppc64@0.27.7':

@@ -24,7 +24,7 @@ Source Texts (.txt)  ──>  Parser  ──>  Rubrical Engine  ──>  Composi
 ```
 
 - **Parser** — reads the legacy `.txt` files and emits typed, validated objects. Builds an in-memory text index queryable by feast, hour, language, and rubrical system.
-- **Rubrical Engine** — a pure function: `(date, rubricSystem) → OrdoEntry`. Encodes the calendar, occurrence, concurrence, and commemoration logic for three rubrical systems (1911, 1955, 1960). No I/O.
+- **Rubrical Engine** — the target pure function is `(date, versionHandle) → OrdoEntry`. It encodes the calendar, occurrence, concurrence, and commemoration logic for the supported Breviary versions by resolving each `VersionHandle` to a calendar chain plus a rubrical policy family. No I/O.
 - **Composition Engine** — resolves text references from the `OrdoEntry` against the text index, applies inline rubrical modifications, and produces a format-agnostic structured document.
 - **API** — stateless, read-only JSON API (`GET /api/v1/office/{date}/{hour}`) with aggressive HTTP caching.
 - **Frontend** — lightweight SPA consuming the API, with offline support via service worker caching.
@@ -44,11 +44,14 @@ The source `.txt` files remain the single source of truth, edited via standard G
 ```
 officium-nova/
 ├── packages/
-│   └── parser/        # @officium-nova/parser — reads .txt files, emits typed objects
+│   ├── parser/            # @officium-nova/parser — reads .txt files, emits typed objects
+│   └── rubrical-engine/   # @officium-nova/rubrical-engine — Phase 2 implementation
 ├── upstream/          # Divinum Officium as a Git submodule (source texts + legacy Perl app)
 ├── docs/              # Specifications and design documents
 │   ├── divinum-officium-modernization-spec.md
-│   └── file-format-specification.md
+│   ├── file-format-specification.md
+│   ├── phase-2-rubrical-engine-design.md
+│   └── adr/               # Architecture Decision Records for implementation choices
 ├── LICENSE            # GPL-3.0
 └── pnpm-workspace.yaml
 ```
@@ -80,7 +83,27 @@ Implemented:
 - In-memory text index queryable by path and content directory
 - Corpus loader with integrated reference resolution
 
-**Phase 2 — Rubrical Engine (design complete, implementation pending).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md). It specifies a pure pipeline of stages — Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring — that encodes the calendar, occurrence, concurrence, and commemoration logic as a pure function `(date, versionHandle) → OrdoEntry` for the 1911, 1955, and 1960 rubrical systems. Implementation will proceed in eight sub-phases (2a–2h), each independently testable.
+**Phase 2 — Rubrical Engine (in progress).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md), and implementation has started in [`packages/rubrical-engine`](packages/rubrical-engine). The target pipeline is still the same — Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring — but Phase 2a is now underway rather than merely planned.
+
+Implemented so far:
+
+- `@officium-nova/rubrical-engine` package scaffold with build, typecheck, and Vitest setup
+- Version-layer foundations: branded `VersionHandle`, `ResolvedVersion`, `VersionDescriptor`, and immutable `VersionRegistry`
+- `data.txt` registry builder and version resolver
+- Policy binding map covering all 15 Breviary rows in `Tabulae/data.txt`
+- Clear rejection of missa-only identifiers, with Breviary-handle hints where upstream aliases make that possible
+- ADRs for the two key architectural decisions so far:
+  - [`docs/adr/001-version-handle-primary-binding.md`](docs/adr/001-version-handle-primary-binding.md)
+  - [`docs/adr/002-two-scope-rule-evaluation.md`](docs/adr/002-two-scope-rule-evaluation.md)
+- 53 rubrical-engine tests passing, including live integration against upstream `Tabulae/data.txt`
+
+Still pending in Phase 2:
+
+- Temporal/day-name/season logic
+- Sanctoral lookup and candidate assembly
+- Directorium overlay handling
+- Occurrence, concurrence, transfer, and commemoration resolution
+- Hour structuring and the final `resolveDayOfficeSummary()` / `OrdoEntry` pipeline
 
 ## License
 

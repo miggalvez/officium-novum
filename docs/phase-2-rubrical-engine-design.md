@@ -1027,10 +1027,15 @@ export type PolicyName =
   | 'divino-afflatu'
   | 'reduced-1955'
   | 'rubrics-1960'
+  | 'monastic-tridentine'
+  | 'monastic-divino'
   | 'monastic-1963'
   | 'cistercian-1951'
+  | 'cistercian-altovadense'
   | 'dominican-1962';
 ```
+
+The 10-member list covers every Breviary row in `Tabulae/data.txt`. Phase 2a expanded the illustrative 7-member draft to bind all 15 handles rather than refusing three pre-1955 monastic and one Cistercian variant at resolution time (see ADR-001). Distinct historical rubrical traditions get their own `PolicyName` even when their `data.txt` columns partially overlap; if Phase 2c research shows two are rubrically identical, collapsing them is a one-row edit in `version/policy-map.ts` plus removing a member from this union.
 
 Each file under `policy/` exports one instance. The engine receives a pre-selected policy via the `version` → policy-map binding (§4.3); `RubricalEngineConfig.policyOverride` is a test-only escape hatch.
 
