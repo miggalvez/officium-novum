@@ -1,0 +1,156 @@
+{
+  "year": 2024,
+  "version": "Rubrics 1960 - 1960",
+  "dates": [
+    {
+      "date": "2024-07-09",
+      "matins": {
+        "nocturns": 1,
+        "totalLessons": 3,
+        "teDeum": "replace-with-responsory",
+        "hymnKind": "ordinary",
+        "invitatoriumKind": "season",
+        "nocturnLessonSourceKinds": [["scripture", "scripture", "scripture"]]
+      },
+      "firstLessonPath": "horas/Latin/Tempora/Pent07-2"
+    },
+    {
+      "date": "2024-02-25",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "ordinary",
+        "invitatoriumKind": "season",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["hagiographic", "hagiographic", "hagiographic"],
+          ["homily-on-gospel", "homily-on-gospel", "commemorated"]
+        ]
+      }
+    },
+    {
+      "date": "2024-08-15",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "feast",
+        "invitatoriumKind": "feast",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["hagiographic", "hagiographic", "hagiographic"],
+          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+        ]
+      }
+    },
+    {
+      "date": "2024-12-25",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "ordinary",
+        "invitatoriumKind": "season",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["patristic", "patristic", "patristic"],
+          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+        ]
+      }
+    },
+    {
+      "date": "2024-03-28",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "omit",
+        "hymnKind": "suppressed",
+        "invitatoriumKind": "suppressed",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["hagiographic", "hagiographic", "hagiographic"],
+          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+        ]
+      }
+    },
+    {
+      "date": "2024-03-29",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "omit",
+        "hymnKind": "suppressed",
+        "invitatoriumKind": "suppressed",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["hagiographic", "hagiographic", "hagiographic"],
+          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+        ]
+      }
+    },
+    {
+      "date": "2024-03-30",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "omit",
+        "hymnKind": "suppressed",
+        "invitatoriumKind": "suppressed",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["hagiographic", "hagiographic", "hagiographic"],
+          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+        ]
+      }
+    },
+    {
+      "date": "2024-09-21",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "ordinary",
+        "invitatoriumKind": "season",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["patristic", "patristic", "patristic"],
+          ["homily-on-gospel", "homily-on-gospel", "commemorated"]
+        ]
+      },
+      "expectMatinsRuleLessonCount": 9
+    },
+    {
+      "date": "2030-01-12",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "ordinary",
+        "invitatoriumKind": "season",
+        "nocturnLessonSourceKinds": [
+          ["scripture-transferred", "scripture-transferred", "scripture-transferred"],
+          ["patristic", "patristic", "patristic"],
+          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+        ]
+      },
+      "expectTransferOp": "R"
+    },
+    {
+      "date": "2024-12-08",
+      "matins": {
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "feast",
+        "invitatoriumKind": "feast",
+        "nocturnLessonSourceKinds": [
+          ["scripture", "scripture", "scripture"],
+          ["hagiographic", "hagiographic", "hagiographic"],
+          ["homily-on-gospel", "homily-on-gospel", "commemorated"]
+        ]
+      },
+      "assertNoCommemorationSlots": true
+    }
+  ]
+}

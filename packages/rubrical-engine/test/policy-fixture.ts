@@ -142,6 +142,19 @@ export function makeTestPolicy(
     hourDirectives() {
       return new Set();
     },
+    resolveMatinsShape() {
+      return {
+        nocturns: 3,
+        totalLessons: 9,
+        lessonsPerNocturn: [3, 3, 3]
+      } as const;
+    },
+    resolveTeDeum() {
+      return 'say';
+    },
+    defaultScriptureCourse() {
+      return 'post-pentecost';
+    },
     octavesEnabled() {
       return null;
     }

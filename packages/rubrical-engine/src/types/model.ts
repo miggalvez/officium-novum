@@ -80,9 +80,8 @@ export interface DayOfficeSummary {
   readonly concurrence: ConcurrenceResult;
   readonly compline: HourStructure;
   /**
-   * Structured content for every Hour in scope. In Phase 2g-α this populates
-   * seven keys — `lauds`, `prime`, `terce`, `sext`, `none`, `vespers`,
-   * `compline`. The `matins` key is absent; Matins is Phase 2g-β.
+   * Structured content for every Hour in scope. In Phase 2g-β this now
+   * includes all eight Hours, including `matins`.
    */
   readonly hours: Readonly<Partial<Record<HourName, HourStructure>>>;
   readonly candidates: readonly Candidate[];

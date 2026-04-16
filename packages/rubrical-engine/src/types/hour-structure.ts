@@ -1,5 +1,9 @@
 import type { Celebration } from './ordo.js';
 import type { HourName } from './ordo.js';
+import type {
+  InvitatoriumSource,
+  NocturnPlan
+} from './matins.js';
 
 export type SlotName =
   | 'invitatory'
@@ -20,6 +24,7 @@ export type SlotName =
   | 'preces'
   | 'final-antiphon-bvm'
   | 'doxology-variant'
+  | 'te-deum'
   | 'conclusion';
 
 export interface TextReference {
@@ -47,7 +52,11 @@ export type SlotContent =
     }
   | { readonly kind: 'ordered-refs'; readonly refs: readonly TextReference[] }
   | { readonly kind: 'psalmody'; readonly psalms: readonly PsalmAssignment[] }
-  | { readonly kind: 'empty' };
+  | { readonly kind: 'empty' }
+  // Matins-only rich slot forms from design §16.3 (plan-first architecture).
+  | { readonly kind: 'matins-invitatorium'; readonly source: InvitatoriumSource }
+  | { readonly kind: 'matins-nocturns'; readonly nocturns: readonly NocturnPlan[] }
+  | { readonly kind: 'te-deum'; readonly decision: 'say' | 'replace-with-responsory' | 'omit' };
 
 /**
  * Hour-scoped directives emitted by the structurer for Phase 3 to apply to

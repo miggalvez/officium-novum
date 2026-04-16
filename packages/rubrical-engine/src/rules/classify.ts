@@ -1,10 +1,12 @@
 import type {
+  Condition,
   RuleActionDirective,
   RuleAssignmentDirective,
   RuleDirective
 } from '@officium-nova/parser';
 
 import type {
+  AlternateLocation,
   CapitulumVariant,
   LessonSetAlternate,
   LessonSourceOverride,
@@ -239,7 +241,7 @@ function classifyAction(directive: RuleActionDirective): ClassifiedDirective {
   }
 
   // file-format-spec §6 line 649: in N Nocturno Lectiones ex Commune in M loco.
-  const lessonSetAlternate = parseLessonSetAlternate(normalized);
+  const lessonSetAlternate = parseLessonSetAlternate(normalized, directive.condition);
   if (lessonSetAlternate) {
     return {
       target: 'celebration',
@@ -576,7 +578,10 @@ function parseLessonSource(normalized: string): LessonSourceOverride | null {
   };
 }
 
-function parseLessonSetAlternate(normalized: string): LessonSetAlternate | null {
+function parseLessonSetAlternate(
+  normalized: string,
+  gate: Condition | undefined
+): LessonSetAlternate | null {
   const match =
     /^in\s+([123])\s+nocturno\s+lectiones\s+ex\s+commune\s+(?:in\s+)?([123])\s+loco$/u.exec(
       normalized
@@ -591,7 +596,12 @@ function parseLessonSetAlternate(normalized: string): LessonSetAlternate | null 
     return null;
   }
 
-  return { nocturn, location };
+  const alternate: AlternateLocation = {
+    location,
+    ...(gate ? { gate } : {})
+  };
+
+  return { nocturn, alternate };
 }
 
 function parseCapitulumVariant(normalized: string): Extract<HourEffect, { kind: 'capitulum-variant' }> | null {

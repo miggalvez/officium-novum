@@ -45,6 +45,7 @@ const HAS_FIXTURE = existsSync(FIXTURE_PATH);
 const describeIfReady = HAS_UPSTREAM && HAS_FIXTURE ? describe : describe.skip;
 
 const PHASE_2G_HOURS: readonly HourName[] = [
+  'matins',
   'lauds',
   'prime',
   'terce',
@@ -54,8 +55,8 @@ const PHASE_2G_HOURS: readonly HourName[] = [
   'compline'
 ];
 
-describeIfReady('Phase 2g-α Hour structuring against upstream 1960 corpus', () => {
-  it('populates seven Hours and emits expected directive flags', async () => {
+describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => {
+  it('populates structured Hours and emits expected directive flags', async () => {
     const fixture = JSON.parse(readFileSync(FIXTURE_PATH, 'utf8')) as FixturePayload;
     const corpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
     const versionRegistry = buildVersionRegistry(
@@ -83,9 +84,6 @@ describeIfReady('Phase 2g-α Hour structuring against upstream 1960 corpus', () 
         expect(structure?.hour).toBe(hour);
         expect(structure?.slots).toBeDefined();
       }
-
-      // Matins is deferred to Phase 2g-β; it must be absent.
-      expect(summary.hours.matins).toBeUndefined();
 
       // Compline stays backward-compatible on `summary.compline`.
       expect(summary.compline.hour).toBe('compline');

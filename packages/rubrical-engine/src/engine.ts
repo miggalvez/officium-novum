@@ -6,6 +6,7 @@ import {
   OrdinariumSkeletonCache,
   buildComplineWithWarnings,
   structureLauds,
+  structureMatins,
   structureNone,
   structurePrime,
   structureSext,
@@ -93,6 +94,9 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     const hours: Partial<Record<HourName, HourStructure>> = {};
     const corpus = config.corpus;
 
+    const matins = structureHour('matins', summary, corpus, warnings);
+    hours.matins = matins;
+
     const lauds = structureHour('lauds', summary, corpus, warnings);
     hours.lauds = lauds;
 
@@ -129,7 +133,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
   }
 
   function structureHour(
-    hour: Exclude<HourName, 'matins' | 'vespers' | 'compline'>,
+    hour: Exclude<HourName, 'vespers' | 'compline'>,
     summary: BaseDaySummary,
     corpus: OfficeTextIndex,
     warnings: RubricalWarning[]
@@ -153,6 +157,11 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       ...(overlay ? { overlay } : {})
     };
     switch (hour) {
+      case 'matins': {
+        const result = structureMatins(input);
+        warnings.push(...result.warnings);
+        return result.hour;
+      }
       case 'lauds': {
         const result = structureLauds(input);
         warnings.push(...result.warnings);
@@ -425,6 +434,16 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     scope: 'day-summary' | 'day-preview'
   ): BaseDaySummary {
     const fallback = synthesizePreviewSummary(calendarDate);
+    const overlayResult = buildOverlay({
+      date: calendarDate,
+      version,
+      registry: config.versionRegistry,
+      yearTransfers: config.yearTransfers,
+      scriptureTransfers: config.scriptureTransfers
+    });
+    const overlay = hasOverlayDirectives(overlayResult.overlay)
+      ? overlayResult.overlay
+      : undefined;
     const missingPath =
       (cause === 'rankless-office'
         ? extractNoMatchingRankPath(message)
@@ -433,8 +452,10 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
 
     return {
       ...fallback,
+      ...(overlay ? { overlay } : {}),
       warnings: [
         ...fallback.warnings,
+        ...overlayResult.warnings,
         {
           code: 'rubric-synth-fallback',
           message:
