@@ -7,7 +7,13 @@ import type {
   ResolvedRank,
   TemporalContext
 } from './model.js';
+import type {
+  ConcurrenceResult,
+  DayConcurrencePreview,
+  VespersSideView
+} from './concurrence.js';
 import type { DirectoriumOverlay } from './directorium.js';
+import type { ComplineSource } from './hour-structure.js';
 import type { Commemoration } from './ordo.js';
 import type {
   CelebrationRuleEvaluation,
@@ -120,6 +126,18 @@ export interface RubricalPolicy {
     overlayFor: (date: CalendarDate) => DirectoriumOverlay,
     occupantOn: (date: CalendarDate) => readonly Candidate[]
   ): CalendarDate | null;
+  /** Concurrence decision for a shared Vespers boundary. */
+  resolveConcurrence(params: {
+    readonly today: VespersSideView;
+    readonly tomorrow: VespersSideView;
+    readonly temporal: TemporalContext;
+  }): ConcurrenceResult;
+  /** Select the Compline source once concurrence is known. */
+  complineSource(params: {
+    readonly concurrence: ConcurrenceResult;
+    readonly today: DayConcurrencePreview;
+    readonly tomorrow: DayConcurrencePreview;
+  }): ComplineSource;
   /** Phase 2g hook — stubbed as `null` in Phase 2c. */
   octavesEnabled(feastRef: FeastReference): null;
 }

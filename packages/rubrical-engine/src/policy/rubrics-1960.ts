@@ -1,3 +1,4 @@
+import { lookupVespers1960Row } from '../concurrence/tables/vespers-1960.js';
 import {
   PRECEDENCE_1960_BY_CLASS,
   type ClassSymbol1960
@@ -5,11 +6,20 @@ import {
 import { buildCelebrationRuleSet as defaultBuildCelebrationRuleSet } from '../rules/evaluate.js';
 import { rubrics1960ResolveRank } from '../sanctoral/rank-normalizer.js';
 import { walkTransferTargetDate } from '../transfer/compute.js';
+import type { FeastVespersSignals } from '../concurrence/vespers-class.js';
+import type {
+  ConcurrenceResult,
+  DayConcurrencePreview,
+  VespersClass,
+  VespersSideView
+} from '../types/concurrence.js';
+import type { ComplineSource } from '../types/hour-structure.js';
 import type {
   Candidate,
   FeastReference,
   TemporalContext
 } from '../types/model.js';
+import type { Commemoration } from '../types/ordo.js';
 import type {
   PrecedenceRow,
   RubricalPolicy
@@ -105,21 +115,109 @@ export const rubrics1960Policy: RubricalPolicy = {
     return { kept, suppressed };
   },
   compareCandidates(a: Candidate, b: Candidate): number {
-    const privilegedOverride = comparePrivilegedTemporal(a, b);
-    if (privilegedOverride !== null) {
-      return privilegedOverride;
+    return compareCandidates1960(a, b);
+  },
+  resolveConcurrence(params: {
+    readonly today: VespersSideView;
+    readonly tomorrow: VespersSideView;
+    readonly temporal: TemporalContext;
+  }): ConcurrenceResult {
+    const row = lookupVespers1960Row(
+      params.today.celebration.rank.classSymbol,
+      params.tomorrow.celebration.rank.classSymbol
+    );
+    if (params.today.celebration.rank.classSymbol === params.tomorrow.celebration.rank.classSymbol) {
+      return {
+        winner: 'today',
+        source: params.today.celebration,
+        commemorations: [toConcurrenceCommemoration(params.tomorrow.celebration)],
+        reason: 'equal-rank-praestantior',
+        warnings: [
+          {
+            code: 'concurrence-praestantior-tie',
+            message: 'Equal-rank concurrence resolved in favor of today (praestantior).',
+            severity: 'info',
+            context: {
+              todayClass: params.today.celebration.rank.classSymbol,
+              tomorrowClass: params.tomorrow.celebration.rank.classSymbol,
+              citation: row.citation
+            }
+          }
+        ]
+      };
     }
 
-    if (a.rank.weight !== b.rank.weight) {
-      return b.rank.weight - a.rank.weight;
+    const compared = compareCandidates1960(
+      toCandidate(params.today.celebration),
+      toCandidate(params.tomorrow.celebration)
+    );
+
+    if (compared < 0) {
+      return {
+        winner: 'today',
+        source: params.today.celebration,
+        commemorations: [toConcurrenceCommemoration(params.tomorrow.celebration)],
+        reason: 'today-higher-rank',
+        warnings: []
+      };
     }
 
-    const sourceOrder = sourceTieBreakOrder(a.source) - sourceTieBreakOrder(b.source);
-    if (sourceOrder !== 0) {
-      return sourceOrder;
+    if (compared > 0) {
+      return {
+        winner: 'tomorrow',
+        source: params.tomorrow.celebration,
+        commemorations: [toConcurrenceCommemoration(params.today.celebration)],
+        reason: 'tomorrow-higher-rank',
+        warnings: []
+      };
     }
 
-    return a.feastRef.path.localeCompare(b.feastRef.path);
+    return {
+      winner: 'today',
+      source: params.today.celebration,
+      commemorations: [toConcurrenceCommemoration(params.tomorrow.celebration)],
+      reason: 'equal-rank-praestantior',
+      warnings: [
+        {
+          code: 'concurrence-praestantior-tie',
+          message: 'Concurrence compare fell through to praestantior tie resolution.',
+          severity: 'info',
+          context: {
+            todayClass: params.today.celebration.rank.classSymbol,
+            tomorrowClass: params.tomorrow.celebration.rank.classSymbol,
+            citation: row.citation
+          }
+        }
+      ]
+    };
+  },
+  complineSource(params: {
+    readonly concurrence: ConcurrenceResult;
+    readonly today: DayConcurrencePreview;
+    readonly tomorrow: DayConcurrencePreview;
+  }): ComplineSource {
+    if (TRIDUUM_KEYS.has(params.today.temporal.dayName)) {
+      return {
+        kind: 'triduum-special',
+        dayName: params.today.temporal.dayName
+      };
+    }
+
+    if (
+      params.concurrence.winner === 'today' &&
+      params.concurrence.source.source === 'temporal' &&
+      isFerialClass(params.today.celebration.rank.classSymbol) &&
+      params.today.celebration.feastRef.path === params.concurrence.source.feastRef.path
+    ) {
+      return {
+        kind: 'ordinary'
+      };
+    }
+
+    return {
+      kind: 'vespers-winner',
+      celebration: params.concurrence.source
+    };
   },
   isPrivilegedFeria(temporal: TemporalContext): boolean {
     return (
@@ -155,6 +253,24 @@ export const rubrics1960Policy: RubricalPolicy = {
     return null;
   }
 };
+
+function compareCandidates1960(a: Candidate, b: Candidate): number {
+    const privilegedOverride = comparePrivilegedTemporal(a, b);
+    if (privilegedOverride !== null) {
+      return privilegedOverride;
+    }
+
+    if (a.rank.weight !== b.rank.weight) {
+      return b.rank.weight - a.rank.weight;
+    }
+
+    const sourceOrder = sourceTieBreakOrder(a.source) - sourceTieBreakOrder(b.source);
+    if (sourceOrder !== 0) {
+      return sourceOrder;
+    }
+
+    return a.feastRef.path.localeCompare(b.feastRef.path);
+}
 
 function comparePrivilegedTemporal(a: Candidate, b: Candidate): number | null {
   const temporal = a.source === 'temporal' ? a : b.source === 'temporal' ? b : null;
@@ -221,6 +337,31 @@ function sourceTieBreakOrder(source: Candidate['source']): number {
   }
 }
 
+function toConcurrenceCommemoration(celebration: VespersSideView['celebration']): Commemoration {
+  return {
+    feastRef: celebration.feastRef,
+    rank: celebration.rank,
+    reason: 'concurrence',
+    hours: ['vespers']
+  };
+}
+
+function toCandidate(celebration: VespersSideView['celebration']): Candidate {
+  return {
+    feastRef: celebration.feastRef,
+    rank: celebration.rank,
+    source: celebration.source
+  };
+}
+
+function isFerialClass(classSymbol: string): boolean {
+  return (
+    classSymbol === 'IV' ||
+    classSymbol === 'IV-lenten-feria' ||
+    classSymbol === 'II-ember-day'
+  );
+}
+
 function forbidsTransferInto1960(impeded: Candidate, temporal: TemporalContext): boolean {
   // RI §95: no transfers are admitted into Palm Sunday or the feriae of Holy Week.
   if (HOLY_WEEK_KEYS.has(temporal.dayName)) {
@@ -266,4 +407,53 @@ function isWithinChristmasOctave(isoDate: string): boolean {
 
 function isChristmasRelatedTransfer(candidate: Candidate): boolean {
   return CHRISTMAS_RELATED_TRANSFER_PATHS.has(candidate.feastRef.path);
+}
+
+/**
+ * Internal helper consumed by concurrence/vespers-class.ts for policy-specific
+ * 1960 Vespers class derivation.
+ */
+export function deriveVespersClass1960(params: {
+  readonly celebration: VespersSideView['celebration'];
+  readonly signals: FeastVespersSignals;
+}): VespersClass {
+  const { celebration, signals } = params;
+  const classSymbol = celebration.rank.classSymbol;
+
+  if (classSymbol === 'I' || classSymbol.startsWith('I-privilegiata-')) {
+    return 'totum';
+  }
+
+  if (isTemporalSundayPath(celebration.feastRef.path)) {
+    return 'totum';
+  }
+
+  const hasProperVespers =
+    (signals.hasVespersSection || signals.hasVespersViaCommune) &&
+    !signals.hasCapitulumOnly;
+
+  if (classSymbol === 'II') {
+    return hasProperVespers ? 'totum' : 'capitulum';
+  }
+
+  if (classSymbol === 'III') {
+    return hasProperVespers || signals.hasCapitulumOnly ? 'capitulum' : 'nihil';
+  }
+
+  if (classSymbol === 'II-ember-day') {
+    return 'nihil';
+  }
+
+  if (classSymbol === 'IV' || classSymbol === 'IV-lenten-feria' || classSymbol === 'commemoration-only') {
+    return 'nihil';
+  }
+
+  return hasProperVespers ? 'capitulum' : 'nihil';
+}
+
+function isTemporalSundayPath(feastPath: string): boolean {
+  if (!feastPath.startsWith('Tempora/')) {
+    return false;
+  }
+  return /-\d+$/u.test(feastPath) && feastPath.endsWith('-0');
 }

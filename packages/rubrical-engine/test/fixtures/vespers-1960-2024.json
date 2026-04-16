@@ -1,0 +1,341 @@
+{
+  "year": 2024,
+  "version": "Rubrics 1960 - 1960",
+  "dates": [
+    {
+      "date": "2024-01-01",
+      "winner": "today",
+      "sourcePath": "Sancti/01-01",
+      "commemorations": [
+        "Tempora/Nat2-0"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-01-06",
+      "winner": "tomorrow",
+      "sourcePath": "Tempora/Epi1-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-01-07",
+      "winner": "today",
+      "sourcePath": "Tempora/Epi1-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-01-13",
+      "winner": "today",
+      "sourcePath": "Sancti/01-13",
+      "commemorations": [
+        "Tempora/Epi2-0"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-01-28",
+      "winner": "today",
+      "sourcePath": "Tempora/Quadp1-0",
+      "commemorations": [
+        "Sancti/01-29"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-02-14",
+      "winner": "today",
+      "sourcePath": "Tempora/Quadp3-3",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-02-18",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad1-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-02-25",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad2-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-03",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad3-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-10",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad4-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-17",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad5-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-19",
+      "winner": "today",
+      "sourcePath": "Sancti/03-19",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-24",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad6-0",
+      "commemorations": [
+        "Tempora/Quad6-1"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-25",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad6-1",
+      "commemorations": [
+        "Tempora/Quad6-2"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-03-28",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad6-4",
+      "commemorations": [],
+      "complineSourceKind": "triduum-special"
+    },
+    {
+      "date": "2024-03-29",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad6-5",
+      "commemorations": [],
+      "complineSourceKind": "triduum-special"
+    },
+    {
+      "date": "2024-03-30",
+      "winner": "today",
+      "sourcePath": "Tempora/Quad6-6",
+      "commemorations": [],
+      "complineSourceKind": "triduum-special"
+    },
+    {
+      "date": "2024-03-31",
+      "winner": "today",
+      "sourcePath": "Tempora/Pasc0-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-04-07",
+      "winner": "today",
+      "sourcePath": "Tempora/Pasc1-0",
+      "commemorations": [
+        "Sancti/03-25"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-04-08",
+      "winner": "today",
+      "sourcePath": "Sancti/03-25",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-05-09",
+      "winner": "today",
+      "sourcePath": "Tempora/Pasc5-4",
+      "commemorations": [
+        "Sancti/05-10"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-05-19",
+      "winner": "today",
+      "sourcePath": "Tempora/Pasc7-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-05-26",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent01-0",
+      "commemorations": [
+        "Sancti/05-27"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-06-07",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent02-5",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-06-09",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent03-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-06-16",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent04-0",
+      "commemorations": [
+        "Sancti/06-17r"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-06-23",
+      "winner": "tomorrow",
+      "sourcePath": "Sancti/06-24",
+      "commemorations": [
+        "Tempora/Pent05-0"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-06-29",
+      "winner": "today",
+      "sourcePath": "Sancti/06-29",
+      "commemorations": [
+        "Tempora/Pent06-0"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-07-07",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent07-0",
+      "commemorations": [
+        "Sancti/07-08"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-07-14",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent08-0",
+      "commemorations": [
+        "Sancti/07-15"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-08-04",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent11-0",
+      "commemorations": [
+        "Sancti/08-05"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-08-15",
+      "winner": "today",
+      "sourcePath": "Sancti/08-15",
+      "commemorations": [
+        "Sancti/08-16"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-09-08",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent16-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-10-20",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent22-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-11-01",
+      "winner": "today",
+      "sourcePath": "Sancti/11-01",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-11-24",
+      "winner": "today",
+      "sourcePath": "Tempora/Pent24-0",
+      "commemorations": [
+        "Sancti/11-25"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-01",
+      "winner": "today",
+      "sourcePath": "Tempora/Adv1-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-08",
+      "winner": "today",
+      "sourcePath": "Sancti/12-08",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-22",
+      "winner": "today",
+      "sourcePath": "Tempora/Adv4-0",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-24",
+      "winner": "today",
+      "sourcePath": "Sancti/12-24",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-25",
+      "winner": "tomorrow",
+      "sourcePath": "Tempora/Nat26",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-26",
+      "winner": "today",
+      "sourcePath": "Tempora/Nat26",
+      "commemorations": [
+        "Tempora/Nat27"
+      ],
+      "complineSourceKind": "vespers-winner"
+    },
+    {
+      "date": "2024-12-31",
+      "winner": "tomorrow",
+      "sourcePath": "Sancti/01-01",
+      "commemorations": [],
+      "complineSourceKind": "vespers-winner"
+    }
+  ]
+}

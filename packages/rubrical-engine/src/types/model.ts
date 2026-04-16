@@ -3,6 +3,8 @@ import type { KalendariumEntry, ParsedFile } from '@officium-nova/parser';
 import type { ScriptureTransferTable } from '../directorium/tables/scripture-transfer-table.js';
 import type { YearTransferTable } from '../directorium/tables/year-transfer-table.js';
 import type { DirectoriumOverlay, RubricalWarning } from './directorium.js';
+import type { ConcurrenceResult } from './concurrence.js';
+import type { HourStructure } from './hour-structure.js';
 import type { Celebration, Commemoration } from './ordo.js';
 import type { RubricalPolicy } from './policy.js';
 import type { CelebrationRuleSet } from './rule-set.js';
@@ -75,6 +77,8 @@ export interface DayOfficeSummary {
   readonly celebration: Celebration;
   readonly celebrationRules: CelebrationRuleSet;
   readonly commemorations: readonly Commemoration[];
+  readonly concurrence: ConcurrenceResult;
+  readonly compline: HourStructure;
   readonly candidates: readonly Candidate[];
   /** @deprecated Use `celebration` instead. Kept for Phase 2a API compatibility. */
   readonly winner: Candidate;

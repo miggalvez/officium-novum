@@ -29,6 +29,12 @@ export function createUnsupportedOccurrencePolicy(
     transferTarget() {
       throw unsupported(name, 'transferTarget');
     },
+    resolveConcurrence() {
+      throw unsupported(name, 'resolveConcurrence');
+    },
+    complineSource() {
+      throw unsupported(name, 'complineSource');
+    },
     octavesEnabled() {
       throw unsupported(name, 'octavesEnabled');
     }
