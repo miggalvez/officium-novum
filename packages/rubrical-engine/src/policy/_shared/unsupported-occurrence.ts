@@ -23,6 +23,9 @@ export function createUnsupportedOccurrencePolicy(
     isPrivilegedFeria() {
       throw unsupported(name, 'isPrivilegedFeria');
     },
+    buildCelebrationRuleSet() {
+      throw unsupported(name, 'buildCelebrationRuleSet');
+    },
     octavesEnabled() {
       throw unsupported(name, 'octavesEnabled');
     }

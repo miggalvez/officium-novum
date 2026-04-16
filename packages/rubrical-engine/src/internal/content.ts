@@ -59,7 +59,10 @@ export function resolveOfficeDefinition(
   };
 }
 
-function resolveOfficeFile(corpus: OfficeTextIndex, canonicalPath: string): ParsedFile {
+export function resolveOfficeFile(
+  corpus: OfficeTextIndex,
+  canonicalPath: string
+): ParsedFile {
   const directPath = `horas/Latin/${canonicalPath}.txt`;
   const direct = corpus.getFile(directPath);
   if (direct) {

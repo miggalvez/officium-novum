@@ -1,6 +1,7 @@
 import type { Rank } from '@officium-nova/parser';
 
 import {
+  buildCelebrationRuleSet,
   defaultResolveRank,
   type Candidate,
   type PolicyName,
@@ -49,6 +50,9 @@ export function makeTestPolicy(
     },
     isPrivilegedFeria() {
       return false;
+    },
+    buildCelebrationRuleSet(feastFile, commemorations, context) {
+      return buildCelebrationRuleSet(feastFile, commemorations, context);
     },
     octavesEnabled() {
       return null;

@@ -133,11 +133,25 @@ ADRs for the key architectural decisions so far:
 - [`docs/adr/002-two-scope-rule-evaluation.md`](docs/adr/002-two-scope-rule-evaluation.md)
 - [`docs/adr/003-phase-2c-non-1960-stubs.md`](docs/adr/003-phase-2c-non-1960-stubs.md)
 
-248 rubrical-engine tests passing, including live integration suites against upstream `Tabulae/data.txt`, the Perl-oracle day-name matrix, the `Transfer`/`Stransfer` overlay matrix, and a focused 1960 occurrence fixture matrix.
+**Phase 2d — Rule Evaluation (complete).** The dedicated rule-evaluation stage from design §12/§18 is now wired after occurrence: every winning celebration now carries a typed `CelebrationRuleSet`, with tested per-hour derivation via `deriveHourRuleSet`.
+
+Implemented in 2d:
+
+- New `types/rule-set.ts` contract (`CelebrationRuleSet`, `HourRuleSet`, `MatinsRuleSpec`, `HourScopedDirective`, supporting unions)
+- New `rules/` module:
+  - `evaluate.ts` (`buildCelebrationRuleSet`) for policy defaults + feast directives + commemorated lesson routing
+  - `classify.ts` vocabulary mapper (`celebration` / `hour` / `missa` / `unmapped`)
+  - `resolve-vide-ex.ts` chained `vide`/`ex` inheritance with missing-target, cycle, and depth-limit warnings
+  - `merge.ts` pure merges plus tested `deriveHourRuleSet`
+  - `apply-conditionals.ts` paragraph-scoped conditional evaluation primitive for Phase 2g wiring
+- Policy hook expansion: `RubricalPolicy.buildCelebrationRuleSet`; 1960 delegates to default evaluator; non-1960 policy stubs throw `UnsupportedPolicyError`
+- Engine integration: `DayOfficeSummary` now includes `celebrationRules`, and rule-evaluation warnings are merged into `summary.warnings`
+- Upstream regression harness for `horas/Latin/Sancti` + `horas/Latin/Tempora` with stable unmapped/missa-pass-through totals
+
+328 rubrical-engine tests passing, including live integration suites against upstream `Tabulae/data.txt`, the Perl-oracle day-name matrix, the `Transfer`/`Stransfer` overlay matrix, focused 1960 occurrence fixtures, and new rule-evaluation upstream invariants.
 
 Still pending in Phase 2:
 
-- **2d** — Rule evaluation (`CelebrationRuleSet` / `HourRuleSet`, vide/ex chains, paragraph-scoped conditionals)
 - **2e** — Transfer computation and vigil handling
 - **2f** — Concurrence and Compline
 - **2g** — Hour structuring, Matins last

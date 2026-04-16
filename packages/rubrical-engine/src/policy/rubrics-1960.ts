@@ -2,6 +2,7 @@ import {
   PRECEDENCE_1960_BY_CLASS,
   type ClassSymbol1960
 } from '../occurrence/tables/precedence-1960.js';
+import { buildCelebrationRuleSet as defaultBuildCelebrationRuleSet } from '../rules/evaluate.js';
 import { rubrics1960ResolveRank } from '../sanctoral/rank-normalizer.js';
 import type {
   Candidate,
@@ -100,6 +101,9 @@ export const rubrics1960Policy: RubricalPolicy = {
       temporal.dayName === 'Pasc5-1' ||
       temporal.date.endsWith('-12-24')
     );
+  },
+  buildCelebrationRuleSet(feastFile, commemorations, context) {
+    return defaultBuildCelebrationRuleSet(feastFile, commemorations, context);
   },
   octavesEnabled(_feastRef: FeastReference): null {
     return null;

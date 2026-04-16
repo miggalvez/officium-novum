@@ -25,7 +25,16 @@ describe('createRubricalEngine', () => {
     );
     corpus.add(
       'horas/Latin/Sancti/04-14.txt',
-      ['[Officium]', 'S. Example Martyris', '', '[Rank]', 'S. Example Martyris;;Duplex;;6;;'].join('\n')
+      [
+        '[Officium]',
+        'S. Example Martyris',
+        '',
+        '[Rank]',
+        'S. Example Martyris;;Duplex;;6;;',
+        '',
+        '[Rule]',
+        'No secunda Vespera'
+      ].join('\n')
     );
 
     const registry = buildVersionRegistry([
@@ -61,6 +70,8 @@ describe('createRubricalEngine', () => {
     expect(summary.warnings).toEqual([]);
     expect(summary.candidates).toHaveLength(2);
     expect(summary.celebration.feastRef.path).toBe('Sancti/04-14');
+    expect(summary.celebrationRules.matins.lessonCount).toBe(9);
+    expect(summary.celebrationRules.hasSecondVespers).toBe(false);
     expect(summary.commemorations.map((entry) => entry.feastRef.path)).toEqual(['Tempora/Pasc2-0']);
     expect(summary.winner.feastRef.path).toBe('Sancti/04-14');
     expect(summary.winner.rank.weight).toBe(1000);

@@ -3,6 +3,7 @@ export * from './directorium/index.js';
 export * from './engine.js';
 export * from './occurrence/index.js';
 export * from './policy/index.js';
+export * from './rules/index.js';
 export * from './sanctoral/index.js';
 export * from './temporal/index.js';
 export * from './types/index.js';

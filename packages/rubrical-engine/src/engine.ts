@@ -1,6 +1,6 @@
 import { assembleCandidates } from './candidates/assemble.js';
 import { buildOverlay } from './directorium/overlay.js';
-import { resolveOfficeDefinition } from './internal/content.js';
+import { resolveOfficeDefinition, resolveOfficeFile } from './internal/content.js';
 import { normalizeDateInput } from './internal/date.js';
 import { resolveOccurrence } from './occurrence/resolver.js';
 import { normalizeRank } from './sanctoral/rank-normalizer.js';
@@ -64,10 +64,26 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
         ? overlayResult.overlay
         : undefined;
       const occurrence = resolveOccurrence(assembled.candidates, temporal, version.policy);
+      const celebrationFile = resolveOfficeFile(config.corpus, occurrence.celebration.feastRef.path);
+      const celebrationRuleEvaluation = version.policy.buildCelebrationRuleSet(
+        celebrationFile,
+        occurrence.commemorations,
+        {
+          date: calendarDate,
+          dayOfWeek: temporal.dayOfWeek,
+          season: temporal.season,
+          version,
+          dayName: temporal.dayName,
+          celebration: occurrence.celebration,
+          commemorations: occurrence.commemorations,
+          corpus: config.corpus
+        }
+      );
       const warnings = [
         ...overlayResult.warnings,
         ...assembled.warnings,
-        ...occurrence.warnings
+        ...occurrence.warnings,
+        ...celebrationRuleEvaluation.warnings
       ];
       const winner = {
         feastRef: occurrence.celebration.feastRef,
@@ -83,6 +99,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
         warnings,
         candidates: assembled.candidates,
         celebration: occurrence.celebration,
+        celebrationRules: celebrationRuleEvaluation.celebrationRules,
         commemorations: occurrence.commemorations,
         winner
       };

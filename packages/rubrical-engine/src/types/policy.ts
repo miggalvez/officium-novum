@@ -1,4 +1,4 @@
-import type { Rank } from '@officium-nova/parser';
+import type { ParsedFile, Rank } from '@officium-nova/parser';
 
 import type {
   Candidate,
@@ -7,6 +7,11 @@ import type {
   ResolvedRank,
   TemporalContext
 } from './model.js';
+import type { Commemoration } from './ordo.js';
+import type {
+  CelebrationRuleEvaluation,
+  RuleEvaluationContext
+} from './rule-set.js';
 
 /**
  * Stable identifier for a rubrical policy family.
@@ -98,6 +103,12 @@ export interface RubricalPolicy {
   compareCandidates(a: Candidate, b: Candidate): number;
   /** Whether a temporal candidate is a privileged feria under this policy. */
   isPrivilegedFeria(temporal: TemporalContext): boolean;
+  /** Evaluate winning-feast [Rule] directives into a typed celebration rule set. */
+  buildCelebrationRuleSet(
+    feastFile: ParsedFile,
+    commemorations: readonly Commemoration[],
+    context: RuleEvaluationContext
+  ): CelebrationRuleEvaluation;
   /** Phase 2g hook — stubbed as `null` in Phase 2c. */
   octavesEnabled(feastRef: FeastReference): null;
 }

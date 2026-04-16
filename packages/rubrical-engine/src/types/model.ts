@@ -5,6 +5,7 @@ import type { YearTransferTable } from '../directorium/tables/year-transfer-tabl
 import type { DirectoriumOverlay, RubricalWarning } from './directorium.js';
 import type { Celebration, Commemoration } from './ordo.js';
 import type { RubricalPolicy } from './policy.js';
+import type { CelebrationRuleSet } from './rule-set.js';
 import type {
   ResolvedVersion,
   VersionDescriptor,
@@ -70,6 +71,7 @@ export interface DayOfficeSummary {
   readonly overlay?: DirectoriumOverlay;
   readonly warnings: readonly RubricalWarning[];
   readonly celebration: Celebration;
+  readonly celebrationRules: CelebrationRuleSet;
   readonly commemorations: readonly Commemoration[];
   readonly candidates: readonly Candidate[];
   /** @deprecated Use `celebration` instead. Kept for Phase 2a API compatibility. */
