@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Officium Nova modernizes the [Divinum Officium](https://github.com/DivinumOfficium/divinum-officium) project — a community-maintained application generating the traditional Roman Breviary and Missal texts. The upstream repo is a Git submodule at `upstream/`. The architecture decouples liturgical data, rubrical logic, and presentation into a layered pipeline: Parser → Rubrical Engine → Composition Engine → API → Clients.
+Officium Novum modernizes the [Divinum Officium](https://github.com/DivinumOfficium/divinum-officium) project — a community-maintained application generating the traditional Roman Breviary and Missal texts. The upstream repo is a Git submodule at `upstream/`. The architecture decouples liturgical data, rubrical logic, and presentation into a layered pipeline: Parser → Rubrical Engine → Composition Engine → API → Clients.
 
 **Phase 1 (Parser) is complete. Phase 2 (Rubrical Engine) is next.**
 
