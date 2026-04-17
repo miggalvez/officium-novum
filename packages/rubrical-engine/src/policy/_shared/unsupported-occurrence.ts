@@ -41,6 +41,15 @@ export function createUnsupportedOccurrencePolicy(
     hourDirectives() {
       throw unsupported(name, 'hourDirectives');
     },
+    resolveMatinsShape() {
+      throw unsupported(name, 'resolveMatinsShape');
+    },
+    resolveTeDeum() {
+      throw unsupported(name, 'resolveTeDeum');
+    },
+    defaultScriptureCourse() {
+      throw unsupported(name, 'defaultScriptureCourse');
+    },
     octavesEnabled() {
       throw unsupported(name, 'octavesEnabled');
     }

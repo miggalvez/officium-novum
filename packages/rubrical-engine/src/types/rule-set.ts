@@ -1,4 +1,4 @@
-import type { ParsedFile, RuleDirective } from '@officium-nova/parser';
+import type { Condition, ParsedFile, RuleDirective } from '@officium-nova/parser';
 
 import type { RubricalWarning } from './directorium.js';
 import type { Celebration, Commemoration, HourName } from './ordo.js';
@@ -91,11 +91,12 @@ export interface LessonSourceOverride {
 
 export interface AlternateLocation {
   readonly location: 1 | 2 | 3;
+  readonly gate?: Condition;
 }
 
 export interface LessonSetAlternate {
   readonly nocturn: 1 | 2 | 3;
-  readonly location: 1 | 2 | 3;
+  readonly alternate: AlternateLocation;
 }
 
 export interface PapalNameBindings {

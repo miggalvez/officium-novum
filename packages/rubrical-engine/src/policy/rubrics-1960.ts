@@ -20,18 +20,21 @@ import type {
   HourDirective,
   PsalmAssignment
 } from '../types/hour-structure.js';
+import type { MatinsPlan, ScriptureCourse } from '../types/matins.js';
 import type {
   Candidate,
   FeastReference,
   TemporalContext
 } from '../types/model.js';
-import type { Commemoration } from '../types/ordo.js';
+import type { Celebration, Commemoration } from '../types/ordo.js';
 import type {
   HourDirectivesParams,
   PrecedenceRow,
   RubricalPolicy,
   SelectPsalmodyParams
 } from '../types/policy.js';
+import type { CelebrationRuleSet } from '../types/rule-set.js';
+import { UnsupportedPolicyError } from '../types/policy.js';
 
 const TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5', 'Quad6-6']);
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
@@ -275,6 +278,121 @@ export const rubrics1960Policy: RubricalPolicy = {
       ...(params.overlay ? { overlay: params.overlay } : {})
     });
   },
+  resolveMatinsShape(params): {
+    readonly nocturns: 1 | 3;
+    readonly totalLessons: 3 | 9 | 12;
+    readonly lessonsPerNocturn: readonly number[];
+  } {
+    const configured =
+      params.celebrationRules.matins.lessonCount === 12
+        ? 9
+        : params.celebrationRules.matins.lessonCount;
+
+    const classSymbol = params.celebration.rank.classSymbol;
+
+    // RI §95: Ember Saturdays keep their fuller Matins shape.
+    if (classSymbol === 'II-ember-day' && params.temporal.dayOfWeek === 6) {
+      return {
+        nocturns: 3,
+        totalLessons: 9,
+        lessonsPerNocturn: [3, 3, 3]
+      };
+    }
+
+    // RI §§165-166, §221: unprivileged ferias collapse to one nocturn with
+    // three lessons in the 1960 simplification.
+    if (isFerialClass(classSymbol) && isLikelyFerialTemporal(params)) {
+      return {
+        nocturns: 1,
+        totalLessons: 3,
+        lessonsPerNocturn: [3]
+      };
+    }
+
+    // RI §§165-168, §220: Sundays and I/II/III-class feasts retain 3x3 Matins.
+    if (
+      classSymbol === 'I' ||
+      classSymbol === 'II' ||
+      classSymbol === 'III' ||
+      classSymbol.startsWith('I-privilegiata-')
+    ) {
+      return {
+        nocturns: 3,
+        totalLessons: 9,
+        lessonsPerNocturn: [3, 3, 3]
+      };
+    }
+
+    if (params.celebrationRules.matins.nocturns === 1 || configured === 3) {
+      return {
+        nocturns: 1,
+        totalLessons: 3,
+        lessonsPerNocturn: [3]
+      };
+    }
+
+    return {
+      nocturns: 3,
+      totalLessons: 9,
+      lessonsPerNocturn: [3, 3, 3]
+    };
+  },
+  resolveTeDeum(params: {
+    readonly plan: Pick<MatinsPlan, 'nocturns' | 'totalLessons'>;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+  }): 'say' | 'replace-with-responsory' | 'omit' {
+    if (params.celebrationRules.teDeumOverride === 'forced') {
+      return 'say';
+    }
+    if (params.celebrationRules.teDeumOverride === 'suppressed') {
+      return 'omit';
+    }
+
+    // RI §196: Te Deum is omitted in the Sacred Triduum.
+    if (TRIDUUM_KEYS.has(params.temporal.dayName)) {
+      return 'omit';
+    }
+
+    // RI §221: on 1960 ferial Matins (3 lessons), the final responsory
+    // replaces Te Deum.
+    if (
+      params.plan.totalLessons === 3 &&
+      isFerialClass(params.temporal.rank.classSymbol)
+    ) {
+      return 'replace-with-responsory';
+    }
+
+    return 'say';
+  },
+  defaultScriptureCourse(temporal: TemporalContext): ScriptureCourse {
+    // RI §§218-220: seasonal scripture course selection for Matins.
+    switch (temporal.season) {
+      case 'advent':
+        return 'advent-isaias';
+      case 'christmastide':
+        return isWithinChristmasOctave(temporal.date)
+          ? 'octava-nativitatis'
+          : 'tempora-nativitatis';
+      case 'epiphanytide':
+      case 'time-after-epiphany':
+        return 'post-epiphania';
+      case 'septuagesima':
+        return 'septuagesima';
+      case 'lent':
+        return 'lent';
+      case 'passiontide':
+        return 'passiontide';
+      case 'eastertide':
+      case 'pentecost-octave':
+        return 'paschaltide';
+      case 'ascensiontide':
+        return 'ascensiontide';
+      case 'time-after-pentecost':
+      default:
+        return 'post-pentecost';
+    }
+  },
   octavesEnabled(_feastRef: FeastReference): null {
     return null;
   }
@@ -386,6 +504,26 @@ function isFerialClass(classSymbol: string): boolean {
     classSymbol === 'IV-lenten-feria' ||
     classSymbol === 'II-ember-day'
   );
+}
+
+function isLikelyFerialTemporal(params: {
+  readonly celebration: Celebration;
+  readonly temporal: TemporalContext;
+}): boolean {
+  if (params.celebration.source !== 'temporal') {
+    return false;
+  }
+
+  const classSymbol = params.temporal.rank.classSymbol;
+  if (classSymbol === 'II-ember-day' || classSymbol === 'IV-lenten-feria') {
+    return true;
+  }
+
+  if (classSymbol !== 'IV') {
+    return false;
+  }
+
+  return /-\d$/u.test(params.temporal.dayName);
 }
 
 function forbidsTransferInto1960(impeded: Candidate, temporal: TemporalContext): boolean {

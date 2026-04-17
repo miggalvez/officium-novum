@@ -25,6 +25,7 @@ import type {
   HourRuleSet,
   RuleEvaluationContext
 } from './rule-set.js';
+import type { MatinsPlan, ScriptureCourse } from './matins.js';
 import type { OfficeTextIndex } from './model.js';
 import type { CalendarDate } from '../internal/date.js';
 
@@ -149,6 +150,31 @@ export interface RubricalPolicy {
   selectPsalmody(params: SelectPsalmodyParams): readonly PsalmAssignment[];
   /** Seasonal and rubric-driven hour directives — Phase 2g-α. */
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective>;
+  /**
+   * Finalize Matins nocturn/lesson shape under the active policy.
+   */
+  resolveMatinsShape(params: {
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+    readonly commemorations: readonly Commemoration[];
+  }): {
+    readonly nocturns: 1 | 3;
+    readonly totalLessons: 3 | 9 | 12;
+    readonly lessonsPerNocturn: readonly number[];
+  };
+  /**
+   * Decide Te Deum outcome once the Matins plan shape is known.
+   */
+  resolveTeDeum(params: {
+    readonly plan: Pick<MatinsPlan, 'nocturns' | 'totalLessons'>;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+  }): 'say' | 'replace-with-responsory' | 'omit';
+  /**
+   * Default scripture course (RI §§218-220).
+   */
+  defaultScriptureCourse(temporal: TemporalContext): ScriptureCourse;
   /** Phase 2g hook — stubbed as `null` in Phase 2c. */
   octavesEnabled(feastRef: FeastReference): null;
 }

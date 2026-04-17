@@ -4,55 +4,55 @@
   "dates": [
     {
       "date": "2024-02-19",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-alleluia", "omit-suffragium"],
       "vespersDirectives": ["omit-alleluia", "omit-suffragium"]
     },
     {
       "date": "2024-03-24",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-alleluia", "omit-suffragium"],
       "vespersDirectives": ["omit-alleluia", "omit-suffragium"]
     },
     {
       "date": "2024-03-28",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-alleluia", "omit-gloria-patri", "short-chapter-only", "omit-suffragium"],
       "vespersDirectives": ["omit-alleluia", "omit-gloria-patri", "short-chapter-only", "omit-suffragium"]
     },
     {
       "date": "2024-03-29",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-alleluia", "omit-gloria-patri", "short-chapter-only", "omit-suffragium"],
       "vespersDirectives": ["omit-alleluia", "omit-gloria-patri", "short-chapter-only", "omit-suffragium"]
     },
     {
       "date": "2024-03-31",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["add-alleluia", "add-versicle-alleluia", "omit-suffragium"],
       "vespersDirectives": ["add-alleluia", "add-versicle-alleluia", "omit-suffragium"]
     },
     {
       "date": "2024-08-15",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-suffragium"],
       "vespersDirectives": ["omit-suffragium"]
     },
     {
       "date": "2024-12-01",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-suffragium"],
       "vespersDirectives": ["omit-suffragium"]
     },
     {
       "date": "2024-12-08",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-suffragium"],
       "vespersDirectives": ["omit-suffragium"]
     },
     {
       "date": "2024-12-25",
-      "expectedHours": ["lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+      "expectedHours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
       "laudsDirectives": ["omit-suffragium"],
       "vespersDirectives": ["omit-suffragium"]
     }

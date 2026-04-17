@@ -135,6 +135,7 @@ ADRs for the key architectural decisions so far:
 - [`docs/adr/004-phase-2e-year-map-caching.md`](docs/adr/004-phase-2e-year-map-caching.md)
 - [`docs/adr/005-phase-2f-concurrence-preview.md`](docs/adr/005-phase-2f-concurrence-preview.md)
 - [`docs/adr/006-phase-2g-ordinarium-skeleton-cache.md`](docs/adr/006-phase-2g-ordinarium-skeleton-cache.md)
+- [`docs/adr/007-phase-2g-matins-plan-separation.md`](docs/adr/007-phase-2g-matins-plan-separation.md)
 
 **Phase 2d — Rule Evaluation (complete).** The dedicated rule-evaluation stage from design §12/§18 is now wired after occurrence: every winning celebration now carries a typed `CelebrationRuleSet`, with tested per-hour derivation via `deriveHourRuleSet`.
 
@@ -155,7 +156,9 @@ Implemented in 2d:
 
 **Phase 2f — Concurrence and Compline (complete).** `resolveDayOfficeSummary(date)` now computes the Vespers boundary between today and tomorrow using cached per-date `DayConcurrencePreview` materialization, honors `hasFirstVespers` / `hasSecondVespers` veto flags before rank-matrix comparison, and emits typed concurrence outputs (`winner`, source celebration, Vespers-only concurrence commemorations, reason tags, warnings). The 1960 policy now provides explicit concurrence-table resolution (`concurrence/tables/vespers-1960.ts`) plus Compline-source selection (`vespers-winner` / `ordinary` / `triduum-special`), and `hours/compline.ts` ships the Phase 2f minimal `HourStructure` (source + directives, empty slots by design). Upstream fixture coverage now includes a focused 2024 concurrence/Compline matrix (`test/fixtures/vespers-1960-2024.json`).
 
-**Phase 2g-α — Non-Matins Hour Structuring (complete).** `summary.hours` is now populated with typed `HourStructure` values for the seven non-Matins Hours — `lauds`, `prime`, `terce`, `sext`, `none`, `vespers`, and `compline` — per design §16. Matins is deferred to sub-phase 2g-β per §18 ("`hours/matins.ts` is its own sub-phase deliverable"). New in 2g-α:
+**Phase 2g (α + β) — Hour Structuring (complete).** `summary.hours` is now populated with typed `HourStructure` values for all eight Hours (`matins`, `lauds`, `prime`, `terce`, `sext`, `none`, `vespers`, `compline`) per design §16.
+
+2g-α delivered the non-Matins infrastructure:
 
 - `hours/skeleton.ts` with `OrdinariumSkeletonCache` (per-engine, keyed on `(version.handle, hour)`); walks the legacy `#Heading` markers inside the `__preamble` of `horas/Ordinarium/*.txt` and maps each to a typed `SlotName`.
 - `hours/psalter.ts` implementing the §16.2 psalter-selection decision tree for Roman 1960 (ferial / dominica / festal / proper, with `psalmOverrides` and `psalterScheme` honored); emits `TextReference`-shaped `PsalmAssignment[]` for Phase 3 to dereference.
@@ -165,13 +168,23 @@ Implemented in 2d:
 - Commemoration attachment for Lauds and Vespers (three ordered-ref slots: `commemoration-antiphons` / `-versicles` / `-orations`), consuming the existing `Commemoration.hours` field from Phase 2c/2f; minor hours and Compline never produce commemoration slots under 1960 per RI §107.
 - Policy interface gains `selectPsalmody(params)` and `hourDirectives(params)`; `rubrics-1960` wires both; non-1960 stubs throw `UnsupportedPolicyError`.
 - Engine integration: Vespers is structured for the concurrence winner (today's Second Vespers or tomorrow's First Vespers) with a uniform §16 input shape; Compline follows the Vespers winner; a missing Ordinarium file is demoted from a throw to a `hour-skeleton-missing` warning so legacy unit fixtures remain compatible.
-- New fixture `test/fixtures/hours-1960-2024.json` + `test/integration/phase-2g-upstream.test.ts` assert the seven-Hour inventory, absence of `matins`, and per-date directive flags (Lent omits alleluia; Triduum omits Gloria Patri + short chapter; Paschaltide adds alleluia; 1960 always omits suffragium).
+- New fixture `test/fixtures/hours-1960-2024.json` + `test/integration/phase-2g-upstream.test.ts` assert the full structured Hour inventory and per-date directive flags (Lent omits alleluia; Triduum omits Gloria Patri + short chapter; Paschaltide adds alleluia; 1960 always omits suffragium).
 
-401 rubrical-engine tests passing (plus one TODO marker), including the new Phase 2g-α upstream matrix alongside every earlier integration suite.
+2g-β then completed Matins as a dedicated plan-first pipeline:
+
+- `types/matins.ts` immutable Matins type surface (`MatinsPlan`, `NocturnPlan`, `LessonSource`, `PericopeRef`, `ScriptureCourse`, etc.).
+- `hours/matins-plan.ts` pure plan builder (`buildMatinsPlan`) that emits typed references without text dereferencing.
+- `hours/matins-lessons.ts` lesson router consuming `celebrationRules.lessonSources` and `commemorated-principal` materialized overrides from Phase 2d.
+- `hours/matins-scripture.ts` Directorium scripture-transfer post-pass (`R` / `B` / `A`) over scripture-kind lessons only.
+- `hours/matins-alternates.ts` `in N loco` alternate selection with condition gates.
+- `hours/matins.ts` structurer that wraps the plan into Matins slot content and reuses `applyRuleSet` only for wrapper slots.
+- Policy hooks added for Matins shape, Te Deum resolution, and default scripture course (`resolveMatinsShape`, `resolveTeDeum`, `defaultScriptureCourse`), with non-1960 stubs throwing `UnsupportedPolicyError`.
+- New fixture `test/fixtures/matins-1960-2024.json` + `test/integration/phase-2g-beta-upstream.test.ts` asserting Matins shape across the focused date matrix, including Triduum Te Deum omission, Ember Saturday shape, and scripture-transfer application.
+
+442 rubrical-engine tests passing (plus one TODO marker) in full workspace validation, including the new Matins suites, upstream matrix, and review-driven regressions (Psalterium antiphon/psalm/versicle fallback for seasonal/ferial Matins, pre-transfer Te Deum shape, dereferenceable season invitatory references).
 
 Still pending in Phase 2:
 
-- **2g-β** — Matins: `MatinsPlan`, `LessonSource`, scripture-transfer application, `in N loco` alternates, commemorated Lectio9 routing (its own sub-phase per design §18).
 - **2h** — 1911 (Divino Afflatu) and 1955 (Reduced) policies.
 
 ## License

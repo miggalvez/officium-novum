@@ -6,6 +6,7 @@ import {
   OrdinariumSkeletonCache,
   buildComplineWithWarnings,
   structureLauds,
+  structureMatins,
   structureNone,
   structurePrime,
   structureSext,
@@ -93,6 +94,9 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     const hours: Partial<Record<HourName, HourStructure>> = {};
     const corpus = config.corpus;
 
+    const matins = structureHour('matins', summary, corpus, warnings);
+    hours.matins = matins;
+
     const lauds = structureHour('lauds', summary, corpus, warnings);
     hours.lauds = lauds;
 
@@ -129,7 +133,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
   }
 
   function structureHour(
-    hour: Exclude<HourName, 'matins' | 'vespers' | 'compline'>,
+    hour: Exclude<HourName, 'vespers' | 'compline'>,
     summary: BaseDaySummary,
     corpus: OfficeTextIndex,
     warnings: RubricalWarning[]
@@ -153,6 +157,11 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       ...(overlay ? { overlay } : {})
     };
     switch (hour) {
+      case 'matins': {
+        const result = structureMatins(input);
+        warnings.push(...result.warnings);
+        return result.hour;
+      }
       case 'lauds': {
         const result = structureLauds(input);
         warnings.push(...result.warnings);
@@ -304,44 +313,16 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
   }
 
   function synthesizePreviewSummary(calendarDate: CalendarDate): BaseDaySummary {
-    const isoDate = formatIsoDate(calendarDate);
-    const dayName = dayNameForDate(calendarDate);
-    const season = liturgicalSeasonForDate(calendarDate);
-    const feastPath = `Tempora/${dayName}`;
-    const rank = version.policy.resolveRank(
-      {
-        name: 'Feria',
-        classWeight: 1
-      },
-      {
-        date: isoDate,
-        feastPath,
-        source: 'temporal',
-        version: version.handle,
-        season
-      }
-    );
+    const temporal = synthesizedTemporalContext(calendarDate);
     const celebration: Celebration = {
-      feastRef: {
-        path: feastPath,
-        id: feastPath,
-        title: dayName
-      },
-      rank,
+      feastRef: temporal.feastRef,
+      rank: temporal.rank,
       source: 'temporal'
     };
     return {
-      date: isoDate,
+      date: temporal.date,
       version: describeVersion(version),
-      temporal: {
-        date: isoDate,
-        dayOfWeek: new Date(`${isoDate}T00:00:00Z`).getUTCDay(),
-        weekStem: weekStemForDate(calendarDate),
-        dayName,
-        season,
-        feastRef: celebration.feastRef,
-        rank: celebration.rank
-      },
+      temporal,
       warnings: [],
       candidates: [
         {
@@ -425,6 +406,16 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     scope: 'day-summary' | 'day-preview'
   ): BaseDaySummary {
     const fallback = synthesizePreviewSummary(calendarDate);
+    const overlayResult = buildOverlay({
+      date: calendarDate,
+      version,
+      registry: config.versionRegistry,
+      yearTransfers: config.yearTransfers,
+      scriptureTransfers: config.scriptureTransfers
+    });
+    const overlay = hasOverlayDirectives(overlayResult.overlay)
+      ? overlayResult.overlay
+      : undefined;
     const missingPath =
       (cause === 'rankless-office'
         ? extractNoMatchingRankPath(message)
@@ -433,8 +424,10 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
 
     return {
       ...fallback,
+      ...(overlay ? { overlay } : {}),
       warnings: [
         ...fallback.warnings,
+        ...overlayResult.warnings,
         {
           code: 'rubric-synth-fallback',
           message:
@@ -455,7 +448,8 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
 
   function resolveBaseDaySummary(calendarDate: CalendarDate): BaseDaySummary {
     const isoDate = formatIsoDate(calendarDate);
-    const temporal = buildTemporalContext(calendarDate, version, config.corpus);
+    const temporalResult = resolveTemporalContext(calendarDate);
+    const temporal = temporalResult.temporal;
     const yearTransferMap = getYearTransferMap(calendarDate.year);
     const transferredIn = collectTransfersInto(
       isoDate,
@@ -522,6 +516,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     );
     const warnings = [
       ...yearTransferMap.warningsOn(isoDate),
+      ...temporalResult.warnings,
       ...overlayResult.warnings,
       ...assembled.warnings,
       ...occurrence.warnings,
@@ -544,6 +539,78 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       celebrationRules: celebrationRuleEvaluation.celebrationRules,
       commemorations: occurrence.commemorations,
       winner
+    };
+  }
+
+  function resolveTemporalContext(calendarDate: CalendarDate): {
+    readonly temporal: TemporalContext;
+    readonly warnings: readonly RubricalWarning[];
+  } {
+    try {
+      return {
+        temporal: buildTemporalContext(calendarDate, version, config.corpus),
+        warnings: []
+      };
+    } catch (error) {
+      if (
+        !(error instanceof Error) ||
+        !error.message.startsWith('Corpus file not found for office path: Tempora/')
+      ) {
+        throw error;
+      }
+
+      return {
+        temporal: synthesizedTemporalContext(calendarDate),
+        warnings: [
+          {
+            code: 'rubric-synth-fallback',
+            message:
+              'Resolved day used synthesized temporal context because a Tempora office file was missing.',
+            severity: 'info',
+            context: {
+              scope: 'temporal-context',
+              date: formatIsoDate(calendarDate),
+              missingPath:
+                extractMissingOfficePath(error.message) ??
+                `Tempora/${dayNameForDate(calendarDate)}`,
+              cause: 'missing-office-file'
+            }
+          }
+        ]
+      };
+    }
+  }
+
+  function synthesizedTemporalContext(calendarDate: CalendarDate): TemporalContext {
+    const isoDate = formatIsoDate(calendarDate);
+    const dayName = dayNameForDate(calendarDate);
+    const season = liturgicalSeasonForDate(calendarDate);
+    const feastPath = `Tempora/${dayName}`;
+
+    return {
+      date: isoDate,
+      dayOfWeek: new Date(`${isoDate}T00:00:00Z`).getUTCDay(),
+      weekStem: weekStemForDate(calendarDate),
+      dayName,
+      season,
+      feastRef: {
+        path: feastPath,
+        id: feastPath,
+        title: dayName
+      },
+      rank: version.policy.resolveRank(
+        {
+          name: 'Feria',
+          classWeight: 1
+        },
+        {
+          date: isoDate,
+          feastPath,
+          source: 'temporal',
+          version: version.handle,
+          season
+        }
+      )
     };
   }
 
