@@ -10,7 +10,13 @@
         "teDeum": "replace-with-responsory",
         "hymnKind": "ordinary",
         "invitatoriumKind": "season",
-        "nocturnLessonSourceKinds": [["scripture", "scripture", "scripture"]]
+        "nocturnLessonSourceKinds": [
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ]
+        ]
       },
       "firstLessonPath": "horas/Latin/Tempora/Pent07-2",
       "firstAntiphonPath": "horas/Latin/Psalterium/Psalmi/Psalmi matutinum"
@@ -18,15 +24,17 @@
     {
       "date": "2024-02-25",
       "matins": {
-        "nocturns": 3,
-        "totalLessons": 9,
-        "teDeum": "say",
+        "nocturns": 1,
+        "totalLessons": 3,
+        "teDeum": "replace-with-responsory",
         "hymnKind": "ordinary",
         "invitatoriumKind": "season",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "commemorated"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ]
         ]
       },
       "firstAntiphonPath": "horas/Latin/Psalterium/Psalmi/Psalmi matutinum"
@@ -40,9 +48,21 @@
         "hymnKind": "feast",
         "invitatoriumKind": "feast",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "homily-on-gospel"
+          ]
         ]
       }
     },
@@ -55,9 +75,21 @@
         "hymnKind": "feast",
         "invitatoriumKind": "feast",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "homily-on-gospel"
+          ]
         ]
       }
     },
@@ -70,9 +102,21 @@
         "hymnKind": "suppressed",
         "invitatoriumKind": "suppressed",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "homily-on-gospel"
+          ]
         ]
       }
     },
@@ -85,9 +129,21 @@
         "hymnKind": "suppressed",
         "invitatoriumKind": "suppressed",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "homily-on-gospel"
+          ]
         ]
       }
     },
@@ -100,24 +156,38 @@
         "hymnKind": "suppressed",
         "invitatoriumKind": "suppressed",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "homily-on-gospel"
+          ]
         ]
       }
     },
     {
       "date": "2024-09-21",
       "matins": {
-        "nocturns": 3,
-        "totalLessons": 9,
-        "teDeum": "say",
+        "nocturns": 1,
+        "totalLessons": 3,
+        "teDeum": "replace-with-responsory",
         "hymnKind": "ordinary",
         "invitatoriumKind": "season",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["patristic", "patristic", "patristic"],
-          ["homily-on-gospel", "homily-on-gospel", "commemorated"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ]
         ]
       },
       "expectMatinsRuleLessonCount": 9,
@@ -126,15 +196,17 @@
     {
       "date": "2030-01-12",
       "matins": {
-        "nocturns": 3,
-        "totalLessons": 9,
-        "teDeum": "say",
+        "nocturns": 1,
+        "totalLessons": 3,
+        "teDeum": "replace-with-responsory",
         "hymnKind": "ordinary",
         "invitatoriumKind": "season",
         "nocturnLessonSourceKinds": [
-          ["scripture-transferred", "scripture-transferred", "scripture-transferred"],
-          ["patristic", "patristic", "patristic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture-transferred",
+            "scripture-transferred",
+            "scripture-transferred"
+          ]
         ]
       },
       "expectTransferOp": "R",
@@ -143,15 +215,17 @@
     {
       "date": "2024-12-01",
       "matins": {
-        "nocturns": 3,
-        "totalLessons": 9,
-        "teDeum": "say",
+        "nocturns": 1,
+        "totalLessons": 3,
+        "teDeum": "replace-with-responsory",
         "hymnKind": "ordinary",
         "invitatoriumKind": "season",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "homily-on-gospel"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ]
         ]
       },
       "firstAntiphonPath": "horas/Latin/Psalterium/Psalmi/Psalmi matutinum"
@@ -165,9 +239,21 @@
         "hymnKind": "feast",
         "invitatoriumKind": "feast",
         "nocturnLessonSourceKinds": [
-          ["scripture", "scripture", "scripture"],
-          ["hagiographic", "hagiographic", "hagiographic"],
-          ["homily-on-gospel", "homily-on-gospel", "commemorated"]
+          [
+            "scripture",
+            "scripture",
+            "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "commemorated"
+          ]
         ]
       },
       "assertNoCommemorationSlots": true

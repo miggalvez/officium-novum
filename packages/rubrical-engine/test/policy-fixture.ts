@@ -142,6 +142,9 @@ export function makeTestPolicy(
     hourDirectives() {
       return new Set();
     },
+    limitCommemorations(commemorations) {
+      return [...commemorations];
+    },
     resolveMatinsShape() {
       return {
         nocturns: 3,

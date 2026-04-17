@@ -56,6 +56,8 @@ export function resolveOccurrence(
     feastRef: winner.feastRef,
     rank: winner.rank,
     source: winner.source === 'temporal' ? 'temporal' : 'sanctoral',
+    ...(winner.kind ? { kind: winner.kind } : {}),
+    ...(winner.octaveDay ? { octaveDay: winner.octaveDay } : {}),
     ...(winner.vigilOf ? { vigil: winner.vigilOf } : {}),
     ...(winner.transferredFrom ? { transferredFrom: winner.transferredFrom } : {})
   };
@@ -78,7 +80,9 @@ export function resolveOccurrence(
         feastRef: loser.feastRef,
         rank: loser.rank,
         reason: commemorationReason(loser, temporal, policy),
-        hours: DEFAULT_COMMEMORATION_HOURS
+        hours: DEFAULT_COMMEMORATION_HOURS,
+        ...(loser.kind ? { kind: loser.kind } : {}),
+        ...(loser.octaveDay ? { octaveDay: loser.octaveDay } : {})
       });
       continue;
     }
@@ -142,6 +146,9 @@ function commemorationReason(
   policy: RubricalPolicy
 ): CommemorationReason {
   if (loser.source !== 'temporal') {
+    if (loser.kind === 'octave') {
+      return 'octave-continuing';
+    }
     return 'occurrence-impeded';
   }
 

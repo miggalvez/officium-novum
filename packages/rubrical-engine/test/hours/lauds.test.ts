@@ -152,7 +152,10 @@ describe('structureLauds', () => {
 
   it('emits commemoration-antiphons/-versicles/-orations when commemorations include lauds', () => {
     const { corpus, skeleton } = setup();
-    const celeb = celebration('Sancti/08-15');
+    const celeb: Celebration = {
+      ...celebration('Sancti/08-15'),
+      rank: { name: 'II', classSymbol: 'II', weight: 800 }
+    };
     const rules = baseRules();
     const hourRules = deriveHourRuleSet(celeb, rules, 'lauds');
     const commemoration: Commemoration = {

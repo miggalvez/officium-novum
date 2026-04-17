@@ -1,6 +1,14 @@
 import type { Rank } from '@officium-novum/parser';
 
 import {
+  PRECEDENCE_1955_BY_CLASS,
+  type ClassSymbol1955
+} from '../occurrence/tables/precedence-1955.js';
+import {
+  PRECEDENCE_DIVINO_AFFLATU_BY_CLASS,
+  type ClassSymbolDivinoAfflatu
+} from '../occurrence/tables/precedence-divino-afflatu.js';
+import {
   PRECEDENCE_1960_BY_CLASS,
   type ClassSymbol1960
 } from '../occurrence/tables/precedence-1960.js';
@@ -9,6 +17,7 @@ import type { RankContext, RubricalPolicy } from '../types/policy.js';
 
 const TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5', 'Quad6-6']);
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
+const TEMPORAL_FIXED_FEAST_KEYS_PRE1960 = new Set(['Nat2-0']);
 const EMBER_DAY_KEYS = new Set([
   'Adv3-3',
   'Adv3-5',
@@ -62,12 +71,55 @@ export function defaultResolveRank(raw: Rank, _context?: RankContext): ResolvedR
   };
 }
 
+export function divinoAfflatuResolveRank(raw: Rank, context: RankContext): ResolvedRank {
+  return pre1960ResolveRank(raw, context, {
+    lookup(classSymbol) {
+      return PRECEDENCE_DIVINO_AFFLATU_BY_CLASS.get(classSymbol);
+    }
+  });
+}
+
+export function reduced1955ResolveRank(raw: Rank, context: RankContext): ResolvedRank {
+  return pre1960ResolveRank(raw, context, {
+    lookup(classSymbol) {
+      return PRECEDENCE_1955_BY_CLASS.get(classSymbol);
+    }
+  });
+}
+
+function pre1960ResolveRank(
+  raw: Rank,
+  context: RankContext,
+  options: {
+    readonly lookup: (
+      classSymbol: ClassSymbolDivinoAfflatu | ClassSymbol1955
+    ) => { readonly weight: number } | undefined;
+  }
+): ResolvedRank {
+  const name = raw.name.trim() || raw.derivation?.trim() || 'Unclassified';
+  const classSymbol = classifyPre1960ClassSymbol(raw, name, context);
+  const row = options.lookup(classSymbol);
+  if (!row) {
+    throw new Error(`Missing pre-1960 precedence row for class symbol '${classSymbol}'.`);
+  }
+
+  return {
+    name,
+    classSymbol,
+    weight: row.weight + raw.classWeight
+  };
+}
+
 function classify1960ClassSymbol(
   raw: Rank,
   name: string,
   context: RankContext,
   temporalKey: string | undefined
 ): ClassSymbol1960 {
+  if (context.feastPath === 'Commune/C10') {
+    return 'III';
+  }
+
   if (isCommemorationOnly(raw.classWeight, name)) {
     return 'commemoration-only';
   }
@@ -114,8 +166,103 @@ function classify1960ClassSymbol(
   return 'IV';
 }
 
+function classifyPre1960ClassSymbol(
+  raw: Rank,
+  name: string,
+  context: RankContext
+): ClassSymbolDivinoAfflatu | ClassSymbol1955 {
+  const normalized = normalizeName(name);
+  const temporalKey = context.source === 'temporal' ? extractTemporalKey(context.feastPath) : undefined;
+
+  if (context.version === 'Reduced - 1955' && context.feastPath === 'Sancti/01-13') {
+    return 'duplex-ii';
+  }
+
+  if (isCommemorationOnly(raw.classWeight, name)) {
+    return 'commemoration-only';
+  }
+
+  if (/\bvigilia\b/u.test(normalized)) {
+    return raw.classWeight >= 5 ? 'vigil-major' : 'vigil';
+  }
+
+  if (/\b(?:infraoctavam|infra8vam|octavae?|inoctava)\b/u.test(normalized)) {
+    return raw.classWeight >= 3 ? 'octave-major' : 'octave';
+  }
+
+  if (context.source === 'temporal' && temporalKey) {
+    if (TRIDUUM_KEYS.has(temporalKey)) {
+      return 'privileged-triduum';
+    }
+
+    if (temporalKey === 'Quadp3-3' || HOLY_WEEK_MON_WED_KEYS.has(temporalKey)) {
+      return 'privileged-feria-major';
+    }
+
+    if (context.date.endsWith('-12-24')) {
+      return 'vigil-major';
+    }
+
+    if (context.date.endsWith('-12-25') || context.date.endsWith('-01-01')) {
+      return 'octave-major';
+    }
+
+    if (context.date.endsWith('-01-06')) {
+      return 'duplex-ii';
+    }
+
+    if (isPrivilegedSunday(temporalKey)) {
+      return 'privileged-sunday';
+    }
+
+    if (
+      /^\w+-0$/u.test(temporalKey) &&
+      !TEMPORAL_FIXED_FEAST_KEYS_PRE1960.has(temporalKey)
+    ) {
+      return 'sunday';
+    }
+  }
+
+  if (/\bi\b\.?\s*class(?:is)?/iu.test(name) || raw.classWeight >= 6) {
+    return 'duplex-i';
+  }
+  if (/\bii\b\.?\s*class(?:is)?/iu.test(name) || raw.classWeight >= 5) {
+    return 'duplex-ii';
+  }
+  if (normalized.includes('duplexmajus') || normalized.includes('mmmaj') || raw.classWeight >= 4) {
+    return 'duplex-major';
+  }
+  if (normalized.includes('semiduplex') || raw.classWeight >= 2) {
+    return 'semiduplex';
+  }
+  if (
+    normalized.includes('duplex') ||
+    normalized.includes('fest') ||
+    normalized.includes('dominica')
+  ) {
+    return 'duplex';
+  }
+  if (
+    normalized.includes('simplex') ||
+    normalized.includes('memoria') ||
+    raw.classWeight > 1
+  ) {
+    return 'simplex';
+  }
+
+  return 'feria';
+}
+
 function isCommemorationOnly(weight: number, name: string): boolean {
   return weight <= 0 || /\b(commemoratio|nihil)\b/i.test(name);
+}
+
+function normalizeName(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/[^a-z0-9]+/gu, '');
 }
 
 function extractTemporalKey(feastPath: string): string | undefined {

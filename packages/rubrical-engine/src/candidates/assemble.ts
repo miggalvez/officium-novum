@@ -6,6 +6,7 @@ import type {
   TemporalContext
 } from '../types/model.js';
 import type { DirectoriumOverlay, RubricalWarning } from '../types/directorium.js';
+import { annotateCandidate } from './metadata.js';
 
 const TEMPORA_PATH_PREFIX = /^Tempora(?:M|Cist|OP)?\//u;
 const SANCTORAL_DATE_KEY = /^\d{2}-\d{2}/u;
@@ -42,7 +43,9 @@ export function assembleCandidates(
     ...sanctoral.map<Candidate>((candidate) => ({
       feastRef: candidate.feastRef,
       rank: candidate.rank,
-      source: 'sanctoral'
+      source: 'sanctoral',
+      ...(candidate.kind ? { kind: candidate.kind } : {}),
+      ...(candidate.octaveDay ? { octaveDay: candidate.octaveDay } : {})
     })),
     ...normalizeTransferredIn(options.transferredIn)
   ];
@@ -71,11 +74,11 @@ export function assembleCandidates(
         options,
         warnings
       );
-      candidates[0] = {
+      candidates[0] = annotateCandidate({
         feastRef: resolved.feastRef,
         rank: resolved.rank,
         source: 'temporal'
-      };
+      });
       warnings.push(
         replacedCandidateWarning(
           original.feastRef.path,
@@ -107,11 +110,11 @@ export function assembleCandidates(
           options,
           warnings
         );
-        candidates[candidateIndex] = {
+        candidates[candidateIndex] = annotateCandidate({
           feastRef: resolved.feastRef,
           rank: resolved.rank,
           source: 'sanctoral'
-        };
+        });
         warnings.push(
           replacedCandidateWarning(
             original.feastRef.path,
@@ -135,11 +138,11 @@ export function assembleCandidates(
     options,
     warnings
   );
-  candidates.push({
+  candidates.push(annotateCandidate({
     feastRef: resolved.feastRef,
     rank: resolved.rank,
     source: 'sanctoral'
-  });
+  }));
 
   return {
     candidates: tagVigils(candidates, options.detectVigil),
@@ -257,6 +260,8 @@ function normalizeTransferredIn(candidates: readonly Candidate[] | undefined): r
     feastRef: candidate.feastRef,
     rank: candidate.rank,
     source: 'transferred-in',
+    ...(candidate.kind ? { kind: candidate.kind } : {}),
+    ...(candidate.octaveDay ? { octaveDay: candidate.octaveDay } : {}),
     ...(candidate.transferredFrom ? { transferredFrom: candidate.transferredFrom } : {}),
     ...(candidate.vigilOf ? { vigilOf: candidate.vigilOf } : {})
   }));
@@ -267,17 +272,17 @@ function tagVigils(
   detectVigil: AssembleOptions['detectVigil']
 ): readonly Candidate[] {
   if (!detectVigil) {
-    return candidates;
+    return candidates.map((candidate) => annotateCandidate(candidate));
   }
 
   return candidates.map((candidate) => {
     const vigilOf = detectVigil(candidate);
     if (!vigilOf) {
-      return candidate;
+      return annotateCandidate(candidate);
     }
-    return {
+    return annotateCandidate({
       ...candidate,
       vigilOf
-    };
+    });
   });
 }

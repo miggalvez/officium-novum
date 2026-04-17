@@ -178,7 +178,7 @@ describe('rubrics1960Policy.resolveMatinsShape', () => {
     });
   });
 
-  it('keeps Sundays and I/II/III-class feasts at 3x3', () => {
+  it('uses 1x3 Matins for Sunday offices and III-class feasts, while I-class feasts keep 3x3', () => {
     const sundayShape = rubrics1960Policy.resolveMatinsShape({
       celebration: matinsCelebration(
         'Tempora/Quad2-0',
@@ -190,9 +190,21 @@ describe('rubrics1960Policy.resolveMatinsShape', () => {
       commemorations: []
     });
     expect(sundayShape).toEqual({
-      nocturns: 3,
-      totalLessons: 9,
-      lessonsPerNocturn: [3, 3, 3]
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
+    });
+
+    const thirdClassFeast = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration('Sancti/08-19', 'III', 'sanctoral'),
+      celebrationRules: matinsRules(),
+      temporal: temporal('2024-08-19', 'Pent13-1', 'time-after-pentecost'),
+      commemorations: []
+    });
+    expect(thirdClassFeast).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
     });
 
     const feastShape = rubrics1960Policy.resolveMatinsShape({
@@ -205,6 +217,69 @@ describe('rubrics1960Policy.resolveMatinsShape', () => {
       nocturns: 3,
       totalLessons: 9,
       lessonsPerNocturn: [3, 3, 3]
+    });
+  });
+
+  it('honors explicit one-nocturn rule directives before class defaults', () => {
+    const shape = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration('Tempora/Pasc0-0', 'I', 'temporal'),
+      celebrationRules: matinsRules({
+        matins: { lessonCount: 3, nocturns: 1, rubricGate: 'always' }
+      }),
+      temporal: temporal('2024-03-31', 'Pasc0-0', 'eastertide', 'I'),
+      commemorations: []
+    });
+
+    expect(shape).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
+    });
+  });
+
+  it('collapses Ash Wednesday and Holy Week feriae to 1 nocturn x 3 lessons', () => {
+    const ashWednesday = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration(
+        'Tempora/Quadp3-3',
+        'I-privilegiata-ash-wednesday',
+        'temporal'
+      ),
+      celebrationRules: matinsRules(),
+      temporal: temporal(
+        '2024-02-14',
+        'Quadp3-3',
+        'septuagesima',
+        'I-privilegiata-ash-wednesday'
+      ),
+      commemorations: []
+    });
+
+    expect(ashWednesday).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
+    });
+
+    const holyWeekWednesday = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration(
+        'Tempora/Quad6-3',
+        'I-privilegiata-holy-week-feria',
+        'temporal'
+      ),
+      celebrationRules: matinsRules(),
+      temporal: temporal(
+        '2024-03-27',
+        'Quad6-3',
+        'passiontide',
+        'I-privilegiata-holy-week-feria'
+      ),
+      commemorations: []
+    });
+
+    expect(holyWeekWednesday).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
     });
   });
 
@@ -223,7 +298,7 @@ describe('rubrics1960Policy.resolveMatinsShape', () => {
     });
   });
 
-  it('keeps Ember Saturday at 3x3', () => {
+  it('collapses September Ember Saturday to 1 nocturn x 3 lessons', () => {
     const shape = rubrics1960Policy.resolveMatinsShape({
       celebration: matinsCelebration('Tempora/Pent17-6', 'II-ember-day', 'temporal'),
       celebrationRules: matinsRules(),
@@ -232,9 +307,37 @@ describe('rubrics1960Policy.resolveMatinsShape', () => {
     });
 
     expect(shape).toEqual({
-      nocturns: 3,
-      totalLessons: 9,
-      lessonsPerNocturn: [3, 3, 3]
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
+    });
+  });
+
+  it('collapses Advent and Lenten Ember Saturdays to 1 nocturn x 3 lessons', () => {
+    const adventShape = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration('Tempora/Adv3-6', 'II-ember-day', 'temporal'),
+      celebrationRules: matinsRules(),
+      temporal: temporal('2024-12-21', 'Adv3-6', 'advent', 'II-ember-day'),
+      commemorations: []
+    });
+
+    expect(adventShape).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
+    });
+
+    const lentShape = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration('Tempora/Quad1-6', 'II-ember-day', 'temporal'),
+      celebrationRules: matinsRules(),
+      temporal: temporal('2024-02-24', 'Quad1-6', 'lent', 'II-ember-day'),
+      commemorations: []
+    });
+
+    expect(lentShape).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
     });
   });
 });
@@ -264,7 +367,7 @@ describe('rubrics1960Policy.resolveTeDeum', () => {
     ).toBe('omit');
   });
 
-  it('omits Te Deum in Triduum and replaces it on 3-lesson ferias', () => {
+  it('omits Te Deum in Triduum, preserves it in the Paschal octave, and replaces it on other 3-lesson offices', () => {
     expect(
       rubrics1960Policy.resolveTeDeum({
         plan: { nocturns: 3, totalLessons: 9 },
@@ -272,6 +375,14 @@ describe('rubrics1960Policy.resolveTeDeum', () => {
         temporal: temporal('2024-03-29', 'Quad6-5', 'passiontide')
       })
     ).toBe('omit');
+
+    expect(
+      rubrics1960Policy.resolveTeDeum({
+        plan: { nocturns: 1, totalLessons: 3 },
+        celebrationRules: matinsRules(),
+        temporal: temporal('2024-04-02', 'Pasc0-2', 'eastertide', 'I')
+      })
+    ).toBe('say');
 
     expect(
       rubrics1960Policy.resolveTeDeum({
@@ -296,6 +407,42 @@ describe('rubrics1960Policy.defaultScriptureCourse', () => {
         temporal('2024-07-09', 'Pent07-2', 'time-after-pentecost')
       )
     ).toBe('post-pentecost');
+  });
+});
+
+describe('rubrics1960Policy.limitCommemorations', () => {
+  it('drops fourth-class ferias and Saturday BVM from second-class commemorations', () => {
+    const limited = rubrics1960Policy.limitCommemorations(
+      [
+        commemoration('Tempora/Pent13-4', 'IV'),
+        commemoration('Sancti/08-22cc', 'IV'),
+        commemoration('Commune/C10', 'III')
+      ],
+      {
+        hour: 'lauds',
+        temporal: temporal('2024-08-22', 'Pent13-4', 'time-after-pentecost', 'IV'),
+        celebration: matinsCelebration('Sancti/08-22', 'II', 'sanctoral'),
+        celebrationRules: matinsRules(),
+        winnerSource: 'occurrence'
+      }
+    );
+
+    expect(limited.map((entry) => entry.feastRef.path)).toEqual(['Sancti/08-22cc']);
+  });
+
+  it('admits only the second-class feast on a second-class Sunday', () => {
+    const limited = rubrics1960Policy.limitCommemorations(
+      [commemoration('Sancti/09-08', 'II'), commemoration('Sancti/09-08cc', 'IV')],
+      {
+        hour: 'lauds',
+        temporal: temporal('2024-09-08', 'Pent16-0', 'time-after-pentecost', 'II'),
+        celebration: matinsCelebration('Tempora/Pent16-0', 'II', 'temporal'),
+        celebrationRules: matinsRules(),
+        winnerSource: 'occurrence'
+      }
+    );
+
+    expect(limited.map((entry) => entry.feastRef.path)).toEqual(['Sancti/09-08']);
   });
 });
 
@@ -335,7 +482,7 @@ function temporal(
   };
 }
 
-function matinsRules(): CelebrationRuleSet {
+function matinsRules(overrides: Partial<CelebrationRuleSet> = {}): CelebrationRuleSet {
   return {
     matins: { lessonCount: 9, nocturns: 3, rubricGate: 'always' },
     hasFirstVespers: true,
@@ -351,7 +498,8 @@ function matinsRules(): CelebrationRuleSet {
     commemoratio3: false,
     unaAntiphona: false,
     unmapped: [],
-    hourScopedDirectives: []
+    hourScopedDirectives: [],
+    ...overrides
   };
 }
 
@@ -384,6 +532,24 @@ function candidate(path: string, source: Candidate['source'], classSymbol: Class
     },
     rank: rank(classSymbol),
     source
+  };
+}
+
+function commemoration(path: string, classSymbol: ClassSymbol1960 | 'II'): {
+  readonly feastRef: { readonly path: string; readonly id: string; readonly title: string };
+  readonly rank: ReturnType<typeof rank> | { readonly name: 'II'; readonly classSymbol: 'II'; readonly weight: number };
+  readonly reason: 'occurrence-impeded';
+  readonly hours: readonly ['lauds'];
+} {
+  return {
+    feastRef: {
+      path,
+      id: path,
+      title: path
+    },
+    rank: classSymbol === 'II' ? rank('II') : rank(classSymbol),
+    reason: 'occurrence-impeded',
+    hours: ['lauds']
   };
 }
 

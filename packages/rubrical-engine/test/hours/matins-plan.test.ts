@@ -41,7 +41,7 @@ describe('buildMatinsPlan', () => {
     expect(replaced?.replacesTeDeum).toBe(true);
   });
 
-  it('builds Advent Sunday as 3 nocturns with Te Deum said', () => {
+  it('builds Advent Sunday as 1 nocturn with Te Deum replaced by the third responsory', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add('horas/Latin/Tempora/Adv1-0.txt', adventSundayMatinsSections());
     corpus.add(
@@ -59,21 +59,16 @@ describe('buildMatinsPlan', () => {
       corpus
     });
 
-    expect(result.plan.nocturns).toBe(3);
-    expect(result.plan.totalLessons).toBe(9);
-    expect(result.plan.teDeum).toBe('say');
-    expect(result.plan.nocturnPlan.map((nocturn) => nocturn.antiphons.length)).toEqual([
-      3, 3, 3
-    ]);
-    expect(result.plan.nocturnPlan.map((nocturn) => nocturn.psalmody.length)).toEqual([
-      3, 3, 3
-    ]);
-    for (const nocturn of result.plan.nocturnPlan) {
-      expect(nocturn.versicle.reference.path).toBe(
-        'horas/Latin/Psalterium/Psalmi/Psalmi matutinum'
-      );
-      expect(nocturn.versicle.reference.section).toBe('Day0');
-    }
+    expect(result.plan.nocturns).toBe(1);
+    expect(result.plan.totalLessons).toBe(3);
+    expect(result.plan.teDeum).toBe('replace-with-responsory');
+    expect(result.plan.nocturnPlan).toHaveLength(1);
+    expect(result.plan.nocturnPlan[0]?.antiphons).toHaveLength(3);
+    expect(result.plan.nocturnPlan[0]?.psalmody).toHaveLength(3);
+    expect(result.plan.nocturnPlan[0]?.versicle.reference.path).toBe(
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum'
+    );
+    expect(result.plan.nocturnPlan[0]?.versicle.reference.section).toBe('Day0');
   });
 
   it('keeps festal hymn metadata (doxology variant) on I-class feast', () => {

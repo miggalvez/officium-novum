@@ -7,7 +7,7 @@ import type {
 import type { TemporalContext } from '../types/model.js';
 import type { RubricalPolicy } from '../types/policy.js';
 
-const TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5', 'Quad6-6']);
+const ABSOLUTE_TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5']);
 
 export function resolveConcurrence(params: {
   readonly today: DayConcurrencePreview;
@@ -18,7 +18,10 @@ export function resolveConcurrence(params: {
   const today = toTodaySide(params.today);
   const tomorrow = toTomorrowSide(params.tomorrow);
 
-  if (TRIDUUM_KEYS.has(params.temporal.dayName)) {
+  const treatHolySaturdayAsSpecial =
+    params.temporal.dayName === 'Quad6-6' && params.policy.name !== 'divino-afflatu';
+
+  if (ABSOLUTE_TRIDUUM_KEYS.has(params.temporal.dayName) || treatHolySaturdayAsSpecial) {
     return {
       winner: 'today',
       source: today.celebration,

@@ -20,8 +20,8 @@ const EXPECTED_FATE: Readonly<Record<ClassSymbol1960, 'commemorate' | 'omit' | '
   II: 'commemorate',
   III: 'commemorate',
   'IV-lenten-feria': 'commemorate',
-  IV: 'omit',
-  'commemoration-only': 'omit'
+  IV: 'commemorate',
+  'commemoration-only': 'commemorate'
 };
 
 describe('PRECEDENCE_1960', () => {

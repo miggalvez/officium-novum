@@ -6,6 +6,7 @@ import {
   type ClassSymbol1960
 } from '../occurrence/tables/precedence-1960.js';
 import { buildCelebrationRuleSet as defaultBuildCelebrationRuleSet } from '../rules/evaluate.js';
+import { mergeFeastRules } from '../rules/merge.js';
 import { rubrics1960ResolveRank } from '../sanctoral/rank-normalizer.js';
 import { walkTransferTargetDate } from '../transfer/compute.js';
 import type { FeastVespersSignals } from '../concurrence/vespers-class.js';
@@ -29,12 +30,12 @@ import type {
 import type { Celebration, Commemoration } from '../types/ordo.js';
 import type {
   HourDirectivesParams,
+  OctaveRule,
   PrecedenceRow,
   RubricalPolicy,
   SelectPsalmodyParams
 } from '../types/policy.js';
 import type { CelebrationRuleSet } from '../types/rule-set.js';
-import { UnsupportedPolicyError } from '../types/policy.js';
 
 const TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5', 'Quad6-6']);
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
@@ -88,6 +89,15 @@ const CHRISTMAS_RELATED_TRANSFER_PATHS = new Set([
   'Tempora/Nat30',
   'Tempora/Nat31',
   'Tempora/Nat01'
+]);
+
+const CHRISTMAS_OCTAVE_DAY_PATHS = new Set([
+  'Tempora/Nat26',
+  'Tempora/Nat27',
+  'Tempora/Nat28',
+  'Tempora/Nat29',
+  'Tempora/Nat30',
+  'Tempora/Nat31'
 ]);
 
 export const rubrics1960Policy: RubricalPolicy = {
@@ -239,7 +249,29 @@ export const rubrics1960Policy: RubricalPolicy = {
     );
   },
   buildCelebrationRuleSet(feastFile, commemorations, context) {
-    return defaultBuildCelebrationRuleSet(feastFile, commemorations, context);
+    const base = defaultBuildCelebrationRuleSet(feastFile, commemorations, context);
+    let celebrationRules = base.celebrationRules;
+
+    if (
+      context.dayName === 'Quad6-4' ||
+      context.dayName === 'Quad6-5' ||
+      context.dayName === 'Quad6-6'
+    ) {
+      celebrationRules = mergeFeastRules(celebrationRules, {
+        hasFirstVespers: false,
+        hasSecondVespers: false
+      });
+    }
+
+    celebrationRules = mergeFeastRules(
+      celebrationRules,
+      officeBoundaryPatch1960(context.celebration, context.dayOfWeek, celebrationRules)
+    );
+
+    return {
+      celebrationRules,
+      warnings: base.warnings
+    };
   },
   transferTarget(
     candidate,
@@ -275,8 +307,42 @@ export const rubrics1960Policy: RubricalPolicy = {
       celebrationRules: params.celebrationRules,
       hourRules: params.hourRules,
       temporal: params.temporal,
-      ...(params.overlay ? { overlay: params.overlay } : {})
+        ...(params.overlay ? { overlay: params.overlay } : {})
     });
+  },
+  limitCommemorations(
+    commemorations: readonly Commemoration[],
+    params
+  ): readonly Commemoration[] {
+    const admissible = commemorations.filter((entry) =>
+      isAdmissibleCommemoration1960(entry)
+    );
+
+    if (
+      HOLY_WEEK_MON_WED_KEYS.has(params.temporal.dayName) ||
+      isPaschalOctaveDay(params.temporal)
+    ) {
+      return [];
+    }
+
+    if (params.celebration.kind === 'vigil' && params.celebration.rank.classSymbol === 'I') {
+      return [];
+    }
+
+    if (isFirstClassDay1960(params.celebration, params.temporal)) {
+      return admissible.filter((entry) => isPrivilegedCommemoration1960(entry)).slice(0, 1);
+    }
+
+    if (isSecondClassSundayOffice(params.celebration, params.temporal, params.celebrationRules)) {
+      return admissible.filter((entry) => entry.rank.classSymbol === 'II').slice(0, 1);
+    }
+
+    if (params.celebration.rank.classSymbol === 'II' || params.celebration.rank.classSymbol === 'II-ember-day') {
+      const privileged = admissible.filter((entry) => isPrivilegedCommemoration1960(entry));
+      return (privileged.length > 0 ? privileged : admissible).slice(0, 1);
+    }
+
+    return admissible.slice(0, 2);
   },
   resolveMatinsShape(params): {
     readonly nocturns: 1 | 3;
@@ -288,46 +354,69 @@ export const rubrics1960Policy: RubricalPolicy = {
         ? 9
         : params.celebrationRules.matins.lessonCount;
 
-    const classSymbol = params.celebration.rank.classSymbol;
-
-    // RI §95: Ember Saturdays keep their fuller Matins shape.
-    if (classSymbol === 'II-ember-day' && params.temporal.dayOfWeek === 6) {
-      return {
-        nocturns: 3,
-        totalLessons: 9,
-        lessonsPerNocturn: [3, 3, 3]
-      };
-    }
-
-    // RI §§165-166, §221: unprivileged ferias collapse to one nocturn with
-    // three lessons in the 1960 simplification.
-    if (isFerialClass(classSymbol) && isLikelyFerialTemporal(params)) {
-      return {
-        nocturns: 1,
-        totalLessons: 3,
-        lessonsPerNocturn: [3]
-      };
-    }
-
-    // RI §§165-168, §220: Sundays and I/II/III-class feasts retain 3x3 Matins.
     if (
-      classSymbol === 'I' ||
-      classSymbol === 'II' ||
-      classSymbol === 'III' ||
-      classSymbol.startsWith('I-privilegiata-')
+      params.celebrationRules.matins.nocturns === 1 ||
+      configured === 3 ||
+      isPaschalOctaveDay(params.temporal)
     ) {
       return {
+        nocturns: 1,
+        totalLessons: 3,
+        lessonsPerNocturn: [3]
+      };
+    }
+
+    if (isTriduum(params.temporal)) {
+      return {
         nocturns: 3,
         totalLessons: 9,
         lessonsPerNocturn: [3, 3, 3]
       };
     }
 
-    if (params.celebrationRules.matins.nocturns === 1 || configured === 3) {
+    if (params.celebration.feastRef.path === 'Tempora/Nat25') {
+      return {
+        nocturns: 3,
+        totalLessons: 9,
+        lessonsPerNocturn: [3, 3, 3]
+      };
+    }
+
+    if (isChristmasOctaveDayCelebration(params.celebration)) {
       return {
         nocturns: 1,
         totalLessons: 3,
         lessonsPerNocturn: [3]
+      };
+    }
+
+    if (isSundayOffice1960(params.celebration, params.temporal, params.celebrationRules)) {
+      return {
+        nocturns: 1,
+        totalLessons: 3,
+        lessonsPerNocturn: [3]
+      };
+    }
+
+    if (
+      params.celebration.feastRef.path === 'Commune/C10' ||
+      params.celebration.rank.classSymbol === 'III' ||
+      isFerialClass(params.celebration.rank.classSymbol) ||
+      params.celebration.kind === 'vigil' ||
+      isThreeLessonPrivilegedTemporal(params.temporal)
+    ) {
+      return {
+        nocturns: 1,
+        totalLessons: 3,
+        lessonsPerNocturn: [3]
+      };
+    }
+
+    if (params.celebration.rank.classSymbol === 'I' || params.celebration.rank.classSymbol === 'II') {
+      return {
+        nocturns: 3,
+        totalLessons: 9,
+        lessonsPerNocturn: [3, 3, 3]
       };
     }
 
@@ -354,13 +443,8 @@ export const rubrics1960Policy: RubricalPolicy = {
       return 'omit';
     }
 
-    // RI §221: on 1960 ferial Matins (3 lessons), the final responsory
-    // replaces Te Deum.
-    if (
-      params.plan.totalLessons === 3 &&
-      isFerialClass(params.temporal.rank.classSymbol)
-    ) {
-      return 'replace-with-responsory';
+    if (params.plan.totalLessons === 3) {
+      return isPaschalOctaveDay(params.temporal) ? 'say' : 'replace-with-responsory';
     }
 
     return 'say';
@@ -393,7 +477,7 @@ export const rubrics1960Policy: RubricalPolicy = {
         return 'post-pentecost';
     }
   },
-  octavesEnabled(_feastRef: FeastReference): null {
+  octavesEnabled(_feastRef: FeastReference): OctaveRule | null {
     return null;
   }
 };
@@ -402,6 +486,11 @@ function compareCandidates1960(a: Candidate, b: Candidate): number {
     const privilegedOverride = comparePrivilegedTemporal(a, b);
     if (privilegedOverride !== null) {
       return privilegedOverride;
+    }
+
+    const christmasOctaveOverride = compareChristmasOctaveDays(a, b);
+    if (christmasOctaveOverride !== null) {
+      return christmasOctaveOverride;
     }
 
     if (a.rank.weight !== b.rank.weight) {
@@ -506,24 +595,12 @@ function isFerialClass(classSymbol: string): boolean {
   );
 }
 
-function isLikelyFerialTemporal(params: {
-  readonly celebration: Celebration;
-  readonly temporal: TemporalContext;
-}): boolean {
-  if (params.celebration.source !== 'temporal') {
-    return false;
-  }
+function isThreeLessonPrivilegedTemporal(temporal: TemporalContext): boolean {
+  return temporal.dayName === 'Quadp3-3' || HOLY_WEEK_MON_WED_KEYS.has(temporal.dayName);
+}
 
-  const classSymbol = params.temporal.rank.classSymbol;
-  if (classSymbol === 'II-ember-day' || classSymbol === 'IV-lenten-feria') {
-    return true;
-  }
-
-  if (classSymbol !== 'IV') {
-    return false;
-  }
-
-  return /-\d$/u.test(params.temporal.dayName);
+function isPaschalOctaveDay(temporal: TemporalContext): boolean {
+  return /^Pasc0-[0-6]$/u.test(temporal.dayName);
 }
 
 function forbidsTransferInto1960(impeded: Candidate, temporal: TemporalContext): boolean {
@@ -571,6 +648,179 @@ function isWithinChristmasOctave(isoDate: string): boolean {
 
 function isChristmasRelatedTransfer(candidate: Candidate): boolean {
   return CHRISTMAS_RELATED_TRANSFER_PATHS.has(candidate.feastRef.path);
+}
+
+function compareChristmasOctaveDays(a: Candidate, b: Candidate): number | null {
+  const leftIsChristmasOctaveDay = isChristmasOctaveDayCandidate(a);
+  const rightIsChristmasOctaveDay = isChristmasOctaveDayCandidate(b);
+  if (leftIsChristmasOctaveDay === rightIsChristmasOctaveDay) {
+    return null;
+  }
+
+  const other = leftIsChristmasOctaveDay ? b : a;
+  if (other.rank.classSymbol !== 'II') {
+    return null;
+  }
+
+  return leftIsChristmasOctaveDay ? 1 : -1;
+}
+
+function isChristmasOctaveDayCandidate(candidate: Candidate): boolean {
+  return CHRISTMAS_OCTAVE_DAY_PATHS.has(candidate.feastRef.path);
+}
+
+function officeBoundaryPatch1960(
+  celebration: Celebration,
+  dayOfWeek: number,
+  celebrationRules: CelebrationRuleSet
+): {
+  readonly hasFirstVespers: boolean;
+  readonly hasSecondVespers: boolean;
+} {
+  const computed = computeOfficeBoundaries1960(celebration, dayOfWeek, celebrationRules);
+  return {
+    hasFirstVespers: celebrationRules.hasFirstVespers && computed.hasFirstVespers,
+    hasSecondVespers: celebrationRules.hasSecondVespers && computed.hasSecondVespers
+  };
+}
+
+function computeOfficeBoundaries1960(
+  celebration: Celebration,
+  dayOfWeek: number,
+  celebrationRules: CelebrationRuleSet
+): {
+  readonly hasFirstVespers: boolean;
+  readonly hasSecondVespers: boolean;
+} {
+  if (celebration.feastRef.path === 'Commune/C10') {
+    return {
+      hasFirstVespers: false,
+      hasSecondVespers: false
+    };
+  }
+
+  if (celebration.kind === 'vigil') {
+    return {
+      hasFirstVespers: false,
+      hasSecondVespers: celebration.rank.classSymbol !== 'I'
+    };
+  }
+
+  if (isSundayOffice1960(celebration, { dayOfWeek }, celebrationRules)) {
+    return {
+      hasFirstVespers: true,
+      hasSecondVespers: true
+    };
+  }
+
+  if (celebration.rank.classSymbol === 'I') {
+    return {
+      hasFirstVespers: true,
+      hasSecondVespers: true
+    };
+  }
+
+  if (celebration.rank.classSymbol === 'II') {
+    return {
+      hasFirstVespers:
+        celebrationRules.festumDomini &&
+        celebration.source === 'temporal' &&
+        dayOfWeek === 0,
+      hasSecondVespers: true
+    };
+  }
+
+  if (celebration.rank.classSymbol === 'III') {
+    return {
+      hasFirstVespers: false,
+      hasSecondVespers: true
+    };
+  }
+
+  return {
+    hasFirstVespers: false,
+    hasSecondVespers: celebration.source !== 'temporal' || dayOfWeek !== 6
+  };
+}
+
+function isSundayOffice1960(
+  celebration: Celebration,
+  temporal: Pick<TemporalContext, 'dayOfWeek'>,
+  celebrationRules: CelebrationRuleSet
+): boolean {
+  return (
+    temporal.dayOfWeek === 0 &&
+    celebration.source === 'temporal' &&
+    !celebrationRules.festumDomini
+  );
+}
+
+function isFirstClassDay1960(
+  celebration: Celebration,
+  temporal: TemporalContext
+): boolean {
+  return (
+    celebration.rank.classSymbol === 'I' ||
+    celebration.rank.classSymbol.startsWith('I-privilegiata-') ||
+    (celebration.kind === 'vigil' && temporal.date.endsWith('-12-24'))
+  );
+}
+
+function isSecondClassSundayOffice(
+  celebration: Celebration,
+  temporal: TemporalContext,
+  celebrationRules: CelebrationRuleSet
+): boolean {
+  return (
+    celebration.rank.classSymbol === 'II' &&
+    isSundayOffice1960(celebration, temporal, celebrationRules)
+  );
+}
+
+function isPrivilegedCommemoration1960(entry: Commemoration): boolean {
+  if (entry.reason === 'sunday') {
+    return true;
+  }
+
+  if (entry.rank.classSymbol === 'I' || entry.rank.classSymbol.startsWith('I-privilegiata-')) {
+    return true;
+  }
+
+  const path = entry.feastRef.path;
+  if (/^Tempora\/Nat(?:26|27|28|29|30|31|01)$/u.test(path)) {
+    return true;
+  }
+
+  if (/^Tempora\/Pent17-[356]$/u.test(path)) {
+    return true;
+  }
+
+  if (/^Tempora\/Adv\d+-[1-6]$/u.test(path) || /^Tempora\/Quad/.test(path)) {
+    return true;
+  }
+
+  return false;
+}
+
+function isAdmissibleCommemoration1960(entry: Commemoration): boolean {
+  if (entry.feastRef.path === 'Commune/C10') {
+    return false;
+  }
+
+  if (entry.rank.classSymbol === 'IV' && entry.feastRef.path.startsWith('Tempora/')) {
+    // General Rubrics (1960) §112: ferias of the fourth class are never commemorated.
+    return false;
+  }
+
+  return true;
+}
+
+function isChristmasOctaveDayCelebration(celebration: Celebration): boolean {
+  return isChristmasOctaveDayCandidate({
+    feastRef: celebration.feastRef,
+    rank: celebration.rank,
+    source: celebration.source
+  });
 }
 
 /**

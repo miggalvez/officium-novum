@@ -300,6 +300,7 @@ describe('assembleCandidates / pickNaiveWinner', () => {
         classSymbol: 'I'
       },
       source: 'sanctoral',
+      kind: 'vigil',
       vigilOf
     });
   });

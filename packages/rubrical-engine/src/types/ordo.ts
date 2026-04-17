@@ -24,6 +24,8 @@ export interface Celebration {
   readonly feastRef: FeastReference;
   readonly rank: ResolvedRank;
   readonly source: 'temporal' | 'sanctoral';
+  readonly kind?: 'vigil' | 'octave';
+  readonly octaveDay?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   readonly vigil?: FeastReference;
   readonly transferredFrom?: string;
 }
@@ -33,5 +35,7 @@ export interface Commemoration {
   readonly rank: ResolvedRank;
   readonly reason: CommemorationReason;
   readonly hours: readonly HourName[];
+  readonly kind?: 'vigil' | 'octave';
+  readonly octaveDay?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   readonly color?: LiturgicalColor;
 }

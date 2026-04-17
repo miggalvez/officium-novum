@@ -1,0 +1,592 @@
+{
+  "year": 2024,
+  "version": "Reduced - 1955",
+  "rows": [
+    {
+      "date": "2024-01-01",
+      "celebrationPath": "Sancti/01-01",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/01-01",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-01-06",
+      "celebrationPath": "Sancti/01-06",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/01-06",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-01-07",
+      "celebrationPath": "Tempora/Epi1-0",
+      "commemorations": [
+        "Sancti/01-07"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Epi1-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-01-13",
+      "celebrationPath": "Sancti/01-13",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/01-13",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-01-14",
+      "celebrationPath": "Tempora/Epi2-0",
+      "commemorations": [
+        "Sancti/01-14",
+        "Sancti/01-14cc"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Epi2-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-01-28",
+      "celebrationPath": "Tempora/Quadp1-0",
+      "commemorations": [
+        "Sancti/01-28",
+        "Sancti/01-28t"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quadp1-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-02-11",
+      "celebrationPath": "Tempora/Quadp3-0",
+      "commemorations": [
+        "Sancti/02-11"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quadp3-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-02-14",
+      "celebrationPath": "Tempora/Quadp3-3",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quadp3-3",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-02-18",
+      "celebrationPath": "Tempora/Quad1-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad1-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-02-24",
+      "celebrationPath": "Tempora/Quad1-6",
+      "commemorations": [],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Tempora/Quad2-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-02-25",
+      "celebrationPath": "Tempora/Quad2-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad2-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-03",
+      "celebrationPath": "Tempora/Quad3-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad3-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-10",
+      "celebrationPath": "Tempora/Quad4-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad4-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-17",
+      "celebrationPath": "Tempora/Quad5-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad5-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-19",
+      "celebrationPath": "Sancti/03-19",
+      "commemorations": [
+        "Tempora/Quad5-2"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/03-19",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-24",
+      "celebrationPath": "Tempora/Quad6-0r",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-0r",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-25",
+      "celebrationPath": "Tempora/Quad6-1",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-1",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-03-26",
+      "celebrationPath": "Tempora/Quad6-2",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-2",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-03-27",
+      "celebrationPath": "Tempora/Quad6-3",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-3",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-03-28",
+      "celebrationPath": "Tempora/Quad6-4r",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-4r",
+      "complineSourceKind": "triduum-special",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-29",
+      "celebrationPath": "Tempora/Quad6-5r",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-5r",
+      "complineSourceKind": "triduum-special",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-30",
+      "celebrationPath": "Tempora/Quad6-6r",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Quad6-6r",
+      "complineSourceKind": "triduum-special",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-03-31",
+      "celebrationPath": "Tempora/Pasc0-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc0-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-01",
+      "celebrationPath": "Tempora/Pasc0-1",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc0-1",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-02",
+      "celebrationPath": "Tempora/Pasc0-2",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc0-2",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-03",
+      "celebrationPath": "Tempora/Pasc0-3",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc0-3",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-04",
+      "celebrationPath": "Tempora/Pasc0-4",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc0-4",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-05",
+      "celebrationPath": "Tempora/Pasc0-5",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc0-5",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-06",
+      "celebrationPath": "Tempora/Pasc0-6",
+      "commemorations": [],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Tempora/Pasc1-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-04-07",
+      "celebrationPath": "Tempora/Pasc1-0",
+      "commemorations": [],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Sancti/03-25",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-05-09",
+      "celebrationPath": "Tempora/Pasc5-4",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc5-4",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-05-19",
+      "celebrationPath": "Tempora/Pasc7-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pasc7-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-05-26",
+      "celebrationPath": "Tempora/Pent01-0r",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pent01-0r",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-05-30",
+      "celebrationPath": "Tempora/Pent01-4",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pent01-4",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-06-16",
+      "celebrationPath": "Tempora/Pent04-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pent04-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-06-20",
+      "celebrationPath": "Tempora/Pent04-4",
+      "commemorations": [
+        "Sancti/06-20"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Pent04-4",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-06-24",
+      "celebrationPath": "Sancti/06-24",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/06-24",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-06-29",
+      "celebrationPath": "Sancti/06-29",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/06-29",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-06-30",
+      "celebrationPath": "Tempora/Pent06-0",
+      "commemorations": [
+        "Sancti/06-30"
+      ],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Sancti/07-01",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-07-01",
+      "celebrationPath": "Sancti/07-01",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/07-01",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-07-06",
+      "celebrationPath": "Commune/C10",
+      "commemorations": [],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Tempora/Pent07-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-08-15",
+      "celebrationPath": "Sancti/08-15",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/08-15",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-08-19",
+      "celebrationPath": "Sancti/08-19",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/08-19",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-08-22",
+      "celebrationPath": "Sancti/08-22",
+      "commemorations": [
+        "Sancti/08-22cc"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/08-22",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-09-08",
+      "celebrationPath": "Sancti/09-08",
+      "commemorations": [
+        "Tempora/Pent16-0",
+        "Sancti/09-08cc"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/09-08",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-09-12",
+      "celebrationPath": "Sancti/09-12",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/09-12",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-09-15",
+      "celebrationPath": "Sancti/09-15",
+      "commemorations": [
+        "Tempora/Pent17-0",
+        "Sancti/09-15cc"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/09-15",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-09-29",
+      "celebrationPath": "Sancti/09-29",
+      "commemorations": [
+        "Tempora/Pent19-0"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/09-29",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-10-04",
+      "celebrationPath": "Sancti/10-04",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/10-04",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-10-06",
+      "celebrationPath": "Tempora/Pent20-0",
+      "commemorations": [
+        "Sancti/10-06"
+      ],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Sancti/10-07",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-11-01",
+      "celebrationPath": "Sancti/11-01",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/11-01",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-11-05",
+      "celebrationPath": "Tempora/Epi4-2",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Epi4-2",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-11-08",
+      "celebrationPath": "Tempora/Epi4-5",
+      "commemorations": [
+        "Sancti/11-08r"
+      ],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Sancti/11-09",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-12-01",
+      "celebrationPath": "Tempora/Adv1-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Adv1-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-12-08",
+      "celebrationPath": "Sancti/12-08",
+      "commemorations": [
+        "Tempora/Adv2-0"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/12-08",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-12-15",
+      "celebrationPath": "Tempora/Adv3-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Adv3-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-12-22",
+      "celebrationPath": "Tempora/Adv4-0",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Tempora/Adv4-0",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-12-24",
+      "celebrationPath": "Sancti/12-24",
+      "commemorations": [],
+      "concurrenceWinner": "tomorrow",
+      "concurrenceSourcePath": "Sancti/12-25",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 3
+    },
+    {
+      "date": "2024-12-25",
+      "celebrationPath": "Sancti/12-25",
+      "commemorations": [],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/12-25",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-12-26",
+      "celebrationPath": "Sancti/12-26",
+      "commemorations": [
+        "Tempora/Nat26"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/12-26",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    },
+    {
+      "date": "2024-12-27",
+      "celebrationPath": "Sancti/12-27",
+      "commemorations": [
+        "Tempora/Nat27"
+      ],
+      "concurrenceWinner": "today",
+      "concurrenceSourcePath": "Sancti/12-27",
+      "complineSourceKind": "vespers-winner",
+      "matinsTotalLessons": 9
+    }
+  ],
+  "failures": []
+}

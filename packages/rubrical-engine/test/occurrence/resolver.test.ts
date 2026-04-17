@@ -40,11 +40,11 @@ describe('resolveOccurrence', () => {
     expect(result.celebration.feastRef.path).toBe('Sancti/03-19');
     expect(result.commemorations.map((entry) => entry.feastRef.path)).toEqual([
       'Tempora/Pasc2-0',
-      'Sancti/10-07'
+      'Sancti/10-07',
+      'Sancti/09-11'
     ]);
     expect(result.transferQueue.map((entry) => entry.candidate.feastRef.path)).toEqual([]);
-    expect(result.omitted.map((entry) => entry.feastRef.path)).toEqual(['Sancti/09-11']);
-    expect(result.warnings.some((warning) => warning.code === 'occurrence-omitted')).toBe(true);
+    expect(result.omitted).toEqual([]);
   });
 
   it('uses privileged-feria reason when a privileged feria loses to a first-class feast of the Lord', () => {
@@ -136,8 +136,8 @@ describe('resolveOccurrence edge cases (design §10.4)', () => {
     );
 
     expect(result.celebration.feastRef.path).toBe('Sancti/02-24');
-    expect(result.commemorations).toEqual([]);
-    expect(result.omitted.map((entry) => entry.feastRef.path)).toEqual(['Tempora/Quadp2-6']);
+    expect(result.commemorations.map((entry) => entry.feastRef.path)).toEqual(['Tempora/Quadp2-6']);
+    expect(result.omitted).toEqual([]);
   });
 
   it('prefers Immaculate Conception over Advent II Sunday and commemorates the Sunday', () => {

@@ -16,6 +16,8 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "compare:phase-2h-perl-fixtures": "node ./test/fixtures/compare-phase-2h-perl-fixtures.mjs",
+    "generate:phase-2h-perl-fixtures": "node ./test/fixtures/generate-phase-2h-perl-fixtures.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run"
   },

@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 
 import {
   VERSION_POLICY,
-  UnsupportedPolicyError,
   asVersionHandle,
   buildKalendariumTable,
   buildScriptureTransferTable,
@@ -69,17 +68,6 @@ describe('createRubricalEngine', () => {
     expect(summary.version.handle).toBe('Rubrics 1960 - 1960');
     expect(summary.temporal.dayName).toBe('Pasc2-0');
     expect(summary.overlay).toBeUndefined();
-    expect(summary.warnings).toContainEqual({
-      code: 'concurrence-rule-veto',
-      message:
-        'Concurrence winner was chosen by explicit Vespers rule flags before rank comparison.',
-      severity: 'info',
-      context: {
-        reason: 'today-declines-second-vespers',
-        today: 'Sancti/04-14',
-        tomorrow: 'Tempora/Pasc2-1'
-      }
-    });
     expect(summary.candidates).toHaveLength(2);
     expect(summary.celebration.feastRef.path).toBe('Sancti/04-14');
     expect(summary.celebrationRules.matins.lessonCount).toBe(9);
@@ -348,46 +336,76 @@ describe('createRubricalEngine', () => {
     });
   });
 
-  it('throws UnsupportedPolicyError for non-1960 occurrence resolution paths', () => {
+  it.each([
+    ['Divino Afflatu - 1954', 'DA'],
+    ['Reduced - 1955', '1955']
+  ] as const)('resolves %s without unsupported-policy throws', (versionHandle, kalendar) => {
     const corpus = new TestOfficeTextIndex();
     seedTemporalYear(corpus, 2024);
     corpus.add(
       'horas/Latin/Tempora/Pasc2-0.txt',
       ['[Officium]', 'Dominica II post Pascha', '', '[Rank]', ';;Semiduplex;;5;;'].join('\n')
     );
+
     const registry = buildVersionRegistry([
       {
-        version: 'Divino Afflatu - 1954',
-        kalendar: 'DA',
-        transfer: 'DA',
+        version: versionHandle,
+        kalendar,
+        transfer: kalendar,
         stransfer: 'DA'
       }
     ]);
 
     const engine = createRubricalEngine({
       corpus,
-      kalendarium: buildKalendariumTable([{ name: 'DA', entries: [] }]),
+      kalendarium: buildKalendariumTable([{ name: kalendar, entries: [] }]),
       yearTransfers: buildYearTransferTable([]),
       scriptureTransfers: buildScriptureTransferTable([]),
       versionRegistry: registry,
-      version: asVersionHandle('Divino Afflatu - 1954'),
+      version: asVersionHandle(versionHandle),
       policyMap: VERSION_POLICY
     });
 
-    expect(() => engine.resolveDayOfficeSummary('2024-04-14')).toThrow(UnsupportedPolicyError);
-    expect(() => engine.resolveDayOfficeSummary('2024-04-14')).toThrow(
-      "Policy 'divino-afflatu' does not implement 'applySeasonPreemption'"
-    );
+    const summary = engine.resolveDayOfficeSummary('2024-04-14');
+
+    expect(summary.version.handle).toBe(versionHandle);
+    expect(summary.celebration.feastRef.path).toBe('Tempora/Pasc2-0');
+    expect(summary.hours.matins).toBeDefined();
   });
 
-  it('keeps non-1960 concurrence hooks as explicit UnsupportedPolicyError stubs', () => {
-    const policy = VERSION_POLICY.get(asVersionHandle('Divino Afflatu - 1954'));
+  it.each([
+    asVersionHandle('Divino Afflatu - 1954'),
+    asVersionHandle('Reduced - 1955')
+  ])('resolves pre-1960 concurrence and compline hooks for %s', (versionHandle) => {
+    const policy = VERSION_POLICY.get(versionHandle);
     expect(policy).toBeDefined();
     if (!policy) {
       return;
     }
 
-    const sideView = {
+    const celebrationRules = {
+      matins: {
+        lessonCount: 9,
+        nocturns: 3,
+        rubricGate: 'always'
+      },
+      hasFirstVespers: true,
+      hasSecondVespers: true,
+      lessonSources: [],
+      lessonSetAlternates: [],
+      festumDomini: false,
+      conclusionMode: 'separate',
+      antiphonScheme: 'default',
+      omitCommemoration: false,
+      noSuffragium: false,
+      quorumFestum: false,
+      commemoratio3: false,
+      unaAntiphona: false,
+      unmapped: [],
+      hourScopedDirectives: []
+    } as const;
+
+    const today = {
       celebration: {
         feastRef: {
           path: 'Sancti/03-19',
@@ -395,101 +413,125 @@ describe('createRubricalEngine', () => {
           title: 'S. Joseph'
         },
         rank: {
-          name: 'I',
-          classSymbol: 'I',
-          weight: 1000
+          name: 'Duplex I classis',
+          classSymbol: 'duplex-i',
+          weight: 1306
         },
         source: 'sanctoral'
       },
-      celebrationRules: {
-        matins: {
-          lessonCount: 9,
-          nocturns: 3,
-          rubricGate: 'always'
+      celebrationRules,
+      vespersClass: 'totum',
+      hasVespers: true
+    } as const;
+    const tomorrow = {
+      celebration: {
+        feastRef: {
+          path: 'Sancti/03-20',
+          id: 'Sancti/03-20',
+          title: 'S. Cuthberti'
         },
-        hasFirstVespers: true,
-        hasSecondVespers: true,
-        lessonSources: [],
-        lessonSetAlternates: [],
-        festumDomini: false,
-        conclusionMode: 'separate',
-        antiphonScheme: 'default',
-        omitCommemoration: false,
-        noSuffragium: false,
-        quorumFestum: false,
-        commemoratio3: false,
-        unaAntiphona: false,
-        unmapped: [],
-        hourScopedDirectives: []
+        rank: {
+          name: 'Duplex II classis',
+          classSymbol: 'duplex-ii',
+          weight: 1205
+        },
+        source: 'sanctoral'
       },
+      celebrationRules,
       vespersClass: 'totum',
       hasVespers: true
     } as const;
 
-    expect(() =>
-      policy.resolveConcurrence({
-        today: sideView,
-        tomorrow: sideView,
+    const concurrence = policy.resolveConcurrence({
+      today,
+      tomorrow,
+      temporal: {
+        date: '2024-03-19',
+        dayOfWeek: 2,
+        weekStem: 'Quad5',
+        dayName: 'Quad5-2',
+        season: 'lent',
+        feastRef: {
+          path: 'Tempora/Quad5-2',
+          id: 'Tempora/Quad5-2',
+          title: 'Feria tertia'
+        },
+        rank: {
+          name: 'Feria',
+          classSymbol: 'privileged-feria-major',
+          weight: 1450
+        }
+      }
+    });
+
+    expect(concurrence.winner).toBe('today');
+    expect(concurrence.source.feastRef.path).toBe('Sancti/03-19');
+    expect(concurrence.commemorations.map((entry) => entry.feastRef.path)).toEqual([
+      'Sancti/03-20'
+    ]);
+
+    const complineSource = policy.complineSource({
+      concurrence,
+      today: {
+        date: '2024-03-19',
         temporal: {
           date: '2024-03-19',
           dayOfWeek: 2,
           weekStem: 'Quad5',
           dayName: 'Quad5-2',
           season: 'lent',
-          feastRef: sideView.celebration.feastRef,
-          rank: sideView.celebration.rank
-        }
-      })
-    ).toThrow(UnsupportedPolicyError);
-    expect(() =>
-      policy.complineSource({
-        concurrence: {
-          winner: 'today',
-          source: sideView.celebration,
-          commemorations: [],
-          reason: 'today-higher-rank',
-          warnings: []
-        },
-        today: {
-          date: '2024-03-19',
-          temporal: {
-            date: '2024-03-19',
-            dayOfWeek: 2,
-            weekStem: 'Quad5',
-            dayName: 'Quad5-2',
-            season: 'lent',
-            feastRef: sideView.celebration.feastRef,
-            rank: sideView.celebration.rank
+          feastRef: {
+            path: 'Tempora/Quad5-2',
+            id: 'Tempora/Quad5-2',
+            title: 'Feria tertia'
           },
-          celebration: sideView.celebration,
-          celebrationRules: sideView.celebrationRules,
-          commemorations: [],
-          firstVespersClass: 'totum',
-          secondVespersClass: 'totum',
-          hasFirstVespers: true,
-          hasSecondVespers: true
+          rank: {
+            name: 'Feria',
+            classSymbol: 'privileged-feria-major',
+            weight: 1450
+          }
         },
-        tomorrow: {
+        celebration: today.celebration,
+        celebrationRules,
+        commemorations: [],
+        firstVespersClass: 'totum',
+        secondVespersClass: 'totum',
+        hasFirstVespers: true,
+        hasSecondVespers: true
+      },
+      tomorrow: {
+        date: '2024-03-20',
+        temporal: {
           date: '2024-03-20',
-          temporal: {
-            date: '2024-03-20',
-            dayOfWeek: 3,
-            weekStem: 'Quad5',
-            dayName: 'Quad5-3',
-            season: 'lent',
-            feastRef: sideView.celebration.feastRef,
-            rank: sideView.celebration.rank
+          dayOfWeek: 3,
+          weekStem: 'Quad5',
+          dayName: 'Quad5-3',
+          season: 'lent',
+          feastRef: {
+            path: 'Tempora/Quad5-3',
+            id: 'Tempora/Quad5-3',
+            title: 'Feria quarta'
           },
-          celebration: sideView.celebration,
-          celebrationRules: sideView.celebrationRules,
-          commemorations: [],
-          firstVespersClass: 'totum',
-          secondVespersClass: 'totum',
-          hasFirstVespers: true,
-          hasSecondVespers: true
-        }
-      })
-    ).toThrow(UnsupportedPolicyError);
+          rank: {
+            name: 'Feria',
+            classSymbol: 'privileged-feria-major',
+            weight: 1450
+          }
+        },
+        celebration: tomorrow.celebration,
+        celebrationRules,
+        commemorations: [],
+        firstVespersClass: 'totum',
+        secondVespersClass: 'totum',
+        hasFirstVespers: true,
+        hasSecondVespers: true
+      }
+    });
+
+    expect(complineSource).toEqual({
+      kind: 'vespers-winner',
+      celebration: today.celebration
+    });
   });
 
   it('surfaces transferredFrom when St Joseph is transferred from an impeded date', () => {

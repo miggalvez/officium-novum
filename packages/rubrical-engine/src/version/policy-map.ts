@@ -1,12 +1,14 @@
 import { asVersionHandle, type VersionHandle } from '../types/version.js';
 import type { PolicyName, RubricalPolicy } from '../types/policy.js';
 import { createUnsupportedOccurrencePolicy } from '../policy/_shared/unsupported-occurrence.js';
+import { divinoAfflatuPolicy } from '../policy/divino-afflatu.js';
+import { reduced1955Policy } from '../policy/reduced-1955.js';
 import { rubrics1960Policy } from '../policy/rubrics-1960.js';
 
 const POLICIES: Readonly<Record<PolicyName, RubricalPolicy>> = {
   'tridentine-1570': createUnsupportedOccurrencePolicy('tridentine-1570'),
-  'divino-afflatu': createUnsupportedOccurrencePolicy('divino-afflatu'),
-  'reduced-1955': createUnsupportedOccurrencePolicy('reduced-1955'),
+  'divino-afflatu': divinoAfflatuPolicy,
+  'reduced-1955': reduced1955Policy,
   'rubrics-1960': rubrics1960Policy,
   'monastic-tridentine': createUnsupportedOccurrencePolicy('monastic-tridentine'),
   'monastic-divino': createUnsupportedOccurrencePolicy('monastic-divino'),

@@ -285,7 +285,19 @@ function attachCommemorationSlots(
     return;
   }
 
-  const applicable = input.commemorations.filter((c) => c.hours.includes(input.hour));
+  if (input.celebrationRules.omitCommemoration) {
+    return;
+  }
+
+  const applicable = input.policy.limitCommemorations(
+    input.commemorations.filter((c) => c.hours.includes(input.hour)),
+    {
+      hour: input.hour,
+      celebration: input.celebration,
+      celebrationRules: input.celebrationRules,
+      temporal: input.temporal
+    }
+  );
   if (applicable.length === 0) {
     return;
   }
@@ -314,18 +326,6 @@ function attachCommemorationSlots(
   slots['commemoration-antiphons'] = { kind: 'ordered-refs', refs: antiphons };
   slots['commemoration-versicles'] = { kind: 'ordered-refs', refs: versicles };
   slots['commemoration-orations'] = { kind: 'ordered-refs', refs: orations };
-
-  if (input.celebrationRules.omitCommemoration) {
-    warnings.push({
-      code: 'commemoration-suppressed-by-rule',
-      message: 'Commemorations were attached despite celebrationRules.omitCommemoration; check rule evaluation.',
-      severity: 'warn',
-      context: {
-        hour: input.hour,
-        feast: input.celebration.feastRef.path
-      }
-    });
-  }
 }
 
 const HOUR_SECTION_SUFFIX: Readonly<Record<HourName, string>> = {
@@ -363,6 +363,7 @@ export function directivesFromPolicy(
 ): readonly HourDirective[] {
   const set = input.policy.hourDirectives({
     hour: input.hour,
+    celebration: input.celebration,
     celebrationRules: input.celebrationRules,
     hourRules: input.hourRules,
     temporal: input.temporal,

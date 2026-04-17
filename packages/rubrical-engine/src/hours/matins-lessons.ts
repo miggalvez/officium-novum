@@ -219,7 +219,10 @@ function routePositionalDefault(
 
 function effectiveScriptureCourse(context: RouteLessonContext): ScriptureCourse {
   const classSymbol = context.celebration.rank.classSymbol;
-  if (classSymbol === 'I' || classSymbol === 'II') {
+  if (
+    context.policy.name === 'rubrics-1960' &&
+    (classSymbol === 'I' || classSymbol === 'II')
+  ) {
     // RI §220: I/II-class feasts continue the occurring course.
     return 'occurring-1960';
   }

@@ -90,13 +90,13 @@ export const PRECEDENCE_1960: readonly PrecedenceRow[] = [
     'IV',
     400,
     'Rubricarum Instructum (1960) §§91-92; Tabella Dierum Liturgicorum, classis IV',
-    'omit'
+    'commemorate'
   ),
   row(
     'commemoration-only',
     100,
     'Tabella Dierum Liturgicorum (occurrence losers reduced to commemoration only)',
-    'omit'
+    'commemorate'
   )
 ];
 

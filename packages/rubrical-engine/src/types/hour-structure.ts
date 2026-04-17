@@ -70,6 +70,7 @@ export type HourDirective =
   | 'add-versicle-alleluia'
   | 'preces-dominicales'
   | 'preces-feriales'
+  | 'suffragium-of-the-saints'
   | 'omit-suffragium'
   | 'short-chapter-only'
   | 'genuflection-at-oration'

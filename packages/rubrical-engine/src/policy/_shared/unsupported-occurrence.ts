@@ -41,6 +41,9 @@ export function createUnsupportedOccurrencePolicy(
     hourDirectives() {
       throw unsupported(name, 'hourDirectives');
     },
+    limitCommemorations() {
+      throw unsupported(name, 'limitCommemorations');
+    },
     resolveMatinsShape() {
       throw unsupported(name, 'resolveMatinsShape');
     },

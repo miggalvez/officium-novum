@@ -1,0 +1,314 @@
+{
+  "versions": [
+    {
+      "version": "Divino Afflatu - 1954",
+      "occurrence": [
+        {
+          "date": "2024-01-05",
+          "celebrationPath": "Sancti/01-05",
+          "commemorations": ["Sancti/01-05cc"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-03-25",
+          "celebrationPath": "Tempora/Quad6-1",
+          "commemorations": [],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-04-08",
+          "celebrationPath": "Sancti/03-25",
+          "commemorations": [],
+          "transferredFrom": "2024-03-25"
+        },
+        {
+          "date": "2024-06-30",
+          "celebrationPath": "Tempora/Pent06-0",
+          "commemorations": ["Sancti/06-30", "Sancti/06-30oct"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-12-26",
+          "celebrationPath": "Sancti/12-26",
+          "commemorations": ["Tempora/Nat26"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-12-27",
+          "celebrationPath": "Sancti/12-27",
+          "commemorations": ["Tempora/Nat27"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-12-08",
+          "celebrationPath": "Sancti/12-08",
+          "commemorations": ["Tempora/Adv2-0"],
+          "transferredFrom": null
+        }
+      ],
+      "concurrence": [
+        {
+          "date": "2024-01-05",
+          "winner": "tomorrow",
+          "sourcePath": "Sancti/01-06",
+          "commemorations": ["Sancti/01-05"],
+          "complineSourceKind": "vespers-winner"
+        },
+        {
+          "date": "2024-05-09",
+          "winner": "today",
+          "sourcePath": "Tempora/Pasc5-4",
+          "commemorations": ["Sancti/05-10"],
+          "complineSourceKind": "vespers-winner"
+        },
+        {
+          "date": "2024-12-08",
+          "winner": "today",
+          "sourcePath": "Sancti/12-08",
+          "commemorations": [],
+          "complineSourceKind": "vespers-winner"
+        }
+      ],
+      "hours": [
+        {
+          "date": "2024-03-25",
+          "laudsDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"],
+          "vespersDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"]
+        },
+        {
+          "date": "2024-05-09",
+          "laudsDirectives": ["add-alleluia", "add-versicle-alleluia", "suffragium-of-the-saints"],
+          "vespersDirectives": ["add-alleluia", "add-versicle-alleluia", "suffragium-of-the-saints"]
+        },
+        {
+          "date": "2024-12-08",
+          "laudsDirectives": ["omit-suffragium"],
+          "vespersDirectives": ["omit-suffragium"]
+        }
+      ],
+      "matins": [
+        {
+          "date": "2024-07-09",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-02-14",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-03-31",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-03-25",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-03-26",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-03-27",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-04-01",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-04-02",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-05-19",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-08-15",
+          "nocturns": 3,
+          "totalLessons": 9,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-03-28",
+          "nocturns": 3,
+          "totalLessons": 9,
+          "teDeum": "omit"
+        }
+      ]
+    },
+    {
+      "version": "Reduced - 1955",
+      "occurrence": [
+        {
+          "date": "2024-01-05",
+          "celebrationPath": "Tempora/Nat05",
+          "commemorations": ["Sancti/01-05cc"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-03-25",
+          "celebrationPath": "Tempora/Quad6-1",
+          "commemorations": [],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-04-08",
+          "celebrationPath": "Sancti/03-25",
+          "commemorations": [],
+          "transferredFrom": "2024-03-25"
+        },
+        {
+          "date": "2024-06-30",
+          "celebrationPath": "Tempora/Pent06-0",
+          "commemorations": ["Sancti/06-30"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-12-26",
+          "celebrationPath": "Sancti/12-26",
+          "commemorations": ["Tempora/Nat26"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-12-27",
+          "celebrationPath": "Sancti/12-27",
+          "commemorations": ["Tempora/Nat27"],
+          "transferredFrom": null
+        },
+        {
+          "date": "2024-12-08",
+          "celebrationPath": "Sancti/12-08",
+          "commemorations": ["Tempora/Adv2-0"],
+          "transferredFrom": null
+        }
+      ],
+      "concurrence": [
+        {
+          "date": "2024-01-05",
+          "winner": "tomorrow",
+          "sourcePath": "Sancti/01-06",
+          "commemorations": [],
+          "complineSourceKind": "vespers-winner"
+        },
+        {
+          "date": "2024-05-09",
+          "winner": "today",
+          "sourcePath": "Tempora/Pasc5-4",
+          "commemorations": ["Sancti/05-10"],
+          "complineSourceKind": "vespers-winner"
+        },
+        {
+          "date": "2024-12-08",
+          "winner": "today",
+          "sourcePath": "Sancti/12-08",
+          "commemorations": [],
+          "complineSourceKind": "vespers-winner"
+        }
+      ],
+      "hours": [
+        {
+          "date": "2024-03-25",
+          "laudsDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"],
+          "vespersDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"]
+        },
+        {
+          "date": "2024-05-09",
+          "laudsDirectives": ["add-alleluia", "add-versicle-alleluia", "suffragium-of-the-saints"],
+          "vespersDirectives": ["add-alleluia", "add-versicle-alleluia", "suffragium-of-the-saints"]
+        },
+        {
+          "date": "2024-12-08",
+          "laudsDirectives": ["omit-suffragium"],
+          "vespersDirectives": ["omit-suffragium"]
+        }
+      ],
+      "matins": [
+        {
+          "date": "2024-07-09",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-02-14",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-03-31",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-03-25",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-03-26",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-03-27",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "replace-with-responsory"
+        },
+        {
+          "date": "2024-04-01",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-04-02",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-05-19",
+          "nocturns": 1,
+          "totalLessons": 3,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-08-15",
+          "nocturns": 3,
+          "totalLessons": 9,
+          "teDeum": "say"
+        },
+        {
+          "date": "2024-03-28",
+          "nocturns": 3,
+          "totalLessons": 9,
+          "teDeum": "omit"
+        }
+      ]
+    }
+  ]
+}

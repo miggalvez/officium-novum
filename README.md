@@ -83,7 +83,7 @@ Implemented:
 - In-memory text index queryable by path and content directory
 - Corpus loader with integrated reference resolution
 
-**Phase 2 — Rubrical Engine (in progress).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md). Pipeline: Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring. Phase 2 is broken into eight sub-phases (2a–2h) per §18 of the design.
+**Phase 2 — Rubrical Engine (in progress).** The detailed design is in [`docs/phase-2-rubrical-engine-design.md`](docs/phase-2-rubrical-engine-design.md). Pipeline: Version Resolver → Temporal/Sanctoral → Directorium Overlay → Candidate Assembly → Occurrence Resolver → Celebration Rule Eval → Transfer Computation → Concurrence → Commemoration Assembly → Hour Structuring. The Roman headline policies from design §18 (`divino-afflatu`, `reduced-1955`, `rubrics-1960`) now resolve full `DayOfficeSummary` outputs without throws; the remaining Tridentine/monastic/Cistercian/Dominican families stay on explicit stubs by scope.
 
 **Phase 2a — Foundations (complete).** The end-to-end deliverable from design §18 is in place: `createRubricalEngine(config).resolveDayOfficeSummary(date)` returns temporal + sanctoral candidates with a naive (highest-raw-rank) winner for every date.
 
@@ -121,7 +121,7 @@ Implemented in 2c:
 - `PRECEDENCE_1960` plus class-symbol registry with explicit Rubricarum Instructum/Tabella citations
 - `rubrics1960Policy` with precedence lookup, seasonal preemption, deterministic candidate comparison, privileged-feria detection, and deferred octave hook
 - Pure `resolveOccurrence(candidates, temporal, policy)` outputting `celebration`, `commemorations`, `omitted`, `transferQueue`, and typed warnings (`occurrence-season-preemption`, `occurrence-transfer-deferred`, `occurrence-omitted`)
-- Expanded `RubricalPolicy` interface for occurrence hooks; non-1960 policies now fail loud at occurrence-time via `UnsupportedPolicyError` while still allowing engine construction
+- Expanded `RubricalPolicy` interface for occurrence hooks; Phase 2c shipped 1960 first, and Phase 2h later filled `divino-afflatu` + `reduced-1955` while leaving the non-Roman families on explicit `UnsupportedPolicyError` stubs
 - `DayOfficeSummary` evolution to include `celebration` + `commemorations` while preserving `winner` as a deprecated compatibility mirror
 - 1960-specific rank normalization (`rubrics1960ResolveRank`) mapped to precedence class symbols with a weight-consistency invariant against the precedence table
 - Edge-case coverage for design §10.4 (Annunciation/Holy Week, St Joseph/Palm Sunday, bisextile St Matthias remap semantics, Dec 8 vs Advent II, Vigil of Epiphany clash, Ember Saturday clash, dual sanctoral collision, Triduum suppression)
@@ -148,7 +148,7 @@ Implemented in 2d:
   - `resolve-vide-ex.ts` chained `vide`/`ex` inheritance with missing-target, cycle, and depth-limit warnings
   - `merge.ts` pure merges plus tested `deriveHourRuleSet`
   - `apply-conditionals.ts` paragraph-scoped conditional evaluation primitive for Phase 2g wiring
-- Policy hook expansion: `RubricalPolicy.buildCelebrationRuleSet`; 1960 delegates to default evaluator; non-1960 policy stubs throw `UnsupportedPolicyError`
+- Policy hook expansion: `RubricalPolicy.buildCelebrationRuleSet`; 1960 shipped first, and Phase 2h later wired the same typed evaluation path for `divino-afflatu` and `reduced-1955`
 - Engine integration: `DayOfficeSummary` now includes `celebrationRules`, and rule-evaluation warnings are merged into `summary.warnings`
 - Upstream regression harness for `horas/Latin/Sancti` + `horas/Latin/Tempora` with stable unmapped/missa-pass-through totals
 
@@ -166,7 +166,7 @@ Implemented in 2d:
 - `hours/apply-rule-set.ts` common skeleton-application pipeline: feast proper → commune fallback (via `comkey`) → psalter (`policy.selectPsalmody`) → Ordinarium default; `hourRules.omit` suppresses as `{ kind: 'empty' }`; `overlay.hymnOverride` attaches typed `HymnOverrideMeta` to the hymn slot.
 - Per-Hour structurers: `structureLauds`, `structureVespers`, `structurePrime` / `structureTerce` / `structureSext` / `structureNone`, plus an expanded `buildCompline` that keeps the existing `source` field and now populates real slots.
 - Commemoration attachment for Lauds and Vespers (three ordered-ref slots: `commemoration-antiphons` / `-versicles` / `-orations`), consuming the existing `Commemoration.hours` field from Phase 2c/2f; minor hours and Compline never produce commemoration slots under 1960 per RI §107.
-- Policy interface gains `selectPsalmody(params)` and `hourDirectives(params)`; `rubrics-1960` wires both; non-1960 stubs throw `UnsupportedPolicyError`.
+- Policy interface gains `selectPsalmody(params)` and `hourDirectives(params)`; 1960 shipped first, and Phase 2h later generalized both hooks across the Roman 1911/1955/1960 policies while leaving the explicitly deferred non-Roman families stubbed.
 - Engine integration: Vespers is structured for the concurrence winner (today's Second Vespers or tomorrow's First Vespers) with a uniform §16 input shape; Compline follows the Vespers winner; a missing Ordinarium file is demoted from a throw to a `hour-skeleton-missing` warning so legacy unit fixtures remain compatible.
 - New fixture `test/fixtures/hours-1960-2024.json` + `test/integration/phase-2g-upstream.test.ts` assert the full structured Hour inventory and per-date directive flags (Lent omits alleluia; Triduum omits Gloria Patri + short chapter; Paschaltide adds alleluia; 1960 always omits suffragium).
 
@@ -178,14 +178,23 @@ Implemented in 2d:
 - `hours/matins-scripture.ts` Directorium scripture-transfer post-pass (`R` / `B` / `A`) over scripture-kind lessons only.
 - `hours/matins-alternates.ts` `in N loco` alternate selection with condition gates.
 - `hours/matins.ts` structurer that wraps the plan into Matins slot content and reuses `applyRuleSet` only for wrapper slots.
-- Policy hooks added for Matins shape, Te Deum resolution, and default scripture course (`resolveMatinsShape`, `resolveTeDeum`, `defaultScriptureCourse`), with non-1960 stubs throwing `UnsupportedPolicyError`.
+- Policy hooks added for Matins shape, Te Deum resolution, and default scripture course (`resolveMatinsShape`, `resolveTeDeum`, `defaultScriptureCourse`); Phase 2h later filled those hooks for `divino-afflatu` and `reduced-1955`.
 - New fixture `test/fixtures/matins-1960-2024.json` + `test/integration/phase-2g-beta-upstream.test.ts` asserting Matins shape across the focused date matrix, including Triduum Te Deum omission, Ember Saturday shape, and scripture-transfer application.
 
-442 rubrical-engine tests passing (plus one TODO marker) in full workspace validation, including the new Matins suites, upstream matrix, and review-driven regressions (Psalterium antiphon/psalm/versicle fallback for seasonal/ferial Matins, pre-transfer Te Deum shape, dereferenceable season invitatory references).
+**Phase 2h — 1911 and 1955 Policies (complete).** The pre-1955 Roman policy families from design §18 now resolve end-to-end without fallback throws: `Divino Afflatu - 1939`, `Divino Afflatu - 1954`, `Reduced - 1955`, and the two existing 1960 handles all complete `resolveDayOfficeSummary(date)` with policy-owned occurrence, concurrence, transfer, commemoration limiting, hour directives, psalter selection, and Matins shaping.
 
-Still pending in Phase 2:
+Implemented in 2h:
 
-- **2h** — 1911 (Divino Afflatu) and 1955 (Reduced) policies.
+- Real `policy/divino-afflatu.ts` and `policy/reduced-1955.ts` objects plus their own precedence and concurrence tables; `version/policy-map.ts` now binds those policies to the existing 1939/1954/1955 handles without changing the public API
+- Shared policy-contract expansion for pre-1955 behavior: typed octave metadata, candidate/celebration/commemoration octave-vigil provenance, and policy-owned commemoration limiting reused by both the engine summary and per-Hour structuring
+- Pre-1955 hour generalization for seasonal directives, suffragium/preces behavior, Matins shape, Te Deum outcome, scripture-course routing, transfer search, and Compline source selection while preserving the existing 1960 behavior
+- New unit coverage for both pre-1955 policies and both new precedence tables, plus upstream-backed 2024 fixture coverage for occurrence, concurrence, hours, and Matins in `test/fixtures/phase-2h-roman-2024.json`, now including Easter/Pentecost octave Matins and representative Christmas / SS Peter & Paul octave dates
+- Perl comparison tooling is now available at `packages/rubrical-engine/test/fixtures/officium-snapshot.pl` with `pnpm -C packages/rubrical-engine generate:phase-2h-perl-fixtures` and `pnpm -C packages/rubrical-engine compare:phase-2h-perl-fixtures` for divergence reporting against the legacy engine without making Perl an unconditional CI oracle
+- Full-year 2024 no-throw integration sweep across every handle bound to `divino-afflatu`, `reduced-1955`, and `rubrics-1960`, plus explicit edge-case coverage for `2024-03-25`, `2024-12-08`, `2025-01-05`, and `2062-03-19`
+- Post-Phase-2h 1960 cleanup aligned the focused 1960 occurrence / Vespers / Matins fixtures with the governing 1960 rubrics and fixed the remaining engine-side 1960 bugs around fourth-class feria commemorations and Saturday BVM synthesis on non-free Saturdays
+- Residual Perl-snapshot disagreements are now tracked explicitly in `packages/rubrical-engine/test/divergence/rubrics-1960-2024.md`, `packages/rubrical-engine/test/divergence/divino-afflatu-2024.md`, and `packages/rubrical-engine/test/divergence/reduced-1955-2024.md`; these are treated as adjudicated divergences or comparison-surface differences, not silent heuristics
+
+475 rubrical-engine tests passing (plus one TODO marker) in package validation, including the 1911/1955 suites, the year-wide supported-handle no-throw matrix, the refreshed 1960 upstream fixtures, and the upstream-backed Phase 2h regression fixtures. Workspace validation currently passes with `pnpm -r typecheck` and `pnpm -r test`.
 
 ## License
 

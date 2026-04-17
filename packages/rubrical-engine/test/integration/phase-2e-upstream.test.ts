@@ -111,7 +111,7 @@ describeIfUpstream('Phase 2e upstream transfer and vigil matrix', () => {
 
     expect(summary.celebration.feastRef.path.startsWith('Sancti/12-24')).toBe(true);
     expect(summary.celebration.vigil?.path).toBe('Sancti/12-25');
-    expect(summary.commemorations.map((entry) => entry.feastRef.path)).toContain('Tempora/Adv4-0');
+    expect(summary.commemorations.map((entry) => entry.feastRef.path)).toEqual([]);
   }, 240_000);
 
   it('emits transfer-table-overrides-rule warnings when overlay target disagrees with computed target', async () => {

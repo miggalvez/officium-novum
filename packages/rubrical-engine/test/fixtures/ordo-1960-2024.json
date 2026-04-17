@@ -10,7 +10,9 @@
     {
       "date": "2024-01-05",
       "celebrationPath": "Tempora/Nat05",
-      "commemorations": []
+      "commemorations": [
+        "Sancti/01-05cc"
+      ]
     },
     {
       "date": "2024-01-07",
@@ -20,7 +22,9 @@
     {
       "date": "2024-01-08",
       "celebrationPath": "Tempora/Epi1-1",
-      "commemorations": []
+      "commemorations": [
+        "Sancti/01-08"
+      ]
     },
     {
       "date": "2024-01-13",
@@ -30,23 +34,17 @@
     {
       "date": "2024-01-14",
       "celebrationPath": "Tempora/Epi2-0",
-      "commemorations": [
-        "Sancti/01-14"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-01-21",
       "celebrationPath": "Tempora/Epi3-0",
-      "commemorations": [
-        "Sancti/01-21"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-01-28",
       "celebrationPath": "Tempora/Quadp1-0",
-      "commemorations": [
-        "Sancti/01-28"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-02-02",
@@ -56,9 +54,7 @@
     {
       "date": "2024-02-11",
       "celebrationPath": "Tempora/Quadp3-0",
-      "commemorations": [
-        "Sancti/02-11"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-02-14",
@@ -78,16 +74,12 @@
     {
       "date": "2024-03-10",
       "celebrationPath": "Tempora/Quad4-0",
-      "commemorations": [
-        "Sancti/03-10"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-03-17",
       "celebrationPath": "Tempora/Quad5-0",
-      "commemorations": [
-        "Sancti/03-17"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-03-19",
@@ -98,10 +90,8 @@
     },
     {
       "date": "2024-03-24",
-      "celebrationPath": "Tempora/Quad6-0",
-      "commemorations": [
-        "Sancti/03-24"
-      ]
+      "celebrationPath": "Tempora/Quad6-0r",
+      "commemorations": []
     },
     {
       "date": "2024-03-25",
@@ -110,17 +100,17 @@
     },
     {
       "date": "2024-03-28",
-      "celebrationPath": "Tempora/Quad6-4",
+      "celebrationPath": "Tempora/Quad6-4r",
       "commemorations": []
     },
     {
       "date": "2024-03-29",
-      "celebrationPath": "Tempora/Quad6-5",
+      "celebrationPath": "Tempora/Quad6-5r",
       "commemorations": []
     },
     {
       "date": "2024-03-30",
-      "celebrationPath": "Tempora/Quad6-6",
+      "celebrationPath": "Tempora/Quad6-6r",
       "commemorations": []
     },
     {
@@ -141,9 +131,7 @@
     {
       "date": "2024-04-14",
       "celebrationPath": "Tempora/Pasc2-0",
-      "commemorations": [
-        "Sancti/04-14"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-05-01",
@@ -153,23 +141,17 @@
     {
       "date": "2024-05-09",
       "celebrationPath": "Tempora/Pasc5-4",
-      "commemorations": [
-        "Sancti/05-09"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-05-19",
       "celebrationPath": "Tempora/Pasc7-0",
-      "commemorations": [
-        "Sancti/05-19"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-05-20",
       "celebrationPath": "Tempora/Pasc7-1",
-      "commemorations": [
-        "Sancti/05-20"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-06-07",
@@ -178,7 +160,7 @@
     },
     {
       "date": "2024-06-09",
-      "celebrationPath": "Tempora/Pent03-0",
+      "celebrationPath": "Tempora/Pent03-0r",
       "commemorations": []
     },
     {
@@ -204,7 +186,9 @@
     {
       "date": "2024-08-06",
       "celebrationPath": "Sancti/08-06",
-      "commemorations": []
+      "commemorations": [
+        "Sancti/08-06cc"
+      ]
     },
     {
       "date": "2024-08-15",
@@ -226,7 +210,9 @@
     {
       "date": "2024-10-07",
       "celebrationPath": "Sancti/10-07",
-      "commemorations": []
+      "commemorations": [
+        "Sancti/10-07t"
+      ]
     },
     {
       "date": "2024-11-01",
@@ -246,9 +232,7 @@
     {
       "date": "2024-11-24",
       "celebrationPath": "Tempora/Pent24-0",
-      "commemorations": [
-        "Sancti/11-24"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-12-01",
@@ -275,15 +259,13 @@
     {
       "date": "2024-12-24",
       "celebrationPath": "Sancti/12-24",
-      "commemorations": [
-        "Tempora/Adv4-2"
-      ]
+      "commemorations": []
     },
     {
       "date": "2024-12-26",
-      "celebrationPath": "Tempora/Nat26",
+      "celebrationPath": "Sancti/12-26",
       "commemorations": [
-        "Sancti/12-26"
+        "Tempora/Nat26"
       ]
     }
   ]

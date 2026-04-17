@@ -1,4 +1,5 @@
 import { canonicalContentDir, resolveOfficeDefinition } from '../internal/content.js';
+import { annotateSanctoralCandidate } from '../candidates/metadata.js';
 import {
   dayOfWeek,
   formatIsoDate,
@@ -49,7 +50,7 @@ export function sanctoralCandidates(
           version
         });
 
-        return {
+        return annotateSanctoralCandidate({
           dateKey: key,
           feastRef: definition.feastRef,
           rank: normalizeRank(definition.rawRank, version.policy, {
@@ -59,7 +60,7 @@ export function sanctoralCandidates(
             version: version.handle,
             season
           })
-        };
+        });
       });
     });
 }

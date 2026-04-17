@@ -100,6 +100,10 @@ export interface TemporalPreemption {
   }[];
 }
 
+export interface OctaveRule {
+  readonly level: 'simple' | 'common' | 'privileged';
+}
+
 /**
  * Rubrical behaviour contract for a policy family.
  */
@@ -150,6 +154,11 @@ export interface RubricalPolicy {
   selectPsalmody(params: SelectPsalmodyParams): readonly PsalmAssignment[];
   /** Seasonal and rubric-driven hour directives — Phase 2g-α. */
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective>;
+  /** Policy-owned commemoration limiting / ordering after occurrence. */
+  limitCommemorations(
+    commemorations: readonly Commemoration[],
+    params: CommemorationLimitParams
+  ): readonly Commemoration[];
   /**
    * Finalize Matins nocturn/lesson shape under the active policy.
    */
@@ -175,8 +184,8 @@ export interface RubricalPolicy {
    * Default scripture course (RI §§218-220).
    */
   defaultScriptureCourse(temporal: TemporalContext): ScriptureCourse;
-  /** Phase 2g hook — stubbed as `null` in Phase 2c. */
-  octavesEnabled(feastRef: FeastReference): null;
+  /** Octave survival / privilege information for the root feast. */
+  octavesEnabled(feastRef: FeastReference): OctaveRule | null;
 }
 
 export interface SelectPsalmodyParams {
@@ -190,8 +199,16 @@ export interface SelectPsalmodyParams {
 
 export interface HourDirectivesParams {
   readonly hour: HourName;
+  readonly celebration: Celebration;
   readonly celebrationRules: CelebrationRuleSet;
   readonly hourRules: HourRuleSet;
   readonly temporal: TemporalContext;
   readonly overlay?: DirectoriumOverlay;
+}
+
+export interface CommemorationLimitParams {
+  readonly hour: 'lauds' | 'vespers';
+  readonly celebration: Celebration;
+  readonly celebrationRules: CelebrationRuleSet;
+  readonly temporal: TemporalContext;
 }

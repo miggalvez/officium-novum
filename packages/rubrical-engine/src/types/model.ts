@@ -58,12 +58,16 @@ export interface SanctoralCandidate {
   readonly dateKey: string;
   readonly feastRef: FeastReference;
   readonly rank: ResolvedRank;
+  readonly kind?: 'vigil' | 'octave';
+  readonly octaveDay?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 }
 
 export interface Candidate {
   readonly feastRef: FeastReference;
   readonly rank: ResolvedRank;
   readonly source: 'temporal' | 'sanctoral' | 'transferred-in';
+  readonly kind?: 'vigil' | 'octave';
+  readonly octaveDay?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   readonly transferredFrom?: string;
   readonly vigilOf?: FeastReference;
 }

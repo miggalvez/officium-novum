@@ -1,3 +1,5 @@
+import type { ParsedFile } from '@officium-novum/parser';
+
 import { detectVigil } from './candidates/vigil-detection.js';
 import { assembleCandidates } from './candidates/assemble.js';
 import { buildConcurrencePreview, resolveConcurrence } from './concurrence/index.js';
@@ -30,6 +32,7 @@ import type {
   Candidate,
   DayOfficeSummary,
   OfficeTextIndex,
+  SanctoralCandidate,
   TemporalContext,
   RubricalEngine,
   RubricalEngineConfig
@@ -464,6 +467,10 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       config.kalendarium,
       config.corpus
     );
+    const supplementedCandidates: SanctoralCandidate[] = [
+      ...sanctoral,
+      ...supplementalCandidates(calendarDate, temporal, sanctoral, version, config.corpus)
+    ];
     const overlayResult = buildOverlay({
       date: calendarDate,
       version,
@@ -471,7 +478,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       yearTransfers: config.yearTransfers,
       scriptureTransfers: config.scriptureTransfers
     });
-    const assembled = assembleCandidates(temporal, sanctoral, {
+    const assembled = assembleCandidates(temporal, supplementedCandidates, {
       overlay: overlayResult.overlay,
       transferredIn: transferredIn.map((transfer) => ({
         ...resolveCandidate(
@@ -514,6 +521,17 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
         corpus: config.corpus
       }
     );
+    const assembledCommemorations =
+      celebrationRuleEvaluation.celebrationRules.omitCommemoration &&
+      hasDirectNoCommemorationRule(celebrationFile)
+        ? []
+        : occurrence.commemorations;
+    const commemorations = version.policy.limitCommemorations(assembledCommemorations, {
+      hour: 'lauds',
+      celebration: occurrence.celebration,
+      celebrationRules: celebrationRuleEvaluation.celebrationRules,
+      temporal
+    });
     const warnings = [
       ...yearTransferMap.warningsOn(isoDate),
       ...temporalResult.warnings,
@@ -537,7 +555,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       candidates: assembled.candidates,
       celebration: occurrence.celebration,
       celebrationRules: celebrationRuleEvaluation.celebrationRules,
-      commemorations: occurrence.commemorations,
+      commemorations,
       winner
     };
   }
@@ -658,6 +676,44 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
   }
 }
 
+function hasDirectNoCommemorationRule(file: ParsedFile): boolean {
+  for (const section of file.sections) {
+    if (section.header !== 'Rule' || !section.rules) {
+      continue;
+    }
+
+    for (const directive of section.rules) {
+      if (directive.kind !== 'action') {
+        continue;
+      }
+
+      const normalized = [directive.keyword, ...directive.args]
+        .map((value) => value.trim())
+        .filter((value) => value.length > 0)
+        .map((value) =>
+          value
+            .replace(/[;:,.]+$/gu, '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/\p{Diacritic}/gu, '')
+        )
+        .join(' ')
+        .replace(/\s+/gu, ' ')
+        .trim();
+
+      if (
+        normalized === 'no commemoratio' ||
+        normalized === 'no commemoration' ||
+        normalized === 'no sunday commemoratio'
+      ) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 interface BaseDaySummary {
   readonly date: string;
   readonly version: ReturnType<typeof describeVersion>;
@@ -753,6 +809,42 @@ function resolveCandidate(
       season: temporal.season
     })
   };
+}
+
+function supplementalCandidates(
+  calendarDate: ReturnType<typeof normalizeDateInput>,
+  temporal: ReturnType<typeof buildTemporalContext>,
+  sanctoral: readonly SanctoralCandidate[],
+  version: ResolvedVersion,
+  corpus: RubricalEngineConfig['corpus']
+): readonly SanctoralCandidate[] {
+  if (
+    version.policy.name !== 'rubrics-1960' ||
+    temporal.dayOfWeek !== 6 ||
+    temporal.rank.classSymbol !== 'IV' ||
+    sanctoral.some((candidate) => candidate.rank.weight > temporal.rank.weight)
+  ) {
+    return [];
+  }
+
+  const saturdayBvm = resolveCandidate(
+    'Commune/C10',
+    'sanctoral',
+    calendarDate,
+    temporal,
+    version,
+    corpus
+  );
+
+  return [
+    {
+      dateKey: `${calendarDate.month.toString().padStart(2, '0')}-${calendarDate.day
+        .toString()
+        .padStart(2, '0')}`,
+      feastRef: saturdayBvm.feastRef,
+      rank: saturdayBvm.rank
+    }
+  ];
 }
 
 function defaultCelebrationRuleSet(): CelebrationRuleSet {

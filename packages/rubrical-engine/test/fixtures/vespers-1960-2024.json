@@ -6,9 +6,7 @@
       "date": "2024-01-01",
       "winner": "today",
       "sourcePath": "Sancti/01-01",
-      "commemorations": [
-        "Tempora/Nat2-0"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -40,9 +38,7 @@
       "date": "2024-01-28",
       "winner": "today",
       "sourcePath": "Tempora/Quadp1-0",
-      "commemorations": [
-        "Sancti/01-29"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -97,39 +93,35 @@
     {
       "date": "2024-03-24",
       "winner": "today",
-      "sourcePath": "Tempora/Quad6-0",
-      "commemorations": [
-        "Tempora/Quad6-1"
-      ],
+      "sourcePath": "Tempora/Quad6-0r",
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-03-25",
       "winner": "today",
       "sourcePath": "Tempora/Quad6-1",
-      "commemorations": [
-        "Tempora/Quad6-2"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-03-28",
       "winner": "today",
-      "sourcePath": "Tempora/Quad6-4",
+      "sourcePath": "Tempora/Quad6-4r",
       "commemorations": [],
       "complineSourceKind": "triduum-special"
     },
     {
       "date": "2024-03-29",
       "winner": "today",
-      "sourcePath": "Tempora/Quad6-5",
+      "sourcePath": "Tempora/Quad6-5r",
       "commemorations": [],
       "complineSourceKind": "triduum-special"
     },
     {
       "date": "2024-03-30",
       "winner": "today",
-      "sourcePath": "Tempora/Quad6-6",
+      "sourcePath": "Tempora/Quad6-6r",
       "commemorations": [],
       "complineSourceKind": "triduum-special"
     },
@@ -160,9 +152,7 @@
       "date": "2024-05-09",
       "winner": "today",
       "sourcePath": "Tempora/Pasc5-4",
-      "commemorations": [
-        "Sancti/05-10"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -175,10 +165,8 @@
     {
       "date": "2024-05-26",
       "winner": "today",
-      "sourcePath": "Tempora/Pent01-0",
-      "commemorations": [
-        "Sancti/05-27"
-      ],
+      "sourcePath": "Tempora/Pent01-0r",
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -191,7 +179,7 @@
     {
       "date": "2024-06-09",
       "winner": "today",
-      "sourcePath": "Tempora/Pent03-0",
+      "sourcePath": "Tempora/Pent03-0r",
       "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
@@ -199,9 +187,7 @@
       "date": "2024-06-16",
       "winner": "today",
       "sourcePath": "Tempora/Pent04-0",
-      "commemorations": [
-        "Sancti/06-17r"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -226,36 +212,28 @@
       "date": "2024-07-07",
       "winner": "today",
       "sourcePath": "Tempora/Pent07-0",
-      "commemorations": [
-        "Sancti/07-08"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-07-14",
       "winner": "today",
       "sourcePath": "Tempora/Pent08-0",
-      "commemorations": [
-        "Sancti/07-15"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-08-04",
       "winner": "today",
       "sourcePath": "Tempora/Pent11-0",
-      "commemorations": [
-        "Sancti/08-05"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-08-15",
       "winner": "today",
       "sourcePath": "Sancti/08-15",
-      "commemorations": [
-        "Sancti/08-16"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -283,9 +261,7 @@
       "date": "2024-11-24",
       "winner": "today",
       "sourcePath": "Tempora/Pent24-0",
-      "commemorations": [
-        "Sancti/11-25"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
@@ -311,29 +287,23 @@
     },
     {
       "date": "2024-12-24",
-      "winner": "today",
-      "sourcePath": "Sancti/12-24",
-      "commemorations": [
-        "Sancti/12-25"
-      ],
+      "winner": "tomorrow",
+      "sourcePath": "Sancti/12-25",
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-12-25",
       "winner": "today",
       "sourcePath": "Sancti/12-25",
-      "commemorations": [
-        "Tempora/Nat26"
-      ],
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {
       "date": "2024-12-26",
       "winner": "today",
-      "sourcePath": "Tempora/Nat26",
-      "commemorations": [
-        "Tempora/Nat27"
-      ],
+      "sourcePath": "Sancti/12-26",
+      "commemorations": [],
       "complineSourceKind": "vespers-winner"
     },
     {

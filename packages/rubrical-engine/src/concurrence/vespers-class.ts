@@ -112,5 +112,5 @@ function deriveFallbackVespersClass(
 }
 
 function isTemporalSunday(path: string): boolean {
-  return path.startsWith('Tempora/') && path.endsWith('-0');
+  return path.startsWith('Tempora/') && /-0[a-z]*$/iu.test(path);
 }

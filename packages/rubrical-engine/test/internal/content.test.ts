@@ -5,7 +5,11 @@ import {
   type ResolvedVersion,
   type RubricalPolicy
 } from '../../src/index.js';
-import { canonicalContentDir, resolveOfficeDefinition } from '../../src/internal/content.js';
+import {
+  canonicalContentDir,
+  resolveOfficeDefinition,
+  resolveOfficeFile
+} from '../../src/internal/content.js';
 import { makeTestPolicy } from '../policy-fixture.js';
 import { TestOfficeTextIndex } from '../helpers.js';
 
@@ -86,6 +90,50 @@ describe('resolveOfficeDefinition', () => {
 
     expect(definition.feastRef.title).toBe('Default Office');
     expect(definition.rawRank.classWeight).toBe(5.6);
+  });
+});
+
+describe('resolveOfficeFile', () => {
+  it('merges preamble alias content with local section overrides', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Tempora/Pent01-0.txt',
+      [
+        '[Officium]',
+        'Dominica I post Pentecosten',
+        '',
+        '[Rank]',
+        ';;Semiduplex;;4',
+        '',
+        '[Rule]',
+        'No Commemoration'
+      ].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Tempora/Pent01-0r.txt',
+      [
+        '@Tempora/Pent01-0',
+        '',
+        '[Officium]',
+        'Dominica Sanctissimae Trinitatis',
+        '',
+        '[Rank]',
+        ';;Duplex I classis;;7'
+      ].join('\n')
+    );
+
+    const file = resolveOfficeFile(corpus, 'Tempora/Pent01-0r');
+
+    expect(file.path).toBe('horas/Latin/Tempora/Pent01-0r.txt');
+    expect(file.sections.find((section) => section.header === 'Officium')?.content[0]).toMatchObject({
+      type: 'text',
+      value: 'Dominica Sanctissimae Trinitatis'
+    });
+    expect(file.sections.find((section) => section.header === 'Rule')?.rules?.[0]).toMatchObject({
+      kind: 'action',
+      keyword: 'No',
+      args: ['Commemoration']
+    });
   });
 });
 
