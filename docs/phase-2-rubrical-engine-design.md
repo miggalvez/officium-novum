@@ -1599,6 +1599,8 @@ Validation is where the engine is proved correct. It is as much work as implemen
 3. **The legacy Divinum Officium Perl output** — a secondary reference. Matches it where the Ordo does; deviates from it, with documentation, where the Ordo shows the Perl is wrong.
 4. **Published breviaries** — *Breviarium Romanum* editions of 1914, 1955, 1962 for cross-checking specific feasts' structures.
 
+See `docs/rubrical-sources.md` for the project's canonical index of the external source families and their current `VersionHandle` / policy-family mapping.
+
 ### 19.2 Test Surfaces
 
 **Unit tests** — one per exported function in `temporal/`, `sanctoral/`, `occurrence/`, etc. Each operates on small inputs: a single date, a small candidate list, a specific policy. Target coverage: 100% of branches in `policy/*.ts`; ≥95% in the resolvers.

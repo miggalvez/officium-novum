@@ -44,6 +44,7 @@ Integration tests that need the upstream corpus auto-skip when `upstream/web/www
 
 - `docs/divinum-officium-modernization-spec.md` — authoritative design document, phased roadmap, rubrical engine interface, validation strategy
 - `docs/file-format-specification.md` — the parser's input contract: section headers, directives, conditional system, rank format, calendar tables
+- `docs/rubrical-sources.md` — canonical external source index for the implemented and deferred ordo families, with the repo's current `VersionHandle` mapping
 - `docs/phase-2-rubrical-engine-design.md` — authoritative Phase 2 design: pipeline stages, policy model, occurrence/concurrence/transfer logic, hour structuring, validation protocol
 
 ## Parser architecture

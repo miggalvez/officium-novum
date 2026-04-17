@@ -89,10 +89,111 @@ The parser package (`packages/parser/`) reads ~34,000 legacy `.txt` files from a
 
 `src/utils/path.ts` exports `normalizeRelativePath` and `ensureTxtSuffix` — the single source of truth for path normalization. All modules import from here; do not duplicate.
 
+## Rubrical engine architecture
+
+The rubrical-engine package (`packages/rubrical-engine/`) is a pure-domain library: given a date and a `VersionHandle`, it produces a typed `DayOfficeSummary`. It has no I/O; it consumes Phase 1's pre-built `CorpusIndex`, `KalendariumTable`, `YearTransferTable`, `ScriptureTransferTable`, and `VersionRegistry` as constructor input.
+
+### Pipeline
+
+```
+(date, version) → resolveDayOfficeSummary
+  → Version Resolver           (version/policy-map.ts)
+  → Temporal + Sanctoral       (temporal/, sanctoral/)
+  → Directorium Overlay        (directorium/)
+  → Candidate Assembly         (candidates/)  — incl. title-driven vigil/octave annotation
+  → Occurrence Resolution      (occurrence/)  — picks winner, classifies losers
+  → Celebration Rule Eval      (rules/)       — consumes [Rule] sections
+  → Transfer Computation       (transfer/)    — cached per (version, year)
+  → Concurrence Resolution     (concurrence/) — today's Vespers vs tomorrow's first Vespers
+  → Hour Structuring           (hours/)       — Matins + Lauds/Prime/Terce/Sext/None/Vespers/Compline
+  → DayOfficeSummary
+```
+
+Each stage is a pure function. Contrast with the Perl engine, which uses ~40 `our` globals passed implicitly between `occurrence`/`concurrence`/`precedence`; in Phase 2 those become explicit typed structures flowing between stages.
+
+### Key modules
+
+**Policy** (`src/policy/`):
+- `rubrics-1960.ts` — 1960 *Rubricarum Instructum* policy, shipped first (Phase 2c–2g)
+- `divino-afflatu.ts` — 1911 *Rubricae Generales* policy
+- `reduced-1955.ts` — 1955 *Cum Nostra* simplified policy
+- `_shared/roman.ts` — shared helpers for the pre-1955 Roman policies (seasonal directive derivation, Compline source, scripture course, privileged-temporal comparison callback, Christmas-octave transfer suppression, Paschal/Pentecost Matins carve-outs). 1960 does **not** import from here — it uses its own policy file end-to-end.
+- `_shared/unsupported-occurrence.ts` — `UnsupportedPolicyError`-throwing stubs for deferred non-Roman policies (Tridentine, Monastic, Cistercian, Dominican)
+
+No `if policy.name === '...'` outside `policy/` and `version/policy-map.ts`. Policy differences are encoded via typed contract (`RubricalPolicy` in `types/policy.ts`), not via branching in resolvers.
+
+**Occurrence** (`src/occurrence/`):
+- `resolver.ts` — policy-agnostic winner/commemoration/omit/transfer decision walking the policy's precedence table
+- `tables/precedence-1960.ts`, `tables/precedence-divino-afflatu.ts`, `tables/precedence-1955.ts` — per-policy precedence rows with citations to the governing document
+
+**Concurrence** (`src/concurrence/`):
+- `resolver.ts` — Vespers-boundary decision between today and tomorrow
+- `day-preview.ts` — `DayConcurrencePreview` cached per `(version, date)` to break the cross-date recursion
+- `vespers-class.ts` — derives `'totum' | 'capitulum' | 'nihil'` from feast content signals
+- `tables/vespers-1960.ts`, `vespers-divino-afflatu.ts`, `vespers-1955.ts` — per-policy concurrence matrices
+
+**Candidates** (`src/candidates/`):
+- `assemble.ts` — assembles temporal + sanctoral + transferred-in + overlay-substitution candidates
+- `metadata.ts` — reads Latin-ordinal patterns in feast titles (`in octava`, `quinta die infra octavam`, `vigilia`) and annotates candidates with `kind: 'vigil' | 'octave'` + `octaveDay: 1..8`. This replaces hardcoded octave-projection tables; octave metadata is derived from the Kalendaria text, not duplicated in engine code.
+
+**Rules** (`src/rules/`):
+- `evaluate.ts` — `buildCelebrationRuleSet` consumes `[Rule]` section directives, walks `vide`/`ex` inheritance, produces a typed `CelebrationRuleSet`
+- `merge.ts` — `deriveHourRuleSet` produces per-hour `HourRuleSet` from celebration rules + Ordinarium skeleton
+- `apply-conditionals.ts` — paragraph-scoped conditional evaluation for Phase 2g hour wiring
+
+**Hours** (`src/hours/`):
+- `skeleton.ts` — `OrdinariumSkeletonCache` (per-engine, per `(version.handle, hour)`) walking `#Heading` markers in `horas/Ordinarium/*.txt`
+- `psalter.ts` — §16.2 psalter selection decision tree (Roman and Pian paths)
+- `transforms.ts` — seasonal + rubric-driven `HourDirective` derivation
+- `apply-rule-set.ts` — common skeleton-application pipeline (feast proper → commune fallback → psalter → Ordinarium default), honoring `hourRules.omit` and `overlay.hymnOverride`
+- `lauds.ts`, `vespers.ts`, `minor-hours.ts`, `compline.ts` — per-Hour structurers
+- `matins.ts`, `matins-plan.ts`, `matins-lessons.ts`, `matins-scripture.ts`, `matins-alternates.ts` — Matins is plan-first (see ADR-007): `buildMatinsPlan` produces immutable `MatinsPlan`, post-passes apply scripture-transfer + alternates, then `structureMatins` wraps it into `HourStructure`
+
+**Types** (`src/types/`):
+- `policy.ts` — `RubricalPolicy` contract, `OctaveRule`, precedence/concurrence row shapes
+- `model.ts` — `Candidate`, `TemporalContext`, `DayOfficeSummary`, `SanctoralCandidate`
+- `ordo.ts` — `Celebration`, `Commemoration`, `HourName`
+- `concurrence.ts` — `ConcurrenceResult`, `VespersSideView`, `DayConcurrencePreview`, `VespersClass`
+- `rule-set.ts` — `CelebrationRuleSet`, `HourRuleSet`, `MatinsRuleSpec`
+- `hour-structure.ts` — `HourStructure`, `SlotName`, `SlotContent`, `HourDirective`
+- `matins.ts` — `MatinsPlan`, `NocturnPlan`, `LessonSource`, `PericopeRef`, `ScriptureCourse`
+- `directorium.ts` — `DirectoriumOverlay`, `RubricalWarning`
+
+## Validation
+
+The engine validates against a hierarchy of authorities per design §19.1. In descending order:
+
+1. **Ordo Recitandi** (annual diocesan/community directives) — primary. For 1960, acquire a current FSSP/SSPX/ICKSP Ordo.
+2. **Governing rubrical books** — *Rubricae Generales Breviarii* (1911), *Cum Nostra* (1955), *Codex Rubricarum* (1960). Authoritative for the rule itself.
+3. **Perl `horas.pl`** — tertiary comparison target. Not an oracle; when Perl disagrees with an Ordo, the Ordo wins and Perl is filed as an upstream bug (§19.4).
+
+### Perl comparison harness
+
+Location: `packages/rubrical-engine/test/fixtures/`
+- `officium-snapshot.pl` — runs `upstream/web/cgi-bin/horas/officium.pl` and captures `$main::winner`/`@commemoentries`/etc. as JSON
+- `generate-phase-2h-perl-fixtures.mjs` — produces per-version Perl fixture files
+- `compare-phase-2h-perl-fixtures.mjs` — diffs engine output against the Perl fixtures
+
+Commands:
+```bash
+pnpm -C packages/rubrical-engine generate:phase-2h-perl-fixtures
+pnpm -C packages/rubrical-engine compare:phase-2h-perl-fixtures
+```
+
+Divergence reports: `packages/rubrical-engine/test/divergence/<policy>-2024.md`. Each row either cites an Ordo/rubric resolving the disagreement in the engine's favor (Perl bug), identifies an engine bug to fix, or documents a known representation difference. Zero Perl-divergence is not a goal and would be wrong (it would lock in Perl's bugs); §22.9's target is <10 divergences per policy per year.
+
+### Test gating
+
+Integration tests requiring the upstream corpus gate on `existsSync(UPSTREAM_ROOT)` and auto-skip otherwise. Perl-comparison tests additionally require the Perl fixtures to exist. The full-year no-throw sweep (2024 × 5 handles × 366 days = ~1,830 invocations) runs against the upstream corpus only.
+
 ## Conventions
 
 - **Liturgical correctness is non-negotiable.** When in doubt, consult the spec's validation strategy and the published *Ordo*. One misplaced commemoration is a shipping bug that people will pray incorrectly from.
 - The parser is side-effect-free and idempotent. No I/O in core parsing modules — I/O lives in `corpus/` and `resolver/`.
-- Discriminated unions for all parsed content types (`TextContent`, `RuleDirective`, `ConditionExpression`, `TransferEntry`).
-- Warnings are collected in arrays, never thrown. The resolver and loader both continue past missing files and broken references.
+- The rubrical engine is side-effect-free and idempotent. No I/O at all; all external data arrives via constructor.
+- Discriminated unions for all parsed content types (`TextContent`, `RuleDirective`, `ConditionExpression`, `TransferEntry`) and for engine outputs (`HourStructure.slots`, `ComplineSource`, `LessonSource`).
+- Warnings are collected in arrays, never thrown. The resolver and loader both continue past missing files and broken references. The engine emits warnings as typed data (`RubricalWarning`) alongside its output.
 - Tests use vitest with snapshot testing for complex parse results. Integration tests gate on `existsSync(UPSTREAM_ROOT)`.
+- Every policy-specific rubrical decision cites the governing document inline (e.g., `citation: 'Codex Rubricarum (1960) §91'` on precedence rows).
+- Policy implementations stay under 800 lines per design §22.10. Shared helpers go in `policy/_shared/`.
+- When the engine diverges from Perl, follow design §19.4: consult the Ordo, cite the resolution in `test/divergence/<policy>-2024.md`, and either fix the engine or file the Perl bug upstream. Never resolve a divergence by "matching the Perl" alone.
