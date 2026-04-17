@@ -175,7 +175,7 @@ Two of these stages are worth highlighting because they do not exist in the Perl
 ```
 packages/
 ├── parser/                       # Phase 1 (complete)
-└── rubrics/                      # Phase 2 — @officium-nova/rubrics
+└── rubrics/                      # Phase 2 — @officium-novum/rubrics
     ├── package.json
     ├── tsconfig.json
     ├── vitest.config.ts
@@ -1581,7 +1581,7 @@ Phase 2 is large. It is broken into eight sub-phases, each independently shippab
 
 ### Build and Dependency Discipline
 
-- No runtime dependencies outside `@officium-nova/parser`. No `date-fns`, no `luxon`: date math is small enough to write correctly and stable enough to trust.
+- No runtime dependencies outside `@officium-novum/parser`. No `date-fns`, no `luxon`: date math is small enough to write correctly and stable enough to trust.
 - `tsconfig` in strict mode, `noUncheckedIndexedAccess` on, `exactOptionalPropertyTypes` on. The Parser is already configured this way.
 - Vitest for tests, matching Phase 1's setup.
 - CI matrix: every PR runs unit tests + the ordo snapshot suite. Baseline match rate must not regress.
@@ -1683,7 +1683,7 @@ Present in the corpus but explicitly out of scope for v1. The `RubricalPolicy` i
 
 Phase 2 is "done" when all of the following hold:
 
-1. `@officium-nova/rubrics` package published to the monorepo with `createRubricalEngine(config)` exposed.
+1. `@officium-novum/rubrics` package published to the monorepo with `createRubricalEngine(config)` exposed.
 2. Every version in `data.txt` resolves to a valid `ResolvedVersion` with a bound policy; invalid or orphaned handles fail at construction time with a clear error.
 3. `resolveOrdo(date)` produces a non-empty, fully typed `OrdoEntry` for every date in `[1920-01-01, 2099-12-31]` under each of the three headline policies (`divino-afflatu`, `reduced-1955`, `rubrics-1960`) — no exceptions, no throws.
 4. Ordo snapshot match rate ≥99% per policy per ingested year.

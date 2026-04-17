@@ -1,5 +1,5 @@
 {
-  "name": "@officium-nova/rubrical-engine",
+  "name": "@officium-novum/rubrical-engine",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -20,7 +20,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@officium-nova/parser": "workspace:*"
+    "@officium-novum/parser": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",

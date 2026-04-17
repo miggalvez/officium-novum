@@ -1,4 +1,4 @@
-import type { TextContent } from '@officium-nova/parser';
+import type { TextContent } from '@officium-novum/parser';
 
 import { conditionMatches, type ConditionEvalContext } from '../internal/conditions.js';
 import type { CelebrationRuleSet, RuleEvaluationContext } from '../types/rule-set.js';

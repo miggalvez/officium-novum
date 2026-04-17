@@ -1,4 +1,4 @@
-import type { ParsedFile, Rank } from '@officium-nova/parser';
+import type { ParsedFile, Rank } from '@officium-novum/parser';
 
 import type {
   Candidate,

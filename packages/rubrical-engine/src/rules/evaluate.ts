@@ -1,4 +1,4 @@
-import type { ParsedFile, RuleDirective } from '@officium-nova/parser';
+import type { ParsedFile, RuleDirective } from '@officium-novum/parser';
 
 import { conditionMatches } from '../internal/conditions.js';
 import type { RubricalWarning } from '../types/directorium.js';

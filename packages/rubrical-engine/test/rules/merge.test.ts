@@ -1,4 +1,4 @@
-import { parseRuleLine, type RuleDirective } from '@officium-nova/parser';
+import { parseRuleLine, type RuleDirective } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import { deriveHourRuleSet } from '../../src/rules/merge.js';

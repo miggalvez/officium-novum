@@ -1,4 +1,4 @@
-import { parseCondition, type TextContent } from '@officium-nova/parser';
+import { parseCondition, type TextContent } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import { evaluateConditionalBlock, type RuleEvalContext } from '../../src/rules/apply-conditionals.js';

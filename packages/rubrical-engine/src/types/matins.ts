@@ -1,4 +1,4 @@
-import type { Condition } from '@officium-nova/parser';
+import type { Condition } from '@officium-novum/parser';
 
 import type { PsalmAssignment, TextReference } from './hour-structure.js';
 import type { FeastReference } from './model.js';

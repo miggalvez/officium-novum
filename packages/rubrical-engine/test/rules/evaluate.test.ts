@@ -1,4 +1,4 @@
-import { parseFile } from '@officium-nova/parser';
+import { parseFile } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import { buildCelebrationRuleSet } from '../../src/rules/evaluate.js';

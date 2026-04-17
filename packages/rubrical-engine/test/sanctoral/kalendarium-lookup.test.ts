@@ -1,4 +1,4 @@
-import { parseKalendarium } from '@officium-nova/parser';
+import { parseKalendarium } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import {

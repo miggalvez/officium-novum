@@ -1,4 +1,4 @@
-import { parseFile, type ParsedFile } from '@officium-nova/parser';
+import { parseFile, type ParsedFile } from '@officium-novum/parser';
 
 import type { CalendarDate } from '../internal/date.js';
 import { formatIsoDate } from '../internal/date.js';

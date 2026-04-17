@@ -1,4 +1,4 @@
-import type { Condition, ConditionExpression } from '@officium-nova/parser';
+import type { Condition, ConditionExpression } from '@officium-novum/parser';
 
 import type { LiturgicalSeason } from '../types/model.js';
 import type { ResolvedVersion } from '../types/version.js';

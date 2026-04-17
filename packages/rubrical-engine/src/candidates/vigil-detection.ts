@@ -1,4 +1,4 @@
-import type { ParsedFile, TextContent } from '@officium-nova/parser';
+import type { ParsedFile, TextContent } from '@officium-novum/parser';
 
 import { addDays, normalizeDateInput } from '../internal/date.js';
 import { resolveOfficeFile } from '../internal/content.js';

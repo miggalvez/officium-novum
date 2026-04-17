@@ -1,4 +1,4 @@
-import type { TransferEntry } from '@officium-nova/parser';
+import type { TransferEntry } from '@officium-novum/parser';
 
 import { canonicalContentDir } from '../internal/content.js';
 import type { FeastReference } from '../types/model.js';

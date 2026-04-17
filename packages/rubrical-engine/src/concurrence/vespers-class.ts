@@ -1,4 +1,4 @@
-import type { ParsedFile, RuleDirective } from '@officium-nova/parser';
+import type { ParsedFile, RuleDirective } from '@officium-novum/parser';
 
 import { deriveVespersClass1960 } from '../policy/rubrics-1960.js';
 import type { VespersClass } from '../types/concurrence.js';

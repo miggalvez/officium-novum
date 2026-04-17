@@ -1,4 +1,4 @@
-import type { ScriptureTransferEntry, TransferEntry } from '@officium-nova/parser';
+import type { ScriptureTransferEntry, TransferEntry } from '@officium-novum/parser';
 
 import { addDays, sanctoralDateKey, type CalendarDate } from '../internal/date.js';
 import type { DirectoriumOverlay, RubricalWarning } from '../types/directorium.js';

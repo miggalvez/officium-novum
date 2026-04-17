@@ -42,10 +42,10 @@ The source `.txt` files remain the single source of truth, edited via standard G
 ## Repository Structure
 
 ```
-officium-nova/
+officium-novum/
 ├── packages/
-│   ├── parser/            # @officium-nova/parser — reads .txt files, emits typed objects
-│   └── rubrical-engine/   # @officium-nova/rubrical-engine — Phase 2 implementation
+│   ├── parser/            # @officium-novum/parser — reads .txt files, emits typed objects
+│   └── rubrical-engine/   # @officium-novum/rubrical-engine — Phase 2 implementation
 ├── upstream/          # Divinum Officium as a Git submodule (source texts + legacy Perl app)
 ├── docs/              # Specifications and design documents
 │   ├── divinum-officium-modernization-spec.md
@@ -72,7 +72,7 @@ officium-nova/
 
 ## Status
 
-**Phase 1 — Parser (complete).** The `@officium-nova/parser` package parses the full 34,000+ file corpus across 16 languages, resolves cross-references with language fallback, and builds an in-memory text index. All 64 tests pass, including a spot-check validation of 62 representative feast files across languages against resolved snapshots.
+**Phase 1 — Parser (complete).** The `@officium-novum/parser` package parses the full 34,000+ file corpus across 16 languages, resolves cross-references with language fallback, and builds an in-memory text index. All 64 tests pass, including a spot-check validation of 62 representative feast files across languages against resolved snapshots.
 
 Implemented:
 
@@ -89,7 +89,7 @@ Implemented:
 
 Implemented in 2a:
 
-- `@officium-nova/rubrical-engine` package scaffold with build, typecheck, and Vitest setup
+- `@officium-novum/rubrical-engine` package scaffold with build, typecheck, and Vitest setup
 - Version-layer foundations: branded `VersionHandle`, `ResolvedVersion`, `VersionDescriptor`, and immutable `VersionRegistry`
 - `data.txt` registry builder and version resolver with four-way error dispatch (unknown / missa-with-hint / missa-without-hint / unbound Breviary)
 - Policy binding map covering all 15 Breviary rows in `Tabulae/data.txt` across 10 distinct policy families

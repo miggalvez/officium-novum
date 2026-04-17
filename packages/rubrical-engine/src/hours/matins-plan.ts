@@ -1,8 +1,8 @@
 import { conditionMatches } from '../internal/conditions.js';
 import { resolveOfficeFile } from '../internal/content.js';
 import { normalizeDateInput } from '../internal/date.js';
-import type { ParsedFile, TextContent } from '@officium-nova/parser';
-import type { ScriptureTransferEntry } from '@officium-nova/parser';
+import type { ParsedFile, TextContent } from '@officium-novum/parser';
+import type { ScriptureTransferEntry } from '@officium-novum/parser';
 
 import { routeLesson } from './matins-lessons.js';
 import { applyScriptureTransfer } from './matins-scripture.js';

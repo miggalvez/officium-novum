@@ -1,4 +1,4 @@
-import { parseRuleLine } from '@officium-nova/parser';
+import { parseRuleLine } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import {

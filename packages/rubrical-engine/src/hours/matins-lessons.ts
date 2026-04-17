@@ -1,6 +1,6 @@
 import { conditionMatches } from '../internal/conditions.js';
 import { normalizeDateInput } from '../internal/date.js';
-import type { ParsedFile } from '@officium-nova/parser';
+import type { ParsedFile } from '@officium-novum/parser';
 
 import { UnsupportedPolicyError } from '../types/policy.js';
 import type { RubricalWarning } from '../types/directorium.js';

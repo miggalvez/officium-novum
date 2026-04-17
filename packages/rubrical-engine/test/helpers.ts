@@ -1,4 +1,4 @@
-import { parseFile, type ParsedFile } from '@officium-nova/parser';
+import { parseFile, type ParsedFile } from '@officium-novum/parser';
 
 import type { OfficeTextIndex } from '../src/index.js';
 

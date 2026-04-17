@@ -3,7 +3,7 @@ import type {
   RuleActionDirective,
   RuleAssignmentDirective,
   RuleDirective
-} from '@officium-nova/parser';
+} from '@officium-novum/parser';
 
 import type {
   AlternateLocation,

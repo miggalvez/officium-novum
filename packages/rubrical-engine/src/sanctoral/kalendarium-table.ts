@@ -1,4 +1,4 @@
-import type { KalendariumEntry } from '@officium-nova/parser';
+import type { KalendariumEntry } from '@officium-novum/parser';
 
 import type { KalendariumTable } from '../types/model.js';
 

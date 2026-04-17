@@ -2,7 +2,7 @@ import {
   defaultPathResolver,
   type ParsedFile,
   type RuleDirective
-} from '@officium-nova/parser';
+} from '@officium-novum/parser';
 
 import { conditionMatches } from '../internal/conditions.js';
 import type { RubricalWarning } from '../types/directorium.js';

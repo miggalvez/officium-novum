@@ -1,4 +1,4 @@
-import type { VersionDefinition } from '@officium-nova/parser';
+import type { VersionDefinition } from '@officium-novum/parser';
 
 import {
   asVersionHandle,

@@ -1,4 +1,4 @@
-import type { ScriptureTransferEntry } from '@officium-nova/parser';
+import type { ScriptureTransferEntry } from '@officium-novum/parser';
 
 export function extractScriptureTransfer(
   entries: readonly ScriptureTransferEntry[],

@@ -1,4 +1,4 @@
-import { parseCondition } from '@officium-nova/parser';
+import { parseCondition } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import { type ResolvedVersion, type RubricalPolicy, asVersionHandle } from '../../src/index.js';

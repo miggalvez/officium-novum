@@ -1,4 +1,4 @@
-import type { ParsedFile } from '@officium-nova/parser';
+import type { ParsedFile } from '@officium-novum/parser';
 
 import { conditionMatches } from '../internal/conditions.js';
 import { resolveOfficeFile } from '../internal/content.js';

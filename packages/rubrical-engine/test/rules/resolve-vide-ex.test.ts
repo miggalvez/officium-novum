@@ -1,4 +1,4 @@
-import { parseFile } from '@officium-nova/parser';
+import { parseFile } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import { resolveEx, resolveVide } from '../../src/rules/resolve-vide-ex.js';

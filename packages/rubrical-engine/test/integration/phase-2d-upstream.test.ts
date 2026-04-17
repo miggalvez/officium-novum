@@ -2,9 +2,9 @@ import { existsSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { loadCorpus } from '@officium-nova/parser';
+import { loadCorpus } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
-import type { ParsedFile } from '@officium-nova/parser';
+import type { ParsedFile } from '@officium-novum/parser';
 
 import {
   asVersionHandle,

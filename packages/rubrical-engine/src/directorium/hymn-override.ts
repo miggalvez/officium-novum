@@ -1,4 +1,4 @@
-import type { TransferEntry } from '@officium-nova/parser';
+import type { TransferEntry } from '@officium-novum/parser';
 
 import type { HymnOverride, RubricalWarning } from '../types/directorium.js';
 

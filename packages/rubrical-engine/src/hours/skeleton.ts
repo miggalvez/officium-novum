@@ -4,7 +4,7 @@ import {
   type Condition,
   type ParsedFile,
   type TextContent
-} from '@officium-nova/parser';
+} from '@officium-novum/parser';
 
 import type { OfficeTextIndex } from '../types/model.js';
 import type { HourName } from '../types/ordo.js';

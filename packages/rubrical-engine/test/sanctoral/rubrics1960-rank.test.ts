@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { parseFile } from '@officium-nova/parser';
+import { parseFile } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import { rubrics1960Policy, rubrics1960ResolveRank } from '../../src/index.js';

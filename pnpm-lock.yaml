@@ -22,7 +22,7 @@ importers:
 
   packages/rubrical-engine:
     dependencies:
-      '@officium-nova/parser':
+      '@officium-novum/parser':
         specifier: workspace:*
         version: link:../parser
     devDependencies:

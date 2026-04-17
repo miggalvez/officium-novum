@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { parseVersionRegistry } from '@officium-nova/parser';
+import { parseVersionRegistry } from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import {

@@ -1,4 +1,4 @@
-import type { KalendariumEntry, ParsedFile } from '@officium-nova/parser';
+import type { KalendariumEntry, ParsedFile } from '@officium-novum/parser';
 
 import type { ScriptureTransferTable } from '../directorium/tables/scripture-transfer-table.js';
 import type { YearTransferTable } from '../directorium/tables/year-transfer-table.js';

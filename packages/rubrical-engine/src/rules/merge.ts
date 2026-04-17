@@ -1,4 +1,4 @@
-import type { RuleDirective } from '@officium-nova/parser';
+import type { RuleDirective } from '@officium-novum/parser';
 
 import { classifyDirective, type HourEffect } from './classify.js';
 

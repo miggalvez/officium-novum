@@ -1,4 +1,4 @@
-import type { ScriptureTransferEntry } from '@officium-nova/parser';
+import type { ScriptureTransferEntry } from '@officium-novum/parser';
 
 import { sanctoralDateKey, type CalendarDate } from '../../internal/date.js';
 import type { ResolvedVersion, VersionRegistry } from '../../types/version.js';

@@ -6,7 +6,7 @@ import {
   parseScriptureTransfer,
   parseTransfer,
   parseVersionRegistry
-} from '@officium-nova/parser';
+} from '@officium-novum/parser';
 import { describe, expect, it } from 'vitest';
 
 import {

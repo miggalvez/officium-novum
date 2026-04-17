@@ -1,4 +1,4 @@
-import type { Rank } from '@officium-nova/parser';
+import type { Rank } from '@officium-novum/parser';
 
 import {
   PRECEDENCE_1960_BY_CLASS,

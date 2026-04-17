@@ -1,4 +1,4 @@
-import type { ParsedFile, ParsedRankLine, TextContent } from '@officium-nova/parser';
+import type { ParsedFile, ParsedRankLine, TextContent } from '@officium-novum/parser';
 
 import type {
   FeastReference,

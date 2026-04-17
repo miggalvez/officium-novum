@@ -1,4 +1,4 @@
-import type { Condition, ParsedFile, RuleDirective } from '@officium-nova/parser';
+import type { Condition, ParsedFile, RuleDirective } from '@officium-novum/parser';
 
 import type { RubricalWarning } from './directorium.js';
 import type { Celebration, Commemoration, HourName } from './ordo.js';
