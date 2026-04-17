@@ -53,7 +53,7 @@ export const PRECEDENCE_1955: readonly PrecedenceRow[] = [
   row('vigil', 580, 'Cum Nostra (1955), minor vigils', 'commemorate'),
   row('simplex', 520, 'Cum Nostra (1955), simplex / commemorations', 'commemorate'),
   row('feria', 400, 'Cum Nostra (1955), feriae', 'omit'),
-  row('commemoration-only', 100, 'Reduced to commemoration only', 'omit')
+  row('commemoration-only', 100, 'Reduced to commemoration only', 'commemorate')
 ];
 
 export const PRECEDENCE_1955_BY_CLASS: ReadonlyMap<ClassSymbol1955, PrecedenceRow> = new Map(

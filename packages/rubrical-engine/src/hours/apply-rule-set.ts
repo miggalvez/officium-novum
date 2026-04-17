@@ -285,7 +285,7 @@ function attachCommemorationSlots(
     return;
   }
 
-  if (input.celebrationRules.omitCommemoration) {
+  if (input.policy.name === 'rubrics-1960' && input.celebrationRules.omitCommemoration) {
     return;
   }
 

@@ -194,6 +194,36 @@ describeIfReady('Phase 2h DA/1955 upstream matrix', () => {
     }
   }, 240_000);
 
+  it('locks the repaired pre-1955 concurrence and octave edge cases', async () => {
+    const engines = await loadEngines(['Divino Afflatu - 1954', 'Reduced - 1955']);
+
+    const divinoAfflatu = engines.get('Divino Afflatu - 1954');
+    expect(divinoAfflatu).toBeDefined();
+    if (divinoAfflatu) {
+      const circumcision = divinoAfflatu.resolveDayOfficeSummary('2024-01-01');
+      expect(circumcision.concurrence.winner).toBe('today');
+      expect(circumcision.concurrence.source.feastRef.path).toBe('Sancti/01-01');
+
+      const emberSaturday = divinoAfflatu.resolveDayOfficeSummary('2024-02-24');
+      expect(emberSaturday.celebration.feastRef.path).toBe('Tempora/Quad1-6');
+      expect(emberSaturday.commemorations.map((entry) => entry.feastRef.path)).toEqual([
+        'Sancti/02-23o'
+      ]);
+
+      const johnEudes = divinoAfflatu.resolveDayOfficeSummary('2024-08-19');
+      expect(johnEudes.concurrence.winner).toBe('tomorrow');
+      expect(johnEudes.concurrence.source.feastRef.path).toBe('Sancti/08-20');
+    }
+
+    const reduced1955 = engines.get('Reduced - 1955');
+    expect(reduced1955).toBeDefined();
+    if (reduced1955) {
+      const rosarySunday = reduced1955.resolveDayOfficeSummary('2024-10-06');
+      expect(rosarySunday.concurrence.winner).toBe('tomorrow');
+      expect(rosarySunday.concurrence.source.feastRef.path).toBe('Sancti/10-07');
+    }
+  }, 240_000);
+
   it('locks the clarified 1960 source-backed fixes', async () => {
     const engines = await loadEngines(['Rubrics 1960 - 1960']);
     const roman1960 = engines.get('Rubrics 1960 - 1960');

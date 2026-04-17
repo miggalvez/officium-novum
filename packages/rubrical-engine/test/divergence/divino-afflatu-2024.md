@@ -1,34 +1,26 @@
 # Divino Afflatu 2024 Divergences
 
-This file tracks the remaining **Perl fixture vs engine** differences after the
-current engine-bug cleanup pass.
+This file tracks the **Perl fixture vs engine** comparison state for the
+Phase 2h Divino Afflatu policy.
 
 ## Current status
 
 - Source of comparison:
   - `packages/rubrical-engine/test/fixtures/divino-afflatu-2024.json`
   - `pnpm -C packages/rubrical-engine compare:phase-2h-perl-fixtures`
-- Exact-match rows: `55/62`
-- Divergent rows: `7/62`
+- Exact-match rows: `62/62`
+- Divergent rows: `0/62`
 
 ## Remaining rows
 
-| Date | Fields |
-|---|---|
-| 2024-02-25 | commemorations, concurrenceWinner, concurrenceSourcePath |
-| 2024-05-26 | commemorations |
-| 2024-08-19 | concurrenceWinner, concurrenceSourcePath |
-| 2024-09-08 | celebrationPath, commemorations, concurrenceSourcePath |
-| 2024-09-15 | celebrationPath, commemorations, concurrenceSourcePath |
-| 2024-09-29 | concurrenceWinner, concurrenceSourcePath |
-| 2024-10-06 | concurrenceWinner, concurrenceSourcePath |
+None. `pnpm -C packages/rubrical-engine compare:phase-2h-perl-fixtures` now
+reports zero mismatches for `Divino Afflatu - 1954` across the sampled
+62-date 2024 matrix.
 
 ## Notes
 
-- The obvious engine-side regressions cleared in this pass were:
-  - phantom `Nat01` / `Nat06` commemorations
-  - Holy Saturday concurrence routing
-  - Ember Saturday Matins shape
-  - same-day optional commemoration collapse
-  - Christmas Eve Matins + commemoration suppression
-- The remaining rows need source-backed adjudication or another targeted policy pass.
+- The final cleanup pass that cleared the remaining rows covered:
+  - privileged-Sunday transfer vs commemoration handling
+  - ordinary-Sunday vs higher double occurrence
+  - octave/vigil precedence around Epiphany, Easter, and Christmas
+  - Divino Afflatu concurrence cells for equal doubles and Sunday-to-double transitions

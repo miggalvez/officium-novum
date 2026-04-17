@@ -1,5 +1,7 @@
 import type { ParsedFile, RuleDirective } from '@officium-novum/parser';
 
+import { deriveVespersClassDivinoAfflatu } from '../policy/divino-afflatu.js';
+import { deriveVespersClass1955 } from '../policy/reduced-1955.js';
 import { deriveVespersClass1960 } from '../policy/rubrics-1960.js';
 import type { VespersClass } from '../types/concurrence.js';
 import type { Celebration } from '../types/ordo.js';
@@ -25,6 +27,16 @@ export function deriveVespersClass(params: {
 
   const signals = inspectFeastVespersSignals(feastFile);
   switch (policy.name) {
+    case 'divino-afflatu':
+      return deriveVespersClassDivinoAfflatu({
+        celebration,
+        signals
+      });
+    case 'reduced-1955':
+      return deriveVespersClass1955({
+        celebration,
+        signals
+      });
     case 'rubrics-1960':
       return deriveVespersClass1960({
         celebration,

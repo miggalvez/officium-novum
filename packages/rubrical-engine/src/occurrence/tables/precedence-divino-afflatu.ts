@@ -43,8 +43,19 @@ export const PRECEDENCE_DIVINO_AFFLATU: readonly PrecedenceRow[] = [
   ),
   row('sunday', 1200, 'Rubricae Generales Breviarii (1911), Sundays', 'commemorate'),
   row('duplex-i', 1300, 'Rubricae Generales Breviarii (1911), duplex I classis', 'transfer'),
-  row('duplex-ii', 1150, 'Rubricae Generales Breviarii (1911), duplex II classis', 'commemorate'),
-  row('duplex-major', 1000, 'Rubricae Generales Breviarii (1911), duplex majus', 'commemorate'),
+  row(
+    'duplex-ii',
+    1150,
+    'Rubricae Generales Breviarii (1911), duplex II classis',
+    'commemorate',
+    transferWhenPrivilegedSundayOrFeria
+  ),
+  row(
+    'duplex-major',
+    1000,
+    'Rubricae Generales Breviarii (1911), duplex majus',
+    'commemorate'
+  ),
   row('duplex', 900, 'Rubricae Generales Breviarii (1911), duplex', 'commemorate'),
   row('semiduplex', 800, 'Rubricae Generales Breviarii (1911), semiduplex', 'commemorate'),
   row(
@@ -74,7 +85,13 @@ function row(
   classSymbol: ClassSymbolDivinoAfflatu,
   weight: number,
   citation: string,
-  fate: PrecedenceFate
+  fate: PrecedenceFate,
+  decideOverride?: (params: {
+    readonly candidate: Candidate;
+    readonly winner: Candidate;
+    readonly temporal: TemporalContext;
+    readonly allCandidates: readonly Candidate[];
+  }) => PrecedenceFate
 ): PrecedenceRow {
   return {
     classSymbol,
@@ -86,8 +103,27 @@ function row(
       readonly temporal: TemporalContext;
       readonly allCandidates: readonly Candidate[];
     }): PrecedenceFate {
-      void params;
-      return fate;
+      return decideOverride ? decideOverride(params) : fate;
     }
   };
+}
+
+function transferWhenPrivilegedSundayOrFeria(params: {
+  readonly candidate: Candidate;
+  readonly winner: Candidate;
+  readonly temporal: TemporalContext;
+  readonly allCandidates: readonly Candidate[];
+}): PrecedenceFate {
+  void params.candidate;
+  void params.temporal;
+  void params.allCandidates;
+
+  if (
+    params.winner.rank.classSymbol === 'privileged-sunday' ||
+    params.winner.rank.classSymbol === 'privileged-feria-major'
+  ) {
+    return 'transfer';
+  }
+
+  return 'commemorate';
 }

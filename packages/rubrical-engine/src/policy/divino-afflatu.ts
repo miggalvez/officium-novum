@@ -125,6 +125,16 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
     return { kept, suppressed };
   },
   compareCandidates(a: Candidate, b: Candidate): number {
+    const emberCompared = compareEmberFeriaAgainstVigil(a, b);
+    if (emberCompared !== null) {
+      return emberCompared;
+    }
+
+    const ordinarySundayCompared = compareOrdinarySundayAgainstMajorDouble(a, b);
+    if (ordinarySundayCompared !== null) {
+      return ordinarySundayCompared;
+    }
+
     return compareRomanCandidates(a, b, {
       privilegedTemporalWins(temporal, sanctoral) {
         if (
@@ -147,6 +157,46 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
     readonly tomorrow: VespersSideView;
     readonly temporal: TemporalContext;
   }): ConcurrenceResult {
+    if (
+      isChristmasOctaveSequencePath(params.today.celebration.feastRef.path) &&
+      isChristmasOctaveSequencePath(params.tomorrow.celebration.feastRef.path)
+    ) {
+      return {
+        winner: 'today',
+        source: params.today.celebration,
+        commemorations: [toConcurrenceCommemoration(params.tomorrow.celebration)],
+        reason: 'today-higher-rank',
+        warnings: []
+      };
+    }
+
+    if (
+      params.today.celebration.rank.classSymbol === 'privileged-sunday' &&
+      params.tomorrow.celebration.transferredFrom === params.temporal.date
+    ) {
+      return {
+        winner: 'tomorrow',
+        source: params.tomorrow.celebration,
+        commemorations: [],
+        reason: 'tomorrow-higher-rank',
+        warnings: []
+      };
+    }
+
+    if (
+      (params.today.celebration.rank.classSymbol === 'sunday' ||
+        params.today.celebration.rank.classSymbol === 'semiduplex') &&
+      isMajorFollowingDouble(params.tomorrow.celebration)
+    ) {
+      return {
+        winner: 'tomorrow',
+        source: params.tomorrow.celebration,
+        commemorations: [toConcurrenceCommemoration(params.today.celebration)],
+        reason: 'tomorrow-higher-rank',
+        warnings: []
+      };
+    }
+
     const row = lookupVespersDivinoAfflatuRow(
       params.today.celebration.rank.classSymbol,
       params.tomorrow.celebration.rank.classSymbol
@@ -168,6 +218,20 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
         source: params.tomorrow.celebration,
         commemorations: [toConcurrenceCommemoration(params.today.celebration)],
         reason: 'tomorrow-higher-rank',
+        warnings: []
+      };
+    }
+
+    if (
+      row.winner === 'equal' &&
+      isDoubleClass(params.today.celebration.rank.classSymbol) &&
+      isDoubleClass(params.tomorrow.celebration.rank.classSymbol)
+    ) {
+      return {
+        winner: 'tomorrow',
+        source: params.tomorrow.celebration,
+        commemorations: [toConcurrenceCommemoration(params.today.celebration)],
+        reason: 'equal-rank-praestantior',
         warnings: []
       };
     }
@@ -247,6 +311,23 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
       });
     }
 
+    if (
+      context.celebration.source === 'temporal' &&
+      ((context.celebration.rank.classSymbol === 'feria' ||
+        context.celebration.rank.classSymbol === 'privileged-feria-major') ||
+        isPaschalOrPentecostOctaveWeekday(context.celebration.feastRef.path))
+    ) {
+      celebrationRules = mergeFeastRules(celebrationRules, {
+        hasFirstVespers: false
+      });
+    }
+
+    if (context.celebration.rank.classSymbol === 'simplex') {
+      celebrationRules = mergeFeastRules(celebrationRules, {
+        hasSecondVespers: false
+      });
+    }
+
     return {
       celebrationRules,
       warnings: base.warnings
@@ -285,6 +366,13 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
     params
   ): readonly Commemoration[] {
     if (NO_COMMEMORATION_FEASTS.has(params.celebration.feastRef.path)) {
+      return [];
+    }
+
+    if (
+      (isPaschalOctaveDay(params.temporal) || isPentecostOctaveDay(params.temporal)) &&
+      params.temporal.dayOfWeek <= 3
+    ) {
       return [];
     }
 
@@ -403,6 +491,96 @@ function isLikelyFerialMatins(temporal: TemporalContext): boolean {
   return (
     temporal.rank.classSymbol === 'feria' ||
     temporal.rank.classSymbol === 'privileged-feria-major'
+  );
+}
+
+function compareOrdinarySundayAgainstMajorDouble(
+  a: Candidate,
+  b: Candidate
+): number | null {
+  const leftSunday = isOrdinarySundayCandidate(a);
+  const rightSunday = isOrdinarySundayCandidate(b);
+  const leftMajorDouble = isMajorDoubleThatImpedesOrdinarySunday(a);
+  const rightMajorDouble = isMajorDoubleThatImpedesOrdinarySunday(b);
+
+  if (leftSunday && rightMajorDouble) {
+    return 1;
+  }
+
+  if (leftMajorDouble && rightSunday) {
+    return -1;
+  }
+
+  return null;
+}
+
+function isOrdinarySundayCandidate(candidate: Candidate): boolean {
+  return candidate.source === 'temporal' && candidate.rank.classSymbol === 'sunday';
+}
+
+function compareEmberFeriaAgainstVigil(a: Candidate, b: Candidate): number | null {
+  const leftEmber = isEmberSaturdayCandidate(a);
+  const rightEmber = isEmberSaturdayCandidate(b);
+  const leftVigil = a.kind === 'vigil';
+  const rightVigil = b.kind === 'vigil';
+
+  if (leftEmber && rightVigil) {
+    return -1;
+  }
+
+  if (leftVigil && rightEmber) {
+    return 1;
+  }
+
+  return null;
+}
+
+function isEmberSaturdayCandidate(candidate: Candidate): boolean {
+  return candidate.source === 'temporal' && candidate.feastRef.path === 'Tempora/Quad1-6';
+}
+
+function isMajorDoubleThatImpedesOrdinarySunday(candidate: Candidate): boolean {
+  return (
+    candidate.source !== 'temporal' &&
+    candidate.kind !== 'octave' &&
+    (candidate.rank.classSymbol === 'duplex-i' ||
+      candidate.rank.classSymbol === 'duplex-ii')
+  );
+}
+
+function isDoubleClass(classSymbol: string): boolean {
+  return (
+    classSymbol === 'duplex-i' ||
+    classSymbol === 'duplex-ii' ||
+    classSymbol === 'duplex-major' ||
+    classSymbol === 'duplex'
+  );
+}
+
+function isPaschalOrPentecostOctaveWeekday(feastPath: string): boolean {
+  return /^Tempora\/Pasc[07]-[1-6]$/u.test(feastPath);
+}
+
+function isMajorFollowingDouble(celebration: VespersSideView['celebration']): boolean {
+  if (isEpiphanyOctaveContinuation(celebration.feastRef.path)) {
+    return false;
+  }
+
+  return (
+    celebration.rank.classSymbol === 'duplex-i' ||
+    celebration.rank.classSymbol === 'duplex-ii'
+  );
+}
+
+function isEpiphanyOctaveContinuation(feastPath: string): boolean {
+  return /^Sancti\/01-(0[8-9]|1[0-3])g$/u.test(feastPath);
+}
+
+function isChristmasOctaveSequencePath(feastPath: string): boolean {
+  return (
+    feastPath === 'Sancti/01-01' ||
+    feastPath === 'Tempora/Nat2-0' ||
+    /^Sancti\/12-(2[6-9]|3[0-1])$/u.test(feastPath)
   );
 }
 

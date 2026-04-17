@@ -178,6 +178,10 @@ function classifyPre1960ClassSymbol(
     return 'duplex-ii';
   }
 
+  if (context.version === 'Reduced - 1955' && context.feastPath === 'Commune/C10') {
+    return 'simplex';
+  }
+
   if (isCommemorationOnly(raw.classWeight, name)) {
     return 'commemoration-only';
   }
@@ -232,8 +236,8 @@ function classifyPre1960ClassSymbol(
   if (normalized.includes('duplexmajus') || normalized.includes('mmmaj') || raw.classWeight >= 4) {
     return 'duplex-major';
   }
-  if (normalized.includes('semiduplex') || raw.classWeight >= 2) {
-    return 'semiduplex';
+  if (normalized.includes('semiduplex')) {
+    return context.version === 'Reduced - 1955' ? 'simplex' : 'semiduplex';
   }
   if (
     normalized.includes('duplex') ||
@@ -247,6 +251,9 @@ function classifyPre1960ClassSymbol(
     normalized.includes('memoria') ||
     raw.classWeight > 1
   ) {
+    if (context.version === 'Reduced - 1955' && context.source === 'sanctoral') {
+      return 'commemoration-only';
+    }
     return 'simplex';
   }
 

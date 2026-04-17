@@ -27,6 +27,7 @@ import { walkTransferTargetDate } from '../transfer/compute.js';
 import type {
   ConcurrenceResult,
   DayConcurrencePreview,
+  VespersClass,
   VespersSideView
 } from '../types/concurrence.js';
 import type {
@@ -40,7 +41,7 @@ import type {
   FeastReference,
   TemporalContext
 } from '../types/model.js';
-import type { Commemoration } from '../types/ordo.js';
+import type { Celebration, Commemoration } from '../types/ordo.js';
 import type {
   HourDirectivesParams,
   OctaveRule,
@@ -48,6 +49,7 @@ import type {
   RubricalPolicy,
   SelectPsalmodyParams
 } from '../types/policy.js';
+import type { FeastVespersSignals } from '../concurrence/vespers-class.js';
 
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
 const THREE_NOCTURN_CLASSES = new Set([
@@ -137,6 +139,20 @@ export const reduced1955Policy: RubricalPolicy = {
     readonly tomorrow: VespersSideView;
     readonly temporal: TemporalContext;
   }): ConcurrenceResult {
+    if (
+      (params.today.celebration.rank.classSymbol === 'sunday' ||
+        params.today.celebration.rank.classSymbol === 'semiduplex') &&
+      isMajorFollowingDouble1955(params.tomorrow.celebration)
+    ) {
+      return {
+        winner: 'tomorrow',
+        source: params.tomorrow.celebration,
+        commemorations: [toConcurrenceCommemoration(params.today.celebration)],
+        reason: 'tomorrow-higher-rank',
+        warnings: []
+      };
+    }
+
     const row = lookupVespers1955Row(
       params.today.celebration.rank.classSymbol,
       params.tomorrow.celebration.rank.classSymbol
@@ -232,6 +248,11 @@ export const reduced1955Policy: RubricalPolicy = {
         hasSecondVespers: false
       });
     }
+
+    celebrationRules = mergeFeastRules(
+      celebrationRules,
+      officeBoundaryPatch1955(context.celebration, celebrationRules)
+    );
 
     return {
       celebrationRules,
@@ -394,5 +415,88 @@ function isLikelyFerialMatins(temporal: TemporalContext): boolean {
   return (
     temporal.rank.classSymbol === 'feria' ||
     temporal.rank.classSymbol === 'privileged-feria-major'
+  );
+}
+
+function officeBoundaryPatch1955(
+  celebration: Celebration,
+  celebrationRules: {
+    readonly hasFirstVespers: boolean;
+    readonly hasSecondVespers: boolean;
+  }
+): {
+  readonly hasFirstVespers: boolean;
+  readonly hasSecondVespers: boolean;
+} {
+  const hasFirstVespers =
+    celebration.rank.classSymbol === 'duplex-i' ||
+    celebration.rank.classSymbol === 'duplex-ii' ||
+    celebration.rank.classSymbol === 'privileged-sunday' ||
+    celebration.rank.classSymbol === 'sunday' ||
+    ((celebration.rank.classSymbol === 'duplex' ||
+      celebration.rank.classSymbol === 'duplex-major') &&
+      isMarianOrLordDouble1955(celebration));
+
+  return {
+    hasFirstVespers:
+      celebrationRules.hasFirstVespers &&
+      hasFirstVespers &&
+      !isPaschalOrPentecostOctaveWeekday1955(celebration.feastRef.path),
+    hasSecondVespers:
+      celebrationRules.hasSecondVespers &&
+      celebration.rank.classSymbol !== 'commemoration-only'
+  };
+}
+
+export function deriveVespersClass1955(params: {
+  readonly celebration: Celebration;
+  readonly signals: FeastVespersSignals;
+}): VespersClass {
+  const { celebration, signals } = params;
+
+  if (
+    celebration.rank.classSymbol === 'privileged-sunday' ||
+    celebration.rank.classSymbol === 'sunday' ||
+    celebration.rank.classSymbol === 'duplex-i' ||
+    celebration.rank.classSymbol === 'duplex-ii' ||
+    celebration.rank.classSymbol === 'duplex-major' ||
+    celebration.rank.classSymbol === 'duplex' ||
+    celebration.rank.classSymbol === 'semiduplex' ||
+    celebration.rank.classSymbol === 'octave-major' ||
+    celebration.rank.classSymbol === 'octave' ||
+    celebration.rank.classSymbol === 'vigil-major'
+  ) {
+    return 'totum';
+  }
+
+  if (signals.hasCapitulumOnly) {
+    return 'capitulum';
+  }
+
+  if (signals.hasVespersSection || signals.hasVespersViaCommune) {
+    return 'totum';
+  }
+
+  return 'nihil';
+}
+
+function isMarianOrLordDouble1955(celebration: Celebration): boolean {
+  return (
+    /\bmari/iu.test(celebration.feastRef.title) ||
+    /\bdomini\b/iu.test(celebration.feastRef.title)
+  );
+}
+
+function isPaschalOrPentecostOctaveWeekday1955(feastPath: string): boolean {
+  return /^Tempora\/Pasc[07]-[1-6]r?$/u.test(feastPath);
+}
+
+function isMajorFollowingDouble1955(celebration: VespersSideView['celebration']): boolean {
+  return (
+    celebration.rank.classSymbol === 'duplex-i' ||
+    celebration.rank.classSymbol === 'duplex-ii' ||
+    ((celebration.rank.classSymbol === 'duplex' ||
+      celebration.rank.classSymbol === 'duplex-major') &&
+      isMarianOrLordDouble1955(celebration))
   );
 }

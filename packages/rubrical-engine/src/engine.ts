@@ -522,6 +522,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       }
     );
     const assembledCommemorations =
+      version.policy.name === 'rubrics-1960' &&
       celebrationRuleEvaluation.celebrationRules.omitCommemoration &&
       hasDirectNoCommemorationRule(celebrationFile)
         ? []
@@ -819,11 +820,18 @@ function supplementalCandidates(
   corpus: RubricalEngineConfig['corpus']
 ): readonly SanctoralCandidate[] {
   if (
-    version.policy.name !== 'rubrics-1960' ||
+    (version.policy.name !== 'rubrics-1960' && version.policy.name !== 'reduced-1955') ||
     temporal.dayOfWeek !== 6 ||
-    temporal.rank.classSymbol !== 'IV' ||
     sanctoral.some((candidate) => candidate.rank.weight > temporal.rank.weight)
   ) {
+    return [];
+  }
+
+  if (version.policy.name === 'rubrics-1960' && temporal.rank.classSymbol !== 'IV') {
+    return [];
+  }
+
+  if (version.policy.name === 'reduced-1955' && temporal.rank.classSymbol !== 'feria') {
     return [];
   }
 
