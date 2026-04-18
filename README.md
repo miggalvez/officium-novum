@@ -25,7 +25,7 @@ Source Texts (.txt)  ──>  Parser  ──>  Rubrical Engine  ──>  Composi
 
 - **Parser** — reads the legacy `.txt` files and emits typed, validated objects. Builds an in-memory text index queryable by feast, hour, language, and rubrical system.
 - **Rubrical Engine** — the target pure function is `(date, versionHandle) → OrdoEntry`. It encodes the calendar, occurrence, concurrence, and commemoration logic for the supported Breviary versions by resolving each `VersionHandle` to a calendar chain plus a rubrical policy family. No I/O.
-- **Composition Engine** — resolves text references from the `OrdoEntry` against the text index, applies inline rubrical modifications, and produces a format-agnostic structured document.
+- **Composition Engine** — resolves text references from the `DayOfficeSummary` against a Phase-1-resolved text index, expands deferred node kinds (`psalmInclude`, `macroRef`, `formulaRef`), flattens seasonal conditionals, applies `HourDirective` post-transforms, and emits a format-agnostic `ComposedHour` tree of typed `Section`s with per-language `ComposedRun[]` lines.
 - **API** — stateless, read-only JSON API (`GET /api/v1/office/{date}/{hour}`) with aggressive HTTP caching.
 - **Frontend** — lightweight SPA consuming the API, with offline support via service worker caching.
 
@@ -47,7 +47,8 @@ See [Rubrical Sources](docs/rubrical-sources.md) for the canonical project mappi
 officium-novum/
 ├── packages/
 │   ├── parser/            # @officium-novum/parser — reads .txt files, emits typed objects
-│   └── rubrical-engine/   # @officium-novum/rubrical-engine — Phase 2 implementation
+│   ├── rubrical-engine/   # @officium-novum/rubrical-engine — Phase 2 implementation
+│   └── compositor/        # @officium-novum/compositor — Phase 3 implementation
 ├── upstream/          # Divinum Officium as a Git submodule (source texts + legacy Perl app)
 ├── docs/              # Specifications and design documents
 │   ├── divinum-officium-modernization-spec.md
@@ -144,6 +145,8 @@ ADRs for the key architectural decisions so far:
 - [`docs/adr/005-phase-2f-concurrence-preview.md`](docs/adr/005-phase-2f-concurrence-preview.md)
 - [`docs/adr/006-phase-2g-ordinarium-skeleton-cache.md`](docs/adr/006-phase-2g-ordinarium-skeleton-cache.md)
 - [`docs/adr/007-phase-2g-matins-plan-separation.md`](docs/adr/007-phase-2g-matins-plan-separation.md)
+- [`docs/adr/008-compositor-conditions-and-latin-rooted-refs.md`](docs/adr/008-compositor-conditions-and-latin-rooted-refs.md)
+- [`docs/adr/009-compositor-resolved-corpus-and-deferred-nodes.md`](docs/adr/009-compositor-resolved-corpus-and-deferred-nodes.md)
 
 **Phase 2d — Rule Evaluation (complete).** The dedicated rule-evaluation stage from design §12/§18 is now wired after occurrence: every winning celebration now carries a typed `CelebrationRuleSet`, with tested per-hour derivation via `deriveHourRuleSet`.
 
@@ -202,7 +205,32 @@ Implemented in 2h:
 - Post-Phase-2h 1960 cleanup aligned the focused 1960 occurrence / Vespers / Matins fixtures with the governing 1960 rubrics and fixed the remaining engine-side 1960 bugs around fourth-class feria commemorations and Saturday BVM synthesis on non-free Saturdays
 - Residual Perl-snapshot disagreements are now tracked explicitly in `packages/rubrical-engine/test/divergence/rubrics-1960-2024.md`, `packages/rubrical-engine/test/divergence/divino-afflatu-2024.md`, and `packages/rubrical-engine/test/divergence/reduced-1955-2024.md`; the 1960 rows are still documented as adjudicated divergences or comparison-surface differences, while the Divino Afflatu and 1955 ledgers now record full 2024 fixture parity rather than adjudication backlog
 
-475 rubrical-engine tests passing (plus one TODO marker) in package validation, including the 1911/1955 suites, the year-wide supported-handle no-throw matrix, the refreshed 1960 upstream fixtures, and the upstream-backed Phase 2h regression fixtures. Workspace validation currently passes with `pnpm -r typecheck` and `pnpm -r test`.
+475 rubrical-engine tests passing (plus one TODO marker) in package validation, including the 1911/1955 suites, the year-wide supported-handle no-throw matrix, the refreshed 1960 upstream fixtures, and the upstream-backed Phase 2h regression fixtures.
+
+**Phase 3 — Composition Engine (core pipeline shipped; liturgical directives and Perl/Ordo comparison still open).** The `@officium-novum/compositor` package now turns a `DayOfficeSummary` + Phase-1-resolved `CorpusIndex` into a typed, format-agnostic `ComposedHour`. The architectural boundary from ADR-008 / ADR-009 is enforced in code: the compositor never re-runs the parser's `@`-reference resolver, and unresolved `reference` nodes are surfaced as `unresolved-reference` runs rather than silently dropped.
+
+Implemented in Phase 3:
+
+- `@officium-novum/compositor` package scaffold with build, typecheck, and Vitest setup
+- Pure-function entry: `composeHour({ corpus, summary, version, hour, options }) → ComposedHour`; no I/O
+- Reference resolver with Latin-rooted path convention (Phase 2 emits `horas/Latin/...` paths) swapped into the requested language, walking the parser's `languageFallbackChain` for graceful fallback
+- Selector semantics on `TextReference`: integer selectors (1-based raw content index used by `matins-plan.ts`), `'missing'` sentinel (surfaces a rubric placeholder, not stale text), comma-separated psalm lists on `Psalterium/Psalmorum/PsalmN`, weekday-keyed minor-hour psalmody on `Psalterium/Psalmi/Psalmi minor`, and season-keyed seasonal invitatory injection into the Psalm 94 skeleton — the five structured selector shapes Phase 2 actually emits
+- Deferred-node expansion for the residual kinds Phase 1 intentionally leaves in place: `psalmInclude` → `Psalterium/Psalmorum/Psalm{N}` (`__preamble`), `macroRef` → `Common/Prayers` section lookup with alias fallbacks, `formulaRef` → same with rubric-prefix stripping; cycle-safe via per-`(language, path#section)` seen set, depth-limited
+- Conditional flattening via `evaluateConditionalBlock` (re-exported from `rubrical-engine` at `condition-eval.ts`) applied to resolved section content using a `ConditionEvalContext` derived from `DayOfficeSummary.temporal` and the `ResolvedVersion`
+- Matins plan-aware composer: walks `InvitatoriumSource` / `NocturnPlan[]` / `te-deum` decisions from Phase 2g-β, emits language-neutral structured heading nodes (`{ kind: 'nocturn' | 'lesson', ordinal: N }`) instead of baking English labels into every language column, and resolves commemorated lessons from the commemorated feast's own `[LectioN]` section; orphan-heading guard ensures a heading is only emitted when at least one downstream lesson/responsory actually resolves
+- `HourDirective` post-transform pipeline with 12 directive cases: `omit-gloria-patri`, `omit-alleluia`, `add-alleluia`, `add-versicle-alleluia`, `preces-dominicales`, `preces-feriales`, `suffragium-of-the-saints`, `omit-suffragium`, `short-chapter-only`, `genuflection-at-oration`, `dirge-vespers`, `dirge-lauds`. The alleluia / Gloria Patri / `short-chapter-only` / `omit-suffragium` / `genuflection-at-oration` transforms operate on concrete text; `preces-*`, `suffragium-of-the-saints`, and `dirge-*` currently emit MVP banner rubrics rather than the full liturgical substitutions
+- Lossless output model: `ComposedRun` discriminated union (`text` / `rubric` / `citation` / `unresolved-macro` / `unresolved-formula` / `unresolved-reference`) on every `Section.lines.texts[lang]`, so rubrics keep their typing and unexpanded artifacts are visible to clients instead of being flattened to strings
+- Smoke integration test against the upstream corpus composing every Hour on a handful of 1960 dates without throwing, plus a focused Matins shape assertion; gates on `existsSync(UPSTREAM_ROOT)` like the engine's integration suites
+
+What remains open for Phase 3:
+
+- **Liturgically complete preces / suffragium / dirge directive implementations.** The current MVP emits a banner rubric; the full implementations need to splice in the real preces block from `Psalterium/Special/Preces.txt`, the suffragium from the corresponding common, and the Office-of-the-Dead skeletons for the dirge directives.
+- **Perl/Ordo comparison harness for the composed text layer.** Phase 2 hit spec §3's validation bar via `compare:phase-2h-perl-fixtures`; Phase 3 still needs an equivalent end-to-end harness that compares `ComposedHour` outputs against the legacy Perl-rendered Hour and maintains a divergence ledger per policy (`packages/compositor/test/divergence/<policy>-2024.md`).
+- **`selectorUnhandled` warning wiring.** The resolver sets the flag structurally for novel selector shapes, but callers currently only branch on `selectorMissing`; novel selectors fall through to full-section output without surfacing a warning.
+- **DA / 1955 integration coverage.** The compositor integration suite exercises 1960 only; `divino-afflatu` and `reduced-1955` engine outputs should flow through the compositor under matching fixtures.
+- **Upstream engine gap: Matins commemorations.** `rubrical-engine/src/hours/apply-rule-set.ts:attachCommemorationSlots` currently early-returns for any hour other than Lauds or Vespers, so Matins commemorations never reach `HourStructure.slots`. The compositor can't emit what the engine doesn't produce; lifting that guard (where rubrically correct for the given policy) is a prerequisite for fully-commemorated Matins output.
+
+Workspace validation currently passes with `pnpm -r typecheck` and `pnpm -r test` (parser + rubrical-engine + compositor).
 
 ## License
 

@@ -1,5 +1,6 @@
 export * from './candidates/index.js';
 export * from './concurrence/index.js';
+export * from './condition-eval.js';
 export * from './directorium/index.js';
 export * from './engine.js';
 export * from './hours/index.js';

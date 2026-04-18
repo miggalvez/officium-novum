@@ -4,3 +4,4 @@ export * from './parser/index.js';
 export * from './resolver/index.js';
 export * from './text-index/index.js';
 export * from './types/index.js';
+export * from './utils/path.js';
