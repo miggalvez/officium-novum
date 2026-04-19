@@ -8,6 +8,7 @@ import {
   type LiturgicalSeason,
   type TemporalContext
 } from '../../src/index.js';
+import { TestOfficeTextIndex } from '../helpers.js';
 
 function temporal(
   isoDate: string,
@@ -69,18 +70,25 @@ function hourRules(
   };
 }
 
+function corpus() {
+  return new TestOfficeTextIndex();
+}
+
 describe('selectPsalmodyRoman1960', () => {
-  it('routes Sunday Vespers to Day0 Vespera section', () => {
+  it('routes Sunday Vespers to five Day0 Vespera row selectors', () => {
     const refs = selectPsalmodyRoman1960({
       hour: 'vespers',
       celebration: celebration('Tempora/Pent03-0'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('vespers'),
-      temporal: temporal('2024-06-09', 'Pent03-0', 'time-after-pentecost', 0)
+      temporal: temporal('2024-06-09', 'Pent03-0', 'time-after-pentecost', 0),
+      corpus: corpus()
     });
 
-    expect(refs).toHaveLength(1);
+    expect(refs).toHaveLength(5);
     expect(refs[0]?.psalmRef.section).toBe('Day0 Vespera');
+    expect(refs[0]?.psalmRef.selector).toBe('1');
+    expect(refs[4]?.psalmRef.selector).toBe('5');
     expect(refs[0]?.psalmRef.path).toContain('Psalmi major');
   });
 
@@ -90,16 +98,20 @@ describe('selectPsalmodyRoman1960', () => {
       celebration: celebration('Tempora/Pent03-0'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('lauds'),
-      temporal: temporal('2024-06-09', 'Pent03-0', 'time-after-pentecost', 0)
+      temporal: temporal('2024-06-09', 'Pent03-0', 'time-after-pentecost', 0),
+      corpus: corpus()
     });
+    expect(festive).toHaveLength(5);
     expect(festive[0]?.psalmRef.section).toBe('Day0 Laudes1');
+    expect(festive[0]?.psalmRef.selector).toBe('1');
 
     const penitential = selectPsalmodyRoman1960({
       hour: 'lauds',
       celebration: celebration('Tempora/Quad2-1'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('lauds'),
-      temporal: temporal('2024-02-26', 'Quad2-1', 'lent', 1)
+      temporal: temporal('2024-02-26', 'Quad2-1', 'lent', 1),
+      corpus: corpus()
     });
     expect(penitential[0]?.psalmRef.section).toBe('Day1 Laudes2');
   });
@@ -110,11 +122,14 @@ describe('selectPsalmodyRoman1960', () => {
       celebration: celebration('Sancti/08-15'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('vespers', { psalterScheme: 'proper' }),
-      temporal: temporal('2024-08-15', 'Pent13-4', 'time-after-pentecost', 4)
+      temporal: temporal('2024-08-15', 'Pent13-4', 'time-after-pentecost', 4),
+      corpus: corpus()
     });
 
+    expect(refs).toHaveLength(5);
     expect(refs[0]?.psalmRef.path).toBe('horas/Latin/Sancti/08-15');
     expect(refs[0]?.psalmRef.section).toBe('Psalmi Vespera');
+    expect(refs[0]?.psalmRef.selector).toBe('1');
   });
 
   it('uses Sunday distribution on a weekday when psalterScheme is dominica (Codex P1 #4)', () => {
@@ -124,28 +139,34 @@ describe('selectPsalmodyRoman1960', () => {
       celebration: celebration('Sancti/08-15'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('vespers', { psalterScheme: 'dominica' }),
-      temporal: temporal('2024-08-15', 'Pent13-4', 'time-after-pentecost', 4)
+      temporal: temporal('2024-08-15', 'Pent13-4', 'time-after-pentecost', 4),
+      corpus: corpus()
     });
 
     expect(refs[0]?.psalmRef.section).toBe('Day0 Vespera');
   });
 
-  it('psalm overrides emit per-psalm Psalmorum refs (Codex P1 #5)', () => {
+  it('psalm overrides replace only the targeted Vespers slot (Codex P1 #5)', () => {
     const refs = selectPsalmodyRoman1960({
       hour: 'vespers',
       celebration: celebration('Sancti/10-02'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('vespers', {
-        psalmOverrides: [{ key: 'Psalm5 Vespera', value: '116' }]
+        psalmOverrides: [
+          { key: 'Psalm5 Vespera', value: '116' },
+          { key: 'Psalm5 Vespera3', value: '138' }
+        ]
       }),
-      temporal: temporal('2024-10-02', 'Pent19-3', 'time-after-pentecost', 3)
+      temporal: temporal('2024-10-02', 'Pent19-3', 'time-after-pentecost', 3),
+      corpus: corpus()
     });
 
-    expect(refs).toHaveLength(1);
-    expect(refs[0]?.psalmRef.path).toBe(
+    expect(refs).toHaveLength(5);
+    expect(refs[0]?.psalmRef.section).toBe('Day3 Vespera');
+    expect(refs[4]?.psalmRef.path).toBe(
       'horas/Latin/Psalterium/Psalmorum/Psalm116'
     );
-    expect(refs[0]?.psalmRef.selector).toBe('116');
+    expect(refs[4]?.psalmRef.selector).toBe('116');
   });
 
   it('routes a minor hour (Sext) to Psalmi minor with weekday selector', () => {
@@ -154,10 +175,72 @@ describe('selectPsalmodyRoman1960', () => {
       celebration: celebration('Tempora/Pent03-2'),
       celebrationRules: baseCelebrationRules(),
       hourRules: hourRules('sext'),
-      temporal: temporal('2024-06-11', 'Pent03-2', 'time-after-pentecost', 2)
+      temporal: temporal('2024-06-11', 'Pent03-2', 'time-after-pentecost', 2),
+      corpus: corpus()
     });
 
     expect(refs[0]?.psalmRef.section).toBe('Sexta');
     expect(refs[0]?.psalmRef.selector).toBe('Feria III');
+  });
+
+  it('uses the Tridentinum Prime festis table for weekday feasts with Psalmi Dominica', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Tridentinum]
+Prima Festis=Allelúja, * allelúja, allelúja;;53,118(1-16),118(17-32)
+Tertia Dominica=Allelúja, * allelúja, allelúja;;118(33-48),118(49-64),118(65-80)
+Sexta Dominica=Allelúja, * allelúja, allelúja;;118(81-96),118(97-112),118(113-128)
+Nona Dominica=Allelúja, * allelúja, allelúja;;118(129-144),118(145-160),118(161-176)
+`.trim()
+    );
+
+    const refs = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Sancti/01-06'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime', { psalterScheme: 'dominica' }),
+      temporal: temporal('2024-01-06', 'Nat06', 'christmastide', 6),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.path)).toEqual([
+      'horas/Latin/Psalterium/Psalmorum/Psalm53',
+      'horas/Latin/Psalterium/Psalmorum/Psalm118',
+      'horas/Latin/Psalterium/Psalmorum/Psalm118'
+    ]);
+    expect(refs[0]?.antiphonRef?.selector).toBe('Prima Festis#antiphon');
+    expect(refs[1]?.psalmRef.selector).toBe('118(1-16)');
+  });
+
+  it('uses the Tridentinum Sunday minor-hour ranges on temporal Sundays', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Tridentinum]
+Prima Dominica=Allelúja, * allelúja, allelúja;;53,117,118(1-16),118(17-32)
+Tertia Dominica=Allelúja, * allelúja, allelúja;;118(33-48),118(49-64),118(65-80)
+Sexta Dominica=Allelúja, * allelúja, allelúja;;118(81-96),118(97-112),118(113-128)
+Nona Dominica=Allelúja, * allelúja, allelúja;;118(129-144),118(145-160),118(161-176)
+`.trim()
+    );
+
+    const refs = selectPsalmodyRoman1960({
+      hour: 'terce',
+      celebration: celebration('Tempora/Epi2-0'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('terce'),
+      temporal: temporal('2024-01-14', 'Epi2-0', 'time-after-epiphany', 0),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.selector)).toEqual([
+      '118(33-48)',
+      '118(49-64)',
+      '118(65-80)'
+    ]);
+    expect(refs[0]?.antiphonRef?.selector).toBe('Tertia Dominica#antiphon');
   });
 });

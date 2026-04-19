@@ -2,8 +2,10 @@ import type {
   PsalmAssignment,
   TextReference
 } from '../types/hour-structure.js';
+import type { TextContent } from '@officium-novum/parser';
+
 import type { Celebration, HourName } from '../types/ordo.js';
-import type { TemporalContext } from '../types/model.js';
+import type { OfficeTextIndex, TemporalContext } from '../types/model.js';
 import type {
   CelebrationRuleSet,
   HourRuleSet,
@@ -16,6 +18,7 @@ export interface SelectPsalmodyInput {
   readonly celebrationRules: CelebrationRuleSet;
   readonly hourRules: HourRuleSet;
   readonly temporal: TemporalContext;
+  readonly corpus: OfficeTextIndex;
 }
 
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
@@ -34,47 +37,35 @@ export function selectPsalmodyRoman1960(
   params: SelectPsalmodyInput
 ): readonly PsalmAssignment[] {
   const { hour, hourRules, temporal, celebrationRules } = params;
+  let assignments: readonly PsalmAssignment[];
 
-  const overrides = hourRules.psalmOverrides;
-  if (overrides.length > 0) {
-    const refs = overrides
-      .filter((override) => overrideAppliesToHour(override, hour))
-      .map((override) => psalmOverrideReference(override));
-    if (refs.length > 0) {
-      return refs.map((psalmRef): PsalmAssignment => ({ psalmRef }));
+  if (hourRules.psalterScheme === 'proper') {
+    assignments = properFeastReferences(params);
+  } else if (hourRules.psalterScheme === 'festal' && !isTemporalCelebration(params)) {
+    assignments = festalReferences(params);
+  } else if (hour === 'prime' || hour === 'terce' || hour === 'sext' || hour === 'none') {
+    assignments = minorHourReferences({
+      ...params,
+      hour
+    });
+  } else if (hour === 'compline') {
+    assignments = complineReferences(temporal);
+  } else {
+    // §16.2 step 4: `psalterScheme === 'dominica'` (e.g. `Psalmi Dominica` in a
+    // feast's [Rule]) forces the Sunday distribution even on a weekday.
+    const useSundayPsalmody =
+      hourRules.psalterScheme === 'dominica' || isSundayForMajorHour(hour, temporal);
+
+    if (hour === 'lauds') {
+      assignments = laudsReferences(temporal, celebrationRules, useSundayPsalmody);
+    } else if (hour === 'vespers') {
+      assignments = vespersReferences(temporal, useSundayPsalmody);
+    } else {
+      assignments = [];
     }
   }
 
-  if (hourRules.psalterScheme === 'proper') {
-    return properFeastReferences(params);
-  }
-
-  if (hourRules.psalterScheme === 'festal' && !isTemporalCelebration(params)) {
-    return festalReferences(params);
-  }
-
-  if (hour === 'prime' || hour === 'terce' || hour === 'sext' || hour === 'none') {
-    return minorHourReferences(hour, temporal, hourRules);
-  }
-
-  if (hour === 'compline') {
-    return complineReferences(temporal);
-  }
-
-  // §16.2 step 4: `psalterScheme === 'dominica'` (e.g. `Psalmi Dominica` in a
-  // feast's [Rule]) forces the Sunday distribution even on a weekday.
-  const useSundayPsalmody =
-    hourRules.psalterScheme === 'dominica' || isSundayForMajorHour(hour, temporal);
-
-  if (hour === 'lauds') {
-    return laudsReferences(temporal, celebrationRules, useSundayPsalmody);
-  }
-
-  if (hour === 'vespers') {
-    return vespersReferences(temporal, useSundayPsalmody);
-  }
-
-  return [];
+  return applyPsalmOverrides(assignments, params);
 }
 
 function isSundayForMajorHour(hour: HourName, temporal: TemporalContext): boolean {
@@ -92,11 +83,7 @@ function laudsReferences(
   const scheme = usePenitential ? 'Laudes2' : 'Laudes1';
   const weekday = useSundayPsalmody ? 0 : temporal.dayOfWeek;
   const section = `Day${weekday} ${scheme}`;
-  return [
-    {
-      psalmRef: { path: PSALMI_MAJOR, section }
-    }
-  ];
+  return numberedSectionAssignments(PSALMI_MAJOR, section, 5);
 }
 
 function vespersReferences(
@@ -105,11 +92,7 @@ function vespersReferences(
 ): readonly PsalmAssignment[] {
   const weekday = useSundayPsalmody ? 0 : temporal.dayOfWeek;
   const section = `Day${weekday} Vespera`;
-  return [
-    {
-      psalmRef: { path: PSALMI_MAJOR, section }
-    }
-  ];
+  return numberedSectionAssignments(PSALMI_MAJOR, section, 5);
 }
 
 function complineReferences(temporal: TemporalContext): readonly PsalmAssignment[] {
@@ -125,13 +108,34 @@ function complineReferences(temporal: TemporalContext): readonly PsalmAssignment
 }
 
 function minorHourReferences(
+  params: SelectPsalmodyInput & {
+    readonly hour: 'prime' | 'terce' | 'sext' | 'none';
+  }
+): readonly PsalmAssignment[] {
+  const { hour, temporal, hourRules, corpus } = params;
+  if (hourRules.minorHoursFerialPsalter) {
+    return weekdayMinorHourReferences(hour, temporal.dayOfWeek);
+  }
+
+  const useSundayOrFestalMinorHours =
+    temporal.dayOfWeek === 0 || hourRules.psalterScheme === 'dominica';
+  if (useSundayOrFestalMinorHours) {
+    const selector = tridentinumMinorHourSelector(hour, temporal.dayOfWeek === 0);
+    const assignments = resolveTridentinumMinorHourAssignments(corpus, selector);
+    if (assignments.length > 0) {
+      return assignments;
+    }
+  }
+
+  return weekdayMinorHourReferences(hour, temporal.dayOfWeek);
+}
+
+function weekdayMinorHourReferences(
   hour: 'prime' | 'terce' | 'sext' | 'none',
-  temporal: TemporalContext,
-  hourRules: HourRuleSet
+  dayOfWeek: number
 ): readonly PsalmAssignment[] {
   const hourSection = MINOR_HOUR_SECTION[hour];
-  const weekday = hourRules.psalterScheme === 'dominica' ? 0 : temporal.dayOfWeek;
-  const weekdayKey = WEEKDAY_KEYS[weekday];
+  const weekdayKey = WEEKDAY_KEYS[dayOfWeek];
   return [
     {
       psalmRef: {
@@ -150,6 +154,9 @@ function properFeastReferences(
   // section. Phase 3 resolves the actual psalm numbers.
   const feastPath = `horas/Latin/${params.celebration.feastRef.path}`;
   const section = FEAST_PSALM_SECTION[params.hour] ?? 'Psalmi';
+  if (params.hour === 'lauds' || params.hour === 'vespers') {
+    return numberedSectionAssignments(feastPath, section, 5);
+  }
   return [
     {
       psalmRef: { path: feastPath, section }
@@ -166,11 +173,28 @@ function festalReferences(
   const comkey = params.celebrationRules.comkey ?? 'C10';
   const commonPath = `horas/Latin/Commune/${comkey}`;
   const section = FEAST_PSALM_SECTION[params.hour] ?? 'Psalmi';
+  if (params.hour === 'lauds' || params.hour === 'vespers') {
+    return numberedSectionAssignments(commonPath, section, 5);
+  }
   return [
     {
       psalmRef: { path: commonPath, section }
     }
   ];
+}
+
+function numberedSectionAssignments(
+  path: string,
+  section: string,
+  count: number
+): readonly PsalmAssignment[] {
+  return Array.from({ length: count }, (_, index): PsalmAssignment => ({
+    psalmRef: {
+      path,
+      section,
+      selector: String(index + 1)
+    }
+  }));
 }
 
 function psalmOverrideReference(override: PsalmOverride): TextReference {
@@ -195,9 +219,79 @@ function psalmOverrideReference(override: PsalmOverride): TextReference {
   };
 }
 
-function overrideAppliesToHour(override: PsalmOverride, hour: HourName): boolean {
-  const key = override.key.toLowerCase();
-  return key.includes(hour) || HOUR_ALIASES[hour].some((alias) => key.includes(alias));
+function applyPsalmOverrides(
+  assignments: readonly PsalmAssignment[],
+  params: SelectPsalmodyInput
+): readonly PsalmAssignment[] {
+  const overrides = params.hourRules.psalmOverrides
+    .map((override) => classifyPsalmOverride(override, params.hour))
+    .filter((override): override is ClassifiedPsalmOverride => override !== undefined);
+  if (overrides.length === 0) {
+    return assignments;
+  }
+
+  const effectiveOverrides = new Map<number, ClassifiedPsalmOverride>();
+  for (const override of overrides) {
+    const current = effectiveOverrides.get(override.index);
+    if (!current || override.priority >= current.priority) {
+      effectiveOverrides.set(override.index, override);
+    }
+  }
+
+  const next = [...assignments];
+  for (const override of effectiveOverrides.values()) {
+    if (override.index >= next.length) {
+      continue;
+    }
+
+    if (override.action === 'omit') {
+      next.splice(override.index, 1);
+      continue;
+    }
+
+    next[override.index] = {
+      ...next[override.index],
+      psalmRef: psalmOverrideReference({
+        key: override.override.key,
+        value: override.override.value
+      })
+    };
+  }
+
+  return Object.freeze(next);
+}
+
+interface ClassifiedPsalmOverride {
+  readonly override: PsalmOverride;
+  readonly index: number;
+  readonly action: 'replace' | 'omit';
+  readonly priority: number;
+}
+
+function classifyPsalmOverride(
+  override: PsalmOverride,
+  hour: HourName
+): ClassifiedPsalmOverride | undefined {
+  const normalized = override.key.toLowerCase().replace(/\s+/gu, '');
+  const omit = override.value === 'omit';
+
+  if (hour === 'vespers') {
+    if (normalized === 'psalm5vespera') {
+      return { override, index: 4, action: omit ? 'omit' : 'replace', priority: 2 };
+    }
+    if (normalized === 'psalm5vespera3') {
+      return { override, index: 4, action: omit ? 'omit' : 'replace', priority: 1 };
+    }
+    if (normalized === 'psalm5') {
+      return { override, index: 4, action: omit ? 'omit' : 'replace', priority: 0 };
+    }
+  }
+
+  if (hour === 'prime' && normalized === 'prima') {
+    return { override, index: 0, action: omit ? 'omit' : 'replace', priority: 2 };
+  }
+
+  return undefined;
 }
 
 function isTemporalCelebration(params: SelectPsalmodyInput): boolean {
@@ -240,13 +334,115 @@ const FEAST_PSALM_SECTION: Readonly<Partial<Record<HourName, string>>> = {
   compline: 'Psalmi Completorium'
 };
 
-const HOUR_ALIASES: Readonly<Record<HourName, readonly string[]>> = {
-  matins: ['matutinum', 'matins'],
-  lauds: ['laudes', 'laud'],
-  prime: ['prima', 'prime'],
-  terce: ['tertia', 'terce'],
-  sext: ['sexta', 'sext'],
-  none: ['nona'],
-  vespers: ['vespera', 'vespers'],
-  compline: ['completorium', 'compline']
-};
+function tridentinumMinorHourSelector(
+  hour: 'prime' | 'terce' | 'sext' | 'none',
+  isSunday: boolean
+): string {
+  switch (hour) {
+    case 'prime':
+      return isSunday ? 'Prima Dominica' : 'Prima Festis';
+    case 'terce':
+      return 'Tertia Dominica';
+    case 'sext':
+      return 'Sexta Dominica';
+    case 'none':
+      return 'Nona Dominica';
+  }
+}
+
+function resolveTridentinumMinorHourAssignments(
+  corpus: OfficeTextIndex,
+  selector: string
+): readonly PsalmAssignment[] {
+  const file = corpus.getFile(`${PSALMI_MINOR}.txt`);
+  const section = file?.sections.find((entry) => entry.header === 'Tridentinum');
+  if (!section) {
+    return [];
+  }
+
+  const row = findKeyedRow(section.content, selector);
+  if (!row) {
+    return [];
+  }
+
+  const [antiphon, psalmSpec] = splitTridentinumRow(row);
+  if (!psalmSpec) {
+    return [];
+  }
+
+  const tokens = psalmSpec
+    .split(',')
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0);
+  if (tokens.length === 0) {
+    return [];
+  }
+
+  return Object.freeze(
+    tokens.map((token, index): PsalmAssignment => ({
+      psalmRef: psalmTokenReference(token),
+      ...(index === 0 && antiphon
+        ? {
+            antiphonRef: {
+              path: PSALMI_MINOR,
+              section: 'Tridentinum',
+              selector: `${selector}#antiphon`
+            }
+          }
+        : {})
+    }))
+  );
+}
+
+function findKeyedRow(
+  content: readonly TextContent[],
+  selector: string
+): string | undefined {
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      const nested = findKeyedRow(node.content, selector);
+      if (nested) {
+        return nested;
+      }
+      continue;
+    }
+    if (node.type !== 'text') {
+      continue;
+    }
+    const match = node.value.match(/^([^=]+?)\s*=\s*(.*)$/u);
+    if (!match) {
+      continue;
+    }
+    const key = match[1]?.trim();
+    const value = match[2]?.trim();
+    if (key === selector && value) {
+      return value;
+    }
+  }
+  return undefined;
+}
+
+function splitTridentinumRow(value: string): readonly [string | undefined, string | undefined] {
+  const [antiphonRaw, psalmSpecRaw] = value.split(';;', 2);
+  const antiphon = antiphonRaw?.trim();
+  const psalmSpec = psalmSpecRaw?.trim();
+  return [antiphon && antiphon !== '_' ? antiphon : undefined, psalmSpec];
+}
+
+function psalmTokenReference(token: string): TextReference {
+  const match = token.match(/^\[?(\d+)\]?(?:\(([^)]+)\))?$/u);
+  const psalmNumber = match?.[1];
+  if (!psalmNumber) {
+    return {
+      path: PSALMI_MINOR,
+      section: 'Tridentinum',
+      selector: token
+    };
+  }
+
+  return {
+    path: `${PSALMORUM_ROOT}/Psalm${psalmNumber}`,
+    section: '__preamble',
+    selector: token
+  };
+}

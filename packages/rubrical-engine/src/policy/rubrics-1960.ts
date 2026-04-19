@@ -299,7 +299,8 @@ export const rubrics1960Policy: RubricalPolicy = {
       celebration: params.celebration,
       celebrationRules: params.celebrationRules,
       hourRules: params.hourRules,
-      temporal: params.temporal
+      temporal: params.temporal,
+      corpus: params.corpus
     });
   },
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective> {

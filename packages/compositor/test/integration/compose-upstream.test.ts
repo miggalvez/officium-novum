@@ -201,7 +201,128 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(composed.sections.filter((section) => section.slot === 'responsory')).toHaveLength(2);
     expect(composed.sections.filter((section) => section.slot === 'te-deum')).toHaveLength(1);
   }, 240_000);
+
+  it('keeps January 6 and January 13 Matins invitatories suppressed across the Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const date of ['2024-01-06', '2024-01-13']) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const matins = summary.hours.matins;
+        expect(matins).toBeDefined();
+        if (!matins) continue;
+
+        expect(matins.slots.invitatory?.kind).toBe('matins-invitatorium');
+        if (matins.slots.invitatory?.kind === 'matins-invitatorium') {
+          expect(matins.slots.invitatory.source.kind).toBe('suppressed');
+        }
+
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+
+        expect(composed.sections.find((section) => section.slot === 'invitatory')).toBeUndefined();
+        const earlyLines = composed.sections
+          .slice(0, 4)
+          .flatMap((section) => section.lines.map(renderLatinText))
+          .join('\n');
+
+        expect(
+          earlyLines,
+          `suppressed invitatory leaked Psalm 94 content for ${version} ${date}`
+        ).not.toContain('Veníte, exsultémus Dómino');
+      }
+    }
+  }, 240_000);
+
+  it('keeps the January 14 seasonal invitatory as the full opening block across the Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-01-14');
+      const matins = summary.hours.matins;
+      expect(matins).toBeDefined();
+      if (!matins) continue;
+
+      expect(matins.slots.invitatory?.kind).toBe('matins-invitatorium');
+      if (matins.slots.invitatory?.kind === 'matins-invitatorium') {
+        expect(matins.slots.invitatory.source.kind).toBe('season');
+      }
+
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(composed.sections.slice(0, 4).map((section) => section.slot)).toEqual([
+        'incipit',
+        'invitatory',
+        'hymn',
+        'heading'
+      ]);
+      expect(composed.sections[3]?.heading).toEqual({ kind: 'nocturn', ordinal: 1 });
+
+      const invitatory = composed.sections[1];
+      expect(invitatory?.slot).toBe('invitatory');
+      const invitatoryLines = invitatory?.lines.map(renderLatinText) ?? [];
+      expect(invitatoryLines[0]).toBe('Adorémus Dóminum, * Quóniam ipse fecit nos.');
+      expect(invitatoryLines[1]).toBe('Adorémus Dóminum, * Quóniam ipse fecit nos.');
+      expect(invitatoryLines[2]).toBe(
+        'Veníte, exsultémus Dómino, jubilémus Deo, salutári nostro: præoccupémus fáciem ejus in confessióne, et in psalmis jubilémus ei.'
+      );
+    }
+  }, 240_000);
+
+  it('applies the January 28 Invit2 feast materialization before the hymn across the Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-01-28');
+      const matins = summary.hours.matins;
+      expect(matins).toBeDefined();
+      if (!matins) continue;
+
+      expect(matins.slots.invitatory?.kind).toBe('matins-invitatorium');
+      if (matins.slots.invitatory?.kind === 'matins-invitatorium') {
+        expect(matins.slots.invitatory.source.kind).toBe('feast');
+      }
+
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(composed.sections.slice(0, 4).map((section) => section.slot)).toEqual([
+        'incipit',
+        'invitatory',
+        'hymn',
+        'heading'
+      ]);
+      expect(composed.sections[3]?.heading).toEqual({ kind: 'nocturn', ordinal: 1 });
+
+      const invitatory = composed.sections[1];
+      expect(invitatory?.slot).toBe('invitatory');
+      const invitatoryLines = invitatory?.lines.map(renderLatinText) ?? [];
+      expect(invitatoryLines[0]).toBe('Præoccupémus fáciem Dómini: * Et in psalmis jubilémus ei.');
+      expect(invitatoryLines[1]).toBe('Præoccupémus fáciem Dómini: * Et in psalmis jubilémus ei.');
+      expect(invitatoryLines[2]).toBe('Veníte, exsultémus Dómino, jubilémus Deo, salutári nostro:');
+    }
+  }, 240_000);
 });
+
+function renderLatinText(line: { readonly texts: Record<string, readonly { readonly type: string; readonly value?: string }[]> }): string {
+  return (line.texts.Latin ?? [])
+    .map((run) => ('value' in run && run.value ? run.value : ''))
+    .join('');
+}
 
 function loadKalendaria() {
   const dir = resolve(UPSTREAM_ROOT, 'Tabulae/Kalendaria');

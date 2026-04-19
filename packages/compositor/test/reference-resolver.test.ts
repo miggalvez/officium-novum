@@ -3,7 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { InMemoryTextIndex } from '@officium-novum/parser';
 import type { ParsedFile } from '@officium-novum/parser';
 
-import { resolveReference, swapLanguageSegment } from '../src/resolve/reference-resolver.js';
+import {
+  materializeInvitatoryContent,
+  resolveReference,
+  swapLanguageSegment
+} from '../src/resolve/reference-resolver.js';
 
 function fakeFile(path: string, header: string, value: string): ParsedFile {
   return {
@@ -36,6 +40,73 @@ describe('swapLanguageSegment', () => {
     expect(swapLanguageSegment('horas/Latin/Commune/C4', 'Latin')).toBe(
       'horas/Latin/Commune/C4'
     );
+  });
+  it('extracts the Tridentinum antiphon text from #antiphon selectors', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      sections: [
+        {
+          header: 'Tridentinum',
+          content: [
+            {
+              type: 'text',
+              value: 'Prima Festis=Allelúja, * allelúja, allelúja;;53,118(1-16),118(17-32)'
+            }
+          ],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+        section: 'Tridentinum',
+        selector: 'Prima Festis#antiphon'
+      },
+      { languages: ['Latin'] }
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      { type: 'text', value: 'Allelúja, * allelúja, allelúja' }
+    ]);
+  });
+
+  it('trims the first Psalm 94 tail segment for Invit2 materialization before antiphon insertion', () => {
+    const materialized = materializeInvitatoryContent(
+      [
+        { type: 'formulaRef', name: 'ant' },
+        {
+          type: 'verseMarker',
+          marker: 'v.',
+          text: 'Veníte, exsultémus Dómino, + jubilémus Deo, salutári nostro: * præoccupémus fáciem ejus in confessióne, et in psalmis jubilémus ei.'
+        },
+        { type: 'formulaRef', name: 'ant2' }
+      ],
+      [{ type: 'text', value: 'Præoccupémus fáciem Dómini: * Et in psalmis jubilémus ei.' }],
+      'Invit2'
+    );
+
+    expect(materialized).toEqual([
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Præoccupémus fáciem Dómini: * Et in psalmis jubilémus ei.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'v.',
+        text: 'Veníte, exsultémus Dómino, + jubilémus Deo, salutári nostro:'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Et in psalmis jubilémus ei.'
+      }
+    ]);
   });
 });
 

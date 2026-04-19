@@ -1,4 +1,4 @@
-import type { TextContent, TextIndex } from '@officium-novum/parser';
+import { ensureTxtSuffix, type TextContent, type TextIndex } from '@officium-novum/parser';
 import type {
   ConditionEvalContext,
   HourDirective,
@@ -197,7 +197,11 @@ function resolveInvitatoriumContent(
     return undefined;
   }
 
-  return materializeInvitatoryContent(skeleton.content, antiphon);
+  return materializeInvitatoryContent(
+    skeleton.content,
+    antiphon,
+    detectInvitatoryMaterializationMode(args.corpus, source)
+  );
 }
 
 function resolveInvitatoriumAntiphon(
@@ -239,6 +243,22 @@ function resolveInvitatoriumAntiphon(
     ];
   }
   return resolved.content;
+}
+
+function detectInvitatoryMaterializationMode(
+  index: TextIndex,
+  source: Exclude<InvitatoriumSource, { readonly kind: 'suppressed' }>
+): 'Invit2' | undefined {
+  if (source.kind !== 'feast') {
+    return undefined;
+  }
+
+  const ruleSection = index.getSection(ensureTxtSuffix(source.reference.path), 'Rule');
+  if (!ruleSection?.rules) {
+    return undefined;
+  }
+
+  return ruleSection.rules.some((rule) => /^Invit2$/iu.test(rule.raw)) ? 'Invit2' : undefined;
 }
 
 function composeNocturn(

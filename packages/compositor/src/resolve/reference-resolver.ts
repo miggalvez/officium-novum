@@ -362,6 +362,15 @@ function resolveStructuredSelector(
     return undefined;
   }
 
+  const antiphonSelector = parseAntiphonSelector(selector);
+  if (
+    antiphonSelector &&
+    context.path.endsWith(PSALMI_MINOR_SUFFIX) &&
+    context.section.header === 'Tridentinum'
+  ) {
+    return resolveTridentinumAntiphon(context.section, antiphonSelector);
+  }
+
   if (
     context.path.includes(PSALMORUM_SEGMENT) &&
     context.section.header === '__preamble'
@@ -427,13 +436,15 @@ function resolveSeasonalInvitatorium(
 
 export function materializeInvitatoryContent(
   skeleton: readonly TextContent[],
-  antiphon: readonly TextContent[]
+  antiphon: readonly TextContent[],
+  mode?: 'Invit2'
 ): readonly TextContent[] {
+  const adjustedSkeleton = applyInvitatoryMaterializationMode(skeleton, mode);
   const fullAntiphon = invitatoryAntiphonVariant(antiphon, 'full');
   const repeatedAntiphon = invitatoryAntiphonVariant(antiphon, 'repeat');
   const replaced: TextContent[] = [];
 
-  for (const node of skeleton) {
+  for (const node of adjustedSkeleton) {
     if (node.type === 'formulaRef' && node.name === 'ant') {
       replaced.push(...fullAntiphon);
       continue;
@@ -446,6 +457,50 @@ export function materializeInvitatoryContent(
   }
 
   return Object.freeze(replaced);
+}
+
+function applyInvitatoryMaterializationMode(
+  content: readonly TextContent[],
+  mode?: 'Invit2'
+): readonly TextContent[] {
+  if (mode !== 'Invit2') {
+    return content;
+  }
+
+  const [adjusted] = stripInvitatoryTailAtStar(content);
+  return adjusted;
+}
+
+function stripInvitatoryTailAtStar(
+  content: readonly TextContent[]
+): readonly [readonly TextContent[], boolean] {
+  let stripped = false;
+  const out: TextContent[] = [];
+
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      const [nested, nestedStripped] = stripInvitatoryTailAtStar(node.content);
+      out.push({
+        ...node,
+        content: [...nested]
+      });
+      stripped ||= nestedStripped;
+      continue;
+    }
+
+    if (!stripped && node.type === 'verseMarker' && node.text.includes('*')) {
+      out.push({
+        ...node,
+        text: node.text.replace(/\s+\*.*$/u, '')
+      });
+      stripped = true;
+      continue;
+    }
+
+    out.push(node);
+  }
+
+  return [Object.freeze(out), stripped];
 }
 
 export function resolveInvitatoryAntiphonContent(
@@ -866,6 +921,28 @@ function resolveKeyedMinorHourContent(
   }
 
   return undefined;
+}
+
+function parseAntiphonSelector(selector: string): string | undefined {
+  const match = selector.match(/^(.*)#antiphon$/u);
+  const key = match?.[1]?.trim();
+  return key && key.length > 0 ? key : undefined;
+}
+
+function resolveTridentinumAntiphon(
+  section: ParsedSection,
+  wantedKey: string
+): readonly TextContent[] | undefined {
+  const keyed = selectKeyedTextContent(section.content, wantedKey);
+  const firstText = keyed?.find((node) => node.type === 'text');
+  if (!firstText || firstText.type !== 'text') {
+    return undefined;
+  }
+  const antiphon = firstText.value.split(';;', 1)[0]?.trim();
+  if (!antiphon) {
+    return undefined;
+  }
+  return Object.freeze([{ type: 'text', value: antiphon }]);
 }
 
 function selectKeyedTextContent(

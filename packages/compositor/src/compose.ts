@@ -495,8 +495,14 @@ function buildPsalmHeading(
   const psalmNumber = directPsalm ?? contentPsalm;
   if (!psalmNumber) return undefined;
 
+  const tokenRange =
+    directPsalm && selector ? selector.match(/^\d+\(([^)]+)\)$/u)?.[1] : undefined;
   const rangeSuffix =
-    directPsalm && selector && /^\d+-\d+$/u.test(selector) ? `(${selector})` : '';
+    directPsalm && selector && /^\d+-\d+$/u.test(selector)
+      ? `(${selector})`
+      : tokenRange
+        ? `(${tokenRange})`
+        : '';
   return `Psalmus ${psalmNumber}${rangeSuffix} [${psalmIndex}]`;
 }
 
