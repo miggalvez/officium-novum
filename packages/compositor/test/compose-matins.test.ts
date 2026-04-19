@@ -40,6 +40,14 @@ const stubVersion: ResolvedVersion = {
   policy: {} as never
 };
 
+const reducedVersion: ResolvedVersion = {
+  handle: 'Reduced - 1955' as never,
+  kalendar: 'General-1955',
+  transfer: 'General-1955',
+  stransfer: 'General-1955',
+  policy: {} as never
+};
+
 function buildSummary(hour: HourStructure): DayOfficeSummary {
   return {
     date: '2024-04-14',
@@ -68,6 +76,28 @@ function buildSummary(hour: HourStructure): DayOfficeSummary {
     hours: { [hour.hour]: hour },
     candidates: [],
     winner: {} as never
+  };
+}
+
+function buildSummaryForVersion(
+  hour: HourStructure,
+  version: ResolvedVersion,
+  temporalOverrides: Partial<DayOfficeSummary['temporal']> = {}
+): DayOfficeSummary {
+  const summary = buildSummary(hour);
+  return {
+    ...summary,
+    version: {
+      handle: version.handle,
+      kalendar: version.kalendar,
+      transfer: version.transfer,
+      stransfer: version.stransfer,
+      policyName: String(version.handle).includes('1955') ? 'reduced-1955' : 'rubrics-1960'
+    },
+    temporal: {
+      ...summary.temporal,
+      ...temporalOverrides
+    }
   };
 }
 
@@ -549,7 +579,307 @@ describe('composeHour(matins)', () => {
     ]);
   });
 
-  it('emits Benedictio before each Lectio when the nocturn plan supplies one', () => {
+  it('shortens the opening Matins antiphon repeat for pre-1960 psalter Matins and carries the continuation marker into the first verse', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi matutinum', 'Day0', [
+        {
+          type: 'psalmRef',
+          psalmNumber: 1,
+          antiphon: 'Beátus vir * qui in lege Dómini meditátur.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmorum/Psalm1', '__preamble', [
+        {
+          type: 'text',
+          value:
+            '1:1 Beátus vir, qui non ábiit in consílio impiórum, † et in via peccatórum non stetit, * et in cáthedra pestiléntiæ non sedit:'
+        },
+        {
+          type: 'text',
+          value: '1:2 Sed in lege Dómini volúntas ejus, * et in lege ejus meditábitur die ac nocte.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Ordinarium/MatutinumM1 Versum', 'Versum', [
+        { type: 'verseMarker', marker: 'V.', text: 'Versus nocturni' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+        {
+          type: 'verseMarker',
+          marker: 'R.',
+          text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 1,
+              psalmody: [
+                {
+                  antiphonRef: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '1'
+                  },
+                  psalmRef: {
+                    path: 'horas/Latin/Psalterium/Psalmorum/Psalm1',
+                    section: '__preamble'
+                  }
+                }
+              ],
+              antiphons: [
+                {
+                  index: 1,
+                  reference: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '1'
+                  }
+                }
+              ],
+              versicle: {
+                reference: {
+                  path: 'horas/Latin/Ordinarium/MatutinumM1 Versum',
+                  section: 'Versum'
+                }
+              },
+              lessons: [],
+              responsories: [],
+              benedictions: []
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummaryForVersion(hour, reducedVersion),
+      version: reducedVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmody = composed.sections.find((section) => section.slot === 'psalmody');
+    expect(psalmody).toBeDefined();
+    expect(psalmody!.lines.map((line) => `${line.marker ?? '-'} ${renderRuns(line, 'Latin')}`)).toEqual([
+      'Ant. Beátus vir. ‡',
+      '- Psalmus 1 [1]',
+      '- 1:1 Beátus vir, ‡ qui non ábiit in consílio impiórum, et in via peccatórum non stetit, * et in cáthedra pestiléntiæ non sedit:',
+      '- 1:2 Sed in lege Dómini volúntas ejus, * et in lege ejus meditábitur die ac nocte.',
+      'V. Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'R. Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.',
+      'Ant. Beátus vir qui in lege Dómini meditátur.'
+    ]);
+  });
+
+  it('strips selector trailers from Matins inline antiphons before opening and closing normalization', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi matutinum', 'Day0', [
+        {
+          type: 'psalmRef',
+          psalmNumber: 104,
+          antiphon: 'Memor fuit in sǽculum * testaménti sui Dóminus Deus noster.;;104(1-15)'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmorum/Psalm104', '__preamble', [
+        {
+          type: 'text',
+          value: '104:1 Confitémini Dómino, et invocáte nomen ejus: annuntiáte inter gentes ópera ejus.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Ordinarium/MatutinumM1 Versum', 'Versum', [
+        { type: 'verseMarker', marker: 'V.', text: 'Versus nocturni' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+        {
+          type: 'verseMarker',
+          marker: 'R.',
+          text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 1,
+              psalmody: [
+                {
+                  antiphonRef: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '1'
+                  },
+                  psalmRef: {
+                    path: 'horas/Latin/Psalterium/Psalmorum/Psalm104',
+                    section: '__preamble'
+                  }
+                }
+              ],
+              antiphons: [
+                {
+                  index: 1,
+                  reference: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '1'
+                  }
+                }
+              ],
+              versicle: {
+                reference: {
+                  path: 'horas/Latin/Ordinarium/MatutinumM1 Versum',
+                  section: 'Versum'
+                }
+              },
+              lessons: [],
+              responsories: [],
+              benedictions: []
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummaryForVersion(hour, reducedVersion),
+      version: reducedVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmody = composed.sections.find((section) => section.slot === 'psalmody');
+    expect(psalmody).toBeDefined();
+    const rendered = psalmody!.lines.map((line) => `${line.marker ?? '-'} ${renderRuns(line, 'Latin')}`);
+    expect(rendered[0]).toBe('Ant. Memor fuit in sǽculum.');
+    expect(rendered.at(-1)).toBe('Ant. Memor fuit in sǽculum testaménti sui Dóminus Deus noster.');
+    expect(rendered.join('\n')).not.toContain(';;104(1-15)');
+  });
+
+  it('keeps the full opening antiphon for proper feast Matins even when the first psalm verse does not begin with the antiphon incipit', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Sancti/01-01', 'Ant Matutinum', [
+        {
+          type: 'text',
+          value: 'Dóminus dixit * ad me: Fílius meus es tu, ego hódie génui te.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmorum/Psalm2', '__preamble', [
+        {
+          type: 'text',
+          value: '2:1 Quare fremuérunt gentes: et pópuli meditáti sunt inánia?'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Ordinarium/MatutinumM1 Versum', 'Versum', [
+        { type: 'verseMarker', marker: 'V.', text: 'Versus nocturni' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+        {
+          type: 'verseMarker',
+          marker: 'R.',
+          text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 1,
+              psalmody: [
+                {
+                  antiphonRef: {
+                    path: 'horas/Latin/Sancti/01-01',
+                    section: 'Ant Matutinum'
+                  },
+                  psalmRef: {
+                    path: 'horas/Latin/Psalterium/Psalmorum/Psalm2',
+                    section: '__preamble'
+                  }
+                }
+              ],
+              antiphons: [
+                {
+                  index: 1,
+                  reference: {
+                    path: 'horas/Latin/Sancti/01-01',
+                    section: 'Ant Matutinum'
+                  }
+                }
+              ],
+              versicle: {
+                reference: {
+                  path: 'horas/Latin/Ordinarium/MatutinumM1 Versum',
+                  section: 'Versum'
+                }
+              },
+              lessons: [],
+              responsories: [],
+              benedictions: []
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummaryForVersion(hour, reducedVersion),
+      version: reducedVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmody = composed.sections.find((section) => section.slot === 'psalmody');
+    expect(psalmody).toBeDefined();
+    expect(`${psalmody!.lines[0]!.marker ?? '-'} ${renderRuns(psalmody!.lines[0]!, 'Latin')}`).toBe(
+      'Ant. Dóminus dixit * ad me: Fílius meus es tu, ego hódie génui te.'
+    );
+  });
+
+  it('inserts the Roman pre-lesson bundle and keeps Benedictio before each Lectio when the nocturn plan supplies one', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
       makeFileMulti('horas/Latin/Tempora/Test', [
@@ -561,7 +891,36 @@ describe('composeHour(matins)', () => {
       ])
     );
     corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Rubricae', 'Pater secreto', [
+        { type: 'rubric', value: 'Pater noster, secreto.' }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Pater noster Et',
+          content: [{ type: 'text', value: 'Pater noster. Et ne nos indúcas in tentatiónem.' }]
+        },
+        {
+          header: 'Jube domne',
+          content: [{ type: 'text', value: 'Jube, domne, benedícere.' }]
+        },
+        {
+          header: 'Amen',
+          content: [{ type: 'text', value: 'Amen.' }]
+        }
+      ])
+    );
+    corpus.addFile(
       makeFileMulti('horas/Latin/Psalterium/Benedictions', [
+        {
+          header: 'Absolutiones',
+          content: [
+            { type: 'text', value: 'Absolutio dominicalis.' },
+            { type: 'text', value: 'Absolutio ferialis.' },
+            { type: 'text', value: 'Absolutio sabbatina.' }
+          ]
+        },
         {
           header: 'Nocturn 1',
           content: [
@@ -624,25 +983,39 @@ describe('composeHour(matins)', () => {
       options: { languages: ['Latin'] }
     });
 
-    // The Matins pass emits [nocturn heading, psalmody?, versicle, ...] and
-    // then per-lesson [lesson heading, benedictio, lectio, responsory]. The
-    // lesson heading is the second `heading`-slot section (nocturn heading
-    // is the first).
-    const headingIndices = composed.sections
-      .map((s, i) => (s.slot === 'heading' ? i : -1))
-      .filter((i) => i !== -1);
-    expect(headingIndices.length).toBeGreaterThanOrEqual(2);
-    const lessonHeadingIdx = headingIndices[1]!;
-    const slotSequence = composed.sections.map((s) => s.slot);
-    expect(slotSequence[lessonHeadingIdx + 1]).toBe('benedictio');
-    expect(slotSequence[lessonHeadingIdx + 2]).toBe('lectio-brevis');
-    expect(slotSequence[lessonHeadingIdx + 3]).toBe('responsory');
+    expect(composed.sections.map((section) => section.slot)).toEqual([
+      'heading',
+      'versicle',
+      'other',
+      'other',
+      'other',
+      'other',
+      'other',
+      'benedictio',
+      'other',
+      'heading',
+      'lectio-brevis',
+      'responsory'
+    ]);
 
-    const benedictioSection = composed.sections[lessonHeadingIdx + 1]!;
+    expect(renderRuns(composed.sections[2]!.lines[0]!, 'Latin')).toBe('Pater noster, secreto.');
+    expect(renderRuns(composed.sections[3]!.lines[0]!, 'Latin')).toBe(
+      'Pater noster. Et ne nos indúcas in tentatiónem.'
+    );
+    expect(composed.sections[4]!.lines[0]!.marker).toBe('Absolutio.');
+    expect(renderRuns(composed.sections[4]!.lines[0]!, 'Latin')).toBe('Absolutio dominicalis.');
+    expect(renderRuns(composed.sections[5]!.lines[0]!, 'Latin')).toBe('Amen.');
+    expect(renderRuns(composed.sections[6]!.lines[0]!, 'Latin')).toBe('Jube, domne, benedícere.');
+
+    const benedictioSection = composed.sections[7]!;
     expect(benedictioSection.type).toBe('benedictio');
     expect(renderRuns(benedictioSection.lines[0]!, 'Latin')).toBe(
       'Benedictióne perpétua benedícat nos Pater ætérnus.'
     );
+    expect(renderRuns(composed.sections[8]!.lines[0]!, 'Latin')).toBe('Amen.');
+    expect(composed.sections[9]!.heading).toEqual({ kind: 'lesson', ordinal: 1 });
+    expect(renderRuns(composed.sections[10]!.lines[0]!, 'Latin')).toBe('Lectio prima contents');
+    expect(renderRuns(composed.sections[11]!.lines[0]!, 'Latin')).toBe('Responsorium primum.');
   });
 
   it('replaces the Te Deum with the flagged responsory when decision is replace-with-responsory', () => {

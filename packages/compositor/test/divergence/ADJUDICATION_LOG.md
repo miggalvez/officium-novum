@@ -115,6 +115,41 @@ similar forward progress. Total row counts are unchanged because
 subsequent pattern divergences remain; individual-row collapse comes
 with the next engine-bug fix in the pattern catalogue.
 
+### 2026-04-18 — Pattern: wrapped-psalmody inner-unit composition (engine-bug, fixed)
+
+**Ledger signal.** Wrapper-backed psalmody rows were still diverging
+immediately after the new `Psalmus N [M]` heading landed because the
+compositor could leak inner psalm material directly after the antiphon.
+The live symptom was output like `Ant. 109:1a Dixit Dóminus...` or a
+whole first psalm appearing before the heading instead of the expected
+`Ant. ...` followed by `Psalmus N [M]`.
+
+**Root cause.** The generic psalmody compose path flattened wrapper
+sections such as `Psalmi major/minor:<Day> <Hour>N` as if they were
+ordinary expanded content. That lost the wrapper's inner-unit boundary
+between the explicit antiphon reference and the first psalm, so inline
+psalm refs could surface verse tokens before the per-psalm heading and
+separator were inserted.
+
+**Resolution.** Class `engine-bug`. Fixed in
+`packages/compositor/src/compose.ts` (with the same wrapper-aware path
+mirrored in `packages/compositor/src/compose/matins.ts`) by detecting
+wrapper-backed psalmody (`containsInlinePsalmRefs`), routing it through
+`appendExpandedPsalmWrapper`, and separating verse lines before
+emission. Explicit psalmody antiphon refs no longer expand an entire
+psalm, and wrapped psalms now render as `Ant. -> Psalmus N [M] ->
+verses`.
+
+**Citation.** The wrapper-backed Roman psalmody sections in the live
+corpus (`Psalmi major/minor:<Day> <Hour>N`) are meant to emit an
+antiphon unit followed by distinct psalm units; Perl's rendered surface
+on the same rows makes that boundary observable.
+
+**Impact.** Removes the shallow wrapper-shape / antiphon-leak
+divergence class, pushing first divergences later and making the
+remaining mismatches more specific. Coverage for this shape lives in
+`packages/compositor/test/canonical-lines.test.ts`.
+
 ### 2026-04-19 — Pattern: Divino Afflatu opening rubric prose (perl-bug)
 
 **Ledger signal.** Divino Afflatu rows still diverge almost immediately
@@ -149,27 +184,42 @@ ledger: dozens of shallow `unadjudicated` rows become source-backed
 `perl-bug` rows immediately, making the remaining real engine work
 easier to see.
 
+### 2026-04-19 — Pattern: Roman Matins pre-lesson guillemets (rendering-difference)
+
+**Ledger signal.** Under both `Reduced - 1955` and `Rubrics 1960 - 1960`,
+some Matins rows now first diverge at the synthetic pre-lesson bundle:
+Perl shows `Pater Noster dicitur secreto usque ad Et ne nos indúcas in
+tentatiónem:`, while the compositor emits `« Pater Noster » dicitur
+secreto usque ad « Et ne nos indúcas in tentatiónem: »`.
+
+**Root cause.** This is not a new Matins composition bug. The upstream
+corpus itself carries the guillemeted rubric sentence in
+`Psalterium/Common/Rubricae.txt` under `[Pater secreto]`. Perl strips
+the guillemets for its rendered comparison surface; the compositor
+preserves the corpus author's punctuation verbatim.
+
+**Resolution.** Class `rendering-difference`. Representative row-level
+entries were added for the stable Roman Matins key-hash `29ec2a3d`
+under both `Reduced - 1955` and `Rubrics 1960 - 1960`, then fanned out
+across the current ledger. No compositor change is needed because both
+renderings represent the same rubric sentence.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`.
+
+**Impact.** The Roman Matins frontier moves past this punctuation-only
+family and leaves the remaining January rows concentrated in the real
+selection / ordering seams instead of another corpus-formatting dispute.
+
 ### Pattern catalogue (pending per-pattern entries)
 
-The following patterns were observed during the 3h kickoff analysis
-and will each get their own `## Entry` block as they are adjudicated:
+The following patterns remain open after the fixes above and will each
+get their own `## Entry` block as they are adjudicated:
 
 - **Matins Invitatorium Psalm 94 responsorial structure** —
   compositor emits the invitatory antiphon once, then the hymn. Perl
   interleaves the antiphon responsorially with each section of Psalm
   94. Preliminary class: `engine-bug`; high-effort fix deferred to a
   follow-up in this sub-phase or Phase 4.
-- **Missing `Psalmus N [M]` heading** — compositor does not emit a
-  psalm-header line before each psalm. Perl emits one per psalm at
-  every Hour with psalmody. Preliminary class: `engine-bug`; scoped
-  fix in `packages/compositor/src/emit/sections.ts` for the psalmody
-  slot.
-- **Psalm verse-number prefix on antiphon line** — Vespers shows
-  `Ant. 109:1a Dixit Dóminus ...` where the antiphon text is
-  concatenated to the first psalm-verse-number token. Preliminary
-  class: `engine-bug`; involves the psalmRef expansion path emitting
-  the verse tokens inline with the preceding antiphon's
-  verseMarker line.
 - **Compline guillemets** — compositor emits `«Pater Noster»`, Perl
   emits `Pater Noster`. Corpus source
   (`upstream/.../Common/Rubricae.txt:129`) carries the guillemets.
@@ -197,5 +247,5 @@ and will each get their own `## Entry` block as they are adjudicated:
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
-- [Phase 3 plan §3h](../../../../.claude/plans/make-a-plan-to-moonlit-cocoa.md)
+- [Phase 3 design §19.8](../../../../docs/phase-3-composition-engine-design.md)
 - [docs/upstream-issues.md](../../../../docs/upstream-issues.md)

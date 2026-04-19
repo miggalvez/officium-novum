@@ -316,6 +316,121 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       expect(invitatoryLines[2]).toBe('Veníte, exsultémus Dómino, jubilémus Deo, salutári nostro:');
     }
   }, 240_000);
+
+  it('keeps a closing Matins antiphon line immediately before the nocturn versicle on January 14 and January 28', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const date of ['2024-01-14', '2024-01-28']) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+
+        const psalmodyIndex = composed.sections.findIndex((section) => section.slot === 'psalmody');
+        const versicleIndex = composed.sections.findIndex((section) => section.slot === 'versicle');
+        expect(psalmodyIndex, `${version} ${date} is missing Matins psalmody`).toBeGreaterThanOrEqual(0);
+        expect(versicleIndex, `${version} ${date} is missing Matins versicle`).toBe(psalmodyIndex + 1);
+
+        const lastPsalmodyLine = composed.sections[psalmodyIndex]!.lines.at(-1);
+        expect(lastPsalmodyLine?.marker, `${version} ${date} should end psalmody with an antiphon line`).toBe(
+          'Ant.'
+        );
+        expect(renderLatinText(lastPsalmodyLine!)).not.toContain(';;');
+      }
+    }
+  }, 240_000);
+
+  it('strips selector trailers from February Matins psalmody across the 1955/1960 Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES.filter((handle) => handle !== 'Divino Afflatu - 1954')) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const [date, headingPrefix] of [
+        ['2024-02-14', 'Psalmus 44(2a-10b) [1]'],
+        ['2024-02-24', 'Psalmus 104(1-15) [1]']
+      ] as const) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+
+        const psalmodyText = composed.sections
+          .filter((section) => section.slot === 'psalmody')
+          .flatMap((section) => section.lines.map(renderLatinText))
+          .join('\n');
+
+        expect(psalmodyText, `${version} ${date} still leaks selector syntax into Matins`).not.toContain(';;');
+        expect(psalmodyText, `${version} ${date} is missing the ranged inline psalm heading`).toContain(headingPrefix);
+      }
+    }
+  }, 240_000);
+
+  it('removes bare carry-over markers from January 7 Matins psalmody across the Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-01-07');
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const psalmodyText = composed.sections
+        .filter((section) => section.slot === 'psalmody')
+        .flatMap((section) => section.lines.map(renderLatinText))
+        .join('\n');
+
+      expect(psalmodyText, `${version} 2024-01-07 still leaks bare carry-over markers`).not.toContain('(7)');
+    }
+  }, 240_000);
+
+  it('inserts the Roman pre-lesson bundle before Lectio 1 on January 1 across the Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-01-01');
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const lessonHeadingIndex = composed.sections.findIndex(
+        (section) => section.type === 'heading' && section.heading?.kind === 'lesson' && section.heading.ordinal === 1
+      );
+      expect(lessonHeadingIndex, `${version} 2024-01-01 is missing Lectio 1`).toBeGreaterThanOrEqual(0);
+
+      const absolutioIndex = composed.sections.findIndex((section) => section.reference === 'matins-absolutio');
+      const jubeIndex = composed.sections.findIndex(
+        (section) => section.reference === 'horas/Latin/Psalterium/Common/Prayers#Jube domne'
+      );
+      const benedictioIndex = composed.sections.findIndex((section) => section.slot === 'benedictio');
+
+      expect(absolutioIndex, `${version} 2024-01-01 is missing the Matins absolutio bundle`).toBeGreaterThanOrEqual(
+        0
+      );
+      expect(composed.sections[absolutioIndex]!.lines[0]?.marker).toBe('Absolutio.');
+      expect(jubeIndex, `${version} 2024-01-01 is missing Jube domne before Lectio 1`).toBeGreaterThanOrEqual(0);
+      expect(benedictioIndex, `${version} 2024-01-01 is missing Benedictio before Lectio 1`).toBeGreaterThanOrEqual(
+        0
+      );
+
+      expect(absolutioIndex).toBeLessThan(jubeIndex);
+      expect(jubeIndex).toBeLessThan(benedictioIndex);
+      expect(benedictioIndex).toBeLessThan(lessonHeadingIndex);
+    }
+  }, 240_000);
 });
 
 function renderLatinText(line: { readonly texts: Record<string, readonly { readonly type: string; readonly value?: string }[]> }): string {

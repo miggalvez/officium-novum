@@ -65,8 +65,8 @@ tables, version registry) arrives via its inputs.
   Gregorian-tone generation is Phase 4+.
 - HTML / EPUB / PDF / chant image rendering. Phase 4+.
 
-See the [completion plan](../.claude/plans/make-a-plan-to-moonlit-cocoa.md)
-for the sub-phase breakdown (3a–3h) currently driving implementation.
+See §19 below for the sub-phase breakdown (3a–3h) currently driving
+implementation.
 
 ## 3. Architectural Position
 
@@ -443,10 +443,8 @@ Meeting these criteria unblocks Phase 4 (API), which consumes
 
 ## 19. Implementation Strategy
 
-The completion plan at
-[`.claude/plans/make-a-plan-to-moonlit-cocoa.md`](../.claude/plans/make-a-plan-to-moonlit-cocoa.md)
-breaks Phase 3 into eight sub-phases. The table below summarises where
-each one landed; detailed sub-sections follow.
+This section breaks Phase 3 into eight sub-phases. The table below
+summarises where each one landed; detailed sub-sections follow.
 
 | Sub-phase | Status | Summary |
 |-----------|--------|---------|
@@ -457,7 +455,7 @@ each one landed; detailed sub-sections follow.
 | 3e | shipped | Four-site Matins-commemoration unblock in rubrical-engine; `commemoratesAtHour` + `defaultCommemorationHours` hooks |
 | 3f | shipped | ADR-012 records the Compline verb as an engine-bug; `ComposeWarning` surface threaded through the compose pipeline |
 | 3g | shipped | 8,784-composition no-throw sweep; `--date __full-year__` harness sentinel; canonical heading rendering for Perl parity |
-| 3h | in flight | Adjudication log + sidecar mechanism running; engine-bug fixes #1–#2 landed (hymn doxology `*`, `Psalmus N [M]` heading); further engine-bug and `rendering-difference` / `perl-bug` classifications ongoing |
+| 3h | in flight | Adjudication log + sidecar mechanism running; engine-bug fixes #1–#3 landed (hymn doxology `*`, `Psalmus N [M]` heading, wrapped-psalmody inner-unit composition); further engine-bug and `rendering-difference` / `perl-bug` classifications ongoing |
 
 Sub-phases 3a–3c landed before 3d–3e (the latter two required
 coordinated Phase 2 edits). 3f and 3g interleaved cleanly; 3h is the
@@ -650,13 +648,14 @@ Established the Phase-2-equivalent validation surface required by §18:
 
 ### 19.8 Sub-phase 3h — Divergence adjudication burn-down
 
-In flight; the opening-session work ships the infrastructure and two
+In flight; the opening-session work ships the infrastructure and three
 engine-bug fixes:
 
 - **[ADJUDICATION_LOG.md](../packages/compositor/test/divergence/ADJUDICATION_LOG.md)** — chronological audit trail per ADR-011. Captures every
   pattern-level resolution with citation and commit context. Initial
   entries cover the 3h kickoff baseline, the hymn doxology `*` fix,
-  and the `Psalmus N [M]` heading fix.
+  the `Psalmus N [M]` heading fix, and the wrapped-psalmody
+  inner-unit fix.
 - **Engine-bug fix #1 — hymn doxology `*` prefix** (in
   `packages/compositor/src/emit/sections.ts::stripHymnDoxologyMarker`).
   The DO corpus prefixes the doxology stanza of metrical hymns with
@@ -673,15 +672,23 @@ engine-bug fixes:
   selector range, verse-prefix scan on resolved content) handle both
   direct Psalmorum references and the `Psalmi major:Day0 Laudes1`
   wrapper style used under 1960.
+- **Engine-bug fix #3 — wrapped-psalmody inner-unit composition** (in
+  `packages/compositor/src/compose.ts`, with the same wrapper-aware
+  handling mirrored in `packages/compositor/src/compose/matins.ts`).
+  Explicit psalmody antiphon refs no longer expand an entire psalm, and
+  wrapped `Psalmi major/minor:<Day> <Hour>N` sections now render as
+  `Ant. -> Psalmus N [M] -> verses` instead of leaking the first psalm's
+  verse content before the heading. Wrapper-shape coverage lives in
+  `packages/compositor/test/canonical-lines.test.ts`.
 - **Representative adjudications** landed in `adjudications.json`:
-  3 `rendering-difference` entries (Compline guillemets, one per
-  policy) and 1 `engine-bug` entry (missing psalm heading on Lauds).
+  current live sidecar count is 53 row mappings: 35 `perl-bug`,
+  17 `rendering-difference`, and 1 `engine-bug`.
 - **Pattern catalogue** documented for follow-up sessions:
-  Matins Invitatorium Psalm 94 responsorial structure, `Ant. 109:1a`
-  verse-prefix leak on Vespers psalmRef, wrong-psalm selection under
-  1960 for Christmas Octave (Phase 2 psalter-selection).
+  Matins Invitatorium Psalm 94 responsorial structure and wrong-psalm
+  selection under 1960 for Christmas Octave (Phase 2
+  psalter-selection).
 
-**Exit progress:** the <10-unresolved-rows-per-policy threshold is
+**Exit progress:** the <10-unadjudicated-rows-per-policy threshold is
 not yet met. The remaining budget is bounded by the pattern
 catalogue; each next pattern fix collapses many rows at once.
 

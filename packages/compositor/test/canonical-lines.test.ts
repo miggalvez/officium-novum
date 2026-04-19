@@ -809,7 +809,7 @@ describe('Psalmus N [index] heading emission', () => {
     ]);
   });
 
-  it('removes numeric carry-over markers like (4a) from psalmody lines', () => {
+  it('removes numeric carry-over markers like (4a) and (7) from psalmody lines', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile({
       path: 'horas/Latin/Psalterium/Psalmorum/Psalm92.txt',
@@ -821,7 +821,9 @@ describe('Psalmus N [index] heading emission', () => {
           content: [
             { type: 'text', value: '92:3a Elevavérunt flúmina fluctus suos,' },
             { type: 'separator' },
-            { type: 'text', value: '92:3b Elevavérunt flúmina fluctus suos, * (4a) a vócibus aquárum multárum.' }
+            { type: 'text', value: '92:3b Elevavérunt flúmina fluctus suos, * (4a) a vócibus aquárum multárum.' },
+            { type: 'separator' },
+            { type: 'text', value: '92:4 Mirábiles elatiónes maris, * (7) mirábilis in altis Dóminus.' }
           ]
         }
       ]
@@ -856,7 +858,8 @@ describe('Psalmus N [index] heading emission', () => {
     expect(lineTexts(composed, 'psalmody', 'Latin')).toEqual([
       'Psalmus 92 [1]',
       '92:3 Elevavérunt flúmina fluctus suos,',
-      '92:3 Elevavérunt flúmina fluctus suos, * a vócibus aquárum multárum.'
+      '92:3 Elevavérunt flúmina fluctus suos, * a vócibus aquárum multárum.',
+      '92:4 Mirábiles elatiónes maris, * mirábilis in altis Dóminus.'
     ]);
   });
 

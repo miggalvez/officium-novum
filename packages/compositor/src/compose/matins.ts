@@ -39,6 +39,26 @@ const TE_DEUM_REF: TextReference = {
   path: 'horas/Latin/Psalterium/Common/Prayers',
   section: 'Te Deum'
 };
+const PATER_SECRETO_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Common/Rubricae',
+  section: 'Pater secreto'
+};
+const PATER_NOSTER_ET_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Common/Prayers',
+  section: 'Pater noster Et'
+};
+const JUBE_DOMNE_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Common/Prayers',
+  section: 'Jube domne'
+};
+const AMEN_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Common/Prayers',
+  section: 'Amen'
+};
+const ABSOLUTIONES_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Benedictions.txt',
+  section: 'Absolutiones'
+};
 const GLORIA_PATRI_MACRO: Extract<TextContent, { type: 'macroRef' }> = {
   type: 'macroRef',
   name: 'Gloria'
@@ -94,8 +114,9 @@ export function composeMatinsSections(
 
   const psalmody = hour.slots.psalmody;
   if (psalmody && psalmody.kind === 'matins-nocturns') {
+    const totalNocturns = psalmody.nocturns.length;
     for (const nocturn of psalmody.nocturns) {
-      sections.push(...composeNocturn(nocturn, args));
+      sections.push(...composeNocturn(nocturn, totalNocturns, args));
     }
   }
 
@@ -263,6 +284,7 @@ function detectInvitatoryMaterializationMode(
 
 function composeNocturn(
   nocturn: NocturnPlan,
+  totalNocturns: number,
   args: MatinsComposeContext
 ): readonly Section[] {
   const out: Section[] = [];
@@ -276,6 +298,10 @@ function composeNocturn(
     args
   );
   if (versicleSection) out.push(versicleSection);
+
+  if (nocturn.lessons.length > 0) {
+    out.push(...composePreLessonTransition(nocturn, totalNocturns, args));
+  }
 
   for (const lesson of nocturn.lessons) {
     if (lesson.gateCondition && !conditionMatches(lesson.gateCondition, args.context)) {
@@ -292,12 +318,13 @@ function composeNocturn(
     const benedictioSection = benediction
       ? composeReferenceSlot('benedictio', benediction.reference, args)
       : undefined;
+    const jubeSection = benedictioSection ? composeOtherReferenceSection(JUBE_DOMNE_REF, args) : undefined;
+    const amenSection = benedictioSection ? composeOtherReferenceSection(AMEN_REF, args) : undefined;
 
     // Only emit a heading when at least one downstream section resolves;
     // otherwise the client would see an orphan "Lectio N" label with no text.
-    if (lessonSection || responsorySection || benedictioSection) {
-      out.push(headingSection({ kind: 'lesson', ordinal: lesson.index }));
-    }
+    const hasLessonBlock =
+      lessonSection || responsorySection || benedictioSection || jubeSection || amenSection;
     // Per Phase 3 plan §3d and ADR-011: Benedictio is emitted before the
     // Lectio it governs, mirroring Perl's `specmatins.pl:lectiones` sequence
     // (`Jube domne` → `Benedictio. <line>` → `Lectio N`). The benediction
@@ -305,7 +332,12 @@ function composeNocturn(
     // A responsory flagged with `replacesTeDeum` is intentionally omitted
     // here and emitted once under the dedicated `te-deum` slot by
     // `composeMatinsSections`.
+    if (jubeSection) out.push(jubeSection);
     if (benedictioSection) out.push(benedictioSection);
+    if (amenSection) out.push(amenSection);
+    if (hasLessonBlock) {
+      out.push(headingSection({ kind: 'lesson', ordinal: lesson.index }));
+    }
     if (lessonSection) out.push(lessonSection);
     if (responsorySection) out.push(responsorySection);
   }
@@ -321,16 +353,27 @@ function composePsalmody(
   const refs: MatinsSlotRef[] = [];
   for (const [index, assignment] of nocturn.psalmody.entries()) {
     if (assignment.antiphonRef) {
-      refs.push({ ref: assignment.antiphonRef, isAntiphon: true });
+      refs.push({
+        ref: assignment.antiphonRef,
+        isAntiphon: true,
+        openingAntiphon: true,
+        pairedPsalmRef: assignment.psalmRef
+      });
     }
     refs.push({
       ref: assignment.psalmRef,
       isAntiphon: false,
+      pairedAntiphonRef: assignment.antiphonRef,
       psalmIndex: index + 1,
       hasExplicitAntiphon: Boolean(assignment.antiphonRef)
     });
     if (assignment.antiphonRef) {
-      refs.push({ ref: assignment.antiphonRef, isAntiphon: true, repeatAntiphon: true });
+      refs.push({
+        ref: assignment.antiphonRef,
+        isAntiphon: true,
+        repeatAntiphon: true,
+        pairedPsalmRef: assignment.psalmRef
+      });
     }
   }
   const psalmodySection = composeMergedSlot('psalmody', refs, args);
@@ -387,10 +430,18 @@ function lessonReference(source: LessonSource): TextReference | undefined {
 interface MatinsSlotRef {
   readonly ref: TextReference;
   readonly isAntiphon: boolean;
+  readonly openingAntiphon?: boolean;
   readonly repeatAntiphon?: boolean;
   readonly hasExplicitAntiphon?: boolean;
+  readonly pairedAntiphonRef?: TextReference;
+  readonly pairedPsalmRef?: TextReference;
   readonly psalmIndex?: number;
 }
+
+type OpeningAntiphonMode =
+  | { readonly kind: 'full' }
+  | { readonly kind: 'short'; readonly prefix: string }
+  | { readonly kind: 'short-with-continuation'; readonly prefix: string };
 
 function composeReferenceSlot(
   slot: Parameters<typeof emitSection>[0],
@@ -415,7 +466,7 @@ function composeMergedSlot(
     perLanguage.set(lang, []);
   }
 
-  for (const { ref, isAntiphon, psalmIndex, hasExplicitAntiphon, repeatAntiphon } of refs) {
+  for (const { ref, isAntiphon, openingAntiphon, psalmIndex, hasExplicitAntiphon, repeatAntiphon, pairedAntiphonRef, pairedPsalmRef } of refs) {
     const resolved = resolveReference(args.corpus, ref, {
       languages: args.options.languages,
       langfb: args.options.langfb,
@@ -444,11 +495,14 @@ function composeMergedSlot(
           hour: 'matins',
           directives: args.directives
         });
+        const normalized = repeatAntiphon
+          ? normalizeRepeatedAntiphonContent(transformed)
+          : openingAntiphon
+            ? normalizeOpeningAntiphonContent(transformed, ref, pairedPsalmRef, lang, args)
+            : transformed;
         appendContentWithBoundary(
           bucket,
-          markAntiphonFirstText(
-            repeatAntiphon ? normalizeRepeatedAntiphonContent(transformed) : transformed
-          )
+          markAntiphonFirstText(normalized)
         );
         continue;
       }
@@ -494,17 +548,25 @@ function composeMergedSlot(
         slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
           ? separatePsalmVerseLines(transformed)
           : transformed;
+      const normalizedPsalmBody =
+        slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+          ? normalizeOpeningPsalmBodyContent(lineSeparated, pairedAntiphonRef, ref, lang, args)
+          : lineSeparated;
       // Same `Ant.` marker synthesis as the generic composeSlot; see
       // `emit/antiphon-marker.ts`. For Matins this covers the invitatory,
       // the nocturn antiphons inside `psalmody`, and any unpaired
       // antiphons surfaced as standalone sections.
       const markered = isAntiphon
         ? markAntiphonFirstText(
-            repeatAntiphon ? normalizeRepeatedAntiphonContent(lineSeparated) : lineSeparated
+            repeatAntiphon
+              ? normalizeRepeatedAntiphonContent(lineSeparated)
+              : openingAntiphon
+                ? normalizeOpeningAntiphonContent(lineSeparated, ref, pairedPsalmRef, lang, args)
+                : lineSeparated
           )
-        : lineSeparated;
+        : normalizedPsalmBody;
       if (slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined) {
-        const heading = buildPsalmHeading(ref, lineSeparated, psalmIndex);
+        const heading = buildPsalmHeading(ref, normalizedPsalmBody, psalmIndex, pairedAntiphonRef, lang, args);
         if (heading) {
           appendContentWithBoundary(bucket, [
             { type: 'text', value: heading },
@@ -544,7 +606,10 @@ function referenceIdentity(reference: TextReference): string {
 function buildPsalmHeading(
   ref: TextReference,
   expandedContent: readonly TextContent[],
-  psalmIndex: number
+  psalmIndex: number,
+  pairedAntiphonRef: TextReference | undefined,
+  language: string,
+  args: MatinsComposeContext
 ): string | undefined {
   const selector = ref.selector?.trim();
 
@@ -556,7 +621,9 @@ function buildPsalmHeading(
   if (!psalmNumber) return undefined;
 
   const rangeSuffix =
-    directPsalm && selector && /^\d+-\d+$/u.test(selector) ? `(${selector})` : '';
+    directPsalm && selector && /^\d+-\d+$/u.test(selector)
+      ? `(${selector})`
+      : resolvePairedAntiphonRange(pairedAntiphonRef, language, args);
   return `Psalmus ${psalmNumber}${rangeSuffix} [${psalmIndex}]`;
 }
 
@@ -568,7 +635,7 @@ function extractInlinePsalmAntiphons(content: readonly TextContent[]): readonly 
   const out: TextContent[] = [];
   for (const node of content) {
     if (node.type === 'psalmRef') {
-      const antiphon = node.antiphon?.trim();
+      const antiphon = sanitizeAntiphonText(node.antiphon);
       if (antiphon) {
         out.push({ type: 'text', value: antiphon });
       }
@@ -633,7 +700,7 @@ function appendExpandedPsalmWrapper(
       ]);
     }
     appendContentWithBoundary(target, psalmBody);
-    const trailingAntiphon = node.antiphon?.trim();
+    const trailingAntiphon = sanitizeAntiphonText(node.antiphon);
     if (trailingAntiphon) {
       appendContentWithBoundary(target, [
         {
@@ -658,7 +725,8 @@ function buildInlinePsalmHeading(
   if (!psalmNumber) {
     return undefined;
   }
-  return `Psalmus ${psalmNumber} [${psalmIndex}]`;
+  const rangeSuffix = extractInlinePsalmRange(node.antiphon);
+  return `Psalmus ${psalmNumber}${rangeSuffix ? `(${rangeSuffix})` : ''} [${psalmIndex}]`;
 }
 
 function splitLeadingPsalmAntiphon(
@@ -724,7 +792,370 @@ function normalizeRepeatedAntiphonContent(
 }
 
 function normalizeRepeatedAntiphonText(text: string): string {
-  return text.replace(/\s*[*‡†]\s*/gu, ' ').replace(/\s{2,}/gu, ' ').trim();
+  return sanitizeAntiphonText(text)
+    ?.replace(/\s*[*‡†]\s*/gu, ' ')
+    .replace(/\s{2,}/gu, ' ')
+    .trim() ?? '';
+}
+
+function normalizeOpeningAntiphonContent(
+  content: readonly TextContent[],
+  antiphonRef: TextReference,
+  pairedPsalmRef: TextReference | undefined,
+  language: string,
+  args: MatinsComposeContext
+): readonly TextContent[] {
+  const out = [...content];
+  for (let index = 0; index < out.length; index += 1) {
+    const node = out[index];
+    if (!node || (node.type !== 'text' && node.type !== 'verseMarker')) {
+      continue;
+    }
+    const sanitized = sanitizeAntiphonText(node.type === 'text' ? node.value : node.text);
+    if (!sanitized) {
+      break;
+    }
+    const normalized = normalizeOpeningAntiphonText(sanitized, antiphonRef, pairedPsalmRef, language, args);
+    out[index] =
+      node.type === 'text'
+        ? { type: 'text', value: normalized }
+        : { type: 'verseMarker', marker: node.marker, text: normalized };
+    break;
+  }
+  return out;
+}
+
+function normalizeOpeningAntiphonText(
+  text: string,
+  antiphonRef: TextReference,
+  pairedPsalmRef: TextReference | undefined,
+  language: string,
+  args: MatinsComposeContext
+): string {
+  const mode = determineOpeningAntiphonMode(text, antiphonRef, pairedPsalmRef, language, args);
+  switch (mode.kind) {
+    case 'full':
+      return text;
+    case 'short':
+      return `${mode.prefix}.`;
+    case 'short-with-continuation':
+      return `${mode.prefix}. ‡`;
+  }
+}
+
+function normalizeOpeningPsalmBodyContent(
+  content: readonly TextContent[],
+  pairedAntiphonRef: TextReference | undefined,
+  psalmRef: TextReference,
+  language: string,
+  args: MatinsComposeContext
+): readonly TextContent[] {
+  if (!pairedAntiphonRef) {
+    return content;
+  }
+
+  const openingText = resolveOpeningAntiphonSourceText(pairedAntiphonRef, language, args);
+  if (!openingText) {
+    return content;
+  }
+
+  const mode = determineOpeningAntiphonMode(openingText, pairedAntiphonRef, psalmRef, language, args);
+  if (mode.kind !== 'short-with-continuation') {
+    return content;
+  }
+
+  const out = [...content];
+  for (let index = 0; index < out.length; index += 1) {
+    const node = out[index];
+    if (!node || node.type !== 'text' || !/^\s*\d+:\d+/u.test(node.value)) {
+      continue;
+    }
+    out[index] = {
+      type: 'text',
+      value: insertFirstVerseContinuationMarker(node.value, mode.prefix)
+    };
+    break;
+  }
+  return out;
+}
+
+function determineOpeningAntiphonMode(
+  text: string,
+  antiphonRef: TextReference,
+  pairedPsalmRef: TextReference | undefined,
+  language: string,
+  args: MatinsComposeContext
+): OpeningAntiphonMode {
+  if (args.context.version.handle.includes('1960') || !isPsalterMatinsAntiphonRef(antiphonRef)) {
+    return { kind: 'full' };
+  }
+
+  const match = text.match(/^(.*?)(?:\s*[*‡†]\s*)(.+)$/u);
+  if (!match) {
+    return { kind: 'full' };
+  }
+
+  const prefix = match[1]?.replace(/[.,;:]+\s*$/u, '').trim();
+  if (!prefix) {
+    return { kind: 'full' };
+  }
+
+  const firstVerse = pairedPsalmRef
+    ? resolveFirstPsalmVerseText(pairedPsalmRef, language, args)
+    : undefined;
+  const needsContinuationMarker =
+    firstVerse !== undefined &&
+    canonicalizePsalmComparisonText(firstVerse).startsWith(canonicalizePsalmComparisonText(prefix));
+
+  return needsContinuationMarker
+    ? { kind: 'short-with-continuation', prefix }
+    : { kind: 'short', prefix };
+}
+
+function isPsalterMatinsAntiphonRef(ref: TextReference): boolean {
+  return /\/Psalterium\/Psalmi\//u.test(ensureTxtSuffix(ref.path));
+}
+
+function resolveOpeningAntiphonSourceText(
+  ref: TextReference,
+  language: string,
+  args: MatinsComposeContext
+): string | undefined {
+  const section = resolveReference(args.corpus, ref, {
+    languages: [language],
+    langfb: args.options.langfb,
+    dayOfWeek: args.context.dayOfWeek,
+    date: args.context.date,
+    modernStyleMonthday: args.context.version.handle.includes('1960'),
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  })[language];
+  if (!section || section.selectorMissing) {
+    return undefined;
+  }
+
+  for (const node of section.content) {
+    if (node.type === 'psalmRef') {
+      return sanitizeAntiphonText(node.antiphon);
+    }
+    if (node.type === 'text') {
+      return sanitizeAntiphonText(node.value);
+    }
+    if (node.type === 'verseMarker') {
+      return sanitizeAntiphonText(node.text);
+    }
+  }
+
+  return undefined;
+}
+
+function insertFirstVerseContinuationMarker(text: string, prefix: string): string {
+  if (text.includes('‡')) {
+    return text;
+  }
+
+  const match = text.match(
+    new RegExp(`^(\\s*\\d+:\\d+\\s*)(${escapeRegExp(prefix)})([.,;:]?)(\\s+)(.+)$`, 'u')
+  );
+  if (!match) {
+    return text;
+  }
+
+  const [, lead = '', matchedPrefix = '', punctuation = '', spacing = ' ', remainder = ''] = match;
+  return `${lead}${matchedPrefix}${punctuation} ‡${spacing}${remainder}`;
+}
+
+function sanitizeAntiphonText(text: string | undefined): string | undefined {
+  if (!text) return undefined;
+  return text.replace(/\s*;;.*$/u, '').trim();
+}
+
+function extractInlinePsalmRange(text: string | undefined): string | undefined {
+  if (!text) return undefined;
+  const match = text.match(/;;\s*\d+\(([^)]+)\)\s*$/u);
+  if (!match?.[1]) {
+    return undefined;
+  }
+  return match[1].replace(/['"]/gu, '').replace(/\s*-\s*/gu, '-').trim();
+}
+
+function resolvePairedAntiphonRange(
+  ref: TextReference | undefined,
+  language: string,
+  args: MatinsComposeContext
+): string {
+  if (!ref) {
+    return '';
+  }
+
+  const section = resolveReference(args.corpus, ref, {
+    languages: [language],
+    langfb: args.options.langfb,
+    dayOfWeek: args.context.dayOfWeek,
+    date: args.context.date,
+    modernStyleMonthday: args.context.version.handle.includes('1960'),
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  })[language];
+  if (!section || section.selectorMissing) {
+    return '';
+  }
+
+  for (const node of section.content) {
+    if (node.type === 'psalmRef') {
+      const range = extractInlinePsalmRange(node.antiphon);
+      if (range) {
+        return `(${range})`;
+      }
+    }
+    if (node.type === 'text') {
+      const range = extractInlinePsalmRange(node.value);
+      if (range) {
+        return `(${range})`;
+      }
+    }
+  }
+
+  return '';
+}
+
+function resolveFirstPsalmVerseText(
+  ref: TextReference,
+  language: string,
+  args: MatinsComposeContext
+): string | undefined {
+  const section = resolveReference(args.corpus, ref, {
+    languages: [language],
+    langfb: args.options.langfb,
+    dayOfWeek: args.context.dayOfWeek,
+    date: args.context.date,
+    modernStyleMonthday: args.context.version.handle.includes('1960'),
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  })[language];
+  if (!section || section.selectorMissing) {
+    return undefined;
+  }
+
+  const expanded = expandDeferredNodes(withPsalmGloriaPatri(section.content), {
+    index: args.corpus,
+    language,
+    langfb: args.options.langfb,
+    season: args.context.season,
+    seen: new Set(),
+    maxDepth: MAX_DEFERRED_DEPTH,
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  });
+  const flattened = flattenConditionals(expanded, args.context);
+  const transformed = applyDirectives('psalmody', flattened, {
+    hour: 'matins',
+    directives: args.directives
+  });
+
+  for (const node of transformed) {
+    if (node.type === 'text' && /^\s*\d+:\d+/u.test(node.value)) {
+      return node.value;
+    }
+  }
+
+  return undefined;
+}
+
+function canonicalizePsalmComparisonText(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(/^\s*\d+:\d+\s*/u, '')
+    .replace(/[.,;:!?*‡†]/gu, '')
+    .replace(/\s+/gu, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+}
+
+function composePreLessonTransition(
+  nocturn: NocturnPlan,
+  totalNocturns: number,
+  args: MatinsComposeContext
+): readonly Section[] {
+  const out: Section[] = [];
+
+  const secretoSection = composeOtherReferenceSection(PATER_SECRETO_REF, args);
+  if (secretoSection) out.push(secretoSection);
+
+  const paterSection = composeOtherReferenceSection(PATER_NOSTER_ET_REF, args);
+  if (paterSection) out.push(paterSection);
+
+  const absolutioSection = composeAbsolutioSection(nocturn, totalNocturns, args);
+  if (absolutioSection) out.push(absolutioSection);
+
+  const amenSection = composeOtherReferenceSection(AMEN_REF, args);
+  if (amenSection) out.push(amenSection);
+
+  return out;
+}
+
+function composeAbsolutioSection(
+  nocturn: NocturnPlan,
+  totalNocturns: number,
+  args: MatinsComposeContext
+): Section | undefined {
+  const selector = String(totalNocturns === 1 ? dayOfWeekToNocturnIndex(args.context.dayOfWeek) : nocturn.index);
+  const section = composeMergedSlot(
+    'incipit',
+    [{ ref: { ...ABSOLUTIONES_REF, selector }, isAntiphon: false }],
+    args
+  );
+  if (!section || section.lines.length === 0) {
+    return undefined;
+  }
+
+  const [first, ...rest] = section.lines;
+  return asOtherSection(
+    Object.freeze({
+      ...section,
+      lines: Object.freeze([
+        Object.freeze({
+          marker: 'Absolutio.',
+          texts: first!.texts
+        }),
+        ...rest
+      ])
+    }),
+    'matins-absolutio'
+  );
+}
+
+function composeOtherReferenceSection(
+  ref: TextReference,
+  args: MatinsComposeContext,
+  reference = referenceIdentity(ref)
+): Section | undefined {
+  const section = composeMergedSlot(
+    'incipit',
+    [{ ref, isAntiphon: false }],
+    args
+  );
+  return section ? asOtherSection(section, reference) : undefined;
+}
+
+function asOtherSection(section: Section, reference: string): Section {
+  return Object.freeze({
+    ...section,
+    type: 'other' as const,
+    slot: 'other',
+    reference
+  });
+}
+
+function dayOfWeekToNocturnIndex(dayOfWeek: number): 1 | 2 | 3 {
+  if (dayOfWeek === 0 || dayOfWeek === 1 || dayOfWeek === 4) {
+    return 1;
+  }
+  if (dayOfWeek === 2 || dayOfWeek === 5) {
+    return 2;
+  }
+  return 3;
 }
 
 function separatePsalmVerseLines(content: readonly TextContent[]): readonly TextContent[] {

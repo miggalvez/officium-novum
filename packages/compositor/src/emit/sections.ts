@@ -282,7 +282,7 @@ function normalizeSlotText(slot: SlotName, text: string): string {
   return text
     .replace(/^(\d+:\d+)[a-z](\b)/iu, '$1$2')
     .replace(/\s*†\s*/gu, ' ')
-    .replace(/([*‡†]\s*)\(\d+[a-z]\)\s*/giu, '$1');
+    .replace(/([*‡†]\s*)\(\d+[a-z]?\)\s*/giu, '$1');
 }
 
 function normalizeVerseMarkerText(slot: SlotName, marker: string, text: string): string {
