@@ -44,11 +44,20 @@ export function createUnsupportedOccurrencePolicy(
     limitCommemorations() {
       throw unsupported(name, 'limitCommemorations');
     },
+    defaultCommemorationHours() {
+      throw unsupported(name, 'defaultCommemorationHours');
+    },
+    commemoratesAtHour() {
+      throw unsupported(name, 'commemoratesAtHour');
+    },
     resolveMatinsShape() {
       throw unsupported(name, 'resolveMatinsShape');
     },
     resolveTeDeum() {
       throw unsupported(name, 'resolveTeDeum');
+    },
+    selectBenedictions() {
+      throw unsupported(name, 'selectBenedictions');
     },
     defaultScriptureCourse() {
       throw unsupported(name, 'defaultScriptureCourse');

@@ -8,6 +8,8 @@ Officium Novum modernizes the [Divinum Officium](https://github.com/DivinumOffic
 
 **Phase 1 (Parser) and Phase 2 (Rubrical Engine) are complete.** All eight Phase 2 sub-phases (2a–2h) ship; `resolveDayOfficeSummary(date)` works end-to-end for the three headline policies — `divino-afflatu` (1911), `reduced-1955`, and `rubrics-1960`. Tridentine, Monastic, Cistercian, and Dominican policies are explicit `UnsupportedPolicyError` stubs per design §20.5.
 
+**Phase 3 (Composition Engine) is in progress.** The core pipeline (reference resolution → deferred expansion → conditional flattening → directive transforms → section emission) ships and all unit tests pass. `composeHour()` runs end-to-end for every Hour under the three Roman policies. Remaining work follows the sub-phase plan (3a–3h) in `docs/phase-3-composition-engine-design.md` §19: representation parity, Matins Benedictio + Te Deum replacement, Matins commemorations (cross-package edit in rubrical-engine), no-throw sweep, snapshot goldens, and divergence adjudication against primary rubrical sources. Per ADR-011, every adjudicated ledger row carries a class + citation in `packages/compositor/test/divergence/adjudications.json`; no divergence is ever resolved by "matching the Perl" alone.
+
 ## Build and test
 
 ```bash
@@ -35,7 +37,8 @@ Integration tests that need the upstream corpus (e.g., `corpus-loader.test.ts`, 
 - `docs/divinum-officium-modernization-spec.md` — authoritative design document, phased roadmap, rubrical engine interface, validation strategy
 - `docs/file-format-specification.md` — the parser's input contract: section headers, directives, conditional system, rank format, calendar tables
 - `docs/phase-2-rubrical-engine-design.md` — the engine's detailed design: pipeline stages, version/policy model, occurrence/concurrence/transfer algorithms, Matins planning, §18 sub-phase plan, §19 validation strategy, §22 success criteria
-- `docs/adr/` — Architecture Decision Records (001 through 007). Any non-obvious architectural choice should either reference an existing ADR or add a new one.
+- `docs/phase-3-composition-engine-design.md` — the compositor's detailed design: pipeline stages, data model (`ComposedHour`/`Section`/`ComposedLine`/`ComposedRun`), preamble catalog, directive catalog, Matins composition, §15 validation strategy, §18 success criteria, §19 sub-phase plan (3a–3h)
+- `docs/adr/` — Architecture Decision Records. Phase 2 covers 001–007; Phase 3 covers 008–011 (and 012+ as adjudication produces them). Any non-obvious architectural choice should either reference an existing ADR or add a new one.
 
 ## Parser architecture
 

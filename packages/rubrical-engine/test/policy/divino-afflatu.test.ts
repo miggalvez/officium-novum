@@ -234,6 +234,27 @@ describe('divinoAfflatuPolicy', () => {
     });
     expect(divinoAfflatuPolicy.octavesEnabled(feastRef('Sancti/02-11'))).toBeNull();
   });
+
+  it('exposes Matins alongside Lauds and Vespers as default commemoration Hours', () => {
+    expect(divinoAfflatuPolicy.defaultCommemorationHours()).toEqual([
+      'matins',
+      'lauds',
+      'vespers'
+    ]);
+  });
+
+  it('commemorates at Matins under Rubricae Generales §IX (and not at minor Hours)', () => {
+    const context = {
+      celebration: celebration('Sancti/12-08', 'duplex-i'),
+      celebrationRules: rules(),
+      temporal: temporal('2024-12-08', 'Adv2-0', 'advent', 'privileged-sunday')
+    };
+    expect(divinoAfflatuPolicy.commemoratesAtHour({ hour: 'matins', ...context })).toBe(true);
+    expect(divinoAfflatuPolicy.commemoratesAtHour({ hour: 'lauds', ...context })).toBe(true);
+    expect(divinoAfflatuPolicy.commemoratesAtHour({ hour: 'vespers', ...context })).toBe(true);
+    expect(divinoAfflatuPolicy.commemoratesAtHour({ hour: 'prime', ...context })).toBe(false);
+    expect(divinoAfflatuPolicy.commemoratesAtHour({ hour: 'compline', ...context })).toBe(false);
+  });
 });
 
 function context(

@@ -4,9 +4,13 @@ Phase-by-phase implementation log for Officium Novum. The README's [Status](READ
 
 ## Phase 3 — Composition Engine (in progress)
 
-Core pipeline and live Perl comparison harness shipped; Phase 3 is now past the original all-hours-divergent state. The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-resolved `CorpusIndex` into a typed, format-agnostic `ComposedHour`, and the supporting parser / rubrical-engine changes now preserve the wrapper, conditional, and keyed-psalter source structures that Phase 3 needs. The architectural boundary from ADR-008 / ADR-009 is still enforced in code: the compositor never re-runs the parser's general `@`-reference resolver, and unresolved `reference` nodes are surfaced as `unresolved-reference` runs rather than silently dropped.
+Sub-phases 3a–3g shipped; 3h (Ordo-backed divergence adjudication) in flight. The detailed design is in [`docs/phase-3-composition-engine-design.md`](docs/phase-3-composition-engine-design.md) with per-sub-phase shipping summaries in §19.
 
-Implemented:
+The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-resolved `CorpusIndex` into a typed, format-agnostic `ComposedHour`, and the supporting parser / rubrical-engine changes preserve the wrapper, conditional, and keyed-psalter source structures that Phase 3 needs. The architectural boundary from ADR-008 / ADR-009 is still enforced in code: the compositor never re-runs the parser's general `@`-reference resolver, and unresolved `reference` nodes are surfaced as `unresolved-reference` runs rather than silently dropped. Sub-phases 3d–3e added coordinated cross-package schema changes in rubrical-engine (`NocturnPlan.benedictions`, four-site Matins-commemoration unblock); the compositor side consumes these through typed hooks, not branching on policy names.
+
+**Validation.** Per design §19.1, the authority order is Ordo Recitandi → governing rubrical books (1911 / 1955 / 1960) → legacy Divinum Officium Perl output. `composeHour()` runs exception-free across every Hour for every date in 2024 under each of the three Roman policies (8,784 compositions per run) via the `test:no-throw` integration test. The live Perl comparison harness at `pnpm -C packages/compositor compare:phase-3-perl` now surfaces a `Matching prefix` metric per row and per-policy best/average summaries — forward progress is visible even when row counts stay flat. Current divergent-row counts are `488` (Rubrics 1960), `496` (Divino Afflatu), `488` (Reduced 1955); best-matching-prefix-before-divergence is 39 / 4 / 30 lines respectively. Classifications live in [`packages/compositor/test/divergence/adjudications.json`](packages/compositor/test/divergence/adjudications.json) per [ADR-011](docs/adr/011-phase-3-divergence-adjudication.md), with chronological pattern resolutions in [`packages/compositor/test/divergence/ADJUDICATION_LOG.md`](packages/compositor/test/divergence/ADJUDICATION_LOG.md).
+
+Core composition engine implemented (pre-sub-phase breakdown):
 
 - `@officium-novum/compositor` package scaffold with build, typecheck, and Vitest setup
 - Pure-function entry: `composeHour({ corpus, summary, version, hour, options }) → ComposedHour`; no I/O
@@ -27,15 +31,90 @@ Implemented:
 - Compline-specific fallback bundle: `Minor Special` now supplies the short reading, hymn, chapter, responsory, and versicle when no proper/commune override exists, and `lectio-brevis` now composes the special short reading plus the Ordinarium wrapper block instead of only the wrapper material
 - Compare-harness canonicalization for repeated `+` signs and lowercase `v.` / `r.` markers so the live Phase 3 compare surface is dominated by structural differences rather than render-equivalent noise
 
+### 3a — Design doc, ADR skeleton, adjudication sidecar (complete)
+
+Laid the groundwork every subsequent sub-phase depends on. Published the authoritative design document [`docs/phase-3-composition-engine-design.md`](docs/phase-3-composition-engine-design.md) with per-sub-phase shipping summaries in §19. Added [ADR-010](docs/adr/010-phase-3-incipit-and-preamble-emission.md) (incipit & preamble emission) and [ADR-011](docs/adr/011-phase-3-divergence-adjudication.md) (divergence adjudication protocol + sidecar key schema).
+
+- `packages/compositor/test/divergence/adjudications.json` — hand-maintained sidecar keyed by stable row identity `<policy>/<date>/<hour>/<hash>` where `hash` is the first 8 hex chars of `sha256(normalized-firstExpected \0 normalized-firstActual)`.
+- Compare harness at `packages/compositor/test/fixtures/compare-phase-3-perl.mjs` teaches itself to read the sidecar, merge `Class` + `Citation` into the generated ledger, and never write back — so classifications survive ledger regeneration. The ledger also grew an "Adjudication breakdown" section counting rows by class.
+
+### 3b — Incipit slot composition & `joinLaudsToMatins` (complete)
+
+Investigation showed the incipit slot is already populated for every Hour and dispatched by `composeHour`; the real gap was a caller-intent flag for the Lauds-joined-to-Matins rubric.
+
+- `ComposeOptions.joinLaudsToMatins?: boolean` added at `packages/compositor/src/types/composed-hour.ts`. Default `undefined` means the compositor emits the Ordinarium as-is; `true` suppresses the secreto Pater / Ave block at the head of the Lauds `#Incipit`.
+- New helper `stripLaudsSecretoPrayers` at `packages/compositor/src/compose/incipit.ts` recursively walks conditionals and drops `formulaRef` nodes named `Pater noster`, `Ave Maria`, and `rubrica Secreto a Laudibus` (case-insensitive).
+- Harness updated to pass `joinLaudsToMatins: false` for Lauds explicitly — matching the per-Hour `command=pray$hour` shape of the Perl snapshot helper and making the assumption reviewable.
+- 11 new tests in `packages/compositor/test/compose-incipit.test.ts` covering unset / true / false semantics, case-insensitive matching, conditional recursion, and non-Lauds no-op behaviour.
+
+### 3c — Representation parity (complete)
+
+Closed the dominant representation-level divergences revealed on the Rubrics 1960 ledger.
+
+- **`Ant.` marker on antiphon lines.** The source corpus carries antiphons as bare text (`Ant Laudes`) or as `psalmRef.antiphon` inline strings; Perl synthesises `Ant. ` at render time. New helper `markAntiphonFirstText` at `packages/compositor/src/emit/antiphon-marker.ts` wraps the first `text` node of resolved antiphon content as `verseMarker('Ant.', ...)`. Applied to every whole-antiphon slot (invitatory, canticle antiphons, commemoration antiphons) and to psalmody's antiphon refs specifically.
+- **Hymn stanza separator `_`.** Source hymn files contain literal `_` lines between stanzas which the parser converts to `separator` nodes; `packages/compositor/src/emit/sections.ts` now surfaces them as `_` lines for hymn slots only.
+- **Compline guillemets.** Confirmed in corpus at `upstream/.../Common/Rubricae.txt:129`. Classified as `rendering-difference`; no compositor fix.
+- 12 new tests in `packages/compositor/test/canonical-lines.test.ts`. Each first-divergent-line on Rubrics 1960 Jan 1 advanced into a later, different pattern.
+
+### 3d — Matins Benedictio + Te Deum replacement (complete)
+
+First cross-package schema change. Added the Benedictio flow that precedes each Matins lesson and implemented the Te Deum `'replace-with-responsory'` decision.
+
+- **Schema.** `NocturnPlan.benedictions` added as a **required** field at `packages/rubrical-engine/src/types/matins.ts` (forces every consumer to populate). New `BenedictioEntry` interface. New `'benedictio'` member on `SlotName` and `'benedictio'` on the compositor's `SectionType`.
+- **Policy hook.** `selectBenedictions(params): readonly BenedictioEntry[]` added to `RubricalPolicy` at `packages/rubrical-engine/src/types/policy.ts`. Shared `selectRomanBenedictions` helper in `packages/rubrical-engine/src/policy/_shared/roman.ts` feeds all three Roman policies: 9/12-lesson office → `[Nocturn N]:<offset>`, 3-lesson office → `[Nocturn 3]:<offset>` in `horas/Latin/Psalterium/Benedictions.txt`. Mirrors Perl's `specmatins.pl:get_absolutio_et_benedictiones` simple path.
+- **Matins composition.** `packages/compositor/src/compose/matins.ts::composeNocturn` now emits the Benedictio between the per-lesson heading and the Lectio. `composeMatinsSections` handles the three `teDeum.decision` values: `'say'` emits the Te Deum hymn; `'replace-with-responsory'` finds the responsory flagged with `replacesTeDeum: true` and emits it under the `'te-deum'` slot; `'omit'` emits nothing.
+- Unsupported-policy stubs and test policy fixture updated. 3 new Matins composition tests; pre-existing mocks extended with empty `benedictions` arrays where needed.
+
+### 3e — Matins commemorations: Phase 2 coordination (complete)
+
+The "Lauds/Vespers only" assumption for commemorations lived across four sites in rubrical-engine. Lifted them all.
+
+- `packages/rubrical-engine/src/occurrence/resolver.ts` — removed the hardcoded `DEFAULT_COMMEMORATION_HOURS` constant; now calls `policy.defaultCommemorationHours()`.
+- `packages/rubrical-engine/src/types/policy.ts` — `CommemorationLimitParams.hour` widened from `'lauds' | 'vespers'` to any `HourName`. Two new hooks: `defaultCommemorationHours(): readonly HourName[]` and `commemoratesAtHour(params): boolean`.
+- `packages/rubrical-engine/src/hours/apply-rule-set.ts` — `attachCommemorationSlots` early-return replaced with `policy.commemoratesAtHour(...)`. New `commemorationHeaders()` helper returns Matins/Lauds/Vespers-specific antiphon and versicle section names (`Ant 1` / `Versum 1` for Matins, `Ant 2` / `Versum 2` for Lauds, `Ant 3` / `Versum 3` for Vespers).
+- Per-policy implementations: **Rubrics 1960** returns `['lauds', 'vespers']` (preserves Rubricarum Instructum §106–109); **Divino Afflatu** returns `['matins', 'lauds', 'vespers']` (opens the previously-blocked Matins commemoration path per Rubricae Generales §IX); **Reduced 1955** returns `['lauds', 'vespers']` (Cum Nostra reduced Matins commemorations to zero).
+- 4 new policy-level tests (2 on DA, 2 on 1960) plus one compositor-level integration test verifying the commemoration slots fall through the Matins generic dispatch correctly.
+
+### 3f — Compline verb disposition + resolver observability (complete)
+
+- [ADR-012](docs/adr/012-compline-benediction-verb.md) records the finding that the compositor emits *both* `concédat` *and* `tríbuat` for every Roman policy because the Phase 1 resolver does not gate duplicate-header sections (`[benedictio Completorium] (rubrica Ordo Praedicatorum)`) by their attached rubric condition. Classified as `engine-bug`; root fix is in Phase 1 and affects every `(rubrica X)` conditional section in the corpus. Not fixed in 3f.
+- New `ComposeWarning` interface on `packages/compositor/src/types/composed-hour.ts` (mirrors `RubricalWarning` without re-export). `ComposedHour.warnings: readonly ComposeWarning[]` now required.
+- `ResolveOptions.onWarning` and `DeferredNodeContext.onWarning` sinks threaded through. Previously-silent failures now emit `resolve-missing-section` (warn) when the fallback chain exhausts, `resolve-unhandled-selector` (info) when a selector has no narrowing path, and `deferred-depth-exhausted` (warn) when expansion hits `maxDepth`.
+- `composeHour` aggregates per-slot warnings into the top-level `ComposedHour.warnings`; `composeMatinsSections` does the same.
+- [`docs/upstream-issues.md`](docs/upstream-issues.md) created as the forward-tracking file for `perl-bug` classifications.
+- 7 new tests in `packages/compositor/test/warnings.test.ts` covering every emission path and the aggregation happy path.
+
+### 3g — Validation harness: no-throw sweep + heading rendering (complete)
+
+Established the Phase-2-equivalent validation surface required by the Phase 3 §18 success criteria.
+
+- **No-throw sweep** at `packages/compositor/test/integration/no-throw-sweep.test.ts` — composes every Hour for every date in 2024 under each of the three Roman policies = **8,784 compositions per run**. Asserts no exceptions, no `severity: 'error'` warnings, no `unresolved-*` run types. Gated with `describe.skipIf(!HAS_UPSTREAM)`; runs in ~14 seconds on the current checkout.
+- **Harness `__full-year__` sentinel** — `compare-phase-3-perl.mjs` now accepts `--date __full-year__` and synthesises every 2024 date, enabling full-year adjudication sweeps via `pnpm -C packages/compositor compare:phase-3-perl:full`.
+- **Canonical heading rendering** in the harness normaliser — Nocturn sections render as `Nocturnus I/II/III` and lesson sections as `Lectio N`, making the heading-order Matins divergence observable at the compare surface without requiring a data-model change.
+- New package scripts: `test:no-throw`, `compare:phase-3-perl:full`.
+- **Deferred.** The 312 snapshot goldens (13 Appendix-A dates × 3 policies × 8 hours) were deliberately skipped for 3g because Appendix A in the modernization spec is descriptive (no fixed ISO dates) and the goldens would churn heavily during 3h adjudication. Goldens become a stabilization tripwire after 3h settles.
+
+### 3h — Divergence adjudication burn-down (in progress)
+
+Opening-session work ships the infrastructure, two engine-bug fixes, one structural psalmody fix, and a ledger-metric upgrade that makes forward progress visible even when row counts stay flat.
+
+- **Ledger progress metrics.** The generated ledgers now carry a `Matching prefix` column and a `First divergence line` column on every row, plus per-policy `Best matching prefix` and `Average matching prefix` summary lines. First published values: Rubrics 1960 best 39 / avg 13.5 lines, Reduced 1955 best 30 / avg 12.4, Divino Afflatu best 4 / avg 2.9. This is the progress signal that the row count alone could not show.
+- [ADJUDICATION_LOG.md](packages/compositor/test/divergence/ADJUDICATION_LOG.md) — chronological audit trail per ADR-011. Captures every pattern-level resolution with citation and commit context.
+- **Engine-bug fix #1 — hymn doxology `*` prefix** (in `packages/compositor/src/emit/sections.ts::stripHymnDoxologyMarker`). The DO corpus prefixes the doxology stanza of metrical hymns with `* ` as an editorial convention; Perl strips it at render. We now do too.
+- **Engine-bug fix #2 — `Psalmus N [M]` heading emission** (in `packages/compositor/src/compose.ts::buildPsalmHeading`). Perl emits `Psalmus 92 [1]`, `Psalmus 118(1-16) [2]`, etc. before each psalm at every non-Matins Hour. Three psalm-number extraction strategies (path match, selector range, verse-prefix scan on resolved content) handle both direct Psalmorum references and the `Psalmi major:Day0 Laudes1` wrapper style used under 1960.
+- **Engine-bug fix #3 — wrapped-psalmody inner-unit composition.** Explicit psalmody antiphon refs no longer expand an entire psalm, and wrapped psalms (via `Psalmi major/minor:<Day> <Hour>N` sections) now render in the live corpus as `Ant. -> Psalmus N [M] -> verses` instead of leaking the whole first psalm before the heading. Wrapper-shape coverage added in `packages/compositor/test/canonical-lines.test.ts`.
+- **Representative adjudications** landed in `adjudications.json`: 3 `rendering-difference` entries (Compline guillemets, one per policy) and 1 `engine-bug` entry (missing psalm heading on Lauds).
+- **Pattern catalogue** documented for follow-up sessions: Matins Invitatorium Psalm 94 responsorial structure, `Ant. 109:1a` verse-prefix leak on Vespers psalmRef, wrong-psalm selection under 1960 for Christmas Octave (Phase 2 psalter-selection).
+
 Open:
 
 - **Liturgically complete preces / suffragium / dirge directive implementations.** The current MVP emits a banner rubric; the full implementations need to splice in the real preces block from `Psalterium/Special/Preces.txt`, the suffragium from the corresponding common, and the Office-of-the-Dead skeletons for the dirge directives.
-- **Slot-order and fallback parity for the remaining non-Compline hours.** The live compare surface has moved past the original parser/composition wrapper gap; the next visible rows are broader hour-order / fallback issues such as minor-hour hymns, Lauds/Vespers canticle-antiphon placement, and Matins opening / invitatory sequencing.
-- **Compline tail-order and wording/punctuation parity.** The special short reading and source fallbacks are now in place, but the final sequencing from `Adjutorium nostrum` onward and a few wording / punctuation differences (for example quoted rubric text) still diverge from the legacy renderer.
-- **Perl-comparison divergence burn-down and Ordo-backed adjudication.** The Phase 3 live harness now enumerates narrower structural rows than before, but those rows still need to be triaged against the published *Ordo* and the governing rubrics so the comparison surface becomes a bounded, source-backed divergence list rather than a raw mismatch dump.
-- **`selectorUnhandled` warning wiring.** The resolver sets the flag structurally for novel selector shapes, but callers currently only branch on `selectorMissing`; novel selectors fall through to full-section output without surfacing a warning.
-- **Policy-wide smoke coverage in Vitest.** The live comparison harness exercises all three Roman policies end-to-end, but the checked-in Vitest smoke suite is still 1960-only; `divino-afflatu` and `reduced-1955` should gain explicit smoke assertions too.
-- **Upstream engine gap: Matins commemorations.** `rubrical-engine/src/hours/apply-rule-set.ts:attachCommemorationSlots` currently early-returns for any hour other than Lauds or Vespers, so Matins commemorations never reach `HourStructure.slots`. The compositor can't emit what the engine doesn't produce; lifting that guard (where rubrically correct for the given policy) is a prerequisite for fully-commemorated Matins output.
+- **Matins Invitatorium Psalm 94 responsorial structure.** Perl interleaves the invitatory antiphon with each section of Psalm 94 at Matins. The compositor emits the antiphon once and moves on. Biggest remaining Matins row-count gap.
+- **Compline verb duplicate-header resolution (ADR-012).** Root fix in Phase 1's reference resolver; affects every `(rubrica X)` conditional section in the corpus, not just Compline.
+- **Compline tail-order and wording / punctuation parity.** The final sequencing from `Adjutorium nostrum` onward and a few wording / punctuation differences still diverge from the legacy renderer.
+- **Perl-comparison divergence burn-down and Ordo-backed adjudication.** The remaining 488 / 496 / 488 rows need to be triaged against the published *Ordo* and governing rubrics, with each pattern classified as `engine-bug` / `perl-bug` / `ordo-ambiguous` / `rendering-difference` per ADR-011. Progress is now visible via the matching-prefix metric; row-count collapse follows pattern-level fixes.
+- **Policy-wide smoke coverage in Vitest.** The live comparison harness and no-throw sweep exercise all three Roman policies end-to-end, but the checked-in per-date Vitest smoke suite is still 1960-only.
+- **312 snapshot goldens.** Deferred from 3g until 3h stabilises enough patterns to make golden churn acceptable.
 
 ## Phase 2 — Rubrical Engine
 

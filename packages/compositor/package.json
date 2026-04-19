@@ -17,8 +17,10 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "compare:phase-3-perl": "pnpm -C ../parser build && pnpm -C ../rubrical-engine build && pnpm build && node ./test/fixtures/compare-phase-3-perl.mjs",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run"
+    "compare:phase-3-perl:full": "pnpm compare:phase-3-perl -- --date __full-year__",
+    "test": "vitest run",
+    "test:no-throw": "vitest run -- test/integration/no-throw-sweep.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@officium-novum/parser": "workspace:*",

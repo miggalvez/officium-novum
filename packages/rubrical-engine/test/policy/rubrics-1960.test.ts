@@ -446,6 +446,26 @@ describe('rubrics1960Policy.limitCommemorations', () => {
   });
 });
 
+describe('rubrics1960Policy commemoration-Hour hooks', () => {
+  it('defaults commemoration Hours to Lauds and Vespers only (RI §106–109)', () => {
+    expect(rubrics1960Policy.defaultCommemorationHours()).toEqual(['lauds', 'vespers']);
+  });
+
+  it('does not commemorate at Matins, minor Hours, or Compline', () => {
+    const context = {
+      celebration: matinsCelebration('Sancti/08-22', 'II', 'sanctoral'),
+      celebrationRules: matinsRules(),
+      temporal: temporal('2024-08-22', 'Pent13-4', 'time-after-pentecost', 'IV')
+    };
+    expect(rubrics1960Policy.commemoratesAtHour({ hour: 'lauds', ...context })).toBe(true);
+    expect(rubrics1960Policy.commemoratesAtHour({ hour: 'vespers', ...context })).toBe(true);
+    expect(rubrics1960Policy.commemoratesAtHour({ hour: 'matins', ...context })).toBe(false);
+    expect(rubrics1960Policy.commemoratesAtHour({ hour: 'prime', ...context })).toBe(false);
+    expect(rubrics1960Policy.commemoratesAtHour({ hour: 'terce', ...context })).toBe(false);
+    expect(rubrics1960Policy.commemoratesAtHour({ hour: 'compline', ...context })).toBe(false);
+  });
+});
+
 function context(
   date: string,
   feastPath: string,

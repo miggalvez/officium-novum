@@ -29,6 +29,8 @@ export function sectionTypeFor(slot: SlotName): SectionType {
       return 'oration';
     case 'lectio-brevis':
       return 'lectio-brevis';
+    case 'benedictio':
+      return 'benedictio';
     case 'commemoration-antiphons':
     case 'commemoration-versicles':
     case 'commemoration-orations':
@@ -140,28 +142,60 @@ function linesFromContent(
     }
     line.parts.push(run);
   };
+  const pushInlineRubric = (value: string) => {
+    const normalized = value.trim();
+    if (normalized.length === 0) return;
+    const line = ensure();
+    const previous = line.parts.at(-1);
+    if (previous?.type === 'text' && !/\s$/u.test(previous.value)) {
+      line.parts.push({ type: 'text', value: ' ' });
+    }
+    line.parts.push({ type: 'rubric', value: normalized });
+    line.parts.push({ type: 'text', value: ' ' });
+  };
 
-  for (const node of content) {
+  for (let index = 0; index < content.length; index += 1) {
+    const node = content[index]!;
     switch (node.type) {
       case 'text':
         if (slot === 'hymn') {
           flush();
+          // Phase 3 §3h: hymn doxology stanzas in the corpus are prefixed
+          // with `* ` to mark the doxology (`* Deo Patri sit glória,` etc.)
+          // — a DO convention that is not part of the rendered liturgical
+          // text. The legacy Perl renderer strips it; we do too so the
+          // compositor matches the source author's intent.
+          // See `upstream/.../Psalterium/Special/Prima Special.txt:107`.
+          const cleaned = stripHymnDoxologyMarker(node.value);
           current = {
-            parts: [{ type: 'text', value: node.value }]
+            parts: [{ type: 'text', value: cleaned }]
           };
           break;
         }
-        pushRun({ type: 'text', value: node.value });
+        pushRun({ type: 'text', value: normalizeSlotText(slot, node.value) });
         break;
       case 'verseMarker':
         flush();
         current = {
           marker: node.marker,
-          parts: [{ type: 'text', value: node.text }]
+          parts: [
+            {
+              type: 'text',
+              value: normalizeVerseMarkerText(slot, node.marker, node.text)
+            }
+          ]
         };
-        flush();
+        const continuesInlineRubric =
+          content[index + 1]?.type === 'rubric' && content[index + 2]?.type === 'text';
+        if (!continuesInlineRubric) {
+          flush();
+        }
         break;
       case 'rubric':
+        if (current) {
+          pushInlineRubric(node.value);
+          break;
+        }
         flush();
         lines.push(singleRunLine(language, undefined, { type: 'rubric', value: node.value }));
         break;
@@ -171,6 +205,13 @@ function linesFromContent(
         break;
       case 'separator':
         flush();
+        // For hymn slots, surface the stanza break as a literal `_` line —
+        // the legacy Perl renderer emits an underscore-only line between
+        // stanzas. The corpus carries these separators as `_` source lines
+        // which Phase 1 converts to `{type: 'separator'}` nodes.
+        if (slot === 'hymn') {
+          lines.push(singleRunLine(language, undefined, { type: 'text', value: '_' }));
+        }
         break;
       case 'citation':
         pushRun({ type: 'text', value: ' ' });
@@ -198,12 +239,88 @@ function linesFromContent(
       case 'reference':
         pushRun({ type: 'unresolved-reference', ref: node.ref });
         break;
+      case 'gabcNotation': {
+        const headerText = renderGabcHeaderText(slot, node.notation);
+        if (!headerText) {
+          break;
+        }
+        flush();
+        lines.push(
+          singleRunLine(language, headerText.marker, {
+            type: 'text',
+            value: headerText.text
+          })
+        );
+        break;
+      }
       case 'conditional':
         break;
     }
   }
   flush();
   return lines;
+}
+
+/**
+ * Strip the `* ` doxology-stanza marker that the Divinum Officium corpus
+ * conventionally prefixes to the final stanza of metrical hymns (e.g.
+ * `* Deo Patri sit glória,`). The `*` is a rendering hint, not part of the
+ * liturgical text; the legacy Perl renderer strips it, and we do too.
+ *
+ * The function is intentionally narrow — only the leading `*` followed by
+ * one whitespace character is removed, preserving any `*` that appears
+ * mid-line (which is a legitimate hymn separator in some traditions).
+ */
+function stripHymnDoxologyMarker(text: string): string {
+  return text.replace(/^\*\s+/u, '');
+}
+
+function normalizeSlotText(slot: SlotName, text: string): string {
+  if (slot !== 'psalmody') {
+    return text;
+  }
+  return text
+    .replace(/^(\d+:\d+)[a-z](\b)/iu, '$1$2')
+    .replace(/\s*†\s*/gu, ' ')
+    .replace(/([*‡†]\s*)\(\d+[a-z]\)\s*/giu, '$1');
+}
+
+function normalizeVerseMarkerText(slot: SlotName, marker: string, text: string): string {
+  if (slot === 'invitatory' && marker === 'v.') {
+    return text.replace(/[+*^=_]\s/gu, '');
+  }
+  return normalizeSlotText(slot, text);
+}
+
+function renderGabcHeaderText(
+  slot: SlotName,
+  notation: Extract<TextContent, { type: 'gabcNotation' }>['notation']
+): { readonly marker?: string; readonly text: string } | undefined {
+  if (notation.kind !== 'header' || !notation.text) {
+    return undefined;
+  }
+
+  const verseMatch = notation.text.match(
+    /^(v\.|r\.|V\.|R\.|R\.br\.|Responsorium\.|Ant\.|Benedictio\.|Absolutio\.|M\.|S\.)\s+(.*)$/u
+  );
+  if (verseMatch) {
+    const marker = verseMatch[1];
+    const verseText = verseMatch[2];
+    if (!marker || !verseText) {
+      return undefined;
+    }
+    if (slot === 'hymn' && marker === 'v.') {
+      return { text: stripHymnDoxologyMarker(verseText) };
+    }
+    return {
+      marker,
+      text: normalizeVerseMarkerText(slot, marker, verseText)
+    };
+  }
+
+  return {
+    text: slot === 'hymn' ? stripHymnDoxologyMarker(notation.text) : normalizeSlotText(slot, notation.text)
+  };
 }
 
 function singleRunLine(

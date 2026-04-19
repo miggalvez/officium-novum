@@ -75,7 +75,10 @@ officium-novum/
 - [Rubrical Sources](docs/rubrical-sources.md) — canonical source index for the 1911 / 1955 / 1960 families plus the deferred Tridentine / monastic / Cistercian / Dominican families
 - [Phase 2 Rubrical Engine Design](docs/phase-2-rubrical-engine-design.md) — detailed design for the rubrical engine: pipeline stages, version/policy model, occurrence/concurrence/transfer/commemoration algorithms, Matins planning, and the top-level API
 - [Phase 2g-β Matins Corpus Inventory](docs/phase-2g-beta-matins-corpus-inventory.md) — focused inventory and notes for the Matins-structuring corpus work
-- [Architecture Decision Records](docs/adr/) — implementation ADRs for version binding, rule evaluation, transfer caching, concurrence previews, and hour-structuring architecture
+- [Phase 3 Composition Engine Design](docs/phase-3-composition-engine-design.md) — detailed design for the compositor: pipeline, data model, preamble catalog, directive catalog, Matins composition, validation strategy, success criteria, and the 3a–3h sub-phase plan with per-sub-phase shipping summaries
+- [Phase 3 Adjudication Log](packages/compositor/test/divergence/ADJUDICATION_LOG.md) — chronological audit trail of divergence adjudications against the legacy Perl renderer, per ADR-011
+- [Upstream Perl issues](docs/upstream-issues.md) — forward-tracking file for divergence rows classified as legacy-Perl bugs
+- [Architecture Decision Records](docs/adr/) — implementation ADRs for version binding, rule evaluation, transfer caching, concurrence previews, hour-structuring architecture, compositor resolved-corpus contract, incipit emission, divergence adjudication, and Compline verb disposition
 
 ## Status
 
@@ -84,11 +87,11 @@ officium-novum/
 | **1 — Parser** | Complete |
 | **2 — Rubrical Engine** (Roman: 1911 / 1955 / 1960) | Complete |
 | **2 — Non-Roman families** (Tridentine, Monastic, Cistercian, Dominican) | Deferred by design — explicit `UnsupportedPolicyError` stubs |
-| **3 — Composition Engine** | In progress — end-to-end hour composition and the live Perl comparison harness are shipped; remaining work is slot-order/fallback parity (especially hymns and canticle material), fully liturgical preces/suffragium/dirge substitutions, Matins commemorations, and Ordo-backed divergence adjudication |
+| **3 — Composition Engine** | In progress — sub-phases 3a–3g shipped; 3h (Ordo-backed divergence adjudication) in flight. End-to-end composition, 8,784-composition no-throw sweep, typed `ComposeWarning` surface, Matins Benedictio + Te Deum replacement, Phase 2 commemoration-hour coordination, and the adjudication-sidecar harness are all in place. See [Phase 3 Composition Engine Design §19](docs/phase-3-composition-engine-design.md) for per-sub-phase shipping summaries. |
 | **4 — API** | Not started |
 | **5 — Frontend** | Not started |
 
-**Validation.** Per design §19.1, the authority order is Ordo Recitandi → governing rubrical books (1911 / 1955 / 1960) → legacy Divinum Officium Perl output. Perl is a comparison target, not an oracle. Divergence ledgers live in `packages/rubrical-engine/test/divergence/` and `packages/compositor/test/divergence/`. Workspace validation currently passes with `pnpm -r typecheck` and `pnpm -r test` (parser + rubrical-engine + compositor), and the Phase 3 live comparison harness is available at `pnpm -C packages/compositor compare:phase-3-perl`. Recent Phase 3 work closed the broad parser/composition gap around wrapper material, conditionalized keyed psalter data, and Compline special-source fallbacks; the remaining compare rows are now narrower slot-order/fallback and liturgical-substitution issues rather than missing openings.
+**Validation.** Per design §19.1, the authority order is Ordo Recitandi → governing rubrical books (1911 / 1955 / 1960) → legacy Divinum Officium Perl output. Perl is a comparison target, not an oracle. Divergence ledgers live in `packages/rubrical-engine/test/divergence/` and `packages/compositor/test/divergence/`. Workspace validation currently passes with `pnpm -r typecheck` and `pnpm -r test` (parser + rubrical-engine + compositor), and the Phase 3 live comparison harness is available at `pnpm -C packages/compositor compare:phase-3-perl` (and `compare:phase-3-perl:full` for the full-year sweep). The harness now exposes a `Matching prefix` column and per-policy best/average-matching-prefix summaries so forward progress is visible even when row counts stay flat — see the ledgers for current values (Rubrics 1960: best 39, avg 13.5 lines; Reduced 1955: best 30, avg 12.4; Divino Afflatu: best 4, avg 2.9). Classified rows are tracked in [`adjudications.json`](packages/compositor/test/divergence/adjudications.json) per ADR-011 and chronologically in the [Adjudication Log](packages/compositor/test/divergence/ADJUDICATION_LOG.md). Compositor `composeHour()` runs exception-free across the full 2024 × 3-policy × 8-hour matrix (8,784 compositions) as a CI-gated `test:no-throw` check.
 
 See [CHANGELOG.md](CHANGELOG.md) for the sub-phase implementation log, and [`docs/adr/`](docs/adr/) for architectural decisions.
 

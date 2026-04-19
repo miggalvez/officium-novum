@@ -145,6 +145,12 @@ export function makeTestPolicy(
     limitCommemorations(commemorations) {
       return [...commemorations];
     },
+    defaultCommemorationHours() {
+      return ['lauds', 'vespers'];
+    },
+    commemoratesAtHour(params) {
+      return params.hour === 'lauds' || params.hour === 'vespers';
+    },
     resolveMatinsShape() {
       return {
         nocturns: 3,
@@ -154,6 +160,9 @@ export function makeTestPolicy(
     },
     resolveTeDeum() {
       return 'say';
+    },
+    selectBenedictions() {
+      return [];
     },
     defaultScriptureCourse() {
       return 'post-pentecost';

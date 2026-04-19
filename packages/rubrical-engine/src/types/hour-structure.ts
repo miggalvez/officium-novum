@@ -18,6 +18,7 @@ export type SlotName =
   | 'antiphon-ad-nunc-dimittis'
   | 'oration'
   | 'lectio-brevis'
+  | 'benedictio'
   | 'commemoration-antiphons'
   | 'commemoration-versicles'
   | 'commemoration-orations'

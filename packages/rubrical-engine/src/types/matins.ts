@@ -65,6 +65,22 @@ export interface LessonPlan {
   readonly gateCondition?: Condition;
 }
 
+/**
+ * The Benedictio said before each Lectio in Matins. Selection is
+ * policy-driven and mirrors Perl's `specmatins.pl:get_absolutio_et_benedictiones`
+ * semantics: the nocturn number, lesson index, lesson source kind, and season
+ * together pick a line out of `horas/Latin/Psalterium/Benedictions.txt`.
+ *
+ * Populated per-lesson in the Matins plan. Matching is by `LessonIndex` so a
+ * lesson that has been suppressed (e.g. commemorated in a 3-lesson office)
+ * will not carry a benediction entry; the compositor renders what is
+ * provided and emits nothing for missing indices.
+ */
+export interface BenedictioEntry {
+  readonly index: LessonIndex;
+  readonly reference: TextReference;
+}
+
 export type InvitatoriumSource =
   | { readonly kind: 'feast'; readonly reference: TextReference }
   | { readonly kind: 'season'; readonly reference: TextReference }
@@ -103,6 +119,14 @@ export interface NocturnPlan {
   readonly versicle: VersicleSource;
   readonly lessons: readonly LessonPlan[];
   readonly responsories: readonly ResponsorySource[];
+  /**
+   * One {@link BenedictioEntry} per lesson that carries a benediction. Kept
+   * as a **required** field so the type checker enumerates every consumer of
+   * `NocturnPlan` when populated — see the Phase 3 completion plan §3d for
+   * the rationale. Empty when the policy emits no benedictions for this
+   * nocturn.
+   */
+  readonly benedictions: readonly BenedictioEntry[];
 }
 
 export interface MatinsPlan {

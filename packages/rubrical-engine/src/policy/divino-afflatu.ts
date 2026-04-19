@@ -36,13 +36,14 @@ import type {
   HourDirective,
   PsalmAssignment
 } from '../types/hour-structure.js';
-import type { ScriptureCourse } from '../types/matins.js';
+import { selectRomanBenedictions } from './_shared/roman.js';
+import type { BenedictioEntry, LessonPlan, MatinsPlan, ScriptureCourse } from '../types/matins.js';
 import type {
   Candidate,
   FeastReference,
   TemporalContext
 } from '../types/model.js';
-import type { Celebration, Commemoration } from '../types/ordo.js';
+import type { Celebration, Commemoration, HourName } from '../types/ordo.js';
 import type {
   HourDirectivesParams,
   OctaveRule,
@@ -50,6 +51,7 @@ import type {
   RubricalPolicy,
   SelectPsalmodyParams
 } from '../types/policy.js';
+import type { CelebrationRuleSet } from '../types/rule-set.js';
 
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
 const THREE_NOCTURN_CLASSES = new Set([
@@ -395,6 +397,21 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
     const matinsLimit = laudsVespersLimit > 0 ? 1 : 0;
     return limitCommemorationsByHour(scoped, laudsVespersLimit, matinsLimit);
   },
+  // Phase 3 §3e: Divino Afflatu retains Matins commemorations per Rubricae
+  // Generales §IX. The `limitCommemorationsByHour` above already handles the
+  // per-Hour capping; `defaultCommemorationHours` here stamps Matins onto
+  // every `Commemoration` so downstream filtering sees it as eligible.
+  defaultCommemorationHours(): readonly HourName[] {
+    return ['matins', 'lauds', 'vespers'];
+  },
+  commemoratesAtHour(params: {
+    readonly hour: HourName;
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+  }): boolean {
+    return params.hour === 'matins' || params.hour === 'lauds' || params.hour === 'vespers';
+  },
   resolveMatinsShape(params) {
     if (
       isPaschalOctaveDay(params.temporal) ||
@@ -436,6 +453,22 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
       totalLessons: 3,
       lessonsPerNocturn: [3]
     } as const;
+  },
+  selectBenedictions(params: {
+    readonly nocturnIndex: 1 | 2 | 3;
+    readonly lessons: readonly LessonPlan[];
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+    readonly totalLessons: MatinsPlan['totalLessons'];
+  }): readonly BenedictioEntry[] {
+    return selectRomanBenedictions({
+      nocturnIndex: params.nocturnIndex,
+      lessons: params.lessons,
+      celebration: params.celebration,
+      temporal: params.temporal,
+      totalLessons: params.totalLessons
+    });
   },
   resolveTeDeum(params) {
     if (params.celebrationRules.teDeumOverride === 'forced') {

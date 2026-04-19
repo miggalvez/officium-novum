@@ -159,7 +159,10 @@ function deriveHymnKind(slot: SlotContent | undefined): MatinsFixtureShape['hymn
   }
 
   if (slot.kind === 'single-ref') {
-    return slot.ref.path.startsWith('horas/Ordinarium/') ? 'ordinary' : 'feast';
+    return slot.ref.path.startsWith('horas/Ordinarium/') ||
+      slot.ref.path === 'horas/Latin/Psalterium/Special/Matutinum Special'
+      ? 'ordinary'
+      : 'feast';
   }
 
   return 'suppressed';

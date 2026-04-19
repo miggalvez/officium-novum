@@ -1,6 +1,7 @@
 import type { TextContent, TextIndex } from '@officium-novum/parser';
 import type { TextReference } from '@officium-novum/rubrical-engine';
 
+import type { ComposeWarning } from '../types/composed-hour.js';
 import { resolveReference } from './reference-resolver.js';
 
 const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
@@ -14,6 +15,12 @@ export interface DeferredNodeContext {
   readonly season?: string;
   readonly seen: ReadonlySet<string>;
   readonly maxDepth: number;
+  /**
+   * Phase 3 §3f: optional compose-time warning sink. Surfaces
+   * deferred-depth exhaustion and downstream resolver warnings to the
+   * caller; callers aggregate them onto {@link ComposedHour.warnings}.
+   */
+  readonly onWarning?: (warning: ComposeWarning) => void;
 }
 
 /**
@@ -29,6 +36,18 @@ export function expandDeferredNodes(
   context: DeferredNodeContext
 ): readonly TextContent[] {
   if (context.maxDepth <= 0) {
+    if (context.onWarning) {
+      context.onWarning({
+        code: 'deferred-depth-exhausted',
+        message:
+          'Deferred-node expansion hit its depth cap; residual nodes surface as unresolved runs.',
+        severity: 'warn',
+        context: {
+          language: context.language,
+          ...(context.season ? { season: context.season } : {})
+        }
+      });
+    }
     return content;
   }
 
@@ -49,8 +68,12 @@ export function expandDeferredNodes(
       case 'psalmRef': {
         const antiphon = node.antiphon?.trim();
         if (antiphon) {
-          out.push({ type: 'text', value: antiphon });
-          out.push({ type: 'separator' });
+          // The antiphon carried inline on a psalmRef is a rendered-antiphon
+          // line (Perl prefixes it with "Ant. " at presentation time). Emit
+          // it as a verseMarker so the compositor's line materialisation
+          // preserves the marker faithfully instead of dropping it to bare
+          // text. See the Phase 3 completion plan §3c and ADR-011.
+          out.push({ type: 'verseMarker', marker: 'Ant.', text: antiphon });
         }
 
         const expanded = expandReference(
@@ -140,7 +163,8 @@ function expandReference(
 
   const resolved = resolveReference(context.index, reference, {
     languages: [context.language],
-    langfb: context.langfb
+    langfb: context.langfb,
+    ...(context.onWarning ? { onWarning: context.onWarning } : {})
   });
   const section = resolved[context.language];
   if (!section) {

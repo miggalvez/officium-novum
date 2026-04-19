@@ -14,6 +14,8 @@ This file tracks the current **legacy Perl rendered Hour vs compositor** compari
 - Exact-match hours: `0`
 - Divergent hours: `496`
 - Divergent dates: `62`
+- Best matching prefix before divergence: `4` lines
+- Average matching prefix before divergence: `2.9` lines
 - Divergence breakdown by hour:
   - `Matins`: `62/62`
   - `Lauds`: `62/62`
@@ -23,55 +25,59 @@ This file tracks the current **legacy Perl rendered Hour vs compositor** compari
   - `None`: `62/62`
   - `Vespers`: `62/62`
   - `Compline`: `62/62`
+- Adjudication breakdown (see `adjudications.json` and ADR-011):
+  - `unadjudicated`: `496`
 
 ## Sample mismatches
 
-| Date | Hour | Expected lines | Actual lines | First expected | First actual |
-|---|---|---|---|---|---|
-| 2024-01-01 | Matins | 447 | 267 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-01 | Lauds | 186 | 128 | _ | Secus absolute incipiuntur, ut sequitur: |
-| 2024-01-01 | Prime | 161 | 107 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-01 | Terce | 111 | 94 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-01 | Sext | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-01 | None | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-01 | Vespers | 148 | 133 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-01 | Compline | 131 | 96 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. |
-| 2024-01-06 | Matins | 396 | 132 | Nocturnus I | Deinde, clara voce, dicitur Versus: |
-| 2024-01-06 | Lauds | 171 | 116 | _ | Secus absolute incipiuntur, ut sequitur: |
-| 2024-01-06 | Prime | 162 | 107 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-06 | Terce | 111 | 94 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-06 | Sext | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-06 | None | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-06 | Vespers | 181 | 82 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-06 | Compline | 131 | 109 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. |
-| 2024-01-07 | Matins | 458 | 284 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-07 | Lauds | 206 | 132 | _ | Secus absolute incipiuntur, ut sequitur: |
-| 2024-01-07 | Prime | 163 | 106 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-07 | Terce | 111 | 94 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-07 | Sext | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-07 | None | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-07 | Vespers | 168 | 137 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-07 | Compline | 131 | 99 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. |
-| 2024-01-13 | Matins | 440 | 135 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-13 | Lauds | 171 | 116 | _ | Secus absolute incipiuntur, ut sequitur: |
-| 2024-01-13 | Prime | 161 | 107 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-13 | Terce | 111 | 94 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-13 | Sext | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-13 | None | 111 | 97 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-13 | Vespers | 189 | 86 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-13 | Compline | 131 | 109 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. |
-| 2024-01-14 | Matins | 421 | 189 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-14 | Lauds | 211 | 95 | _ | Secus absolute incipiuntur, ut sequitur: |
-| 2024-01-14 | Prime | 185 | 104 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-14 | Terce | 111 | 91 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-14 | Sext | 111 | 91 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-14 | None | 111 | 91 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-14 | Vespers | 189 | 96 | _ | Deinde, clara voce, dicitur Versus: |
-| 2024-01-14 | Compline | 131 | 99 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. |
+| Date | Hour | Expected lines | Actual lines | Matching prefix | First divergence line | First expected | First actual | Class | Citation |
+|---|---|---|---|---|---|---|---|---|---|
+| 2024-01-01 | Matins | 447 | 319 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-01 | Lauds | 186 | 159 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | unadjudicated |  |
+| 2024-01-01 | Prime | 161 | 114 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-01 | Terce | 111 | 99 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-01 | Sext | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-01 | None | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-01 | Vespers | 148 | 155 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-01 | Compline | 131 | 97 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | unadjudicated |  |
+| 2024-01-06 | Matins | 396 | 141 | 4 | 5 | Nocturnus I | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-06 | Lauds | 171 | 144 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | unadjudicated |  |
+| 2024-01-06 | Prime | 162 | 114 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-06 | Terce | 111 | 99 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-06 | Sext | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-06 | None | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-06 | Vespers | 181 | 93 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-06 | Compline | 131 | 110 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | unadjudicated |  |
+| 2024-01-07 | Matins | 458 | 330 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-07 | Lauds | 206 | 162 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | unadjudicated |  |
+| 2024-01-07 | Prime | 163 | 113 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-07 | Terce | 111 | 99 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-07 | Sext | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-07 | None | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-07 | Vespers | 168 | 158 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-07 | Compline | 131 | 100 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | unadjudicated |  |
+| 2024-01-13 | Matins | 440 | 144 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-13 | Lauds | 171 | 144 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | unadjudicated |  |
+| 2024-01-13 | Prime | 161 | 114 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-13 | Terce | 111 | 99 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-13 | Sext | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-13 | None | 111 | 102 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-13 | Vespers | 189 | 97 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-13 | Compline | 131 | 110 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | unadjudicated |  |
+| 2024-01-14 | Matins | 421 | 420 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-14 | Lauds | 211 | 119 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | unadjudicated |  |
+| 2024-01-14 | Prime | 185 | 111 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-14 | Terce | 111 | 96 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-14 | Sext | 111 | 96 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-14 | None | 111 | 96 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-14 | Vespers | 189 | 120 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | unadjudicated |  |
+| 2024-01-14 | Compline | 131 | 100 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | unadjudicated |  |
 
 Only the first `40` divergent rows are listed here. Re-run the live harness for the full detail.
 
 ## Notes
 
-- This is a raw content-level comparison harness against the legacy Perl renderer, not yet an adjudicated source-backed ledger.
-- Many current rows may reflect real Phase 3 gaps such as omitted wrapper material, incomplete directive substitution, or unresolved output-model differences. The harness exists to make those differences enumerable and reproducible.
+- This ledger is auto-generated by `compare-phase-3-perl.mjs` on every run. **Do not hand-edit** the table — edits are lost.
+- Adjudications live in `packages/compositor/test/divergence/adjudications.json` and are merged into the `Class` / `Citation` columns by the harness. See [ADR-011](../../../../docs/adr/011-phase-3-divergence-adjudication.md) for the key schema and classification protocol.
+- The four row classes are `engine-bug`, `perl-bug`, `ordo-ambiguous`, and `rendering-difference`. Rows without an adjudication entry surface as `unadjudicated`.
+- Per CLAUDE.md §19.4 and ADR-011: no divergence is ever resolved by "matching the Perl" alone. Every adjudication carries a citation.

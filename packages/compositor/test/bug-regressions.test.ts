@@ -202,7 +202,8 @@ describe('commemorated Matins lesson composition (Bug 2)', () => {
               }
             }
           ],
-          responsories: []
+          responsories: [],
+          benedictions: []
         } satisfies NocturnPlan
       ],
       teDeum: 'omit'
@@ -318,7 +319,8 @@ describe('TextReference selector handling (Bug 1)', () => {
                 }
               },
               lessons: [],
-              responsories: []
+              responsories: [],
+              benedictions: []
             } satisfies NocturnPlan
           ]
         }

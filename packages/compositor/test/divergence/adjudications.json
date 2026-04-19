@@ -1,0 +1,48 @@
+{
+  "Rubrics 1960 - 1960/2024-01-01/Compline/57de2841": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-01-01",
+    "hour": "Compline",
+    "firstExpected": "Examen conscientiæ vel Pater Noster totum secreto.",
+    "firstActual": "Examen conscientiæ vel «Pater Noster» totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — the corpus source carries `«Pater Noster»` with guillemets. Both Perl (strip) and compositor (preserve) are defensible renderings of the same source token; neither is liturgically wrong. Phase 3 §3h defers to the corpus author's formatting.",
+    "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
+    "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Divino Afflatu - 1954/2024-01-01/Compline/57de2841": {
+    "policy": "Divino Afflatu - 1954",
+    "date": "2024-01-01",
+    "hour": "Compline",
+    "firstExpected": "Examen conscientiæ vel Pater Noster totum secreto.",
+    "firstActual": "Examen conscientiæ vel «Pater Noster» totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — see Rubrics 1960 entry of same key-hash.",
+    "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-01/Compline/57de2841": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-01",
+    "hour": "Compline",
+    "firstExpected": "Examen conscientiæ vel Pater Noster totum secreto.",
+    "firstActual": "Examen conscientiæ vel «Pater Noster» totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — see Rubrics 1960 entry of same key-hash.",
+    "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-01-01/Lauds/9feb093a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-01-01",
+    "hour": "Lauds",
+    "firstExpected": "Psalmus 92 [1]",
+    "firstActual": "Ant. Allelúja, * Dóminus regnávit, decórem índuit, allelúja, allelúja.",
+    "class": "engine-bug",
+    "citation": "Phase 3 plan §3h — the compositor does not emit `Psalmus N [M]` heading lines before each psalm in psalmody sections. Perl emits one per psalm at every Hour with psalmody. The fix lives in `packages/compositor/src/emit/sections.ts` on the psalmody-slot emission path and is deferred within §3h as a structural change; see ADJUDICATION_LOG.md for the pattern catalogue.",
+    "notes": "Representative entry for the missing-psalm-heading pattern. Affects Lauds, Prime, Terce, Sext, None, Vespers, Compline on nearly every date across every policy. Bulk-populate once the fix lands and remaining rows are re-classified.",
+    "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  }
+}

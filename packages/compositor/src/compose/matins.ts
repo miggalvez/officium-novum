@@ -13,11 +13,21 @@ import type {
 import { conditionMatches } from '@officium-novum/rubrical-engine';
 
 import { applyDirectives } from '../directives/apply-directives.js';
+import { isWholeAntiphonSlot, markAntiphonFirstText } from '../emit/antiphon-marker.js';
 import { emitSection } from '../emit/sections.js';
 import { flattenConditionals } from '../flatten/evaluate-conditionals.js';
 import { expandDeferredNodes } from '../resolve/expand-deferred-nodes.js';
-import { resolveReference } from '../resolve/reference-resolver.js';
-import type { ComposeOptions, HeadingDescriptor, Section } from '../types/composed-hour.js';
+import {
+  materializeInvitatoryContent,
+  resolveInvitatoryAntiphonContent,
+  resolveReference
+} from '../resolve/reference-resolver.js';
+import type {
+  ComposeOptions,
+  ComposeWarning,
+  HeadingDescriptor,
+  Section
+} from '../types/composed-hour.js';
 
 const MAX_DEFERRED_DEPTH = 8;
 
@@ -29,12 +39,26 @@ const TE_DEUM_REF: TextReference = {
   path: 'horas/Latin/Psalterium/Common/Prayers',
   section: 'Te Deum'
 };
+const GLORIA_PATRI_MACRO: Extract<TextContent, { type: 'macroRef' }> = {
+  type: 'macroRef',
+  name: 'Gloria'
+};
+const INVITATORIUM_SKELETON_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Invitatorium',
+  section: '__preamble'
+};
 
 export interface MatinsComposeContext {
   readonly corpus: TextIndex;
   readonly options: ComposeOptions;
   readonly directives: readonly HourDirective[];
   readonly context: ConditionEvalContext;
+  /**
+   * Optional compose-time warning sink — see Phase 3 §3f and
+   * {@link ComposeWarning}. The generic `composeSlot` in `compose.ts`
+   * passes this in; Matins reuses it for its plan-driven path.
+   */
+  readonly onWarning?: (warning: ComposeWarning) => void;
 }
 
 /**
@@ -76,12 +100,41 @@ export function composeMatinsSections(
   }
 
   const teDeum = hour.slots['te-deum'];
-  if (teDeum && teDeum.kind === 'te-deum' && teDeum.decision === 'say') {
-    const section = composeReferenceSlot('te-deum', TE_DEUM_REF, args);
-    if (section) sections.push(section);
+  if (teDeum && teDeum.kind === 'te-deum') {
+    if (teDeum.decision === 'say') {
+      const section = composeReferenceSlot('te-deum', TE_DEUM_REF, args);
+      if (section) sections.push(section);
+    } else if (teDeum.decision === 'replace-with-responsory' && psalmody && psalmody.kind === 'matins-nocturns') {
+      // Per Phase 3 plan §3d and Perl `specmatins.pl`: when the policy
+      // resolves `teDeum: 'replace-with-responsory'` the 9th / last
+      // responsory (flagged with `replacesTeDeum: true` in matins-plan.ts)
+      // is emitted in lieu of the Te Deum hymn under a `'te-deum'` slot so
+      // downstream renderers know it is the wrap-up.
+      const replacementRef = findTeDeumReplacement(psalmody.nocturns);
+      if (replacementRef) {
+        const section = composeReferenceSlot('te-deum', replacementRef, args);
+        if (section) sections.push(section);
+      }
+    }
+    // `decision === 'omit'` emits nothing, per RI §196 (Sacred Triduum) and
+    // other suppressing contexts; the `if` arms above are the only ones
+    // that emit.
   }
 
   return sections;
+}
+
+function findTeDeumReplacement(
+  nocturns: readonly NocturnPlan[]
+): TextReference | undefined {
+  for (const nocturn of nocturns) {
+    for (const responsory of nocturn.responsories) {
+      if (responsory.replacesTeDeum) {
+        return responsory.reference;
+      }
+    }
+  }
+  return undefined;
 }
 
 function composeInvitatorium(
@@ -89,7 +142,103 @@ function composeInvitatorium(
   args: MatinsComposeContext
 ): Section | undefined {
   if (source.kind === 'suppressed') return undefined;
-  return composeReferenceSlot('invitatory', source.reference, args);
+
+  const perLanguage = new Map<string, readonly TextContent[]>();
+  for (const language of args.options.languages) {
+    const content = resolveInvitatoriumContent(source, args, language);
+    if (!content) {
+      continue;
+    }
+    const expanded = expandDeferredNodes(content, {
+      index: args.corpus,
+      language,
+      langfb: args.options.langfb,
+      season: args.context.season,
+      seen: new Set(),
+      maxDepth: MAX_DEFERRED_DEPTH,
+      ...(args.onWarning ? { onWarning: args.onWarning } : {})
+    });
+    const flattened = flattenConditionals(expanded, args.context);
+    const transformed = applyDirectives('invitatory', flattened, {
+      hour: 'matins',
+      directives: args.directives
+    });
+    if (transformed.length > 0) {
+      perLanguage.set(language, Object.freeze([...transformed]));
+    }
+  }
+
+  if (perLanguage.size === 0) {
+    return undefined;
+  }
+
+  return emitSection('invitatory', perLanguage, referenceIdentity(source.reference));
+}
+
+function resolveInvitatoriumContent(
+  source: Exclude<InvitatoriumSource, { readonly kind: 'suppressed' }>,
+  args: MatinsComposeContext,
+  language: string
+): readonly TextContent[] | undefined {
+  const skeleton = resolveReference(args.corpus, INVITATORIUM_SKELETON_REF, {
+    languages: [language],
+    langfb: args.options.langfb,
+    dayOfWeek: args.context.dayOfWeek,
+    date: args.context.date,
+    modernStyleMonthday: args.context.version.handle.includes('1960'),
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  })[language];
+  if (!skeleton) {
+    return undefined;
+  }
+
+  const antiphon = resolveInvitatoriumAntiphon(source, args, language);
+  if (!antiphon) {
+    return undefined;
+  }
+
+  return materializeInvitatoryContent(skeleton.content, antiphon);
+}
+
+function resolveInvitatoriumAntiphon(
+  source: Exclude<InvitatoriumSource, { readonly kind: 'suppressed' }>,
+  args: MatinsComposeContext,
+  language: string
+): readonly TextContent[] | undefined {
+  if (source.kind === 'season' && source.reference.selector) {
+    return resolveInvitatoryAntiphonContent(
+      args.corpus,
+      language,
+      args.options.langfb,
+      source.reference.selector,
+      args.context.dayOfWeek ?? 0,
+      {
+        date: args.context.date,
+        modernStyleMonthday: args.context.version.handle.includes('1960')
+      }
+    );
+  }
+
+  const resolved = resolveReference(args.corpus, source.reference, {
+    languages: [language],
+    langfb: args.options.langfb,
+    dayOfWeek: args.context.dayOfWeek,
+    date: args.context.date,
+    modernStyleMonthday: args.context.version.handle.includes('1960'),
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  })[language];
+  if (!resolved) {
+    return undefined;
+  }
+  if (resolved.selectorMissing) {
+    return [
+      {
+        type: 'rubric',
+        value: `(Section missing: ${source.reference.section})`
+      }
+    ];
+  }
+  return resolved.content;
 }
 
 function composeNocturn(
@@ -115,14 +264,28 @@ function composeNocturn(
     const lessonSection = composeLesson(lesson, args);
     const responsory = nocturn.responsories.find((r) => r.index === lesson.index);
     const responsorySection = responsory
-      ? composeReferenceSlot('responsory', responsory.reference, args)
+      ? responsory.replacesTeDeum
+        ? undefined
+        : composeReferenceSlot('responsory', responsory.reference, args)
+      : undefined;
+    const benediction = nocturn.benedictions.find((b) => b.index === lesson.index);
+    const benedictioSection = benediction
+      ? composeReferenceSlot('benedictio', benediction.reference, args)
       : undefined;
 
     // Only emit a heading when at least one downstream section resolves;
     // otherwise the client would see an orphan "Lectio N" label with no text.
-    if (lessonSection || responsorySection) {
+    if (lessonSection || responsorySection || benedictioSection) {
       out.push(headingSection({ kind: 'lesson', ordinal: lesson.index }));
     }
+    // Per Phase 3 plan §3d and ADR-011: Benedictio is emitted before the
+    // Lectio it governs, mirroring Perl's `specmatins.pl:lectiones` sequence
+    // (`Jube domne` → `Benedictio. <line>` → `Lectio N`). The benediction
+    // entry is picked by `policy.selectBenedictions` during plan build.
+    // A responsory flagged with `replacesTeDeum` is intentionally omitted
+    // here and emitted once under the dedicated `te-deum` slot by
+    // `composeMatinsSections`.
+    if (benedictioSection) out.push(benedictioSection);
     if (lessonSection) out.push(lessonSection);
     if (responsorySection) out.push(responsorySection);
   }
@@ -135,10 +298,20 @@ function composePsalmody(
   args: MatinsComposeContext
 ): readonly Section[] {
   const out: Section[] = [];
-  const refs: TextReference[] = [];
-  for (const assignment of nocturn.psalmody) {
-    if (assignment.antiphonRef) refs.push(assignment.antiphonRef);
-    refs.push(assignment.psalmRef);
+  const refs: MatinsSlotRef[] = [];
+  for (const [index, assignment] of nocturn.psalmody.entries()) {
+    if (assignment.antiphonRef) {
+      refs.push({ ref: assignment.antiphonRef, isAntiphon: true });
+    }
+    refs.push({
+      ref: assignment.psalmRef,
+      isAntiphon: false,
+      psalmIndex: index + 1,
+      hasExplicitAntiphon: Boolean(assignment.antiphonRef)
+    });
+    if (assignment.antiphonRef) {
+      refs.push({ ref: assignment.antiphonRef, isAntiphon: true, repeatAntiphon: true });
+    }
   }
   const psalmodySection = composeMergedSlot('psalmody', refs, args);
   if (psalmodySection) out.push(psalmodySection);
@@ -191,17 +364,29 @@ function lessonReference(source: LessonSource): TextReference | undefined {
 // Shared helpers
 // --------------------------------------------------------------------------
 
+interface MatinsSlotRef {
+  readonly ref: TextReference;
+  readonly isAntiphon: boolean;
+  readonly repeatAntiphon?: boolean;
+  readonly hasExplicitAntiphon?: boolean;
+  readonly psalmIndex?: number;
+}
+
 function composeReferenceSlot(
   slot: Parameters<typeof emitSection>[0],
   ref: TextReference,
   args: MatinsComposeContext
 ): Section | undefined {
-  return composeMergedSlot(slot, [ref], args);
+  return composeMergedSlot(
+    slot,
+    [{ ref, isAntiphon: isWholeAntiphonSlot(slot) }],
+    args
+  );
 }
 
 function composeMergedSlot(
   slot: Parameters<typeof emitSection>[0],
-  refs: readonly TextReference[],
+  refs: readonly MatinsSlotRef[],
   args: MatinsComposeContext
 ): Section | undefined {
   if (refs.length === 0) return undefined;
@@ -210,11 +395,14 @@ function composeMergedSlot(
     perLanguage.set(lang, []);
   }
 
-  for (const ref of refs) {
+  for (const { ref, isAntiphon, psalmIndex, hasExplicitAntiphon, repeatAntiphon } of refs) {
     const resolved = resolveReference(args.corpus, ref, {
       languages: args.options.languages,
       langfb: args.options.langfb,
-      dayOfWeek: args.context.dayOfWeek
+      dayOfWeek: args.context.dayOfWeek,
+      date: args.context.date,
+      modernStyleMonthday: args.context.version.handle.includes('1960'),
+      ...(args.onWarning ? { onWarning: args.onWarning } : {})
     });
     for (const lang of args.options.languages) {
       const bucket = perLanguage.get(lang);
@@ -228,20 +416,83 @@ function composeMergedSlot(
         });
         continue;
       }
-      const expanded = expandDeferredNodes(section.content, {
+      const sourceContent = section.content;
+      if (slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(sourceContent)) {
+        const antiphonOnly = extractInlinePsalmAntiphons(sourceContent);
+        const flattened = flattenConditionals(antiphonOnly, args.context);
+        const transformed = applyDirectives(slot, flattened, {
+          hour: 'matins',
+          directives: args.directives
+        });
+        appendContentWithBoundary(
+          bucket,
+          markAntiphonFirstText(
+            repeatAntiphon ? normalizeRepeatedAntiphonContent(transformed) : transformed
+          )
+        );
+        continue;
+      }
+      if (
+        slot === 'psalmody' &&
+        !isAntiphon &&
+        psalmIndex !== undefined &&
+        containsInlinePsalmRefs(sourceContent)
+      ) {
+        appendExpandedPsalmWrapper(bucket, sourceContent, {
+          directives: args.directives,
+          context: args.context,
+          index: args.corpus,
+          language: lang,
+          langfb: args.options.langfb,
+          maxDepth: MAX_DEFERRED_DEPTH,
+          psalmIndex,
+          suppressFirstInlineAntiphon: hasExplicitAntiphon === true,
+          ...(args.onWarning ? { onWarning: args.onWarning } : {})
+        });
+        continue;
+      }
+      const expanded = expandDeferredNodes(
+        slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+          ? withPsalmGloriaPatri(sourceContent)
+          : sourceContent,
+        {
         index: args.corpus,
         language: lang,
         langfb: args.options.langfb,
         season: args.context.season,
         seen: new Set(),
-        maxDepth: MAX_DEFERRED_DEPTH
-      });
+        maxDepth: MAX_DEFERRED_DEPTH,
+        ...(args.onWarning ? { onWarning: args.onWarning } : {})
+        }
+      );
       const flattened = flattenConditionals(expanded, args.context);
       const transformed = applyDirectives(slot, flattened, {
         hour: 'matins',
         directives: args.directives
       });
-      appendContentWithBoundary(bucket, transformed);
+      const lineSeparated =
+        slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+          ? separatePsalmVerseLines(transformed)
+          : transformed;
+      // Same `Ant.` marker synthesis as the generic composeSlot; see
+      // `emit/antiphon-marker.ts`. For Matins this covers the invitatory,
+      // the nocturn antiphons inside `psalmody`, and any unpaired
+      // antiphons surfaced as standalone sections.
+      const markered = isAntiphon
+        ? markAntiphonFirstText(
+            repeatAntiphon ? normalizeRepeatedAntiphonContent(lineSeparated) : lineSeparated
+          )
+        : lineSeparated;
+      if (slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined) {
+        const heading = buildPsalmHeading(ref, lineSeparated, psalmIndex);
+        if (heading) {
+          appendContentWithBoundary(bucket, [
+            { type: 'text', value: heading },
+            { type: 'separator' }
+          ]);
+        }
+      }
+      appendContentWithBoundary(bucket, markered);
     }
   }
 
@@ -251,7 +502,7 @@ function composeMergedSlot(
   }
   if (frozen.size === 0) return undefined;
 
-  const primary = refs[0]!;
+  const primary = refs[0]!.ref;
   return emitSection(slot, frozen, referenceIdentity(primary));
 }
 
@@ -268,6 +519,213 @@ function headingSection(heading: HeadingDescriptor): Section {
 
 function referenceIdentity(reference: TextReference): string {
   return `${reference.path}#${reference.section}${reference.selector ? `:${reference.selector}` : ''}`;
+}
+
+function buildPsalmHeading(
+  ref: TextReference,
+  expandedContent: readonly TextContent[],
+  psalmIndex: number
+): string | undefined {
+  const selector = ref.selector?.trim();
+
+  const pathMatch = ref.path.match(/\/Psalm(\d+)(?:\.txt)?$/u);
+  const directPsalm = pathMatch?.[1];
+
+  const contentPsalm = directPsalm ? undefined : extractPsalmNumberFromContent(expandedContent);
+  const psalmNumber = directPsalm ?? contentPsalm;
+  if (!psalmNumber) return undefined;
+
+  const rangeSuffix =
+    directPsalm && selector && /^\d+-\d+$/u.test(selector) ? `(${selector})` : '';
+  return `Psalmus ${psalmNumber}${rangeSuffix} [${psalmIndex}]`;
+}
+
+function containsInlinePsalmRefs(content: readonly TextContent[]): boolean {
+  return content.some((node) => node.type === 'psalmRef');
+}
+
+function extractInlinePsalmAntiphons(content: readonly TextContent[]): readonly TextContent[] {
+  const out: TextContent[] = [];
+  for (const node of content) {
+    if (node.type === 'psalmRef') {
+      const antiphon = node.antiphon?.trim();
+      if (antiphon) {
+        out.push({ type: 'text', value: antiphon });
+      }
+      continue;
+    }
+    out.push(node);
+  }
+  return out;
+}
+
+interface ExpandPsalmWrapperArgs {
+  readonly directives: readonly HourDirective[];
+  readonly context: ConditionEvalContext;
+  readonly index: TextIndex;
+  readonly language: string;
+  readonly langfb?: string;
+  readonly maxDepth: number;
+  readonly psalmIndex: number;
+  readonly suppressFirstInlineAntiphon: boolean;
+  readonly onWarning?: (warning: ComposeWarning) => void;
+}
+
+function appendExpandedPsalmWrapper(
+  target: TextContent[],
+  content: readonly TextContent[],
+  args: ExpandPsalmWrapperArgs
+): void {
+  let localPsalmOffset = 0;
+  const suppressFirstInlineAntiphon =
+    args.suppressFirstInlineAntiphon || endsWithStandaloneAntiphon(target);
+  for (const node of content) {
+    if (node.type !== 'psalmRef') {
+      continue;
+    }
+    const psalmNode =
+      suppressFirstInlineAntiphon && localPsalmOffset === 0 && node.antiphon
+        ? { ...node, antiphon: undefined }
+        : node;
+    const expanded = expandDeferredNodes(withPsalmGloriaPatri([psalmNode]), {
+      index: args.index,
+      language: args.language,
+      langfb: args.langfb,
+      season: args.context.season,
+      seen: new Set(),
+      maxDepth: args.maxDepth,
+      ...(args.onWarning ? { onWarning: args.onWarning } : {})
+    });
+    const flattened = flattenConditionals(expanded, args.context);
+    const transformed = applyDirectives('psalmody', flattened, {
+      hour: 'matins',
+      directives: args.directives
+    });
+    const [leadingAntiphon, psalmBody] = splitLeadingPsalmAntiphon(transformed);
+    if (leadingAntiphon.length > 0) {
+      appendContentWithBoundary(target, leadingAntiphon);
+    }
+    const heading = buildInlinePsalmHeading(node, transformed, args.psalmIndex + localPsalmOffset);
+    if (heading) {
+      appendContentWithBoundary(target, [
+        { type: 'text', value: heading },
+        { type: 'separator' }
+      ]);
+    }
+    appendContentWithBoundary(target, psalmBody);
+    const trailingAntiphon = node.antiphon?.trim();
+    if (trailingAntiphon) {
+      appendContentWithBoundary(target, [
+        {
+          type: 'verseMarker',
+          marker: 'Ant.',
+          text: normalizeRepeatedAntiphonText(trailingAntiphon)
+        }
+      ]);
+    }
+    localPsalmOffset += 1;
+  }
+}
+
+function buildInlinePsalmHeading(
+  node: Extract<TextContent, { type: 'psalmRef' }>,
+  expandedContent: readonly TextContent[],
+  psalmIndex: number
+): string | undefined {
+  const inlinePsalmNumber =
+    Number.isFinite(node.psalmNumber) && node.psalmNumber > 0 ? String(node.psalmNumber) : undefined;
+  const psalmNumber = inlinePsalmNumber ?? extractPsalmNumberFromContent(expandedContent);
+  if (!psalmNumber) {
+    return undefined;
+  }
+  return `Psalmus ${psalmNumber} [${psalmIndex}]`;
+}
+
+function splitLeadingPsalmAntiphon(
+  content: readonly TextContent[]
+): readonly [readonly TextContent[], readonly TextContent[]] {
+  const first = content[0];
+  if (first?.type === 'verseMarker' && first.marker === 'Ant.') {
+    return [content.slice(0, 1), content.slice(1)];
+  }
+  return [[], content];
+}
+
+function endsWithStandaloneAntiphon(content: readonly TextContent[]): boolean {
+  for (let index = content.length - 1; index >= 0; index -= 1) {
+    const node = content[index];
+    if (!node || node.type === 'separator') {
+      continue;
+    }
+    return node.type === 'verseMarker' && node.marker === 'Ant.';
+  }
+  return false;
+}
+
+function extractPsalmNumberFromContent(
+  content: readonly TextContent[]
+): string | undefined {
+  for (const node of content) {
+    if (node.type !== 'text') continue;
+    const match = node.value.match(/^\s*(\d+):\d+/u);
+    if (match) return match[1];
+  }
+  return undefined;
+}
+
+function withPsalmGloriaPatri(content: readonly TextContent[]): readonly TextContent[] {
+  return Object.freeze([...content, GLORIA_PATRI_MACRO]);
+}
+
+function normalizeRepeatedAntiphonContent(
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  const out = [...content];
+  for (let index = 0; index < out.length; index += 1) {
+    const node = out[index];
+    if (!node) continue;
+    if (node.type === 'text') {
+      out[index] = {
+        type: 'text',
+        value: normalizeRepeatedAntiphonText(node.value)
+      };
+      break;
+    }
+    if (node.type === 'verseMarker') {
+      out[index] = {
+        type: 'verseMarker',
+        marker: node.marker,
+        text: normalizeRepeatedAntiphonText(node.text)
+      };
+      break;
+    }
+  }
+  return out;
+}
+
+function normalizeRepeatedAntiphonText(text: string): string {
+  return text.replace(/\s*[*‡†]\s*/gu, ' ').replace(/\s{2,}/gu, ' ').trim();
+}
+
+function separatePsalmVerseLines(content: readonly TextContent[]): readonly TextContent[] {
+  const out: TextContent[] = [];
+  for (const node of content) {
+    if (startsPsalmVerse(node) && out.length > 0 && out[out.length - 1]?.type !== 'separator') {
+      out.push({ type: 'separator' });
+    }
+    out.push(node);
+  }
+  return out;
+}
+
+function startsPsalmVerse(node: TextContent): boolean {
+  if (node.type === 'text') {
+    return /^\s*\d+:\d+/u.test(node.value);
+  }
+  if (node.type === 'verseMarker') {
+    return true;
+  }
+  return false;
 }
 
 function appendContentWithBoundary(

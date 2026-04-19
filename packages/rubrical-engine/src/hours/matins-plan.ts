@@ -1,6 +1,6 @@
 import { conditionMatches } from '../internal/conditions.js';
 import { resolveOfficeFile } from '../internal/content.js';
-import { normalizeDateInput } from '../internal/date.js';
+import { dateToYearDay, dayOfWeek, normalizeDateInput } from '../internal/date.js';
 import type { ParsedFile, TextContent } from '@officium-novum/parser';
 import type { ScriptureTransferEntry } from '@officium-novum/parser';
 
@@ -48,6 +48,7 @@ export interface BuildMatinsPlanResult {
 const PSALTERIUM_INVITATORIUM_PATH = 'horas/Latin/Psalterium/Invitatorium';
 const PSALTERIUM_MATINS_PATH = 'Psalterium/Psalmi/Psalmi matutinum';
 const PSALTERIUM_MATINS_CONTENT_PATH = 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum';
+const PSALTERIUM_MATINS_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Matutinum Special';
 
 export function buildMatinsPlan(input: BuildMatinsPlanInput): MatinsPlan {
   return buildMatinsPlanWithWarnings(input).plan;
@@ -134,6 +135,18 @@ export function buildMatinsPlanWithWarnings(
       .map((entry) => entry.psalmRef)
       .filter((entry): entry is PsalmAssignment => Boolean(entry));
 
+    // Per Phase 3 plan §3d: benedictions are required on every NocturnPlan
+    // so the type checker enumerates every consumer. The policy selects the
+    // actual TextReference for each lesson's benediction.
+    const benedictions = input.policy.selectBenedictions({
+      nocturnIndex,
+      lessons,
+      celebration: input.celebration,
+      celebrationRules: input.celebrationRules,
+      temporal: input.temporal,
+      totalLessons: shape.totalLessons
+    });
+
     nocturnPlan.push({
       index: nocturnIndex,
       psalmody,
@@ -146,7 +159,8 @@ export function buildMatinsPlanWithWarnings(
         warnings
       ),
       lessons,
-      responsories
+      responsories,
+      benedictions
     });
   }
 
@@ -236,10 +250,7 @@ function buildHymnSource(
 
   return {
     kind: 'ordinary',
-    reference: {
-      path: 'horas/Ordinarium/Matutinum',
-      section: 'Hymnus'
-    }
+    reference: ordinaryMatinsHymnReference(input)
   };
 }
 
@@ -660,4 +671,156 @@ function invitatoriumSeasonSection(temporal: TemporalContext): string {
     default:
       return 'PostPentecosten';
   }
+}
+
+function ordinaryMatinsHymnReference(input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>): TextReference {
+  const seasonal = ordinaryMatinsSeasonalHymnSection(input.temporal.season);
+  if (seasonal) {
+    return {
+      path: PSALTERIUM_MATINS_SPECIAL_PATH,
+      section: `Hymnus ${seasonal}`
+    };
+  }
+
+  const ordinaryDay = ordinaryMatinsHymnDaySection(input);
+  return {
+    path: PSALTERIUM_MATINS_SPECIAL_PATH,
+    section: ordinaryDay
+  };
+}
+
+function ordinaryMatinsSeasonalHymnSection(
+  season: TemporalContext['season']
+): 'Adv' | 'Quad' | 'Quad5' | 'Pasch' | undefined {
+  switch (season) {
+    case 'advent':
+      return 'Adv';
+    case 'lent':
+      return 'Quad';
+    case 'passiontide':
+      return 'Quad5';
+    case 'eastertide':
+    case 'ascensiontide':
+    case 'pentecost-octave':
+      return 'Pasch';
+    default:
+      return undefined;
+  }
+}
+
+function ordinaryMatinsHymnDaySection(
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): string {
+  const date = normalizeDateInput(input.temporal.date);
+  if (
+    input.temporal.dayOfWeek === 0 &&
+    shouldUseFirstOrdinarySundayMatinsHymn(
+      date,
+      input.version?.handle.includes('1960') ?? false
+    )
+  ) {
+    return 'Day0 Hymnus1';
+  }
+
+  return `Day${input.temporal.dayOfWeek} Hymnus`;
+}
+
+function shouldUseFirstOrdinarySundayMatinsHymn(
+  date: ReturnType<typeof normalizeDateInput>,
+  modernStyleMonthday: boolean
+): boolean {
+  if (date.month < 4) {
+    return true;
+  }
+  const monthdayKey = computeMonthdayKey(date, modernStyleMonthday);
+  return monthdayKey ? /^1\d\d-/u.test(monthdayKey) : false;
+}
+
+function computeMonthdayKey(
+  date: ReturnType<typeof normalizeDateInput>,
+  modernStyle: boolean
+): string | undefined {
+  if (date.month < 7) {
+    return undefined;
+  }
+
+  const currentDayOfYear = dateToYearDay(date);
+  let liturgicalMonth = 0;
+  const firstSundays: number[] = [];
+
+  for (let month = 8; month <= 12; month += 1) {
+    const firstOfMonth = dateToYearDay({ year: date.year, month, day: 1 });
+    const weekday = dayOfWeek({ year: date.year, month, day: 1 });
+    let firstSunday = firstOfMonth - weekday;
+    if (weekday >= 4 || (weekday > 0 && modernStyle)) {
+      firstSunday += 7;
+    }
+    firstSundays[month - 8] = firstSunday;
+
+    if (currentDayOfYear >= firstSunday) {
+      liturgicalMonth = month;
+    } else {
+      break;
+    }
+  }
+
+  if (liturgicalMonth === 0) {
+    return undefined;
+  }
+
+  const adventStart = firstSundayOfAdventDayOfYear(date.year);
+  if (liturgicalMonth > 10 && currentDayOfYear >= adventStart) {
+    return undefined;
+  }
+
+  let week = Math.floor((currentDayOfYear - firstSundays[liturgicalMonth - 8]!) / 7);
+
+  if (
+    liturgicalMonth === 10 &&
+    modernStyle &&
+    week >= 2 &&
+    dayOfMonthFromDayOfYear(firstSundays[10 - 8]!, date.year) >= 4
+  ) {
+    week += 1;
+  }
+
+  if (liturgicalMonth === 11 && (week > 0 || modernStyle)) {
+    week = 4 - Math.floor((adventStart - currentDayOfYear - 1) / 7);
+    if (modernStyle && week === 1) {
+      week = 0;
+    }
+  }
+
+  return `${String(liturgicalMonth).padStart(2, '0')}${week + 1}-${dayOfWeek(date)}`;
+}
+
+function firstSundayOfAdventDayOfYear(year: number): number {
+  const christmas = { year, month: 12, day: 25 } as const;
+  const christmasWeekday = dayOfWeek(christmas) || 7;
+  return dateToYearDay(christmas) - christmasWeekday - 21;
+}
+
+function dayOfMonthFromDayOfYear(dayOfYear: number, year: number): number {
+  const monthLengths = [
+    31,
+    year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0) ? 29 : 28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+  ];
+  let remaining = dayOfYear;
+  for (const length of monthLengths) {
+    if (remaining <= length) {
+      return remaining;
+    }
+    remaining -= length;
+  }
+  return remaining;
 }

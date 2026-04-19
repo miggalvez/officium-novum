@@ -23,13 +23,16 @@ export interface OccurrenceResult {
   readonly warnings: readonly RubricalWarning[];
 }
 
-const DEFAULT_COMMEMORATION_HOURS = ['lauds', 'vespers'] as const;
-
 export function resolveOccurrence(
   candidates: readonly Candidate[],
   temporal: TemporalContext,
   policy: RubricalPolicy
 ): OccurrenceResult {
+  // Phase 3 §3e: default commemoration hours come from the policy now. For
+  // 1960 the set is `['lauds', 'vespers']` (unchanged); for 1911 and 1955
+  // the set also includes `'matins'` per Rubricae Generales §IX. See
+  // `RubricalPolicy.defaultCommemorationHours`.
+  const defaultCommemorationHours = policy.defaultCommemorationHours();
   if (candidates.length === 0) {
     throw new Error('Cannot resolve occurrence from an empty candidate list.');
   }
@@ -80,7 +83,7 @@ export function resolveOccurrence(
         feastRef: loser.feastRef,
         rank: loser.rank,
         reason: commemorationReason(loser, temporal, policy),
-        hours: DEFAULT_COMMEMORATION_HOURS,
+        hours: defaultCommemorationHours,
         ...(loser.kind ? { kind: loser.kind } : {}),
         ...(loser.octaveDay ? { octaveDay: loser.octaveDay } : {})
       });

@@ -21,13 +21,14 @@ import type {
   HourDirective,
   PsalmAssignment
 } from '../types/hour-structure.js';
-import type { MatinsPlan, ScriptureCourse } from '../types/matins.js';
+import { selectRomanBenedictions } from './_shared/roman.js';
+import type { BenedictioEntry, LessonPlan, MatinsPlan, ScriptureCourse } from '../types/matins.js';
 import type {
   Candidate,
   FeastReference,
   TemporalContext
 } from '../types/model.js';
-import type { Celebration, Commemoration } from '../types/ordo.js';
+import type { Celebration, Commemoration, HourName } from '../types/ordo.js';
 import type {
   HourDirectivesParams,
   OctaveRule,
@@ -344,6 +345,20 @@ export const rubrics1960Policy: RubricalPolicy = {
 
     return admissible.slice(0, 2);
   },
+  // Phase 3 §3e: under Rubricarum Instructum §106–109 commemorations are
+  // said only at Lauds and Vespers. Matins / minor hours / Compline emit
+  // no commemoration slots. This hook gates that decision uniformly.
+  defaultCommemorationHours(): readonly HourName[] {
+    return ['lauds', 'vespers'];
+  },
+  commemoratesAtHour(params: {
+    readonly hour: HourName;
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+  }): boolean {
+    return params.hour === 'lauds' || params.hour === 'vespers';
+  },
   resolveMatinsShape(params): {
     readonly nocturns: 1 | 3;
     readonly totalLessons: 3 | 9 | 12;
@@ -425,6 +440,22 @@ export const rubrics1960Policy: RubricalPolicy = {
       totalLessons: 9,
       lessonsPerNocturn: [3, 3, 3]
     };
+  },
+  selectBenedictions(params: {
+    readonly nocturnIndex: 1 | 2 | 3;
+    readonly lessons: readonly LessonPlan[];
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+    readonly totalLessons: MatinsPlan['totalLessons'];
+  }): readonly BenedictioEntry[] {
+    return selectRomanBenedictions({
+      nocturnIndex: params.nocturnIndex,
+      lessons: params.lessons,
+      celebration: params.celebration,
+      temporal: params.temporal,
+      totalLessons: params.totalLessons
+    });
   },
   resolveTeDeum(params: {
     readonly plan: Pick<MatinsPlan, 'nocturns' | 'totalLessons'>;

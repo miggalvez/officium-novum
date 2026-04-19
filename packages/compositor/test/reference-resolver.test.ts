@@ -401,9 +401,179 @@ describe('resolveReference', () => {
         }
       }
     });
+    expect(
+      (resolved.Latin?.content[0] as { content?: readonly { type: string; marker?: string; text?: string }[] })
+        .content?.[0]
+    ).toEqual({
+      type: 'verseMarker',
+      marker: 'Ant.',
+      text: 'Venite, * Exsultemus Domino.'
+    });
+    expect(
+      (resolved.Latin?.content[2] as { content?: readonly { type: string; marker?: string; text?: string }[] })
+        .content?.[0]
+    ).toEqual({
+      type: 'verseMarker',
+      marker: 'Ant.',
+      text: 'Exsultemus Domino.'
+    });
     expect(collectTexts(resolved.Latin?.content ?? []).join('|')).toContain(
       'Venite, * Exsultemus Domino.'
     );
+  });
+
+  it('uses the ordinary Sunday Invit 1 fallback before April', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Invitatorium.txt',
+      sections: [
+        {
+          header: '__preamble',
+          content: [{ type: 'formulaRef', name: 'ant' }],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Special/Matutinum Special.txt',
+      sections: [
+        {
+          header: 'Invit',
+          content: [
+            { type: 'text', value: 'Dominica = Dóminum, qui fecit nos, * Veníte, adorémus.' },
+            { type: 'text', value: 'Invit 1 = Adorémus Dóminum, * Quóniam ipse fecit nos.' }
+          ],
+          startLine: 1,
+          endLine: 2
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Invitatorium',
+        section: '__preamble',
+        selector: 'Epiphania'
+      },
+      {
+        languages: ['Latin'],
+        dayOfWeek: 0,
+        date: { year: 2024, month: 1, day: 14 }
+      }
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Adorémus Dóminum, * Quóniam ipse fecit nos.'
+      }
+    ]);
+  });
+
+  it('renders ant2 as only the post-asterisk invitatory refrain', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Invitatorium.txt',
+      sections: [
+        {
+          header: '__preamble',
+          content: [{ type: 'formulaRef', name: 'ant2' }],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Special/Matutinum Special.txt',
+      sections: [
+        {
+          header: 'Invit Pasch',
+          content: [{ type: 'text', value: 'Christus natus est nobis: * Veníte, adorémus.' }],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Invitatorium',
+        section: '__preamble',
+        selector: 'Pascha'
+      },
+      { languages: ['Latin'], dayOfWeek: 0 }
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      { type: 'verseMarker', marker: 'Ant.', text: 'Veníte, adorémus.' }
+    ]);
+  });
+
+  it('applies integer selectors inside conditional-only sections while preserving branch conditions', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Benedictions.txt',
+      sections: [
+        {
+          header: 'Nocturn 2',
+          content: [
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'not',
+                  inner: { type: 'match', subject: 'rubrica', predicate: 'cisterciensis' }
+                }
+              },
+              content: [
+                { type: 'text', value: 'Roman line 1' },
+                { type: 'text', value: 'Roman line 2' },
+                { type: 'text', value: 'Roman line 3' }
+              ],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            },
+            {
+              type: 'conditional',
+              condition: {
+                expression: { type: 'match', subject: 'rubrica', predicate: 'cisterciensis' }
+              },
+              content: [
+                { type: 'text', value: 'Cistercian line 1' },
+                { type: 'text', value: 'Cistercian line 2' },
+                { type: 'text', value: 'Cistercian line 3' }
+              ],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            }
+          ],
+          startLine: 1,
+          endLine: 6
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Benedictions',
+        section: 'Nocturn 2',
+        selector: '2'
+      },
+      { languages: ['Latin'] }
+    );
+
+    expect(resolved.Latin?.content).toHaveLength(2);
+    expect(resolved.Latin?.content[0]).toMatchObject({
+      type: 'conditional',
+      content: [{ type: 'text', value: 'Roman line 2' }]
+    });
+    expect(resolved.Latin?.content[1]).toMatchObject({
+      type: 'conditional',
+      content: [{ type: 'text', value: 'Cistercian line 2' }]
+    });
   });
 });
 

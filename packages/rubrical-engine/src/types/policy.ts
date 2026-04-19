@@ -25,7 +25,7 @@ import type {
   HourRuleSet,
   RuleEvaluationContext
 } from './rule-set.js';
-import type { MatinsPlan, ScriptureCourse } from './matins.js';
+import type { BenedictioEntry, LessonPlan, MatinsPlan, ScriptureCourse } from './matins.js';
 import type { OfficeTextIndex } from './model.js';
 import type { CalendarDate } from '../internal/date.js';
 
@@ -160,6 +160,40 @@ export interface RubricalPolicy {
     params: CommemorationLimitParams
   ): readonly Commemoration[];
   /**
+   * The Hours at which an occurring commemoration is said by default under
+   * this policy. Stamped onto every `Commemoration` constructed by
+   * `resolveOccurrence` so downstream Hour structurers can filter by
+   * `commemoration.hours.includes(hour)`.
+   *
+   * - 1960 (*Rubricarum Instructum* §106–109) — Lauds and Vespers only.
+   * - 1911 / 1954 (Divino Afflatu) and 1955 (Cum Nostra) — Matins, Lauds,
+   *   and Vespers, honouring *Rubricae Generales* §IX's retention of
+   *   Matins commemorations on doubles and higher.
+   *
+   * Phase 3 plan §3e enumerates this as one of the four Phase-2-owned
+   * sites that previously hardcoded `['lauds', 'vespers']`.
+   */
+  defaultCommemorationHours(): readonly HourName[];
+  /**
+   * Gate the `attachCommemorationSlots` step at a given Hour. Returns
+   * `true` when the policy admits commemorations for this specific Hour
+   * under the current celebration context, `false` otherwise.
+   *
+   * Separation from {@link defaultCommemorationHours}: the `hours` stamped
+   * on each `Commemoration` record is the *class* of Hours that might be
+   * commemorated. `commemoratesAtHour` is the *current celebration's*
+   * policy-level yes/no — e.g. 1960's `omitCommemoration` rule or a
+   * policy's decision to suppress the Matins commemoration for a specific
+   * feast kind. Phase 3 plan §3e introduces it to replace the static
+   * `hour !== 'lauds' && hour !== 'vespers'` guard in `apply-rule-set.ts`.
+   */
+  commemoratesAtHour(params: {
+    readonly hour: HourName;
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+  }): boolean;
+  /**
    * Finalize Matins nocturn/lesson shape under the active policy.
    */
   resolveMatinsShape(params: {
@@ -180,6 +214,22 @@ export interface RubricalPolicy {
     readonly celebrationRules: CelebrationRuleSet;
     readonly temporal: TemporalContext;
   }): 'say' | 'replace-with-responsory' | 'omit';
+  /**
+   * Produce the per-lesson {@link BenedictioEntry} list for a Matins nocturn
+   * under this policy. Mirrors Perl's
+   * `specmatins.pl:get_absolutio_et_benedictiones`: the selection considers
+   * the nocturn number, the lesson source kinds, the feast rank / commune,
+   * and the season. Return the empty array when no benedictions apply
+   * (e.g. for a policy that collapses the office to Lectio brevis only).
+   */
+  selectBenedictions(params: {
+    readonly nocturnIndex: 1 | 2 | 3;
+    readonly lessons: readonly LessonPlan[];
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+    readonly totalLessons: MatinsPlan['totalLessons'];
+  }): readonly BenedictioEntry[];
   /**
    * Default scripture course (RI §§218-220).
    */
@@ -207,7 +257,14 @@ export interface HourDirectivesParams {
 }
 
 export interface CommemorationLimitParams {
-  readonly hour: 'lauds' | 'vespers';
+  /**
+   * The Hour the commemoration list is being finalised for. Phase 3 §3e
+   * widens this from `'lauds' | 'vespers'` to any {@link HourName} because
+   * 1911 and 1955 carry Matins commemorations; policies that do not
+   * commemorate at the requested Hour gate upstream via
+   * {@link RubricalPolicy.commemoratesAtHour}.
+   */
+  readonly hour: HourName;
   readonly celebration: Celebration;
   readonly celebrationRules: CelebrationRuleSet;
   readonly temporal: TemporalContext;

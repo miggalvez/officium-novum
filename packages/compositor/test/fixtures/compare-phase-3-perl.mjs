@@ -1,4 +1,5 @@
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -8,6 +9,7 @@ const PACKAGE_ROOT = resolve(THIS_DIR, '..', '..');
 const REPO_ROOT = resolve(PACKAGE_ROOT, '..', '..');
 const UPSTREAM_ROOT = resolve(REPO_ROOT, 'upstream/web/www');
 const DIVERGENCE_DIR = resolve(PACKAGE_ROOT, 'test/divergence');
+const ADJUDICATIONS_FILE = resolve(DIVERGENCE_DIR, 'adjudications.json');
 const PERL_SNAPSHOT = resolve(THIS_DIR, 'officium-content-snapshot.pl');
 
 const PARSER_DIST = resolve(REPO_ROOT, 'packages/parser/dist/index.js');
@@ -113,6 +115,11 @@ const scriptureTransfers = buildScriptureTransferTable(loadScriptureTransferTabl
 let totalMismatches = 0;
 mkdirSync(DIVERGENCE_DIR, { recursive: true });
 
+// Hand-maintained adjudication sidecar; see ADR-011.
+// The harness reads and merges this into the generated ledger but never writes
+// it back, so classifications and citations survive ledger regeneration.
+const adjudications = loadAdjudications();
+
 for (const handle of selectedHandles) {
   const config = HANDLE_CONFIG[handle];
   const dates = loadDates(config.dateFixture, args.date);
@@ -153,7 +160,14 @@ for (const handle of selectedHandles) {
           hour: hourConfig.hour,
           options: {
             languages: [args.language],
-            langfb: args.langfb
+            langfb: args.langfb,
+            // ADR-010: the Perl helper at `officium-content-snapshot.pl`
+            // snapshots one Hour at a time via `command=pray$hour`, which
+            // renders Lauds in the *separated* form (Pater / Ave are
+            // emitted at the Lauds opening under policies that do not
+            // suppress them via `omittuntur`). Mirror that explicitly so
+            // the Hour-by-Hour parity comparison is apples-to-apples.
+            ...(hourConfig.hour === 'lauds' ? { joinLaudsToMatins: false } : {})
           }
         });
         const actual = normalizeComposedLines(composed, args.language);
@@ -206,6 +220,26 @@ for (const handle of selectedHandles) {
     );
   }
 
+  const classifiedMismatches = mismatches.map((mismatch) => ({
+    ...mismatch,
+    rowKey: computeRowKey({
+      policy: handle,
+      date: mismatch.date,
+      hour: mismatch.hour,
+      firstExpected: mismatch.expectedLine,
+      firstActual: mismatch.actualLine
+    }),
+    adjudication: adjudications[
+      computeRowKey({
+        policy: handle,
+        date: mismatch.date,
+        hour: mismatch.hour,
+        firstExpected: mismatch.expectedLine,
+        firstActual: mismatch.actualLine
+      })
+    ]
+  }));
+
   if (args.writeDocs) {
     writeFileSync(
       config.docPath,
@@ -214,7 +248,7 @@ for (const handle of selectedHandles) {
         title: config.title,
         comparedHours,
         dates,
-        mismatches,
+        mismatches: classifiedMismatches,
         mismatchCountsByHour,
         hours: selectedHours,
         language: args.language,
@@ -299,6 +333,14 @@ function parseArgs(argv) {
 }
 
 function loadDates(fixturePath, selectedDate) {
+  // Phase 3 §3g: `--date __full-year__` synthesises every date in 2024 so
+  // the harness can run against the full year rather than only the 61-date
+  // Phase 2h fixture matrix. Used by `compare:phase-3-perl:full` for the
+  // broader adjudication baseline during 3h.
+  if (selectedDate === '__full-year__') {
+    return enumerate2024Dates();
+  }
+
   if (!existsSync(fixturePath)) {
     throw new Error(`Missing fixture ${fixturePath}`);
   }
@@ -312,6 +354,18 @@ function loadDates(fixturePath, selectedDate) {
   }
 
   return [selectedDate];
+}
+
+function enumerate2024Dates() {
+  const out = [];
+  const start = new Date(Date.UTC(2024, 0, 1));
+  const end = new Date(Date.UTC(2025, 0, 1));
+  for (let day = start; day < end; day = new Date(day.getTime() + 24 * 60 * 60 * 1000)) {
+    const month = String(day.getUTCMonth() + 1).padStart(2, '0');
+    const dayOfMonth = String(day.getUTCDate()).padStart(2, '0');
+    out.push(`${day.getUTCFullYear()}-${month}-${dayOfMonth}`);
+  }
+  return out;
 }
 
 function loadKalendaria() {
@@ -410,9 +464,23 @@ function htmlToLines(html) {
 
 function normalizeComposedLines(composed, language) {
   const lines = [];
+  const nocturnHeadingCount = composed.sections.filter(
+    (section) => section.type === 'heading' && section.heading?.kind === 'nocturn'
+  ).length;
 
   for (const section of composed.sections) {
     if (section.type === 'heading') {
+      // Phase 3 §3g: metadata-only heading sections (Nocturnus / Lectio)
+      // are now rendered to a canonical line so they can participate in
+      // the Perl-vs-compositor line-stream comparison. Without this, the
+      // legacy renderer's `Nocturnus I` lines had no counterpart in the
+      // composed output and every Matins first-divergent-line would
+      // surface as a spurious missing-heading row.
+      const rendered = renderHeading(section.heading, { nocturnHeadingCount });
+      const normalized = rendered ? renderCanonicalText(rendered) : '';
+      if (normalized) {
+        lines.push(normalized);
+      }
       continue;
     }
 
@@ -426,6 +494,48 @@ function normalizeComposedLines(composed, language) {
   }
 
   return lines;
+}
+
+function renderHeading(heading, context = {}) {
+  if (!heading) return '';
+  switch (heading.kind) {
+    case 'nocturn':
+      // Perl emits `Ad Nocturnum` for one-nocturn Matins offices even though
+      // the structured output only needs to say "this is the sole nocturn
+      // heading". The compare harness can derive that canonical label from the
+      // section stream without widening the composed-hour heading schema.
+      if (context.nocturnHeadingCount === 1) {
+        return 'Ad Nocturnum';
+      }
+      return `Nocturnus ${toRomanNumeral(heading.ordinal)}`;
+    case 'lesson':
+      // Perl's lesson heading is `Lectio N` (Arabic numeral); the
+      // compositor mirrors that literally. If 3h adjudication shows
+      // Perl uses a different form for certain Nocturn 3 lessons
+      // (e.g. under homily-from-evangelium), widen here.
+      return `Lectio ${heading.ordinal}`;
+    default:
+      return '';
+  }
+}
+
+function toRomanNumeral(value) {
+  const numerals = [
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I']
+  ];
+  let remaining = value;
+  let out = '';
+  for (const [amount, symbol] of numerals) {
+    while (remaining >= amount) {
+      out += symbol;
+      remaining -= amount;
+    }
+  }
+  return out;
 }
 
 function renderComposedLine(line, language) {
@@ -537,6 +647,19 @@ function renderDivergenceDoc({
   const divergentDates = new Set(mismatches.map((entry) => entry.date));
   const heading = `${title} 2024 Compositor Divergences`;
   const hourTotals = new Map(hours.map((entry) => [entry.label, dates.length]));
+  const matchingPrefixes = mismatches.map((entry) => entry.firstMismatchIndex);
+  const longestMatchingPrefix =
+    matchingPrefixes.length > 0 ? Math.max(...matchingPrefixes) : comparedHours > 0 ? 0 : null;
+  const averageMatchingPrefix =
+    matchingPrefixes.length > 0
+      ? (matchingPrefixes.reduce((sum, value) => sum + value, 0) / matchingPrefixes.length).toFixed(1)
+      : null;
+
+  const classTotals = new Map();
+  for (const mismatch of mismatches) {
+    const klass = mismatch.adjudication?.class ?? 'unadjudicated';
+    classTotals.set(klass, (classTotals.get(klass) ?? 0) + 1);
+  }
 
   const lines = [
     `# ${heading}`,
@@ -555,6 +678,12 @@ function renderDivergenceDoc({
     `- Exact-match hours: \`${exactMatches}\``,
     `- Divergent hours: \`${mismatches.length}\``,
     `- Divergent dates: \`${divergentDates.size}\``,
+    ...(longestMatchingPrefix === null
+      ? []
+      : [`- Best matching prefix before divergence: \`${longestMatchingPrefix}\` lines`]),
+    ...(averageMatchingPrefix === null
+      ? []
+      : [`- Average matching prefix before divergence: \`${averageMatchingPrefix}\` lines`]),
     '- Divergence breakdown by hour:'
   ];
 
@@ -564,16 +693,33 @@ function renderDivergenceDoc({
     lines.push(`  - \`${hour.label}\`: \`${mismatchesForHour}/${totalForHour}\``);
   }
 
+  lines.push('- Adjudication breakdown (see `adjudications.json` and ADR-011):');
+  const classOrder = ['unadjudicated', 'engine-bug', 'perl-bug', 'ordo-ambiguous', 'rendering-difference'];
+  for (const klass of classOrder) {
+    const count = classTotals.get(klass) ?? 0;
+    if (count === 0 && klass !== 'unadjudicated') continue;
+    lines.push(`  - \`${klass}\`: \`${count}\``);
+  }
+  for (const [klass, count] of classTotals) {
+    if (!classOrder.includes(klass)) {
+      lines.push(`  - \`${klass}\`: \`${count}\` *(unknown class; check ADR-011)*`);
+    }
+  }
+
   lines.push('', '## Sample mismatches', '');
 
   if (mismatches.length === 0) {
     lines.push('None. The current live harness run reports exact line-stream parity.');
   } else {
-    lines.push('| Date | Hour | Expected lines | Actual lines | First expected | First actual |');
-    lines.push('|---|---|---|---|---|---|');
+    lines.push(
+      '| Date | Hour | Expected lines | Actual lines | Matching prefix | First divergence line | First expected | First actual | Class | Citation |'
+    );
+    lines.push('|---|---|---|---|---|---|---|---|---|---|');
     for (const mismatch of mismatches.slice(0, maxRows)) {
+      const klass = mismatch.adjudication?.class ?? 'unadjudicated';
+      const citation = mismatch.adjudication?.citation ?? '';
       lines.push(
-        `| ${mismatch.date} | ${mismatch.hour} | ${mismatch.expectedCount} | ${mismatch.actualCount} | ${markdownCell(mismatch.expectedLine ?? mismatch.error ?? '∅')} | ${markdownCell(mismatch.actualLine ?? mismatch.error ?? '∅')} |`
+        `| ${mismatch.date} | ${mismatch.hour} | ${mismatch.expectedCount} | ${mismatch.actualCount} | ${mismatch.firstMismatchIndex} | ${mismatch.firstMismatchIndex + 1} | ${markdownCell(mismatch.expectedLine ?? mismatch.error ?? '∅')} | ${markdownCell(mismatch.actualLine ?? mismatch.error ?? '∅')} | ${markdownCell(klass)} | ${markdownCell(citation)} |`
       );
     }
     if (mismatches.length > maxRows) {
@@ -585,8 +731,10 @@ function renderDivergenceDoc({
     '',
     '## Notes',
     '',
-    '- This is a raw content-level comparison harness against the legacy Perl renderer, not yet an adjudicated source-backed ledger.',
-    '- Many current rows may reflect real Phase 3 gaps such as omitted wrapper material, incomplete directive substitution, or unresolved output-model differences. The harness exists to make those differences enumerable and reproducible.',
+    '- This ledger is auto-generated by `compare-phase-3-perl.mjs` on every run. **Do not hand-edit** the table — edits are lost.',
+    '- Adjudications live in `packages/compositor/test/divergence/adjudications.json` and are merged into the `Class` / `Citation` columns by the harness. See [ADR-011](../../../../docs/adr/011-phase-3-divergence-adjudication.md) for the key schema and classification protocol.',
+    '- The four row classes are `engine-bug`, `perl-bug`, `ordo-ambiguous`, and `rendering-difference`. Rows without an adjudication entry surface as `unadjudicated`.',
+    '- Per CLAUDE.md §19.4 and ADR-011: no divergence is ever resolved by "matching the Perl" alone. Every adjudication carries a citation.',
     ''
   );
 
@@ -605,4 +753,49 @@ function isoToMdy(date) {
     throw new Error(`Invalid ISO date ${date}`);
   }
   return `${month}-${day}-${year}`;
+}
+
+function loadAdjudications() {
+  if (!existsSync(ADJUDICATIONS_FILE)) {
+    return {};
+  }
+  const raw = readFileSync(ADJUDICATIONS_FILE, 'utf8');
+  if (raw.trim().length === 0) {
+    return {};
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(
+      `Failed to parse ${ADJUDICATIONS_FILE}: ${error instanceof Error ? error.message : String(error)}`
+    );
+  }
+  if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
+    throw new Error(`Expected ${ADJUDICATIONS_FILE} to be a JSON object keyed by row key.`);
+  }
+  return parsed;
+}
+
+// Stable pattern key used by the adjudications sidecar (ADR-011).
+// Composed of the policy handle, ISO date, Hour label, and an 8-hex-char hash
+// of the normalized first-expected/first-actual pair. The hash makes the key
+// resilient to column reordering but sensitive to text changes — which is
+// desired: a meaningfully different row gets a fresh key and surfaces as
+// `unadjudicated` until re-reviewed.
+function computeRowKey({ policy, date, hour, firstExpected, firstActual }) {
+  const normExpected = normalizeKeyInput(firstExpected);
+  const normActual = normalizeKeyInput(firstActual);
+  const digest = createHash('sha256')
+    .update(`${normExpected}\u0000${normActual}`)
+    .digest('hex')
+    .slice(0, 8);
+  return `${policy}/${date}/${hour}/${digest}`;
+}
+
+function normalizeKeyInput(value) {
+  if (value === null || value === undefined) {
+    return '__null__';
+  }
+  return String(value).replace(/\s+/gu, ' ').trim();
 }

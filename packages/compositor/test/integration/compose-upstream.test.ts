@@ -147,6 +147,48 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (1960)', (
     expect(slotOrder).toContain('heading');
     expect(composed.sections.find((section) => section.type === 'heading')?.heading).toBeDefined();
   }, 240_000);
+
+  it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
+    const rawCorpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
+    const resolvedCorpus = await loadCorpus(UPSTREAM_ROOT);
+    const versionRegistry = buildVersionRegistry(
+      parseVersionRegistry(readFileSync(resolve(UPSTREAM_ROOT, 'Tabulae/data.txt'), 'utf8'))
+    );
+    const engine = createRubricalEngine({
+      corpus: rawCorpus.index,
+      kalendarium: buildKalendariumTable(loadKalendaria()),
+      yearTransfers: buildYearTransferTable(loadTransferTables()),
+      scriptureTransfers: buildScriptureTransferTable(loadScriptureTransferTables()),
+      versionRegistry,
+      version: asVersionHandle('Rubrics 1960 - 1960'),
+      policyMap: VERSION_POLICY
+    });
+
+    const summary = engine.resolveDayOfficeSummary('2024-07-09');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const benedictions = composed.sections
+      .filter((section) => section.slot === 'benedictio')
+      .map((section) =>
+        (section.lines[0]?.texts.Latin ?? [])
+          .map((run) => ('value' in run ? run.value : ''))
+          .join('')
+      );
+
+    expect(benedictions).toEqual([
+      'Deus Pater omnípotens sit nobis propítius et clemens.',
+      'Christus perpétuæ det nobis gáudia vitæ.',
+      'Ignem sui amóris accéndat Deus in córdibus nostris.'
+    ]);
+    expect(composed.sections.filter((section) => section.slot === 'responsory')).toHaveLength(2);
+    expect(composed.sections.filter((section) => section.slot === 'te-deum')).toHaveLength(1);
+  }, 240_000);
 });
 
 function loadKalendaria() {

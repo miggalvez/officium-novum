@@ -490,7 +490,18 @@ function attachCommemorationSlots(
   slots: Partial<Record<SlotName, SlotContent>>,
   warnings: RubricalWarning[]
 ): void {
-  if (input.hour !== 'lauds' && input.hour !== 'vespers') {
+  // Phase 3 §3e: replace the old `hour !== 'lauds' && hour !== 'vespers'`
+  // guard with a policy hook. 1960 returns false for non-Lauds/Vespers
+  // (preserving current behaviour); 1911 and 1955 return true for Matins
+  // commemorations per Rubricae Generales §IX.
+  if (
+    !input.policy.commemoratesAtHour({
+      hour: input.hour,
+      celebration: input.celebration,
+      celebrationRules: input.celebrationRules,
+      temporal: input.temporal
+    })
+  ) {
     return;
   }
 
@@ -516,9 +527,9 @@ function attachCommemorationSlots(
   // feasts emit `Ant Laudes`/`Ant Vespera 3` etc. The Phase 3 resolver
   // should fall back through candidates; here we pick the most common
   // temporal form first so that temporal commemorations (the majority)
-  // dereference without an extra lookup.
-  const antiphonHeader = input.hour === 'lauds' ? 'Ant 2' : 'Ant 3';
-  const versicleHeader = input.hour === 'lauds' ? 'Versum 2' : 'Versum 3';
+  // dereference without an extra lookup. Matins commemorations (1911/1955
+  // per §3e) reuse the first-nocturn antiphon conventionally.
+  const { antiphonHeader, versicleHeader } = commemorationHeaders(input.hour);
   const orationHeader = 'Oratio';
 
   const antiphons: TextReference[] = [];
@@ -535,6 +546,29 @@ function attachCommemorationSlots(
   slots['commemoration-antiphons'] = { kind: 'ordered-refs', refs: antiphons };
   slots['commemoration-versicles'] = { kind: 'ordered-refs', refs: versicles };
   slots['commemoration-orations'] = { kind: 'ordered-refs', refs: orations };
+}
+
+function commemorationHeaders(hour: HourName): {
+  readonly antiphonHeader: string;
+  readonly versicleHeader: string;
+} {
+  switch (hour) {
+    case 'matins':
+      // Matins commemorations (pre-1960) use the first-nocturn antiphon /
+      // versicle as their default commemoration header per Rubricae
+      // Generales §IX. More specific per-lesson substitutions are 3h
+      // adjudication territory.
+      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1' };
+    case 'lauds':
+      return { antiphonHeader: 'Ant 2', versicleHeader: 'Versum 2' };
+    case 'vespers':
+      return { antiphonHeader: 'Ant 3', versicleHeader: 'Versum 3' };
+    default:
+      // Minor hours and Compline are not commemoration-bearing in any of
+      // the Roman policies; `commemoratesAtHour` should have short-
+      // circuited before we get here.
+      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1' };
+  }
 }
 
 const HOUR_SECTION_SUFFIX: Readonly<Record<HourName, string>> = {

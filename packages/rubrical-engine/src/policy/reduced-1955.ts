@@ -35,13 +35,14 @@ import type {
   HourDirective,
   PsalmAssignment
 } from '../types/hour-structure.js';
-import type { ScriptureCourse } from '../types/matins.js';
+import { selectRomanBenedictions } from './_shared/roman.js';
+import type { BenedictioEntry, LessonPlan, MatinsPlan, ScriptureCourse } from '../types/matins.js';
 import type {
   Candidate,
   FeastReference,
   TemporalContext
 } from '../types/model.js';
-import type { Celebration, Commemoration } from '../types/ordo.js';
+import type { Celebration, Commemoration, HourName } from '../types/ordo.js';
 import type {
   HourDirectivesParams,
   OctaveRule,
@@ -49,6 +50,7 @@ import type {
   RubricalPolicy,
   SelectPsalmodyParams
 } from '../types/policy.js';
+import type { CelebrationRuleSet } from '../types/rule-set.js';
 import type { FeastVespersSignals } from '../concurrence/vespers-class.js';
 
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
@@ -322,6 +324,23 @@ export const reduced1955Policy: RubricalPolicy = {
     const matinsLimit = 0;
     return limitCommemorationsByHour(scoped, laudsVespersLimit, matinsLimit);
   },
+  // Phase 3 §3e: Cum Nostra (1955) set `matinsLimit = 0` in
+  // `limitCommemorations` above, effectively abolishing Matins
+  // commemorations ahead of the 1960 simplification. The hooks mirror that
+  // by declaring only Lauds / Vespers here — structurally identical to the
+  // 1960 behaviour. If 3h adjudication surfaces a specific Matins
+  // commemoration the 1955 rubrics still retained, widen here.
+  defaultCommemorationHours(): readonly HourName[] {
+    return ['lauds', 'vespers'];
+  },
+  commemoratesAtHour(params: {
+    readonly hour: HourName;
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+  }): boolean {
+    return params.hour === 'lauds' || params.hour === 'vespers';
+  },
   resolveMatinsShape(params) {
     if (
       isPaschalOctaveDay(params.temporal) ||
@@ -363,6 +382,22 @@ export const reduced1955Policy: RubricalPolicy = {
       totalLessons: 3,
       lessonsPerNocturn: [3]
     } as const;
+  },
+  selectBenedictions(params: {
+    readonly nocturnIndex: 1 | 2 | 3;
+    readonly lessons: readonly LessonPlan[];
+    readonly celebration: Celebration;
+    readonly celebrationRules: CelebrationRuleSet;
+    readonly temporal: TemporalContext;
+    readonly totalLessons: MatinsPlan['totalLessons'];
+  }): readonly BenedictioEntry[] {
+    return selectRomanBenedictions({
+      nocturnIndex: params.nocturnIndex,
+      lessons: params.lessons,
+      celebration: params.celebration,
+      temporal: params.temporal,
+      totalLessons: params.totalLessons
+    });
   },
   resolveTeDeum(params) {
     if (params.celebrationRules.teDeumOverride === 'forced') {

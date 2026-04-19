@@ -252,7 +252,7 @@ describe('composeHour', () => {
   it('expands formulaRef and macroRef from Common/Prayers', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
-      makeFile('horas/Latin/Commune/C4v', 'Hymnus', [
+      makeFile('horas/Latin/Commune/C4v', 'Incipit', [
         { type: 'formulaRef', name: 'Oremus' },
         { type: 'separator' },
         { type: 'macroRef', name: 'Benedicamus_Domino' }
@@ -277,9 +277,14 @@ describe('composeHour', () => {
     const hour: HourStructure = {
       hour: 'compline',
       slots: {
-        hymn: {
+        // Uses the generic `incipit` slot rather than `hymn` — hymn-specific
+        // per-line + stanza-break rendering in emit/sections.ts would add a
+        // spurious `_` line between Oremus and Benedicamus here, even though
+        // the source separator was synthetic (interleaveSeparators). Real
+        // hymn content does not include formulaRef/macroRef expansions.
+        incipit: {
           kind: 'single-ref',
-          ref: { path: 'horas/Latin/Commune/C4v', section: 'Hymnus' }
+          ref: { path: 'horas/Latin/Commune/C4v', section: 'Incipit' }
         }
       },
       directives: []
@@ -415,7 +420,7 @@ describe('composeHour', () => {
   it('expands psalmRef into antiphon plus Psalmorum content', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
-      makeFile('horas/Latin/Commune/C4v', 'Hymnus', [
+      makeFile('horas/Latin/Commune/C4v', 'Incipit', [
         { type: 'psalmRef', psalmNumber: 117, antiphon: 'Ant. Confitémini Dómino.' }
       ])
     );
@@ -429,9 +434,10 @@ describe('composeHour', () => {
     const hour: HourStructure = {
       hour: 'compline',
       slots: {
-        hymn: {
+        // See sibling test for why we avoid `hymn` here.
+        incipit: {
           kind: 'single-ref',
-          ref: { path: 'horas/Latin/Commune/C4v', section: 'Hymnus' }
+          ref: { path: 'horas/Latin/Commune/C4v', section: 'Incipit' }
         }
       },
       directives: []
@@ -455,7 +461,7 @@ describe('composeHour', () => {
   it('uses the parser fallback chain for deferred nodes on a resolved corpus', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
-      makeFile('horas/English/Commune/C4v', 'Hymnus', [
+      makeFile('horas/English/Commune/C4v', 'Incipit', [
         { type: 'text', value: 'Before the ending of the day' },
         { type: 'separator' },
         { type: 'formulaRef', name: 'Deo gratias' }
@@ -470,9 +476,10 @@ describe('composeHour', () => {
     const hour: HourStructure = {
       hour: 'compline',
       slots: {
-        hymn: {
+        // See the psalmRef-expansion sibling test for why we avoid `hymn`.
+        incipit: {
           kind: 'single-ref',
-          ref: { path: 'horas/Latin/Commune/C4v', section: 'Hymnus' }
+          ref: { path: 'horas/Latin/Commune/C4v', section: 'Incipit' }
         }
       },
       directives: []

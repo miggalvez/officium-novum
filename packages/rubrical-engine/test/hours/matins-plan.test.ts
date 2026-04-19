@@ -39,6 +39,32 @@ describe('buildMatinsPlan', () => {
     expect(result.plan.teDeum).toBe('replace-with-responsory');
     const replaced = result.plan.nocturnPlan[0]?.responsories[2];
     expect(replaced?.replacesTeDeum).toBe(true);
+    expect(result.plan.nocturnPlan[0]?.benedictions).toEqual([
+      {
+        index: 1,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Nocturn 2',
+          selector: '1'
+        }
+      },
+      {
+        index: 2,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Nocturn 2',
+          selector: '2'
+        }
+      },
+      {
+        index: 3,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Nocturn 2',
+          selector: '3'
+        }
+      }
+    ]);
   });
 
   it('builds Advent Sunday as 1 nocturn with Te Deum replaced by the third responsory', () => {
@@ -69,6 +95,33 @@ describe('buildMatinsPlan', () => {
       'horas/Latin/Psalterium/Psalmi/Psalmi matutinum'
     );
     expect(result.plan.nocturnPlan[0]?.versicle.reference.section).toBe('Day0');
+  });
+
+  it('uses the ordinary Sunday Matins hymn from Matutinum Special before April', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Epi2-0.txt', adventSundayMatinsSections());
+    corpus.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt',
+      psalteriumMatinsSections()
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Epi2-0', 'II', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-01-14', 'Epi2-0', 'time-after-epiphany', 'II'),
+      policy: rubrics1960Policy,
+      corpus
+    });
+
+    expect(result.plan.hymn).toEqual({
+      kind: 'ordinary',
+      reference: {
+        path: 'horas/Latin/Psalterium/Special/Matutinum Special',
+        section: 'Day0 Hymnus1'
+      }
+    });
   });
 
   it('keeps festal hymn metadata (doxology variant) on I-class feast', () => {

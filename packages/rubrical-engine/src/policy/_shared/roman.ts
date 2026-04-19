@@ -6,7 +6,7 @@ import type { Candidate, FeastReference, TemporalContext } from '../../types/mod
 import type { ConcurrenceResult, DayConcurrencePreview } from '../../types/concurrence.js';
 import type { Commemoration } from '../../types/ordo.js';
 import type { ComplineSource, HourDirective } from '../../types/hour-structure.js';
-import type { ScriptureCourse } from '../../types/matins.js';
+import type { BenedictioEntry, LessonPlan, MatinsPlan, ScriptureCourse } from '../../types/matins.js';
 
 const TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5', 'Quad6-6']);
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
@@ -433,4 +433,104 @@ function thirdSundayOfSeptember(year: number): number {
   }
 
   throw new Error(`Unable to determine the third Sunday of September for year ${year}.`);
+}
+
+/**
+ * Shared Benedictio selection for the Roman policies (1911 / 1955 / 1960).
+ *
+ * For the 9- or 12-lesson office, each lesson in nocturn N picks the
+ * corresponding line from `[Nocturn N]` in
+ * `horas/Latin/Psalterium/Benedictions.txt` — lesson k (relative to the
+ * nocturn, 1-based) resolves to line `k` of that section.
+ *
+ * For a 3-lesson office, ordinary temporal ferias rotate by the Perl
+ * `dayofweek2i()` grouping (Sunday/Monday/Thursday -> Nocturn 1,
+ * Tuesday/Friday -> Nocturn 2, Wednesday/Saturday -> Nocturn 3). Other
+ * 3-lesson offices continue to start from `[Nocturn 3]`.
+ *
+ * This is an MVP shared by all three Roman policies: it produces the
+ * structural Benedictio-before-Lectio output the compositor emits. The
+ * cujus/quorum and "Evangelica" Gospel-homily substitutions (Perl lines
+ * 496-530) remain open for later adjudication — see Phase 3 plan §3h.
+ */
+export function selectRomanBenedictions(params: {
+  readonly nocturnIndex: 1 | 2 | 3;
+  readonly lessons: readonly LessonPlan[];
+  readonly celebration: FeastReferenceCarrier;
+  readonly temporal: TemporalContext;
+  readonly totalLessons: MatinsPlan['totalLessons'];
+}): readonly BenedictioEntry[] {
+  const { nocturnIndex, lessons, totalLessons } = params;
+
+  const sourceNocturnSection =
+    totalLessons === 3
+      ? `Nocturn ${threeLessonBenedictionNocturn(params)}`
+      : `Nocturn ${nocturnIndex}`;
+  const path = 'horas/Latin/Psalterium/Benedictions.txt';
+  const entries: BenedictioEntry[] = [];
+  for (let offset = 0; offset < lessons.length; offset += 1) {
+    const lesson = lessons[offset];
+    if (!lesson) continue;
+    const selector = String(offset + 1);
+    entries.push({
+      index: lesson.index,
+      reference: { path, section: sourceNocturnSection, selector }
+    });
+  }
+  return Object.freeze(entries);
+}
+
+interface FeastReferenceCarrier {
+  readonly feastRef: FeastReference;
+  readonly source: 'temporal' | 'sanctoral';
+  readonly kind?: Candidate['kind'];
+}
+
+function threeLessonBenedictionNocturn(params: {
+  readonly celebration: FeastReferenceCarrier;
+  readonly temporal: TemporalContext;
+}): 1 | 2 | 3 {
+  if (usesOrdinaryTemporalThreeLessonBenedictions(params)) {
+    return dayOfWeekToNocturnIndex(params.temporal.dayOfWeek);
+  }
+  return 3;
+}
+
+function usesOrdinaryTemporalThreeLessonBenedictions(params: {
+  readonly celebration: FeastReferenceCarrier;
+  readonly temporal: TemporalContext;
+}): boolean {
+  const { celebration, temporal } = params;
+  if (celebration.source !== 'temporal') {
+    return false;
+  }
+  if (temporal.dayOfWeek === 0) {
+    return false;
+  }
+  if (celebration.kind === 'vigil') {
+    return false;
+  }
+  if (temporal.dayName === 'Quadp3-3' || isEmberDay(temporal)) {
+    return false;
+  }
+  if (
+    /^Quad[1-5]-[1-6]$/u.test(temporal.dayName) ||
+    temporal.dayName === 'Quad6-1' ||
+    temporal.dayName === 'Pasc5-1' ||
+    temporal.dayName.startsWith('Pasc0-') ||
+    temporal.dayName.startsWith('Pasc7-')
+  ) {
+    return false;
+  }
+  return true;
+}
+
+function dayOfWeekToNocturnIndex(dayOfWeek: number): 1 | 2 | 3 {
+  if (dayOfWeek === 0 || dayOfWeek === 1 || dayOfWeek === 4) {
+    return 1;
+  }
+  if (dayOfWeek === 2 || dayOfWeek === 5) {
+    return 2;
+  }
+  return 3;
 }
