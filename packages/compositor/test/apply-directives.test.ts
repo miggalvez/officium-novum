@@ -49,6 +49,14 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
     expect(out).toEqual([{ type: 'text', value: 'Ecce sacérdos magnus' }]);
   });
 
+  it('drops an antiphon marker entirely when omit-alleluia empties its text', () => {
+    const content: TextContent[] = [
+      { type: 'verseMarker', marker: 'Ant.', text: 'Allelúja.' }
+    ];
+    const out = run('psalmody', content, ['omit-alleluia']);
+    expect(out).toEqual([]);
+  });
+
   it('appends alleluia to the final text in an antiphon slot', () => {
     const content: TextContent[] = [{ type: 'text', value: 'Ecce sacérdos magnus' }];
     const out = run('antiphon-ad-benedictus', content, ['add-alleluia']);

@@ -137,6 +137,7 @@ function stripAlleluiaOnNode(node: TextContent): TextContent | null {
   }
   if (node.type === 'verseMarker') {
     const stripped = node.text.replace(ALLELUIA_TAIL_RX, '').trimEnd();
+    if (stripped.length === 0) return null;
     return { type: 'verseMarker', marker: node.marker, text: stripped };
   }
   return node;
