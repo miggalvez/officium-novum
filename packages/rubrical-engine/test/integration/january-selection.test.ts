@@ -418,6 +418,130 @@ describeIfUpstream('January selection regressions', () => {
     },
     240_000
   );
+
+  it('locks the January Roman Matins source seam and the 1955 Jan 6/7 minor-hour later-block refs', async () => {
+    const engines = await loadEngines([
+      'Reduced - 1955',
+      'Rubrics 1960 - 1960'
+    ]);
+
+    const reduced = engines.get('Reduced - 1955');
+    const roman1960 = engines.get('Rubrics 1960 - 1960');
+    expect(reduced).toBeDefined();
+    expect(roman1960).toBeDefined();
+    if (!reduced || !roman1960) {
+      return;
+    }
+
+    for (const engine of [reduced, roman1960]) {
+      const jan6Nocturns = matinsNocturnsAt(engine, '2024-01-06');
+      expect(jan6Nocturns).toHaveLength(3);
+      expectAntiphonRefs(jan6Nocturns[0]?.psalmody ?? []).toEqual([
+        'horas/Latin/Sancti/01-06:Ant Matutinum:1',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:2',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:3'
+      ]);
+      expectPsalmRefs(jan6Nocturns[0]?.psalmody ?? []).toEqual([
+        'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble',
+        'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble',
+        'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble'
+      ]);
+
+      const jan13Nocturns = matinsNocturnsAt(engine, '2024-01-13');
+      expect(jan13Nocturns).toHaveLength(3);
+      expectAntiphonRefs(jan13Nocturns[0]?.psalmody ?? []).toEqual([
+        'horas/Latin/Sancti/01-06:Ant Matutinum:1',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:2',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:3'
+      ]);
+      expectPsalmRefs(jan13Nocturns[0]?.psalmody ?? []).toEqual([
+        'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble',
+        'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble',
+        'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble'
+      ]);
+    }
+
+    const jan14Roman1960 = matinsNocturnsAt(roman1960, '2024-01-14');
+    expect(jan14Roman1960).toHaveLength(1);
+    expect(jan14Roman1960[0]?.psalmody).toHaveLength(3);
+
+    // 1955 Jan 6/7 later blocks: the feast files provide the Terce/Sext/None
+    // chapter/responsory/versicle chain directly, so these slots should not
+    // fall through to the empty Ordinarium wrapper.
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'terce', 'chapter'),
+      'horas/Latin/Sancti/01-06:Capitulum Laudes'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'terce', 'responsory'),
+      'horas/Latin/Sancti/01-06:Responsory Breve Tertia'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'terce', 'versicle'),
+      'horas/Latin/Sancti/01-06:Versum Tertia'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'sext', 'chapter'),
+      'horas/Latin/Sancti/01-06:Capitulum Sexta'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'sext', 'responsory'),
+      'horas/Latin/Sancti/01-06:Responsory Breve Sexta'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'sext', 'versicle'),
+      'horas/Latin/Sancti/01-06:Versum Sexta'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'none', 'chapter'),
+      'horas/Latin/Sancti/01-06:Capitulum Nona'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'none', 'responsory'),
+      'horas/Latin/Sancti/01-06:Responsory Breve Nona'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-06', 'none', 'versicle'),
+      'horas/Latin/Sancti/01-06:Versum Nona'
+    );
+
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'terce', 'chapter'),
+      'horas/Latin/Tempora/Epi1-0:Capitulum Laudes'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'terce', 'responsory'),
+      'horas/Latin/Tempora/Epi1-0:Responsory Breve Tertia'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'terce', 'versicle'),
+      'horas/Latin/Tempora/Epi1-0:Versum Tertia'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'sext', 'chapter'),
+      'horas/Latin/Tempora/Epi1-0:Capitulum Sexta'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'sext', 'responsory'),
+      'horas/Latin/Tempora/Epi1-0:Responsory Breve Sexta'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'sext', 'versicle'),
+      'horas/Latin/Tempora/Epi1-0:Versum Sexta'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'none', 'chapter'),
+      'horas/Latin/Tempora/Epi1-0:Capitulum Nona'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'none', 'responsory'),
+      'horas/Latin/Tempora/Epi1-0:Responsory Breve Nona'
+    );
+    expectSingleRef(
+      slotAt(reduced, '2024-01-07', 'none', 'versicle'),
+      'horas/Latin/Tempora/Epi1-0:Versum Nona'
+    );
+  }, 240_000);
 });
 
 let enginesPromise: Promise<ReadonlyMap<string, RubricalEngine>> | undefined;
@@ -505,6 +629,18 @@ function psalmodyAt(
     return [];
   }
   return slot.psalms;
+}
+
+function matinsNocturnsAt(
+  engine: RubricalEngine,
+  date: string
+) {
+  const slot = engine.resolveDayOfficeSummary(date).hours.matins?.slots.psalmody;
+  expect(slot?.kind).toBe('matins-nocturns');
+  if (!slot || slot.kind !== 'matins-nocturns') {
+    return [];
+  }
+  return slot.nocturns;
 }
 
 function slotAt(

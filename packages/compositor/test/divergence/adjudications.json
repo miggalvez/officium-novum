@@ -1316,5 +1316,89 @@
     "notes": "Representative entry for the Rubrics 1960 Jan 14 Sunday Vespers surface family where Perl adds a trailing `‡` that is not present in the psalter-major source.",
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-06/None/e17600d7": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-06",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Adoráte Dóminum, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:266-322 — the Epiphany office explicitly provides `Lectio Prima`, `Responsory Breve Tertia`, `Capitulum Sexta`, `Responsory Breve Sexta`, `Capitulum Nona`, and `Responsory Breve Nona`; None inherits `Capitulum Nona` from `Lectio Prima` and opens its short responsory with `R.br. Adoráte Dóminum...`. The compositor now emits that source-backed later block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the Reduced 1955 Epiphany later-block family where the source-backed None short responsory is present but the Perl render surface still shows an underscore-only separator.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-06/Prime/5b39cf70": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-06",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Isa 60:6",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:266-268 — the Epiphany office explicitly supplies `[Lectio Prima]` with citation `Isa 60:6`, so the restored 1955 Prime later block is source-backed. The Perl comparison surface keeps the weekday Prime citation `1 Tim. 1:17` instead of the office's proper lesson.",
+    "notes": "Representative entry for the Reduced 1955 Epiphany Prime later-block family where the proper `[Lectio Prima]` citation replaces the weekday Prime lesson.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-06/Sext/4868da5c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-06",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Omnes de Saba vénient, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:288-307 — the Epiphany office explicitly provides `Capitulum Sexta`, `Responsory Breve Sexta`, and `Versum Sexta`, beginning `R.br. Omnes de Saba vénient...`. The compositor now emits that source-backed Sext later block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the Reduced 1955 Epiphany later-block family where the source-backed Sext short responsory is present but the Perl render surface still shows an underscore-only separator.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-06/Terce/803ba4ab": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-06",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Reges Tharsis et ínsulæ múnera ófferent, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:266-286 — the Epiphany office explicitly provides `Lectio Prima`, `Responsory Breve Tertia`, and `Versum Tertia`, beginning `R.br. Reges Tharsis et ínsulæ múnera ófferent...`. The compositor now emits that source-backed Terce later block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the Reduced 1955 Epiphany later-block family where the source-backed Terce short responsory is present but the Perl render surface still shows an underscore-only separator.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-07/None/373eea90": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-07",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Pauper sum ego, * Et in labóribus a juventúte mea.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:335-381 — the Holy Family office explicitly provides `Lectio Prima`, `Responsory Breve Tertia`, `Capitulum Sexta`, `Responsory Breve Sexta`, `Capitulum Nona`, and `Responsory Breve Nona`; None inherits `Capitulum Nona` from `Lectio Prima` and opens its short responsory with `R.br. Pauper sum ego...`. The compositor now emits that source-backed later block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the Reduced 1955 Holy Family later-block family where the source-backed None short responsory is present but the Perl render surface still shows an underscore-only separator.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-07/Sext/bae99624": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-07",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Dóminus vias suas * Docébit nos.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:353-367 — the Holy Family office explicitly provides `Capitulum Sexta`, `Responsory Breve Sexta`, and `Versum Sexta`, beginning `R.br. Dóminus vias suas...`. The compositor now emits that source-backed Sext later block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the Reduced 1955 Holy Family later-block family where the source-backed Sext short responsory is present but the Perl render surface still shows an underscore-only separator.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-07/Terce/fbcd352c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-07",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Propter nos egénus factus est * Cum esset dives.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:335-351 — the Holy Family office explicitly provides `Lectio Prima`, `Responsory Breve Tertia`, and `Versum Tertia`, beginning `R.br. Propter nos egénus factus est...`. The compositor now emits that source-backed Terce later block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the Reduced 1955 Holy Family later-block family where the source-backed Terce short responsory is present but the Perl render surface still shows an underscore-only separator.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
   }
 }

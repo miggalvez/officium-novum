@@ -5,7 +5,7 @@ import {
   type TextContent,
   type TextIndex
 } from '@officium-novum/parser';
-import type { TextReference } from '@officium-novum/rubrical-engine';
+import { conditionMatches, type ConditionEvalContext, type TextReference } from '@officium-novum/rubrical-engine';
 
 import type { ComposeWarning } from '../types/composed-hour.js';
 
@@ -43,6 +43,8 @@ export interface ResolveOptions {
     readonly month: number;
     readonly day: number;
   };
+  readonly season?: ConditionEvalContext['season'];
+  readonly version?: ConditionEvalContext['version'];
   /**
    * Mirrors the Perl `monthday(..., $modernstyle, ...)` switch used by the
    * ordinary Sunday invitatory selector. `true` for the 1960 family, `false`
@@ -130,10 +132,10 @@ function resolveForLanguage(
   language: string,
   options: Pick<
     ResolveOptions,
-    'langfb' | 'dayOfWeek' | 'date' | 'modernStyleMonthday' | 'onWarning'
+    'langfb' | 'dayOfWeek' | 'date' | 'season' | 'version' | 'modernStyleMonthday' | 'onWarning'
   >
 ): ResolvedSection | undefined {
-  const { langfb, dayOfWeek, date, modernStyleMonthday, onWarning } = options;
+  const { langfb, dayOfWeek, date, season, version, modernStyleMonthday, onWarning } = options;
   const chain = languageFallbackChain(language, { langfb });
   for (const candidate of chain) {
     const candidatePath = swapLanguageSegment(reference.path, candidate);
@@ -147,6 +149,8 @@ function resolveForLanguage(
         langfb,
         dayOfWeek,
         date,
+        season,
+        version,
         modernStyleMonthday,
         onWarning
       });
@@ -231,6 +235,8 @@ interface SelectorContext {
     readonly month: number;
     readonly day: number;
   };
+  readonly season?: ConditionEvalContext['season'];
+  readonly version?: ConditionEvalContext['version'];
   readonly modernStyleMonthday?: boolean;
   readonly onWarning?: (warning: ComposeWarning) => void;
 }
@@ -290,11 +296,15 @@ function applySelector(
 
   const integerIndex = parseIntegerSelector(selector);
   if (integerIndex !== undefined) {
+    const conditionContext = selectorConditionContext(context);
     return Object.freeze({
       language,
       path,
       section,
-      content: selectNthContentNode(section.content, integerIndex),
+      content:
+        conditionContext
+          ? selectNthVisibleContentNode(section.content, integerIndex, conditionContext)
+          : selectNthContentNode(section.content, integerIndex),
       selectorUnhandled: false,
       selectorMissing: false
     });
@@ -351,6 +361,53 @@ function selectNthContentNode(
 
   const pick = content[index - 1];
   return pick ? Object.freeze([pick]) : Object.freeze([]);
+}
+
+function selectorConditionContext(
+  context: SelectorContext
+): ConditionEvalContext | undefined {
+  if (!context.date || context.dayOfWeek === undefined || !context.season || !context.version) {
+    return undefined;
+  }
+
+  return {
+    date: context.date,
+    dayOfWeek: context.dayOfWeek,
+    season: context.season,
+    version: context.version
+  };
+}
+
+function selectNthVisibleContentNode(
+  content: readonly TextContent[],
+  index: number,
+  context: ConditionEvalContext
+): readonly TextContent[] {
+  const flattened = flattenVisibleContent(content, context);
+  const pick = flattened[index - 1];
+  return pick ? Object.freeze([pick]) : Object.freeze([]);
+}
+
+function flattenVisibleContent(
+  content: readonly TextContent[],
+  context: ConditionEvalContext
+): readonly TextContent[] {
+  const out: TextContent[] = [];
+
+  for (const node of content) {
+    if (node.type !== 'conditional') {
+      out.push(node);
+      continue;
+    }
+
+    if (!conditionMatches(node.condition, context)) {
+      continue;
+    }
+
+    out.push(...flattenVisibleContent(node.content, context));
+  }
+
+  return Object.freeze(out);
 }
 
 function resolveStructuredSelector(

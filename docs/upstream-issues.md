@@ -522,6 +522,59 @@ source-backed `R.br.` opening line.
 | Rubrics 1960 - 1960 | 2024-01-14 | Sext | `bc17de3d` |
 | Rubrics 1960 - 1960 | 2024-01-14 | None | `4a1aadd8` |
 
+### 2026-04-19 — Reduced 1955 Jan 6/7 minor hours keep the office's proper lesson and short responsories while Perl leaves the later block absent
+
+**Classification.** `perl-bug`
+
+**Summary.** After the Reduced 1955 Jan `6/7` later-block fix, the
+first divergence for these hours moved to the actual office-backed
+later-block material. Jan `6` Prime now emits the Epiphany
+`[Lectio Prima]` citation `Isa 60:6`, and Jan `6/7`
+`Terce`/`Sext`/`None` now emit the office's own `R.br.` short
+responsories. The Perl comparison surface instead keeps the weekday
+Prime citation or leaves underscore-only separators where those proper
+short responsories should begin.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-06.txt:266-322`
+- `upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:335-381`
+
+These sources explicitly provide the Epiphany / Holy Family
+`[Lectio Prima]`, `Responsory Breve Tertia`, `Capitulum Sexta`,
+`Responsory Breve Sexta`, `Capitulum Nona`, and `Responsory Breve Nona`
+sections that the compositor now emits.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-06 --hour Prime
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-06 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-06 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-06 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-07 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-07 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-07 --hour Nona
+```
+
+The Jan `6` Prime row now first differs at `1 Tim. 1:17` versus
+`Isa 60:6`, while the Jan `6/7` `Terce`/`Sext`/`None` rows now first
+differ at `expected="_"` versus the source-backed `R.br.` opening
+lines.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-01-06 | Prime | `5b39cf70` |
+| Reduced - 1955 | 2024-01-06 | Terce | `803ba4ab` |
+| Reduced - 1955 | 2024-01-06 | Sext | `4868da5c` |
+| Reduced - 1955 | 2024-01-06 | None | `e17600d7` |
+| Reduced - 1955 | 2024-01-07 | Terce | `fbcd352c` |
+| Reduced - 1955 | 2024-01-07 | Sext | `bae99624` |
+| Reduced - 1955 | 2024-01-07 | None | `373eea90` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

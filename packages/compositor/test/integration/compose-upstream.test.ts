@@ -239,6 +239,40 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders the January 6 and January 13 Roman Matins first nocturn from the Epiphany antiphon block', async () => {
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const date of ['2024-01-06', '2024-01-13'] as const) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+
+        const lines = psalmodyTexts(composed).map(normalizeLatin);
+        expect(lines[0], `${version} ${date} first nocturn opening antiphon`).toBe(
+          normalizeLatin('Afférte Dómino * fílii Dei, adoráte Dóminum in aula sancta ejus.')
+        );
+        expect(lines, `${version} ${date} is missing Psalm 28 at the first nocturn boundary`).toContain(
+          normalizeLatin('Psalmus 28 [1]')
+        );
+        expect(lines, `${version} ${date} is missing Psalm 45 at the first nocturn boundary`).toContain(
+          normalizeLatin('Psalmus 45 [2]')
+        );
+        expect(lines, `${version} ${date} is missing Psalm 46 at the first nocturn boundary`).toContain(
+          normalizeLatin('Psalmus 46 [3]')
+        );
+        expect(lines, `${version} ${date} still starts the first nocturn from the late Epiphany tail`).not.toContain(
+          normalizeLatin('Psalmus 95 [1]')
+        );
+      }
+    }
+  }, 240_000);
+
   it('keeps the January 14 seasonal invitatory as the full opening block across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
@@ -843,6 +877,49 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       ).toBe(
         'Omnípotens sempitérne Deus, qui cæléstia simul et terréna moderáris: supplicatiónes pópuli tui cleménter exáudi; et pacem tuam nostris concéde tempóribus.'
       );
+    }
+  }, 240_000);
+
+  it('keeps Reduced 1955 Jan 6/7 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Reduced - 1955');
+
+    for (const [date, hour, chapterCitation, responsoryOpening, versicleOpening] of [
+      ['2024-01-06', 'terce', 'Isa 60:1', 'Reges Tharsis et ínsulæ múnera ófferent, * Allelúja, allelúja.', 'Omnes de Saba vénient, allelúja.'],
+      ['2024-01-06', 'sext', 'Isa 60:4', 'Omnes de Saba vénient, * Allelúja, allelúja.', 'Adoráte Dóminum, allelúja.'],
+      ['2024-01-06', 'none', 'Isa 60:6', 'Adoráte Dóminum, * Allelúja, allelúja.', 'Adoráte Deum, allelúja.'],
+      ['2024-01-07', 'terce', 'Luc 2:51', 'Propter nos egénus factus est * Cum esset dives.', 'Dóminus vias suas docébit nos.'],
+      ['2024-01-07', 'sext', 'Rom 5:19', 'Dóminus vias suas * Docébit nos.', 'Pauper sum ego, et in labóribus a juventúte mea.'],
+      ['2024-01-07', 'none', 'Phil 2:7', 'Pauper sum ego, * Et in labóribus a juventúte mea.', 'Ponam univérsos fílios tuos doctos a Dómino.']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      const sectionOrder = composed.sections.map((section) => section.slot);
+      const psalmodyIndex = sectionOrder.indexOf('psalmody');
+      expect(psalmodyIndex, `${date} ${hour} is missing psalmody`).toBeGreaterThanOrEqual(0);
+      expect(
+        sectionOrder.slice(psalmodyIndex, psalmodyIndex + 5),
+        `${date} ${hour} later-block order`
+      ).toEqual(['psalmody', 'chapter', 'responsory', 'versicle', 'oration']);
+
+      expect(
+        sectionTexts(composed, 'chapter')[0]?.trim(),
+        `${date} ${hour} chapter citation`
+      ).toBe(chapterCitation);
+      expect(
+        sectionTexts(composed, 'responsory')[0]?.trim(),
+        `${date} ${hour} responsory opening`
+      ).toBe(responsoryOpening);
+      expect(
+        sectionTexts(composed, 'versicle')[0]?.trim(),
+        `${date} ${hour} versicle opening`
+      ).toBe(versicleOpening);
     }
   }, 240_000);
 });

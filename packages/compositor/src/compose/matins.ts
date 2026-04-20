@@ -206,6 +206,8 @@ function resolveInvitatoriumContent(
     langfb: args.options.langfb,
     dayOfWeek: args.context.dayOfWeek,
     date: args.context.date,
+    season: args.context.season,
+    version: args.context.version,
     modernStyleMonthday: args.context.version.handle.includes('1960'),
     ...(args.onWarning ? { onWarning: args.onWarning } : {})
   })[language];
@@ -249,6 +251,8 @@ function resolveInvitatoriumAntiphon(
     langfb: args.options.langfb,
     dayOfWeek: args.context.dayOfWeek,
     date: args.context.date,
+    season: args.context.season,
+    version: args.context.version,
     modernStyleMonthday: args.context.version.handle.includes('1960'),
     ...(args.onWarning ? { onWarning: args.onWarning } : {})
   })[language];
@@ -472,6 +476,8 @@ function composeMergedSlot(
       langfb: args.options.langfb,
       dayOfWeek: args.context.dayOfWeek,
       date: args.context.date,
+      season: args.context.season,
+      version: args.context.version,
       modernStyleMonthday: args.context.version.handle.includes('1960'),
       ...(args.onWarning ? { onWarning: args.onWarning } : {})
     });
@@ -926,6 +932,8 @@ function resolveOpeningAntiphonSourceText(
     langfb: args.options.langfb,
     dayOfWeek: args.context.dayOfWeek,
     date: args.context.date,
+    season: args.context.season,
+    version: args.context.version,
     modernStyleMonthday: args.context.version.handle.includes('1960'),
     ...(args.onWarning ? { onWarning: args.onWarning } : {})
   })[language];
@@ -992,6 +1000,8 @@ function resolvePairedAntiphonRange(
     langfb: args.options.langfb,
     dayOfWeek: args.context.dayOfWeek,
     date: args.context.date,
+    season: args.context.season,
+    version: args.context.version,
     modernStyleMonthday: args.context.version.handle.includes('1960'),
     ...(args.onWarning ? { onWarning: args.onWarning } : {})
   })[language];
@@ -1027,6 +1037,8 @@ function resolveFirstPsalmVerseText(
     langfb: args.options.langfb,
     dayOfWeek: args.context.dayOfWeek,
     date: args.context.date,
+    season: args.context.season,
+    version: args.context.version,
     modernStyleMonthday: args.context.version.handle.includes('1960'),
     ...(args.onWarning ? { onWarning: args.onWarning } : {})
   })[language];

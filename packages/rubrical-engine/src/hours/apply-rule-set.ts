@@ -646,9 +646,20 @@ function properHeadersForSlot(slot: SlotName, hour: HourName): readonly string[]
     case 'hymn':
       return [`Hymnus ${hourSuffix}`, 'Hymnus'];
     case 'chapter':
+      if (hour === 'prime') {
+        return ['Lectio Prima', `Capitulum ${hourSuffix}`, 'Capitulum'];
+      }
+      if (hour === 'terce') {
+        return [`Capitulum ${hourSuffix}`, 'Capitulum Laudes', 'Capitulum'];
+      }
       return [`Capitulum ${hourSuffix}`, 'Capitulum'];
     case 'responsory':
-      return [`Responsory ${hourSuffix}`, 'Responsorium'];
+      return [
+        `Responsory Breve ${hourSuffix}`,
+        `Responsory breve ${hourSuffix}`,
+        `Responsory ${hourSuffix}`,
+        'Responsorium'
+      ];
     case 'versicle':
       // Temporal files encode `[Versum 2]` at Lauds and `[Versum 3]` at
       // Vespers; Minor Hours use `[Versum Tertia]` etc. `Versum 1` is the

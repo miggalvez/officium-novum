@@ -556,6 +556,48 @@ far as this tranche is concerned. The code fix was the Phase 2 fallback;
 the remaining underscore lines are source-backed adjudication work, not
 another later-block structuring bug.
 
+### 2026-04-19 — Pattern: Reduced 1955 Jan 6/7 minor hours restore source-backed later blocks while Perl leaves the proper lesson / short responsories absent (perl-bug)
+
+**Ledger signal.** After the January Matins and minor-hour checkpoint
+work restored the 1955 later-block slot refs, the Jan `6/7`
+`Prime`/`Terce`/`Sext`/`None` rows stopped failing on missing structure
+and now diverge exactly where the proper later-block material begins.
+Jan `6` Prime now first differs at the restored `Lectio Prima` citation
+(`Isa 60:6` instead of the weekday `1 Tim. 1:17`), while Jan `6/7`
+`Terce`/`Sext`/`None` now first differ on the restored `R.br.` opening
+lines rather than on an earlier empty-wrapper seam.
+
+**Root cause.** The restored Phase 2 refs are correct. The Epiphany
+office at `Sancti/01-06.txt` explicitly carries `[Lectio Prima]`,
+`[Responsory Breve Tertia]`, `[Capitulum Sexta]`, `[Responsory Breve
+Sexta]`, `[Capitulum Nona]`, and `[Responsory Breve Nona]`, while the
+Holy Family office at `Tempora/Epi1-0.txt` carries the same 1955
+later-block pattern for Jan `7`. The compositor now emits those
+source-backed sections. The Perl comparison surface instead keeps the
+weekday Prime lesson or leaves underscore-only separators where the
+proper short responsories should begin.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+seven stable Reduced 1955 key-hashes in this family:
+
+- `5b39cf70` — Jan `6` Prime (`Isa 60:6`)
+- `803ba4ab` — Jan `6` Terce
+- `4868da5c` — Jan `6` Sext
+- `e17600d7` — Jan `6` None
+- `fbcd352c` — Jan `7` Terce
+- `bae99624` — Jan `7` Sext
+- `373eea90` — Jan `7` None
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-06.txt:266-322`
+- `upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:335-381`
+
+**Impact.** The Reduced 1955 Jan `6/7` minor-hour checkpoint is now
+closed as adjudication work rather than remaining in the live code
+bucket. The remaining January Roman work is no longer blocked on
+"did the later block resolve?" ambiguity for these hours.
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each

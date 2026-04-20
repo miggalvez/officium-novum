@@ -211,6 +211,8 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       langfb: args.options.langfb,
       dayOfWeek: args.context.dayOfWeek,
       date: args.context.date,
+      season: args.context.season,
+      version: args.context.version,
       modernStyleMonthday: args.context.version.handle.includes('1960'),
       ...(args.onWarning ? { onWarning: args.onWarning } : {})
     });
@@ -849,6 +851,8 @@ function resolveHymnDoxologyByLanguage(
       langfb: args.options.langfb,
       dayOfWeek: args.context.dayOfWeek,
       date: args.context.date,
+      season: args.context.season,
+      version: args.context.version,
       modernStyleMonthday: args.context.version.handle.includes('1960'),
       ...(args.onWarning ? { onWarning: args.onWarning } : {})
     });

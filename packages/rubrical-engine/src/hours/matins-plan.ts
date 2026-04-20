@@ -351,8 +351,11 @@ function collectMatinsAntiphons(
     ? feastMatch.file.path.replace(/\.txt$/u, '')
     : PSALTERIUM_MATINS_CONTENT_PATH;
   const entries: Array<{ readonly reference: TextReference; readonly psalmRef?: PsalmAssignment }> = [];
+  const visibleContent = input.version
+    ? flattenVisibleMatinsAntiphonContent(section.content, input)
+    : section.content;
 
-  for (const [contentIndex, content] of section.content.entries()) {
+  for (const [contentIndex, content] of visibleContent.entries()) {
     const antiphon = antiphonLineValue(content);
     if (!antiphon) {
       continue;
@@ -382,6 +385,40 @@ function collectMatinsAntiphons(
   }
 
   return entries;
+}
+
+function flattenVisibleMatinsAntiphonContent(
+  content: readonly TextContent[],
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): readonly TextContent[] {
+  if (!input.version) {
+    return content;
+  }
+
+  const date = normalizeDateInput(input.temporal.date);
+  const out: TextContent[] = [];
+
+  for (const node of content) {
+    if (node.type !== 'conditional') {
+      out.push(node);
+      continue;
+    }
+
+    if (
+      !conditionMatches(node.condition, {
+        date,
+        dayOfWeek: input.temporal.dayOfWeek,
+        season: input.temporal.season,
+        version: input.version
+      })
+    ) {
+      continue;
+    }
+
+    out.push(...flattenVisibleMatinsAntiphonContent(node.content, input));
+  }
+
+  return Object.freeze(out);
 }
 
 function partitionAntiphons(
@@ -437,10 +474,6 @@ function antiphonLineValue(content: TextContent): string | undefined {
     if (value) {
       return value;
     }
-  }
-
-  if (content.type === 'reference') {
-    return '@reference';
   }
 
   return undefined;
