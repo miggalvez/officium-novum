@@ -678,6 +678,41 @@ Matins adjudication for stable key-hash `57b37f6e`.
 as source-backed surface adjudication. The remaining January Roman
 Matins rows are no longer ambiguous implementation seams.
 
+### 2026-04-20 — Pattern: Roman temporal Sundays honor explicit minor-hour antiphon sections (engine-bug)
+
+**Ledger signal.** After the January Roman work closed, the next shared
+Roman frontier surfaced on temporal Sundays with explicit
+`[Ant Prima]` / `[Ant Tertia]` / `[Ant Sexta]` / `[Ant Nona]`
+sections. `2024-01-28` (`Quadp1-0`) and `2024-02-11` (`Quadp3-0`) were
+still opening Prime, Terce, Sext, and None from generic Sunday
+`Psalmi minor:Tridentinum:*#antiphon` fallbacks instead of the office's
+own minor-hour antiphons.
+
+**Root cause.** This was a Phase 2 structure bug in
+`packages/rubrical-engine/src/hours/apply-rule-set.ts`, not a Phase 3
+composition seam. Minor-hour antiphon decoration only replaced the lead
+antiphon when the office advertised `Antiphonas horas`, so temporal
+Sunday files that expose explicit per-hour antiphon sections without
+that broader marker never displaced the generic Sunday psalter
+antiphons.
+
+**Resolution.** Class `engine-bug`. `applyRuleSet()` now checks for
+explicit unconditional `Ant Prima` / `Ant Tertia` / `Ant Sexta` /
+`Ant Nona` sections before falling back to the previous
+`proper-minor-hours` `Ant Laudes` path, and the new regression
+`packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`
+locks those source refs for `Reduced - 1955` and `Rubrics 1960 - 1960`
+on `2024-01-28` and `2024-02-11`.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Tempora/Quadp1-0.txt:169-184`,
+`upstream/web/www/horas/Latin/Tempora/Quadp3-0.txt:162-177`
+
+**Impact.** The Roman rows no longer stall at the generic `Allelúja`
+fallback seam. `2024-01-28` / `2024-02-11` now move deeper into the
+shared Roman Prime psalm-table and later-block families, with no new
+adjudications needed for this tranche.
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each

@@ -308,11 +308,10 @@ function decoratePsalmodyAssignments(
   }
 
   if (
-    (input.hour === 'prime' ||
-      input.hour === 'terce' ||
-      input.hour === 'sext' ||
-      input.hour === 'none') &&
-    input.celebrationRules.antiphonScheme === 'proper-minor-hours'
+    input.hour === 'prime' ||
+    input.hour === 'terce' ||
+    input.hour === 'sext' ||
+    input.hour === 'none'
   ) {
     const antiphon = resolveMinorHourAntiphonRef(properFiles, input);
     if (!antiphon) {
@@ -384,6 +383,25 @@ function resolveMinorHourAntiphonRef(
   files: readonly ParsedFile[],
   input: ApplyRuleSetInput
 ): TextReference | undefined {
+  const explicitHeader = explicitMinorHourAntiphonHeader(input.hour);
+  if (explicitHeader) {
+    const explicitMatch = files.find((file) =>
+      file.sections.some(
+        (section) => section.header === explicitHeader && section.condition === undefined
+      )
+    );
+    if (explicitMatch) {
+      return {
+        path: explicitMatch.path.replace(/\.txt$/u, ''),
+        section: explicitHeader
+      };
+    }
+  }
+
+  if (input.celebrationRules.antiphonScheme !== 'proper-minor-hours') {
+    return undefined;
+  }
+
   const match = files.find((file) => file.sections.some((section) => section.header === 'Ant Laudes'));
   const selector =
     input.hour === 'prime' ||
@@ -413,6 +431,18 @@ function resolveMinorHourAntiphonRef(
     section: 'Ant Laudes',
     selector
   };
+}
+
+function explicitMinorHourAntiphonHeader(
+  hour: ApplyRuleSetInput['hour']
+): 'Ant Prima' | 'Ant Tertia' | 'Ant Sexta' | 'Ant Nona' | undefined {
+  return (
+    hour === 'prime' ? 'Ant Prima'
+    : hour === 'terce' ? 'Ant Tertia'
+    : hour === 'sext' ? 'Ant Sexta'
+    : hour === 'none' ? 'Ant Nona'
+    : undefined
+  );
 }
 
 function minorHourAntiphonSelector(
