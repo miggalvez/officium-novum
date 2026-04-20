@@ -680,6 +680,77 @@ the source-backed text without it.
 |---|---|---|---|
 | Rubrics 1960 - 1960 | 2024-01-14 | Matins | `57b37f6e` |
 
+### 2026-04-20 — Roman Quad-Sunday Prime omits source-backed psalm units in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** On Roman `Quad*` Sundays, the `Psalmi minor` source table
+defines a dedicated Prime row
+`Prima Dominica SQP=;;53,92,118(1-16),118(17-32)`. After fixing the
+Phase 2 selector seam to honor that row, Officium Novum emits the
+source-backed sequence while Perl still drops psalm units:
+
+- `Reduced - 1955` skips the opening Psalm 53 and starts at
+  `Psalmus 92 [1]`.
+- `Rubrics 1960 - 1960` skips Psalm 92 and advances directly to
+  `Psalmus 118(1-16) [2]`.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:219`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-01-28 --hour Prime
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-01-28 --hour Prime
+```
+
+The Reduced row first diverges at `Psalmus 92 [1]` (Perl) vs
+`Psalmus 53 [1]` (source-backed compositor), while the Rubrics 1960 row
+first diverges at `Psalmus 118(1-16) [2]` (Perl) vs
+`Psalmus 92 [2]` (source-backed compositor).
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-01-28 | Prime | `2e28d92b` |
+| Rubrics 1960 - 1960 | 2024-01-28 | Prime | `67634c25` |
+
+### 2026-04-20 — Divino Afflatu Epiphany-octave Matins still renders a suppressed opener in Perl
+
+**Classification.** `perl-bug`
+
+**Summary.** Under `Divino Afflatu - 1954`, Epiphany-octave Matins rows
+still show `secreto` in the Perl render surface, while Officium Novum
+opens directly at `Nocturnus I`.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8`
+
+The Epiphany Rule explicitly includes
+`Omit ad Matutinum Incipit Invitatorium Hymnus`, so the pre-nocturn
+opener is source-suppressed and the compositor's `Nocturnus I` opening
+is the expected source-backed behavior.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Divino Afflatu - 1954" --date 2024-01-06 --hour Matins
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Divino Afflatu - 1954" --date 2024-01-13 --hour Matins
+```
+
+The affected rows first diverge at `secreto` (Perl) vs `Nocturnus I`
+(source-backed compositor).
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Divino Afflatu - 1954 | 2024-01-06 | Matins | `e66d7177` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

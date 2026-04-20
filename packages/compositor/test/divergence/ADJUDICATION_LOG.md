@@ -713,6 +713,122 @@ fallback seam. `2024-01-28` / `2024-02-11` now move deeper into the
 shared Roman Prime psalm-table and later-block families, with no new
 adjudications needed for this tranche.
 
+### 2026-04-20 — Pattern: Roman Quad-Sunday Prime now uses `Prima Dominica SQP`; Perl drops source-backed psalm units (perl-bug)
+
+**Ledger signal.** The next shared Roman Prime seam on `Quad*` Sundays
+(`2024-01-28` / `2024-02-11`) showed policy-specific shallow drift:
+`Reduced - 1955` still opened at `Psalmus 92 [1]` while Officium Novum
+opened at `Psalmus 53 [1]`; `Rubrics 1960 - 1960` matched on Psalm 53
+but then diverged at the next heading (`Psalmus 118(1-16) [2]` expected
+vs `Psalmus 92 [2]` actual).
+
+**Root cause.** This seam crossed Phase 2 ownership first. Prime
+selector logic in `hours/psalter.ts` always chose `Prima Dominica` on
+Sundays and never asked for `Prima Dominica SQP` on `Quad*` Sundays.
+The source table explicitly carries a dedicated row
+`Prima Dominica SQP=;;53,92,118(1-16),118(17-32)` in
+`Psalterium/Psalmi/Psalmi minor.txt`.
+
+**Resolution.** Phase 2 fix landed first: Sunday Prime now prefers
+`Prima Dominica SQP` when `dayName` starts `Quad`, with fallback to
+`Prima Dominica` when the SQP row is absent. Upstream-backed regression
+coverage now locks this seam in
+`test/integration/temporal-sunday-minor-antiphons.test.ts` plus a
+focused selector unit case in `test/hours/psalter.test.ts`.
+
+After the selector fix, the remaining compare drift is source-vs-Perl
+surface behavior, not an unresolved engine seam. Classified as
+`perl-bug` with representative row keys:
+
+- `Reduced - 1955/2024-01-28/Prime/2e28d92b`
+- `Rubrics 1960 - 1960/2024-01-28/Prime/67634c25`
+
+**Citation.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:219`
+
+**Impact.** The Quad-Sunday Prime selector family is no longer mixed
+"maybe Phase 2 / maybe Perl" work: the Phase 2 source seam is fixed and
+the residual compare signatures are now explicitly adjudicated as
+Perl-side omissions.
+
+### 2026-04-20 — Pattern: full-ledger adjudication fanout sweep (perl-bug + rendering-difference)
+
+**Ledger signal.** After the Quad-Sunday Prime tranche, the ledgers
+still carried many rows with first-divergence signatures already covered
+by representative adjudications, but those rows remained marked
+`unadjudicated` because the default sample ledgers only include the first
+40 rows per policy.
+
+**Root cause.** `adjudications:fanout` matches on
+`(policy, firstExpected, firstActual)` against the currently materialized
+ledger rows. With 40-row ledgers, many matching rows never participate in
+fanout.
+
+**Resolution.** Ran one Roman+DA adjudication sweep with
+`compare:phase-3-perl -- --max-doc-rows 600`, then executed
+`adjudications:fanout`, then restored standard ledger output. The sweep
+propagated existing representative `perl-bug` and
+`rendering-difference` entries across the full row surface.
+
+**Impact.** `adjudications:fanout` wrote `759` new row-level mappings.
+Resulting live ledger counts:
+
+- Divino Afflatu `unadjudicated`: `26` (down from `458`)
+- Reduced 1955 `unadjudicated`: `321` (down from `447`)
+- Rubrics 1960 `unadjudicated`: `246` (down from `447`)
+
+### 2026-04-20 — Pattern: Divino Afflatu Epiphany-octave Matins omitted opener remains present in Perl (perl-bug)
+
+**Ledger signal.** The residual Divino Afflatu `unadjudicated` rows were
+concentrated in Matins signatures where Perl still begins with
+`secreto` while the compositor opens at `Nocturnus I`.
+
+**Root cause.** The Epiphany office rule source is explicit:
+`Sancti/01-06.txt` includes `Omit ad Matutinum Incipit Invitatorium Hymnus`.
+That omission suppresses the opener block before Matins nocturns. The
+compositor follows the source-backed omit; the Perl surface keeps the
+suppressed opener.
+
+**Resolution.** Added representative `perl-bug` adjudication
+`Divino Afflatu - 1954/2024-01-06/Matins/e66d7177` and fanned it across
+matching full-ledger rows.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8`
+
+### 2026-04-20 — Pattern: Paschaltide `add-alleluia` must target antiphons, not the Gloria response tail (engine-bug)
+
+**Ledger signal.** Shared Roman rows (`Reduced - 1955` + `Rubrics 1960 - 1960`)
+were still diverging at the end of psalmody on Paschaltide dates:
+Perl stopped at `R. Sicut erat in princípio... Amen.`, while the
+compositor appended `, allelúja.` to that response line.
+
+**Root cause.** This was a Phase 3 composition bug in
+`packages/compositor/src/directives/apply-directives.ts`. The
+`add-alleluia` transform treated `psalmody` like a generic single-tail
+slot and appended the suffix to the *last* line in the slot, which is
+often the Gloria response (`R. Sicut erat...`). The rubrical rule is
+about antiphon endings, not the Gloria response tail.
+
+**Resolution.** Class `engine-bug`. `addAlleluia()` now handles
+`psalmody` with a dedicated pass that only appends `, allelúja.` to
+antiphon lines (`Ant.`), leaving the Gloria response untouched. Added
+regression coverage in
+`packages/compositor/test/apply-directives.test.ts` to lock the exact
+ownership seam: antiphon gets Alleluia, `R. Sicut erat... Amen.` does
+not.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/rubrics.txt:1442-1446` (Paschaltide:
+  Alleluia is added at antiphon endings)
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:61`
+  (`R. Sicut erat... Amen.` source form without appended Alleluia)
+
+**Impact.** The shared Roman Paschaltide Gloria-tail family no longer
+stalls at a false `Amen, allelúja` seam; the same rows now move forward
+to deeper unresolved families.
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each

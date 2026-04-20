@@ -31,7 +31,7 @@ const describeIfUpstream = existsSync(UPSTREAM_ROOT) ? describe : describe.skip;
 
 describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   it(
-    'keeps explicit temporal Ant Prima/Tertia/Sexta/Nona sections on Septuagesima and Quinquagesima',
+    'keeps explicit temporal Ant Prima/Tertia/Sexta/Nona sections on Quad Sundays while Prime uses the SQP psalm table',
     async () => {
       const engines = await loadEngines([
         'Reduced - 1955',
@@ -52,7 +52,7 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
           expectMinorHour(
             psalmodyAt(engine, date, 'prime'),
             `${officePath}:Ant Prima`,
-            ['53', '117', '118(1-16)', '118(17-32)']
+            ['53', '92', '118(1-16)', '118(17-32)']
           );
           expectMinorHour(
             psalmodyAt(engine, date, 'terce'),

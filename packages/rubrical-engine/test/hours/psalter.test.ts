@@ -243,4 +243,36 @@ Nona Dominica=Allelúja, * allelúja, allelúja;;118(129-144),118(145-160),118(1
     ]);
     expect(refs[0]?.antiphonRef?.selector).toBe('Tertia Dominica#antiphon');
   });
+
+  it('uses the Tridentinum SQP Prime row on Quad Sundays', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Tridentinum]
+Prima Dominica=Allelúja, * allelúja, allelúja;;53,117,118(1-16),118(17-32)
+Prima Dominica SQP=;;53,92,118(1-16),118(17-32)
+Tertia Dominica=Allelúja, * allelúja, allelúja;;118(33-48),118(49-64),118(65-80)
+Sexta Dominica=Allelúja, * allelúja, allelúja;;118(81-96),118(97-112),118(113-128)
+Nona Dominica=Allelúja, * allelúja, allelúja;;118(129-144),118(145-160),118(161-176)
+`.trim()
+    );
+
+    const refs = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Quadp1-0'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-01-28', 'Quadp1-0', 'septuagesima', 0),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.selector)).toEqual([
+      '53',
+      '92',
+      '118(1-16)',
+      '118(17-32)'
+    ]);
+    expect(refs[0]?.antiphonRef).toBeUndefined();
+  });
 });

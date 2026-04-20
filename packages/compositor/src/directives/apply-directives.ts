@@ -143,6 +143,9 @@ function stripAlleluiaOnNode(node: TextContent): TextContent | null {
 }
 
 function addAlleluia(slot: SlotName, content: readonly TextContent[]): readonly TextContent[] {
+  if (slot === 'psalmody') {
+    return appendAlleluiaToPsalmodyAntiphons(content);
+  }
   if (!isAntiphonSlot(slot) && slot !== 'chapter') return content;
   return appendAlleluiaToLastText(content, ', allelúja.');
 }
@@ -193,12 +196,52 @@ function appendAlleluiaToLastText(
   return Object.freeze(out);
 }
 
+function appendAlleluiaToPsalmodyAntiphons(
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  let changed = false;
+  const out = content.map((node) => {
+    if (node.type === 'text' && isAntiphonLine(node.value)) {
+      if (ALLELUIA_TAIL_RX.test(node.value)) {
+        return node;
+      }
+      changed = true;
+      return {
+        type: 'text',
+        value: `${node.value.replace(/\.?\s*$/u, '')}, allelúja.`
+      } satisfies TextContent;
+    }
+
+    if (
+      node.type === 'verseMarker' &&
+      (node.marker === 'Ant.' || isAntiphonLine(node.text))
+    ) {
+      if (ALLELUIA_TAIL_RX.test(node.text)) {
+        return node;
+      }
+      changed = true;
+      return {
+        type: 'verseMarker',
+        marker: node.marker,
+        text: `${node.text.replace(/\.?\s*$/u, '')}, allelúja.`
+      } satisfies TextContent;
+    }
+
+    return node;
+  });
+
+  return changed ? Object.freeze(out) : content;
+}
+
+function isAntiphonLine(value: string): boolean {
+  return /^ant\./iu.test(value.trimStart());
+}
+
 function isAntiphonSlot(slot: SlotName): boolean {
   return (
     slot === 'antiphon-ad-benedictus' ||
     slot === 'antiphon-ad-magnificat' ||
-    slot === 'antiphon-ad-nunc-dimittis' ||
-    slot === 'psalmody'
+    slot === 'antiphon-ad-nunc-dimittis'
   );
 }
 

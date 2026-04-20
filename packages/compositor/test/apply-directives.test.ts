@@ -55,6 +55,28 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
     expect(out[0]).toEqual({ type: 'text', value: 'Ecce sacérdos magnus, allelúja.' });
   });
 
+  it('on psalmody, appends alleluia to antiphons without touching Gloria responses', () => {
+    const content: TextContent[] = [
+      { type: 'text', value: 'Ant. Dóminus regnávit * decórem índuit' },
+      { type: 'separator' },
+      { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+      {
+        type: 'verseMarker',
+        marker: 'R.',
+        text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+      }
+    ];
+    const out = run('psalmody', content, ['add-alleluia']);
+    expect(out[0]).toEqual({
+      type: 'text',
+      value: 'Ant. Dóminus regnávit * decórem índuit, allelúja.'
+    });
+    const finalLine = out[out.length - 1];
+    expect(finalLine && finalLine.type === 'verseMarker' ? finalLine.text : undefined).toBe(
+      'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+    );
+  });
+
   it('is idempotent when alleluia is already present', () => {
     const content: TextContent[] = [{ type: 'text', value: 'Ecce sacérdos magnus, allelúja.' }];
     const out = run('antiphon-ad-benedictus', content, ['add-alleluia']);

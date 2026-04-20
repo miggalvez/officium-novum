@@ -120,10 +120,16 @@ function minorHourReferences(
   const useSundayOrFestalMinorHours =
     temporal.dayOfWeek === 0 || hourRules.psalterScheme === 'dominica';
   if (useSundayOrFestalMinorHours) {
-    const selector = tridentinumMinorHourSelector(hour, temporal.dayOfWeek === 0);
-    const assignments = resolveTridentinumMinorHourAssignments(corpus, selector);
-    if (assignments.length > 0) {
-      return assignments;
+    const selectors = tridentinumMinorHourSelectors(
+      hour,
+      temporal.dayOfWeek === 0,
+      temporal.dayName
+    );
+    for (const selector of selectors) {
+      const assignments = resolveTridentinumMinorHourAssignments(corpus, selector);
+      if (assignments.length > 0) {
+        return assignments;
+      }
     }
   }
 
@@ -334,19 +340,27 @@ const FEAST_PSALM_SECTION: Readonly<Partial<Record<HourName, string>>> = {
   compline: 'Psalmi Completorium'
 };
 
-function tridentinumMinorHourSelector(
+function tridentinumMinorHourSelectors(
   hour: 'prime' | 'terce' | 'sext' | 'none',
-  isSunday: boolean
-): string {
+  isSunday: boolean,
+  dayName: string
+): readonly string[] {
   switch (hour) {
     case 'prime':
-      return isSunday ? 'Prima Dominica' : 'Prima Festis';
+      // Keep parity with the legacy keyed-selector seam in
+      // `upstream/.../cgi-bin/horas/specials/psalmi.pl`: Sunday Prime during
+      // Quad* seasons first asks for `Prima Dominica SQP`, then falls back to
+      // the ordinary Sunday row when no SQP override exists.
+      if (isSunday && /^Quad/u.test(dayName)) {
+        return ['Prima Dominica SQP', 'Prima Dominica'];
+      }
+      return [isSunday ? 'Prima Dominica' : 'Prima Festis'];
     case 'terce':
-      return 'Tertia Dominica';
+      return ['Tertia Dominica'];
     case 'sext':
-      return 'Sexta Dominica';
+      return ['Sexta Dominica'];
     case 'none':
-      return 'Nona Dominica';
+      return ['Nona Dominica'];
   }
 }
 
