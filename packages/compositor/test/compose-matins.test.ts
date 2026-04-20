@@ -785,6 +785,138 @@ describe('composeHour(matins)', () => {
     expect(rendered.join('\n')).not.toContain(';;104(1-15)');
   });
 
+  it('uses the paired Matins antiphon selector to slice split psalms before reopening the next segment', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi matutinum', 'Day0', [
+        {
+          type: 'psalmRef',
+          psalmNumber: 9,
+          antiphon: 'Sedísti super thronum * qui júdicas justítiam.;;9(2-11)'
+        },
+        {
+          type: 'psalmRef',
+          psalmNumber: 9,
+          antiphon: 'Exsúrge, Dómine, * non præváleat homo.;;9(12-21)'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile(
+        'horas/Latin/Psalterium/Psalmorum/Psalm9',
+        '__preamble',
+        Array.from({ length: 20 }, (_, index) => ({
+          type: 'text' as const,
+          value: `9:${index + 2} Verse ${index + 2}`
+        }))
+      )
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Ordinarium/MatutinumM1 Versum', 'Versum', [
+        { type: 'verseMarker', marker: 'V.', text: 'Versus nocturni' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+        {
+          type: 'verseMarker',
+          marker: 'R.',
+          text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 1,
+              psalmody: [
+                {
+                  antiphonRef: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '1'
+                  },
+                  psalmRef: {
+                    path: 'horas/Latin/Psalterium/Psalmorum/Psalm9',
+                    section: '__preamble'
+                  }
+                },
+                {
+                  antiphonRef: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '2'
+                  },
+                  psalmRef: {
+                    path: 'horas/Latin/Psalterium/Psalmorum/Psalm9',
+                    section: '__preamble'
+                  }
+                }
+              ],
+              antiphons: [
+                {
+                  index: 1,
+                  reference: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '1'
+                  }
+                },
+                {
+                  index: 2,
+                  reference: {
+                    path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+                    section: 'Day0',
+                    selector: '2'
+                  }
+                }
+              ],
+              versicle: {
+                reference: {
+                  path: 'horas/Latin/Ordinarium/MatutinumM1 Versum',
+                  section: 'Versum'
+                }
+              },
+              lessons: [],
+              responsories: [],
+              benedictions: []
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmody = composed.sections.find((section) => section.slot === 'psalmody');
+    expect(psalmody).toBeDefined();
+    const lines = psalmody!.lines.map((line) => `${line.marker ?? '-'} ${renderRuns(line, 'Latin')}`);
+    const secondHeadingIndex = lines.indexOf('- Psalmus 9(12-21) [2]');
+    expect(secondHeadingIndex).toBeGreaterThan(0);
+    expect(lines.slice(secondHeadingIndex - 5, secondHeadingIndex + 2)).toEqual([
+      '- 9:11 Verse 11',
+      'V. Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'R. Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.',
+      'Ant. Sedísti super thronum qui júdicas justítiam.',
+      'Ant. Exsúrge, Dómine, * non præváleat homo.',
+      '- Psalmus 9(12-21) [2]',
+      '- 9:12 Verse 12'
+    ]);
+  });
+
   it('keeps the full opening antiphon for proper feast Matins even when the first psalm verse does not begin with the antiphon incipit', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(

@@ -598,6 +598,86 @@ closed as adjudication work rather than remaining in the live code
 bucket. The remaining January Roman work is no longer blocked on
 "did the later block resolve?" ambiguity for these hours.
 
+### 2026-04-20 — Pattern: Roman Jan 13 Matins inherits Epiphany's omit rule while Perl keeps the suppressed opener (perl-bug)
+
+**Ledger signal.** After the January Matins checkpoint fixed the real
+selection/order seams, Jan `13` Roman Matins no longer fails at a mixed
+"maybe source, maybe compositor" boundary. Both `Reduced - 1955` and
+`Rubrics 1960 - 1960` now first diverge immediately at line `1`: Perl
+still begins with `V. Dómine, lábia + mea apéries.`, while the
+compositor opens straight at `Nocturnus I`.
+
+**Root cause.** This is source-backed inheritance, not a new Matins
+composition bug. `Sancti/01-13.txt` explicitly says `ex Sancti/01-06;`
+in `[Rule]`, and the inherited Epiphany Rule at `Sancti/01-06.txt`
+explicitly says `Omit ad Matutinum Incipit Invitatorium Hymnus`. The
+compositor now follows that inherited omit rule all the way through the
+Matins opener, so the first emitted section is the nocturn heading.
+Perl keeps the suppressed opener lines instead.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+shared Roman key-hash `74e956ed` on Jan `13` Matins under both `1955`
+and `1960`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-13.txt:1-13`
+- `upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8`
+
+**Impact.** The Jan `13` Roman Matins opener is no longer sitting in the
+live code bucket. It is now explicitly classified as a source-backed
+Perl discrepancy rather than an unresolved Matins handoff bug.
+
+### 2026-04-20 — Pattern: Roman Jan 6/14 Matins pre-lesson guillemets are rendering-only differences (rendering-difference)
+
+**Ledger signal.** After the January Matins checkpoint advanced Jan `6`
+and Reduced `1955` Jan `14` past the original seam, these rows now land
+on the same pre-lesson rubric surface already visible on Jan `1/7`:
+Perl strips the guillemets in `Pater Noster dicitur secreto usque ad Et
+ne nos indúcas in tentatiónem:`, while the compositor preserves the
+corpus punctuation `« Pater Noster » ... « Et ne nos indúcas in
+tentatiónem: »`.
+
+**Root cause.** This is the existing Roman Matins guillemet family, not
+new code work. The source rubric at `Psalterium/Common/Rubricae.txt`
+carries the guillemets verbatim. The compositor preserves them; Perl
+strips them.
+
+**Resolution.** Class `rendering-difference`. Added the remaining
+January Matins entries for key-hash `29ec2a3d` on:
+
+- `Reduced - 1955` — Jan `6`, Jan `14`
+- `Rubrics 1960 - 1960` — Jan `6`
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`
+
+**Impact.** Jan `6` and Reduced `1955` Jan `14` Roman Matins now close
+as punctuation-only rendering rows rather than remaining unclassified
+after the checkpoint work.
+
+### 2026-04-20 — Pattern: Rubrics 1960 Jan 14 Matins gains an unsupported trailing `‡` in Perl (perl-bug)
+
+**Ledger signal.** After the one-nocturn Sunday and split-Psalm-9 fixes,
+the remaining Jan `14` `Rubrics 1960` Matins row no longer fails on
+selection or block order. It now first diverges deep in the third
+nocturn at the antiphon surface only: Perl expects `Ant. Ut quid,
+Dómine, * recessísti longe? ‡`, while the compositor emits the source
+text without the trailing continuation marker.
+
+**Root cause.** The psalter source does not carry that trailing `‡`.
+`Psalmi matutinum.txt` gives the Day0 antiphon simply as `Ut quid,
+Dómine, * recessísti longe?`. The compositor preserves the corpus text.
+Perl appends an unsupported trailing continuation marker.
+
+**Resolution.** Class `perl-bug`. Added the Jan `14` `Rubrics 1960`
+Matins adjudication for stable key-hash `57b37f6e`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15`
+
+**Impact.** The Jan `14` `Rubrics 1960` Matins checkpoint is now closed
+as source-backed surface adjudication. The remaining January Roman
+Matins rows are no longer ambiguous implementation seams.
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each

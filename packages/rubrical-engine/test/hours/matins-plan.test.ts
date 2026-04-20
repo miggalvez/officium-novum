@@ -89,12 +89,13 @@ describe('buildMatinsPlan', () => {
     expect(result.plan.totalLessons).toBe(3);
     expect(result.plan.teDeum).toBe('replace-with-responsory');
     expect(result.plan.nocturnPlan).toHaveLength(1);
-    expect(result.plan.nocturnPlan[0]?.antiphons).toHaveLength(3);
-    expect(result.plan.nocturnPlan[0]?.psalmody).toHaveLength(3);
+    expect(result.plan.nocturnPlan[0]?.antiphons).toHaveLength(9);
+    expect(result.plan.nocturnPlan[0]?.psalmody).toHaveLength(9);
     expect(result.plan.nocturnPlan[0]?.versicle.reference.path).toBe(
       'horas/Latin/Psalterium/Psalmi/Psalmi matutinum'
     );
     expect(result.plan.nocturnPlan[0]?.versicle.reference.section).toBe('Day0');
+    expect(result.plan.nocturnPlan[0]?.versicle.reference.selector).toBe('14');
   });
 
   it('uses the ordinary Sunday Matins hymn from Matutinum Special before April', () => {

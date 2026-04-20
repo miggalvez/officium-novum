@@ -113,7 +113,14 @@ describeIfReady('Phase 2g-β Matins structuring against upstream 1960 corpus', (
 
       expect(derivedShape).toEqual(row.matins);
       for (const nocturn of psalmody.nocturns) {
-        expect(nocturn.antiphons.length).toBe(nocturn.lessons.length);
+        expect(nocturn.antiphons.length).toBe(nocturn.psalmody.length);
+        if (psalmody.nocturns.length > 1) {
+          expect(nocturn.antiphons.length).toBe(nocturn.lessons.length);
+        } else {
+          expect(nocturn.antiphons.length).toBeGreaterThanOrEqual(
+            nocturn.lessons.length
+          );
+        }
         expect(nocturn.psalmody.length).toBeGreaterThan(0);
       }
 

@@ -493,7 +493,10 @@ function composeMergedSlot(
         });
         continue;
       }
-      const sourceContent = section.content;
+      const sourceContent =
+        slot === 'versicle'
+          ? extendPsalterMatinsVersicleContent(section.content, ref, lang, args)
+          : section.content;
       if (slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(sourceContent)) {
         const antiphonOnly = extractInlinePsalmAntiphons(sourceContent);
         const flattened = flattenConditionals(antiphonOnly, args.context);
@@ -554,10 +557,17 @@ function composeMergedSlot(
         slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
           ? separatePsalmVerseLines(transformed)
           : transformed;
+      const rangedPsalmBody =
+        slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+          ? slicePsalmContentByVerseRange(
+              lineSeparated,
+              resolvePairedAntiphonRangeValue(pairedAntiphonRef, lang, args)
+            )
+          : lineSeparated;
       const normalizedPsalmBody =
         slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? normalizeOpeningPsalmBodyContent(lineSeparated, pairedAntiphonRef, ref, lang, args)
-          : lineSeparated;
+          ? normalizeOpeningPsalmBodyContent(rangedPsalmBody, pairedAntiphonRef, ref, lang, args)
+          : rangedPsalmBody;
       // Same `Ant.` marker synthesis as the generic composeSlot; see
       // `emit/antiphon-marker.ts`. For Matins this covers the invitatory,
       // the nocturn antiphons inside `psalmody`, and any unpaired
@@ -572,7 +582,14 @@ function composeMergedSlot(
           )
         : normalizedPsalmBody;
       if (slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined) {
-        const heading = buildPsalmHeading(ref, normalizedPsalmBody, psalmIndex, pairedAntiphonRef, lang, args);
+        const heading = buildPsalmHeading(
+          ref,
+          normalizedPsalmBody,
+          psalmIndex,
+          pairedAntiphonRef,
+          lang,
+          args
+        );
         if (heading) {
           appendContentWithBoundary(bucket, [
             { type: 'text', value: heading },
@@ -986,7 +1003,96 @@ function extractInlinePsalmRange(text: string | undefined): string | undefined {
   return match[1].replace(/['"]/gu, '').replace(/\s*-\s*/gu, '-').trim();
 }
 
+function extendPsalterMatinsVersicleContent(
+  content: readonly TextContent[],
+  ref: TextReference,
+  language: string,
+  args: MatinsComposeContext
+): readonly TextContent[] {
+  if (
+    ref.path !== 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum' ||
+    ref.section !== 'Day0' ||
+    !ref.selector ||
+    !/^\d+$/u.test(ref.selector)
+  ) {
+    return content;
+  }
+
+  const hasResponse = content.some(
+    (node) => node.type === 'verseMarker' && (node.marker === 'R.' || node.marker === 'r.')
+  );
+  if (hasResponse) {
+    return content;
+  }
+
+  const nextSelector = String(Number.parseInt(ref.selector, 10) + 1);
+  const nextSection = resolveReference(args.corpus, { ...ref, selector: nextSelector }, {
+    languages: [language],
+    langfb: args.options.langfb,
+    dayOfWeek: args.context.dayOfWeek,
+    date: args.context.date,
+    season: args.context.season,
+    version: args.context.version,
+    modernStyleMonthday: args.context.version.handle.includes('1960'),
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  })[language];
+  if (!nextSection || nextSection.selectorMissing) {
+    return content;
+  }
+
+  const responseNodes = nextSection.content.filter(
+    (node) => node.type === 'verseMarker' && (node.marker === 'R.' || node.marker === 'r.')
+  );
+  return responseNodes.length > 0 ? Object.freeze([...content, ...responseNodes]) : content;
+}
+
+function slicePsalmContentByVerseRange(
+  content: readonly TextContent[],
+  range: string
+): readonly TextContent[] {
+  const match = /^(\d+)-(\d+)$/u.exec(range);
+  if (!match?.[1] || !match[2]) {
+    return content;
+  }
+
+  const start = Number.parseInt(match[1], 10);
+  const end = Number.parseInt(match[2], 10);
+  if (!Number.isFinite(start) || !Number.isFinite(end) || start > end) {
+    return content;
+  }
+
+  const out: TextContent[] = [];
+  for (const node of content) {
+    if (node.type !== 'text') {
+      out.push(node);
+      continue;
+    }
+
+    const verseMatch = /^\s*\d+:(\d+)/u.exec(node.value);
+    if (!verseMatch?.[1]) {
+      out.push(node);
+      continue;
+    }
+
+    const verse = Number.parseInt(verseMatch[1], 10);
+    if (verse >= start && verse <= end) {
+      out.push(node);
+    }
+  }
+
+  return out;
+}
+
 function resolvePairedAntiphonRange(
+  ref: TextReference | undefined,
+  language: string,
+  args: MatinsComposeContext
+): string {
+  const range = resolvePairedAntiphonRangeValue(ref, language, args);
+  return range ? `(${range})` : '';
+}
+
+function resolvePairedAntiphonRangeValue(
   ref: TextReference | undefined,
   language: string,
   args: MatinsComposeContext
@@ -1013,13 +1119,13 @@ function resolvePairedAntiphonRange(
     if (node.type === 'psalmRef') {
       const range = extractInlinePsalmRange(node.antiphon);
       if (range) {
-        return `(${range})`;
+        return range;
       }
     }
     if (node.type === 'text') {
       const range = extractInlinePsalmRange(node.value);
       if (range) {
-        return `(${range})`;
+        return range;
       }
     }
   }

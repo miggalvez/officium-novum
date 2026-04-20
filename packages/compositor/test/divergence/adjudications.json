@@ -621,6 +621,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Reduced - 1955/2024-01-06/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-06",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Reduced 1955. Fan out to all 1955 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-01-06/Vespers/39846534": {
     "policy": "Reduced - 1955",
     "date": "2024-01-06",
@@ -717,6 +729,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Reduced - 1955/2024-01-13/Matins/74e956ed": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-13",
+    "hour": "Matins",
+    "firstExpected": "V. Dómine, lábia + mea apéries.",
+    "firstActual": "Nocturnus I",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-13.txt:1-13 and upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8 — Jan 13 inherits the Epiphany office by `ex Sancti/01-06;`, and the inherited Epiphany Rule explicitly says `Omit ad Matutinum Incipit Invitatorium Hymnus`. The compositor therefore opens Matins directly at `Nocturnus I`; the Perl comparison surface keeps the suppressed opener lines.",
+    "notes": "Representative entry for the Roman Jan 13 Matins inherited-omit family where the source-backed Epiphany Rule suppresses the incipit/invitatory/hymn wrapper and Perl still begins with `V. Dómine, lábia + mea apéries.`.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-01-13/None/b32a46de": {
     "policy": "Reduced - 1955",
     "date": "2024-01-13",
@@ -799,6 +823,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:1-6 — the Day0 `Laudes1` psalter-major wrapper carries the full Sunday antiphon `Allelúja, * Dóminus regnávit, decórem índuit, allelúja, allelúja.` The compositor now emits that source-backed antiphon surface; the Perl comparison surface abbreviates it to incipit-only `Ant. Allelúja.`.",
     "notes": "Representative entry for the Reduced 1955 Jan 14 Sunday Lauds psalter-major antiphon family where Perl collapses the full Day0 opening to a generic `Ant. Allelúja.` surface.",
     "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-01-14/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-14",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Reduced 1955. Fan out to all 1955 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Reduced - 1955/2024-01-14/None/f178bdcc": {
@@ -993,6 +1029,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-01-06/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-01-06",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Rubrics 1960. Fan out to all 1960 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-01-06/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-01-06",
@@ -1173,6 +1221,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-01-13/Matins/74e956ed": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-01-13",
+    "hour": "Matins",
+    "firstExpected": "V. Dómine, lábia + mea apéries.",
+    "firstActual": "Nocturnus I",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-13.txt:1-13 and upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8 — Jan 13 inherits the Epiphany office by `ex Sancti/01-06;`, and the inherited Epiphany Rule explicitly says `Omit ad Matutinum Incipit Invitatorium Hymnus`. The compositor therefore opens Matins directly at `Nocturnus I`; the Perl comparison surface keeps the suppressed opener lines.",
+    "notes": "Representative entry for the Roman Jan 13 Matins inherited-omit family where the source-backed Epiphany Rule suppresses the incipit/invitatory/hymn wrapper and Perl still begins with `V. Dómine, lábia + mea apéries.`.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-01-13/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-01-13",
@@ -1255,6 +1315,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-01-14/Matins/57b37f6e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-01-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Ut quid, Dómine, * recessísti longe? ‡",
+    "firstActual": "Ant. Ut quid, Dómine, * recessísti longe?",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15 — the Day0 third-nocturn antiphon is `Ut quid, Dómine, * recessísti longe?` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Representative entry for the Rubrics 1960 Jan 14 Matins Sunday antiphon surface family where Perl adds a trailing `‡` that is not present in the psalter-matins source.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-01-14/None/4a1aadd8": {

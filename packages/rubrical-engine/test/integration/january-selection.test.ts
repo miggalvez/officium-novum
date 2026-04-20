@@ -434,6 +434,14 @@ describeIfUpstream('January selection regressions', () => {
     }
 
     for (const engine of [reduced, roman1960]) {
+      const jan6Matins = engine.resolveDayOfficeSummary('2024-01-06').hours.matins;
+      expect(jan6Matins?.slots.incipit?.kind).toBe('empty');
+      expect(jan6Matins?.slots.invitatory?.kind).toBe('matins-invitatorium');
+      if (jan6Matins?.slots.invitatory?.kind === 'matins-invitatorium') {
+        expect(jan6Matins.slots.invitatory.source.kind).toBe('suppressed');
+      }
+      expect(jan6Matins?.slots.hymn?.kind).toBe('empty');
+
       const jan6Nocturns = matinsNocturnsAt(engine, '2024-01-06');
       expect(jan6Nocturns).toHaveLength(3);
       expectAntiphonRefs(jan6Nocturns[0]?.psalmody ?? []).toEqual([
@@ -446,6 +454,16 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble',
         'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble'
       ]);
+
+      const jan13Matins = engine.resolveDayOfficeSummary('2024-01-13').hours.matins;
+      expect(jan13Matins?.slots.incipit?.kind).toBe('empty');
+      expect(jan13Matins?.slots.invitatory?.kind).toBe('matins-invitatorium');
+      if (jan13Matins?.slots.invitatory?.kind === 'matins-invitatorium') {
+        // `Sancti/01-13` inherits Epiphany's full base file via `ex Sancti/01-06`,
+        // so the Matins omit directives stay in force at the source seam too.
+        expect(jan13Matins.slots.invitatory.source.kind).toBe('suppressed');
+      }
+      expect(jan13Matins?.slots.hymn?.kind).toBe('empty');
 
       const jan13Nocturns = matinsNocturnsAt(engine, '2024-01-13');
       expect(jan13Nocturns).toHaveLength(3);
@@ -463,7 +481,34 @@ describeIfUpstream('January selection regressions', () => {
 
     const jan14Roman1960 = matinsNocturnsAt(roman1960, '2024-01-14');
     expect(jan14Roman1960).toHaveLength(1);
-    expect(jan14Roman1960[0]?.psalmody).toHaveLength(3);
+    expect(jan14Roman1960[0]?.psalmody).toHaveLength(9);
+    expectAntiphonRefs(jan14Roman1960[0]?.psalmody ?? []).toEqual([
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:1',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:2',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:3',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:6',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:7',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:8',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:11',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:12',
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:13'
+    ]);
+    expectPsalmRefs(jan14Roman1960[0]?.psalmody ?? []).toEqual([
+      'horas/Latin/Psalterium/Psalmorum/Psalm1:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm2:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm3:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm8:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
+      'horas/Latin/Psalterium/Psalmorum/Psalm10:__preamble'
+    ]);
+    expect(jan14Roman1960[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+      section: 'Day0',
+      selector: '14'
+    });
 
     // 1955 Jan 6/7 later blocks: the feast files provide the Terce/Sext/None
     // chapter/responsory/versicle chain directly, so these slots should not

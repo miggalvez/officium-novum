@@ -173,6 +173,8 @@ function resolveSlot(
 
 function isSuppressed(slot: SlotName, omit: readonly OmittableSlot[]): boolean {
   switch (slot) {
+    case 'incipit':
+      return omit.includes('incipit');
     case 'hymn':
       return omit.includes('hymnus');
     case 'preces':

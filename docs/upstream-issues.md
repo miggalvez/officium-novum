@@ -575,6 +575,111 @@ lines.
 | Reduced - 1955 | 2024-01-07 | Sext | `bae99624` |
 | Reduced - 1955 | 2024-01-07 | None | `373eea90` |
 
+### 2026-04-20 — Roman Jan 13 Matins still shows the suppressed opener in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Under both `Reduced - 1955` and `Rubrics 1960 - 1960`,
+Jan `13` Matins now opens directly at `Nocturnus I` in Officium Novum.
+The legacy Perl comparison surface still begins with `V. Dómine, lábia
++ mea apéries.` even though the inherited Epiphany Rule suppresses the
+Matins opener wrapper.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-13.txt:1-13`
+- `upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8`
+
+These sources establish that Jan `13` inherits Epiphany by
+`ex Sancti/01-06;`, and the inherited Rule explicitly says `Omit ad
+Matutinum Incipit Invitatorium Hymnus`.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-13 --hour Matins
+```
+
+The Roman `1955` and `1960` rows first diverge at line `1`: Perl keeps
+`V. Dómine, lábia + mea apéries.`, while the compositor begins at the
+source-backed `Nocturnus I`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-01-13 | Matins | `74e956ed` |
+| Rubrics 1960 - 1960 | 2024-01-13 | Matins | `74e956ed` |
+
+### 2026-04-20 — Roman Jan 6/14 Matins preserve the corpus guillemets around `Pater Noster`
+
+**Classification.** `rendering-difference`
+
+**Summary.** After the January Matins checkpoint advanced Jan `6` and
+Reduced `1955` Jan `14` past their former boundary seams, the remaining
+Roman rows now land on the same pre-lesson rubric surface already seen
+elsewhere: Perl strips the guillemets in `Pater Noster dicitur secreto
+usque ad Et ne nos indúcas in tentatiónem:`, while the compositor
+preserves the corpus punctuation `« Pater Noster » ... « Et ne nos
+indúcas in tentatiónem: »`.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`
+
+This rubric sentence carries the guillemets in the source itself, so the
+Perl/compositor difference is punctuation-only rather than a
+liturgical-content disagreement.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-06 --hour Matins
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-14 --hour Matins
+```
+
+The affected Roman rows now first diverge on the guillemeted `Pater
+Noster` rubric surface.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-01-06 | Matins | `29ec2a3d` |
+| Reduced - 1955 | 2024-01-14 | Matins | `29ec2a3d` |
+| Rubrics 1960 - 1960 | 2024-01-06 | Matins | `29ec2a3d` |
+
+### 2026-04-20 — Rubrics 1960 Jan 14 Matins gains an unsupported trailing `‡` in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Under `Rubrics 1960 - 1960`, the remaining Jan `14`
+Matins divergence is now punctuation-only. The Day0 psalter source gives
+the third-nocturn antiphon as `Ut quid, Dómine, * recessísti longe?`
+without a trailing `‡`. The compositor preserves that corpus text;
+Perl appends an unsupported trailing continuation marker.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-14 --hour Matins
+```
+
+The Rubrics `1960` row now first diverges at the third-nocturn antiphon
+surface only: Perl expects a trailing `‡`, while the compositor keeps
+the source-backed text without it.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2024-01-14 | Matins | `57b37f6e` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

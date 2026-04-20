@@ -692,6 +692,97 @@ engine-bug fixes:
 not yet met. The remaining budget is bounded by the pattern
 catalogue; each next pattern fix collapses many rows at once.
 
+### 19.9 Finish strategy for 3h
+
+The endgame for Phase 3 is **not** "match every 2024 ledger row by hand"
+and it is **not** "fix one civil year at a time." The 2024 ledgers are the
+sign-off surface because they provide a stable, source-backed comparison
+matrix. The implementation strategy remains architecture-first:
+
+- **Phase 2 owns year-specific structure.** Date-specific overlays,
+  `Transfer/<year-key>.txt`, `Stransfer/<year-key>.txt`, and other
+  Directorium effects stay in the rubrical-engine. If a mismatch is truly
+  caused by a year map or office substitution, the fix belongs there.
+- **Phase 3 owns faithful composition.** Once `DayOfficeSummary` is
+  source-correct, the compositor must emit it without policy-name branching
+  or date-specific patches.
+- **Adjudication is completion, not deferral.** When the compositor agrees
+  with the source and Perl does not, the right move is `perl-bug` or
+  `rendering-difference`, not another engine change.
+
+The remaining 3h burn-down therefore proceeds by **family**, not by date.
+The ledger rows are discovery aids; they are not the unit of work.
+
+#### 19.9.1 Family-first operating rules
+
+Every remaining divergence is triaged under the same loop:
+
+1. **Identify a reusable family.** Group by repeated first-divergence lines,
+   repeated slot/hour shape, and shared code seam. Good families are things
+   like "Matins invitatory suppression," "wrapped psalmody heading drift," or
+   "pre-lesson guillemet rendering," not "2024-01-13 Matins."
+2. **Lock the source seam before coding.** Add or tighten the smallest
+   upstream-backed tests that prove whether the source is currently wrong in
+   Phase 2 or only emitted wrongly in Phase 3.
+3. **Fix only the owning layer.** If the resolved structure is wrong, patch
+   Phase 2. If the structure is right but the emitted sequence is wrong,
+   patch Phase 3. If both are right, adjudicate.
+4. **Reclassify immediately.** After every family fix, rerun the targeted
+   compare and the full compare, then convert any newly source-backed rows
+   into adjudications in the same tranche.
+5. **Do not leave mixed-status families behind.** A family is only "done"
+   when it is no longer sitting in the ledgers as "maybe source, maybe
+   compositor."
+
+The anti-pattern to avoid is a date-led patch such as "if Jan 13 then emit
+X." If the fix cannot be described as a reusable structural rule, it needs
+another pass of source/ownership analysis before landing.
+
+#### 19.9.2 Ordered finish lanes
+
+The remainder of Phase 3 should run in four lanes, in this order:
+
+1. **Shared Roman structural families (`reduced-1955`, `rubrics-1960`).**
+   These still offer the highest leverage because one fix often collapses
+   multiple dates in both Roman ledgers and verifies the core Phase 2/Phase 3
+   seam.
+2. **Roman adjudication sweeps.** Once a Roman family is source-backed and
+   no longer ambiguous, classify it immediately with representative entries
+   plus `adjudications:fanout` rather than carrying it as pseudo-code work.
+3. **Divino Afflatu family burn-down.** DA should use the same family-first
+   loop, but only after the shared Roman structural seams stop exposing new
+   architecture gaps. Its lower matching-prefix metrics suggest more shallow
+   families remain, so it should be approached as a separate lane rather than
+   interleaved randomly with Roman work.
+4. **Stabilization and sign-off.** When the ledgers are mostly adjudication
+   work and row churn has slowed materially, commit the 312 Appendix-A
+   snapshots, run `verify:phase-3-signoff`, prune stale sidecar entries if
+   needed, and drive each policy below the <10 `unadjudicated` threshold.
+
+#### 19.9.3 Definition of done for a family
+
+Each family burn-down should end with all of the following:
+
+- a source-backed test proving the ownership seam;
+- a narrow fix in the correct layer, or an explicit adjudication instead of a
+  fix;
+- targeted compare evidence showing the first divergence moved deeper or
+  disappeared;
+- a full-ledger regeneration;
+- updates to `ADJUDICATION_LOG.md`, `adjudications.json`, and
+  `docs/upstream-issues.md` when applicable.
+
+#### 19.9.4 Definition of done for Phase 3 from the current state
+
+From the current 3h state, Phase 3 finishes in this sequence:
+
+1. Eliminate the remaining large shared structural families.
+2. Convert source-backed residual rows into adjudications fast enough that
+   the ledgers stop being dominated by `unadjudicated`.
+3. Stabilize the output surface with the deferred 312 snapshots.
+4. Reach the existing §18 success criteria without introducing any
+   date-specific compositor behavior.
+
 ---
 
 ## Appendix A — Legacy Perl Cross-Reference

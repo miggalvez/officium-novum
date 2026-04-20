@@ -202,7 +202,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(composed.sections.filter((section) => section.slot === 'te-deum')).toHaveLength(1);
   }, 240_000);
 
-  it('keeps January 6 and January 13 Matins invitatories suppressed across the Roman families', async () => {
+  it('opens January 6 and January 13 Roman Matins directly at Nocturn I when the inherited Epiphany omit rules suppress the wrapper block', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
 
@@ -226,8 +226,11 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
         });
 
         expect(composed.sections.find((section) => section.slot === 'invitatory')).toBeUndefined();
+        expect(composed.sections[0]?.type, `${version} ${date} should start at the nocturn heading`).toBe('heading');
+        expect(composed.sections[0]?.heading).toEqual({ kind: 'nocturn', ordinal: 1 });
+        expect(composed.sections[1]?.slot, `${version} ${date} should move straight into psalmody`).toBe('psalmody');
         const earlyLines = composed.sections
-          .slice(0, 4)
+          .slice(0, 2)
           .flatMap((section) => section.lines.map(renderLatinText))
           .join('\n');
 
@@ -235,6 +238,9 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           earlyLines,
           `suppressed invitatory leaked Psalm 94 content for ${version} ${date}`
         ).not.toContain('Veníte, exsultémus Dómino');
+        expect(earlyLines, `${version} ${date} should still open from the Epiphany first nocturn`).toContain(
+          'Afférte Dómino'
+        );
       }
     }
   }, 240_000);
@@ -377,6 +383,67 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
         expect(renderLatinText(lastPsalmodyLine!)).not.toContain(';;');
       }
     }
+  }, 240_000);
+
+  it('renders the January 14 Roman Matins nocturn versicle as the full V./R. pair selected from the psalter seam', async () => {
+    for (const [version, expectedLines] of [
+      [
+        'Reduced - 1955',
+        ['Memor fui nocte nóminis tui, Dómine.', 'Et custodívi legem tuam.']
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        ['Prævenérunt óculi mei ad te dilúculo.', 'Ut meditárer elóquia tua, Dómine.']
+      ]
+    ] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-01-14');
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const versicle = composed.sections.find((section) => section.slot === 'versicle');
+      expect(versicle, `${version} 2024-01-14 is missing the Matins nocturn versicle`).toBeDefined();
+      expect((versicle?.lines ?? []).map((line) => line.marker), `${version} 2024-01-14 versicle markers`).toEqual([
+        'V.',
+        'R.'
+      ]);
+      expect((versicle?.lines ?? []).map(renderLatinText), `${version} 2024-01-14 versicle pair`).toEqual(
+        expectedLines
+      );
+    }
+  }, 240_000);
+
+  it('reopens the January 14 1960 split Psalm 9 segments with the expected Gloria and antiphon boundary', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2024-01-14');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const lines = psalmodyTexts(composed).map(normalizeLatin);
+    const secondSegmentHeading = lines.indexOf(normalizeLatin('Psalmus 9(12-21) [6]'));
+    expect(
+      secondSegmentHeading,
+      'Rubrics 1960 - 1960 2024-01-14 is missing the second split Psalm 9 heading'
+    ).toBeGreaterThan(0);
+    expect(lines.slice(secondSegmentHeading - 5, secondSegmentHeading + 2)).toEqual([
+      normalizeLatin('9:11 Et sperent in te qui novérunt nomen tuum: * quóniam non dereliquísti quæréntes te, Dómine.'),
+      normalizeLatin('Glória Patri, et Fílio, * et Spirítui Sancto.'),
+      normalizeLatin('Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'),
+      normalizeLatin('Sedísti super thronum qui júdicas justítiam.'),
+      normalizeLatin('Exsúrge, Dómine, * non præváleat homo.'),
+      normalizeLatin('Psalmus 9(12-21) [6]'),
+      normalizeLatin('9:12 Psállite Dómino, qui hábitat in Sion: * annuntiáte inter gentes stúdia ejus:')
+    ]);
   }, 240_000);
 
   it('strips selector trailers from February Matins psalmody across the 1955/1960 Roman families', async () => {

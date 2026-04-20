@@ -74,7 +74,10 @@ export function buildMatinsPlanWithWarnings(
   const defaultCourse = input.policy.defaultScriptureCourse(input.temporal);
 
   const antiphonEntries = collectMatinsAntiphons(input, feastFiles, psalteriumDaySection);
-  const antiphonPartitions = partitionAntiphons(antiphonEntries, shape.lessonsPerNocturn);
+  const antiphonPartitions = partitionAntiphons(
+    antiphonEntries,
+    shape.lessonsPerNocturn
+  );
 
   const nocturnPlan: NocturnPlan[] = [];
   let globalLessonIndex = 1;
@@ -156,7 +159,9 @@ export function buildMatinsPlanWithWarnings(
         input,
         feastFiles,
         psalteriumDaySection,
-        warnings
+        warnings,
+        shape.nocturns,
+        antiphons.length
       ),
       lessons,
       responsories,
@@ -259,7 +264,9 @@ function buildNocturnVersicle(
   input: BuildMatinsPlanInput,
   feastFiles: readonly ParsedFile[],
   psalteriumDaySection: ParsedFile['sections'][number] | undefined,
-  warnings: RubricalWarning[]
+  warnings: RubricalWarning[],
+  totalNocturns: number,
+  antiphonCount: number
 ): VersicleSource {
   const sectionName = `Nocturn ${nocturnIndex} Versum`;
   const match = findSection(feastFiles, sectionName, input);
@@ -269,13 +276,18 @@ function buildNocturnVersicle(
     };
   }
 
-  const versicleLine = versicleLineForNocturn(psalteriumDaySection, nocturnIndex);
-  if (psalteriumDaySection && versicleLine) {
+  const versicleSelector = versicleSelectorForNocturn(
+    psalteriumDaySection,
+    nocturnIndex,
+    totalNocturns,
+    antiphonCount
+  );
+  if (psalteriumDaySection && versicleSelector) {
     return {
       reference: {
         path: PSALTERIUM_MATINS_CONTENT_PATH,
         section: psalteriumDaySection.header,
-        selector: String(versicleLine)
+        selector: versicleSelector
       }
     };
   }
@@ -428,6 +440,16 @@ function partitionAntiphons(
   }[],
   lessonsPerNocturn: readonly number[]
 ): readonly (readonly AntiphonReference[])[] {
+  if (lessonsPerNocturn.length === 1) {
+    return [
+      entries.map((entry, index) => ({
+        index: index + 1,
+        reference: entry.reference,
+        ...(entry.psalmRef ? { psalmRef: entry.psalmRef } : {})
+      }))
+    ];
+  }
+
   const partitions: AntiphonReference[][] = [];
   let cursor = 0;
 
@@ -496,10 +518,12 @@ function extractPsalmNumberFromLine(line: string): string | undefined {
   return match?.[1];
 }
 
-function versicleLineForNocturn(
+function versicleSelectorForNocturn(
   section: ParsedFile['sections'][number] | undefined,
-  nocturnIndex: 1 | 2 | 3
-): number | undefined {
+  nocturnIndex: 1 | 2 | 3,
+  totalNocturns: number,
+  antiphonCount: number
+): string | undefined {
   if (!section) {
     return undefined;
   }
@@ -516,7 +540,11 @@ function versicleLineForNocturn(
     }
   }
 
-  return versicleLines[nocturnIndex - 1];
+  const startLine =
+    totalNocturns === 1 && antiphonCount > 3
+      ? versicleLines.at(-1)
+      : versicleLines[nocturnIndex - 1];
+  return startLine ? String(startLine) : undefined;
 }
 
 function markTeDeumReplacement(plan: MatinsPlan): MatinsPlan {
