@@ -718,6 +718,49 @@ first diverges at `Psalmus 118(1-16) [2]` (Perl) vs
 | Reduced - 1955 | 2024-01-28 | Prime | `2e28d92b` |
 | Rubrics 1960 - 1960 | 2024-01-28 | Prime | `67634c25` |
 
+### 2026-04-20 — Roman psalm half-verse `‡` markers are flattened by the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Across Roman `1955` and `1960` rows, the compositor
+preserves source-backed half-verse structure (`‡ ... *`) while Perl
+flattens those same lines to single-asterisk boundaries. This now
+surfaces as a repeated family on Psalms `62`, `4`, `124`, `114`, and
+late-surfacing `99` rows under `Rubrics 1960 - 1960`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm124.txt:2`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm114.txt:5`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5`
+
+Each cited source line carries an explicit `‡` before the `*` split.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-03-30 --hour Matins
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-01-28 --hour Lauds
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-03-26 --hour Vespers
+```
+
+The Perl side flattens `‡ ... *` to a single `*`; compositor output
+stays source-backed.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-03-30 | Matins | `89cb274b` |
+| Rubrics 1960 - 1960 | 2024-01-28 | Lauds | `9fbc4e11` |
+| Rubrics 1960 - 1960 | 2024-03-30 | Matins | `89cb274b` |
+| Rubrics 1960 - 1960 | 2024-03-26 | Vespers | `b1fc00bf` |
+| Rubrics 1960 - 1960 | 2024-03-25 | Vespers | `839eeb27` |
+| Rubrics 1960 - 1960 | 2024-05-09 | Lauds | `2af868c1` |
+
 ### 2026-04-20 — Divino Afflatu Epiphany-octave Matins still renders a suppressed opener in Perl
 
 **Classification.** `perl-bug`

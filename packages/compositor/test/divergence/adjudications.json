@@ -6597,6 +6597,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Reduced - 1955/2024-03-30/Matins/89cb274b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-30",
+    "hour": "Matins",
+    "firstExpected": "4:5 Irascímini, et nolíte peccáre: * quæ dícitis in córdibus vestris, in cubílibus vestris compungímini.",
+    "firstActual": "4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5 — the source line carries `‡ ... *` in Psalm 4:5. The compositor keeps that half-verse split while Perl flattens the same line to a single `*` divider.",
+    "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-31/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-03-31",
@@ -6693,6 +6705,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Reduced - 1955/2024-04-07/Vespers/22de27ef": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-07",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 112 [2]",
+    "firstActual": "Psalmus 110 [2]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Roman Sunday `Day0 Vespera` table explicitly runs `109,110,111,112,113`, so the second emitted heading is source-backed `Psalmus 110 [2]`. The Perl comparison surface skips ahead to `Psalmus 112 [2]`.",
+    "notes": "Representative entry for the Reduced 1955 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1955 rows with the same first-divergence pair.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-05-09/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-05-09",
@@ -6705,6 +6729,30 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Reduced - 1955/2024-05-09/Lauds/2af868c1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "Lauds",
+    "firstExpected": "99:3 Pópulus ejus, et oves páscuæ ejus: * introíte portas ejus in confessióne, átria ejus in hymnis: confitémini illi.",
+    "firstActual": "99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
+    "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-05-09/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Reduced 1955. Fan out to all 1955 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-05-19/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-05-19",
@@ -6714,6 +6762,30 @@
     "class": "rendering-difference",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:52 — the source encodes the cross as `+++`. Perl renders that token as `✙︎`; the compositor currently normalizes it to `+`. This is a surface glyph-choice difference, not a text-selection error.",
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-05-19/Lauds/2af868c1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-19",
+    "hour": "Lauds",
+    "firstExpected": "99:3 Pópulus ejus, et oves páscuæ ejus: * introíte portas ejus in confessióne, átria ejus in hymnis: confitémini illi.",
+    "firstActual": "99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
+    "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-05-19/Vespers/39846534": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-19",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Epiphany rule set explicitly overrides the fifth Vespers psalm with `Psalm5 Vespera=116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113.",
+    "notes": "Representative entry for the Reduced 1955 Epiphany/Baptism Vespers fifth-psalm override family where the corpus-backed Rule section replaces the Day0 fifth slot with Psalm 116. Fan out to matching 1955 rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
@@ -6787,6 +6859,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-05-30/Matins/89cb274b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-30",
+    "hour": "Matins",
+    "firstExpected": "4:5 Irascímini, et nolíte peccáre: * quæ dícitis in córdibus vestris, in cubílibus vestris compungímini.",
+    "firstActual": "4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5 — the source line carries `‡ ... *` in Psalm 4:5. The compositor keeps that half-verse split while Perl flattens the same line to a single `*` divider.",
+    "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Reduced - 1955/2024-06-16/Compline/5dc10d20": {
@@ -7495,6 +7579,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-11-01/Matins/89cb274b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Matins",
+    "firstExpected": "4:5 Irascímini, et nolíte peccáre: * quæ dícitis in córdibus vestris, in cubílibus vestris compungímini.",
+    "firstActual": "4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5 — the source line carries `‡ ... *` in Psalm 4:5. The compositor keeps that half-verse split while Perl flattens the same line to a single `*` divider.",
+    "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Reduced - 1955/2024-11-05/Compline/5dc10d20": {
@@ -8253,6 +8349,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-01-28/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-01-28",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-01-28/Matins/57b37f6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-01-28",
@@ -8335,6 +8443,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — the corpus source carries `«Pater Noster»` with guillemets. Both Perl (strip) and compositor (preserve) are defensible renderings of the same source token; neither is liturgically wrong. Phase 3 §3h defers to the corpus author's formatting.",
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-02-11/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-11",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-02-11/Matins/57b37f6e": {
@@ -8433,6 +8553,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-02-18/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-18",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-02-18/Matins/57b37f6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-18",
@@ -8491,6 +8623,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — the corpus source carries `«Pater Noster»` with guillemets. Both Perl (strip) and compositor (preserve) are defensible renderings of the same source token; neither is liturgically wrong. Phase 3 §3h defers to the corpus author's formatting.",
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-02-25/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-25",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-02-25/Matins/57b37f6e": {
@@ -8577,6 +8721,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-03-03/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-03",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-03/Matins/57b37f6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-03",
@@ -8661,6 +8817,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-03-10/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-10",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-10/Matins/57b37f6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-10",
@@ -8743,6 +8911,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — the corpus source carries `«Pater Noster»` with guillemets. Both Perl (strip) and compositor (preserve) are defensible renderings of the same source token; neither is liturgically wrong. Phase 3 §3h defers to the corpus author's formatting.",
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-03-17/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-17",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-03-17/None/4a1aadd8": {
@@ -8841,6 +9021,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-03-24/Lauds/9fbc4e11": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-24",
+    "hour": "Lauds",
+    "firstExpected": "62:3 In terra desérta, et ínvia, et inaquósa: * sic in sancto appárui tibi, ut vidérem virtútem tuam, et glóriam tuam.",
+    "firstActual": "62:3 In terra desérta, et ínvia, et inaquósa: ‡ sic in sancto appárui tibi, * ut vidérem virtútem tuam, et glóriam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
+    "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-24/None/4a1aadd8": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-24",
@@ -8913,6 +9105,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-03-25/Vespers/839eeb27": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-25",
+    "hour": "Vespers",
+    "firstExpected": "114:4 O Dómine, líbera ánimam meam: * miséricors Dóminus, et justus, et Deus noster miserétur.",
+    "firstActual": "114:4 O Dómine, líbera ánimam meam: ‡ miséricors Dóminus, et justus, * et Deus noster miserétur.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm114.txt:5 — Psalm 114:4b is source-encoded as `‡ ... *` (with the numeric carry removed in compositor output). Perl flattens that half-verse split to a single `*` marker.",
+    "notes": "Representative Rubrics 1960 Psalm 114 half-verse family; fan out across matching 1960 Vespers rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-26/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-26",
@@ -8925,6 +9129,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-03-26/Vespers/b1fc00bf": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-26",
+    "hour": "Vespers",
+    "firstExpected": "124:2 Montes in circúitu ejus: * et Dóminus in circúitu pópuli sui, ex hoc nunc et usque in sǽculum.",
+    "firstActual": "124:2 Montes in circúitu ejus: ‡ et Dóminus in circúitu pópuli sui, * ex hoc nunc et usque in sǽculum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm124.txt:2 — the source encodes Psalm 124:2b with `‡ ... *`. The compositor preserves the corpus half-verse marker while Perl flattens it.",
+    "notes": "Representative Rubrics 1960 Psalm 124 half-verse family; fan out across matching 1960 Vespers rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-27/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-27",
@@ -8935,6 +9151,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — the corpus source carries `«Pater Noster»` with guillemets. Both Perl (strip) and compositor (preserve) are defensible renderings of the same source token; neither is liturgically wrong. Phase 3 §3h defers to the corpus author's formatting.",
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-03-30/Matins/89cb274b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-30",
+    "hour": "Matins",
+    "firstExpected": "4:5 Irascímini, et nolíte peccáre: * quæ dícitis in córdibus vestris, in cubílibus vestris compungímini.",
+    "firstActual": "4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5 — the source line carries `‡ ... *` in Psalm 4:5. The compositor keeps that half-verse split while Perl flattens the same line to a single `*` divider.",
+    "notes": "Representative Rubrics 1960 Psalm 4 half-verse family; fan out across matching 1960 Matins rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-03-31/Compline/57de2841": {
@@ -9045,6 +9273,30 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-05-09/Lauds/2af868c1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-09",
+    "hour": "Lauds",
+    "firstExpected": "99:3 Pópulus ejus, et oves páscuæ ejus: * introíte portas ejus in confessióne, átria ejus in hymnis: confitémini illi.",
+    "firstActual": "99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
+    "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-05-09/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-09",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Rubrics 1960. Fan out to all 1960 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-05-09/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-05-09",
@@ -9105,6 +9357,30 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-05-19/Lauds/2af868c1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-19",
+    "hour": "Lauds",
+    "firstExpected": "99:3 Pópulus ejus, et oves páscuæ ejus: * introíte portas ejus in confessióne, átria ejus in hymnis: confitémini illi.",
+    "firstActual": "99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
+    "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-05-19/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-19",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-13.txt:1-15 and upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — Jan 13 inherits Epiphany by `ex Sancti/01-06`, and the inherited Epiphany rule set explicitly overrides the fifth Vespers psalm with `Psalm5 Vespera=116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113.",
+    "notes": "Representative entry for the Rubrics 1960 Epiphany-octave Vespers fifth-psalm override family where the inherited Rule section replaces the Day0 fifth slot with Psalm 116.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-05-26/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-05-26",
@@ -9163,6 +9439,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-05-30/Matins/89cb274b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-30",
+    "hour": "Matins",
+    "firstExpected": "4:5 Irascímini, et nolíte peccáre: * quæ dícitis in córdibus vestris, in cubílibus vestris compungímini.",
+    "firstActual": "4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5 — the source line carries `‡ ... *` in Psalm 4:5. The compositor keeps that half-verse split while Perl flattens the same line to a single `*` divider.",
+    "notes": "Representative Rubrics 1960 Psalm 4 half-verse family; fan out across matching 1960 Matins rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-05-30/None/318cf47a": {
@@ -10173,6 +10461,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-11-01/Matins/89cb274b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Matins",
+    "firstExpected": "4:5 Irascímini, et nolíte peccáre: * quæ dícitis in córdibus vestris, in cubílibus vestris compungímini.",
+    "firstActual": "4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5 — the source line carries `‡ ... *` in Psalm 4:5. The compositor keeps that half-verse split while Perl flattens the same line to a single `*` divider.",
+    "notes": "Representative Rubrics 1960 Psalm 4 half-verse family; fan out across matching 1960 Matins rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-11-05/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-05",
@@ -10183,6 +10483,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:129 — the corpus source carries `«Pater Noster»` with guillemets. Both Perl (strip) and compositor (preserve) are defensible renderings of the same source token; neither is liturgically wrong. Phase 3 §3h defers to the corpus author's formatting.",
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-11-05/Vespers/b1fc00bf": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Vespers",
+    "firstExpected": "124:2 Montes in circúitu ejus: * et Dóminus in circúitu pópuli sui, ex hoc nunc et usque in sǽculum.",
+    "firstActual": "124:2 Montes in circúitu ejus: ‡ et Dóminus in circúitu pópuli sui, * ex hoc nunc et usque in sǽculum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm124.txt:2 — the source encodes Psalm 124:2b with `‡ ... *`. The compositor preserves the corpus half-verse marker while Perl flattens it.",
+    "notes": "Representative Rubrics 1960 Psalm 124 half-verse family; fan out across matching 1960 Vespers rows.",
+    "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-11-08/Compline/57de2841": {

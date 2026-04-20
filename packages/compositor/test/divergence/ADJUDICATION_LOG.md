@@ -829,6 +829,45 @@ not.
 stalls at a false `Amen, allelúja` seam; the same rows now move forward
 to deeper unresolved families.
 
+### 2026-04-20 — Pattern: Roman psalm half-verse `‡` markers are flattened by Perl (perl-bug)
+
+**Ledger signal.** After the shared Roman structural fixes moved first
+divergences deeper, a recurring Roman seam remained where Perl emits a
+single `*` split while the compositor preserves source-backed `‡ ... *`
+half-verse structure. This surfaced across `Reduced - 1955` and
+`Rubrics 1960 - 1960` on multiple psalms (62, 4, 124, 114, and 99).
+
+**Root cause.** The corpus files explicitly encode these verses with
+half-verse markers (`‡`) before the normal `*` split. The compositor
+preserves that structure (and strips numeric carry markers where
+appropriate), while the Perl comparison surface flattens those lines to
+single-asterisk boundaries.
+
+**Resolution.** Class `perl-bug`. Added representative row-level
+adjudications for the stable signature hashes:
+
+- `9fbc4e11` (`Psalm 62:3`)
+- `89cb274b` (`Psalm 4:5`)
+- `b1fc00bf` (`Psalm 124:2`)
+- `839eeb27` (`Psalm 114:4`)
+- `2af868c1` (`Psalm 99:3`) for the remaining Rubrics 1960 rows not yet
+  covered by earlier fanout snapshots
+
+Then ran `adjudications:fanout` over full ledgers to propagate across
+matching rows in each policy.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm4.txt:5`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm124.txt:2`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm114.txt:5`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5`
+
+**Impact.** Another repeated Roman source-vs-Perl punctuation/structure
+family is now explicitly classified, reducing `unadjudicated` backlog
+without introducing compositor or rubrical-engine date logic.
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each
