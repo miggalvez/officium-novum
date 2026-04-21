@@ -1,4 +1,4 @@
-import type { TextContent, TextIndex } from '@officium-novum/parser';
+import { languageFallbackChain, type TextContent, type TextIndex } from '@officium-novum/parser';
 import type {
   ConditionEvalContext,
   DayOfficeSummary,
@@ -362,7 +362,13 @@ function composePrimeMartyrologySection(args: ComposeSlotArgs): Section | undefi
   const perLanguage = new Map<string, readonly TextContent[]>();
 
   for (const language of args.options.languages) {
-    const path = primeMartyrologyPath(args.corpus, args.context.version.handle, language, nextDate.fileKey);
+    const path = primeMartyrologyPath(
+      args.corpus,
+      args.context.version.handle,
+      language,
+      args.options.langfb,
+      nextDate.fileKey
+    );
     if (!path) {
       continue;
     }
@@ -407,10 +413,32 @@ function primeMartyrologyPath(
   corpus: TextIndex,
   handle: string,
   language: string,
+  langfb: string | undefined,
   fileKey: string
 ): string | undefined {
+  const fallbackChain = languageFallbackChain(language, { langfb });
+  for (const candidateLanguage of fallbackChain) {
+    for (const candidatePath of primeMartyrologyCandidates(
+      handle,
+      candidateLanguage,
+      fileKey
+    )) {
+      if (corpus.getFile(`${candidatePath}.txt`)) {
+        return candidatePath;
+      }
+    }
+  }
+
+  return undefined;
+}
+
+function primeMartyrologyCandidates(
+  handle: string,
+  language: string,
+  fileKey: string
+): readonly string[] {
   const candidates: string[] = [];
-  const latin = /^Latin(?:-|$)/u.test(language);
+  const latin = /^(Latin|la)(?:-|$)/iu.test(language);
   if (latin && handle.includes('1960')) {
     candidates.push(`horas/${language}/Martyrologium1960/${fileKey}`);
   } else if (latin && handle.includes('1955')) {
@@ -419,8 +447,7 @@ function primeMartyrologyPath(
     candidates.push(`horas/${language}/Martyrologium1570/${fileKey}`);
   }
   candidates.push(`horas/${language}/Martyrologium/${fileKey}`);
-
-  return candidates.find((path) => corpus.getFile(`${path}.txt`));
+  return candidates;
 }
 
 function resolvePrimeMartyrologyFile(
@@ -528,7 +555,7 @@ function moonLabelForDate(date: MartyrologyDateParts, language: string): string 
     return `Luna ${LATIN_MOON_ORDINALS[moonDay - 1]} Anno Dómini ${date.year}`;
   }
 
-  return `${ENGLISH_MONTHS[date.month - 1]} ${date.day}${ordinalSuffix(date.day)} ${date.year}, the ${moonDay}${ordinalSuffix(moonDay)} day of the Moon,`;
+  return `the ${moonDay}${ordinalSuffix(moonDay)} day of the Moon, in the year of our Lord ${date.year}`;
 }
 
 function gregorianMoonDay(date: MartyrologyDateParts): number {
