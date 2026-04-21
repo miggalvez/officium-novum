@@ -247,6 +247,9 @@ export function mapHeaderToSlots(header: string): readonly SlotName[] {
   if (normalized === 'Invit' || normalized.startsWith('Invitatorium')) {
     return ['invitatory'];
   }
+  if (normalized === 'Martyrologium') {
+    return ['martyrology'];
+  }
   if (normalized === 'Oratio') {
     return ['oration'];
   }

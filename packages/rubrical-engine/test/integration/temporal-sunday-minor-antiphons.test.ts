@@ -225,6 +225,31 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
     },
     240_000
   );
+
+  it(
+    'adds the Prime Martyrologium structural slot on Easter Octave weekdays while Triduum Prime still omits it',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        for (const date of ['2024-04-01', '2024-04-02'] as const) {
+          expect(slotAt(engine, date, 'prime', 'martyrology')?.kind).toBe('prime-martyrology');
+        }
+
+        expect(slotAt(engine, '2024-03-29', 'prime', 'martyrology')?.kind).toBe('empty');
+      }
+    },
+    240_000
+  );
 });
 
 let enginesPromise: Promise<ReadonlyMap<string, RubricalEngine>> | undefined;
@@ -358,7 +383,7 @@ function slotAt(
   engine: RubricalEngine,
   date: string,
   hour: 'prime' | 'terce' | 'sext' | 'none',
-  slotName: 'chapter' | 'responsory' | 'versicle' | 'oration'
+  slotName: 'chapter' | 'responsory' | 'versicle' | 'oration' | 'martyrology'
 ) {
   return engine.resolveDayOfficeSummary(date).hours[hour]?.slots[slotName];
 }

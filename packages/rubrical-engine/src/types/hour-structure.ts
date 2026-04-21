@@ -10,6 +10,7 @@ export type SlotName =
   | 'invitatory'
   | 'hymn'
   | 'psalmody'
+  | 'martyrology'
   | 'chapter'
   | 'responsory'
   | 'versicle'
@@ -54,6 +55,7 @@ export type SlotContent =
     }
   | { readonly kind: 'ordered-refs'; readonly refs: readonly TextReference[] }
   | { readonly kind: 'psalmody'; readonly psalms: readonly PsalmAssignment[] }
+  | { readonly kind: 'prime-martyrology' }
   | { readonly kind: 'empty' }
   // Matins-only rich slot forms from design §16.3 (plan-first architecture).
   | { readonly kind: 'matins-invitatorium'; readonly source: InvitatoriumSource }

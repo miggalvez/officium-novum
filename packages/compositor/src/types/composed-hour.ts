@@ -18,6 +18,7 @@ export type SectionType =
   | 'lectio-brevis'
   | 'benedictio'
   | 'invitatory'
+  | 'martyrology'
   | 'conclusion'
   | 'other';
 

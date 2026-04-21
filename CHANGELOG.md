@@ -14,7 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
-- **2026-04-21.** Closed the shared Roman Easter-Octave opening-antiphon, `Capitulum Versum 2`, one-alone wrapper, and Prime ordinary-oration seams. The next repeated family is the Prime Martyrologium handoff.
+- **2026-04-21.** Closed the shared Roman Easter-Octave opening-antiphon, `Capitulum Versum 2`, one-alone wrapper, Prime ordinary-oration, and Prime Martyrologium handoff/lunar-heading seams. The next repeated family is the Prime Martyrologium body-formatting seam (`_` / `v.` / `r.` / `Mobile.txt`).
 - **2026-04-20.** Closed the Roman temporal-Sunday minor-antiphon seam, the festal/Quad Sunday Prime psalm-table lanes, Triduum Compline routing, Passiontide Matins invitatory materialization, Triduum `Gloria omittitur`, and `Pater totum secreto`; also ran the first full-ledger fanout sweep and the Roman half-verse adjudication batch.
 - **2026-04-19.** Burned down the January Roman frontier: second-Vespers antiphon ownership, January minor-hour and Vespers later-block seams, Matins inherited-omit adjudications, and the first large Divino Afflatu / Roman `perl-bug` and `rendering-difference` batches.
 - **2026-04-18.** Opened 3h with the adjudication log + sidecar workflow and the first three engine-bug fixes: hymn doxology `*`, `Psalmus N [M]` headings, and wrapped-psalmody inner-unit composition.

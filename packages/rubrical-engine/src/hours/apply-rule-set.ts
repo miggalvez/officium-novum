@@ -160,6 +160,11 @@ function resolveSlot(
     return specialOration;
   }
 
+  const primeMartyrology = resolvePrimeMartyrology(slot.name, input);
+  if (primeMartyrology) {
+    return primeMartyrology;
+  }
+
   const properRef = findProperReference(properFiles, slot, input.hour);
   const communeRef = properRef ? undefined : findCommuneReference(input, slot);
   if (input.hour === 'compline' && slot.name === 'lectio-brevis') {
@@ -208,6 +213,8 @@ function isSuppressed(slot: SlotName, omit: readonly OmittableSlot[]): boolean {
       return omit.includes('incipit');
     case 'hymn':
       return omit.includes('hymnus');
+    case 'martyrology':
+      return omit.includes('martyrologium');
     case 'preces':
       return omit.includes('preces');
     case 'suffragium':
@@ -217,6 +224,17 @@ function isSuppressed(slot: SlotName, omit: readonly OmittableSlot[]): boolean {
     default:
       return false;
   }
+}
+
+function resolvePrimeMartyrology(
+  slotName: SlotName,
+  input: ApplyRuleSetInput
+): SlotContent | undefined {
+  if (slotName !== 'martyrology' || input.hour !== 'prime') {
+    return undefined;
+  }
+
+  return { kind: 'prime-martyrology' };
 }
 
 function resolveFeastFile(

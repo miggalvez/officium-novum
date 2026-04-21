@@ -413,6 +413,48 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders the Easter Octave Prime Martyrologium tail after the one-alone oration bridge', async () => {
+    const expectedHeading = normalizeLatin(
+      'Tértio Nonas Aprílis Luna vicésima tértia Anno Dómini 2024'
+    );
+    const expectedConclmart = normalizeLatin(
+      'Et álibi aliórum plurimórum sanctórum Mártyrum et Confessórum, atque sanctárum Vírginum.'
+    );
+    const expectedPretiosa = normalizeLatin('Pretiósa in conspéctu Dómini.');
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-04-02');
+      const prime = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'prime',
+        options: { languages: ['Latin'] }
+      });
+
+      const slotOrder = prime.sections.map((section) => section.slot);
+      expect(
+        slotOrder.indexOf('martyrology'),
+        `${version} Prime should continue into the Martyrologium after the oration bridge`
+      ).toBeGreaterThan(slotOrder.indexOf('oration'));
+
+      const martyrologyLines = sectionTexts(prime, 'martyrology').map(normalizeLatin);
+      expect(
+        martyrologyLines[0],
+        `${version} Prime should open the Martyrologium tail with the next day's lunar-date heading`
+      ).toBe(expectedHeading);
+      expect(
+        martyrologyLines,
+        `${version} Prime should include the common Martyrologium conclusion`
+      ).toContain(expectedConclmart);
+      expect(
+        martyrologyLines,
+        `${version} Prime should continue from the Martyrologium into Pretiosa`
+      ).toContain(expectedPretiosa);
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 

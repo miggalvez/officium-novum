@@ -687,6 +687,9 @@ function parseOmitDirective(
   if (containsWord(normalized, 'hymnus')) {
     slots.push('hymnus');
   }
+  if (containsWord(normalized, 'martyrologium')) {
+    slots.push('martyrologium');
+  }
   if (containsWord(normalized, 'preces')) {
     slots.push('preces');
   }

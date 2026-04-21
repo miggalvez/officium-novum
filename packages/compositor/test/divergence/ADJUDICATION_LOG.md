@@ -1281,6 +1281,66 @@ psalm-table seam at line `16` (`Psalmus 117 [2]` versus
 `Psalmus 118(1-16) [2]`). The next repeated family is therefore the
 Prime Martyrologium handoff, not another collect-routing variant.
 
+### 2026-04-21 — Pattern: Easter-Octave Prime Martyrologium handoff + lunar heading (engine-bug, narrowed)
+
+**Commit.** `pending tranche commit`
+
+**Ledger signal.** After the ordinary-Prime oration fix above, shared
+Roman weekday Prime rows on the Easter Octave (`2024-04-01` through at
+least `2024-04-03` in both `Reduced - 1955` and
+`Rubrics 1960 - 1960`) stopped at the post-oration handoff. Perl
+continued into the Prime Martyrologium with the next day's heading
+(`Quarto` / `Tértio` / `Prídie Nonas Aprílis ...`), while the
+compositor emitted no Prime-after-oration section at all. Once the
+section existed, the first line still diverged by one lunar day
+(`vicésima quarta` versus source-backed `vicésima tértia` on
+`2024-04-02` Prime).
+
+**Root cause.** Split ownership at a shared Roman structural seam:
+
+- Phase 2 still had no typed Prime `martyrology` slot, even though
+  `Ordinarium/Prima.txt` continues structurally from the oration bridge
+  into `#Martyrologium`.
+- Phase 3 had no Prime special-source composer for the next-day
+  Martyrologium file, so even a correct slot could not materialize the
+  section.
+- The first lunar-label port also used a normal civil day-of-year,
+  while upstream `specprima.pl` uses `days_to_date(...)[7]`; for modern
+  dates that field is the zero-based `localtime` `yday`, so the initial
+  port drifted by one lunar ordinal.
+
+**Resolution.** Class `engine-bug`, narrowed at the owning seams only:
+
+- Phase 2 now maps `#Martyrologium` to a real `martyrology` slot and
+  gives Prime a typed `prime-martyrology` content kind.
+- Phase 3 now composes that slot from the version-correct next-day
+  Martyrologium file, appends `Conclmart`, and keeps `Pretiosa` unless
+  the source seam says `ex C9`.
+- The lunar heading helper now follows the same upstream
+  `specprima.pl` / `Date.pm` arithmetic, including the modern zero-based
+  `yday` behavior that Perl actually uses.
+- Coverage was locked before coding in
+  `packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`
+  and `packages/compositor/test/integration/compose-upstream.test.ts`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Ordinarium/Prima.txt:63-71`
+- `upstream/web/cgi-bin/horas/specials.pl:298-301`
+- `upstream/web/cgi-bin/horas/specials/specprima.pl:138-225`
+- `upstream/web/cgi-bin/horas/specials/specprima.pl:277-351`
+- `upstream/web/cgi-bin/DivinumOfficium/Date.pm:259-345`
+
+**Impact.** The shared Roman Prime Martyrologium handoff seam is
+closed, and the Roman weekday Prime rows now advance one line deeper
+into the same lane. On `2024-04-02` in both Roman policies the first
+divergence is now line `66`: Perl expects the separator `_` that begins
+the responsorial Martyrologium body, while the compositor currently
+falls straight into the first notice text without the source-backed
+`v.` / `r.` / separator structure. The next repeated family is
+therefore the Prime Martyrologium body-formatting seam, not the
+post-oration handoff.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
@@ -1301,15 +1361,15 @@ chronological entry:
   (`upstream/.../Common/Prayers.txt:52`) confirms this is a glyph-level
   rendering choice, not a selection bug. Preliminary class:
   `rendering-difference`.
-- **Easter Octave Prime Martyrologium seam** — after the ordinary-Prime
-  oration fix above, the repeated Roman weekday Prime rows
-  (`2024-04-01` through at least `2024-04-03`, both `Reduced - 1955`
-  and `Rubrics 1960 - 1960`) now first diverge at the Martyrologium
-  handoff. Perl expects the lunar-date heading
-  `Quarto/Tértio/Prídie Nonas Aprílis ...`, while the compositor stops
-  after the oration bridge and emits no Prime-after-oration section at
-  all (`∅`). Preliminary class: open ownership question, likely a
-  shared Roman Prime post-oratio structural seam.
+- **Easter Octave Prime Martyrologium body-formatting seam** — after the
+  handoff + lunar-heading fix above, the repeated Roman weekday Prime
+  rows (`2024-04-01` through at least `2024-04-03`, both
+  `Reduced - 1955` and `Rubrics 1960 - 1960`) now first diverge on the
+  first Martyrologium body line. Perl expects the separator `_` and the
+  source-backed `v.` / `r.` alternation from `specprima.pl`, while the
+  compositor currently flattens the Martyrologium file into ordinary
+  text lines and skips the `Mobile.txt` / separator choreography.
+  Preliminary class: shared Roman Phase 3 composition bug.
 
 The Compline benediction-verb issue is already adjudicated in
 [ADR-012](../../../../docs/adr/012-compline-benediction-verb.md) and is

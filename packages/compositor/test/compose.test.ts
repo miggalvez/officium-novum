@@ -46,13 +46,15 @@ function buildSummary(
     version?: ResolvedVersion;
     season?: DayOfficeSummary['temporal']['season'];
     dayName?: string;
+    date?: string;
   } = {}
 ): DayOfficeSummary {
   const version = options.version ?? stubVersion;
   const season = options.season ?? 'eastertide';
   const dayName = options.dayName ?? 'Dominica in Albis';
+  const date = options.date ?? '2024-04-14';
   return {
-    date: '2024-04-14',
+    date,
     version: {
       handle: version.handle,
       kalendar: version.kalendar,
@@ -1208,5 +1210,92 @@ describe('composeHour', () => {
     expect(
       composed.sections[0]!.lines[0]!.texts.Latin?.some((run) => run.type === 'unresolved-reference')
     ).toBe(true);
+  });
+
+  it('falls back to Latin Prime Martyrologium files for Latin-derived locales', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Martyrologium1955R/04-03', '__preamble', [
+        { type: 'text', value: 'Tértio Nonas Aprílis' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Conclmart', [
+        {
+          type: 'verseMarker',
+          marker: 'V.',
+          text: 'Et álibi aliórum plurimórum sanctórum Mártyrum.'
+        }
+      ])
+    );
+
+    const reduced1955Version: ResolvedVersion = {
+      ...stubVersion,
+      handle: 'Reduced - 1955' as never
+    };
+    const hour: HourStructure = {
+      hour: 'prime',
+      slots: {
+        martyrology: {
+          kind: 'prime-martyrology'
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour, {
+        version: reduced1955Version,
+        date: '2024-04-02'
+      }),
+      version: reduced1955Version,
+      hour: 'prime',
+      options: { languages: ['Latin-Bea'], langfb: 'Latin' }
+    });
+
+    const martyrology = composed.sections.find((section) => section.slot === 'martyrology');
+    expect(martyrology?.slot).toBe('martyrology');
+    expect(renderRuns(martyrology!.lines[0]!, 'Latin-Bea')).toContain('Tértio Nonas Aprílis');
+    expect(renderRuns(martyrology!.lines[1]!, 'Latin-Bea')).toBe(
+      'Et álibi aliórum plurimórum sanctórum Mártyrum.'
+    );
+  });
+
+  it('avoids duplicating the civil date in the English Martyrologium moon label', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/English/Martyrologium/04-03', '__preamble', [
+        { type: 'text', value: 'Upon the 3rd day of April, were born into the better life:' }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'prime',
+      slots: {
+        martyrology: {
+          kind: 'prime-martyrology'
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour, {
+        date: '2024-04-02'
+      }),
+      version: stubVersion,
+      hour: 'prime',
+      options: { languages: ['English'], langfb: 'English' }
+    });
+
+    const martyrology = composed.sections.find((section) => section.slot === 'martyrology');
+    expect(martyrology?.slot).toBe('martyrology');
+    const firstLine = renderRuns(martyrology!.lines[0]!, 'English');
+    expect(firstLine).toContain('Upon the 3rd day of April, were born into the better life:');
+    expect(firstLine).toContain('the ');
+    expect(firstLine).toContain('day of the Moon');
+    expect(firstLine).not.toContain('April 3rd 2024');
   });
 });
