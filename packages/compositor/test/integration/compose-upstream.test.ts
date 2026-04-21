@@ -337,6 +337,68 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('wraps Easter Octave one-alone Roman minor-hour orations with the source-backed prelude and conclusion lines', async () => {
+    const orationPrelude = [
+      normalizeLatin('Dómine, exáudi oratiónem meam.'),
+      normalizeLatin('Et clamor meus ad te véniat.'),
+      normalizeLatin('Orémus.')
+    ] as const;
+    const primeOrationTail = [
+      normalizeLatin('Dómine, exáudi oratiónem meam.'),
+      normalizeLatin('Et clamor meus ad te véniat.'),
+      normalizeLatin('Benedicámus Dómino.'),
+      normalizeLatin('Deo grátias.')
+    ] as const;
+    const minorHourConclusion = [
+      normalizeLatin('Dómine, exáudi oratiónem meam.'),
+      normalizeLatin('Et clamor meus ad te véniat.'),
+      normalizeLatin('Benedicámus Dómino.'),
+      normalizeLatin('Deo grátias.'),
+      normalizeLatin('Fidélium ánimæ per misericórdiam Dei requiéscant in pace.'),
+      normalizeLatin('Amen.')
+    ] as const;
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-04-01');
+
+      const prime = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'prime',
+        options: { languages: ['Latin'] }
+      });
+      expect(
+        sectionTexts(prime, 'oration').map(normalizeLatin).slice(0, orationPrelude.length),
+        `${version} Prime should still open the one-alone oration with Domine exaudi / Oremus`
+      ).toEqual(orationPrelude);
+      expect(
+        sectionTexts(prime, 'oration').map(normalizeLatin).slice(-primeOrationTail.length),
+        `${version} Prime should keep the one-alone post-oration Benedicamus bridge`
+      ).toEqual(primeOrationTail);
+
+      for (const hour of ['terce', 'sext', 'none'] as const) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+
+        expect(
+          sectionTexts(composed, 'oration').map(normalizeLatin).slice(0, orationPrelude.length),
+          `${version} ${hour} should still open the one-alone oration with Domine exaudi / Oremus`
+        ).toEqual(orationPrelude);
+        expect(
+          sectionTexts(composed, 'conclusion').map(normalizeLatin),
+          `${version} ${hour} should emit the one-alone minor-hour conclusion block after the collect`
+        ).toEqual(minorHourConclusion);
+      }
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 
@@ -1250,7 +1312,7 @@ function psalmodyTexts(
 
 function sectionTexts(
   composed: ReturnType<typeof composeHour>,
-  slot: 'chapter' | 'responsory' | 'versicle' | 'oration'
+  slot: 'chapter' | 'responsory' | 'versicle' | 'oration' | 'conclusion'
 ): readonly string[] {
   const section = composed.sections.find((candidate) => candidate.slot === slot);
   expect(section, `${composed.hour} is missing the ${slot} section`).toBeDefined();

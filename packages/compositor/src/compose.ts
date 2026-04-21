@@ -24,6 +24,7 @@ import type { ComposedHour, ComposeOptions, ComposeWarning, Section } from './ty
 
 const MAX_DEFERRED_DEPTH = 8;
 const PSALMI_MINOR_SUFFIX = '/Psalterium/Psalmi/Psalmi minor';
+const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
 const GLORIA_PATRI_MACRO: Extract<TextContent, { type: 'macroRef' }> = {
   type: 'macroRef',
   name: 'Gloria'
@@ -105,11 +106,12 @@ export function composeHour(input: ComposeInput): ComposedHour {
         slot: 'incipit',
         content: incipit,
         hour: input.hour,
-        directives: hour.directives,
-        corpus: input.corpus,
-        options: input.options,
-        context,
-        onWarning
+      directives: hour.directives,
+      structure: hour,
+      corpus: input.corpus,
+      options: input.options,
+      context,
+      onWarning
       });
       if (section) {
         sections.push(section);
@@ -146,6 +148,7 @@ export function composeHour(input: ComposeInput): ComposedHour {
       content: slotContent,
       hour: input.hour,
       directives: hour.directives,
+      structure: hour,
       corpus: input.corpus,
       options: input.options,
       context,
@@ -315,6 +318,7 @@ interface ComposeSlotArgs {
   readonly content: SlotContent;
   readonly hour: HourName;
   readonly directives: HourStructure['directives'];
+  readonly structure: HourStructure;
   readonly corpus: TextIndex;
   readonly options: ComposeOptions;
   readonly context: ConditionEvalContext;
@@ -527,6 +531,11 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
 }
 
 function directiveDrivenSlotContent(args: ComposeSlotArgs): SlotContent | undefined {
+  const oneAloneWrapper = oneAloneMinorHourWrapperContent(args);
+  if (oneAloneWrapper) {
+    return oneAloneWrapper;
+  }
+
   if (args.slot === 'preces') {
     const ref = precesDirectiveReference(args.hour, args.directives);
     if (!ref) {
@@ -628,6 +637,74 @@ function suffragiumSection(args: ComposeSlotArgs): string {
   }
 
   return 'Suffragium';
+}
+
+/**
+ * Easter-Octave / one-alone minor-hour shape: `Capitulum Versum 2` replaces
+ * the later block, leaving responsory + versicle empty while the source-backed
+ * collect still needs the shared `Domine exaudi / Oremus` wrapper. For Prime,
+ * the post-collect `Domine exaudi / Benedicamus` bridge lives in the oration
+ * block itself; for Terce/Sext/None, the same lane materializes as a distinct
+ * conclusion block immediately after the collect.
+ */
+function oneAloneMinorHourWrapperContent(args: ComposeSlotArgs): SlotContent | undefined {
+  if (!usesOneAloneMinorHourWrapper(args)) {
+    return undefined;
+  }
+
+  if (args.slot === 'oration') {
+    if (args.content.kind !== 'single-ref') {
+      return undefined;
+    }
+
+    const refs: TextReference[] = [
+      commonPrayerRef('Domine exaudi'),
+      commonPrayerRef('Oremus'),
+      args.content.ref
+    ];
+    if (args.hour === 'prime') {
+      refs.push(commonPrayerRef('Domine exaudi'), commonPrayerRef('Benedicamus Domino'));
+    }
+
+    return { kind: 'ordered-refs', refs };
+  }
+
+  if (args.slot === 'conclusion' && args.hour !== 'prime') {
+    return {
+      kind: 'ordered-refs',
+      refs: [
+        commonPrayerRef('Domine exaudi'),
+        commonPrayerRef('Benedicamus Domino'),
+        commonPrayerRef('Fidelium animae')
+      ]
+    };
+  }
+
+  return undefined;
+}
+
+function usesOneAloneMinorHourWrapper(args: ComposeSlotArgs): boolean {
+  if (!isMinorHour(args.hour) || (args.slot !== 'oration' && args.slot !== 'conclusion')) {
+    return false;
+  }
+
+  const chapter = args.structure.slots.chapter;
+  const responsory = args.structure.slots.responsory;
+  const versicle = args.structure.slots.versicle;
+
+  return (
+    chapter?.kind === 'single-ref' &&
+    chapter.ref.section.trim() === 'Versum 2' &&
+    responsory?.kind === 'empty' &&
+    versicle?.kind === 'empty'
+  );
+}
+
+function commonPrayerRef(section: string): TextReference {
+  return {
+    path: COMMON_PRAYERS_PATH,
+    section
+  };
 }
 
 function taggedReferencesFrom(

@@ -8,7 +8,7 @@ Sub-phases 3a–3g shipped; 3h (Ordo-backed divergence adjudication) in flight. 
 
 The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-resolved `CorpusIndex` into a typed, format-agnostic `ComposedHour`, and the supporting parser / rubrical-engine changes preserve the wrapper, conditional, and keyed-psalter source structures that Phase 3 needs. The architectural boundary from ADR-008 / ADR-009 is still enforced in code: the compositor never re-runs the parser's general `@`-reference resolver, and unresolved `reference` nodes are surfaced as `unresolved-reference` runs rather than silently dropped. Sub-phases 3d–3e added coordinated cross-package schema changes in rubrical-engine (`NocturnPlan.benedictions`, four-site Matins-commemoration unblock); the compositor side consumes these through typed hooks, not branching on policy names.
 
-**Validation.** Per design §19.1, the authority order is Ordo Recitandi → governing rubrical books (1911 / 1955 / 1960) → legacy Divinum Officium Perl output. `composeHour()` runs exception-free across every Hour for every date in 2024 under each of the three Roman policies (8,784 compositions per run) via the `test:no-throw` integration test. The live Perl comparison harness at `pnpm -C packages/compositor compare:phase-3-perl` now surfaces a `Matching prefix` metric per row and per-policy best/average summaries — forward progress is visible even when row counts stay flat. Current ledger state is: Divino Afflatu `496` divergent hours with `21` still unadjudicated (best/average matching prefix `5/2.7` lines), Reduced 1955 `488` with `311` unadjudicated (`248/41.7`), and Rubrics 1960 `488` with `230` unadjudicated (`248/44.1`). Classifications live in [`packages/compositor/test/divergence/adjudications.json`](packages/compositor/test/divergence/adjudications.json) per [ADR-011](docs/adr/011-phase-3-divergence-adjudication.md), with chronological pattern resolutions in [`packages/compositor/test/divergence/ADJUDICATION_LOG.md`](packages/compositor/test/divergence/ADJUDICATION_LOG.md) and upstream `perl-bug` families tracked in [`docs/upstream-issues.md`](docs/upstream-issues.md).
+**Validation.** Per design §19.1, the authority order is Ordo Recitandi → governing rubrical books (1911 / 1955 / 1960) → legacy Divinum Officium Perl output. `composeHour()` runs exception-free across every Hour for every date in 2024 under each of the three Roman policies (8,784 compositions per run) via the `test:no-throw` integration test. The live Perl comparison harness at `pnpm -C packages/compositor compare:phase-3-perl` now surfaces a `Matching prefix` metric per row and per-policy best/average summaries — forward progress is visible even when row counts stay flat. Current ledger state is: Divino Afflatu `496` divergent hours with `21` still unadjudicated (best/average matching prefix `5/2.7` lines), Reduced 1955 `467` with `288` unadjudicated (`248/40.9`), and Rubrics 1960 `467` with `207` unadjudicated (`248/43.3`). Classifications live in [`packages/compositor/test/divergence/adjudications.json`](packages/compositor/test/divergence/adjudications.json) per [ADR-011](docs/adr/011-phase-3-divergence-adjudication.md), with chronological pattern resolutions in [`packages/compositor/test/divergence/ADJUDICATION_LOG.md`](packages/compositor/test/divergence/ADJUDICATION_LOG.md) and upstream `perl-bug` families tracked in [`docs/upstream-issues.md`](docs/upstream-issues.md).
 
 Latest 3h burn-down work closed the January Roman Matins boundary checkpoint without reopening Vespers, dirge, or Divino Afflatu implementation. On the code side, `applyRuleSet()` now honors Matins `incipit` suppression, the Matins planner keeps the full nine-psalm Day0 Sunday block for one-nocturn Roman Sundays, and the Matins composer now slices split Psalm 9 segments by verse range while restoring the psalter-backed V./R. versicle pair when Phase 2 points only at the opening `V.` line. That moved Jan `6` off the opener bug, carried Jan `14` `1960` deep into the later one-nocturn seam, and left Jan `13` as a clean inherited-omit source question instead of a mixed selection/order bug. The compare-ledger follow-through then closed the remaining January Roman Matins rows as adjudication work: Jan `6/14` pre-lesson guillemets are now classified as `rendering-difference`, Jan `13` Roman Matins is a source-backed inherited Epiphany omit `perl-bug`, and Jan `14` `1960` Matins is a source-backed trailing-`‡` `perl-bug`.
 
@@ -183,6 +183,26 @@ over-decorated `Hæc dies` surface into the next one-alone
 minor-hour-oratio lane (`Dómine, exáudi oratiónem meam.` before the
 collect), lifting the Reduced 1955 average matching-prefix metric to
 `41.8` while Rubrics 1960 holds at `44.1` after rounding.
+
+The next shared-Roman tranche then closed that one-alone oration-wrapper
+family in Phase 3 itself. When Prime / Terce / Sext / None carry the
+shared `Capitulum Versum 2` slot shape (`chapter = Versum 2`,
+`responsory = empty`, `versicle = empty`), the compositor now
+synthesizes the source-backed ordered refs from
+`Psalterium/Common/Prayers` instead of dropping straight into the
+collect: `Domine exaudi` + `Oremus` before the oration, Prime's
+post-collect `Domine exaudi` / `Benedicamus Domino` bridge, and the
+Terce / Sext / None conclusion block `Domine exaudi` /
+`Benedicamus Domino` / `Fidelium animae`. Focused upstream-backed
+coverage in
+`packages/compositor/test/integration/compose-upstream.test.ts` locks
+that wrapper seam on `2024-04-01` across both Roman policies. With that
+fix in place, the shared Easter-Octave Tertia / Sexta / Nona rows now
+match Perl exactly, the live Roman unadjudicated counts fall to `288`
+(`Reduced - 1955`) and `207` (`Rubrics 1960 - 1960`), and the next
+repeated family on the live frontier is the narrower Easter-Octave
+Prime ordinary-oration routing seam (while Easter Sunday Prime remains a
+separate psalm-table family).
 
 Core composition engine implemented (pre-sub-phase breakdown):
 
