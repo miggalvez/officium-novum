@@ -45,6 +45,10 @@ const PATER_SECRETO_REF: TextReference = {
   path: 'horas/Latin/Psalterium/Common/Rubricae',
   section: 'Pater secreto'
 };
+const PATER_TOTUM_SECRETO_REF: TextReference = {
+  path: 'horas/Latin/Psalterium/Common/Prayers',
+  section: 'Pater totum secreto'
+};
 const PATER_NOSTER_ET_REF: TextReference = {
   path: 'horas/Latin/Psalterium/Common/Prayers',
   section: 'Pater noster Et'
@@ -1241,6 +1245,11 @@ function composePreLessonTransition(
   totalNocturns: number,
   args: MatinsComposeContext
 ): readonly Section[] {
+  if (nocturn.lessonIntroduction === 'pater-totum-secreto') {
+    const section = composeOtherReferenceSection(PATER_TOTUM_SECRETO_REF, args);
+    return section ? [section] : [];
+  }
+
   const out: Section[] = [];
 
   const secretoSection = composeOtherReferenceSection(PATER_SECRETO_REF, args);

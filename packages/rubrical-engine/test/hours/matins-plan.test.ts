@@ -15,6 +15,7 @@ const HOUR_RULES: HourRuleSet = {
   omit: [],
   psalterScheme: 'ferial',
   psalmOverrides: [],
+  matinsLessonIntroduction: 'ordinary',
   minorHoursSineAntiphona: false,
   minorHoursFerialPsalter: false
 };
@@ -214,6 +215,32 @@ describe('buildMatinsPlan', () => {
       .flatMap((nocturn) => nocturn.responsories)
       .some((responsory) => responsory.replacesTeDeum === true);
     expect(marked).toBe(false);
+  });
+
+  it('switches Limit Benedictiones Oratio offices to the secret Pater-only lesson introduction', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Quad6-5.txt', triduumMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Quad6-5', 'I-privilegiata-triduum', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: {
+        ...HOUR_RULES,
+        matinsLessonIntroduction: 'pater-totum-secreto'
+      },
+      temporal: temporal('2024-03-29', 'Quad6-5', 'passiontide', 'I-privilegiata-triduum'),
+      policy: rubrics1960Policy,
+      corpus
+    });
+
+    expect(result.plan.nocturnPlan).toHaveLength(3);
+    expect(
+      result.plan.nocturnPlan.map((nocturn) => nocturn.lessonIntroduction)
+    ).toEqual(['pater-totum-secreto', 'pater-totum-secreto', 'pater-totum-secreto']);
+    expect(
+      result.plan.nocturnPlan.map((nocturn) => nocturn.benedictions)
+    ).toEqual([[], [], []]);
   });
 });
 

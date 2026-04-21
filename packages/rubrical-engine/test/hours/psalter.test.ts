@@ -64,6 +64,7 @@ function hourRules(
     omit: [],
     psalterScheme: 'ferial',
     psalmOverrides: [],
+    matinsLessonIntroduction: 'ordinary',
     minorHoursSineAntiphona: false,
     minorHoursFerialPsalter: false,
     ...overrides

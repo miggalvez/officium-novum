@@ -141,14 +141,18 @@ export function buildMatinsPlanWithWarnings(
     // Per Phase 3 plan §3d: benedictions are required on every NocturnPlan
     // so the type checker enumerates every consumer. The policy selects the
     // actual TextReference for each lesson's benediction.
-    const benedictions = input.policy.selectBenedictions({
-      nocturnIndex,
-      lessons,
-      celebration: input.celebration,
-      celebrationRules: input.celebrationRules,
-      temporal: input.temporal,
-      totalLessons: shape.totalLessons
-    });
+    const lessonIntroduction = input.hourRules.matinsLessonIntroduction;
+    const benedictions =
+      lessonIntroduction === 'ordinary'
+        ? input.policy.selectBenedictions({
+            nocturnIndex,
+            lessons,
+            celebration: input.celebration,
+            celebrationRules: input.celebrationRules,
+            temporal: input.temporal,
+            totalLessons: shape.totalLessons
+          })
+        : [];
 
     nocturnPlan.push({
       index: nocturnIndex,
@@ -163,6 +167,7 @@ export function buildMatinsPlanWithWarnings(
         shape.nocturns,
         antiphons.length
       ),
+      lessonIntroduction,
       lessons,
       responsories,
       benedictions

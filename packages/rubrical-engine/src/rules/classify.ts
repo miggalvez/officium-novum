@@ -62,6 +62,11 @@ export type HourEffect =
       readonly hours?: readonly HourName[];
     }
   | {
+      readonly kind: 'matins-lesson-introduction';
+      readonly value: 'ordinary' | 'pater-totum-secreto';
+      readonly hours?: readonly HourName[];
+    }
+  | {
       readonly kind: 'minor-hours-sine-antiphona';
       readonly value: true;
       readonly hours?: readonly HourName[];
@@ -371,6 +376,18 @@ function classifyAction(directive: RuleActionDirective): ClassifiedDirective {
         kind: 'psalter-scheme',
         value: normalized.endsWith('dominica') ? 'dominica' : 'ferial',
         hours
+      }
+    };
+  }
+
+  // Corpus examples: Tempora/Quad6-[4-6], Commune/C9, Sancti/11-02.
+  if (normalized === 'limit benedictiones oratio') {
+    return {
+      target: 'hour',
+      effect: {
+        kind: 'matins-lesson-introduction',
+        value: 'pater-totum-secreto',
+        hours: ['matins']
       }
     };
   }

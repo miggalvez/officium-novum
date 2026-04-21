@@ -262,6 +262,48 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders the Triduum Matins secret Pater Noster rubric without the ordinary benediction bundle on Holy Thursday and Good Friday', async () => {
+    const secretPater = normalizeLatin('« Pater Noster » dicitur totum secreto.');
+    const secretPrayer = normalizeLatin(
+      'Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.'
+    );
+    const ordinaryPater = normalizeLatin('« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »');
+    const jube = normalizeLatin('Jube, domne, benedícere.');
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const date of ['2024-03-28', '2024-03-29'] as const) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+
+        const lines = canonicalLatinLines(composed);
+        expect(
+          lines.filter((line) => line === secretPater),
+          `${version} ${date} should say the fully secret Pater once before each nocturn's lessons`
+        ).toHaveLength(3);
+        expect(
+          lines.filter((line) => line === secretPrayer),
+          `${version} ${date} should include the full secretly said Pater noster exactly once at each nocturn transition`
+        ).toHaveLength(3);
+        expect(
+          lines,
+          `${version} ${date} should not keep the ordinary Matins partial-Pater rubric`
+        ).not.toContain(ordinaryPater);
+        expect(
+          lines,
+          `${version} ${date} should suppress Jube domne under Limit Benedictiones Oratio`
+        ).not.toContain(jube);
+      }
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 

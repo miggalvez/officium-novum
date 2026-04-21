@@ -113,7 +113,7 @@ export function expandDeferredNodes(
         const sectionCandidates = formulaSectionCandidates(node.name);
         const expanded = expandNamedSection(
           sectionCandidates,
-          formulaPathCandidates(sectionCandidates),
+          formulaPathCandidates(node.name, sectionCandidates),
           context
         );
         out.push(...(expanded ?? [node]));
@@ -223,8 +223,14 @@ function formulaSectionCandidates(name: string): readonly string[] {
   return dedupe([trimmed, strippedPeriod, strippedRubric, rubricLowered]);
 }
 
-function formulaPathCandidates(sectionCandidates: readonly string[]): readonly string[] {
+function formulaPathCandidates(
+  name: string,
+  sectionCandidates: readonly string[]
+): readonly string[] {
   const base = [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, REVTRANS_PATH];
+  if (/^\s*rubrica\s+/iu.test(name)) {
+    return [COMMON_RUBRICAE_PATH, COMMON_PRAYERS_PATH, REVTRANS_PATH];
+  }
   // For `Gloria omittitur`, Latin `Revtrans` holds an empty shadow section;
   // `Common/Translate` carries the actual localized text per language. Keep
   // `Revtrans` ahead of `Translate` so a (hypothetical) localized

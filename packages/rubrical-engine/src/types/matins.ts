@@ -2,7 +2,10 @@ import type { Condition } from '@officium-novum/parser';
 
 import type { PsalmAssignment, TextReference } from './hour-structure.js';
 import type { FeastReference } from './model.js';
-import type { PapalNameBindings } from './rule-set.js';
+import type {
+  MatinsLessonIntroduction,
+  PapalNameBindings
+} from './rule-set.js';
 
 export type LessonIndex =
   | 1
@@ -117,6 +120,7 @@ export interface NocturnPlan {
   readonly psalmody: readonly PsalmAssignment[];
   readonly antiphons: readonly AntiphonReference[];
   readonly versicle: VersicleSource;
+  readonly lessonIntroduction: MatinsLessonIntroduction;
   readonly lessons: readonly LessonPlan[];
   readonly responsories: readonly ResponsorySource[];
   /**

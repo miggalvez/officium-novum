@@ -108,4 +108,58 @@ describe('expandDeferredNodes', () => {
       })
     ).toEqual([{ type: 'text', value: 'Glory be is omitted' }]);
   });
+
+  it('prefers Common/Rubricae for rubrica-prefixed formulas before stripped-name prayer fallthrough', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Common/Rubricae.txt',
+      sections: [
+        {
+          header: 'Pater totum secreto',
+          content: [{ type: 'rubric', value: '« Pater Noster » dicitur totum secreto.' }],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Common/Prayers.txt',
+      sections: [
+        {
+          header: 'Pater totum secreto',
+          content: [
+            { type: 'rubric', value: '« Pater Noster » dicitur totum secreto.' },
+            { type: 'verseMarker', marker: 'v.', text: 'Pater noster, qui es in cælis...' }
+          ],
+          startLine: 1,
+          endLine: 2
+        },
+        {
+          header: 'Pater noster',
+          content: [{ type: 'verseMarker', marker: 'v.', text: 'Pater noster, qui es in cælis...' }],
+          startLine: 4,
+          endLine: 4
+        }
+      ]
+    });
+
+    expect(
+      expandDeferredNodes(
+        [
+          { type: 'formulaRef', name: 'rubrica Pater totum secreto' },
+          { type: 'formulaRef', name: 'Pater noster' }
+        ],
+        {
+          index,
+          language: 'Latin',
+          langfb: 'Latin',
+          seen: new Set(),
+          maxDepth: 4
+        }
+      )
+    ).toEqual([
+      { type: 'rubric', value: '« Pater Noster » dicitur totum secreto.' },
+      { type: 'verseMarker', marker: 'v.', text: 'Pater noster, qui es in cælis...' }
+    ]);
+  });
 });

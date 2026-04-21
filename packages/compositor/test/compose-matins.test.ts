@@ -214,6 +214,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [
                 {
                   index: 1,
@@ -448,6 +449,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []
@@ -548,6 +550,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []
@@ -656,6 +659,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []
@@ -759,6 +763,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []
@@ -883,6 +888,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []
@@ -986,6 +992,7 @@ describe('composeHour(matins)', () => {
                   section: 'Versum'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []
@@ -1075,6 +1082,7 @@ describe('composeHour(matins)', () => {
               versicle: {
                 reference: { path: 'horas/Latin/Tempora/Test', section: 'Responsory1' }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [
                 {
                   index: 1,
@@ -1150,6 +1158,96 @@ describe('composeHour(matins)', () => {
     expect(renderRuns(composed.sections[11]!.lines[0]!, 'Latin')).toBe('Responsorium primum.');
   });
 
+  it('uses Pater totum secreto and suppresses the ordinary pre-lesson bundle under Limit Benedictiones Oratio', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Tempora/Test', [
+        { header: 'Lectio1', content: [{ type: 'text', value: 'Lectio prima contents' }] },
+        {
+          header: 'Responsory1',
+          content: [{ type: 'verseMarker', marker: 'R.', text: 'Responsorium primum.' }]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Pater totum secreto', [
+        { type: 'rubric', value: '« Pater Noster » dicitur totum secreto.' },
+        {
+          type: 'text',
+          value:
+            'Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.'
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 1,
+              psalmody: [],
+              antiphons: [],
+              versicle: {
+                reference: { path: 'horas/Latin/Tempora/Test', section: 'Responsory1' }
+              },
+              lessonIntroduction: 'pater-totum-secreto',
+              lessons: [
+                {
+                  index: 1,
+                  source: {
+                    kind: 'patristic',
+                    reference: { path: 'horas/Latin/Tempora/Test', section: 'Lectio1' }
+                  }
+                }
+              ],
+              responsories: [
+                {
+                  index: 1,
+                  reference: { path: 'horas/Latin/Tempora/Test', section: 'Responsory1' }
+                }
+              ],
+              benedictions: []
+            }
+          ]
+        },
+        'te-deum': { kind: 'te-deum', decision: 'omit' }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(composed.sections.map((section) => section.slot)).toEqual([
+      'heading',
+      'versicle',
+      'other',
+      'heading',
+      'lectio-brevis',
+      'responsory'
+    ]);
+    expect(renderRuns(composed.sections[2]!.lines[0]!, 'Latin')).toBe(
+      '« Pater Noster » dicitur totum secreto.'
+    );
+    expect(renderRuns(composed.sections[2]!.lines[1]!, 'Latin')).toBe(
+      'Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.'
+    );
+    expect(composed.sections.find((section) => section.slot === 'benedictio')).toBeUndefined();
+    expect(
+      composed.sections
+        .flatMap((section) => section.lines)
+        .map((line) => renderRuns(line, 'Latin'))
+    ).not.toContain('Jube, domne, benedícere.');
+  });
+
   it('replaces the Te Deum with the flagged responsory when decision is replace-with-responsory', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
@@ -1177,6 +1275,7 @@ describe('composeHour(matins)', () => {
               versicle: {
                 reference: { path: 'horas/Latin/Tempora/Test', section: 'Responsory3' }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [
                 {
                   index: 3,
@@ -1278,6 +1377,7 @@ describe('composeHour(matins)', () => {
               versicle: {
                 reference: { path: 'horas/Latin/Tempora/Test', section: 'Responsory1' }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [
                 {
                   index: 1,
