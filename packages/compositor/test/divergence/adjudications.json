@@ -6609,6 +6609,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
+  "Reduced - 1955/2024-03-28/Matins/0ec3bec8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-28",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur totum secreto.",
+    "firstActual": "« Pater Noster » dicitur totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:4-5 — the corpus rubric for `[Pater totum secreto]` explicitly includes guillemets around `Pater Noster`. After the duplicate-prayer compositor fix, both the compositor and the Perl surface emit the full secretly said prayer; the remaining stable divergence is only the corpus guillemet rendering on the rubric line.",
+    "notes": "Shared Roman Triduum `Pater totum secreto` Matins family after the structural `Limit Benedictiones Oratio` fix. With the `rubrica ...` formula-path bug fixed, the compositor now emits the same single full `Pater noster` per nocturn as Perl; the remaining row signature is only the guillemet rendering difference on the rubric line.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-29/Compline/fa4d64f6": {
     "policy": "Reduced - 1955",
     "date": "2024-03-29",
@@ -6618,6 +6630,18 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-5.txt:204 and upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:210-233 and upstream/web/www/horas/Latin/Tempora/Quad6-5r.txt:1 — Good Friday inherits Holy Thursday's `Special Completorium` section by `@Tempora/Quad6-4::s/usque ad mortem/usque ad mortem, mortem autem crucis/`, while the 1955/1960 `Quad6-5r` file inherits that via preamble. The inherited source still carries the 1955/1960 short `Vísita, quǽsumus...` close instead of the older full-block opening `Special Completorium` that Perl expects.",
     "notes": "Shared Roman 1955/1960 Good Friday Special Completorium family. The corrected compositor follows the inherited source-shortened block; Perl retains the pre-1955 opening surface.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-03-29/Matins/0ec3bec8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-29",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur totum secreto.",
+    "firstActual": "« Pater Noster » dicitur totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:4-5 — the corpus rubric for `[Pater totum secreto]` explicitly includes guillemets around `Pater Noster`. After the duplicate-prayer compositor fix, both the compositor and the Perl surface emit the full secretly said prayer; the remaining stable divergence is only the corpus guillemet rendering on the rubric line.",
+    "notes": "Shared Roman Triduum `Pater totum secreto` Matins family after the structural `Limit Benedictiones Oratio` fix. With the `rubrica ...` formula-path bug fixed, the compositor now emits the same single full `Pater noster` per nocturn as Perl; the remaining row signature is only the guillemet rendering difference on the rubric line.",
     "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
@@ -9201,6 +9225,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },
+  "Rubrics 1960 - 1960/2024-03-28/Matins/0ec3bec8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-28",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur totum secreto.",
+    "firstActual": "« Pater Noster » dicitur totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:4-5 — the corpus rubric for `[Pater totum secreto]` explicitly includes guillemets around `Pater Noster`. After the duplicate-prayer compositor fix, both the compositor and the Perl surface emit the full secretly said prayer; the remaining stable divergence is only the corpus guillemet rendering on the rubric line.",
+    "notes": "Shared Roman Triduum `Pater totum secreto` Matins family after the structural `Limit Benedictiones Oratio` fix. With the `rubrica ...` formula-path bug fixed, the compositor now emits the same single full `Pater noster` per nocturn as Perl; the remaining row signature is only the guillemet rendering difference on the rubric line.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-29/Compline/fa4d64f6": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-29",
@@ -9210,6 +9246,18 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-5.txt:204 and upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:210-233 and upstream/web/www/horas/Latin/Tempora/Quad6-5r.txt:1 — Good Friday inherits Holy Thursday's `Special Completorium` section by `@Tempora/Quad6-4::s/usque ad mortem/usque ad mortem, mortem autem crucis/`, while the 1955/1960 `Quad6-5r` file inherits that via preamble. The inherited source still carries the 1955/1960 short `Vísita, quǽsumus...` close instead of the older full-block opening `Special Completorium` that Perl expects.",
     "notes": "Shared Roman 1955/1960 Good Friday Special Completorium family. The corrected compositor follows the inherited source-shortened block; Perl retains the pre-1955 opening surface.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-03-29/Matins/0ec3bec8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-29",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur totum secreto.",
+    "firstActual": "« Pater Noster » dicitur totum secreto.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:4-5 — the corpus rubric for `[Pater totum secreto]` explicitly includes guillemets around `Pater Noster`. After the duplicate-prayer compositor fix, both the compositor and the Perl surface emit the full secretly said prayer; the remaining stable divergence is only the corpus guillemet rendering on the rubric line.",
+    "notes": "Shared Roman Triduum `Pater totum secreto` Matins family after the structural `Limit Benedictiones Oratio` fix. With the `rubrica ...` formula-path bug fixed, the compositor now emits the same single full `Pater noster` per nocturn as Perl; the remaining row signature is only the guillemet rendering difference on the rubric line.",
     "resolvedAt": "2026-04-20",
     "commitSha": "pending"
   },

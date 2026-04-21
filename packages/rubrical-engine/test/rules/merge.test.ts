@@ -39,6 +39,14 @@ describe('deriveHourRuleSet', () => {
 
     expect(hourRules.omit).toEqual(expect.arrayContaining(['incipit', 'invitatorium', 'hymnus']));
   });
+
+  it('derives the secret Pater totum secreto lesson introduction for Matins', () => {
+    const rules = makeCelebrationRuleSet(['Limit Benedictiones Oratio']);
+
+    const hourRules = deriveHourRuleSet(makeCelebration(), rules, 'matins');
+
+    expect(hourRules.matinsLessonIntroduction).toBe('pater-totum-secreto');
+  });
 });
 
 function makeCelebration(): Celebration {

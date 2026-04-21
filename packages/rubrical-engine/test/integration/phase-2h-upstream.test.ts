@@ -346,6 +346,38 @@ describeIfReady('Phase 2h DA/1955 upstream matrix', () => {
     const reducedChristmasEve = reduced.resolveDayOfficeSummary('2024-12-24');
     expect(reducedChristmasEve.commemorations).toEqual([]);
   }, 240_000);
+
+  it('encodes Limit Benedictiones Oratio as the secret Pater-only Matins lesson introduction in Roman 1955/1960', async () => {
+    const engines = await loadEngines(['Reduced - 1955', 'Rubrics 1960 - 1960']);
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const engine = engines.get(version);
+      expect(engine, `missing engine for ${version}`).toBeDefined();
+      if (!engine) {
+        continue;
+      }
+
+      for (const date of ['2024-03-28', '2024-03-29'] as const) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const psalmody = summary.hours.matins?.slots.psalmody;
+        expect(psalmody?.kind, `${version} ${date} Matins should keep a nocturn plan`).toBe(
+          'matins-nocturns'
+        );
+        if (psalmody?.kind !== 'matins-nocturns') {
+          continue;
+        }
+
+        expect(
+          psalmody.nocturns.map((nocturn) => nocturn.lessonIntroduction),
+          `${version} ${date} should replace the ordinary Matins pre-lesson bundle`
+        ).toEqual(['pater-totum-secreto', 'pater-totum-secreto', 'pater-totum-secreto']);
+        expect(
+          psalmody.nocturns.map((nocturn) => nocturn.benedictions),
+          `${version} ${date} should suppress Matins benedictions under Limit Benedictiones Oratio`
+        ).toEqual([[], [], []]);
+      }
+    }
+  }, 240_000);
 });
 
 async function loadEngines(

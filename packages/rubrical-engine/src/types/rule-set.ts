@@ -73,6 +73,7 @@ export interface HourRuleSet {
   readonly omit: readonly OmittableSlot[];
   readonly psalterScheme: PsalterScheme;
   readonly psalmOverrides: readonly PsalmOverride[];
+  readonly matinsLessonIntroduction: MatinsLessonIntroduction;
   readonly minorHoursSineAntiphona: boolean;
   readonly minorHoursFerialPsalter: boolean;
   readonly capitulumVariant?: CapitulumVariant;
@@ -125,6 +126,8 @@ export type CapitulumVariant = {
   readonly scheme: 2;
   readonly scope?: 'lauds' | 'vespers' | 'lauds-vespers';
 };
+
+export type MatinsLessonIntroduction = 'ordinary' | 'pater-totum-secreto';
 
 export interface HourScopedDirective {
   readonly directive: RuleDirective;

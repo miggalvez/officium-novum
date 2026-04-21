@@ -90,6 +90,7 @@ export function deriveHourRuleSet(
   const omit: OmittableSlot[] = [];
   let psalterScheme: PsalterScheme = 'ferial';
   const psalmOverrides: PsalmOverride[] = [];
+  let matinsLessonIntroduction: HourRuleSet['matinsLessonIntroduction'] = 'ordinary';
   let minorHoursSineAntiphona = false;
   let minorHoursFerialPsalter = false;
   let capitulumVariant: HourRuleSet['capitulumVariant'];
@@ -135,6 +136,9 @@ export function deriveHourRuleSet(
         }
         break;
       }
+      case 'matins-lesson-introduction':
+        matinsLessonIntroduction = effect.value;
+        break;
       case 'minor-hours-sine-antiphona':
         minorHoursSineAntiphona = true;
         break;
@@ -161,6 +165,7 @@ export function deriveHourRuleSet(
     omit: freezeArray(omit),
     psalterScheme,
     psalmOverrides: freezeArray(psalmOverrides),
+    matinsLessonIntroduction,
     minorHoursSineAntiphona,
     minorHoursFerialPsalter,
     ...(capitulumVariant ? { capitulumVariant } : {})

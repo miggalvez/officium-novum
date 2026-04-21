@@ -214,6 +214,7 @@ describe('commemorated Matins lesson composition (Bug 2)', () => {
           versicle: {
             reference: { path: 'horas/Latin/Tempora/Adv1-0', section: 'V' }
           },
+          lessonIntroduction: 'ordinary',
           lessons: [
             {
               index: 9,
@@ -340,6 +341,7 @@ describe('TextReference selector handling (Bug 1)', () => {
                   selector: 'missing'
                 }
               },
+              lessonIntroduction: 'ordinary',
               lessons: [],
               responsories: [],
               benedictions: []

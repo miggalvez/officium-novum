@@ -139,6 +139,7 @@ function oneNocturnPlan(options: { firstKind?: 'scripture' | 'patristic' } = {})
         psalmody: [],
         antiphons: [],
         versicle: { reference: ref('horas/Latin/Tempora/Pent07-2', 'Nocturn 1 Versum') },
+        lessonIntroduction: 'ordinary',
         lessons: [
           {
             index: 1,
@@ -205,6 +206,7 @@ function threeNocturnPlan(): MatinsPlan {
         psalmody: [],
         antiphons: [],
         versicle: { reference: ref('horas/Latin/Tempora/Adv2-0', 'Nocturn 1 Versum') },
+        lessonIntroduction: 'ordinary',
         lessons: [
           scriptureLesson(1),
           scriptureLesson(2),
@@ -221,6 +223,7 @@ function threeNocturnPlan(): MatinsPlan {
         psalmody: [],
         antiphons: [],
         versicle: { reference: ref('horas/Latin/Tempora/Adv2-0', 'Nocturn 2 Versum') },
+        lessonIntroduction: 'ordinary',
         lessons: [
           { index: 4, source: { kind: 'hagiographic', reference: ref('horas/Latin/Tempora/Adv2-0', 'Lectio4') } },
           { index: 5, source: { kind: 'hagiographic', reference: ref('horas/Latin/Tempora/Adv2-0', 'Lectio5') } },
@@ -237,6 +240,7 @@ function threeNocturnPlan(): MatinsPlan {
         psalmody: [],
         antiphons: [],
         versicle: { reference: ref('horas/Latin/Tempora/Adv2-0', 'Nocturn 3 Versum') },
+        lessonIntroduction: 'ordinary',
         lessons: [
           {
             index: 7,

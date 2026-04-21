@@ -48,6 +48,7 @@ describe('classifyDirective', () => {
     { line: 'Una Antiphona', target: 'celebration', effectKind: 'una-antiphona' },
     { line: 'Psalmi Dominica', target: 'hour', effectKind: 'psalter-scheme' },
     { line: 'Psalmi Feria', target: 'hour', effectKind: 'psalter-scheme' },
+    { line: 'Limit Benedictiones Oratio', target: 'hour', effectKind: 'matins-lesson-introduction' },
     { line: 'Psalm5 Vespera=116', target: 'hour', effectKind: 'psalm-override' },
     { line: 'Psalm5 Vespera3=138', target: 'hour', effectKind: 'psalm-override' },
     { line: 'Psalm5Vespera=116', target: 'hour', effectKind: 'psalm-override' },

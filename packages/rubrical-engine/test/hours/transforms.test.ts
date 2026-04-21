@@ -51,6 +51,7 @@ function hourRules(hour: HourRuleSet['hour']): HourRuleSet {
     omit: [],
     psalterScheme: 'ferial',
     psalmOverrides: [],
+    matinsLessonIntroduction: 'ordinary',
     minorHoursSineAntiphona: false,
     minorHoursFerialPsalter: false
   };
