@@ -24,55 +24,6 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
-### 2026-04-20 — Roman Triduum Matins `Pater totum secreto` is truncated by the Perl render surface
-
-**Classification.** `perl-bug`
-
-**Summary.** On Holy Thursday and Good Friday under both Roman policies,
-the rule `Limit Benedictiones Oratio` switches the Matins pre-lesson
-transition from the ordinary partial secret `Pater` plus benediction
-bundle to `$Pater totum secreto`. The compositor now follows that
-source-backed path, but the legacy Perl comparison surface stops after
-the rubric line and never emits the full secretly said `Pater noster`
-before `Lectio 1`.
-
-**Primary source.**
-
-- `upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:11`
-- `upstream/web/www/horas/Latin/Tempora/Quad6-5.txt:16`
-- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:28-30`
-- `upstream/web/cgi-bin/horas/specmatins.pl:654-660`
-
-These sources establish that:
-
-- Holy Thursday / Good Friday set `Limit Benedictiones Oratio`.
-- Perl's own `lectiones` control flow switches that case to
-  `$Pater totum secreto`.
-- `[Pater totum secreto]` expands to both the fully secret rubric and
-  the full `Pater noster`, not just the rubric sentence.
-
-**Reproduction.**
-Run:
-
-```bash
-pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --hour Matins --date 2024-03-28 --no-write-docs --max-report 5
-pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --hour Matins --date 2024-03-29 --no-write-docs --max-report 5
-```
-
-The first visible mismatch still lands on the rubric line because Perl
-strips the source guillemets, but a deeper source-backed probe shows the
-same rendered row then advances directly to `Lectio 1` instead of
-emitting the full secretly said prayer from `Common/Prayers`.
-
-**Affected stable divergence-row keys.**
-
-| Policy | Date | Hour | Row key suffix |
-|---|---|---|---|
-| Reduced - 1955 | 2024-03-28 | Matins | `0ec3bec8` |
-| Reduced - 1955 | 2024-03-29 | Matins | `0ec3bec8` |
-| Rubrics 1960 - 1960 | 2024-03-28 | Matins | `0ec3bec8` |
-| Rubrics 1960 - 1960 | 2024-03-29 | Matins | `0ec3bec8` |
-
 ### 2026-04-19 — Divino Afflatu opening rubric prose is dropped by the Perl render surface
 
 **Classification.** `perl-bug`

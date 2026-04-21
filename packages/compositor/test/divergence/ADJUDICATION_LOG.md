@@ -1051,7 +1051,8 @@ get their own `## Entry` block as they are adjudicated:
   emission, so Holy Thursday / Good Friday Roman Matins advance beyond
   the old psalmody seam.
 - **Triduum Matins `Limit Benedictiones Oratio` / `Pater totum secreto`**
-  — closed as `engine-bug` plus shared Roman `perl-bug`. Holy Thursday
+  — closed as `engine-bug` plus shared Roman
+  `rendering-difference`. Holy Thursday
   and Good Friday carry the reusable rule seam
   `Limit Benedictiones Oratio` (`Tempora/Quad6-4.txt:11`,
   `Tempora/Quad6-5.txt:16`), and `specmatins.pl::lectiones`
@@ -1063,12 +1064,14 @@ get their own `## Entry` block as they are adjudicated:
   ownership split cleanly:
   Phase 2 had to encode the special Matins lesson-introduction seam,
   and Phase 3 had to compose that source section instead of the
-  ordinary partial-`Pater` path. After the fix, the live compare rows
-  still first surface at the rubric line because Perl strips the source
-  guillemets, but a deeper source-backed probe shows Perl also stops
-  after the rubric and never emits the full secretly said prayer before
-  `Lectio 1`. Those four Roman Holy Thursday / Good Friday rows are now
-  adjudicated as `perl-bug`, not as a mere rendering difference.
+  ordinary partial-`Pater` path. A follow-up bugfix in deferred formula
+  expansion then restored the single full `Pater noster` per nocturn by
+  forcing `rubrica ...` formulas to resolve through
+  `Psalterium/Common/Rubricae` before falling through to
+  `Psalterium/Common/Prayers`. With that correction in place, both the
+  compositor and Perl emit the same full secret prayer, and the only
+  stable remaining divergence on those four Triduum rows is the source
+  guillemet rendering on `« Pater Noster » dicitur totum secreto.`.
 
 ## See also
 

@@ -289,9 +289,9 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           `${version} ${date} should say the fully secret Pater once before each nocturn's lessons`
         ).toHaveLength(3);
         expect(
-          lines.filter((line) => line === secretPrayer).length,
-          `${version} ${date} should include the full secretly said Pater noster at each nocturn transition`
-        ).toBeGreaterThanOrEqual(3);
+          lines.filter((line) => line === secretPrayer),
+          `${version} ${date} should include the full secretly said Pater noster exactly once at each nocturn transition`
+        ).toHaveLength(3);
         expect(
           lines,
           `${version} ${date} should not keep the ordinary Matins partial-Pater rubric`

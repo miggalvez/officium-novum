@@ -116,11 +116,12 @@ special secret-`Pater` introduction, while Phase 3 now composes
 falling back to the ordinary partial-`Pater` bundle. Focused
 Phase 2h / Phase 3 upstream tests lock the Roman 1955/1960 Triduum
 behavior, the live Roman unadjudicated counts drop to `309`
-(`Reduced - 1955`) and `228` (`Rubrics 1960 - 1960`), and those
-Holy Thursday / Good Friday Matins rows are now recorded as
-shared-Roman `perl-bug` entries because the legacy Perl surface still
-stops after the rubric and never materializes the full source-backed
-secret `Pater noster`.
+(`Reduced - 1955`) and `228` (`Rubrics 1960 - 1960`). A follow-up
+resolver fix then corrected `rubrica ...` formula expansion so
+`[Pater totum secreto]` no longer duplicated the full secret
+`Pater noster`; with that compositor bug removed, the Holy Thursday /
+Good Friday Matins rows fall back to their true remaining class:
+the source-backed guillemet rendering difference on the rubric line.
 
 A follow-up adjudication sweep then ran a full-ledger fanout pass across
 all three policy ledgers (`--max-doc-rows 600` + `adjudications:fanout`)
