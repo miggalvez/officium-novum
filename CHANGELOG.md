@@ -165,6 +165,25 @@ Octave minor hours, the Roman average matching-prefix metrics rise to
 (`Rubrics 1960 - 1960`), and the next shared Roman work shifts to the
 later-block `Ant. Hæc dies...` seam instead of the opening psalmody.
 
+The follow-up Easter Octave tranche then narrowed that later-block lane
+without introducing any date-specific compositor logic. Phase 2 now
+encodes the reusable `Capitulum Versum 2` rule as a structural
+replacement of the chapter / responsory / versicle block with the
+source-backed inherited `Versum 2` ref, so Prime and the minor hours no
+longer fall through to empty ordinarium wrappers after antiphonless
+psalmody. Phase 3 then stopped treating that substituted `Hæc dies...`
+chapter as an ordinary short chapter for Paschaltide
+`add-alleluia`, preserving the upstream text verbatim. Focused
+regressions in
+`packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`,
+`packages/compositor/test/apply-directives.test.ts`, and
+`packages/compositor/test/integration/compose-upstream.test.ts` lock the
+cross-package seam. The live Roman frontier now moves past the dropped /
+over-decorated `Hæc dies` surface into the next one-alone
+minor-hour-oratio lane (`Dómine, exáudi oratiónem meam.` before the
+collect), lifting the Reduced 1955 average matching-prefix metric to
+`41.8` while Rubrics 1960 holds at `44.1` after rounding.
+
 Core composition engine implemented (pre-sub-phase breakdown):
 
 - `@officium-novum/compositor` package scaffold with build, typecheck, and Vitest setup

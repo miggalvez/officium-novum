@@ -174,6 +174,9 @@ function addAlleluia(slot: SlotName, content: readonly TextContent[]): readonly 
   if (slot === 'psalmody') {
     return appendAlleluiaToPsalmodyAntiphons(content);
   }
+  if (slot === 'chapter' && containsAntiphonSubstitution(content)) {
+    return content;
+  }
   if (!isAntiphonSlot(slot) && slot !== 'chapter') return content;
   return appendAlleluiaToLastText(content, ', allelúja.');
 }
@@ -263,6 +266,14 @@ function appendAlleluiaToPsalmodyAntiphons(
 
 function isAntiphonLine(value: string): boolean {
   return /^ant\./iu.test(value.trimStart());
+}
+
+function containsAntiphonSubstitution(content: readonly TextContent[]): boolean {
+  return content.some(
+    (node) =>
+      (node.type === 'verseMarker' && node.marker === 'Ant.') ||
+      (node.type === 'text' && isAntiphonLine(node.value))
+  );
 }
 
 function isAntiphonSlot(slot: SlotName): boolean {

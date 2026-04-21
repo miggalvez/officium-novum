@@ -1061,6 +1061,59 @@ later-block `Ant. Hæc dies * quam fecit Dóminus...` surface. The Roman
 average matching-prefix metrics improve to `41.7`
 (`Reduced - 1955`) and `44.1` (`Rubrics 1960 - 1960`).
 
+### 2026-04-21 — Pattern: Easter Octave `Capitulum Versum 2` later block (engine-bug, narrowed)
+
+**Symptoms.** After the opening-antiphon fix above, shared Roman Easter
+Octave Prime / Terce rows on `2024-03-31` through `2024-04-06` were
+still diverging immediately after psalmody. Perl expected the inherited
+`Hæc dies` line from `Pasc0-0`, while the compositor either dropped the
+whole later block or appended a stray Paschaltide `allelúja` to the
+substituted text.
+
+**Root cause.** The office files already carried the reusable structural
+rule seam: `Pasc0-0` and its inherited ferias combine `Capitulum Versum
+2` with a proper `[Versum 2]`. In Perl, `specials.pl` handles that rule
+by replacing the ordinary chapter / responsory / versicle block with the
+single inherited `Versum 2` content. Phase 2 had never encoded that
+replacement in the `DayOfficeSummary`, so Prime and the minor hours fell
+through to empty ordinarium wrappers. Once the Phase 2 routing was
+fixed, Phase 3 still treated the substituted chapter like an ordinary
+Paschaltide short chapter and appended `, allelúja.` through the shared
+`add-alleluia` transform.
+
+**Decision.** Fix the owning layers only:
+
+- Phase 2 now treats `Capitulum Versum 2` as a structural replacement of
+  the later block with the inherited `Versum 2` ref, suppressing the
+  now-spurious responsory / versicle slots.
+- Phase 3 now leaves antiphon-shaped chapter substitutions alone when
+  applying `add-alleluia`, so the inherited `Hæc dies` text survives
+  verbatim.
+
+**Files.**
+
+- `packages/rubrical-engine/src/hours/apply-rule-set.ts`
+- `packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`
+- `packages/compositor/src/directives/apply-directives.ts`
+- `packages/compositor/test/apply-directives.test.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:7-13`
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:105-106`
+- `upstream/web/cgi-bin/horas/specials.pl:58-76`
+
+**Impact.** The shared Roman Easter-Octave lane is narrowed cleanly.
+Prime and the minor hours now reach the source-backed `Hæc dies` text
+instead of dropping straight to the collect, and the compositor no
+longer over-decorates that substituted line with a bogus Paschaltide
+`allelúja`. The live frontier now moves to the next seam in the same
+lane: the missing one-alone oration prelude (`Dómine, exáudi oratiónem
+meam.` / `Et clamor meus ad te véniat.` / `Oremus`) before the collect,
+with Easter-Octave Prime likely splitting further into its own ordinary
+Prime-oration routing question once that prelude is restored.
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each
@@ -1113,13 +1166,15 @@ get their own `## Entry` block as they are adjudicated:
   compositor and Perl emit the same full secret prayer, and the only
   stable remaining divergence on those four Triduum rows is the source
   guillemet rendering on `« Pater Noster » dicitur totum secreto.`.
-- **Easter Octave minor-hour `Hæc dies` later-block seam** — after the
-  antiphon-opening fix above, shared Roman Prime / Terce rows on
-  `2024-03-31` through `2024-04-06` now first diverge later in the same
-  lane: Perl expects `Ant. Hæc dies * quam fecit Dóminus...`, while the
-  compositor currently drops straight to the oration after antiphonless
-  psalmody. Preliminary class: open ownership question; likely a shared
-  Roman structural family rather than a date-by-date compositor tweak.
+- **Easter Octave minor-hour oration prelude seam** — after the
+  `Capitulum Versum 2` fix above, shared Roman Prime / Terce rows on
+  `2024-03-31` through `2024-04-06` now first diverge at the start of
+  the oration wrapper: Perl emits `Dómine, exáudi oratiónem meam.` (and
+  the response / `Oremus`) before the collect, while the compositor
+  jumps directly to the collect text. Preliminary class: open ownership
+  question, but likely a shared Roman Phase 3 oration-composition seam;
+  Easter-Octave Prime may expose an adjacent ordinary-Prime-oration
+  routing split once the prelude is restored.
 
 ## See also
 

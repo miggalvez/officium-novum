@@ -304,6 +304,39 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Easter Octave Versum 2 substitutions on Prime and Terce without adding a Paschaltide alleluia tail', async () => {
+    const expected = normalizeLatin(
+      'Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea.'
+    );
+    const forbidden = normalizeLatin(
+      'Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea, allelúja.'
+    );
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-04-01');
+
+      for (const hour of ['prime', 'terce'] as const) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+
+        expect(
+          sectionTexts(composed, 'chapter').map(normalizeLatin),
+          `${version} ${hour} should keep the inherited Pasc0-0 Versum 2 text verbatim`
+        ).toEqual([expected]);
+        expect(
+          canonicalLatinLines(composed),
+          `${version} ${hour} should not append an extra alleluia to Hæc dies`
+        ).not.toContain(forbidden);
+      }
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 

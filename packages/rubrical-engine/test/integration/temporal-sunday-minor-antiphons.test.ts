@@ -167,6 +167,32 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
     },
     240_000
   );
+
+  it(
+    'replaces the Easter Octave Prime and minor-hour later block with inherited Versum 2',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        for (const date of ['2024-03-31', '2024-04-01'] as const) {
+          expectVersum2LaterBlock(engine, date, 'prime');
+          expectVersum2LaterBlock(engine, date, 'terce');
+          expectVersum2LaterBlock(engine, date, 'sext');
+          expectVersum2LaterBlock(engine, date, 'none');
+        }
+      }
+    },
+    240_000
+  );
 });
 
 let enginesPromise: Promise<ReadonlyMap<string, RubricalEngine>> | undefined;
@@ -284,4 +310,39 @@ function expectMinorHourWithoutAntiphon(
     Array.from({ length: selectors.length }, () => null)
   );
   expect(psalms.map((entry) => entry.psalmRef.selector)).toEqual(selectors);
+}
+
+function expectVersum2LaterBlock(
+  engine: RubricalEngine,
+  date: string,
+  hour: 'prime' | 'terce' | 'sext' | 'none'
+) {
+  expectEmptySlot(slotAt(engine, date, hour, 'responsory'));
+  expectEmptySlot(slotAt(engine, date, hour, 'versicle'));
+  expectSingleRef(slotAt(engine, date, hour, 'chapter'), 'horas/Latin/Tempora/Pasc0-0:Versum 2');
+}
+
+function slotAt(
+  engine: RubricalEngine,
+  date: string,
+  hour: 'prime' | 'terce' | 'sext' | 'none',
+  slotName: 'chapter' | 'responsory' | 'versicle'
+) {
+  return engine.resolveDayOfficeSummary(date).hours[hour]?.slots[slotName];
+}
+
+function expectEmptySlot(slot: ReturnType<typeof slotAt>) {
+  expect(slot?.kind).toBe('empty');
+}
+
+function expectSingleRef(
+  slot: ReturnType<typeof slotAt>,
+  expected: string
+) {
+  expect(slot?.kind).toBe('single-ref');
+  if (!slot || slot.kind !== 'single-ref') {
+    return;
+  }
+
+  expect(`${slot.ref.path}:${slot.ref.section}`).toBe(expected);
 }

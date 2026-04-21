@@ -117,6 +117,18 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
     expect(out).toEqual(content);
   });
 
+  it('does not append alleluia when a chapter slot is carrying an Ant. substitution', () => {
+    const content: TextContent[] = [
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea.'
+      }
+    ];
+    const out = run('chapter', content, ['add-alleluia']);
+    expect(out).toEqual(content);
+  });
+
   it('add-versicle-alleluia only touches V./R. markers on versicle slots', () => {
     const content: TextContent[] = [
       { type: 'verseMarker', marker: 'V.', text: 'Deus, in adjutórium meum inténde' },

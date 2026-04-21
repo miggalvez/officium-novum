@@ -129,6 +129,30 @@ function resolveSlot(
     return { kind: 'psalmody', psalms };
   }
 
+  if (usesVersum2InPlaceOfLaterBlock(input)) {
+    if (slot.name === 'chapter') {
+      const ref = findCapitulumVersum2Reference(properFiles, input);
+      if (!ref) {
+        warnings.push({
+          code: 'hour-slot-unresolved',
+          message: 'Capitulum Versum 2 did not resolve a Versum 2 reference.',
+          severity: 'warn',
+          context: {
+            hour: input.hour,
+            feast: input.celebration.feastRef.path
+          }
+        });
+        return { kind: 'empty' };
+      }
+
+      return { kind: 'single-ref', ref };
+    }
+
+    if (slot.name === 'responsory' || slot.name === 'versicle') {
+      return { kind: 'empty' };
+    }
+  }
+
   const properRef = findProperReference(properFiles, slot, input.hour);
   const communeRef = properRef ? undefined : findCommuneReference(input, slot);
   if (input.hour === 'compline' && slot.name === 'lectio-brevis') {
@@ -235,20 +259,7 @@ function findProperReference(
     return undefined;
   }
 
-  const headers = properHeadersForSlot(slot.name, hour);
-  for (const header of headers) {
-    for (const file of files) {
-      const section = file.sections.find((entry) => entry.header === header);
-      if (section) {
-        return {
-          path: file.path.replace(/\.txt$/u, ''),
-          section: header
-        };
-      }
-    }
-  }
-
-  return undefined;
+  return findReferenceInFiles(files, properHeadersForSlot(slot.name, hour));
 }
 
 function findCommuneReference(
@@ -266,17 +277,7 @@ function findCommuneReference(
     return undefined;
   }
 
-  const headers = properHeadersForSlot(slot.name, input.hour);
-  for (const header of headers) {
-    if (file.sections.some((section) => section.header === header)) {
-      return {
-        path: `horas/Latin/Commune/${comkey}`,
-        section: header
-      };
-    }
-  }
-
-  return undefined;
+  return findReferenceInFile(file, `horas/Latin/Commune/${comkey}`, properHeadersForSlot(slot.name, input.hour));
 }
 
 function decoratePsalmodyAssignments(
@@ -666,6 +667,70 @@ function minorHourLaterBlockFallbackSection(
     default:
       return undefined;
   }
+}
+
+function usesVersum2InPlaceOfLaterBlock(input: ApplyRuleSetInput): boolean {
+  return input.hour !== 'compline' && input.hourRules.capitulumVariant?.scheme === 2;
+}
+
+function findCapitulumVersum2Reference(
+  properFiles: readonly ParsedFile[],
+  input: ApplyRuleSetInput
+): TextReference | undefined {
+  return findReferenceInFiles(properFiles, ['Versum 2']) ?? findCommuneReferenceByHeaders(input, ['Versum 2']);
+}
+
+function findCommuneReferenceByHeaders(
+  input: ApplyRuleSetInput,
+  headers: readonly string[]
+): TextReference | undefined {
+  const comkey = input.celebrationRules.comkey;
+  if (!comkey) {
+    return undefined;
+  }
+
+  const path = `horas/Latin/Commune/${comkey}.txt`;
+  const file = input.corpus.getFile(path);
+  if (!file) {
+    return undefined;
+  }
+
+  return findReferenceInFile(file, `horas/Latin/Commune/${comkey}`, headers);
+}
+
+function findReferenceInFiles(
+  files: readonly ParsedFile[],
+  headers: readonly string[]
+): TextReference | undefined {
+  for (const header of headers) {
+    for (const file of files) {
+      if (file.sections.some((section) => section.header === header)) {
+        return {
+          path: file.path.replace(/\.txt$/u, ''),
+          section: header
+        };
+      }
+    }
+  }
+
+  return undefined;
+}
+
+function findReferenceInFile(
+  file: ParsedFile,
+  path: string,
+  headers: readonly string[]
+): TextReference | undefined {
+  for (const header of headers) {
+    if (file.sections.some((section) => section.header === header)) {
+      return {
+        path,
+        section: header
+      };
+    }
+  }
+
+  return undefined;
 }
 
 function sameReference(left: TextReference, right: TextReference): boolean {
