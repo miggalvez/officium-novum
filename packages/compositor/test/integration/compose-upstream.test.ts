@@ -413,6 +413,59 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps the Passiontide Psalm 94 responsorial split and Gloria omission before the hymn across the Roman families', async () => {
+    for (const version of PHASE_3_ROMAN_HANDLES.filter((handle) => handle !== 'Divino Afflatu - 1954')) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-03-17');
+      const matins = summary.hours.matins;
+      expect(matins).toBeDefined();
+      if (!matins) continue;
+
+      expect(summary.celebration.source, `${version} 2024-03-17 should stay temporal for the invitatory seam`).toBe(
+        'temporal'
+      );
+      expect(matins.slots.invitatory?.kind).toBe('matins-invitatorium');
+      if (matins.slots.invitatory?.kind === 'matins-invitatorium') {
+        expect(matins.slots.invitatory.source.kind).toBe('season');
+        expect(matins.slots.invitatory.source.reference.selector).toBe('Passio');
+      }
+
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(composed.sections.slice(0, 4).map((section) => section.slot)).toEqual([
+        'incipit',
+        'invitatory',
+        'hymn',
+        'heading'
+      ]);
+
+      const invitatory = composed.sections[1];
+      expect(invitatory?.slot).toBe('invitatory');
+      const invitatoryLines = invitatory?.lines.map(renderLatinText) ?? [];
+      expect(invitatoryLines[8], `${version} 2024-03-17 should split Psalm 94 at the caret marker`).toBe(
+        'Sicut in exacerbatióne secúndum diem tentatiónis in desérto: ubi tentavérunt me patres vestri, probavérunt et vidérunt ópera mea.'
+      );
+      expect(
+        invitatoryLines[9],
+        `${version} 2024-03-17 should repeat only the post-asterisk invitatory refrain after the split`
+      ).toBe('Nolíte obduráre corda vestra.');
+      expect(
+        invitatoryLines[12],
+        `${version} 2024-03-17 should render the omitted Gloria rubric before the final antiphon`
+      ).toBe('Gloria omittitur');
+      expect(
+        invitatoryLines[13],
+        `${version} 2024-03-17 should still end the invitatory with the full antiphon`
+      ).toBe('Hódie, si vocem Dómini audiéritis, * Nolíte obduráre corda vestra.');
+    }
+  }, 240_000);
+
   it('keeps a closing Matins antiphon line immediately before the nocturn versicle on January 14 and January 28', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);

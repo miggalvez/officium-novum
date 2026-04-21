@@ -118,6 +118,7 @@ export function composeHour(input: ComposeInput): ComposedHour {
     sections.push(
       ...composeMatinsSections(hour, {
         corpus: input.corpus,
+        summary: input.summary,
         options: input.options,
         directives: hour.directives,
         context,

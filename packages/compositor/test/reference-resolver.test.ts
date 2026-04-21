@@ -157,6 +157,65 @@ describe('swapLanguageSegment', () => {
       }
     ]);
   });
+
+  it('materializes the Passiontide invitatory tail and Gloria omission before antiphon insertion', () => {
+    const materialized = materializeInvitatoryContent(
+      [
+        { type: 'formulaRef', name: 'ant' },
+        {
+          type: 'verseMarker',
+          marker: 'v.',
+          text: 'Hódie, si vocem ejus audiéritis, nolíte obduráre corda vestra, ^ sicut in exacerbatióne secúndum diem tentatiónis in desérto.'
+        },
+        { type: 'formulaRef', name: 'ant2' },
+        {
+          type: 'verseMarker',
+          marker: 'v.',
+          text: 'Quadragínta annis próximus fui generatióni huic.'
+        },
+        { type: 'formulaRef', name: 'ant' },
+        { type: 'macroRef', name: 'Gloria' },
+        { type: 'formulaRef', name: 'ant2' },
+        { type: 'formulaRef', name: 'ant' }
+      ],
+      [{ type: 'text', value: 'Hódie, si vocem Dómini audiéritis, * Nolíte obduráre corda vestra.' }],
+      'Invit3'
+    );
+
+    expect(materialized).toEqual([
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Hódie, si vocem Dómini audiéritis, * Nolíte obduráre corda vestra.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'v.',
+        text: 'Sicut in exacerbatióne secúndum diem tentatiónis in desérto.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Nolíte obduráre corda vestra.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'v.',
+        text: 'Quadragínta annis próximus fui generatióni huic.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Hódie, si vocem Dómini audiéritis, * Nolíte obduráre corda vestra.'
+      },
+      { type: 'formulaRef', name: 'Gloria omittitur' },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Hódie, si vocem Dómini audiéritis, * Nolíte obduráre corda vestra.'
+      }
+    ]);
+  });
 });
 
 describe('resolveReference', () => {

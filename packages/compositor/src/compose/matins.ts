@@ -1,6 +1,7 @@
 import { ensureTxtSuffix, type TextContent, type TextIndex } from '@officium-novum/parser';
 import type {
   ConditionEvalContext,
+  DayOfficeSummary,
   HourDirective,
   HourStructure,
   InvitatoriumSource,
@@ -70,6 +71,7 @@ const INVITATORIUM_SKELETON_REF: TextReference = {
 
 export interface MatinsComposeContext {
   readonly corpus: TextIndex;
+  readonly summary: DayOfficeSummary;
   readonly options: ComposeOptions;
   readonly directives: readonly HourDirective[];
   readonly context: ConditionEvalContext;
@@ -223,7 +225,7 @@ function resolveInvitatoriumContent(
   return materializeInvitatoryContent(
     skeleton.content,
     antiphon,
-    detectInvitatoryMaterializationMode(args.corpus, source)
+    detectInvitatoryMaterializationMode(args, source)
   );
 }
 
@@ -271,14 +273,23 @@ function resolveInvitatoriumAntiphon(
 }
 
 function detectInvitatoryMaterializationMode(
-  index: TextIndex,
+  args: MatinsComposeContext,
   source: Exclude<InvitatoriumSource, { readonly kind: 'suppressed' }>
-): 'Invit2' | undefined {
+): 'Invit2' | 'Invit3' | undefined {
+  if (
+    source.kind === 'season' &&
+    source.reference.selector === 'Passio' &&
+    args.context.season === 'passiontide' &&
+    args.summary.celebration.source === 'temporal'
+  ) {
+    return 'Invit3';
+  }
+
   if (source.kind !== 'feast') {
     return undefined;
   }
 
-  const ruleSection = index.getSection(ensureTxtSuffix(source.reference.path), 'Rule');
+  const ruleSection = args.corpus.getSection(ensureTxtSuffix(source.reference.path), 'Rule');
   if (!ruleSection?.rules) {
     return undefined;
   }

@@ -6,6 +6,7 @@ import { resolveReference } from './reference-resolver.js';
 
 const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
 const COMMON_RUBRICAE_PATH = 'horas/Latin/Psalterium/Common/Rubricae';
+const COMMON_TRANSLATE_PATH = 'horas/Latin/Psalterium/Common/Translate';
 const REVTRANS_PATH = 'horas/Latin/Psalterium/Revtrans';
 
 export interface DeferredNodeContext {
@@ -111,7 +112,7 @@ export function expandDeferredNodes(
       case 'formulaRef': {
         const expanded = expandNamedSection(
           formulaSectionCandidates(node.name),
-          [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, REVTRANS_PATH],
+          formulaPathCandidates(node.name),
           context
         );
         out.push(...(expanded ?? [node]));
@@ -216,6 +217,13 @@ function formulaSectionCandidates(name: string): readonly string[] {
       : strippedRubric;
 
   return dedupe([trimmed, strippedPeriod, strippedRubric, rubricLowered]);
+}
+
+function formulaPathCandidates(name: string): readonly string[] {
+  const base = [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, REVTRANS_PATH];
+  return formulaSectionCandidates(name).includes('Gloria omittitur')
+    ? [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, COMMON_TRANSLATE_PATH, REVTRANS_PATH]
+    : base;
 }
 
 function normalizeMacroLikeName(name: string): string {

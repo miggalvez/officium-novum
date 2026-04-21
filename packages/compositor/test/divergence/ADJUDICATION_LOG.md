@@ -970,16 +970,61 @@ now classified cleanly as source-backed Perl bugs, and Holy Saturday
 moves deeper into the already-adjudicated Psalm 4 half-verse render
 surface instead of remaining a mixed ownership question.
 
+### 2026-04-20 — Pattern: Roman Passiontide Matins Psalm 94 must stay responsorial before the hymn (engine-bug fix)
+
+**Ledger signal.** A shared Roman Matins seam remained across the
+Passiontide temporal Sundays in both `Reduced - 1955` and
+`Rubrics 1960 - 1960`: `2024-03-17`, `2024-03-24`, and the adjacent
+March temporal rows still first diverged inside the invitatory at the
+Psalm 94 tail, where Perl had already reopened the responsorial
+antiphon structure and moved on to the hymn.
+
+**Root cause.** This was a Phase 3 composition bug. Phase 2 already
+selected the correct temporal invitatory source and still ordered Matins
+as `invitatory -> hymn -> psalmody`; the compositor simply lacked the
+Passiontide `Invitatorium3` materialization that Perl applies for
+temporal `Quad[56]` invitatories. That meant the `^`-marked Psalm 94
+tail stayed attached to the wrong verse, the penultimate `ant2` repeat
+survived before the final antiphon, and the replaced `Gloria omittitur`
+formula could disappear because `expandDeferredNodes()` hit the empty
+`Revtrans` shadow section before the real `Common/Translate` text.
+
+**Resolution.** `packages/compositor/src/resolve/reference-resolver.ts`
+now supports an `Invit3` materialization mode that trims the first
+`^`-marked Psalm 94 tail, rewrites `&Gloria` to `Gloria omittitur`, and
+drops the redundant final `ant2` repeat before the closing antiphon.
+`packages/compositor/src/compose/matins.ts` selects that mode for the
+temporal Roman `Passio` invitatory source, and
+`packages/compositor/src/resolve/expand-deferred-nodes.ts` now prefers
+`Common/Translate` ahead of the empty `Revtrans` `[Gloria omittitur]`
+shadow so the omitted-Gloria line survives to emission. Coverage was
+locked before and after the fix in:
+
+- `packages/compositor/test/reference-resolver.test.ts`
+- `packages/compositor/test/expand-deferred-nodes.test.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+
+- `upstream/web/cgi-bin/horas/specmatins.pl:101-115`
+- `upstream/web/www/horas/Latin/Psalterium/Invitatorium.txt:1-15`
+- `upstream/web/www/horas/Latin/Psalterium/Revtrans.txt:13-18`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Translate.txt:22-23`
+
+**Impact.** The shared Roman March Matins rows no longer stall at the
+false invitatory/hymn boundary. The Roman average matching-prefix
+metrics improve to `37.1` (`Reduced - 1955`) and `39.5`
+(`Rubrics 1960 - 1960`); `Rubrics 1960 - 1960` now advances into the
+already-classified trailing-`‡` antiphon family, while `Reduced - 1955`
+moves deeper to the later Lenten Sunday Matins versicle-routing seam
+(`V. Memor fui nocte nóminis tui, Dómine.` versus the office's proper
+versicle).
+
 ### Pattern catalogue (pending per-pattern entries)
 
 The following patterns remain open after the fixes above and will each
 get their own `## Entry` block as they are adjudicated:
 
-- **Matins Invitatorium Psalm 94 responsorial structure** —
-  compositor emits the invitatory antiphon once, then the hymn. Perl
-  interleaves the antiphon responsorially with each section of Psalm
-  94. Preliminary class: `engine-bug`; high-effort fix deferred to a
-  follow-up in this sub-phase or Phase 4.
 - **Compline guillemets** — compositor emits `«Pater Noster»`, Perl
   emits `Pater Noster`. Corpus source
   (`upstream/.../Common/Rubricae.txt:129`) carries the guillemets.
@@ -998,11 +1043,11 @@ get their own `## Entry` block as they are adjudicated:
 - **Compline benediction verb** — already adjudicated in
   [ADR-012](../../../../docs/adr/012-compline-benediction-verb.md) as
   `engine-bug` (duplicate-header resolution in Phase 1). Not yet fixed.
-- **Matins hymn after invitatory (Rubrics 1960 ordering)** —
-  compositor emits `invitatory → hymn → psalmody`; Perl shows the
-  invitatory antiphon interleaved with psalm 94 before the hymn. May
-  collapse once the Invitatorium Psalm 94 responsorial pattern is
-  fixed; preliminary class: `engine-bug`.
+- **Triduum Matins `Gloria omittitur` after suppressed invitatory** —
+  Holy Thursday and Good Friday now first diverge at `Gloria omittitur`
+  (`2024-03-28` / `2024-03-29`) across both Roman policies even though
+  the invitatory wrapper itself is suppressed. Preliminary class:
+  `engine-bug`.
 
 ## See also
 

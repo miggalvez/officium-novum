@@ -494,7 +494,7 @@ function resolveSeasonalInvitatorium(
 export function materializeInvitatoryContent(
   skeleton: readonly TextContent[],
   antiphon: readonly TextContent[],
-  mode?: 'Invit2'
+  mode?: 'Invit2' | 'Invit3'
 ): readonly TextContent[] {
   const adjustedSkeleton = applyInvitatoryMaterializationMode(skeleton, mode);
   const fullAntiphon = invitatoryAntiphonVariant(antiphon, 'full');
@@ -518,14 +518,18 @@ export function materializeInvitatoryContent(
 
 function applyInvitatoryMaterializationMode(
   content: readonly TextContent[],
-  mode?: 'Invit2'
+  mode?: 'Invit2' | 'Invit3'
 ): readonly TextContent[] {
-  if (mode !== 'Invit2') {
-    return content;
+  switch (mode) {
+    case 'Invit2': {
+      const [adjusted] = stripInvitatoryTailAtStar(content);
+      return adjusted;
+    }
+    case 'Invit3':
+      return applyInvit3Materialization(content);
+    default:
+      return content;
   }
-
-  const [adjusted] = stripInvitatoryTailAtStar(content);
-  return adjusted;
 }
 
 function stripInvitatoryTailAtStar(
@@ -558,6 +562,82 @@ function stripInvitatoryTailAtStar(
   }
 
   return [Object.freeze(out), stripped];
+}
+
+function applyInvit3Materialization(
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  const [tailAdjusted] = stripInvitatoryTailAtCaret(content);
+  const out: TextContent[] = [];
+
+  for (let index = 0; index < tailAdjusted.length; index += 1) {
+    const node = tailAdjusted[index]!;
+    const nextNode = tailAdjusted[index + 1];
+    if (node.type === 'conditional') {
+      out.push({
+        ...node,
+        content: [...applyInvit3Materialization(node.content)]
+      });
+      continue;
+    }
+    if (node.type === 'macroRef' && node.name === 'Gloria') {
+      out.push({ type: 'formulaRef', name: 'Gloria omittitur' });
+      continue;
+    }
+    if (
+      node.type === 'formulaRef' &&
+      node.name === 'ant2' &&
+      nextNode?.type === 'formulaRef' &&
+      nextNode.name === 'ant'
+    ) {
+      continue;
+    }
+    out.push(node);
+  }
+
+  return Object.freeze(out);
+}
+
+function stripInvitatoryTailAtCaret(
+  content: readonly TextContent[]
+): readonly [readonly TextContent[], boolean] {
+  let stripped = false;
+  const out: TextContent[] = [];
+
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      const [nested, nestedStripped] = stripInvitatoryTailAtCaret(node.content);
+      out.push({
+        ...node,
+        content: [...nested]
+      });
+      stripped ||= nestedStripped;
+      continue;
+    }
+
+    if (!stripped && node.type === 'verseMarker' && /\s\^\s/u.test(node.text)) {
+      const caretIndex = node.text.indexOf('^');
+      const tail = node.text.slice(caretIndex + 1).trimStart();
+      out.push({
+        ...node,
+        text: uppercaseLeadingText(tail)
+      });
+      stripped = true;
+      continue;
+    }
+
+    out.push(node);
+  }
+
+  return [Object.freeze(out), stripped];
+}
+
+function uppercaseLeadingText(text: string): string {
+  const trimmed = text.trim();
+  if (trimmed.length === 0) {
+    return trimmed;
+  }
+  return `${trimmed[0]!.toUpperCase()}${trimmed.slice(1)}`;
 }
 
 export function resolveInvitatoryAntiphonContent(
