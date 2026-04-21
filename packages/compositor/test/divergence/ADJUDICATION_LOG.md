@@ -1108,11 +1108,62 @@ Paschaltide short chapter and appended `, allelúja.` through the shared
 Prime and the minor hours now reach the source-backed `Hæc dies` text
 instead of dropping straight to the collect, and the compositor no
 longer over-decorates that substituted line with a bogus Paschaltide
-`allelúja`. The live frontier now moves to the next seam in the same
-lane: the missing one-alone oration prelude (`Dómine, exáudi oratiónem
-meam.` / `Et clamor meus ad te véniat.` / `Oremus`) before the collect,
-with Easter-Octave Prime likely splitting further into its own ordinary
-Prime-oration routing question once that prelude is restored.
+`allelúja`. That moved the live frontier into the next one-alone
+minor-hour oration-wrapper seam, without reopening any non-Easter or
+non-Roman family.
+
+### 2026-04-21 — Pattern: Easter Octave one-alone minor-hour oration wrapper (engine-bug, narrowed)
+
+**Scope.** Shared Roman Prime / Terce / Sext / None on Easter Octave
+weekdays after the `Capitulum Versum 2` substitution (`2024-04-01`
+through at least `2024-04-03` in both `Reduced - 1955` and
+`Rubrics 1960 - 1960`): the collect opened without
+`Dómine, exáudi oratiónem meam.` / `Et clamor meus ad te véniat.` /
+`Oremus`, and Terce / Sext / None also lost the post-collect
+`Conclusio` block.
+
+**Ownership.** Phase 3 engine-bug. Phase 2 already emitted the
+structural signal cleanly: `chapter = Versum 2`, `responsory = empty`,
+`versicle = empty`, plus the ordinary `oration` / `conclusion` slots.
+The missing lines were not stored inside `Tempora/Pasc0-1:[Oratio]`;
+they are the common-prayers wrapper the legacy engine composes around
+that collect when this one-alone minor-hour shape is active.
+
+**Fix.**
+
+- `packages/compositor/src/compose.ts` now recognizes the shared
+  one-alone minor-hour shape structurally instead of by civil date.
+- The oration slot is rewritten to ordered refs
+  `Domine exaudi` → `Oremus` → collect; Prime also appends the
+  source-backed post-collect `Domine exaudi` / `Benedicamus Domino`
+  bridge inside the same oration unit.
+- Terce / Sext / None now synthesize their lost conclusion section from
+  ordered refs `Domine exaudi` → `Benedicamus Domino` →
+  `Fidelium animae`, which restores the live line stream without adding
+  a date-specific compositor hack.
+- `packages/compositor/test/integration/compose-upstream.test.ts` locks
+  the wrapper seam on `2024-04-01` across both Roman policies.
+
+**Files.**
+
+- `packages/compositor/src/compose.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-1.txt:7-18`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:89-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:158-170`
+- `upstream/web/cgi-bin/horas/specials/orationes.pl:185-214`
+
+**Impact.** The shared Roman Easter-Octave one-alone wrapper family is
+closed. `2024-04-01` Tertia is now an exact match in both Roman
+policies, and the shared weekday Prime rows advance to the deeper,
+Prime-only ordinary-oratio routing seam at line `58` instead of failing
+at the wrapper boundary. Easter Sunday Prime still exposes its separate
+psalm-table family (`Psalmus 117 [2]` vs `Psalmus 118(1-16) [2]`), so
+the next tranche should take the repeated weekday Prime collect-routing
+seam first and leave Easter Sunday as the adjacent smaller family.
 
 ### Pattern catalogue (pending per-pattern entries)
 
@@ -1166,15 +1217,15 @@ get their own `## Entry` block as they are adjudicated:
   compositor and Perl emit the same full secret prayer, and the only
   stable remaining divergence on those four Triduum rows is the source
   guillemet rendering on `« Pater Noster » dicitur totum secreto.`.
-- **Easter Octave minor-hour oration prelude seam** — after the
-  `Capitulum Versum 2` fix above, shared Roman Prime / Terce rows on
-  `2024-03-31` through `2024-04-06` now first diverge at the start of
-  the oration wrapper: Perl emits `Dómine, exáudi oratiónem meam.` (and
-  the response / `Oremus`) before the collect, while the compositor
-  jumps directly to the collect text. Preliminary class: open ownership
-  question, but likely a shared Roman Phase 3 oration-composition seam;
-  Easter-Octave Prime may expose an adjacent ordinary-Prime-oration
-  routing split once the prelude is restored.
+- **Easter Octave Prime ordinary-oration routing seam** — after the
+  wrapper fix above, the repeated Roman weekday Prime rows
+  (`2024-04-01` through at least `2024-04-03`, both `Reduced - 1955`
+  and `Rubrics 1960 - 1960`) now first diverge at the collect text:
+  Perl expects the ordinary Prime oration `Dómine Deus omnípotens, qui
+  ad princípium hujus diéi nos perveníre fecísti...`, while the
+  compositor still uses the temporal Easter-Octave collect from the
+  winning office. Preliminary class: open ownership question, likely a
+  Prime-specific structural-routing seam rather than a rendering issue.
 
 ## See also
 
