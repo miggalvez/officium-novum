@@ -146,7 +146,10 @@ function expandNamedSection(
   for (const path of pathCandidates) {
     for (const section of sectionCandidates) {
       const expanded = expandReference({ path, section }, context);
-      if (expanded) {
+      // Treat empty resolutions as fallthrough so Latin "shadow" sections
+      // (e.g. `Revtrans[Gloria omittitur]`) don't mask downstream paths
+      // that carry the real localized text.
+      if (expanded && expanded.length > 0) {
         return expanded;
       }
     }
@@ -222,8 +225,14 @@ function formulaSectionCandidates(name: string): readonly string[] {
 
 function formulaPathCandidates(sectionCandidates: readonly string[]): readonly string[] {
   const base = [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, REVTRANS_PATH];
+  // For `Gloria omittitur`, Latin `Revtrans` holds an empty shadow section;
+  // `Common/Translate` carries the actual localized text per language. Keep
+  // `Revtrans` ahead of `Translate` so a (hypothetical) localized
+  // `Revtrans[Gloria omittitur]` would still win for its own language — the
+  // empty-section fallthrough in `expandNamedSection` traverses the Latin
+  // shadow safely.
   return sectionCandidates.includes('Gloria omittitur')
-    ? [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, COMMON_TRANSLATE_PATH, REVTRANS_PATH]
+    ? [COMMON_PRAYERS_PATH, COMMON_RUBRICAE_PATH, REVTRANS_PATH, COMMON_TRANSLATE_PATH]
     : base;
 }
 
