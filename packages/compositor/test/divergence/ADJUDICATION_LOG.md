@@ -1579,7 +1579,7 @@ Easter-Octave Vespers oration-prelude seam.
 
 ### 2026-04-22 — Pattern: Easter-Octave Vespers oration prelude (engine-bug)
 
-**Commit.** `pending tranche commit`
+**Commit.** `6b20ebc`
 
 **Ledger signal.** After the Lucan-canticle tranche, both Roman policies on
 `2024-04-01` / `2024-04-02` Vespers first diverged at line `110`: Perl
@@ -1617,6 +1617,52 @@ expects the ordinary post-oratio `V. Dómine, exáudi oratiónem meam.` opening
 of the conclusion block, while the compositor currently stops at `R. Amen.`.
 The next shared Roman family is therefore the Easter-Octave Vespers
 conclusion seam.
+
+### 2026-04-22 — Pattern: Easter-Octave Vespers conclusion (engine-bug)
+
+**Commit.** `pending tranche commit`
+
+**Ledger signal.** After the Easter-Octave Vespers oration-prelude tranche,
+both Roman policies on `2024-04-01` / `2024-04-02` Vespers first diverged
+at line `116`: Perl expected `V. Dómine, exáudi oratiónem meam.`, while the
+compositor emitted nothing after the collect's `R. Amen.`.
+
+**Root cause.** Reusable Phase 3 conclusion-wrapper gap, not another Easter
+Octave routing bug. Phase 2 already carried a typed `conclusion` slot for
+Lauds/Vespers, but the inherited `Ordinarium/Vespera:Conclusio` section
+resolves empty under `rubrica 1955` / `rubrica 196` because its ordinary
+body is wrapped in the same conditional cluster that suppresses the older
+post-Vespers `Pater noster` tail. Perl reconstructs the shortened 1955/1960
+post-oratio block from `Psalterium/Common/Prayers`; the compositor had no
+parallel structural wrapper and therefore stopped after the collect.
+
+**Resolution.** Class `engine-bug`. Locked the seam first in
+`packages/compositor/test/integration/compose-upstream.test.ts`, then fixed
+only the owning Phase 3 composition layer:
+
+- `directiveDrivenSlotContent` now recognizes the shared 1955/1960
+  Lauds/Vespers `conclusion` shape via `usesWrappedMajorHourConclusion`
+- `majorHourConclusionContent` reconstructs the ordinary post-oratio block
+  from `Psalterium/Common/Prayers:Domine exaudi`,
+  `:Benedicamus Domino` / `:Benedicamus Domino1`, and `:Fidelium animae`
+- the wrapper reuses the existing `add-versicle-alleluia` directive to pick
+  the Paschaltide `Benedicamus Domino1` form without introducing date-local
+  compositor hacks
+
+**Citation.**
+
+- `upstream/web/www/horas/Ordinarium/Vespera.txt:35-50`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:85-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:158-170`
+
+**Impact.** The shared Roman Easter-Octave Vespers conclusion seam is
+closed. `2024-04-01` / `2024-04-02` Vespers now match exactly in both Roman
+policies, and the regenerated ledgers moved to `465` divergent / `284`
+unadjudicated rows for `Reduced - 1955` and `461` divergent / `199`
+unadjudicated rows for `Rubrics 1960 - 1960`. The next shared Roman family
+is no longer another Vespers code seam but the Easter-Octave Lauds Psalm 99
+half-verse lane, which now surfaces as an 8-row Roman unadjudicated
+adjudication/fanout sweep.
 
 ### Open pattern backlog
 

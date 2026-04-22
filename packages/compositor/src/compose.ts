@@ -1137,6 +1137,11 @@ function directiveDrivenSlotContent(args: ComposeSlotArgs): SlotContent | undefi
     return majorHourPrelude;
   }
 
+  const majorHourConclusion = majorHourConclusionContent(args);
+  if (majorHourConclusion) {
+    return majorHourConclusion;
+  }
+
   const oneAloneWrapper = oneAloneMinorHourWrapperContent(args);
   if (oneAloneWrapper) {
     return oneAloneWrapper;
@@ -1187,6 +1192,45 @@ function majorHourOrationPreludeContent(args: ComposeSlotArgs): SlotContent | un
       ...innerRefs
     ]
   };
+}
+
+function majorHourConclusionContent(args: ComposeSlotArgs): SlotContent | undefined {
+  if (!usesWrappedMajorHourConclusion(args)) {
+    return undefined;
+  }
+
+  return {
+    kind: 'ordered-refs',
+    refs: [
+      commonPrayerRef('Domine exaudi'),
+      {
+        path: COMMON_PRAYERS_PATH,
+        section: args.directives.includes('add-versicle-alleluia')
+          ? 'Benedicamus Domino1'
+          : 'Benedicamus Domino'
+      },
+      commonPrayerRef('Fidelium animae')
+    ]
+  };
+}
+
+function usesWrappedMajorHourConclusion(args: ComposeSlotArgs): boolean {
+  if (args.slot !== 'conclusion' || (args.hour !== 'lauds' && args.hour !== 'vespers')) {
+    return false;
+  }
+
+  if (!args.context.version.handle.includes('1955') && !args.context.version.handle.includes('1960')) {
+    return false;
+  }
+
+  return (
+    args.content.kind === 'single-ref' &&
+    args.content.ref.section === 'Conclusio' &&
+    (
+      (args.hour === 'lauds' && args.content.ref.path === 'horas/Ordinarium/Laudes') ||
+      (args.hour === 'vespers' && args.content.ref.path === 'horas/Ordinarium/Vespera')
+    )
+  );
 }
 
 function precesDirectiveReference(
