@@ -625,6 +625,38 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('restores the ordinary Easter Octave Vespers conclusion block after the collect', async () => {
+    const expectedConclusion = [
+      normalizeLatin('Dómine, exáudi oratiónem meam.'),
+      normalizeLatin('Et clamor meus ad te véniat.'),
+      normalizeLatin('Benedicámus Dómino, allelúja, allelúja.'),
+      normalizeLatin('Deo grátias, allelúja, allelúja.'),
+      normalizeLatin('Fidélium ánimæ per misericórdiam Dei requiéscant in pace.'),
+      normalizeLatin('Amen.')
+    ] as const;
+    const dates = {
+      'Reduced - 1955': '2024-04-01',
+      'Rubrics 1960 - 1960': '2024-04-02'
+    } as const;
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary(dates[version]);
+      const vespers = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(
+        sectionTexts(vespers, 'conclusion').map(normalizeLatin),
+        `${version} Vespers should keep the ordinary post-oration conclusion block`
+      ).toEqual(expectedConclusion);
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 
