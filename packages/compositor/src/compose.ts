@@ -1132,6 +1132,11 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
 }
 
 function directiveDrivenSlotContent(args: ComposeSlotArgs): SlotContent | undefined {
+  const majorHourPrelude = majorHourOrationPreludeContent(args);
+  if (majorHourPrelude) {
+    return majorHourPrelude;
+  }
+
   const oneAloneWrapper = oneAloneMinorHourWrapperContent(args);
   if (oneAloneWrapper) {
     return oneAloneWrapper;
@@ -1161,6 +1166,26 @@ function directiveDrivenSlotContent(args: ComposeSlotArgs): SlotContent | undefi
   return {
     kind: 'single-ref',
     ref
+  };
+}
+
+function majorHourOrationPreludeContent(args: ComposeSlotArgs): SlotContent | undefined {
+  if (args.slot !== 'oration' || (args.hour !== 'lauds' && args.hour !== 'vespers')) {
+    return undefined;
+  }
+
+  const innerRefs = refsForWrappedOration(args.content);
+  if (!innerRefs) {
+    return undefined;
+  }
+
+  return {
+    kind: 'ordered-refs',
+    refs: [
+      commonPrayerRef('Domine exaudi'),
+      commonPrayerRef('Oremus'),
+      ...innerRefs
+    ]
   };
 }
 
@@ -1303,6 +1328,12 @@ function usesOneAloneMinorHourWrapper(args: ComposeSlotArgs): boolean {
 }
 
 function refsForOneAloneMinorHourOration(
+  content: SlotContent
+): readonly TextReference[] | undefined {
+  return refsForWrappedOration(content);
+}
+
+function refsForWrappedOration(
   content: SlotContent
 ): readonly TextReference[] | undefined {
   switch (content.kind) {

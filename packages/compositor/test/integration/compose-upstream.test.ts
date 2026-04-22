@@ -583,6 +583,48 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('wraps Easter Octave Vespers orations with the source-backed Domine exaudi / Oremus prelude', async () => {
+    const orationPrelude = [
+      normalizeLatin('Dómine, exáudi oratiónem meam.'),
+      normalizeLatin('Et clamor meus ad te véniat.'),
+      normalizeLatin('Orémus.')
+    ] as const;
+    const expectedCollects = {
+      'Reduced - 1955': normalizeLatin(
+        'Deus, qui solemnitáte pascháli, mundo remédia contulísti: pópulum tuum, quǽsumus, cælésti dono proséquere; ut et perféctam libertátem cónsequi mereátur, et ad vitam profíciat sempitérnam.'
+      ),
+      'Rubrics 1960 - 1960': normalizeLatin(
+        'Deus, qui Ecclésiam tuam novo semper fœtu multíplicas: concéde fámulis tuis; ut sacraméntum vivéndo téneant, quod fide percepérunt.'
+      )
+    } as const;
+    const dates = {
+      'Reduced - 1955': '2024-04-01',
+      'Rubrics 1960 - 1960': '2024-04-02'
+    } as const;
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary(dates[version]);
+      const vespers = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+
+      const orationLines = sectionTexts(vespers, 'oration').map(normalizeLatin);
+      expect(
+        orationLines.slice(0, orationPrelude.length),
+        `${version} Vespers should restore the ordinary Domine exaudi / Oremus prelude before the collect`
+      ).toEqual(orationPrelude);
+      expect(
+        orationLines[orationPrelude.length],
+        `${version} Vespers should keep the source-backed Easter-Octave collect after the restored prelude`
+      ).toBe(expectedCollects[version]);
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 

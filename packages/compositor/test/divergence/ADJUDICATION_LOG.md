@@ -1577,6 +1577,47 @@ expects `V. Dómine, exáudi oratiónem meam.` while the compositor jumps
 straight to the collect. The next shared Roman family is therefore the
 Easter-Octave Vespers oration-prelude seam.
 
+### 2026-04-22 — Pattern: Easter-Octave Vespers oration prelude (engine-bug)
+
+**Commit.** `pending tranche commit`
+
+**Ledger signal.** After the Lucan-canticle tranche, both Roman policies on
+`2024-04-01` / `2024-04-02` Vespers first diverged at line `110`: Perl
+expected `V. Dómine, exáudi oratiónem meam.`, while the compositor jumped
+directly from the repeated Magnificat antiphon to the office collect.
+
+**Root cause.** Reusable Phase 3 wrapper gap, not another selection bug.
+Phase 2 already exposed the source-correct Easter-Octave Vespers structure:
+`canticle-ad-magnificat`, then `oration`, with the ordinary `conclusion`
+suppressed from `Ordinarium/Vespera:Conclusio` under 1955/1960. The missing
+piece was the shared major-hour collect prelude. The compositor was emitting
+the collect body directly for Lauds/Vespers instead of restoring the ordinary
+`Domine exaudi` / `Oremus` lines that precede the source-backed oration.
+
+**Resolution.** Class `engine-bug`. Locked the seam first in
+`packages/compositor/test/integration/compose-upstream.test.ts`, then fixed
+only the Phase 3 composition layer:
+
+- major-hour `oration` slots (`lauds` / `vespers`) now wrap their existing
+  refs with `Psalterium/Common/Prayers:Domine exaudi` and `:Oremus`
+- the wrapped-oration helper stays generic across `single-ref` and
+  `ordered-refs` content, so the fix remains structural rather than
+  date-specific
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:85-91`
+- `packages/compositor/test/fixtures/officium-content-snapshot.pl` live
+  compare surface for `2024-04-01/02` Roman Vespers
+
+**Impact.** The shared Roman Easter-Octave Vespers collect-prelude seam is
+closed. The live frontier now lands one block later on the same rows:
+`2024-04-01` / `2024-04-02` Vespers line `116` in both Roman policies now
+expects the ordinary post-oratio `V. Dómine, exáudi oratiónem meam.` opening
+of the conclusion block, while the compositor currently stops at `R. Amen.`.
+The next shared Roman family is therefore the Easter-Octave Vespers
+conclusion seam.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
