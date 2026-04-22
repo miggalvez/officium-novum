@@ -23,6 +23,8 @@ export function sectionTypeFor(slot: SlotName): SectionType {
       return 'psalm';
     case 'martyrology':
       return 'martyrology';
+    case 'de-officio-capituli':
+      return 'other';
     case 'chapter':
       return 'chapter';
     case 'responsory':

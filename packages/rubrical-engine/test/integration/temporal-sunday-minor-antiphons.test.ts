@@ -250,6 +250,48 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
     },
     240_000
   );
+
+  it(
+    'keeps Prime De Officio Capituli between the Martyrologium and Lectio brevis on Easter Octave weekdays',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        for (const date of ['2024-04-01', '2024-04-02'] as const) {
+          const prime = engine.resolveDayOfficeSummary(date).hours.prime;
+          expect(prime, `${handle} ${date} Prime`).toBeDefined();
+          if (!prime) {
+            continue;
+          }
+
+          const slotOrder = Object.keys(prime.slots as Record<string, unknown>);
+          const capituliIndex = slotOrder.indexOf('de-officio-capituli');
+          expect(
+            capituliIndex,
+            `${handle} ${date} Prime should expose a De Officio Capituli slot`
+          ).toBeGreaterThanOrEqual(0);
+          expect(
+            capituliIndex,
+            `${handle} ${date} Prime should place De Officio Capituli after the Martyrologium`
+          ).toBeGreaterThan(slotOrder.indexOf('martyrology'));
+          expect(
+            capituliIndex,
+            `${handle} ${date} Prime should place De Officio Capituli before Lectio brevis`
+          ).toBeLessThan(slotOrder.indexOf('lectio-brevis'));
+        }
+      }
+    },
+    240_000
+  );
 });
 
 let enginesPromise: Promise<ReadonlyMap<string, RubricalEngine>> | undefined;

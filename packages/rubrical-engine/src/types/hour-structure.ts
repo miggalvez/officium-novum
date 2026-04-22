@@ -11,6 +11,7 @@ export type SlotName =
   | 'hymn'
   | 'psalmody'
   | 'martyrology'
+  | 'de-officio-capituli'
   | 'chapter'
   | 'responsory'
   | 'versicle'

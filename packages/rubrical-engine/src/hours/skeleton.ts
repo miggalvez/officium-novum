@@ -1,6 +1,7 @@
 import {
   parseCondition,
   ConditionParseError,
+  extractSyntheticHeadingSections,
   type Condition,
   type ParsedFile,
   type TextContent
@@ -124,19 +125,26 @@ function buildSlots(file: ParsedFile): readonly SkeletonSlot[] {
 
   const sectionsToScan = file.sections.length > 0 ? file.sections : [];
   for (const section of sectionsToScan) {
-    let currentHeading: string | undefined;
-    let currentNames: readonly SlotName[] = [];
-    let currentBuffer: TextContent[] = [];
-    let currentOmission: Condition | undefined;
+    const headedSections =
+      section.header === '__preamble'
+        ? extractSyntheticHeadingSections(section.content)
+        : [
+            {
+              header: section.header,
+              content: section.content
+            }
+          ];
 
-    const flush = (): void => {
-      if (!currentHeading || currentNames.length === 0) {
-        return;
+    for (const headedSection of headedSections) {
+      const header = headedSection.header.trim();
+      const names = mapHeaderToSlots(header);
+      if (names.length === 0) {
+        continue;
       }
-      const frozenContent = Object.freeze([...currentBuffer]);
-      const header = currentHeading;
-      const omission = currentOmission;
-      for (const name of currentNames) {
+
+      const content = Object.freeze([...headedSection.content]);
+      const omission = findHeadingOmissionCondition(content);
+      for (const name of names) {
         if (seen.has(name)) {
           continue;
         }
@@ -145,62 +153,50 @@ function buildSlots(file: ParsedFile): readonly SkeletonSlot[] {
           freezeSlot({
             name,
             header,
-            content: frozenContent,
+            content,
             ...(omission ? { omissionCondition: omission } : {})
           })
         );
       }
-    };
-
-    for (const content of section.content) {
-      if (content.type === 'heading') {
-        flush();
-        currentHeading = content.value.trim();
-        currentNames = mapHeaderToSlots(currentHeading);
-        currentBuffer = [];
-        currentOmission = undefined;
-        continue;
-      }
-
-      if (currentNames.length === 0) {
-        continue;
-      }
-
-      // Detect a parenthesized omission rubric immediately after a heading,
-      // e.g. `(sed rubrica 196 aut rubrica 1955 aut rubrica cisterciensis
-      // omittuntur)`. Once captured we still append the text to the slot
-      // content so downstream consumers see the full skeleton.
-      if (currentBuffer.length === 0 && currentOmission === undefined) {
-        if (content.type === 'text') {
-          const omission = tryParseOmissionCondition(content.value);
-          if (omission) {
-            currentOmission = omission;
-          }
-        } else if (
-          content.type === 'conditional' &&
-          content.content.length === 0 &&
-          isNegatedExpression(content.condition.expression) &&
-          (content.condition.instruction === 'omittitur' ||
-            content.condition.instruction === 'omittuntur')
-        ) {
-          currentOmission = {
-            expression: content.condition.expression.inner,
-            instruction: content.condition.instruction,
-            ...(content.condition.instructionModifier
-              ? { instructionModifier: content.condition.instructionModifier }
-              : {})
-          };
-          continue;
-        }
-      }
-
-      currentBuffer.push(content);
     }
-
-    flush();
   }
 
   return Object.freeze(slots);
+}
+
+function findHeadingOmissionCondition(
+  content: readonly TextContent[]
+): Condition | undefined {
+  const first = content[0];
+  if (!first) {
+    return undefined;
+  }
+
+  // Detect a parenthesized omission rubric immediately after a heading,
+  // e.g. `(sed rubrica 196 aut rubrica 1955 aut rubrica cisterciensis
+  // omittuntur)`. Once captured we still preserve the full headed content so
+  // downstream consumers retain the original skeleton text.
+  if (first.type === 'text') {
+    return tryParseOmissionCondition(first.value);
+  }
+
+  if (
+    first.type === 'conditional' &&
+    first.content.length === 0 &&
+    isNegatedExpression(first.condition.expression) &&
+    (first.condition.instruction === 'omittitur' ||
+      first.condition.instruction === 'omittuntur')
+  ) {
+    return {
+      expression: first.condition.expression.inner,
+      instruction: first.condition.instruction,
+      ...(first.condition.instructionModifier
+        ? { instructionModifier: first.condition.instructionModifier }
+        : {})
+    };
+  }
+
+  return undefined;
 }
 
 function isNegatedExpression(
@@ -249,6 +245,9 @@ export function mapHeaderToSlots(header: string): readonly SlotName[] {
   }
   if (normalized === 'Martyrologium') {
     return ['martyrology'];
+  }
+  if (normalized === 'De Officio Capituli') {
+    return ['de-officio-capituli'];
   }
   if (normalized === 'Oratio') {
     return ['oration'];

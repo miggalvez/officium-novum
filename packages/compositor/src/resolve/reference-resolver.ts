@@ -1,5 +1,6 @@
 import {
   ensureTxtSuffix,
+  extractSyntheticHeadingSections,
   languageFallbackChain,
   type ParsedSection,
   type TextContent,
@@ -188,7 +189,7 @@ function resolveSectionByName(
   return {
     header: sectionName,
     condition: undefined,
-    content: headingContent,
+    content: [...headingContent],
     startLine: preamble.startLine,
     endLine: preamble.endLine
   };
@@ -197,26 +198,11 @@ function resolveSectionByName(
 function extractHeadingSection(
   preamble: ParsedSection,
   sectionName: string
-): TextContent[] | undefined {
+): readonly TextContent[] | undefined {
   const wanted = normalizeHeading(sectionName);
-  let collecting = false;
-  const content: TextContent[] = [];
-
-  for (const node of preamble.content) {
-    if (node.type === 'heading') {
-      if (collecting) {
-        break;
-      }
-      collecting = normalizeHeading(node.value) === wanted;
-      continue;
-    }
-
-    if (collecting) {
-      content.push(node);
-    }
-  }
-
-  return collecting ? content : undefined;
+  return extractSyntheticHeadingSections(preamble.content).find(
+    (section) => normalizeHeading(section.header) === wanted
+  )?.content;
 }
 
 function normalizeHeading(value: string): string {

@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-21.** Closed the shared Roman Easter-Octave Prime `De Officio Capituli` seam by teaching the parser/rubrical-engine/compositor heading path to split conditional Ordinarium headings into real synthetic sections and typed slots. The next repeated family is the shared Roman Prime post-Martyrologium secret `Pater Noster` guillemet seam.
 - **2026-04-21.** Closed the shared Roman Easter-Octave opening-antiphon, `Capitulum Versum 2`, one-alone wrapper, Prime ordinary-oration, and Prime Martyrologium handoff/lunar-heading seams. The next repeated family is the Prime Martyrologium body-formatting seam (`_` / `v.` / `r.` / `Mobile.txt`).
 - **2026-04-21.** Closed the shared Roman Easter-Octave Prime Martyrologium body-formatting seam (`_` plus the source-backed `v.` / `r.` responsorial stream). The next repeated family is the shared Prime post-Martyrologium `V. Deus in adjutórium meum inténde.` seam.
 - **2026-04-20.** Closed the Roman temporal-Sunday minor-antiphon seam, the festal/Quad Sunday Prime psalm-table lanes, Triduum Compline routing, Passiontide Matins invitatory materialization, Triduum `Gloria omittitur`, and `Pater totum secreto`; also ran the first full-ledger fanout sweep and the Roman half-verse adjudication batch.

@@ -472,6 +472,40 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders De Officio Capituli immediately after the Easter Octave Prime Martyrologium', async () => {
+    const expectedOpening = normalizeLatin('Deus in adjutórium meum inténde.');
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-04-02');
+      const prime = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'prime',
+        options: { languages: ['Latin'] }
+      });
+
+      const slotOrder = prime.sections.map((section) => section.slot);
+      const capituliIndex = slotOrder.indexOf('de-officio-capituli');
+      expect(
+        capituliIndex,
+        `${version} Prime should continue into De Officio Capituli after the Martyrologium`
+      ).toBeGreaterThan(slotOrder.indexOf('martyrology'));
+
+      const capituli = prime.sections.find((section) => section.slot === 'de-officio-capituli');
+      expect(capituli, `${version} Prime should expose a De Officio Capituli section`).toBeDefined();
+      expect(
+        capituli!.lines[0]!.marker,
+        `${version} Prime should keep the versicle marker on Deus in adjutorium`
+      ).toBe('V.');
+      expect(
+        normalizeLatin(renderLatinText(capituli!.lines[0]!)),
+        `${version} Prime should open De Officio Capituli with Deus in adjutorium`
+      ).toBe(expectedOpening);
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 
