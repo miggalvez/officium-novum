@@ -1533,7 +1533,7 @@ therefore the Easter-Octave Vespers Magnificat/oration boundary seam.
 
 ### 2026-04-22 — Pattern: Easter-Octave Vespers Magnificat / oration boundary (engine-bug)
 
-**Commit.** `pending tranche commit`
+**Commit.** `e2d6620`
 
 **Ledger signal.** After the Easter-Octave major-hour paschal antiphon
 fix, both Roman policies on `2024-04-01` / `2024-04-02` Vespers first
