@@ -506,6 +506,33 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('preserves the source-backed guillemets on the Easter Octave Prime secret Pater Noster rubric', async () => {
+    const expectedRubric = normalizeLatin(
+      '« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »'
+    );
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-04-02');
+      const prime = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'prime',
+        options: { languages: ['Latin'] }
+      });
+
+      const capituli = prime.sections.find((section) => section.slot === 'de-officio-capituli');
+      expect(capituli, `${version} Prime should expose a De Officio Capituli section`).toBeDefined();
+
+      const capituliLines = capituli?.lines.map(renderLatinText).map(normalizeLatin) ?? [];
+      expect(
+        capituliLines,
+        `${version} Prime should preserve the source-backed guillemets on the secret Pater Noster rubric`
+      ).toContain(expectedRubric);
+    }
+  }, 240_000);
+
   it('renders July 9 Matins benedictions line-by-line and emits the Te Deum replacement responsory only once', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 

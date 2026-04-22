@@ -1445,6 +1445,41 @@ tentatiónem:`, while the compositor emits the source-backed guillemeted
 rubric `« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas
 in tentatiónem: »`.
 
+### 2026-04-21 — Pattern: Roman Prime post-Martyrologium secret `Pater Noster` guillemets (rendering-difference)
+
+**Ledger signal.** After the Easter-Octave Prime structural fixes
+restored the Martyrologium tail and `De Officio Capituli`, the repeated
+Roman weekday Prime rows (`2024-04-01` and `2024-04-02` in both
+`Reduced - 1955` and `Rubrics 1960 - 1960`) now first diverge at the
+secret `Pater Noster` rubric: Perl expects `Pater Noster dicitur
+secreto usque ad Et ne nos indúcas in tentatiónem:`, while the
+compositor emits `« Pater Noster » dicitur secreto usque ad « Et ne nos
+indúcas in tentatiónem: »`.
+
+**Root cause.** This is the same corpus-backed guillemet family already
+classified at Roman Matins, not a new Prime composition bug. The Prime
+post-Martyrologium path inherits `[Pater secreto]` from
+`Psalterium/Common/Rubricae.txt`, and that source rubric itself carries
+the guillemets verbatim. The compositor preserves the corpus author's
+punctuation; Perl strips it on the rendered comparison surface.
+
+**Resolution.** Class `rendering-difference`. Added the four exact Roman
+Prime row adjudications for key-hash `29ec2a3d` on:
+
+- `Reduced - 1955` — Apr `1`, Apr `2`
+- `Rubrics 1960 - 1960` — Apr `1`, Apr `2`
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`.
+
+**Impact.** The shared Roman Prime post-Martyrologium guillemet family
+is closed without code changes. These rows are now recorded explicitly
+as source-backed rendering differences rather than lingering as Prime
+unadjudicateds. The live Roman unadjudicated counts drop to `286` under
+`Reduced - 1955` and `205` under `Rubrics 1960 - 1960`; the next shared
+Roman structural frontier is the Easter-Octave major-hour paschal
+antiphon routing lane, first visible at Vespers and immediately
+adjacent at Lauds.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
@@ -1465,16 +1500,6 @@ chronological entry:
   (`upstream/.../Common/Prayers.txt:52`) confirms this is a glyph-level
   rendering choice, not a selection bug. Preliminary class:
   `rendering-difference`.
-- **Prime post-Martyrologium secret `Pater Noster` guillemets** — after
-  the `De Officio Capituli` structural split above, the repeated Roman
-  weekday Prime rows (`2024-04-01` and `2024-04-02` in both
-  `Reduced - 1955` and `Rubrics 1960 - 1960`) now first diverge at
-  `Pater Noster dicitur secreto usque ad Et ne nos indúcas in
-  tentatiónem:` versus the compositor's source-backed `« Pater Noster »
-  dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »`.
-  Corpus source (`upstream/.../Common/Rubricae.txt:1-2`) carries the
-  guillemets already seen in the Matins rendering-difference family, so
-  the provisional class is `rendering-difference`.
 
 The Compline benediction-verb issue is already adjudicated in
 [ADR-012](../../../../docs/adr/012-compline-benediction-verb.md) and is
