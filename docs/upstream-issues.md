@@ -660,6 +660,51 @@ Noster` rubric surface.
 | Reduced - 1955 | 2024-01-14 | Matins | `29ec2a3d` |
 | Rubrics 1960 - 1960 | 2024-01-06 | Matins | `29ec2a3d` |
 
+### 2026-04-22 — Roman Easter-Octave Prime preserves the corpus guillemets around `Pater Noster`
+
+**Classification.** `rendering-difference`
+
+**Summary.** After the Easter-Octave Prime structural fixes restored the
+Martyrologium tail and `De Officio Capituli`, the remaining Roman Prime
+rows on Apr `1` through Apr `5` now land on the same source-backed
+rubric family already seen at Matins: Perl strips the guillemets in
+`Pater Noster dicitur secreto usque ad Et ne nos indúcas in
+tentatiónem:`, while the compositor preserves the corpus punctuation
+`« Pater Noster » ... « Et ne nos indúcas in tentatiónem: »`.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`
+
+This rubric sentence carries the guillemets in the source itself, so the
+Perl/compositor difference is punctuation-only rather than a
+liturgical-content disagreement.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-04-03 --hour Prime
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-04-03 --hour Prime
+```
+
+The affected Roman Prime rows now first diverge on the guillemeted
+secret `Pater Noster` rubric surface.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-04-01 | Prime | `29ec2a3d` |
+| Reduced - 1955 | 2024-04-02 | Prime | `29ec2a3d` |
+| Reduced - 1955 | 2024-04-03 | Prime | `29ec2a3d` |
+| Reduced - 1955 | 2024-04-04 | Prime | `29ec2a3d` |
+| Reduced - 1955 | 2024-04-05 | Prime | `29ec2a3d` |
+| Rubrics 1960 - 1960 | 2024-04-01 | Prime | `29ec2a3d` |
+| Rubrics 1960 - 1960 | 2024-04-02 | Prime | `29ec2a3d` |
+| Rubrics 1960 - 1960 | 2024-04-03 | Prime | `29ec2a3d` |
+| Rubrics 1960 - 1960 | 2024-04-04 | Prime | `29ec2a3d` |
+| Rubrics 1960 - 1960 | 2024-04-05 | Prime | `29ec2a3d` |
+
 ### 2026-04-20 — Rubrics 1960 Jan 14 Matins gains an unsupported trailing `‡` in the Perl render surface
 
 **Classification.** `perl-bug`

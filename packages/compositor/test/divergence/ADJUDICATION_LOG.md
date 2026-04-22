@@ -1705,6 +1705,49 @@ guillemet fanout (`2024-04-03` through `2024-04-05` across both Roman
 policies), which should also be an adjudication sweep rather than a new
 engine fix.
 
+### 2026-04-22 — Pattern: Roman Prime post-Martyrologium secret `Pater Noster` guillemet fanout through Apr 5 (rendering-difference)
+
+**Commit.** pending tranche commit
+
+**Ledger signal.** After the Easter-Octave Lauds Psalm 99 adjudication
+cleared the adjacent April lane, the remaining Roman Prime rows on
+`2024-04-03` through `2024-04-05` in both `Reduced - 1955` and
+`Rubrics 1960 - 1960` still first diverge on the same secret `Pater
+Noster` rubric surface already adjudicated on Apr `1` / Apr `2`: Perl
+expects `Pater Noster dicitur secreto usque ad Et ne nos indúcas in
+tentatiónem:`, while the compositor emits `« Pater Noster » dicitur
+secreto usque ad « Et ne nos indúcas in tentatiónem: »`. Apr `5` moves
+one line later (`89` instead of `88`) because the Prime body is one line
+longer, but the first expected/actual pair is unchanged.
+
+**Root cause.** Not a new code defect. This is the already-classified
+Roman Prime post-Martyrologium guillemet family, and ultimately the same
+corpus-backed rubric family seen at Roman Matins. `Psalterium/Common/Rubricae.txt`
+still carries the guillemets verbatim; the compositor preserves them and
+the Perl comparison surface strips them.
+
+**Resolution.** Class `rendering-difference`. Tightened the focused
+Prime upstream test to the late Easter-Octave surface in
+`packages/compositor/test/integration/compose-upstream.test.ts`, then
+added the six missing Apr `3` through Apr `5` Roman Prime row keys
+directly to `packages/compositor/test/divergence/adjudications.json`.
+The existing `adjudications:fanout` shortcut was not sufficient here
+because these newly exposed rows sit deeper than the generated ledger's
+first-40-row sample window.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`
+- `docs/upstream-issues.md` (`Roman Easter-Octave Prime preserves the corpus guillemets around Pater Noster`)
+
+**Impact.** The shared Roman Easter-Octave Prime guillemet family is now
+closed through Apr `5` without code changes, dropping the Roman
+unadjudicated counts to `279` for `Reduced - 1955` and `190` for
+`Rubrics 1960 - 1960`. The next highest-leverage shared Roman family on
+the live grouped surface is the Christmas-octave Vespers fourth-psalm
+routing seam on Dec `25` through Dec `27`, where both policies still
+diverge at `Psalmus 129 [4]` vs `Psalmus 112 [4]`.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

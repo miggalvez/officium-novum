@@ -511,9 +511,12 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       '« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »'
     );
 
-    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+    for (const [version, date] of [
+      ['Reduced - 1955', '2024-04-05'],
+      ['Rubrics 1960 - 1960', '2024-04-05']
+    ] as const) {
       const { engine, resolvedCorpus } = await createHarness(version);
-      const summary = engine.resolveDayOfficeSummary('2024-04-02');
+      const summary = engine.resolveDayOfficeSummary(date);
       const prime = composeHour({
         corpus: resolvedCorpus.index,
         summary,
