@@ -358,7 +358,10 @@ function decoratePsalmodyAssignments(
         ? {
             ...assignment,
             antiphonRef: antiphons[index],
-            ...(properPsalmRefs[index] && isGenericMajorHourPsalmRef(assignment.psalmRef)
+            // When the office file itself supplies a major-hour psalm row,
+            // that source-backed psalm assignment owns the slot even if the
+            // psalter fallback already chose a concrete psalm number.
+            ...(properPsalmRefs[index]
               ? {
                   psalmRef: properPsalmRefs[index]
                 }
