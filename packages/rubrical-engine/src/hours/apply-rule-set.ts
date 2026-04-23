@@ -178,8 +178,11 @@ function resolveSlot(
     return lucanCanticle;
   }
 
-  const properRef = findProperReference(properFiles, slot, input.hour);
-  const communeRef = properRef ? undefined : findCommuneReference(input, slot);
+  const properRef = findProperReference(properFiles, slot, input);
+  const inheritedSecondVespersRef = properRef
+    ? undefined
+    : findInheritedSecondVespersReference(properFiles, slot, input);
+  const communeRef = properRef || inheritedSecondVespersRef ? undefined : findCommuneReference(input, slot);
   if (input.hour === 'compline' && slot.name === 'lectio-brevis') {
     const wrapperRef = ordinariumSkeletonReference(input.skeleton, slot);
     const readingRef = properRef ?? communeRef ?? complineSpecialFallbackReference(input.hour, slot.name) ?? wrapperRef;
@@ -190,6 +193,7 @@ function resolveSlot(
   }
   const ref =
     properRef ??
+    inheritedSecondVespersRef ??
     communeRef ??
     minorHourLaterBlockFallbackReference(input, slot.name) ??
     ordinariumFallbackReference(input.skeleton, slot);
@@ -311,13 +315,45 @@ function resolveProperTextFiles(
 function findProperReference(
   files: readonly ParsedFile[],
   slot: SkeletonSlot,
-  hour: HourName
+  input: ApplyRuleSetInput
 ): TextReference | undefined {
   if (files.length === 0) {
     return undefined;
   }
 
-  return findReferenceInFiles(files, properHeadersForSlot(slot.name, hour));
+  return findReferenceInFiles(files, properHeadersForSlot(slot.name, input.hour, input));
+}
+
+function findInheritedSecondVespersReference(
+  files: readonly ParsedFile[],
+  slot: SkeletonSlot,
+  input: ApplyRuleSetInput
+): TextReference | undefined {
+  if (
+    input.hour !== 'vespers' ||
+    slot.name !== 'chapter' ||
+    (input as InternalVespersAwareInput).__vespersSide !== 'second'
+  ) {
+    return undefined;
+  }
+
+  const inheritedFiles = resolveInheritedSecondVespersFiles(files, input);
+  if (inheritedFiles.length === 0) {
+    return undefined;
+  }
+
+  for (const file of inheritedFiles) {
+    const ref = findReferenceInFile(
+      file,
+      file.path.replace(/\.txt$/u, ''),
+      properHeadersForSlot(slot.name, input.hour, input)
+    );
+    if (ref) {
+      return ref;
+    }
+  }
+
+  return undefined;
 }
 
 function findCommuneReference(
@@ -335,7 +371,11 @@ function findCommuneReference(
     return undefined;
   }
 
-  return findReferenceInFile(file, `horas/Latin/Commune/${comkey}`, properHeadersForSlot(slot.name, input.hour));
+  return findReferenceInFile(
+    file,
+    `horas/Latin/Commune/${comkey}`,
+    properHeadersForSlot(slot.name, input.hour, input)
+  );
 }
 
 function decoratePsalmodyAssignments(
@@ -467,6 +507,109 @@ function resolveMajorHourPsalmRefs(
   }
 
   return [];
+}
+
+function resolveInheritedSecondVespersFiles(
+  files: readonly ParsedFile[],
+  input: ApplyRuleSetInput
+): readonly ParsedFile[] {
+  const conditionContext = majorHourPsalmConditionContext(input);
+  const headers = ['Ant Vespera 3', 'Ant Vespera'];
+  const resolved: ParsedFile[] = [];
+  const seen = new Set<string>();
+
+  for (const header of headers) {
+    for (const file of files) {
+      const section = findMajorHourPsalmSection(file, header, conditionContext);
+      if (!section) {
+        continue;
+      }
+
+      collectInheritedSecondVespersFiles(
+        section.content,
+        input,
+        header,
+        new Set([`${file.path}:${header}`]),
+        conditionContext,
+        resolved,
+        seen
+      );
+      if (resolved.length > 0) {
+        return Object.freeze(resolved);
+      }
+    }
+  }
+
+  return Object.freeze(resolved);
+}
+
+function collectInheritedSecondVespersFiles(
+  content: readonly TextContent[],
+  input: ApplyRuleSetInput,
+  currentHeader: string,
+  visited: ReadonlySet<string>,
+  conditionContext: ConditionEvalContext | undefined,
+  resolved: ParsedFile[],
+  seen: Set<string>
+): void {
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      if (conditionContext && !conditionMatches(node.condition, conditionContext)) {
+        continue;
+      }
+      collectInheritedSecondVespersFiles(
+        node.content,
+        input,
+        currentHeader,
+        visited,
+        conditionContext,
+        resolved,
+        seen
+      );
+      continue;
+    }
+
+    if (
+      node.type !== 'reference' ||
+      !node.ref.path ||
+      node.ref.substitutions.length > 0
+    ) {
+      continue;
+    }
+
+    const targetHeader = node.ref.section ?? currentHeader;
+    const visitKey = `${node.ref.path}:${targetHeader}`;
+    if (visited.has(visitKey)) {
+      continue;
+    }
+
+    try {
+      const file = resolveOfficeFile(input.corpus, node.ref.path);
+      if (!seen.has(file.path)) {
+        resolved.push(file);
+        seen.add(file.path);
+      }
+
+      const section = findMajorHourPsalmSection(file, targetHeader, conditionContext);
+      if (!section) {
+        continue;
+      }
+
+      const nextVisited = new Set(visited);
+      nextVisited.add(visitKey);
+      collectInheritedSecondVespersFiles(
+        section.content,
+        input,
+        targetHeader,
+        nextVisited,
+        conditionContext,
+        resolved,
+        seen
+      );
+    } catch {
+      continue;
+    }
+  }
 }
 
 function extractMajorHourPsalmRefs(
@@ -1062,7 +1205,11 @@ function commonPrayerRef(section: string): TextReference {
   };
 }
 
-function properHeadersForSlot(slot: SlotName, hour: HourName): readonly string[] {
+function properHeadersForSlot(
+  slot: SlotName,
+  hour: HourName,
+  input?: ApplyRuleSetInput
+): readonly string[] {
   const hourSuffix = HOUR_SECTION_SUFFIX[hour];
   switch (slot) {
     case 'hymn':
@@ -1070,6 +1217,14 @@ function properHeadersForSlot(slot: SlotName, hour: HourName): readonly string[]
     case 'chapter':
       if (hour === 'prime') {
         return ['Lectio Prima', `Capitulum ${hourSuffix}`, 'Capitulum'];
+      }
+      if (hour === 'vespers') {
+        const side = (input as InternalVespersAwareInput | undefined)?.__vespersSide;
+        return side === 'first'
+          ? ['Capitulum Vespera 1', `Capitulum ${hourSuffix}`, 'Capitulum Laudes', 'Capitulum']
+          : side === 'second'
+            ? ['Capitulum Vespera 3', `Capitulum ${hourSuffix}`, 'Capitulum Laudes', 'Capitulum']
+            : [`Capitulum ${hourSuffix}`, 'Capitulum Laudes', 'Capitulum'];
       }
       if (hour === 'terce') {
         return [`Capitulum ${hourSuffix}`, 'Capitulum Laudes', 'Capitulum'];

@@ -1082,22 +1082,26 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         args.slot === 'hymn'
           ? replaceFinalHymnDoxology(transformed, hymnDoxologyByLanguage?.get(lang))
           : transformed;
+      const withMajorHourHymnWrapper =
+        args.slot === 'hymn'
+          ? prependMajorHourHymnWrapper(args, withHymnDoxology, transformed)
+          : withHymnDoxology;
       // Synthesise the `Ant.` marker the Perl renderer adds at presentation
       // time. Scoped per-ref: whole-antiphon slots (invitatory, canticle
       // antiphons, commemoration antiphons) mark every ref; psalmody marks
       // only its antiphon refs so psalm verses stay unmarked.
       const markered = isAntiphon
         ? repeatAntiphon
-          ? normalizeRepeatedAntiphonContent(withHymnDoxology)
+          ? normalizeRepeatedAntiphonContent(withMajorHourHymnWrapper)
           : openingAntiphon
             ? normalizeOpeningPsalmodyAntiphonContent(
-                withHymnDoxology,
+                withMajorHourHymnWrapper,
                 args.hour,
                 args.context.version,
                 ref
               )
-            : withHymnDoxology
-        : withHymnDoxology;
+            : withMajorHourHymnWrapper
+        : withMajorHourHymnWrapper;
       // Phase 3 §3h — emit a `Psalmus N [index]` heading before each psalm
       // of the psalmody slot (and only for the psalmody slot — Matins
       // psalmody runs through its own composer and gets its headings from
@@ -1850,11 +1854,16 @@ function isMinorHour(hour: SlotName | HourName): hour is 'prime' | 'terce' | 'se
 function resolveHymnDoxologyByLanguage(
   args: ComposeSlotArgs
 ): ReadonlyMap<string, readonly TextContent[]> | undefined {
-  if (args.slot !== 'hymn' || !args.hymnDoxology) {
+  if (args.slot !== 'hymn') {
     return undefined;
   }
 
-  const refs = taggedReferencesFrom(args.hour, 'doxology-variant', args.hymnDoxology);
+  const majorHourSource = args.hymnDoxology ? undefined : majorHourHymnDoxologySource(args);
+  const refs = args.hymnDoxology
+    ? taggedReferencesFrom(args.hour, 'doxology-variant', args.hymnDoxology)
+    : majorHourSource
+      ? [{ ref: majorHourSource.ref, isAntiphon: false }]
+      : [];
   if (refs.length === 0) {
     return undefined;
   }
@@ -1914,7 +1923,7 @@ function replaceFinalHymnDoxology(
   content: readonly TextContent[],
   variant: readonly TextContent[] | undefined
 ): readonly TextContent[] {
-  if (!variant || variant.length === 0) {
+  if (!variant || variant.length === 0 || !containsReplaceableHymnDoxology(content)) {
     return content;
   }
 
@@ -1941,6 +1950,148 @@ function trimLeadingSeparators(content: readonly TextContent[]): readonly TextCo
     start += 1;
   }
   return content.slice(start);
+}
+
+function prependMajorHourHymnWrapper(
+  args: ComposeSlotArgs,
+  content: readonly TextContent[],
+  headingSource: readonly TextContent[]
+): readonly TextContent[] {
+  if ((args.hour !== 'lauds' && args.hour !== 'vespers') || content.length === 0) {
+    return content;
+  }
+
+  const trailingSeparator =
+    args.structure.slots.versicle?.kind && args.structure.slots.versicle.kind !== 'empty'
+      ? ([{ type: 'separator' } satisfies TextContent] as const)
+      : [];
+
+  return Object.freeze([
+    { type: 'separator' } satisfies TextContent,
+    {
+      type: 'gabcNotation',
+      notation: {
+        kind: 'header',
+        notation: '',
+        text: majorHourHymnHeading(args, headingSource)
+      }
+    } satisfies TextContent,
+    ...content,
+    ...trailingSeparator
+  ]);
+}
+
+function majorHourHymnHeading(
+  args: ComposeSlotArgs,
+  content: readonly TextContent[]
+): string {
+  const doxologyName = majorHourHymnDoxologyName(args, content);
+  return doxologyName ? `Hymnus {Doxology: ${doxologyName}}` : 'Hymnus';
+}
+
+function majorHourHymnDoxologyName(
+  args: ComposeSlotArgs,
+  content: readonly TextContent[]
+): string | undefined {
+  if (args.context.version.handle.includes('1960') || !containsReplaceableHymnDoxology(content)) {
+    return undefined;
+  }
+
+  if (args.hour === 'vespers' && /^Pasc7/iu.test(args.summary.temporal.dayName)) {
+    return undefined;
+  }
+
+  return majorHourHymnDoxologySource(args)?.label;
+}
+
+function containsReplaceableHymnDoxology(content: readonly TextContent[]): boolean {
+  return content.some((node) => {
+    if (node.type === 'text') {
+      return /^\*\s+/u.test(node.value);
+    }
+    if (node.type === 'verseMarker') {
+      return /^\*\s+/u.test(node.text);
+    }
+    if (node.type === 'gabcNotation') {
+      const { notation } = node;
+      if (notation.kind === 'header' && notation.text) {
+        return /^\*\s+/u.test(notation.text);
+      }
+    }
+    return false;
+  });
+}
+
+function majorHourHymnDoxologySource(
+  args: ComposeSlotArgs
+): { readonly ref: TextReference; readonly label: string } | undefined {
+  if ((args.hour !== 'lauds' && args.hour !== 'vespers') || args.context.version.handle.includes('1960')) {
+    return undefined;
+  }
+
+  const specialRef = properHymnDoxologyReference(args);
+  if (specialRef) {
+    return {
+      ref: specialRef,
+      label: 'Special'
+    };
+  }
+
+  const label = args.summary.celebrationRules.doxologyVariant ?? seasonalHymnDoxologyName(args);
+  if (!label) {
+    return undefined;
+  }
+
+  return {
+    ref: {
+      path: 'horas/Latin/Psalterium/Doxologies',
+      section: label
+    },
+    label
+  };
+}
+
+function properHymnDoxologyReference(args: ComposeSlotArgs): TextReference | undefined {
+  const properPath = `horas/Latin/${args.summary.celebration.feastRef.path}.txt`;
+  const properFile = args.corpus.getFile(properPath);
+  if (!properFile?.sections.some((section) => section.header === 'Doxology')) {
+    return undefined;
+  }
+
+  return {
+    path: properPath.replace(/\.txt$/u, ''),
+    section: 'Doxology'
+  };
+}
+
+function seasonalHymnDoxologyName(args: ComposeSlotArgs): string | undefined {
+  const dayName = args.summary.temporal.dayName;
+  const dayOfMonth = Number.parseInt(args.summary.date.slice(-2), 10);
+
+  if (/^Nat/iu.test(dayName)) {
+    return dayOfMonth >= 6 && dayOfMonth < 13 ? 'Epi' : 'Nat';
+  }
+
+  if (/^Epi[01]/iu.test(dayName) && dayOfMonth < 14) {
+    return 'Epi';
+  }
+
+  if (
+    /^Pasc6/iu.test(dayName) ||
+    (/^Pasc5/iu.test(dayName) && args.context.dayOfWeek > 3)
+  ) {
+    return 'Asc';
+  }
+
+  if (/^Pasc[0-5]/iu.test(dayName)) {
+    return 'Pasch';
+  }
+
+  if (/^Pasc7/iu.test(dayName)) {
+    return 'Pent';
+  }
+
+  return undefined;
 }
 
 function referenceKey(ref: TextReference): string {

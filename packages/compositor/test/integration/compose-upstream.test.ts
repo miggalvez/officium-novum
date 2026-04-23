@@ -1480,6 +1480,59 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Dec 27 Roman Vespers in chapter-hymn-versicle order after the Christmas second-Vespers psalmody', async () => {
+    const expectedChapter = [
+      normalizeLatin('Sir 15:1-2'),
+      normalizeLatin(
+        'Qui timet Deum, fáciet bona: et qui cóntinens est justítiæ, apprehéndet illam, et obviábit illi quasi mater honorificáta.'
+      ),
+      normalizeLatin('Deo grátias.')
+    ] as const;
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-12-27');
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+
+      const sectionOrder = composed.sections.map((section) => section.slot);
+      const psalmodyIndex = sectionOrder.indexOf('psalmody');
+      expect(psalmodyIndex, `${version} Dec 27 Vespers is missing psalmody`).toBeGreaterThanOrEqual(0);
+      expect(
+        sectionOrder.slice(psalmodyIndex, psalmodyIndex + 4),
+        `${version} Dec 27 Vespers later-block order`
+      ).toEqual(['psalmody', 'chapter', 'hymn', 'versicle']);
+      expect(
+        sectionTexts(composed, 'chapter').map((line) => normalizeLatin(line.trim())),
+        `${version} Dec 27 Vespers chapter lines`
+      ).toEqual(expectedChapter);
+      const hymnSection = composed.sections.find((section) => section.slot === 'hymn');
+      expect(hymnSection, `${version} Dec 27 Vespers should expose a hymn section`).toBeDefined();
+      const hymnLines = hymnSection?.lines.map(renderLatinText).map((line) => normalizeLatin(line.trim())) ?? [];
+      expect(
+        hymnLines.slice(0, 3),
+        `${version} Dec 27 Vespers hymn wrapper`
+      ).toEqual([
+        normalizeLatin('_'),
+        normalizeLatin(version === 'Reduced - 1955' ? 'Hymnus {Doxology: Nat}' : 'Hymnus'),
+        normalizeLatin('Exsúltet orbis gáudiis:')
+      ]);
+      expect(
+        hymnLines[2],
+        `${version} Dec 27 Vespers hymn opening`
+      ).toBe(normalizeLatin('Exsúltet orbis gáudiis:'));
+      expect(
+        hymnLines.at(-1),
+        `${version} Dec 27 Vespers should keep the hymn-versicle separator inside the hymn block`
+      ).toBe(normalizeLatin('_'));
+    }
+  }, 240_000);
+
   it('keeps Jan 14 1960 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2024-01-14');

@@ -6751,7 +6751,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
     "resolvedAt": "2026-04-22",
-    "commitSha": "pending"
+    "commitSha": "790134e"
   },
   "Reduced - 1955/2024-04-04/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -6763,7 +6763,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
     "resolvedAt": "2026-04-22",
-    "commitSha": "pending"
+    "commitSha": "790134e"
   },
   "Reduced - 1955/2024-04-05/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -6775,7 +6775,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
     "resolvedAt": "2026-04-22",
-    "commitSha": "pending"
+    "commitSha": "790134e"
   },
   "Reduced - 1955/2024-04-02/Lauds/2af868c1": {
     "policy": "Reduced - 1955",
@@ -9451,7 +9451,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
     "resolvedAt": "2026-04-22",
-    "commitSha": "pending"
+    "commitSha": "790134e"
   },
   "Rubrics 1960 - 1960/2024-04-04/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
@@ -9463,7 +9463,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
     "resolvedAt": "2026-04-22",
-    "commitSha": "pending"
+    "commitSha": "790134e"
   },
   "Rubrics 1960 - 1960/2024-04-05/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
@@ -9475,7 +9475,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
     "resolvedAt": "2026-04-22",
-    "commitSha": "pending"
+    "commitSha": "790134e"
   },
   "Rubrics 1960 - 1960/2024-04-02/Lauds/2af868c1": {
     "policy": "Rubrics 1960 - 1960",

@@ -1707,7 +1707,7 @@ engine fix.
 
 ### 2026-04-22 — Pattern: Roman Prime post-Martyrologium secret `Pater Noster` guillemet fanout through Apr 5 (rendering-difference)
 
-**Commit.** pending tranche commit
+**Commit.** `790134e`
 
 **Ledger signal.** After the Easter-Octave Lauds Psalm 99 adjudication
 cleared the adjacent April lane, the remaining Roman Prime rows on
@@ -1850,6 +1850,71 @@ refresh, Roman divergent-hour / unadjudicated totals stay
 `465` / `288` for `Reduced - 1955` and `461` / `195` for
 `Rubrics 1960 - 1960`, while average matching prefix improves to
 `43.1` and `45.4`.
+
+### 2026-04-23 — Pattern: Dec 27 Roman Christmas-octave Vespers chapter / hymn boundary (cross-layer bug)
+
+**Commit.** pending tranche commit
+
+**Ledger signal.** After the fifth-psalm precedence tranche, both Roman
+policies on Dec `27` `Vespers` first diverged at the later-block seam:
+Perl expected `Sir 15:1-2`, while the compositor jumped straight to
+`Exsúltet orbis gáudiis:`. As the tranche landed, the same row advanced
+through the chapter, hymn-heading, pre-1960 doxology, and hymn-versicle
+sub-seams; the next live mismatch now lands later on the same office at
+line `145` (`_` vs `V. Dómine, exáudi oratiónem meam.`).
+
+**Root cause.** Two reusable bugs stacked on the same Roman later-block
+family:
+
+- **Phase 2 structure gap.**
+  `packages/rubrical-engine/src/hours/apply-rule-set.ts` treated second
+  Vespers chapters as `Capitulum Vespera 3` / `Capitulum Vespera` only.
+  St John (`Sancti/12-27`) has no proper `Capitulum Vespera 3`, but it
+  *does* carry the correct `Capitulum Laudes` (`Sir 15:1-2`), so the
+  engine skipped the day's own proper chapter and inherited Christmas's
+  `Heb 1:1-2` instead.
+- **Phase 3 emission gap.**
+  Once the chapter ref was correct, the compositor still rendered the
+  hymn body as a bare stanza stream. Perl's combined major-hour
+  `Capitulum Hymnus Versus` lane inserts the major-hour hymn wrapper
+  (`_`, `Hymnus`, optional `{Doxology: ...}` for pre-1960 replaceable
+  endings, and the closing `_` before the versicle), while the
+  compositor emitted only the hymn text.
+
+**Resolution.** Fixed across the owning layers, without adding
+date-specific exceptions:
+
+- Phase 2 Vespers chapter lookup now falls back to the office's own
+  `Capitulum Laudes` when second Vespers lacks a dedicated
+  `Capitulum Vespera 3`.
+- Phase 3 major-hour hymn composition now restores the legacy wrapper
+  inside the hymn section, including:
+  - the opening `_` + `Hymnus` line for Lauds/Vespers
+  - the pre-1960 doxology label and replacement stanza when the hymn
+    source still carries a replaceable `*` doxology marker
+  - the closing `_` separator before the versicle
+
+Locked first in focused upstream tests:
+
+- `packages/rubrical-engine/test/integration/phase-2g-upstream.test.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/12-27.txt:157-160,209-210`
+- `upstream/web/www/horas/Latin/Sancti/12-25.txt:449-450`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:17-43`
+- `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-6`
+- `upstream/web/cgi-bin/horas/specials/hymni.pl:11-18,43-53,124-149`
+
+**Impact.** The shared Roman Dec `27` chapter/hymn family is closed.
+Focused `compare:phase-3-perl -- --no-write-docs` probes now move both
+Roman policies past the former `Sir 15:1-2` / `Exsúltet orbis gáudiis:`
+frontier, and the full no-write-docs compare drops Roman divergent-hour
+totals to `460/488` for `Reduced - 1955` and `457/488` for
+`Rubrics 1960 - 1960`. The next shared Roman family is therefore the
+later major-hour separator before the conclusion block on the same Dec
+`27` Vespers row (`_` vs `V. Dómine, exáudi oratiónem meam.`).
 
 ### Open pattern backlog
 
