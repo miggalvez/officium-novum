@@ -457,6 +457,9 @@ function resolveMajorHourPsalmRefs(
       if (refs.length > 0) {
         return refs;
       }
+      if (stripsPsalmPayloads(section.content, conditionContext)) {
+        return [];
+      }
     }
   }
 
@@ -601,6 +604,35 @@ function findMajorHourPsalmSection(
   }
 
   return fallback;
+}
+
+function stripsPsalmPayloads(
+  content: readonly TextContent[],
+  conditionContext: ConditionEvalContext | undefined
+): boolean {
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      if (conditionContext && !conditionMatches(node.condition, conditionContext)) {
+        continue;
+      }
+      if (stripsPsalmPayloads(node.content, conditionContext)) {
+        return true;
+      }
+      continue;
+    }
+
+    if (
+      node.type === 'reference' &&
+      node.ref.substitutions.some(
+        (substitution) =>
+          substitution.pattern === ';;.*' && substitution.replacement.length === 0
+      )
+    ) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function isGenericMajorHourPsalmRef(ref: TextReference): boolean {

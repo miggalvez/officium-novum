@@ -129,6 +129,21 @@ Other day four;;112
 Other day five;;113
 `.trim();
 
+const TRANSFORMED_SECOND_VESPERS_FILE = `
+[Rank]
+Transformed second Vespers;;Duplex;;5;;
+
+[Ant Vespera]
+First-Vespers one;;109
+First-Vespers two;;110
+First-Vespers three;;111
+First-Vespers four;;112
+First-Vespers five;;113
+
+[Ant Vespera 3]
+@:Ant Vespera:s/;;.*//g
+`.trim();
+
 function setup() {
   const corpus = new TestOfficeTextIndex();
   corpus.add('horas/Ordinarium/Vespera.txt', ORDINARIUM_VESPERA);
@@ -501,6 +516,53 @@ describe('structureVespers', () => {
       expect(psalmody.psalms[4]?.psalmRef.path).toBe(
         'horas/Latin/Psalterium/Psalmorum/Psalm113'
       );
+    }
+  });
+
+  it('keeps the generic psalter fallback when Ant Vespera 3 strips psalm payloads', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-03.txt', TRANSFORMED_SECOND_VESPERS_FILE);
+    const celeb = celebration('Sancti/08-03');
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-01-07', 'Epi1-0', 0),
+        season: 'epiphanytide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version,
+      __vespersSide: 'second'
+    } as Parameters<typeof structureVespers>[0]);
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[0]?.antiphonRef).toEqual({
+        path: 'horas/Latin/Sancti/08-03',
+        section: 'Ant Vespera 3',
+        selector: '1'
+      });
+      expect(psalmody.psalms[0]?.psalmRef).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '1'
+      });
+      expect(psalmody.psalms[4]?.psalmRef).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '5'
+      });
     }
   });
 });
