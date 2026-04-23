@@ -13,6 +13,7 @@ import {
   type Commemoration,
   type TemporalContext
 } from '../../src/index.js';
+import { officeVisitKey } from '../../src/hours/apply-rule-set.js';
 import { VERSION_POLICY } from '../../src/version/policy-map.js';
 import { TestOfficeTextIndex } from '../helpers.js';
 
@@ -216,6 +217,15 @@ function rules(): CelebrationRuleSet {
 }
 
 describe('structureVespers', () => {
+  it('normalizes visit keys across file and reference path forms', () => {
+    expect(officeVisitKey('horas/Latin/Sancti/12-27.txt', 'Ant Vespera 3')).toBe(
+      officeVisitKey('Sancti/12-27', 'Ant Vespera 3')
+    );
+    expect(officeVisitKey('./horas/Latin/Sancti/12-27.txt', 'Ant Vespera 3')).toBe(
+      officeVisitKey('Sancti/12-27', 'Ant Vespera 3')
+    );
+  });
+
   it('emits psalmody keyed to Sunday when concurrence winner is a Sunday celebration', () => {
     const { corpus, skeleton } = setup();
     const celeb = celebration('Sancti/12-08');

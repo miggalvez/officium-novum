@@ -494,7 +494,7 @@ function resolveMajorHourPsalmRefs(
         count,
         input,
         header,
-        new Set([`${file.path}:${header}`]),
+        new Set([officeVisitKey(file.path, header)]),
         conditionContext
       );
       if (refs.length > 0) {
@@ -529,7 +529,7 @@ function resolveInheritedSecondVespersFiles(
         section.content,
         input,
         header,
-        new Set([`${file.path}:${header}`]),
+        new Set([officeVisitKey(file.path, header)]),
         conditionContext,
         resolved,
         seen
@@ -578,7 +578,7 @@ function collectInheritedSecondVespersFiles(
     }
 
     const targetHeader = node.ref.section ?? currentHeader;
-    const visitKey = `${node.ref.path}:${targetHeader}`;
+    const visitKey = officeVisitKey(node.ref.path, targetHeader);
     if (visited.has(visitKey)) {
       continue;
     }
@@ -648,7 +648,7 @@ function extractMajorHourPsalmRefs(
       node.ref.substitutions.length === 0
     ) {
       const targetHeader = node.ref.section ?? currentHeader;
-      const visitKey = `${node.ref.path}:${targetHeader}`;
+      const visitKey = officeVisitKey(node.ref.path, targetHeader);
       if (visited.has(visitKey)) {
         continue;
       }
@@ -1118,6 +1118,19 @@ function minorHourLaterBlockFallbackSection(
 
 function usesVersum2InPlaceOfLaterBlock(input: ApplyRuleSetInput): boolean {
   return input.hour !== 'compline' && input.hourRules.capitulumVariant?.scheme === 2;
+}
+
+export function officeVisitKey(path: string, header: string): string {
+  return `${canonicalOfficeVisitPath(path)}:${header}`;
+}
+
+function canonicalOfficeVisitPath(path: string): string {
+  return path
+    .replaceAll('\\', '/')
+    .trim()
+    .replace(/^\.\/+/u, '')
+    .replace(/^horas\/Latin\//u, '')
+    .replace(/\.txt$/u, '');
 }
 
 function findCapitulumVersum2Reference(
