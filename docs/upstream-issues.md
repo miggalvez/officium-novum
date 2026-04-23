@@ -24,6 +24,46 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-23 — Roman Ash Wednesday Matins gains unsupported commas in the Psalm 44 reopening antiphon
+
+**Classification.** `perl-bug`
+
+**Summary.** After fixing the structural Psalm `44` split on Ash
+Wednesday Matins, the remaining Roman divergence is punctuation-only.
+Ash Wednesday 2024 is a Wednesday, so both Roman policies correctly use
+`Psalmi matutinum:Day3`, whose second Psalm `44` antiphon is
+`Confitebúntur tibi * pópuli Deus in ætérnum.` Perl instead surfaces the
+same antiphon with an unsupported extra comma after `pópuli`.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-02-14 --hour Matins
+```
+
+Once the structural split bug is fixed, the remaining Roman Ash
+Wednesday Matins row first diverges only on the reopening antiphon
+surface:
+
+- `Reduced - 1955`: Perl expects
+  `Ant. Confitebúntur tibi pópuli, Deus, in ætérnum.`
+- `Rubrics 1960 - 1960`: Perl expects
+  `Ant. Confitebúntur tibi * pópuli, Deus, in ætérnum.`
+
+The compositor preserves the source-backed Day3 text without that extra
+comma.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-14 | Matins | `d6ab45d4` |
+| Rubrics 1960 - 1960 | 2024-02-14 | Matins | `c12d0e8c` |
+
 ### 2026-04-19 — Divino Afflatu opening rubric prose is dropped by the Perl render surface
 
 **Classification.** `perl-bug`

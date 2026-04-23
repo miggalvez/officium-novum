@@ -6297,6 +6297,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-02-14/Matins/d6ab45d4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Confitebúntur tibi pópuli, Deus, in ætérnum.",
+    "firstActual": "Ant. Confitebúntur tibi pópuli Deus in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
+    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in pre-1960 form, after the structural split bug was fixed.",
+    "resolvedAt": "2026-04-23",
+    "commitSha": "7dcd747"
+  },
   "Reduced - 1955/2024-02-14/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-02-14",
@@ -8672,6 +8684,18 @@
     "notes": "Representative entry for the Rubrics 1960 Jan 14 Sunday Vespers surface family where Perl adds a trailing `‡` that is not present in the psalter-major source.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Matins/c12d0e8c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Confitebúntur tibi * pópuli, Deus, in ætérnum.",
+    "firstActual": "Ant. Confitebúntur tibi * pópuli Deus in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
+    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in 1960 form, after the structural split bug was fixed.",
+    "resolvedAt": "2026-04-23",
+    "commitSha": "7dcd747"
   },
   "Rubrics 1960 - 1960/2024-02-14/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
