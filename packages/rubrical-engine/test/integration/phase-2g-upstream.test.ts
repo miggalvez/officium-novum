@@ -168,33 +168,63 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
     expect(complineFinal?.kind).not.toBe('empty');
   }, 240_000);
 
-  it('Codex P1 #4: Assumption (a Thursday feast with Psalmi Dominica) uses Day0 psalmody', async () => {
-    const corpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
-    const versionRegistry = buildVersionRegistry(
-      parseVersionRegistry(readFileSync(resolve(UPSTREAM_ROOT, 'Tabulae/data.txt'), 'utf8'))
-    );
-    const engine = createRubricalEngine({
-      corpus: corpus.index,
-      kalendarium: buildKalendariumTable(loadKalendaria()),
-      yearTransfers: buildYearTransferTable(loadTransferTables()),
-      scriptureTransfers: buildScriptureTransferTable(loadScriptureTransferTables()),
-      versionRegistry,
-      version: asVersionHandle('Rubrics 1960 - 1960'),
-      policyMap: VERSION_POLICY
-    });
+  it(
+    'Codex P1 #4: Assumption keeps Day0 Lauds while Vespers follows the proper Ant Vespera psalm numbers',
+    async () => {
+      const corpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
+      const versionRegistry = buildVersionRegistry(
+        parseVersionRegistry(readFileSync(resolve(UPSTREAM_ROOT, 'Tabulae/data.txt'), 'utf8'))
+      );
+      const engine = createRubricalEngine({
+        corpus: corpus.index,
+        kalendarium: buildKalendariumTable(loadKalendaria()),
+        yearTransfers: buildYearTransferTable(loadTransferTables()),
+        scriptureTransfers: buildScriptureTransferTable(loadScriptureTransferTables()),
+        versionRegistry,
+        version: asVersionHandle('Rubrics 1960 - 1960'),
+        policyMap: VERSION_POLICY
+      });
 
-    const summary = engine.resolveDayOfficeSummary('2024-08-15');
-    const laudsPsalmody = summary.hours.lauds?.slots.psalmody;
-    expect(laudsPsalmody?.kind).toBe('psalmody');
-    if (laudsPsalmody?.kind === 'psalmody') {
-      expect(laudsPsalmody.psalms[0]?.psalmRef.section).toMatch(/^Day0 /u);
-    }
-    const vespersPsalmody = summary.hours.vespers?.slots.psalmody;
-    expect(vespersPsalmody?.kind).toBe('psalmody');
-    if (vespersPsalmody?.kind === 'psalmody') {
-      expect(vespersPsalmody.psalms[0]?.psalmRef.section).toBe('Day0 Vespera');
-    }
-  }, 240_000);
+      const summary = engine.resolveDayOfficeSummary('2024-08-15');
+      const laudsPsalmody = summary.hours.lauds?.slots.psalmody;
+      expect(laudsPsalmody?.kind).toBe('psalmody');
+      if (laudsPsalmody?.kind === 'psalmody') {
+        expect(laudsPsalmody.psalms[0]?.psalmRef.section).toMatch(/^Day0 /u);
+      }
+      const vespersPsalmody = summary.hours.vespers?.slots.psalmody;
+      expect(vespersPsalmody?.kind).toBe('psalmody');
+      if (vespersPsalmody?.kind === 'psalmody') {
+        expect(vespersPsalmody.psalms.map((entry) => entry.psalmRef)).toEqual([
+          {
+            path: 'horas/Latin/Psalterium/Psalmorum/Psalm109',
+            section: '__preamble',
+            selector: '109'
+          },
+          {
+            path: 'horas/Latin/Psalterium/Psalmorum/Psalm112',
+            section: '__preamble',
+            selector: '112'
+          },
+          {
+            path: 'horas/Latin/Psalterium/Psalmorum/Psalm121',
+            section: '__preamble',
+            selector: '121'
+          },
+          {
+            path: 'horas/Latin/Psalterium/Psalmorum/Psalm126',
+            section: '__preamble',
+            selector: '126'
+          },
+          {
+            path: 'horas/Latin/Psalterium/Psalmorum/Psalm147',
+            section: '__preamble',
+            selector: '147'
+          }
+        ]);
+      }
+    },
+    240_000
+  );
 });
 
 function loadKalendaria() {

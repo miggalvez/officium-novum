@@ -240,6 +240,34 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'keeps Christmas-octave second Vespers on the proper Ant Vespera 3 psalm numbers',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        for (const date of ['2024-12-25', '2024-12-26', '2024-12-27'] as const) {
+          expectMajorHourPsalmSlot(
+            psalmodyAt(engine, date, 'vespers'),
+            3,
+            'Ant Vespera 3',
+            '129'
+          );
+        }
+      }
+    },
+    240_000
+  );
+
+  it(
     'replaces the Easter Octave Prime and minor-hour later block with inherited Versum 2',
     async () => {
       const engines = await loadEngines([
@@ -500,6 +528,17 @@ function expectMajorHour(
     `${antiphonSection}:4`,
     `${antiphonSection}:5`
   ]);
+}
+
+function expectMajorHourPsalmSlot(
+  psalms: readonly PsalmAssignment[],
+  index: number,
+  antiphonSection: string,
+  psalmNumber: string
+) {
+  const slot = psalms[index];
+  expect(slot?.antiphonRef?.section).toBe(antiphonSection);
+  expect(slot?.psalmRef.path).toBe(`horas/Latin/Psalterium/Psalmorum/Psalm${psalmNumber}`);
 }
 
 function expectVersum2LaterBlock(

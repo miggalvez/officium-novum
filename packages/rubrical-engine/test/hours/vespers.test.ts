@@ -54,6 +54,96 @@ Erat subditus;;112
 Et mater ejus;;113
 `.trim();
 
+const CHRISTMAS_SECOND_VESPERS_FILE = `
+[Rank]
+In Nativitate Domini;;Duplex I Classis;;6.9
+
+[Rule]
+Psalmi Dominica
+
+[Ant Vespera 3]
+Tecum princípium;;109
+Redemptiónem;;110
+Exórtum est;;111
+Apud Dóminum;;129
+De fructu;;131
+`.trim();
+
+const CONDITIONED_SECTION_VESPERS_FILE = `
+[Rank]
+Conditioned sections;;Duplex;;5;;
+
+[Ant Vespera] (feria 2)
+Feria ii one;;114
+Feria ii two;;115
+Feria ii three;;116
+Feria ii four;;117
+Feria ii five;;118
+
+[Ant Vespera] (nisi feria 2)
+Other day one;;109
+Other day two;;110
+Other day three;;111
+Other day four;;112
+Other day five;;113
+`.trim();
+
+const CONDITIONAL_CONTENT_VESPERS_FILE = `
+[Rank]
+Conditional content;;Duplex;;5;;
+
+[Ant Vespera]
+Feria ii one;;114
+(sed feria 3 omittitur)
+Other day one;;109
+Other day two;;110
+Other day three;;111
+Other day four;;112
+Other day five;;113
+`.trim();
+
+const REFERENCED_CONDITIONED_VESPERS_FILE = `
+[Rank]
+Reference root;;Duplex;;5;;
+
+[Ant Vespera]
+@Sancti/08-02:Ant Laudes
+`.trim();
+
+const REFERENCED_CONDITIONED_LAUDS_FILE = `
+[Rank]
+Reference target;;Duplex;;5;;
+
+[Ant Laudes] (feria 2)
+Feria ii one;;114
+Feria ii two;;115
+Feria ii three;;116
+Feria ii four;;117
+Feria ii five;;118
+
+[Ant Laudes] (nisi feria 2)
+Other day one;;109
+Other day two;;110
+Other day three;;111
+Other day four;;112
+Other day five;;113
+`.trim();
+
+const TRANSFORMED_SECOND_VESPERS_FILE = `
+[Rank]
+Transformed second Vespers;;Duplex;;5;;
+
+[Ant Vespera]
+First-Vespers one;;109
+First-Vespers two;;110
+First-Vespers three;;111
+First-Vespers four;;112
+First-Vespers five;;113
+
+[Ant Vespera 3]
+@:Ant Vespera:s/;;.*//g
+`.trim();
+
 function setup() {
   const corpus = new TestOfficeTextIndex();
   corpus.add('horas/Ordinarium/Vespera.txt', ORDINARIUM_VESPERA);
@@ -271,6 +361,208 @@ describe('structureVespers', () => {
         selector: '1'
       });
       expect(psalmody.psalms[4]?.antiphonRef?.section).toBe('Ant Vespera');
+    }
+  });
+
+  it('derives second-Vespers psalm refs from proper Ant Vespera 3 psalm numbers', () => {
+    const { corpus, skeleton } = setup();
+    corpus.add('horas/Latin/Sancti/12-25.txt', CHRISTMAS_SECOND_VESPERS_FILE);
+    const celeb: Celebration = {
+      feastRef: { path: 'Sancti/12-25', id: 'Sancti/12-25', title: '12-25' },
+      rank: { name: 'I', classSymbol: 'I', weight: 1000 },
+      source: 'sanctoral'
+    };
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-12-25', 'Nat25', 3),
+        season: 'christmastide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      __vespersSide: 'second'
+    } as Parameters<typeof structureVespers>[0]);
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[3]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm129'
+      );
+      expect(psalmody.psalms[3]?.antiphonRef).toEqual({
+        path: 'horas/Latin/Sancti/12-25',
+        section: 'Ant Vespera 3',
+        selector: '4'
+      });
+    }
+  });
+
+  it('honors section-level conditions when deriving major-hour psalm refs', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-01.txt', CONDITIONED_SECTION_VESPERS_FILE);
+    const celeb = celebration('Sancti/08-01');
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-01-02', 'Epi1-2', 2),
+        season: 'christmastide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version
+    });
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[0]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm109'
+      );
+      expect(psalmody.psalms[4]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm113'
+      );
+    }
+  });
+
+  it('honors in-section conditionals when deriving major-hour psalm refs', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-01.txt', CONDITIONAL_CONTENT_VESPERS_FILE);
+    const celeb = celebration('Sancti/08-01');
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-01-02', 'Epi1-2', 2),
+        season: 'christmastide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version
+    });
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[0]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm109'
+      );
+      expect(psalmody.psalms[4]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm113'
+      );
+    }
+  });
+
+  it('honors conditions when following referenced major-hour psalm sections', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-01.txt', REFERENCED_CONDITIONED_VESPERS_FILE);
+    corpus.add('horas/Latin/Sancti/08-02.txt', REFERENCED_CONDITIONED_LAUDS_FILE);
+    const celeb = celebration('Sancti/08-01');
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-01-02', 'Epi1-2', 2),
+        season: 'christmastide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version
+    });
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[0]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm109'
+      );
+      expect(psalmody.psalms[4]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm113'
+      );
+    }
+  });
+
+  it('keeps the generic psalter fallback when Ant Vespera 3 strips psalm payloads', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-03.txt', TRANSFORMED_SECOND_VESPERS_FILE);
+    const celeb = celebration('Sancti/08-03');
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-01-07', 'Epi1-0', 0),
+        season: 'epiphanytide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version,
+      __vespersSide: 'second'
+    } as Parameters<typeof structureVespers>[0]);
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[0]?.antiphonRef).toEqual({
+        path: 'horas/Latin/Sancti/08-03',
+        section: 'Ant Vespera 3',
+        selector: '1'
+      });
+      expect(psalmody.psalms[0]?.psalmRef).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '1'
+      });
+      expect(psalmody.psalms[4]?.psalmRef).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '5'
+      });
     }
   });
 });

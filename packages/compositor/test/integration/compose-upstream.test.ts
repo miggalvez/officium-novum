@@ -1421,7 +1421,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
-  it('keeps January Roman Vespers later-block headings on the source-backed Day0 and Psalm116 refs', async () => {
+  it('keeps January Roman Vespers later-block headings on the source-backed proper and Psalm116 refs', async () => {
     for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
       const { engine, resolvedCorpus } = await createHarness(version);
 
@@ -1441,7 +1441,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           [
             'Post tríduum invenérunt Jesum in templo sedéntem in médio doctórum, audiéntem illos, et interrogántem eos.',
             'Dixit mater Jesu * ad illum: Fili, quid fecísti nobis sic? Ecce pater tuus et ego doléntes quærebámus te.',
-            'Psalmus 110 [2]'
+            'Psalmus 112 [2]'
           ]
         ],
         [

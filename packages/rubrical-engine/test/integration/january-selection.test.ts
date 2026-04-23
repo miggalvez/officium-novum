@@ -89,11 +89,11 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Sancti/01-01:Ant Vespera:5'
       ]);
       expectPsalmRefs(psalmodyAt(reduced, '2024-01-01', 'vespers')).toEqual([
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:1',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:2',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:3',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:4',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:5'
+        'horas/Latin/Psalterium/Psalmorum/Psalm109:__preamble:109',
+        'horas/Latin/Psalterium/Psalmorum/Psalm110:__preamble:110',
+        'horas/Latin/Psalterium/Psalmorum/Psalm111:__preamble:111',
+        'horas/Latin/Psalterium/Psalmorum/Psalm129:__preamble:129',
+        'horas/Latin/Psalterium/Psalmorum/Psalm131:__preamble:131'
       ]);
 
       // 1955-01-06: Epiphany keeps its Sanctoral antiphons at both major
@@ -153,11 +153,11 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Tempora/Epi1-0:Ant Vespera 3:5'
       ]);
       expectPsalmRefs(psalmodyAt(reduced, '2024-01-07', 'vespers')).toEqual([
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:1',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:2',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:3',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:4',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:5'
+        'horas/Latin/Psalterium/Psalmorum/Psalm109:__preamble:109',
+        'horas/Latin/Psalterium/Psalmorum/Psalm112:__preamble:112',
+        'horas/Latin/Psalterium/Psalmorum/Psalm121:__preamble:121',
+        'horas/Latin/Psalterium/Psalmorum/Psalm126:__preamble:126',
+        'horas/Latin/Psalterium/Psalmorum/Psalm147:__preamble:147'
       ]);
 
       // 1955-01-13: the Baptism office inherits Epiphany by `ex Sancti/01-06`,
@@ -204,11 +204,11 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Sancti/01-01:Ant Vespera:5'
       ]);
       expectPsalmRefs(psalmodyAt(roman1960, '2024-01-01', 'vespers')).toEqual([
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:1',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:2',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:3',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:4',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:5'
+        'horas/Latin/Psalterium/Psalmorum/Psalm109:__preamble:109',
+        'horas/Latin/Psalterium/Psalmorum/Psalm110:__preamble:110',
+        'horas/Latin/Psalterium/Psalmorum/Psalm111:__preamble:111',
+        'horas/Latin/Psalterium/Psalmorum/Psalm129:__preamble:129',
+        'horas/Latin/Psalterium/Psalmorum/Psalm131:__preamble:131'
       ]);
       expectMinorHour(
         psalmodyAt(roman1960, '2024-01-06', 'prime'),
@@ -291,11 +291,11 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Tempora/Epi1-0:Ant Vespera 3:5'
       ]);
       expectPsalmRefs(psalmodyAt(roman1960, '2024-01-07', 'vespers')).toEqual([
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:1',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:2',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:3',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:4',
-        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:5'
+        'horas/Latin/Psalterium/Psalmorum/Psalm109:__preamble:109',
+        'horas/Latin/Psalterium/Psalmorum/Psalm112:__preamble:112',
+        'horas/Latin/Psalterium/Psalmorum/Psalm121:__preamble:121',
+        'horas/Latin/Psalterium/Psalmorum/Psalm126:__preamble:126',
+        'horas/Latin/Psalterium/Psalmorum/Psalm147:__preamble:147'
       ]);
 
       // 1960-01-13: the post-Epiphany Sunday keeps Epiphany's Lauds/Vespers

@@ -1748,6 +1748,67 @@ the live grouped surface is the Christmas-octave Vespers fourth-psalm
 routing seam on Dec `25` through Dec `27`, where both policies still
 diverge at `Psalmus 129 [4]` vs `Psalmus 112 [4]`.
 
+### 2026-04-22 — Pattern: Christmas-octave Vespers fourth-psalm routing (engine-bug)
+
+**Commit.** pending tranche commit
+
+**Ledger signal.** After the Easter-Octave Prime guillemet fanout, the
+next repeated shared Roman frontier was the Christmas-octave Vespers
+fourth-psalm seam on Dec `25` through Dec `27` in both `Reduced - 1955`
+and `Rubrics 1960 - 1960`: Perl expected `Psalmus 129 [4]`, while the
+compositor was still emitting `Psalmus 112 [4]` from the generic Sunday
+`Day0 Vespera` table.
+
+**Root cause.** Phase 2 was already decorating major-hour psalmody with
+the proper `Ant Vespera 3` refs, but it left the generic `Psalmi major`
+psalm refs in place. The selection path also only harvested inline
+`text` rows, so it missed the parser's real `psalmRef` nodes and could
+not follow unresolved plain `@Sancti/12-25` section references when the
+engine loaded the corpus with `resolveReferences: false`. That left Dec
+`26` generic and let Dec `27` fall through into the inherited `C1`
+family instead of the Christmas-octave source. At the same time, the
+harvest must **not** follow transformed references like
+`Sancti/08-15:Ant Laudes -> Sancti/08-15t:Ant Vespera:s/;;.*//g`,
+because those intentionally strip the psalm payload and should stay on
+the Day0 psalter.
+
+**Resolution.** Fixed in Phase 2, not Phase 3. `packages/rubrical-engine/src/hours/apply-rule-set.ts`
+now derives major-hour psalm refs from parsed `psalmRef` nodes in
+`Ant Laudes` / `Ant Vespera` / `Ant Vespera 3`, follows only
+substitution-free same-header reference chains through `resolveOfficeFile`,
+and only overwrites still-generic `Psalmi major` refs. Tightened the
+ownership seam with:
+
+- `packages/rubrical-engine/test/hours/vespers.test.ts`
+- `packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`
+- `packages/rubrical-engine/test/integration/january-selection.test.ts`
+- `packages/rubrical-engine/test/integration/phase-2g-upstream.test.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/12-25.txt:4-12`
+- `upstream/web/www/horas/Latin/Sancti/12-26.txt:8-15`
+- `upstream/web/www/horas/Latin/Sancti/12-27.txt:8-12`
+- `upstream/web/www/horas/Latin/Sancti/01-01.txt:9-20`
+- `upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:13-24,384-389`
+- `upstream/web/www/horas/Latin/Sancti/08-15.txt:235-237`
+- `upstream/web/www/horas/Latin/Sancti/08-15t.txt:7-16`
+
+**Impact.** The shared Roman Christmas-octave fourth-psalm family is
+closed. Dec `25` / `26` / `27` Vespers no longer fail at
+`Psalmus 129 [4]`, and Jan `1/7` Roman Vespers legitimately advance
+past the old second-psalm `perl-bug` seam into deeper later-block
+surface. After the full ledger refresh, Roman divergent-hour totals stay
+`465` / `461`, exact matches stay `23` / `27`, average matching prefix
+improves to `43.0` / `45.3`, and the unadjudicated counts move to
+`288` / `195` because those newly exposed Jan `7` later-block seams are
+not yet classified. The next shared Roman family should be the
+Christmas-octave Vespers fifth-slot/later-block split, starting with Dec
+`27` second-Vespers fifth-psalm precedence (`Psalmus 131 [5]` vs
+`Psalmus 116 [5]`); the adjacent Dec `26` `no Psalm5` boundary and Dec
+`25` chapter/hymn seam now sit immediately underneath it.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
