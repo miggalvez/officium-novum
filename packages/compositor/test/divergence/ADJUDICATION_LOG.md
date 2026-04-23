@@ -1916,6 +1916,80 @@ totals to `460/488` for `Reduced - 1955` and `457/488` for
 later major-hour separator before the conclusion block on the same Dec
 `27` Vespers row (`_` vs `V. Dómine, exáudi oratiónem meam.`).
 
+### 2026-04-23 — Pattern: Ash Wednesday Roman Matins Psalm 44 split boundary (engine-bug)
+
+**Commit.** `7dcd747`
+
+**Ledger signal.** On Ash Wednesday (`2024-02-14`) under both
+`Reduced - 1955` and `Rubrics 1960 - 1960`, the first Matins
+divergence surfaced at line `63`: Perl closed Psalm `44` after verse
+`10`, emitted the Gloria + repeated-antiphon boundary, and reopened the
+second segment at `44:11`; the compositor ran straight through Psalm
+`44` as though it were unsplit.
+
+**Root cause.** The Matins composer already reads paired antiphon ranges
+from `Psalterium/Psalmi/Psalmi matutinum`, but
+`slicePsalmContentByVerseRange` only accepted plain numeric ranges like
+`9-21`. Ash Wednesday's `Day3` psalter source uses half-verse-style
+bounds for Psalm `44`:
+
+- `44('2a'-'10b')`
+- `44(11-'18b')`
+
+Because the slicer rejected the `a` / `b` suffixed bounds, the
+compositor never cut the repeated Psalm `44` into its two nocturn
+segments.
+
+**Resolution.** Fixed in Phase 3. The Matins psalm-range slicer now
+accepts verse bounds with trailing `a` / `b` suffixes and slices on
+their numeric verse boundaries, which is the highest fidelity available
+to the current verse-line content model. Locked with:
+
+- `packages/compositor/test/compose-matins.test.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54`
+
+**Impact.** Closes the shared Roman Ash Wednesday Matins Psalm `44`
+structural seam and moves the row onto a later punctuation-only
+reopening-antiphon difference.
+
+### 2026-04-23 — Pattern: Ash Wednesday Roman Matins Psalm 44 reopening-antiphon commas (perl-bug)
+
+**Commit.** `7dcd747`
+
+**Ledger signal.** After the structural Psalm `44` split fix, both Roman
+Ash Wednesday Matins rows converge through the Gloria boundary and now
+first diverge only on the reopening antiphon surface:
+
+- `Reduced - 1955`: Perl expects `Confitebúntur tibi pópuli, Deus, in ætérnum.`
+- `Rubrics 1960 - 1960`: Perl expects
+  `Confitebúntur tibi * pópuli, Deus, in ætérnum.`
+
+The compositor preserves the same antiphons without the extra comma
+after `pópuli`.
+
+**Root cause.** Ash Wednesday 2024 is a Wednesday, so Roman Matins
+correctly resolves the psalter-matins source to `Day3`, not `Day31`.
+`Day3` gives the second Psalm `44` antiphon as
+`Confitebúntur tibi * pópuli Deus in ætérnum.` The only version with
+`pópuli, Deus,` is `Day31`, which does not apply on `2024-02-14`. Perl
+therefore inserts punctuation that is not present in the governing
+source row.
+
+**Resolution.** Class `perl-bug`. Recorded in `adjudications.json` for:
+
+- `Reduced - 1955/2024-02-14/Matins/d6ab45d4`
+- `Rubrics 1960 - 1960/2024-02-14/Matins/c12d0e8c`
+
+**Citation.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54`
+
+**Impact.** The shared Roman Ash Wednesday Matins Psalm `44` family is
+now fully closed: the structural split is fixed, and the remaining
+reopening-antiphon punctuation is adjudicated as a Perl surface bug.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
