@@ -3,7 +3,10 @@ import type {
   TextContent
 } from '@officium-novum/parser';
 
-import { conditionMatches } from '../internal/conditions.js';
+import {
+  conditionMatches,
+  type ConditionEvalContext
+} from '../internal/conditions.js';
 import { resolveOfficeFile } from '../internal/content.js';
 import { normalizeDateInput } from '../internal/date.js';
 import type { ResolvedVersion } from '../types/version.js';
@@ -430,6 +433,7 @@ function resolveMajorHourPsalmRefs(
   input: ApplyRuleSetInput,
   count: number
 ): readonly TextReference[] {
+  const conditionContext = majorHourPsalmConditionContext(input);
   const headers =
     input.hour === 'lauds' ? ['Ant Laudes']
     : (input as InternalVespersAwareInput).__vespersSide === 'second' ?
@@ -438,7 +442,7 @@ function resolveMajorHourPsalmRefs(
 
   for (const header of headers) {
     for (const file of files) {
-      const section = file.sections.find((entry) => entry.header === header);
+      const section = findMajorHourPsalmSection(file, header, conditionContext);
       if (!section) {
         continue;
       }
@@ -447,7 +451,8 @@ function resolveMajorHourPsalmRefs(
         count,
         input,
         header,
-        new Set([`${file.path}:${header}`])
+        new Set([`${file.path}:${header}`]),
+        conditionContext
       );
       if (refs.length > 0) {
         return refs;
@@ -463,23 +468,27 @@ function extractMajorHourPsalmRefs(
   count: number,
   input: ApplyRuleSetInput,
   currentHeader: string,
-  visited: ReadonlySet<string>
+  visited: ReadonlySet<string>,
+  conditionContext: ConditionEvalContext | undefined
 ): readonly TextReference[] {
   const refs: TextReference[] = [];
 
   for (const node of content) {
     if (node.type === 'conditional') {
-      refs.push(
-        ...extractMajorHourPsalmRefs(
-          node.content,
-          count - refs.length,
-          input,
-          currentHeader,
-          visited
-        )
-      );
-      if (refs.length >= count) {
-        break;
+      if (!conditionContext || conditionMatches(node.condition, conditionContext)) {
+        refs.push(
+          ...extractMajorHourPsalmRefs(
+            node.content,
+            count - refs.length,
+            input,
+            currentHeader,
+            visited,
+            conditionContext
+          )
+        );
+        if (refs.length >= count) {
+          break;
+        }
       }
       continue;
     }
@@ -497,7 +506,7 @@ function extractMajorHourPsalmRefs(
 
       try {
         const file = resolveOfficeFile(input.corpus, node.ref.path);
-        const section = file.sections.find((entry) => entry.header === targetHeader);
+        const section = findMajorHourPsalmSection(file, targetHeader, conditionContext);
         if (!section) {
           continue;
         }
@@ -510,7 +519,8 @@ function extractMajorHourPsalmRefs(
             count - refs.length,
             input,
             targetHeader,
-            nextVisited
+            nextVisited,
+            conditionContext
           )
         );
         if (refs.length >= count) {
@@ -551,6 +561,46 @@ function extractMajorHourPsalmRefs(
   }
 
   return Object.freeze(refs);
+}
+
+function majorHourPsalmConditionContext(
+  input: ApplyRuleSetInput
+): ConditionEvalContext | undefined {
+  if (!input.version) {
+    return undefined;
+  }
+
+  return {
+    date: normalizeDateInput(input.temporal.date),
+    dayOfWeek: input.temporal.dayOfWeek,
+    season: input.temporal.season,
+    version: input.version
+  };
+}
+
+function findMajorHourPsalmSection(
+  file: ParsedFile,
+  header: string,
+  conditionContext: ConditionEvalContext | undefined
+): ParsedFile['sections'][number] | undefined {
+  let fallback: ParsedFile['sections'][number] | undefined;
+
+  for (const section of file.sections) {
+    if (section.header !== header) {
+      continue;
+    }
+
+    if (!section.condition) {
+      fallback ??= section;
+      continue;
+    }
+
+    if (conditionContext && conditionMatches(section.condition, conditionContext)) {
+      return section;
+    }
+  }
+
+  return fallback;
 }
 
 function isGenericMajorHourPsalmRef(ref: TextReference): boolean {
