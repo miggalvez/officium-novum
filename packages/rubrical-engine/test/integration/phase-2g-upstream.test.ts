@@ -225,6 +225,35 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
     },
     240_000
   );
+
+  it('falls back to the proper Lauds chapter for Christmas-octave second Vespers when no Vespera 3 chapter exists', async () => {
+    const corpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
+    const versionRegistry = buildVersionRegistry(
+      parseVersionRegistry(readFileSync(resolve(UPSTREAM_ROOT, 'Tabulae/data.txt'), 'utf8'))
+    );
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const engine = createRubricalEngine({
+        corpus: corpus.index,
+        kalendarium: buildKalendariumTable(loadKalendaria()),
+        yearTransfers: buildYearTransferTable(loadTransferTables()),
+        scriptureTransfers: buildScriptureTransferTable(loadScriptureTransferTables()),
+        versionRegistry,
+        version: asVersionHandle(version),
+        policyMap: VERSION_POLICY
+      });
+
+      const summary = engine.resolveDayOfficeSummary('2024-12-27');
+      const chapter = summary.hours.vespers?.slots.chapter;
+      expect(chapter?.kind, `${version} Dec 27 Vespers should expose a proper chapter ref`).toBe('single-ref');
+      if (chapter?.kind === 'single-ref') {
+        expect(chapter.ref).toEqual({
+          path: 'horas/Latin/Sancti/12-27',
+          section: 'Capitulum Laudes'
+        });
+      }
+    }
+  }, 240_000);
 });
 
 function loadKalendaria() {

@@ -40,6 +40,17 @@ Read these at the start of every tranche together with:
   1. Ordo Recitandi
   2. governing rubrical books
   3. legacy Perl output
+- Keep the progress heartbeat and the sign-off gate distinct:
+  - `pnpm -C packages/compositor report:phase-3-progress` is the standing
+    per-tranche progress report.
+  - `pnpm -C packages/compositor verify:phase-3-signoff` belongs to
+    stabilization / sign-off once ledger churn has slowed materially.
+- Do not spin the file-size problem into a separate refactor lane. If a
+  tranche touches any current over-limit compositor file
+  (`packages/compositor/src/compose.ts`,
+  `packages/compositor/src/compose/matins.ts`,
+  `packages/compositor/src/resolve/reference-resolver.ts`), extract a helper
+  or seam and leave that file smaller than it started.
 
 ## Session Start Checklist
 
@@ -98,8 +109,13 @@ Every tranche must follow this loop:
    - During investigation, use targeted compare runs with `--no-write-docs`.
    - At tranche end, run:
      - `pnpm -C packages/compositor compare:phase-3-perl -- --max-report 0`
+     - `pnpm -C packages/compositor report:phase-3-progress`
    - If Phase 2 behavior changed, also run:
      - `pnpm -C packages/rubrical-engine compare:phase-2h-perl-fixtures`
+   - Reserve `pnpm -C packages/compositor verify:phase-3-signoff` for the
+     stabilization / sign-off lane; do not use its red state as a reason to
+     abandon an otherwise successful tranche while the known completion gates
+     are still intentionally open.
 
 6. Commit and push the tranche.
    - Every completed tranche ends in a local git commit and push.
@@ -137,6 +153,8 @@ criteria, especially:
 - the major remaining families are either fixed or adjudicated
 - each policy has fewer than 10 `unadjudicated` rows
 - the deferred 312 snapshots are committed during stabilization
+- adjudication provenance is clean; no `commitSha: "pending"` placeholders
+  remain in the sidecar
 - `pnpm -r typecheck` and `pnpm -r test` are green
 - Phase 3 closes without date-specific compositor hacks
 

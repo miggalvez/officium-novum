@@ -13,6 +13,7 @@ import {
   type Commemoration,
   type TemporalContext
 } from '../../src/index.js';
+import { officeVisitKey } from '../../src/hours/apply-rule-set.js';
 import { VERSION_POLICY } from '../../src/version/policy-map.js';
 import { TestOfficeTextIndex } from '../helpers.js';
 
@@ -155,6 +156,30 @@ First-Vespers five;;113
 @:Ant Vespera:s/;;.*//g
 `.trim();
 
+const INHERITED_CHAPTER_FILTER_ROOT_FILE = `
+[Rank]
+Inherited chapter filter root;;Duplex;;5;;
+
+[Ant Vespera 3]
+@Sancti/08-05
+`.trim();
+
+const INHERITED_CHAPTER_FILTER_LEAK_FILE = `
+[Rank]
+Inherited chapter filter leak;;Duplex;;5;;
+
+[Capitulum Laudes]
+Leak chapter
+`.trim();
+
+const INHERITED_CHAPTER_FILTER_COMMUNE_FILE = `
+[Rank]
+Commune chapter fallback;;Duplex;;5;;
+
+[Capitulum Laudes]
+Commune chapter
+`.trim();
+
 function setup() {
   const corpus = new TestOfficeTextIndex();
   corpus.add('horas/Ordinarium/Vespera.txt', ORDINARIUM_VESPERA);
@@ -216,6 +241,15 @@ function rules(): CelebrationRuleSet {
 }
 
 describe('structureVespers', () => {
+  it('normalizes visit keys across file and reference path forms', () => {
+    expect(officeVisitKey('horas/Latin/Sancti/12-27.txt', 'Ant Vespera 3')).toBe(
+      officeVisitKey('Sancti/12-27', 'Ant Vespera 3')
+    );
+    expect(officeVisitKey('./horas/Latin/Sancti/12-27.txt', 'Ant Vespera 3')).toBe(
+      officeVisitKey('Sancti/12-27', 'Ant Vespera 3')
+    );
+  });
+
   it('emits psalmody keyed to Sunday when concurrence winner is a Sunday celebration', () => {
     const { corpus, skeleton } = setup();
     const celeb = celebration('Sancti/12-08');
@@ -635,6 +669,45 @@ describe('structureVespers', () => {
         path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
         section: 'Day0 Vespera',
         selector: '5'
+      });
+    }
+  });
+
+  it('ignores inherited chapter candidates that do not expose the requested Vespers antiphon header', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-04.txt', INHERITED_CHAPTER_FILTER_ROOT_FILE);
+    corpus.add('horas/Latin/Sancti/08-05.txt', INHERITED_CHAPTER_FILTER_LEAK_FILE);
+    corpus.add('horas/Latin/Commune/C1.txt', INHERITED_CHAPTER_FILTER_COMMUNE_FILE);
+    const celeb = celebration('Sancti/08-04');
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      comkey: 'C1',
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-01-07', 'Epi1-0', 0),
+        season: 'epiphanytide'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version,
+      __vespersSide: 'second'
+    } as Parameters<typeof structureVespers>[0]);
+
+    const chapter = result.hour.slots.chapter;
+    expect(chapter?.kind).toBe('single-ref');
+    if (chapter?.kind === 'single-ref') {
+      expect(chapter.ref).toEqual({
+        path: 'horas/Latin/Commune/C1',
+        section: 'Capitulum Laudes'
       });
     }
   });
