@@ -585,14 +585,14 @@ function collectInheritedSecondVespersFiles(
 
     try {
       const file = resolveOfficeFile(input.corpus, node.ref.path);
-      if (!seen.has(file.path)) {
-        resolved.push(file);
-        seen.add(file.path);
-      }
-
       const section = findMajorHourPsalmSection(file, targetHeader, conditionContext);
       if (!section) {
         continue;
+      }
+
+      if (!seen.has(file.path)) {
+        resolved.push(file);
+        seen.add(file.path);
       }
 
       const nextVisited = new Set(visited);
