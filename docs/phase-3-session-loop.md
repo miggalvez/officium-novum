@@ -45,12 +45,17 @@ Read these at the start of every tranche together with:
     per-tranche progress report.
   - `pnpm -C packages/compositor verify:phase-3-signoff` belongs to
     stabilization / sign-off once ledger churn has slowed materially.
-- Do not spin the file-size problem into a separate refactor lane. If a
-  tranche touches any current over-limit compositor file
-  (`packages/compositor/src/compose.ts`,
-  `packages/compositor/src/compose/matins.ts`,
-  `packages/compositor/src/resolve/reference-resolver.ts`), extract a helper
-  or seam and leave that file smaller than it started.
+- Do not spin the file-size problem into a separate refactor lane. Keep the
+  `800`-line sign-off cap, but treat over-limit-file cleanup as a strong
+  tranche default rather than an absolute blocker:
+  - if a tranche materially touches any current over-limit compositor file
+    (`packages/compositor/src/compose.ts`,
+    `packages/compositor/src/compose/matins.ts`,
+    `packages/compositor/src/resolve/reference-resolver.ts`), extract a
+    helper or seam and leave that file smaller than it started
+  - if the change is intentionally surgical and a same-tranche extraction
+    would add avoidable risk, allow an explicit exception in the tranche
+    closeout and carry the file-size debt forward visibly
 
 ## Session Start Checklist
 
@@ -131,6 +136,7 @@ Every tranche must follow this loop:
      - what changed in the ledgers
      - whether the result was a fix, adjudication, or both
      - what the next family should be
+     - whether any over-limit-file exception was taken and why
    - The next recommendation must be family-based and justified by the live
      compare surface.
 
