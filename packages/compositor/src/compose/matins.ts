@@ -1090,14 +1090,14 @@ function slicePsalmContentByVerseRange(
   content: readonly TextContent[],
   range: string
 ): readonly TextContent[] {
-  const match = /^(\d+)-(\d+)$/u.exec(range);
+  const match = /^\s*(\d+[a-z]?)\s*-\s*(\d+[a-z]?)\s*$/iu.exec(range);
   if (!match?.[1] || !match[2]) {
     return content;
   }
 
-  const start = Number.parseInt(match[1], 10);
-  const end = Number.parseInt(match[2], 10);
-  if (!Number.isFinite(start) || !Number.isFinite(end) || start > end) {
+  const start = parsePsalmVerseBoundary(match[1]);
+  const end = parsePsalmVerseBoundary(match[2]);
+  if (start === undefined || end === undefined || start > end) {
     return content;
   }
 
@@ -1121,6 +1121,16 @@ function slicePsalmContentByVerseRange(
   }
 
   return out;
+}
+
+function parsePsalmVerseBoundary(boundary: string): number | undefined {
+  const match = /^\s*(\d+)/u.exec(boundary);
+  if (!match?.[1]) {
+    return undefined;
+  }
+
+  const value = Number.parseInt(match[1], 10);
+  return Number.isFinite(value) ? value : undefined;
 }
 
 function resolvePairedAntiphonRange(

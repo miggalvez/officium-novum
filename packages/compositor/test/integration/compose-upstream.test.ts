@@ -1049,6 +1049,38 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('reopens the February 14 Roman Matins split Psalm 44 segments with the expected Gloria and antiphon boundary', async () => {
+    for (const [version, reopeningAntiphon] of [
+      ['Reduced - 1955', 'Confitebúntur tibi.'],
+      ['Rubrics 1960 - 1960', 'Confitebúntur tibi * pópuli Deus in ætérnum.']
+    ] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-02-14');
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const lines = psalmodyTexts(composed).map(normalizeLatin);
+      const secondSegmentHeading = lines.indexOf(normalizeLatin('Psalmus 44(11-18b) [2]'));
+      expect(secondSegmentHeading, `${version} 2024-02-14 is missing the second split Psalm 44 heading`).toBeGreaterThan(
+        0
+      );
+      expect(lines.slice(secondSegmentHeading - 5, secondSegmentHeading + 2)).toEqual([
+        normalizeLatin('44:10 Ástitit regína a dextris tuis in vestítu deauráto: * circúmdata varietáte.'),
+        normalizeLatin('Glória Patri, et Fílio, * et Spirítui Sancto.'),
+        normalizeLatin('Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'),
+        normalizeLatin('Speciósus forma præ fíliis hóminum, diffúsa est grátia in lábiis tuis.'),
+        normalizeLatin(reopeningAntiphon),
+        normalizeLatin('Psalmus 44(11-18b) [2]'),
+        normalizeLatin('44:11 Audi fília, et vide, et inclína aurem tuam: * et oblivíscere pópulum tuum et domum patris tui.')
+      ]);
+    }
+  }, 240_000);
+
   it('removes bare carry-over markers from January 7 Matins psalmody across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
