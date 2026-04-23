@@ -262,6 +262,13 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
             '129'
           );
         }
+
+        expectMajorHourPsalmSlot(
+          psalmodyAt(engine, '2024-12-27', 'vespers'),
+          4,
+          'Ant Vespera 3',
+          '131'
+        );
       }
     },
     240_000

@@ -1750,7 +1750,7 @@ diverge at `Psalmus 129 [4]` vs `Psalmus 112 [4]`.
 
 ### 2026-04-22 — Pattern: Christmas-octave Vespers fourth-psalm routing (engine-bug)
 
-**Commit.** pending tranche commit
+**Commit.** `5ff6a5f`
 
 **Ledger signal.** After the Easter-Octave Prime guillemet fanout, the
 next repeated shared Roman frontier was the Christmas-octave Vespers
@@ -1808,6 +1808,48 @@ Christmas-octave Vespers fifth-slot/later-block split, starting with Dec
 `27` second-Vespers fifth-psalm precedence (`Psalmus 131 [5]` vs
 `Psalmus 116 [5]`); the adjacent Dec `26` `no Psalm5` boundary and Dec
 `25` chapter/hymn seam now sit immediately underneath it.
+
+### 2026-04-22 — Pattern: Christmas-octave Vespers fifth-psalm precedence (engine-bug)
+
+**Commit.** pending tranche commit
+
+**Ledger signal.** After the fourth-psalm routing fix, the remaining
+shared Roman Christmas-octave Vespers seam narrowed to Dec `27` in both
+`Reduced - 1955` and `Rubrics 1960 - 1960`: Perl expected
+`Psalmus 131 [5]`, while the compositor still emitted
+`Psalmus 116 [5]`.
+
+**Root cause.** This was still a Phase 2 structure bug. The major-hour
+psalm harvester was already recovering the inherited
+`Ant Vespera 3 -> @Sancti/12-25` psalm rows correctly, but
+`packages/rubrical-engine/src/hours/apply-rule-set.ts` only let those
+source-backed psalm refs replace still-generic `Psalmi major` slots. On
+Dec `27`, the Christmas-octave psalter fallback had already supplied a
+concrete fifth psalm (`Psalm116`), so the inherited proper fifth psalm
+(`Psalm131`) never won the slot.
+
+**Resolution.** Fixed in Phase 2, not Phase 3. Once a major-hour office
+section yields an explicit psalm row, that source-backed psalm ref now
+owns the slot even if the psalter fallback already supplied a concrete
+psalm number. Locked the seam first in:
+
+- `packages/rubrical-engine/test/hours/vespers.test.ts`
+- `packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/12-27.txt:1-12,209-210`
+- `upstream/web/www/horas/Latin/Sancti/12-25.txt:442-448`
+
+**Impact.** The shared Roman Christmas-octave fifth-psalm family is
+closed. Dec `27` Vespers no longer stops at `Psalmus 131 [5]` vs
+`Psalmus 116 [5]`; the live frontier now lands one seam later at the
+later-block chapter/hymn boundary on the same row
+(`Sir 15:1-2` vs `Exsúltet orbis gáudiis`). After the full ledger
+refresh, Roman divergent-hour / unadjudicated totals stay
+`465` / `288` for `Reduced - 1955` and `461` / `195` for
+`Rubrics 1960 - 1960`, while average matching prefix improves to
+`43.1` and `45.4`.
 
 ### Open pattern backlog
 

@@ -69,6 +69,17 @@ Apud Dóminum;;129
 De fructu;;131
 `.trim();
 
+const INHERITED_CHRISTMAS_SECOND_VESPERS_FILE = `
+[Rank]
+S. Joannis Apostoli et Evangelistæ;;Duplex II classis;;5.4;;
+
+[Rule]
+Psalmi Dominica
+
+[Ant Vespera 3]
+@Sancti/12-25
+`.trim();
+
 const CONDITIONED_SECTION_VESPERS_FILE = `
 [Rank]
 Conditioned sections;;Duplex;;5;;
@@ -403,6 +414,68 @@ describe('structureVespers', () => {
         path: 'horas/Latin/Sancti/12-25',
         section: 'Ant Vespera 3',
         selector: '4'
+      });
+    }
+  });
+
+  it('keeps inherited Christmas second-Vespers fifth-psalm refs over the generic policy override', () => {
+    const { corpus, skeleton } = setup();
+    corpus.add('horas/Latin/Sancti/12-25.txt', CHRISTMAS_SECOND_VESPERS_FILE);
+    corpus.add('horas/Latin/Sancti/12-27.txt', INHERITED_CHRISTMAS_SECOND_VESPERS_FILE);
+    const celeb: Celebration = {
+      feastRef: { path: 'Sancti/12-27', id: 'Sancti/12-27', title: '12-27' },
+      rank: { name: 'II', classSymbol: 'II', weight: 800 },
+      source: 'sanctoral'
+    };
+    const celebrationRules: CelebrationRuleSet = {
+      ...rules(),
+      festumDomini: true
+    };
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+    const policy = {
+      ...rubrics1960Policy,
+      selectPsalmody: (params: Parameters<typeof rubrics1960Policy.selectPsalmody>[0]) => {
+        const assignments = rubrics1960Policy.selectPsalmody(params);
+        return assignments.map((assignment, index) =>
+          index === 4
+            ? {
+                ...assignment,
+                psalmRef: {
+                  path: 'horas/Latin/Psalterium/Psalmorum/Psalm116',
+                  section: '__preamble',
+                  selector: '116'
+                }
+              }
+            : assignment
+        );
+      }
+    };
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-12-27', 'Nat1-5', 5),
+        season: 'christmastide'
+      },
+      policy,
+      corpus,
+      __vespersSide: 'second'
+    } as Parameters<typeof structureVespers>[0]);
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[4]?.psalmRef.path).toBe(
+        'horas/Latin/Psalterium/Psalmorum/Psalm131'
+      );
+      expect(psalmody.psalms[4]?.antiphonRef).toEqual({
+        path: 'horas/Latin/Sancti/12-27',
+        section: 'Ant Vespera 3',
+        selector: '5'
       });
     }
   });
