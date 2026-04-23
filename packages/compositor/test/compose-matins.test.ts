@@ -9,6 +9,7 @@ import type {
 } from '@officium-novum/rubrical-engine';
 
 import { composeHour } from '../src/compose.js';
+import { slicePsalmContentByVerseRange } from '../src/compose/matins-psalmody.js';
 
 function makeFile(path: string, header: string, nodes: ParsedFile['sections'][number]['content']): ParsedFile {
   return {
@@ -1053,6 +1054,29 @@ describe('composeHour(matins)', () => {
       'Ant. Confitebúntur tibi * pópuli Deus in ætérnum.',
       '- Psalmus 44(11-18b) [2]',
       '- 44:11 Verse 11'
+    ]);
+  });
+
+  it('honors half-verse suffixes when slicing Matins psalm ranges', () => {
+    const sliced = slicePsalmContentByVerseRange(
+      [
+        { type: 'rubric', value: 'Psalm heading' },
+        { type: 'text', value: '44:2a First half of verse 2.' },
+        { type: 'text', value: '44:2b Second half of verse 2.' },
+        { type: 'text', value: '44:3 Full verse 3.' },
+        { type: 'text', value: '44:10a First half of verse 10.' },
+        { type: 'text', value: '44:10b Second half of verse 10.' },
+        { type: 'text', value: '44:11 Full verse 11.' }
+      ],
+      '2b-10a'
+    );
+
+    expect(
+      sliced.filter((node) => node.type === 'text').map((node) => node.value)
+    ).toEqual([
+      '44:2b Second half of verse 2.',
+      '44:3 Full verse 3.',
+      '44:10a First half of verse 10.'
     ]);
   });
 

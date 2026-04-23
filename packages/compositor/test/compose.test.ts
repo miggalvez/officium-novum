@@ -9,6 +9,7 @@ import type {
 } from '@officium-novum/rubrical-engine';
 
 import { composeHour } from '../src/compose.js';
+import { normalizeRepeatedAntiphonText } from '../src/compose/psalmody.js';
 
 function makeFile(path: string, header: string, nodes: ParsedFile['sections'][number]['content']): ParsedFile {
   return {
@@ -118,6 +119,12 @@ function slotLines(
 }
 
 describe('composeHour', () => {
+  it('strips source selector comments while normalizing repeated psalmody antiphons', () => {
+    expect(normalizeRepeatedAntiphonText('Allelúja, * allelúja, allelúja;;53,117')).toBe(
+      'Allelúja, allelúja, allelúja'
+    );
+  });
+
   it('resolves a single-ref slot and emits a Section with per-language lines', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
