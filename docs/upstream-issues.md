@@ -756,6 +756,50 @@ lines.
 | Reduced - 1955 | 2024-01-07 | Sext | `bae99624` |
 | Reduced - 1955 | 2024-01-07 | None | `373eea90` |
 
+### 2026-04-24 — Paschaltide proper minor-hour short responsories render as underscores in the Perl surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Once the Paschaltide bare `Deo gratias` chapter-response
+seam was fixed, the exposed Ascension and Pentecost minor-hour rows
+moved to the same later-block render-surface family already seen on
+Sunday and January proper offices. The compositor emits the source-backed
+`R.br.` short responsory, while the Perl comparison surface leaves a
+literal `_` line at the first divergence.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:323-360`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:248-269`
+
+These source sections explicitly provide the Ascension and Pentecost
+`Responsory Breve` blocks for Terce/Sext/None. They do not contain
+underscore-only separator lines before the `R.br.` openings.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-05-09 --hour Terce
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-05-09 --hour Sext
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-05-09 --hour None
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-05-19 --hour Sext
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-05-19 --hour None
+```
+
+The affected rows first differ at `expected="_"` versus the
+source-backed `R.br.` opening line.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-05-09 | Terce | `470ce973` |
+| Reduced - 1955 | 2024-05-09 | Sext | `3c70c657` |
+| Reduced - 1955 | 2024-05-09 | None | `9132c86f` |
+| Rubrics 1960 - 1960 | 2024-05-19 | Sext | `ac7cdff5` |
+| Rubrics 1960 - 1960 | 2024-05-19 | None | `c7624535` |
+
 ### 2026-04-20 — Roman Jan 13 Matins still shows the suppressed opener in the Perl render surface
 
 **Classification.** `perl-bug`

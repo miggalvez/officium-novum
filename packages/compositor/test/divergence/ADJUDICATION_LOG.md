@@ -2383,7 +2383,7 @@ policy documented in `docs/upstream-issues.md`.
 
 ### 2026-04-24 — Pattern: Paschaltide bare Deo gratias chapter responses stay unseasoned (engine-bug)
 
-**Commit.** pending
+**Commit.** 87941fb
 
 **Ledger signal.** The next shared Roman compositor seam was the bare
 `R. Deo grátias.` chapter response in Paschaltide. It surfaced on
@@ -2413,6 +2413,38 @@ surface.
 **Impact.** No adjudication was needed. The targeted May `9` and May
 `19` probes now advance past the bare chapter-response seam to the next
 short-responsory, hymn-doxology, or conclusion boundaries.
+
+### 2026-04-24 — Pattern: Paschaltide minor-hour short responsories render as source-backed blocks (perl-bug)
+
+**Commit.** pending
+
+**Ledger signal.** After the bare `Deo gratias` chapter-response fix,
+the exposed Paschaltide minor-hour rows moved to the next later-block
+boundary. Reduced 1955 Ascension Terce/Sext/None and Rubrics 1960
+Pentecost Sext/None first diverged at `expected="_"` while the compositor
+emitted the office's source-backed `R.br.` short responsory.
+
+**Root cause.** This is the same render-surface family already
+adjudicated for Roman Sunday and January proper minor-hour later blocks.
+The underlying source files explicitly include the proper Paschaltide
+`Responsory Breve` sections; there is no source underscore-only separator
+before those `R.br.` lines.
+
+**Resolution.** Class `perl-bug`. No code change is needed. A focused
+upstream regression locks the five exposed Ascension/Pentecost
+responsory openings, and `adjudications.json` records the affected row
+keys.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:323-360`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:248-269`
+
+**Impact.** Five rows move from `unadjudicated` to `perl-bug` once the
+full ledger is regenerated: Reduced 1955 May `9` Terce/Sext/None and
+Rubrics 1960 May `19` Sext/None. The remaining adjacent May `9` 1960
+minor-hour rows are still blocked earlier by the hymn-doxology family,
+and Ascension Vespers now exposes the ordinary conclusion boundary.
 
 ### Open pattern backlog
 

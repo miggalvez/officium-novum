@@ -796,6 +796,58 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps source-backed Paschaltide minor-hour short responsories', async () => {
+    const cases = [
+      [
+        'Reduced - 1955',
+        '2024-05-09',
+        'terce',
+        'Ascéndit Deus in jubilatióne, * Allelúja, allelúja.'
+      ],
+      [
+        'Reduced - 1955',
+        '2024-05-09',
+        'sext',
+        'Ascéndens Christus in altum, * Allelúja, allelúja.'
+      ],
+      [
+        'Reduced - 1955',
+        '2024-05-09',
+        'none',
+        'Ascéndo ad Patrem meum, et Patrem vestrum, * Allelúja, allelúja.'
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        '2024-05-19',
+        'sext',
+        'Spíritus Paráclitus, * Allelúja, allelúja.'
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        '2024-05-19',
+        'none',
+        'Repléti sunt omnes Spíritu Sancto, * Allelúja, allelúja.'
+      ]
+    ] as const;
+
+    for (const [version, date, hour, expectedResponsory] of cases) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(
+        sectionTexts(composed, 'responsory').map(normalizeLatin),
+        `${version} ${date} ${hour} responsory`
+      ).toContain(normalizeLatin(expectedResponsory));
+    }
+  }, 240_000);
+
   it('keeps the source-backed Psalm 99 half-verse structure in Easter Octave Lauds', async () => {
     const expectedHalfVerse = normalizeLatin(
       '99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.'
