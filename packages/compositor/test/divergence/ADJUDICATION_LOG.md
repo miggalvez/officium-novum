@@ -2269,7 +2269,7 @@ psalmody boundary.
 
 ### 2026-04-24 — Pattern: Reduced 1955 commemorated Lourdes doxology is not carried into Sunday hymns (perl-bug)
 
-**Commit.** pending tranche commit
+**Commit.** `029a6fd`
 
 **Ledger signal.** The next Reduced 1955 frontier was Feb `11`
 Quinquagesima Sunday. Matins, Prime, Terce, Sext, and None all first

@@ -6355,7 +6355,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
     "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "029a6fd"
   },
   "Reduced - 1955/2024-02-11/None/b241f834": {
     "policy": "Reduced - 1955",
@@ -6367,7 +6367,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary None hymn ending from `Psalterium/Special/Minor Special.txt:696-707`, while Perl imports the commemorated doxology.",
     "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "029a6fd"
   },
   "Reduced - 1955/2024-02-11/Prime/36739df3": {
     "policy": "Reduced - 1955",
@@ -6379,7 +6379,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Prime hymn ending from `Psalterium/Special/Prima Special.txt:102-111`, while Perl imports the commemorated doxology.",
     "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "029a6fd"
   },
   "Reduced - 1955/2024-02-11/Sext/b241f834": {
     "policy": "Reduced - 1955",
@@ -6391,7 +6391,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Sext hymn ending from `Psalterium/Special/Minor Special.txt:674-685`, while Perl imports the commemorated doxology.",
     "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "029a6fd"
   },
   "Reduced - 1955/2024-02-11/Terce/b241f834": {
     "policy": "Reduced - 1955",
@@ -6403,7 +6403,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Terce hymn ending from `Psalterium/Special/Minor Special.txt:657-668`, while Perl imports the commemorated doxology.",
     "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "029a6fd"
   },
   "Reduced - 1955/2024-02-11/Vespers/557f2156": {
     "policy": "Reduced - 1955",
