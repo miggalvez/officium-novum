@@ -6453,6 +6453,42 @@
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
   },
+  "Reduced - 1955/2024-02-14/None/1ab5e32c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-02-14/Sext/c92f80b2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-02-14/Terce/9d0c4734": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Sana ánimam meam, * Quia peccávi tibi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101 — the feria Terce later block contains the short responsory beginning `R.br. Sana ánimam meam...` followed by its versicle, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
   "Reduced - 1955/2024-02-18/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-02-18",
@@ -7749,6 +7785,30 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-06-20/None/1ab5e32c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-06-20/Sext/c92f80b2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
   "Reduced - 1955/2024-06-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-06-24",
@@ -8409,6 +8469,42 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-11-05/None/1ab5e32c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-05/Sext/c92f80b2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-05/Terce/9d0c4734": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Sana ánimam meam, * Quia peccávi tibi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101 — the feria Terce later block contains the short responsory beginning `R.br. Sana ánimam meam...` followed by its versicle, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
   "Reduced - 1955/2024-11-08/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-11-08",
@@ -8432,6 +8528,42 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-11-08/None/1ab5e32c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-08/Sext/c92f80b2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-08/Terce/9d0c4734": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Sana ánimam meam, * Quia peccávi tibi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101 — the feria Terce later block contains the short responsory beginning `R.br. Sana ánimam meam...` followed by its versicle, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
   },
   "Reduced - 1955/2024-12-01/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8817,6 +8949,54 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-12-26/None/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-26",
+    "hour": "None",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-12-26/Prime/36739df3": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-26",
+    "hour": "Prime",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Deo Patri sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Prime hymn ending from `Psalterium/Special/Prima Special.txt:102-111`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-12-26/Sext/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-26",
+    "hour": "Sext",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-12-26/Terce/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-26",
+    "hour": "Terce",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
   "Reduced - 1955/2024-12-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-12-27",
@@ -8840,6 +9020,54 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-27/None/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-27",
+    "hour": "None",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-12-27/Prime/36739df3": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-27",
+    "hour": "Prime",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Deo Patri sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Prime hymn ending from `Psalterium/Special/Prima Special.txt:102-111`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-12-27/Sext/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-27",
+    "hour": "Sext",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-12-27/Terce/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-27",
+    "hour": "Terce",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
   },
   "Rubrics 1960 - 1960/2024-01-01/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -9548,6 +9776,42 @@
     "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in 1960 form, after the structural split bug was fixed.",
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/None/1ab5e32c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Sext/c92f80b2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Terce/9d0c4734": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Sana ánimam meam, * Quia peccávi tibi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101 — the feria Terce later block contains the short responsory beginning `R.br. Sana ánimam meam...` followed by its versicle, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
   },
   "Rubrics 1960 - 1960/2024-02-18/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -10905,6 +11169,30 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-06-20/None/1ab5e32c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-06-20/Sext/c92f80b2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
   "Rubrics 1960 - 1960/2024-06-24/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-06-24",
@@ -11805,6 +12093,42 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-11-05/None/1ab5e32c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-05/Sext/c92f80b2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-05/Terce/9d0c4734": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Sana ánimam meam, * Quia peccávi tibi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101 — the feria Terce later block contains the short responsory beginning `R.br. Sana ánimam meam...` followed by its versicle, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
   "Rubrics 1960 - 1960/2024-11-05/Vespers/b1fc00bf": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-05",
@@ -11828,6 +12152,42 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-11-08/None/1ab5e32c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Rédime me, Dómine, * Et miserére mei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149 — the feria None later block contains the short responsory beginning `R.br. Rédime me, Dómine...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-08/Sext/c92f80b2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Benedícam Dóminum * In omni témpore.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125 — the feria Sext later block contains the short responsory beginning `R.br. Benedícam Dóminum...` followed by its versicle reference, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-08/Terce/9d0c4734": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Sana ánimam meam, * Quia peccávi tibi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101 — the feria Terce later block contains the short responsory beginning `R.br. Sana ánimam meam...` followed by its versicle, with no underscore-only separator line before the responsory. The compositor emits the source-backed block; the Perl comparison surface inserts `_` at the first divergence.",
+    "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "4dd9d33"
   },
   "Rubrics 1960 - 1960/2024-12-01/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

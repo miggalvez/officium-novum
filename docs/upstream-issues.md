@@ -1125,6 +1125,48 @@ The affected rows first diverge at `secreto` (Perl) vs `Nocturnus I`
 |---|---|---|---|
 | Divino Afflatu - 1954 | 2024-01-06 | Matins | `e66d7177` |
 
+### 2026-04-24 — Roman ferial minor-hour short responsories gain underscore separators in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** After the Roman ferial minor-hour fallback fix, `Terce`,
+`Sext`, and `None` now correctly emit the feria chapter, short
+responsory, and versicle from `Minor Special.txt`. The remaining first
+divergence is a literal `_` line that the Perl comparison surface
+inserts before the short responsory. The source-backed compositor output
+begins directly with the `R.br.` line.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101,116-125,140-149`
+
+These ferial later-block sections contain the `R.br.` short responsory
+and versicle directly. They do not contain underscore-only separator
+lines before the responsory.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-14 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-14 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-14 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-02-14 --hour Tertia
+```
+
+Each row now first diverges on `expected="_"` versus the compositor's
+source-backed `R.br.` opening line.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-14 | Terce | `9d0c4734` |
+| Reduced - 1955 | 2024-02-14 | Sext | `c92f80b2` |
+| Reduced - 1955 | 2024-02-14 | None | `1ab5e32c` |
+| Rubrics 1960 - 1960 | 2024-02-14 | Terce | `9d0c4734` |
+| Rubrics 1960 - 1960 | 2024-02-14 | Sext | `c92f80b2` |
+| Rubrics 1960 - 1960 | 2024-02-14 | None | `1ab5e32c` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

@@ -2479,6 +2479,37 @@ post-octave case.
 compare now advances past the conclusion dismissal under both simplified
 Roman policies.
 
+### 2026-04-24 — Pattern: Roman ferial minor-hour short responsories gain underscore separators in Perl (perl-bug)
+
+**Commit.** 4dd9d33
+
+**Ledger signal.** After the ferial later-block fallback was restored,
+Ash Wednesday and the repeated ferial checkpoints now reach their
+source-backed `Terce`/`Sext`/`None` short responsories. The remaining
+first divergence is Perl's literal `_` line before the `R.br.` opening,
+while the compositor begins with the source section's responsory text.
+
+**Root cause.** The Phase 2 refs are now correct. `Minor Special.txt`
+contains `[Responsory breve Feria Tertia]`, `[Responsory breve Feria
+Sexta]`, and `[Responsory breve Feria Nona]` directly, with their
+`R.br.` openings and following versicle sections. It does not contain
+underscore-only separator lines before those responsories.
+
+**Resolution.** Class `perl-bug`. Added representative adjudications for
+both simplified Roman policies and all three ferial minor-hour
+responsory openings; `adjudications:fanout` extends the same source
+classification to matching later ledger rows.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:91-101`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:116-125`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:140-149`
+
+**Impact.** The newly exposed ferial short-responsory separator family is
+classified as the same Perl render-surface issue already recorded for
+Sunday and Paschaltide later blocks.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
