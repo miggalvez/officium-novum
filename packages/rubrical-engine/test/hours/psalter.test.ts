@@ -184,6 +184,117 @@ describe('selectPsalmodyRoman1960', () => {
     expect(refs[0]?.psalmRef.selector).toBe('Feria III');
   });
 
+  it('splits weekday Prime rows and applies the bracketed-psalm rule', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Prima]
+Feria IV = Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.
+25,51,52,[96]
+`.trim()
+    );
+
+    const pre1960Penitential = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Quadp3-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-02-14', 'Quadp3-3', 'lent', 3),
+      corpus: textIndex
+    });
+    expect(pre1960Penitential.map((entry) => entry.psalmRef.selector)).toEqual([
+      '25',
+      '51',
+      '52',
+      '[96]'
+    ]);
+    expect(pre1960Penitential[0]?.antiphonRef?.selector).toBe('Feria IV#antiphon');
+
+    const rubrics1960Penitential = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Quadp3-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-02-14', 'Quadp3-3', 'lent', 3),
+      corpus: textIndex,
+      omitPrimeBracketPsalm: true
+    });
+    expect(rubrics1960Penitential.map((entry) => entry.psalmRef.selector)).toEqual([
+      '25',
+      '51',
+      '52'
+    ]);
+
+    const pre1960OrdinaryWeekday = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Pent03-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-06-12', 'Pent03-3', 'time-after-pentecost', 3),
+      corpus: textIndex
+    });
+    expect(pre1960OrdinaryWeekday.map((entry) => entry.psalmRef.selector)).toEqual([
+      '25',
+      '51',
+      '52'
+    ]);
+  });
+
+  it('continues weekday minor-hour psalm lookup after conditional keyed rows', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Sexta]
+(nisi rubrica praedicatorum) Feria IV = Misericórdia tua, * Dómine.
+118(81-96),118(97-112)
+`.trim()
+    );
+
+    const refs = selectPsalmodyRoman1960({
+      hour: 'sext',
+      celebration: celebration('Tempora/Quadp3-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('sext'),
+      temporal: temporal('2024-02-14', 'Quadp3-3', 'lent', 3),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.selector)).toEqual([
+      '118(81-96)',
+      '118(97-112)'
+    ]);
+    expect(refs[0]?.antiphonRef?.selector).toBe('Feria IV#antiphon');
+  });
+
+  it('does not emit a minor-hour antiphon reference for underscore sentinels', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Tertia]
+Feria V = _
+118(33-48),118(49-64)
+`.trim()
+    );
+
+    const refs = selectPsalmodyRoman1960({
+      hour: 'terce',
+      celebration: celebration('Tempora/Pent03-4'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('terce'),
+      temporal: temporal('2024-06-13', 'Pent03-4', 'time-after-pentecost', 4),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.selector)).toEqual([
+      '118(33-48)',
+      '118(49-64)'
+    ]);
+    expect(refs[0]?.antiphonRef).toBeUndefined();
+  });
+
   it('uses the Tridentinum Prime festis table for weekday feasts with Psalmi Dominica', () => {
     const textIndex = new TestOfficeTextIndex();
     textIndex.add(

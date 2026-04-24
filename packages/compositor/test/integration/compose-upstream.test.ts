@@ -764,6 +764,112 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('uses the ordinary Benedicamus conclusion after the Easter octave', async () => {
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-05-09');
+      const vespers = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+
+      const conclusionLines = sectionTexts(vespers, 'conclusion').map(normalizeLatin);
+      expect(conclusionLines, `${version} Ascension Vespers conclusion`).toContain(
+        normalizeLatin('Benedicámus Dómino.')
+      );
+      expect(conclusionLines, `${version} Ascension Vespers conclusion`).not.toContain(
+        normalizeLatin('Benedicámus Dómino, allelúja, allelúja.')
+      );
+    }
+  }, 240_000);
+
+  it('keeps bare Deo gratias chapter responses unseasoned in Paschaltide', async () => {
+    const cases = [
+      ['Reduced - 1955', '2024-05-09', 'terce'],
+      ['Reduced - 1955', '2024-05-09', 'sext'],
+      ['Reduced - 1955', '2024-05-09', 'none'],
+      ['Reduced - 1955', '2024-05-09', 'vespers'],
+      ['Rubrics 1960 - 1960', '2024-05-09', 'vespers'],
+      ['Rubrics 1960 - 1960', '2024-05-19', 'sext'],
+      ['Rubrics 1960 - 1960', '2024-05-19', 'none']
+    ] as const;
+
+    for (const [version, date, hour] of cases) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      const chapterLines = sectionTexts(composed, 'chapter').map(normalizeLatin);
+      expect(chapterLines, `${version} ${date} ${hour} chapter`).toContain(
+        normalizeLatin('Deo grátias.')
+      );
+      expect(chapterLines, `${version} ${date} ${hour} chapter`).not.toContain(
+        normalizeLatin('Deo grátias, allelúja.')
+      );
+    }
+  }, 240_000);
+
+  it('keeps source-backed Paschaltide minor-hour short responsories', async () => {
+    const cases = [
+      [
+        'Reduced - 1955',
+        '2024-05-09',
+        'terce',
+        'Ascéndit Deus in jubilatióne, * Allelúja, allelúja.'
+      ],
+      [
+        'Reduced - 1955',
+        '2024-05-09',
+        'sext',
+        'Ascéndens Christus in altum, * Allelúja, allelúja.'
+      ],
+      [
+        'Reduced - 1955',
+        '2024-05-09',
+        'none',
+        'Ascéndo ad Patrem meum, et Patrem vestrum, * Allelúja, allelúja.'
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        '2024-05-19',
+        'sext',
+        'Spíritus Paráclitus, * Allelúja, allelúja.'
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        '2024-05-19',
+        'none',
+        'Repléti sunt omnes Spíritu Sancto, * Allelúja, allelúja.'
+      ]
+    ] as const;
+
+    for (const [version, date, hour, expectedResponsory] of cases) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(
+        sectionTexts(composed, 'responsory').map(normalizeLatin),
+        `${version} ${date} ${hour} responsory`
+      ).toContain(normalizeLatin(expectedResponsory));
+    }
+  }, 240_000);
+
   it('keeps the source-backed Psalm 99 half-verse structure in Easter Octave Lauds', async () => {
     const expectedHalfVerse = normalizeLatin(
       '99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.'
@@ -795,6 +901,37 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       expect(
         lines,
         `${version} Lauds should not flatten the Psalm 99 half-verse boundary to a single * split`
+      ).not.toContain(flattenedHalfVerse);
+    }
+  }, 240_000);
+
+  it('keeps the source-backed Psalm 115 half-verse structure in Roman Vespers', async () => {
+    const expectedHalfVerse = normalizeLatin(
+      '115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.'
+    );
+    const flattenedHalfVerse = normalizeLatin(
+      '115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.'
+    );
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-05-30');
+      const vespers = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+
+      const lines = psalmodyTexts(vespers).map(normalizeLatin);
+      expect(
+        lines,
+        `${version} Vespers should preserve the corpus half-verse marker at Psalm 115:7`
+      ).toContain(expectedHalfVerse);
+      expect(
+        lines,
+        `${version} Vespers should not flatten the Psalm 115 half-verse boundary to a single * split`
       ).not.toContain(flattenedHalfVerse);
     }
   }, 240_000);
@@ -1248,6 +1385,47 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     const benedictusAntiphonIndex = lines.findIndex((line) => line.includes('Cum jejunátis'));
     expect(chapterIndex).toBeGreaterThan(0);
     expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
+  }, 240_000);
+
+  it('renders Ash Wednesday Roman minor-hour weekday antiphons before the psalm heading', async () => {
+    for (const [version, expectations] of [
+      [
+        'Reduced - 1955',
+        {
+          prime: ['Misericórdia tua.', 'Psalmus 25 [1]'],
+          terce: ['Deus ádjuvat me:', 'Psalmus 53 [1]'],
+          sext: ['In Deo sperávi.', 'Psalmus 55 [1]'],
+          none: ['Deus meus.', 'Psalmus 58(2-11) [1]']
+        }
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        {
+          prime: ['Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.', 'Psalmus 25 [1]'],
+          terce: ['Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.', 'Psalmus 53 [1]'],
+          sext: ['In Deo sperávi * non timébo quid fáciat mihi homo.', 'Psalmus 55 [1]'],
+          none: ['Deus meus * misericórdia tua prævéniet me.', 'Psalmus 58(2-11) [1]']
+        }
+      ]
+    ] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-02-14');
+
+      for (const [hour, expected] of Object.entries(expectations) as Array<
+        [Extract<HourName, 'prime' | 'terce' | 'sext' | 'none'>, readonly [string, string]]
+      >) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+        expect(psalmodyTexts(composed).map(normalizeLatin).slice(0, 2), `${version} ${hour}`).toEqual(
+          expected.map(normalizeLatin)
+        );
+      }
+    }
   }, 240_000);
 
   it('removes bare carry-over markers from January 7 Matins psalmody across the Roman families', async () => {

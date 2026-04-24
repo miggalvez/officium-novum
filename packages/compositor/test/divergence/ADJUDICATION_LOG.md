@@ -2312,6 +2312,173 @@ rows drop from `426` to `421`. The next live frontier is the Rubrics
 1960 Ash Wednesday Prime antiphon / psalmody boundary and the remaining
 Reduced 1955 Ash Wednesday minor-hour psalmody rows.
 
+### 2026-04-24 — Pattern: Ash Wednesday Roman ferial minor-hour psalmody rows split into source-backed units (mixed fix)
+
+**Commit.** a60990d
+
+**Ledger signal.** The live Roman frontier after the Feb `11` doxology
+tranche was Ash Wednesday Prime/Terce/Sext/None. Reduced 1955 and
+Rubrics 1960 both first diverged at the opening ferial antiphon /
+first psalm heading boundary, with Phase 2 handing Phase 3 a single
+combined `Psalmi minor` row instead of the source's per-psalm units.
+
+**Root cause.** This was a mixed Phase 2 / Phase 3 seam. Phase 2
+selected weekday `Psalmi minor` sections by key but collapsed the row's
+comma-separated psalm list into one assignment, so Phase 3 emitted one
+large psalm bundle under the first heading. Phase 3 also placed the
+heading before the row antiphon for the newly materialized weekday row
+shape. Finally, Prime needed the legacy bracketed-psalm rule: the
+bracketed fourth psalm is retained only for pre-1960 penitential Prime
+and is omitted in the 1960 family.
+
+**Resolution.** Fixed in the owning layers. Phase 2 now expands weekday
+`Psalmi minor` rows into per-token `PsalmAssignment`s and attaches the
+row antiphon as `selector#antiphon` on the first assignment. Rubrics
+1960 passes an explicit `omitPrimeBracketPsalm` psalter option, while
+pre-1960 keeps the bracketed Prime psalm only on penitential days. Phase
+3 now resolves `Psalmi minor:*#antiphon` selectors for both weekday and
+`Tridentinum` rows and emits a leading antiphon before the first
+`Psalmus N [M]` heading.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:1-62`
+- `upstream/web/cgi-bin/horas/specials/psalmi.pl:268-272`
+
+**Impact.** No new adjudication was needed. The targeted Feb `14`
+Prime/Terce/Sext/None compares now advance past psalmody into the later
+preces/chapter/conclusion seams: Reduced 1955 average matching prefix
+rises from `44.1` to `46.5`, and Rubrics 1960 rises from `46.2` to
+`48.6`. Overall unadjudicated rows remain `421`; the tranche burned down
+a structural blocker rather than a row-classification family.
+
+### 2026-04-24 — Pattern: Roman Vespers Psalm 115 half-verse structure (perl-bug)
+
+**Commit.** 0667a64
+
+**Ledger signal.** After the Ash Wednesday minor-hour psalmody fix, the
+next repeated shared Roman adjudication family was Psalm `115:7` in
+Vespers. It surfaces on Mar `30`, May `30`, Jun `29`, and Nov `1` under
+both Reduced 1955 and Rubrics 1960: Perl flattens the verse to a single
+`*` divider, while the compositor preserves the source's `‡ ... *`
+half-verse boundary.
+
+**Root cause.** This is the already-known Roman half-verse render-surface
+family on a newly exposed psalm line, not a remaining Phase 2 or Phase 3
+selection bug. `Psalm115.txt` explicitly carries a dagger before the
+normal asterisk split in verse `115:7b`.
+
+**Resolution.** Class `perl-bug`. No code change is needed. A focused
+upstream regression now locks the source-backed Vespers rendering, and
+`adjudications.json` records the eight affected Reduced 1955 / Rubrics
+1960 row keys with the shared `c3e5bb37` suffix.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7`
+
+**Impact.** Eight Roman Vespers rows move from `unadjudicated` to
+`perl-bug`. The tranche continues the existing half-verse adjudication
+policy documented in `docs/upstream-issues.md`.
+
+### 2026-04-24 — Pattern: Paschaltide bare Deo gratias chapter responses stay unseasoned (engine-bug)
+
+**Commit.** 87941fb
+
+**Ledger signal.** The next shared Roman compositor seam was the bare
+`R. Deo grátias.` chapter response in Paschaltide. It surfaced on
+Reduced 1955 Ascension Terce/Sext/None/Vespers and on Rubrics 1960
+Ascension Vespers plus Pentecost Sext/None: the compositor added a
+single `allelúja`, while Perl left the bare response unchanged.
+
+**Root cause.** This was a Phase 3 directive-transform bug. The source
+`[Deo gratias]` macro is a bare `R. Deo grátias.`, while explicit
+Paschaltide dismissal text lives separately in `[Benedicamus Domino1]`.
+The legacy renderer also bypasses ordinary formula post-processing when
+the item is `Deo gratias`. Our generic chapter `add-alleluia` transform
+was treating that bare response as the chapter's final seasonable text.
+
+**Resolution.** Fixed in Phase 3. `add-alleluia` now leaves chapter
+content unchanged when its final substantive node is the bare
+`R. Deo grátias.` response, while retaining the existing antiphon and
+psalmody-specific behavior. A directive unit test and an upstream
+integration test cover the Ascension/Pentecost reduced-1955 and 1960
+surface.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:160-166`
+- `upstream/web/cgi-bin/horas/horas.pl:429-430`
+
+**Impact.** No adjudication was needed. The targeted May `9` and May
+`19` probes now advance past the bare chapter-response seam to the next
+short-responsory, hymn-doxology, or conclusion boundaries.
+
+### 2026-04-24 — Pattern: Paschaltide minor-hour short responsories render as source-backed blocks (perl-bug)
+
+**Commit.** 9112a23
+
+**Ledger signal.** After the bare `Deo gratias` chapter-response fix,
+the exposed Paschaltide minor-hour rows moved to the next later-block
+boundary. Reduced 1955 Ascension Terce/Sext/None and Rubrics 1960
+Pentecost Sext/None first diverged at `expected="_"` while the compositor
+emitted the office's source-backed `R.br.` short responsory.
+
+**Root cause.** This is the same render-surface family already
+adjudicated for Roman Sunday and January proper minor-hour later blocks.
+The underlying source files explicitly include the proper Paschaltide
+`Responsory Breve` sections; there is no source underscore-only separator
+before those `R.br.` lines.
+
+**Resolution.** Class `perl-bug`. No code change is needed. A focused
+upstream regression locks the five exposed Ascension/Pentecost
+responsory openings, and `adjudications.json` records the affected row
+keys.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:323-360`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:248-269`
+
+**Impact.** Five rows move from `unadjudicated` to `perl-bug` once the
+full ledger is regenerated: Reduced 1955 May `9` Terce/Sext/None and
+Rubrics 1960 May `19` Sext/None. The remaining adjacent May `9` 1960
+minor-hour rows are still blocked earlier by the hymn-doxology family,
+and Ascension Vespers now exposes the ordinary conclusion boundary.
+
+### 2026-04-24 — Pattern: Roman Ascension Vespers conclusion keeps ordinary Benedicamus (engine-bug)
+
+**Commit.** 1be1aeb
+
+**Ledger signal.** After the Paschaltide short-responsory adjudication
+sweep, the next shared Roman Vespers seam was the Ascension conclusion.
+Reduced 1955 and Rubrics 1960 both first diverged at line `125`: Perl
+rendered `V. Benedicámus Dómino.`, while the compositor emitted the
+Easter-octave double-alleluia dismissal.
+
+**Root cause.** This was a Phase 3 conclusion-wrapper bug. The
+compositor selected `Benedicamus Domino1` whenever the hour had the broad
+`add-versicle-alleluia` directive, which covers all Paschaltide. The
+legacy Roman helper limits the double-alleluia major-hour dismissal to
+the Easter octave (`Pasc0`) in non-GABC output; Ascensiontide keeps the
+ordinary `Benedicamus Domino` conclusion.
+
+**Resolution.** Fixed in Phase 3. The major-hour conclusion wrapper now
+selects `Benedicamus Domino1` only when the temporal day name starts with
+`Pasc0-`; otherwise it uses the ordinary `Benedicamus Domino` section.
+The existing Easter-octave conclusion regression still covers the double
+alleluia case, and a new Ascension Vespers regression covers the ordinary
+post-octave case.
+
+**Citation.**
+
+- `upstream/web/cgi-bin/horas/horasscripts.pl:158-181`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:158-166`
+
+**Impact.** No adjudication was needed. The targeted May `9` Vespers
+compare now advances past the conclusion dismissal under both simplified
+Roman policies.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

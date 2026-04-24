@@ -327,8 +327,11 @@ describe('resolveReference', () => {
     );
 
     const rendered = (resolved.Latin?.content ?? [])
-      .filter((node) => node.type === 'text')
-      .map((node) => node.value)
+      .flatMap((node) => {
+        if (node.type === 'text') return [node.value];
+        if (node.type === 'verseMarker') return [node.text];
+        return [];
+      })
       .join('|');
 
     expect(rendered).toContain('62:1 Deus Deus meus');
@@ -366,10 +369,7 @@ describe('resolveReference', () => {
       { languages: ['Latin'] }
     );
 
-    const rendered = (resolved.Latin?.content ?? [])
-      .filter((node) => node.type === 'text')
-      .map((node) => node.value)
-      .join('|');
+    const rendered = collectTexts(resolved.Latin?.content ?? []).join('|');
 
     expect(rendered).toContain('Monday antiphon');
     expect(rendered).toContain('23:1 Domini est terra');
@@ -431,6 +431,47 @@ describe('resolveReference', () => {
     expect(rendered).toContain('Monday antiphon');
     expect(rendered).toContain('23:1 Domini est terra');
     expect(rendered).toContain('24:1 Ad te Domine levavi');
+  });
+
+  it('extracts weekday minor-hour antiphons through conditional wrappers', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      sections: [
+        {
+          header: 'Tertia',
+          content: [
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'not',
+                  inner: { type: 'match', subject: 'rubrica', predicate: 'praedicatorum' }
+                }
+              },
+              content: [{ type: 'text', value: 'Feria IV = Misericórdia tua, * Dómine.' }],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            }
+          ],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+        section: 'Tertia',
+        selector: 'Feria IV#antiphon'
+      },
+      { languages: ['Latin'] }
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      { type: 'text', value: 'Misericórdia tua, * Dómine.' }
+    ]);
   });
 
   it('selects weekday-keyed Compline psalmody from the Completorium section', () => {

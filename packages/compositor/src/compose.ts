@@ -31,6 +31,7 @@ import {
   normalizeOpeningPsalmodyAntiphonContent,
   normalizeRepeatedAntiphonContent,
   replaceLeadingCanticleTitleWithCitation,
+  splitLeadingPsalmAntiphon,
   withPsalmGloriaPatri
 } from './compose/psalmody.js';
 import { applyDirectives } from './directives/index.js';
@@ -545,6 +546,18 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       // psalm at Lauds / Vespers / minor hours; without it the compositor's
       // line stream diverges from the legacy renderer at the first psalm.
       if (args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined) {
+        const [leadingAntiphon, psalmBody] = splitLeadingPsalmAntiphon(markered);
+        if (leadingAntiphon.length > 0) {
+          appendContentWithBoundary(
+            bucket,
+            normalizeOpeningPsalmodyAntiphonContent(
+              leadingAntiphon,
+              args.hour,
+              args.context.version,
+              ref
+            )
+          );
+        }
         const heading = buildPsalmHeading(ref, transformed, psalmIndex);
         if (heading) {
           // Route the heading + its trailing separator through
@@ -557,6 +570,8 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
             { type: 'separator' }
           ]);
         }
+        appendContentWithBoundary(bucket, replaceLeadingCanticleTitleWithCitation(psalmBody));
+        continue;
       }
       appendContentWithBoundary(
         bucket,

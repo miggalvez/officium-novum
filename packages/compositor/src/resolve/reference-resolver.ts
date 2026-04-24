@@ -414,9 +414,9 @@ function resolveStructuredSelector(
   if (
     antiphonSelector &&
     context.path.endsWith(PSALMI_MINOR_SUFFIX) &&
-    context.section.header === 'Tridentinum'
+    isPsalmiMinorAntiphonSection(context.section.header)
   ) {
-    return resolveTridentinumAntiphon(index, context.path, context.section, antiphonSelector);
+    return resolvePsalmiMinorAntiphon(index, context.path, context.section, antiphonSelector);
   }
 
   if (
@@ -457,29 +457,58 @@ function resolveStructuredSelector(
   return undefined;
 }
 
+function isPsalmiMinorAntiphonSection(sectionName: string): boolean {
+  return sectionName === 'Tridentinum' || isKeyedPsalterSection(sectionName);
+}
+
 function parseAntiphonSelector(selector: string): string | undefined {
   const match = selector.match(/^(.*)#antiphon$/u);
   const key = match?.[1]?.trim();
   return key && key.length > 0 ? key : undefined;
 }
 
-function resolveTridentinumAntiphon(
+function resolvePsalmiMinorAntiphon(
   index: TextIndex,
   path: string,
   section: ParsedSection,
   wantedKey: string
 ): readonly TextContent[] | undefined {
-  const dominical = resolveDominicalTridentinumAntiphon(index, path, wantedKey);
+  const dominical =
+    section.header === 'Tridentinum'
+      ? resolveDominicalTridentinumAntiphon(index, path, wantedKey)
+      : undefined;
   const keyed = dominical ?? selectKeyedTextContent(section.content, wantedKey);
-  const firstText = keyed?.find((node) => node.type === 'text');
-  if (!firstText || firstText.type !== 'text') {
+  const firstText = firstTextValue(keyed);
+  if (firstText === undefined) {
     return undefined;
   }
-  const antiphon = firstText.value.split(';;', 1)[0]?.trim();
-  if (!antiphon) {
+  const antiphon = section.header === 'Tridentinum'
+    ? firstText.split(';;', 1)[0]?.trim()
+    : firstText.trim();
+  if (!antiphon || antiphon === '_') {
     return undefined;
   }
   return Object.freeze([{ type: 'text', value: antiphon }]);
+}
+
+function firstTextValue(content: readonly TextContent[] | undefined): string | undefined {
+  if (!content) {
+    return undefined;
+  }
+
+  for (const node of content) {
+    if (node.type === 'text') {
+      return node.value;
+    }
+    if (node.type === 'conditional') {
+      const nested = firstTextValue(node.content);
+      if (nested !== undefined) {
+        return nested;
+      }
+    }
+  }
+
+  return undefined;
 }
 
 function resolveDominicalTridentinumAntiphon(

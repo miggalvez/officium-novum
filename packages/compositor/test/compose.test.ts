@@ -1146,6 +1146,69 @@ describe('composeHour', () => {
     );
   });
 
+  it('shortens Saturday weekday Psalmi minor antiphon openings in pre-1960 minor hours', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi minor', 'Sexta', [
+        {
+          type: 'text',
+          value: 'Feria VII = Allelúja, * sábbato sancto, allelúja, allelúja.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmorum/Psalm118', '__preamble', [
+        { type: 'text', value: '118:81 Defécit in salutáre tuum ánima mea.' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri.' },
+        { type: 'verseMarker', marker: 'R.', text: 'Sicut erat.' }
+      ])
+    );
+
+    const reduced1955Version: ResolvedVersion = {
+      ...stubVersion,
+      handle: 'Reduced - 1955' as never
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary({
+        hour: 'sext',
+        slots: {
+          psalmody: {
+            kind: 'psalmody',
+            psalms: [
+              {
+                antiphonRef: {
+                  path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+                  section: 'Sexta',
+                  selector: 'Feria VII#antiphon'
+                },
+                psalmRef: {
+                  path: 'horas/Latin/Psalterium/Psalmorum/Psalm118',
+                  section: '__preamble',
+                  selector: '118(81-96)'
+                }
+              }
+            ]
+          }
+        },
+        directives: []
+      }, { version: reduced1955Version }),
+      version: reduced1955Version,
+      hour: 'sext',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(slotLines(composed, 'psalmody', 'Latin')[0]).toBe('Allelúja.');
+    expect(slotLines(composed, 'psalmody', 'Latin').at(-1)).toBe(
+      'Allelúja, sábbato sancto, allelúja, allelúja.'
+    );
+  });
+
   it('uses the parser fallback chain for deferred nodes on a resolved corpus', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(

@@ -300,7 +300,8 @@ export const rubrics1960Policy: RubricalPolicy = {
       celebrationRules: params.celebrationRules,
       hourRules: params.hourRules,
       temporal: params.temporal,
-      corpus: params.corpus
+      corpus: params.corpus,
+      omitPrimeBracketPsalm: true
     });
   },
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective> {

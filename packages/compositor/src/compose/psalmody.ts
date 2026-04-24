@@ -308,7 +308,7 @@ function parseCanticleTitleLine(text: string): CanticleTitleLine | undefined {
   return citation ? { title, citation } : { title };
 }
 
-function splitLeadingPsalmAntiphon(
+export function splitLeadingPsalmAntiphon(
   content: readonly TextContent[]
 ): readonly [readonly TextContent[], readonly TextContent[]] {
   const first = content[0];
@@ -353,7 +353,7 @@ function shouldNormalizeOpeningPsalmodyAntiphon(
     return true;
   }
 
-  return hour === 'prime';
+  return hour === 'prime' || isWeekdayMinorPsalmiMinorRef(ref);
 }
 
 function normalizeOpeningPsalmodyAntiphonText(text: string): string {
@@ -372,4 +372,14 @@ function normalizeOpeningPsalmodyAntiphonText(text: string): string {
   }
 
   return `${prefix.replace(/[;,]\s*$/u, '').trim()}.`;
+}
+
+function isWeekdayMinorPsalmiMinorRef(ref: TextReference): boolean {
+  return (
+    (ref.section === 'Prima' ||
+      ref.section === 'Tertia' ||
+      ref.section === 'Sexta' ||
+      ref.section === 'Nona') &&
+    Boolean(ref.selector?.match(/^Feria\s+(?:II|III|IV|V|VI|VII)(?:#antiphon)?$/u))
+  );
 }

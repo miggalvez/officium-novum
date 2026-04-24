@@ -7137,6 +7137,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Reduced - 1955/2024-03-30/Vespers/c3e5bb37": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-30",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
+  },
   "Reduced - 1955/2024-03-31/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-03-31",
@@ -7449,6 +7461,42 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
   },
+  "Reduced - 1955/2024-05-09/None/9132c86f": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Ascéndo ad Patrem meum, et Patrem vestrum, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:354-360 — the Ascension source explicitly provides the None short responsory beginning `R.br. Ascéndo ad Patrem meum, et Patrem vestrum...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Ascension minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "9112a23"
+  },
+  "Reduced - 1955/2024-05-09/Sext/3c70c657": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Ascéndens Christus in altum, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:339-345 — the Ascension source explicitly provides the Sext short responsory beginning `R.br. Ascéndens Christus in altum...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Ascension minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "9112a23"
+  },
+  "Reduced - 1955/2024-05-09/Terce/470ce973": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Ascéndit Deus in jubilatióne, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:323-329 — the Ascension source explicitly provides the Terce short responsory beginning `R.br. Ascéndit Deus in jubilatióne...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Ascension minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "9112a23"
+  },
   "Reduced - 1955/2024-05-19/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-05-19",
@@ -7568,6 +7616,18 @@
     "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-05-30/Vespers/c3e5bb37": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-30",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
   },
   "Reduced - 1955/2024-06-16/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7760,6 +7820,18 @@
     "notes": "Representative entry for the Reduced 1955 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1955 rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-06-29/Vespers/c3e5bb37": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
   },
   "Reduced - 1955/2024-06-30/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8300,6 +8372,18 @@
     "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-11-01/Vespers/c3e5bb37": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
   },
   "Reduced - 1955/2024-11-05/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -10197,6 +10281,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Rubrics 1960 - 1960/2024-03-30/Vespers/c3e5bb37": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-30",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
+  },
   "Rubrics 1960 - 1960/2024-03-31/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-31",
@@ -10533,6 +10629,30 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
   },
+  "Rubrics 1960 - 1960/2024-05-19/None/c7624535": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-19",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Repléti sunt omnes Spíritu Sancto, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:263-269 — the Pentecost source explicitly provides the None short responsory beginning `R.br. Repléti sunt omnes Spíritu Sancto...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Pentecost minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "9112a23"
+  },
+  "Rubrics 1960 - 1960/2024-05-19/Sext/ac7cdff5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-19",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Spíritus Paráclitus, * Allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:248-254 — the Pentecost source explicitly provides the Sext short responsory beginning `R.br. Spíritus Paráclitus...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Pentecost minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "9112a23"
+  },
   "Rubrics 1960 - 1960/2024-05-19/Vespers/39846534": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-05-19",
@@ -10664,6 +10784,18 @@
     "notes": "Representative entry for the Rubrics 1960 January Terce/Sext/None fallback-hymn doxology family where the default `Præsta, Pater piíssime,` close is replaced by the Christmas or Epiphany stanza required by the winning office.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-05-30/Vespers/c3e5bb37": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-30",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
   },
   "Rubrics 1960 - 1960/2024-06-16/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -10844,6 +10976,18 @@
     "notes": "Representative entry for the Rubrics 1960 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1960 rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-06-29/Vespers/c3e5bb37": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
   },
   "Rubrics 1960 - 1960/2024-06-30/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -11636,6 +11780,18 @@
     "notes": "Representative Rubrics 1960 Psalm 4 half-verse family; fan out across matching 1960 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Vespers/c3e5bb37": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Vespers",
+    "firstExpected": "115:7 Dirupísti víncula mea: * tibi sacrificábo hóstiam laudis, et nomen Dómini invocábo.",
+    "firstActual": "115:7 Dirupísti víncula mea: ‡ tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
+    "notes": "Psalm 115 Vespers half-verse family; the same source-backed `‡ ... *` seam appears on Holy Saturday, Corpus Christi, SS Peter and Paul, and All Saints Vespers under both simplified Roman policies.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "0667a64"
   },
   "Rubrics 1960 - 1960/2024-11-05/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

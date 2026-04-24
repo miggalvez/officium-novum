@@ -129,6 +129,16 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
     expect(out).toEqual(content);
   });
 
+  it('does not append alleluia to the bare Deo gratias chapter response', () => {
+    const content: TextContent[] = [
+      { type: 'text', value: 'Apoc 1:5-6' },
+      { type: 'text', value: 'Jesu Christe, testis fidelis.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Deo grátias.' }
+    ];
+    const out = run('chapter', content, ['add-alleluia']);
+    expect(out).toEqual(content);
+  });
+
   it('add-versicle-alleluia only touches V./R. markers on versicle slots', () => {
     const content: TextContent[] = [
       { type: 'verseMarker', marker: 'V.', text: 'Deus, in adjutórium meum inténde' },

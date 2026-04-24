@@ -174,8 +174,10 @@ function addAlleluia(slot: SlotName, content: readonly TextContent[]): readonly 
   if (slot === 'psalmody') {
     return appendAlleluiaToPsalmodyAntiphons(content);
   }
-  if (slot === 'chapter' && containsAntiphonSubstitution(content)) {
-    return content;
+  if (slot === 'chapter') {
+    if (containsAntiphonSubstitution(content) || endsWithBareDeoGratias(content)) {
+      return content;
+    }
   }
   if (!isAntiphonSlot(slot) && slot !== 'chapter') return content;
   return appendAlleluiaToLastText(content, ', allelúja.');
@@ -263,6 +265,28 @@ function appendAlleluiaToPsalmodyAntiphons(
 
   return changed ? Object.freeze(out) : content;
 }
+
+function endsWithBareDeoGratias(content: readonly TextContent[]): boolean {
+  for (let i = content.length - 1; i >= 0; i--) {
+    const node = content[i]!;
+    if (node.type === 'separator') continue;
+    return isBareDeoGratiasNode(node);
+  }
+  return false;
+}
+
+function isBareDeoGratiasNode(node: TextContent): boolean {
+  if (node.type === 'verseMarker') {
+    return node.marker === 'R.' && DEO_GRATIAS_TEXT_RX.test(node.text.trim());
+  }
+  if (node.type === 'text') {
+    return DEO_GRATIAS_LINE_RX.test(node.value.trim());
+  }
+  return false;
+}
+
+const DEO_GRATIAS_TEXT_RX = /^Deo gr[áa]tias\.?$/iu;
+const DEO_GRATIAS_LINE_RX = /^R\.\s*Deo gr[áa]tias\.?$/iu;
 
 function isAntiphonLine(value: string): boolean {
   return /^ant\./iu.test(value.trimStart());
