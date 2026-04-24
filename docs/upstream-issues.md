@@ -24,6 +24,48 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-24 — Roman St Joseph minor-hour proper later blocks are skipped by the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Under both simplified Roman policies on Mar `19`, the
+compositor emits St Joseph's source-backed Prime lesson and
+Terce/Sext/None short-responsory later blocks from `Sancti/03-19`.
+The Perl render surface keeps the weekday Prime citation `1 Tim. 1:17`
+and leaves `_` at the first divergence for Terce, Sext, and None.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:261-274`
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:276-290`
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:292-306`
+
+These sections explicitly provide `[Lectio Prima]`, the proper short
+responsories, and the matching versicles.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-03-19
+```
+
+Then inspect Prime, Terce, Sext, and None for `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-03-19 | Prime | `5c63239e` |
+| Reduced - 1955 | 2024-03-19 | Terce | `b7f4a70f` |
+| Reduced - 1955 | 2024-03-19 | Sext | `4da84a30` |
+| Reduced - 1955 | 2024-03-19 | None | `80a4cecd` |
+| Rubrics 1960 - 1960 | 2024-03-19 | Prime | `5c63239e` |
+| Rubrics 1960 - 1960 | 2024-03-19 | Terce | `b7f4a70f` |
+| Rubrics 1960 - 1960 | 2024-03-19 | Sext | `4da84a30` |
+| Rubrics 1960 - 1960 | 2024-03-19 | None | `80a4cecd` |
+
 ### 2026-04-24 — Roman Lenten Vespers opening antiphons are shortened or over-marked by the Perl render surface
 
 **Classification.** `perl-bug`

@@ -2604,6 +2604,37 @@ the matching `Qui hábitas...` signature to a later weekday row.
 render-surface bugs, narrowing the Roman Vespers frontier without
 changing compositor behavior.
 
+### 2026-04-24 — Pattern: St Joseph proper minor-hour later blocks are skipped by Perl (perl-bug)
+
+**Commit.** pending
+
+**Ledger signal.** On Mar `19`, both simplified Roman policies first
+diverge in Prime when Perl keeps the weekday `1 Tim. 1:17` citation
+instead of the St Joseph `Sap 10:10` lesson. Terce, Sext, and None then
+diverge at Perl's `_` separator where the compositor emits the office's
+proper short responsories.
+
+**Root cause.** The St Joseph office has explicit minor-hour later-block
+material: `[Lectio Prima]`, `[Responsory Breve Tertia]`,
+`[Capitulum Sexta]`, `[Responsory Breve Sexta]`, `[Capitulum Nona]`,
+`[Responsory Breve Nona]`, and the matching versicles. The compositor
+emits those source-backed sections; Perl's rendered comparison surface
+does not.
+
+**Resolution.** Class `perl-bug`. Added an upstream integration
+regression for the St Joseph Prime and Terce/Sext/None later blocks,
+then recorded the eight simplified Roman row adjudications in
+`adjudications.json`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:261-274`
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:276-290`
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:292-306`
+
+**Impact.** Eight proper-feast minor-hour rows are now classified as
+source-backed Perl render-surface bugs.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

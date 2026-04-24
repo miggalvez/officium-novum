@@ -6956,6 +6956,50 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-03-19/None/80a4cecd": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-19",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Justus germinábit * Sicut lílium.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:292-306 — the St Joseph office explicitly supplies `[Capitulum Nona]`, `[Responsory Breve Nona]`, and `[Versum Nona]`, beginning `R.br. Justus germinábit * Sicut lílium.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
+  "Reduced - 1955/2024-03-19/Prime/5c63239e": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-19",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Sap 10:10",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:261-264 — the St Joseph office explicitly supplies `[Lectio Prima]` with citation `Sap 10:10`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
+  "Reduced - 1955/2024-03-19/Sext/4da84a30": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-19",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Magna est glória ejus * In salutári tuo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:276-290 — the St Joseph office explicitly supplies `[Capitulum Sexta]`, `[Responsory Breve Sexta]`, and `[Versum Sexta]`, beginning `R.br. Magna est glória ejus * In salutári tuo.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
+  "Reduced - 1955/2024-03-19/Terce/b7f4a70f": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-19",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Constítuit eum * Dóminum domus suæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:265-274 — the St Joseph office explicitly supplies `[Responsory Breve Tertia]`, beginning `R.br. Constítuit eum * Dóminum domus suæ.`, plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
   "Reduced - 1955/2024-03-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-03-24",
@@ -10574,6 +10618,50 @@
     "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Rubrics 1960. Fan out to all 1960 Matins rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-03-19/None/80a4cecd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-19",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Justus germinábit * Sicut lílium.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:292-306 — the St Joseph office explicitly supplies `[Capitulum Nona]`, `[Responsory Breve Nona]`, and `[Versum Nona]`, beginning `R.br. Justus germinábit * Sicut lílium.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
+  "Rubrics 1960 - 1960/2024-03-19/Prime/5c63239e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-19",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Sap 10:10",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:261-264 — the St Joseph office explicitly supplies `[Lectio Prima]` with citation `Sap 10:10`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
+  "Rubrics 1960 - 1960/2024-03-19/Sext/4da84a30": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-19",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. Magna est glória ejus * In salutári tuo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:276-290 — the St Joseph office explicitly supplies `[Capitulum Sexta]`, `[Responsory Breve Sexta]`, and `[Versum Sexta]`, beginning `R.br. Magna est glória ejus * In salutári tuo.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
+  },
+  "Rubrics 1960 - 1960/2024-03-19/Terce/b7f4a70f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-19",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Constítuit eum * Dóminum domus suæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/03-19.txt:265-274 — the St Joseph office explicitly supplies `[Responsory Breve Tertia]`, beginning `R.br. Constítuit eum * Dóminum domus suæ.`, plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "notes": "Representative entry for the shared Roman St Joseph proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
+    "resolvedAt": "2026-04-24"
   },
   "Rubrics 1960 - 1960/2024-03-24/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

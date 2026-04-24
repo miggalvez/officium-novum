@@ -1719,6 +1719,42 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders St Joseph proper minor-hour later blocks from the office source', async () => {
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-03-19');
+
+      const prime = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'prime',
+        options: { languages: ['Latin'] }
+      });
+      expect(sectionTexts(prime, 'chapter').map((line) => normalizeLatin(line).trim()), `${version} Prime chapter`).toContain(
+        normalizeLatin('Sap 10:10')
+      );
+
+      for (const [hour, expected] of [
+        ['terce', 'Constítuit eum * Dóminum domus suæ.'],
+        ['sext', 'Magna est glória ejus * In salutári tuo.'],
+        ['none', 'Justus germinábit * Sicut lílium.']
+      ] as const) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+
+        expect(normalizeLatin(sectionTexts(composed, 'responsory')[0] ?? ''), `${version} ${hour} responsory`).toBe(
+          normalizeLatin(expected)
+        );
+      }
+    }
+  }, 240_000);
+
   it('renders Jan 14 Sunday Tridentinum minor-hour antiphons from the keyed psalter surface', async () => {
     for (const [version, expectations] of [
       [
