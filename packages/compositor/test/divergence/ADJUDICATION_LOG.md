@@ -2575,7 +2575,7 @@ separator issue handled in earlier tranches.
 
 ### 2026-04-24 — Pattern: Roman Lenten Vespers opening antiphon surface is shortened or over-marked by Perl (perl-bug)
 
-**Commit.** pending
+**Commit.** `0b6eac7`
 
 **Ledger signal.** The next visible Vespers rows on Ash Wednesday and
 Holy Week Monday through Wednesday show the compositor preserving full
@@ -2606,7 +2606,7 @@ changing compositor behavior.
 
 ### 2026-04-24 — Pattern: St Joseph proper minor-hour later blocks are skipped by Perl (perl-bug)
 
-**Commit.** pending
+**Commit.** `a5a065c`
 
 **Ledger signal.** On Mar `19`, both simplified Roman policies first
 diverge in Prime when Perl keeps the weekday `1 Tim. 1:17` citation
@@ -2637,7 +2637,7 @@ source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: Nativity of St John the Baptist proper minor-hour later blocks are skipped by Perl (perl-bug)
 
-**Commit.** pending
+**Commit.** `72166fd`
 
 **Ledger signal.** On Jun `24`, both simplified Roman policies first
 diverge in Prime when Perl keeps the weekday `1 Tim. 1:17` citation
@@ -2669,7 +2669,7 @@ as source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: Ss Peter and Paul proper minor-hour later blocks are skipped by Perl (perl-bug)
 
-**Commit.** pending
+**Commit.** `81889c1`
 
 **Ledger signal.** On Jun `29`, both simplified Roman policies first
 diverge in Prime when Perl keeps the weekday `1 Tim. 1:17` citation
@@ -2699,7 +2699,7 @@ as source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: Precious Blood proper minor-hour later blocks are skipped by Perl (perl-bug)
 
-**Commit.** pending
+**Commit.** `38773c0`
 
 **Ledger signal.** On Jul `1`, both simplified Roman policies first
 diverge in Prime when Perl keeps the weekday `1 Tim. 1:17` citation
