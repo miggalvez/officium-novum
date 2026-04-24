@@ -326,6 +326,10 @@ function usesMinorHourOrationWrapper(args: DirectiveSlotContentArgs): boolean {
     return false;
   }
 
+  if (args.structure.slots.conclusion?.kind === 'empty') {
+    return false;
+  }
+
   if (args.slot === 'conclusion') {
     return isMinorHourConclusionContent(args.content);
   }

@@ -123,6 +123,40 @@ describe('classifyDirective', () => {
       omitCommemoration: false
     });
   });
+
+  it('maps Triduum Capitulum and Prime tail omissions into typed hour slots', () => {
+    const directive = parseOrThrow(
+      'Omit Incipit Invitatorium Hymnus Capitulum Lectio Commemoratio Antiphona finalis Preces Suffragium Conclusion Martyrologium De Officium Capituli'
+    );
+    const classified = classifyDirective(directive);
+
+    expect(classified.target).toBe('hour');
+    if (classified.target !== 'hour') {
+      return;
+    }
+
+    expect(classified.effect.kind).toBe('omit');
+    expect(classified.effect.hours).toBeUndefined();
+    expect(classified.effect.omitCommemoration).toBe(true);
+    expect(classified.effect.slots).toEqual(
+      expect.arrayContaining([
+        'hymnus',
+        'chapter',
+        'responsory',
+        'versicle',
+        'lectio-brevis',
+        'martyrologium',
+        'de-officio-capituli',
+        'preces',
+        'suffragium',
+        'incipit',
+        'invitatorium',
+        'conclusion',
+        'antiphona-finalis'
+      ])
+    );
+    expect(classified.effect.slots).toHaveLength(13);
+  });
 });
 
 function parseOrThrow(line: string): RuleDirective {

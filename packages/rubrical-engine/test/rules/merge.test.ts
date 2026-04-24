@@ -40,6 +40,28 @@ describe('deriveHourRuleSet', () => {
     expect(hourRules.omit).toEqual(expect.arrayContaining(['incipit', 'invitatorium', 'hymnus']));
   });
 
+  it('keeps Triduum Capitulum and Lectio omissions scoped to simple-office later blocks', () => {
+    const rules = makeCelebrationRuleSet([
+      'Omit Incipit Invitatorium Hymnus Capitulum Lectio Commemoratio Antiphona finalis Preces Suffragium Conclusion Martyrologium De Officium Capituli',
+      'Capitulum Versum 2 ad Laudes tantum'
+    ]);
+
+    const primeRules = deriveHourRuleSet(makeCelebration(), rules, 'prime');
+    const complineRules = deriveHourRuleSet(makeCelebration(), rules, 'compline');
+    const laudsRules = deriveHourRuleSet(makeCelebration(), rules, 'lauds');
+
+    expect(primeRules.omit).toEqual(
+      expect.arrayContaining(['chapter', 'responsory', 'versicle', 'lectio-brevis', 'de-officio-capituli'])
+    );
+    expect(complineRules.omit).toEqual(
+      expect.arrayContaining(['chapter', 'responsory', 'versicle', 'lectio-brevis', 'de-officio-capituli'])
+    );
+    expect(laudsRules.capitulumVariant).toEqual({ scheme: 2, scope: 'lauds' });
+    expect(laudsRules.omit).not.toEqual(
+      expect.arrayContaining(['chapter', 'responsory', 'versicle', 'lectio-brevis', 'de-officio-capituli'])
+    );
+  });
+
   it('derives the secret Pater totum secreto lesson introduction for Matins', () => {
     const rules = makeCelebrationRuleSet(['Limit Benedictiones Oratio']);
 

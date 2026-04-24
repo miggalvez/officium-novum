@@ -114,6 +114,9 @@ export function deriveHourRuleSet(
     switch (effect.kind) {
       case 'omit':
         for (const slot of effect.slots) {
+          if (isSimpleOfficeSlotOmit(slot) && !isSimpleOfficeHour(hour)) {
+            continue;
+          }
           if (!omit.includes(slot)) {
             omit.push(slot);
           }
@@ -178,6 +181,26 @@ function appliesToHour(hours: readonly HourName[] | undefined, hour: HourName): 
 
 function hourEffectApplies(effect: HourEffect, hour: HourName): boolean {
   return !effect.hours || effect.hours.includes(hour);
+}
+
+function isSimpleOfficeSlotOmit(slot: OmittableSlot): boolean {
+  return (
+    slot === 'chapter' ||
+    slot === 'responsory' ||
+    slot === 'versicle' ||
+    slot === 'lectio-brevis' ||
+    slot === 'de-officio-capituli'
+  );
+}
+
+function isSimpleOfficeHour(hour: HourName): boolean {
+  return (
+    hour === 'prime' ||
+    hour === 'terce' ||
+    hour === 'sext' ||
+    hour === 'none' ||
+    hour === 'compline'
+  );
 }
 
 export function freezeCelebrationRuleSet(ruleSet: CelebrationRuleSet): CelebrationRuleSet {

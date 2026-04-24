@@ -14,6 +14,18 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-24.** Closed the simplified Roman Triduum minor-hour
+  ordinary-short-reading leak as a mixed Phase 2 / Phase 3 fix. The
+  1955/1960 `Omit ... Capitulum Lectio ... De Officium Capituli` rule
+  now suppresses the typed chapter, short-reading, responsory, versicle,
+  and Prime tail slots; Holy Saturday minor hours select the temporal
+  `Oratio 2` when present; and Phase 3 extends the existing
+  `Christus factus...` Triduum prelude handoff to Prime/Terce/Sext/None
+  without ordinary minor-hour oration wrappers. The March `28`-`30`
+  simplified Roman minor-hour compares now advance past the former
+  ordinary `Zach 8:19`, `Jer 17:14`, `Rom 13:8`, and `1 Pet 1:17-19`
+  short-reading divergences, dropping live unadjudicated counts to `144`
+  for Reduced 1955 and `108` for Rubrics 1960.
 - **2026-04-24.** Closed the next five Phase 3 tranche slices across the Paschal minor-hour and major-hour conclusion frontier. Phase 2 now supplies seasonal Paschal/Ascension/Pentecost doxology variants to fallback minor-hour hymns when no proper doxology is declared, focused compositor regressions lock the 1955 Paschal fallback surface, the Rubrics 1960 residual Paschal doxology rows are adjudicated as Perl render-surface bugs, the 1960 `Tridentinum` Sunday Prime Paschal antiphon rows are classified from `Psalmi minor`, and selected 1955/1960 Vespers post-collect `Dómine, exáudi` bridge rows are recorded in the sidecar and upstream issue log.
 - **2026-04-24.** Closed the next shared Roman source-backed `perl-bug`
   adjudication sweep without changing compositor behavior. Focused upstream

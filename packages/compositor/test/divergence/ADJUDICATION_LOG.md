@@ -2803,6 +2803,48 @@ row adjudications in `adjudications.json`.
 **Impact.** Six Vespers conclusion rows are now classified as
 source-backed Perl render-surface bugs.
 
+### 2026-04-24 — Pattern: simplified Roman Triduum minor hours omit ordinary later blocks and use the proper oration (mixed fix)
+
+**Commit.** `pending`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Prime/Terce/Sext/None
+rows on Mar 28-30 reached the minor-hour later-block boundary where
+Perl continues directly into the proper Triduum `Christus factus...`
+oration, while the compositor still emitted ordinary minor-hour short
+readings such as `Zach 8:19`, `Jer 17:14`, `Rom 13:8`, and
+`1 Pet 1:17-19`.
+
+**Root cause.** The Triduum rule line omits `Capitulum`, `Lectio`, and
+`De Officium Capituli`, but the Phase 2 rule classifier did not map
+those tokens into typed hour-slot omissions. The later oration handoff
+then had two Phase 3 gaps: the existing simplified-Triduum prelude
+extraction only covered Lauds/Vespers, and the minor-hour compositor
+wrapper still added ordinary `Dómine, exáudi... / Orémus.` material
+even when the Triduum rule had already suppressed the conclusion slot.
+Holy Saturday also needed the temporal `Oratio 2` header before the
+plain `Oratio` fallback.
+
+**Resolution.** Class `engine-bug`, fixed across the Phase 2 / Phase 3
+boundary. Phase 2 now treats `Omit Capitulum` as chapter/responsory/
+versicle suppression, `Omit Lectio` as short-reading suppression, and
+`De Officium Capituli` as Prime-tail suppression; minor-hour oration
+selection uses Holy Saturday `Oratio 2` when present. Phase 3 extends
+the simplified-Triduum `Christus factus...` prelude extraction to
+Prime/Terce/Sext/None and skips the ordinary minor-hour wrapper when
+the structured conclusion is empty.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:10-41`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-5.txt:15-32`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-6r.txt:15-20`
+
+**Impact.** The simplified Roman Triduum minor-hour rows for Mar 28-30
+now advance past the ordinary short-reading leak. The live
+unadjudicated counts dropped to `144` for Reduced 1955 and `108` for
+Rubrics 1960, with the remaining Triduum Vespers suppression notices
+left as their own open family.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

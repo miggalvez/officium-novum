@@ -761,11 +761,16 @@ function isDomineExaudiNode(node: TextContent): boolean {
 function isSimplifiedTriduumOration(args: ComposeSlotArgs, ref: TextReference): boolean {
   return (
     args.slot === 'oration' &&
-    (args.hour === 'lauds' || args.hour === 'vespers') &&
+    (args.hour === 'lauds' ||
+      args.hour === 'vespers' ||
+      args.hour === 'prime' ||
+      args.hour === 'terce' ||
+      args.hour === 'sext' ||
+      args.hour === 'none') &&
     args.structure.slots.conclusion?.kind === 'empty' &&
     Boolean(args.context.version.handle.match(/(?:1955|1960)/u)) &&
-    ref.section === 'Oratio' &&
-    /\/Tempora\/Quad6-[45]r?$/u.test(ref.path)
+    (ref.section === 'Oratio' || ref.section === 'Oratio 2') &&
+    /\/Tempora\/Quad6-[456]r?$/u.test(ref.path)
   );
 }
 

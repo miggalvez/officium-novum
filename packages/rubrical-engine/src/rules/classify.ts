@@ -687,6 +687,15 @@ function parseOmitDirective(
   if (containsWord(normalized, 'hymnus')) {
     slots.push('hymnus');
   }
+  if (containsWord(normalized, 'capitulum')) {
+    slots.push('chapter', 'responsory', 'versicle');
+  }
+  if (containsWord(normalized, 'lectio')) {
+    slots.push('lectio-brevis');
+  }
+  if (containsPhrase(normalized, 'de officium capituli')) {
+    slots.push('de-officio-capituli');
+  }
   if (containsWord(normalized, 'martyrologium')) {
     slots.push('martyrologium');
   }

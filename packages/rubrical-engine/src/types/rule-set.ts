@@ -112,7 +112,12 @@ export interface PsalmOverride {
 
 export type OmittableSlot =
   | 'hymnus'
+  | 'chapter'
+  | 'responsory'
+  | 'versicle'
   | 'martyrologium'
+  | 'lectio-brevis'
+  | 'de-officio-capituli'
   | 'preces'
   | 'suffragium'
   | 'invitatorium'

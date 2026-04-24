@@ -231,10 +231,20 @@ function isSuppressed(slot: SlotName, omit: readonly OmittableSlot[]): boolean {
   switch (slot) {
     case 'incipit':
       return omit.includes('incipit');
+    case 'chapter':
+      return omit.includes('chapter');
+    case 'responsory':
+      return omit.includes('responsory');
+    case 'versicle':
+      return omit.includes('versicle');
     case 'hymn':
       return omit.includes('hymnus');
     case 'martyrology':
       return omit.includes('martyrologium');
+    case 'lectio-brevis':
+      return omit.includes('lectio-brevis');
+    case 'de-officio-capituli':
+      return omit.includes('de-officio-capituli');
     case 'preces':
       return omit.includes('preces');
     case 'suffragium':
@@ -1497,6 +1507,14 @@ function properHeadersForSlot(
       }
       if (hour === 'vespers') {
         return ['Oratio 3', 'Oratio'];
+      }
+      if (
+        hour === 'prime' ||
+        hour === 'terce' ||
+        hour === 'sext' ||
+        hour === 'none'
+      ) {
+        return input?.temporal.dayName === 'Quad6-6' ? ['Oratio 2', 'Oratio'] : ['Oratio'];
       }
       return ['Oratio'];
     case 'invitatory':

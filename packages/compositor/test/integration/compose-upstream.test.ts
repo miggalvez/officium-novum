@@ -344,6 +344,65 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('lets simplified Triduum minor hours pass from psalmody to the proper oration', async () => {
+    const expectedOpeningByDate = {
+      '2024-03-28': normalizeLatin('Christus factus est pro nobis obédiens usque ad mortem.'),
+      '2024-03-29': normalizeLatin(
+        'Christus factus est pro nobis obédiens usque ad mortem, mortem autem crucis.'
+      ),
+      '2024-03-30': normalizeLatin(
+        'Christus factus est pro nobis obédiens usque ad mortem, mortem autem crucis: propter quod et Deus exaltávit illum, et dedit illi nomen, quod est super omne nomen.'
+      )
+    } as const;
+    const ordinaryShortReadings = [
+      normalizeLatin('Zach 8:19'),
+      normalizeLatin('Jer 17:14'),
+      normalizeLatin('Rom 13:8'),
+      normalizeLatin('1 Pet 1:17-19')
+    ] as const;
+
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const date of ['2024-03-28', '2024-03-29', '2024-03-30'] as const) {
+        const summary = engine.resolveDayOfficeSummary(date);
+
+        for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+          const structure = summary.hours[hour];
+          expect(
+            structure?.slots.chapter?.kind,
+            `${version} ${date} ${hour} should omit the ordinary chapter slot`
+          ).toBe('empty');
+          expect(
+            structure?.slots.responsory?.kind,
+            `${version} ${date} ${hour} should omit the ordinary responsory slot`
+          ).toBe('empty');
+          expect(
+            structure?.slots.versicle?.kind,
+            `${version} ${date} ${hour} should omit the ordinary versicle slot`
+          ).toBe('empty');
+
+          const composed = composeHour({
+            corpus: resolvedCorpus.index,
+            summary,
+            version: engine.version,
+            hour,
+            options: { languages: ['Latin'] }
+          });
+
+          expect(
+            sectionTexts(composed, 'oration').map(normalizeLatin)[0],
+            `${version} ${date} ${hour} should open the proper Triduum oration immediately after psalmody`
+          ).toBe(expectedOpeningByDate[date]);
+          expect(
+            canonicalLatinLines(composed),
+            `${version} ${date} ${hour} should not leak ordinary minor-hour short readings`
+          ).not.toEqual(expect.arrayContaining(ordinaryShortReadings));
+        }
+      }
+    }
+  }, 240_000);
+
   it('keeps Easter Octave Versum 2 substitutions on Prime and Terce without adding a Paschaltide alleluia tail', async () => {
     const expected = normalizeLatin(
       'Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea.'
