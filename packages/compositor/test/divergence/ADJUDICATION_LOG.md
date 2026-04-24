@@ -2510,6 +2510,36 @@ classification to matching later ledger rows.
 classified as the same Perl render-surface issue already recorded for
 Sunday and Paschaltide later blocks.
 
+### 2026-04-24 — Pattern: Roman ferial Prime later block is source-backed against Perl surface drift (perl-bug)
+
+**Commit.** pending
+
+**Ledger signal.** Once the ferial Prime fallback is active, the
+simplified Roman policies expose two Prime variants of the same
+source-backed seam. In Reduced 1955, Perl inserts `R. Deo grátias.`
+before the Prime responsory; in Rubrics 1960, Perl keeps the Sunday
+`1 Tim. 1:17` chapter where the compositor emits the ferial `Zach 8:19`
+chapter.
+
+**Root cause.** The restored Prime refs point to `Prima Special`, whose
+`[Feria]` section carries `Zach 8:19` and whose `[Responsory]` section
+begins directly with `R.br. Christe, Fili Dei vivi...`. There is no
+`$Deo gratias` marker in the Prime `[Feria]` source block.
+
+**Resolution.** Class `perl-bug`. Added representative adjudications for
+the Reduced 1955 implicit-`Deo gratias` row and the Rubrics 1960 Sunday
+chapter row; `adjudications:fanout` applies those stable signatures to
+the repeated ferial Prime checkpoints.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59`
+
+**Impact.** The largest remaining Prime source-backed family is now
+classified, leaving the live Roman frontier centered on Holy Week
+chapter selection and proper-feast short-responsory separators.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

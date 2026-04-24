@@ -6465,6 +6465,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-02-14/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-02-14/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
     "date": "2024-02-14",
@@ -7041,6 +7053,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-03-25/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-26/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-03-26",
@@ -7064,6 +7088,18 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-03-26/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-03-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7100,6 +7136,18 @@
     "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in pre-1960 form, after the structural split bug was fixed.",
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
+  },
+  "Reduced - 1955/2024-03-27/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-03-28/Compline/fa4d64f6": {
     "policy": "Reduced - 1955",
@@ -7797,6 +7845,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-06-20/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-06-20/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
     "date": "2024-06-20",
@@ -8481,6 +8541,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-11-05/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-11-05/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
     "date": "2024-11-05",
@@ -8540,6 +8612,18 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-08/Prime/6081a8cc": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "R.br. Christe, Fili Dei vivi, * Miserére nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-11-08/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
@@ -9789,6 +9873,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Rubrics 1960 - 1960/2024-02-14/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-02-14/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-14",
@@ -10413,6 +10509,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-03-25/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-25",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-03-25/Vespers/839eeb27": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-25",
@@ -10436,6 +10544,18 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-03-26/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-26",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-03-26/Vespers/b1fc00bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -10472,6 +10592,18 @@
     "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in 1960 form, after the structural split bug was fixed.",
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
+  },
+  "Rubrics 1960 - 1960/2024-03-27/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-27",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-03-28/Compline/fa4d64f6": {
     "policy": "Rubrics 1960 - 1960",
@@ -11180,6 +11312,18 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-06-20/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-06-20/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
@@ -12105,6 +12249,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Rubrics 1960 - 1960/2024-11-05/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-11-05/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-05",
@@ -12164,6 +12320,18 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-08/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-11-08/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",

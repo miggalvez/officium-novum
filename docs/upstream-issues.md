@@ -1167,6 +1167,40 @@ source-backed `R.br.` opening line.
 | Rubrics 1960 - 1960 | 2024-02-14 | Sext | `c92f80b2` |
 | Rubrics 1960 - 1960 | 2024-02-14 | None | `1ab5e32c` |
 
+### 2026-04-24 — Roman ferial Prime later blocks drift from `Prima Special` in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** The source-backed ferial Prime fallback uses
+`Prima Special:Feria` for the chapter and `Prima Special:Responsory` for
+the short responsory. Reduced 1955 Perl inserts an implicit
+`R. Deo grátias.` before the responsory even though the Prime source
+chapter has no `$Deo gratias` marker. Rubrics 1960 Perl keeps the Sunday
+Prime citation (`1 Tim. 1:17`) where the source-backed feria chapter is
+`Zach 8:19`.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`
+
+The source separates `[Dominica]` from `[Feria]`, gives `[Feria]` the
+`Zach 8:19` chapter, and begins `[Responsory]` directly with
+`R.br. Christe, Fili Dei vivi...`.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-14 --hour Prima
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-02-14 --hour Prima
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-14 | Prime | `6081a8cc` |
+| Rubrics 1960 - 1960 | 2024-02-14 | Prime | `b7853e49` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)
