@@ -8116,7 +8116,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Elísabeth Zacharíæ * Magnum virum génuit.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:363-376 — the Nativity office explicitly supplies [Capitulum Nona], [Responsory Breve Nona], and [Versum Nona], beginning R.br. Elísabeth Zacharíæ * Magnum virum génuit. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:363-376 — the Nativity office explicitly supplies `[Capitulum Nona]`, `[Responsory Breve Nona]`, and `[Versum Nona]`, beginning `R.br. Elísabeth Zacharíæ * Magnum virum génuit.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -8128,7 +8128,7 @@
     "firstExpected": "1 Tim. 1:17",
     "firstActual": "Isa 49:7",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:332-334 — the Nativity of St John the Baptist office explicitly supplies [Lectio Prima] with citation Isa 49:7, so the compositor emits the proper Prime lesson instead of the weekday 1 Tim. 1:17 chapter retained by the Perl comparison surface.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:332-334 — the Nativity of St John the Baptist office explicitly supplies `[Lectio Prima]` with citation `Isa 49:7`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -8140,7 +8140,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Inter natos mulíerum * Non surréxit major.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:347-361 — the Nativity office explicitly supplies [Capitulum Sexta], [Responsory Breve Sexta], and [Versum Sexta], beginning R.br. Inter natos mulíerum * Non surréxit major. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:347-361 — the Nativity office explicitly supplies `[Capitulum Sexta]`, `[Responsory Breve Sexta]`, and `[Versum Sexta]`, beginning `R.br. Inter natos mulíerum * Non surréxit major.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -8152,7 +8152,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Fuit homo * Missus a Deo.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:336-345 — the Nativity office explicitly supplies [Responsory Breve Tertia], beginning R.br. Fuit homo * Missus a Deo., plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:336-345 — the Nativity office explicitly supplies `[Responsory Breve Tertia]`, beginning `R.br. Fuit homo * Missus a Deo.`, plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -8188,7 +8188,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Nimis honoráti sunt * Amíci tui, Deus.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:307-317 and upstream/web/www/horas/Latin/Sancti/06-29.txt:274-276 — the feast supplies a proper None chapter and inherits [Responsory Breve Nona] beginning R.br. Nimis honoráti sunt * Amíci tui, Deus. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:307-317 and upstream/web/www/horas/Latin/Sancti/06-29.txt:274-276 — the feast supplies a proper None chapter and inherits `[Responsory Breve Nona]` beginning `R.br. Nimis honoráti sunt * Amíci tui, Deus.`. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -8200,7 +8200,7 @@
     "firstExpected": "1 Tim. 1:17",
     "firstActual": "Act 12:11",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:265-267 — the Ss Peter and Paul office explicitly supplies [Lectio Prima] with citation Act 12:11, so the compositor emits the proper Prime lesson instead of the weekday 1 Tim. 1:17 chapter retained by the Perl comparison surface.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:265-267 — the Ss Peter and Paul office explicitly supplies `[Lectio Prima]` with citation `Act 12:11`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -8212,7 +8212,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Constítues eos príncipes * Super omnem terram.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:294-305 and upstream/web/www/horas/Latin/Sancti/06-29.txt:269-272 — the feast supplies a proper Sext chapter and inherits [Responsory Breve Sexta] beginning R.br. Constítues eos príncipes * Super omnem terram. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:294-305 and upstream/web/www/horas/Latin/Sancti/06-29.txt:269-272 — the feast supplies a proper Sext chapter and inherits `[Responsory Breve Sexta]` beginning `R.br. Constítues eos príncipes * Super omnem terram.`. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -8224,7 +8224,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. In omnem terram * Exívit sonus eórum.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:286-292 and upstream/web/www/horas/Latin/Sancti/06-29.txt:278-281 — the feast inherits the apostle common later-block surface, including [Responsory Breve Tertia] beginning R.br. In omnem terram * Exívit sonus eórum. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:286-292 and upstream/web/www/horas/Latin/Sancti/06-29.txt:278-281 — the feast inherits the apostle common later-block surface, including `[Responsory Breve Tertia]` beginning `R.br. In omnem terram * Exívit sonus eórum.`. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -8368,7 +8368,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Christus diléxit nos, et lavit nos * In sánguine suo.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:403-416 — the Precious Blood office explicitly supplies [Capitulum Nona], [Responsory Breve Nona], and [Versum Nona], beginning R.br. Christus diléxit nos, et lavit nos * In sánguine suo. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:403-416 — the Precious Blood office explicitly supplies `[Capitulum Nona]`, `[Responsory Breve Nona]`, and `[Versum Nona]`, beginning `R.br. Christus diléxit nos, et lavit nos * In sánguine suo.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -8380,7 +8380,7 @@
     "firstExpected": "1 Tim. 1:17",
     "firstActual": "Heb 9:19-20",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:369-371 — the Precious Blood office explicitly supplies [Lectio Prima] with citation Heb 9:19-20, so the compositor emits the proper Prime lesson instead of the weekday 1 Tim. 1:17 chapter retained by the Perl comparison surface.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:369-371 — the Precious Blood office explicitly supplies `[Lectio Prima]` with citation `Heb 9:19-20`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -8392,7 +8392,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Sanguis Jesu Christi Fílii Dei * Emúndat nos.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:387-401 — the Precious Blood office explicitly supplies [Capitulum Sexta], [Responsory Breve Sexta], and [Versum Sexta], beginning R.br. Sanguis Jesu Christi Fílii Dei * Emúndat nos. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:387-401 — the Precious Blood office explicitly supplies `[Capitulum Sexta]`, `[Responsory Breve Sexta]`, and `[Versum Sexta]`, beginning `R.br. Sanguis Jesu Christi Fílii Dei * Emúndat nos.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -8404,7 +8404,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Redemísti nos, Dómine, * In sánguine tuo.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:376-385 — the Precious Blood office explicitly supplies [Responsory Breve Tertia], beginning R.br. Redemísti nos, Dómine, * In sánguine tuo., plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:376-385 — the Precious Blood office explicitly supplies `[Responsory Breve Tertia]`, beginning `R.br. Redemísti nos, Dómine, * In sánguine tuo.`, plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -11920,7 +11920,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Elísabeth Zacharíæ * Magnum virum génuit.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:363-376 — the Nativity office explicitly supplies [Capitulum Nona], [Responsory Breve Nona], and [Versum Nona], beginning R.br. Elísabeth Zacharíæ * Magnum virum génuit. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:363-376 — the Nativity office explicitly supplies `[Capitulum Nona]`, `[Responsory Breve Nona]`, and `[Versum Nona]`, beginning `R.br. Elísabeth Zacharíæ * Magnum virum génuit.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -11932,7 +11932,7 @@
     "firstExpected": "1 Tim. 1:17",
     "firstActual": "Isa 49:7",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:332-334 — the Nativity of St John the Baptist office explicitly supplies [Lectio Prima] with citation Isa 49:7, so the compositor emits the proper Prime lesson instead of the weekday 1 Tim. 1:17 chapter retained by the Perl comparison surface.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:332-334 — the Nativity of St John the Baptist office explicitly supplies `[Lectio Prima]` with citation `Isa 49:7`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -11944,7 +11944,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Inter natos mulíerum * Non surréxit major.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:347-361 — the Nativity office explicitly supplies [Capitulum Sexta], [Responsory Breve Sexta], and [Versum Sexta], beginning R.br. Inter natos mulíerum * Non surréxit major. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:347-361 — the Nativity office explicitly supplies `[Capitulum Sexta]`, `[Responsory Breve Sexta]`, and `[Versum Sexta]`, beginning `R.br. Inter natos mulíerum * Non surréxit major.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -11956,7 +11956,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Fuit homo * Missus a Deo.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:336-345 — the Nativity office explicitly supplies [Responsory Breve Tertia], beginning R.br. Fuit homo * Missus a Deo., plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-24.txt:336-345 — the Nativity office explicitly supplies `[Responsory Breve Tertia]`, beginning `R.br. Fuit homo * Missus a Deo.`, plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Nativity of St John the Baptist proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "72166fd"
@@ -11992,7 +11992,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Nimis honoráti sunt * Amíci tui, Deus.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:307-317 and upstream/web/www/horas/Latin/Sancti/06-29.txt:274-276 — the feast supplies a proper None chapter and inherits [Responsory Breve Nona] beginning R.br. Nimis honoráti sunt * Amíci tui, Deus. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:307-317 and upstream/web/www/horas/Latin/Sancti/06-29.txt:274-276 — the feast supplies a proper None chapter and inherits `[Responsory Breve Nona]` beginning `R.br. Nimis honoráti sunt * Amíci tui, Deus.`. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -12004,7 +12004,7 @@
     "firstExpected": "1 Tim. 1:17",
     "firstActual": "Act 12:11",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:265-267 — the Ss Peter and Paul office explicitly supplies [Lectio Prima] with citation Act 12:11, so the compositor emits the proper Prime lesson instead of the weekday 1 Tim. 1:17 chapter retained by the Perl comparison surface.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:265-267 — the Ss Peter and Paul office explicitly supplies `[Lectio Prima]` with citation `Act 12:11`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -12016,7 +12016,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Constítues eos príncipes * Super omnem terram.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:294-305 and upstream/web/www/horas/Latin/Sancti/06-29.txt:269-272 — the feast supplies a proper Sext chapter and inherits [Responsory Breve Sexta] beginning R.br. Constítues eos príncipes * Super omnem terram. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:294-305 and upstream/web/www/horas/Latin/Sancti/06-29.txt:269-272 — the feast supplies a proper Sext chapter and inherits `[Responsory Breve Sexta]` beginning `R.br. Constítues eos príncipes * Super omnem terram.`. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -12028,7 +12028,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. In omnem terram * Exívit sonus eórum.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:286-292 and upstream/web/www/horas/Latin/Sancti/06-29.txt:278-281 — the feast inherits the apostle common later-block surface, including [Responsory Breve Tertia] beginning R.br. In omnem terram * Exívit sonus eórum. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Commune/C1.txt:286-292 and upstream/web/www/horas/Latin/Sancti/06-29.txt:278-281 — the feast inherits the apostle common later-block surface, including `[Responsory Breve Tertia]` beginning `R.br. In omnem terram * Exívit sonus eórum.`. The compositor emits that source-backed block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
@@ -12172,7 +12172,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Christus diléxit nos, et lavit nos * In sánguine suo.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:403-416 — the Precious Blood office explicitly supplies [Capitulum Nona], [Responsory Breve Nona], and [Versum Nona], beginning R.br. Christus diléxit nos, et lavit nos * In sánguine suo. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:403-416 — the Precious Blood office explicitly supplies `[Capitulum Nona]`, `[Responsory Breve Nona]`, and `[Versum Nona]`, beginning `R.br. Christus diléxit nos, et lavit nos * In sánguine suo.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -12184,7 +12184,7 @@
     "firstExpected": "1 Tim. 1:17",
     "firstActual": "Heb 9:19-20",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:369-371 — the Precious Blood office explicitly supplies [Lectio Prima] with citation Heb 9:19-20, so the compositor emits the proper Prime lesson instead of the weekday 1 Tim. 1:17 chapter retained by the Perl comparison surface.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:369-371 — the Precious Blood office explicitly supplies `[Lectio Prima]` with citation `Heb 9:19-20`, so the compositor emits the proper Prime lesson instead of the weekday `1 Tim. 1:17` chapter retained by the Perl comparison surface.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -12196,7 +12196,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Sanguis Jesu Christi Fílii Dei * Emúndat nos.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:387-401 — the Precious Blood office explicitly supplies [Capitulum Sexta], [Responsory Breve Sexta], and [Versum Sexta], beginning R.br. Sanguis Jesu Christi Fílii Dei * Emúndat nos. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:387-401 — the Precious Blood office explicitly supplies `[Capitulum Sexta]`, `[Responsory Breve Sexta]`, and `[Versum Sexta]`, beginning `R.br. Sanguis Jesu Christi Fílii Dei * Emúndat nos.`. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"
@@ -12208,7 +12208,7 @@
     "firstExpected": "_",
     "firstActual": "R.br. Redemísti nos, Dómine, * In sánguine tuo.",
     "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:376-385 — the Precious Blood office explicitly supplies [Responsory Breve Tertia], beginning R.br. Redemísti nos, Dómine, * In sánguine tuo., plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:376-385 — the Precious Blood office explicitly supplies `[Responsory Breve Tertia]`, beginning `R.br. Redemísti nos, Dómine, * In sánguine tuo.`, plus the matching versicle. The compositor emits that source-backed later block while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Representative entry for the shared Roman Precious Blood proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper.",
     "resolvedAt": "2026-04-24",
     "commitSha": "38773c0"

@@ -1748,7 +1748,8 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           options: { languages: ['Latin'] }
         });
 
-        expect(normalizeLatin(sectionTexts(composed, 'responsory')[0] ?? ''), `${version} ${hour} responsory`).toBe(
+        const responsory = firstMarkedSectionLine(composed, 'responsory', 'R.br.');
+        expect(normalizeLatin(renderLatinText(responsory)), `${version} ${hour} responsory`).toBe(
           normalizeLatin(expected)
         );
       }
@@ -1784,7 +1785,8 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           options: { languages: ['Latin'] }
         });
 
-        expect(normalizeLatin(sectionTexts(composed, 'responsory')[0] ?? ''), `${version} ${hour} responsory`).toBe(
+        const responsory = firstMarkedSectionLine(composed, 'responsory', 'R.br.');
+        expect(normalizeLatin(renderLatinText(responsory)), `${version} ${hour} responsory`).toBe(
           normalizeLatin(expected)
         );
       }
@@ -1820,7 +1822,8 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           options: { languages: ['Latin'] }
         });
 
-        expect(normalizeLatin(sectionTexts(composed, 'responsory')[0] ?? ''), `${version} ${hour} responsory`).toBe(
+        const responsory = firstMarkedSectionLine(composed, 'responsory', 'R.br.');
+        expect(normalizeLatin(renderLatinText(responsory)), `${version} ${hour} responsory`).toBe(
           normalizeLatin(expected)
         );
       }
@@ -1856,7 +1859,8 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           options: { languages: ['Latin'] }
         });
 
-        expect(normalizeLatin(sectionTexts(composed, 'responsory')[0] ?? ''), `${version} ${hour} responsory`).toBe(
+        const responsory = firstMarkedSectionLine(composed, 'responsory', 'R.br.');
+        expect(normalizeLatin(renderLatinText(responsory)), `${version} ${hour} responsory`).toBe(
           normalizeLatin(expected)
         );
       }
@@ -2315,6 +2319,7 @@ function firstPsalmodyAntiphon(
 ): string {
   const antiphonLine = psalmodyAntiphonLines(composed)[0];
   expect(antiphonLine, `${composed.hour} is missing the opening antiphon line`).toBeDefined();
+  expect(antiphonLine?.marker, `${composed.hour} opening antiphon marker`).toBe('Ant.');
   return antiphonLine ? renderLatinText(antiphonLine) : '';
 }
 
@@ -2348,6 +2353,18 @@ function sectionTexts(
   const section = composed.sections.find((candidate) => candidate.slot === slot);
   expect(section, `${composed.hour} is missing the ${slot} section`).toBeDefined();
   return section?.lines.map(renderLatinText).filter((line) => line !== '_') ?? [];
+}
+
+function firstMarkedSectionLine(
+  composed: ReturnType<typeof composeHour>,
+  slot: 'responsory',
+  marker: 'R.br.'
+) {
+  const section = composed.sections.find((candidate) => candidate.slot === slot);
+  expect(section, `${composed.hour} is missing the ${slot} section`).toBeDefined();
+  const line = section?.lines.find((candidate) => candidate.marker === marker);
+  expect(line, `${composed.hour} ${slot} is missing ${marker} marker`).toBeDefined();
+  return line!;
 }
 
 function psalmodyAntiphonLines(
