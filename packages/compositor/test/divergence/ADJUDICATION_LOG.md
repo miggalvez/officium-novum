@@ -2512,7 +2512,7 @@ Sunday and Paschaltide later blocks.
 
 ### 2026-04-24 — Pattern: Roman ferial Prime later block is source-backed against Perl surface drift (perl-bug)
 
-**Commit.** pending
+**Commit.** da7166b
 
 **Ledger signal.** Once the ferial Prime fallback is active, the
 simplified Roman policies expose two Prime variants of the same
@@ -2542,7 +2542,7 @@ chapter selection and proper-feast short-responsory separators.
 
 ### 2026-04-24 — Pattern: Holy Week minor hours use Quad5 later blocks (mixed fix)
 
-**Commit.** pending
+**Commit.** 895eada
 
 **Ledger signal.** Holy Week Monday through Wednesday `Terce`, `Sext`,
 and `None` were falling back to the ordinary feria later blocks, so the

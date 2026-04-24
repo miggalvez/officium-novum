@@ -6475,7 +6475,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-02-14/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
@@ -7063,7 +7063,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:487-506 - the Holy Week None later block provides the short responsory beginning R.br. Ne perdas cum ímpiis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-25/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -7075,7 +7075,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-03-25/Sext/3acfd479": {
     "policy": "Reduced - 1955",
@@ -7087,7 +7087,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:442-461 - the Holy Week Sext later block provides the short responsory beginning R.br. De ore leónis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-25/Terce/cedac887": {
     "policy": "Reduced - 1955",
@@ -7099,7 +7099,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-410 - the Holy Week Terce later block provides the short responsory beginning R.br. Érue a frámea, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-26/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7135,7 +7135,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:487-506 - the Holy Week None later block provides the short responsory beginning R.br. Ne perdas cum ímpiis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-26/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -7147,7 +7147,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-03-26/Sext/3acfd479": {
     "policy": "Reduced - 1955",
@@ -7159,7 +7159,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:442-461 - the Holy Week Sext later block provides the short responsory beginning R.br. De ore leónis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-26/Terce/cedac887": {
     "policy": "Reduced - 1955",
@@ -7171,7 +7171,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-410 - the Holy Week Terce later block provides the short responsory beginning R.br. Érue a frámea, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7219,7 +7219,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:487-506 - the Holy Week None later block provides the short responsory beginning R.br. Ne perdas cum ímpiis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-27/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -7231,7 +7231,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-03-27/Sext/3acfd479": {
     "policy": "Reduced - 1955",
@@ -7243,7 +7243,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:442-461 - the Holy Week Sext later block provides the short responsory beginning R.br. De ore leónis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-27/Terce/cedac887": {
     "policy": "Reduced - 1955",
@@ -7255,7 +7255,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-410 - the Holy Week Terce later block provides the short responsory beginning R.br. Érue a frámea, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Reduced - 1955/2024-03-28/Compline/fa4d64f6": {
     "policy": "Reduced - 1955",
@@ -7963,7 +7963,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-06-20/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
@@ -8659,7 +8659,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-11-05/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
@@ -8731,7 +8731,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:5-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the ferial Prime chapter has the `Zach 8:19` citation and verse without a `$Deo gratias` marker, and the next source-backed slot is the `R.br. Christe...` responsory. The compositor follows those sections; the Perl comparison surface inserts `R. Deo grátias.` before the responsory.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Reduced - 1955/2024-11-08/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
@@ -9991,7 +9991,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-02-14/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
@@ -10627,7 +10627,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:487-506 - the Holy Week None later block provides the short responsory beginning R.br. Ne perdas cum ímpiis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-25/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
@@ -10639,7 +10639,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-03-25/Sext/3acfd479": {
     "policy": "Rubrics 1960 - 1960",
@@ -10651,7 +10651,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:442-461 - the Holy Week Sext later block provides the short responsory beginning R.br. De ore leónis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-25/Terce/cedac887": {
     "policy": "Rubrics 1960 - 1960",
@@ -10663,7 +10663,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-410 - the Holy Week Terce later block provides the short responsory beginning R.br. Érue a frámea, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-25/Vespers/839eeb27": {
     "policy": "Rubrics 1960 - 1960",
@@ -10699,7 +10699,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:487-506 - the Holy Week None later block provides the short responsory beginning R.br. Ne perdas cum ímpiis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-26/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
@@ -10711,7 +10711,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-03-26/Sext/3acfd479": {
     "policy": "Rubrics 1960 - 1960",
@@ -10723,7 +10723,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:442-461 - the Holy Week Sext later block provides the short responsory beginning R.br. De ore leónis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-26/Terce/cedac887": {
     "policy": "Rubrics 1960 - 1960",
@@ -10735,7 +10735,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-410 - the Holy Week Terce later block provides the short responsory beginning R.br. Érue a frámea, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-26/Vespers/b1fc00bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -10783,7 +10783,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:487-506 - the Holy Week None later block provides the short responsory beginning R.br. Ne perdas cum ímpiis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-27/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
@@ -10795,7 +10795,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-03-27/Sext/3acfd479": {
     "policy": "Rubrics 1960 - 1960",
@@ -10807,7 +10807,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:442-461 - the Holy Week Sext later block provides the short responsory beginning R.br. De ore leónis, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-27/Terce/cedac887": {
     "policy": "Rubrics 1960 - 1960",
@@ -10819,7 +10819,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-410 - the Holy Week Terce later block provides the short responsory beginning R.br. Érue a frámea, followed by its versicle, with no underscore-only separator before the responsory. The compositor emits the source-backed block after the Holy Week fallback fix; the Perl comparison surface inserts an underscore at the first divergence.",
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "895eada"
   },
   "Rubrics 1960 - 1960/2024-03-28/Compline/fa4d64f6": {
     "policy": "Rubrics 1960 - 1960",
@@ -11539,7 +11539,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-06-20/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
@@ -12475,7 +12475,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-11-05/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
@@ -12547,7 +12547,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "da7166b"
   },
   "Rubrics 1960 - 1960/2024-11-08/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
