@@ -24,6 +24,87 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-24 — Reduced 1955 major-hour opening antiphons are truncated to incipits by the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Under `Reduced - 1955`, a repeated Lauds/Vespers family now
+shows the compositor preserving full source-backed opening antiphons
+while the Perl render surface abbreviates the same antiphons to
+incipit-only forms such as `Ant. Miserére. ‡`, `Ant. Secúndum
+multitúdinem.`, and `Ant. Véniet Dóminus.`. The affected rows span
+Septuagesima/Lent, Holy Week, Easter week, psalter-major weekdays, and
+Advent.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Tempora/Quadp1-0.txt:150-151`
+- `upstream/web/www/horas/Latin/Tempora/Quadp3-0.txt:144-145`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:43-44,71-72,85-86,106-107,134-135`
+- `upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:142-143`
+- `upstream/web/www/horas/Latin/Tempora/Quad2-0.txt:149-150`
+- `upstream/web/www/horas/Latin/Tempora/Quad3-0.txt:152-153`
+- `upstream/web/www/horas/Latin/Tempora/Quad4-0.txt:135-136`
+- `upstream/web/www/horas/Latin/Tempora/Quad5-0.txt:138-139`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-0.txt:132-133`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-1.txt:52-53`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-2.txt:62-63`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-3.txt:56-57`
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99`
+- `upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:132-133`
+- `upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:137-138`
+- `upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136`
+
+These sources carry the full antiphon text that the compositor emits.
+The Perl comparison surface keeps only the opening words and, in a few
+rows, an unsupported continuation marker.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --hour Lauds
+```
+
+Then inspect the affected Lauds rows in
+`packages/compositor/test/divergence/reduced-1955-2024.md`. A full
+ledger fanout also exposes exact-signature Vespers rows for Easter week
+and Advent.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-01-28 | Lauds | `1a82831d` |
+| Reduced - 1955 | 2024-02-11 | Lauds | `5a5316f8` |
+| Reduced - 1955 | 2024-02-14 | Lauds | `cfcb1ea4` |
+| Reduced - 1955 | 2024-02-18 | Lauds | `573fcb8e` |
+| Reduced - 1955 | 2024-02-24 | Lauds | `6558244a` |
+| Reduced - 1955 | 2024-02-25 | Lauds | `8748ea45` |
+| Reduced - 1955 | 2024-03-03 | Lauds | `8c09ab69` |
+| Reduced - 1955 | 2024-03-10 | Lauds | `3ef795c8` |
+| Reduced - 1955 | 2024-03-17 | Lauds | `2bc66027` |
+| Reduced - 1955 | 2024-03-24 | Lauds | `91644e1b` |
+| Reduced - 1955 | 2024-03-25 | Lauds | `b12b96b3` |
+| Reduced - 1955 | 2024-03-26 | Lauds | `5b69ee81` |
+| Reduced - 1955 | 2024-03-27 | Lauds | `22fe442d` |
+| Reduced - 1955 | 2024-04-03 | Lauds | `a214ae73` |
+| Reduced - 1955 | 2024-04-03 | Vespers | `a214ae73` |
+| Reduced - 1955 | 2024-04-04 | Lauds | `a214ae73` |
+| Reduced - 1955 | 2024-04-04 | Vespers | `a214ae73` |
+| Reduced - 1955 | 2024-04-05 | Lauds | `a214ae73` |
+| Reduced - 1955 | 2024-04-05 | Vespers | `a214ae73` |
+| Reduced - 1955 | 2024-04-06 | Lauds | `a214ae73` |
+| Reduced - 1955 | 2024-06-20 | Lauds | `9587c7d2` |
+| Reduced - 1955 | 2024-11-05 | Lauds | `33881e50` |
+| Reduced - 1955 | 2024-11-08 | Lauds | `329df4d3` |
+| Reduced - 1955 | 2024-12-01 | Lauds | `1bcd4136` |
+| Reduced - 1955 | 2024-12-01 | Vespers | `1bcd4136` |
+| Reduced - 1955 | 2024-12-15 | Lauds | `5d3345ac` |
+| Reduced - 1955 | 2024-12-15 | Vespers | `5d3345ac` |
+| Reduced - 1955 | 2024-12-22 | Lauds | `88310db2` |
+| Reduced - 1955 | 2024-12-22 | Vespers | `88310db2` |
+
 ### 2026-04-23 — Roman Ash Wednesday Matins gains unsupported commas in the Psalm 44 reopening antiphon
 
 **Classification.** `perl-bug`

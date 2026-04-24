@@ -6237,6 +6237,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-01-28/Lauds/1a82831d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-28",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Miserére. ‡",
+    "firstActual": "Ant. Miserére * mei, Deus, et a delícto meo munda me: quia tibi soli peccávi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quadp1-0.txt:150-151 — the source carries the full major-hour opening antiphon `Miserére * mei, Deus, et a delícto meo munda me: quia tibi soli peccávi.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Miserére. ‡`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-01-28/Matins/29ec2a3d": {
     "policy": "Reduced - 1955",
     "date": "2024-01-28",
@@ -6285,6 +6297,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-02-11/Lauds/5a5316f8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-11",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Secúndum multitúdinem.",
+    "firstActual": "Ant. Secúndum multitúdinem * miseratiónum tuárum, Dómine, dele iniquitátem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quadp3-0.txt:144-145 — the source carries the full major-hour opening antiphon `Secúndum multitúdinem * miseratiónum tuárum, Dómine, dele iniquitátem meam.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Secúndum multitúdinem.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-02-11/Vespers/557f2156": {
     "policy": "Reduced - 1955",
     "date": "2024-02-11",
@@ -6296,18 +6320,6 @@
     "notes": "Representative entry for the Reduced 1955 Jan 14 Sunday Vespers psalter-major antiphon family where Perl shortens the full Day0 opening to an incipit-only surface.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
-  },
-  "Reduced - 1955/2024-02-14/Matins/d6ab45d4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-02-14",
-    "hour": "Matins",
-    "firstExpected": "Ant. Confitebúntur tibi pópuli, Deus, in ætérnum.",
-    "firstActual": "Ant. Confitebúntur tibi pópuli Deus in ætérnum.",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
-    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in pre-1960 form, after the structural split bug was fixed.",
-    "resolvedAt": "2026-04-23",
-    "commitSha": "7dcd747"
   },
   "Reduced - 1955/2024-02-14/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6321,6 +6333,30 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-02-14/Lauds/cfcb1ea4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Ámplius lava me.",
+    "firstActual": "Ant. Ámplius lava me, * Dómine, ab injustítia mea.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:71-72 — the source carries the full major-hour opening antiphon `Ámplius lava me, * Dómine, ab injustítia mea.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Ámplius lava me.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-02-14/Matins/d6ab45d4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Confitebúntur tibi pópuli, Deus, in ætérnum.",
+    "firstActual": "Ant. Confitebúntur tibi pópuli Deus in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
+    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in pre-1960 form, after the structural split bug was fixed.",
+    "resolvedAt": "2026-04-23",
+    "commitSha": "7dcd747"
+  },
   "Reduced - 1955/2024-02-18/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-02-18",
@@ -6332,6 +6368,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-02-18/Lauds/573fcb8e": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-18",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cor mundum.",
+    "firstActual": "Ant. Cor mundum * crea in me Deus, et spíritum rectum ínnova in viscéribus meis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:142-143 — the source carries the full major-hour opening antiphon `Cor mundum * crea in me Deus, et spíritum rectum ínnova in viscéribus meis.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cor mundum.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-02-18/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6369,6 +6417,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-02-24/Lauds/6558244a": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Benígne fac, Dómine.",
+    "firstActual": "Ant. Benígne fac, Dómine, * in bona voluntáte tua Sion.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:134-135 — the source carries the full major-hour opening antiphon `Benígne fac, Dómine, * in bona voluntáte tua Sion.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Benígne fac, Dómine.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-02-25/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-02-25",
@@ -6380,6 +6440,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-02-25/Lauds/8748ea45": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-25",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dómine.",
+    "firstActual": "Ant. Dómine, * lábia mea apéries, et os meum annuntiábit laudem tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad2-0.txt:149-150 — the source carries the full major-hour opening antiphon `Dómine, * lábia mea apéries, et os meum annuntiábit laudem tuam.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Dómine.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-02-25/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6417,6 +6489,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-03-03/Lauds/8c09ab69": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-03",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fac benígne.",
+    "firstActual": "Ant. Fac benígne * in bona voluntáte tua, ut ædificéntur, Dómine, muri Jerúsalem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad3-0.txt:152-153 — the source carries the full major-hour opening antiphon `Fac benígne * in bona voluntáte tua, ut ædificéntur, Dómine, muri Jerúsalem.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Fac benígne.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-03/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-03",
@@ -6453,6 +6537,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-03-10/Lauds/3ef795c8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Tunc acceptábis.",
+    "firstActual": "Ant. Tunc acceptábis * sacrifícium justítiæ, si avérteris fáciem tuam a peccátis meis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad4-0.txt:135-136 — the source carries the full major-hour opening antiphon `Tunc acceptábis * sacrifícium justítiæ, si avérteris fáciem tuam a peccátis meis.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Tunc acceptábis.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-10/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-10",
@@ -6488,6 +6584,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-03-17/Lauds/2bc66027": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-17",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Vide, Dómine.",
+    "firstActual": "Ant. Vide, Dómine, * afflictiónem meam, quóniam eréctus est inimícus meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad5-0.txt:138-139 — the source carries the full major-hour opening antiphon `Vide, Dómine, * afflictiónem meam, quóniam eréctus est inimícus meus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Vide, Dómine.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-03-17/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6549,6 +6657,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-03-24/Lauds/91644e1b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-24",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus Deus.",
+    "firstActual": "Ant. Dóminus Deus * auxiliátor meus: et ídeo non sum confúsus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-0.txt:132-133 — the source carries the full major-hour opening antiphon `Dóminus Deus * auxiliátor meus: et ídeo non sum confúsus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Dóminus Deus.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-24/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-24",
@@ -6585,6 +6705,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-03-25/Lauds/b12b96b3": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fáciem meam.",
+    "firstActual": "Ant. Fáciem meam * non avérti ab increpántibus, et conspuéntibus in me.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-1.txt:52-53 — the source carries the full major-hour opening antiphon `Fáciem meam * non avérti ab increpántibus, et conspuéntibus in me.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Fáciem meam.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-26/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-03-26",
@@ -6597,6 +6729,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-03-26/Lauds/5b69ee81": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Vide, Dómine.",
+    "firstActual": "Ant. Vide, Dómine, * et consídera, quóniam tríbulor: velóciter exáudi me.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-2.txt:62-63 — the source carries the full major-hour opening antiphon `Vide, Dómine, * et consídera, quóniam tríbulor: velóciter exáudi me.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Vide, Dómine.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-03-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-03-27",
@@ -6608,6 +6752,30 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-03-27/Lauds/22fe442d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Líbera me.",
+    "firstActual": "Ant. Líbera me * de sanguínibus, Deus, Deus meus: et exsultábit lingua mea justítiam tuam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-3.txt:56-57 — the source carries the full major-hour opening antiphon `Líbera me * de sanguínibus, Deus, Deus meus: et exsultábit lingua mea justítiam tuam.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Líbera me.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-03-27/Matins/d6ab45d4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Matins",
+    "firstExpected": "Ant. Confitebúntur tibi pópuli, Deus, in ætérnum.",
+    "firstActual": "Ant. Confitebúntur tibi pópuli Deus in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
+    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in pre-1960 form, after the structural split bug was fixed.",
+    "resolvedAt": "2026-04-23",
+    "commitSha": "7dcd747"
   },
   "Reduced - 1955/2024-03-28/Compline/fa4d64f6": {
     "policy": "Reduced - 1955",
@@ -6705,18 +6873,6 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
-  "Reduced - 1955/2024-04-01/Prime/29ec2a3d": {
-    "policy": "Reduced - 1955",
-    "date": "2024-04-01",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Prime post-Martyrologium Easter-Octave seam under Reduced 1955. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
-    "resolvedAt": "2026-04-21",
-    "commitSha": "f1fecef"
-  },
   "Reduced - 1955/2024-04-01/Lauds/2af868c1": {
     "policy": "Reduced - 1955",
     "date": "2024-04-01",
@@ -6728,6 +6884,18 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Reduced - 1955/2024-04-01/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-01",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Prime post-Martyrologium Easter-Octave seam under Reduced 1955. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-21",
+    "commitSha": "f1fecef"
   },
   "Reduced - 1955/2024-04-02/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6741,54 +6909,6 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
-  "Reduced - 1955/2024-04-02/Prime/29ec2a3d": {
-    "policy": "Reduced - 1955",
-    "date": "2024-04-02",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Prime post-Martyrologium Easter-Octave seam under Reduced 1955. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
-    "resolvedAt": "2026-04-21",
-    "commitSha": "f1fecef"
-  },
-  "Reduced - 1955/2024-04-03/Prime/29ec2a3d": {
-    "policy": "Reduced - 1955",
-    "date": "2024-04-03",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
-    "resolvedAt": "2026-04-22",
-    "commitSha": "790134e"
-  },
-  "Reduced - 1955/2024-04-04/Prime/29ec2a3d": {
-    "policy": "Reduced - 1955",
-    "date": "2024-04-04",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
-    "resolvedAt": "2026-04-22",
-    "commitSha": "790134e"
-  },
-  "Reduced - 1955/2024-04-05/Prime/29ec2a3d": {
-    "policy": "Reduced - 1955",
-    "date": "2024-04-05",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
-    "resolvedAt": "2026-04-22",
-    "commitSha": "790134e"
-  },
   "Reduced - 1955/2024-04-02/Lauds/2af868c1": {
     "policy": "Reduced - 1955",
     "date": "2024-04-02",
@@ -6800,6 +6920,18 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Reduced - 1955/2024-04-02/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-02",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Prime post-Martyrologium Easter-Octave seam under Reduced 1955. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-21",
+    "commitSha": "f1fecef"
   },
   "Reduced - 1955/2024-04-03/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6813,6 +6945,42 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-04-03/Lauds/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-03",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-04-03/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-03",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
+    "resolvedAt": "2026-04-22",
+    "commitSha": "790134e"
+  },
+  "Reduced - 1955/2024-04-03/Vespers/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-03",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-04-04/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-04-04",
@@ -6824,6 +6992,42 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-04-04/Lauds/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-04",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-04-04/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-04",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
+    "resolvedAt": "2026-04-22",
+    "commitSha": "790134e"
+  },
+  "Reduced - 1955/2024-04-04/Vespers/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-04",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-04-05/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6837,6 +7041,42 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-04-05/Lauds/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-05",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-04-05/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-05",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
+    "resolvedAt": "2026-04-22",
+    "commitSha": "790134e"
+  },
+  "Reduced - 1955/2024-04-05/Vespers/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-05",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-04-06/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-04-06",
@@ -6848,6 +7088,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-04-06/Lauds/a214ae73": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-06",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Angelus autem Dómini.",
+    "firstActual": "Ant. Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-04-07/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7136,6 +7388,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-06-20/Lauds/9587c7d2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte.",
+    "firstActual": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:85-86 — the source carries the full major-hour opening antiphon `Jubiláte * in conspéctu regis Dómini.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Jubiláte.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-06-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7761,6 +8025,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-11-05/Lauds/33881e50": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte. ‡",
+    "firstActual": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:43-44 — the source carries the full major-hour opening antiphon `Cantáte * Dómino et benedícite nómini ejus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cantáte. ‡`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-11-08/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-11-08",
@@ -7772,6 +8048,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-11-08/Lauds/329df4d3": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte.",
+    "firstActual": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:106-107 — the source carries the full major-hour opening antiphon `Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Exaltáte.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-12-01/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7785,6 +8073,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-12-01/Lauds/1bcd4136": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-01",
+    "hour": "Lauds",
+    "firstExpected": "Ant. In illa die.",
+    "firstActual": "Ant. In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:132-133 — the source carries the full major-hour opening antiphon `In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. In illa die.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-12-01/Prime/5531f29c": {
     "policy": "Reduced - 1955",
     "date": "2024-12-01",
@@ -7796,6 +8096,18 @@
     "notes": "Representative entry for the Roman Jan 14 Sunday Prime psalm-table family where the source-backed `Tridentinum` row begins with Psalm 53 before Psalm 117.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-01/Vespers/1bcd4136": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-01",
+    "hour": "Vespers",
+    "firstExpected": "Ant. In illa die.",
+    "firstActual": "Ant. In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:132-133 — the source carries the full major-hour opening antiphon `In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. In illa die.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-12-08/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7857,6 +8169,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-12-15/Lauds/5d3345ac": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-15",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Véniet Dóminus.",
+    "firstActual": "Ant. Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:137-138 — the source carries the full major-hour opening antiphon `Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Véniet Dóminus.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-12-15/Prime/5531f29c": {
     "policy": "Reduced - 1955",
     "date": "2024-12-15",
@@ -7868,6 +8192,18 @@
     "notes": "Representative entry for the Roman Jan 14 Sunday Prime psalm-table family where the source-backed `Tridentinum` row begins with Psalm 53 before Psalm 117.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-15/Vespers/5d3345ac": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-15",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Véniet Dóminus.",
+    "firstActual": "Ant. Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:137-138 — the source carries the full major-hour opening antiphon `Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Véniet Dóminus.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-12-22/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7881,6 +8217,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-12-22/Lauds/88310db2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-22",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cánite tuba.",
+    "firstActual": "Ant. Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136 — the source carries the full major-hour opening antiphon `Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cánite tuba.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-12-22/Prime/5531f29c": {
     "policy": "Reduced - 1955",
     "date": "2024-12-22",
@@ -7892,6 +8240,18 @@
     "notes": "Representative entry for the Roman Jan 14 Sunday Prime psalm-table family where the source-backed `Tridentinum` row begins with Psalm 53 before Psalm 117.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-22/Vespers/88310db2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-22",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Cánite tuba.",
+    "firstActual": "Ant. Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136 — the source carries the full major-hour opening antiphon `Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cánite tuba.`.",
+    "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-12-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8685,18 +9045,6 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
-  "Rubrics 1960 - 1960/2024-02-14/Matins/c12d0e8c": {
-    "policy": "Rubrics 1960 - 1960",
-    "date": "2024-02-14",
-    "hour": "Matins",
-    "firstExpected": "Ant. Confitebúntur tibi * pópuli, Deus, in ætérnum.",
-    "firstActual": "Ant. Confitebúntur tibi * pópuli Deus in ætérnum.",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
-    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in 1960 form, after the structural split bug was fixed.",
-    "resolvedAt": "2026-04-23",
-    "commitSha": "7dcd747"
-  },
   "Rubrics 1960 - 1960/2024-02-14/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-14",
@@ -8708,6 +9056,18 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Matins/c12d0e8c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Confitebúntur tibi * pópuli, Deus, in ætérnum.",
+    "firstActual": "Ant. Confitebúntur tibi * pópuli Deus in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
+    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in 1960 form, after the structural split bug was fixed.",
+    "resolvedAt": "2026-04-23",
+    "commitSha": "7dcd747"
   },
   "Rubrics 1960 - 1960/2024-02-18/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -9093,6 +9453,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Rubrics 1960 - 1960/2024-03-17/Matins/57b37f6e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-17",
+    "hour": "Matins",
+    "firstExpected": "Ant. Ut quid, Dómine, * recessísti longe? ‡",
+    "firstActual": "Ant. Ut quid, Dómine, * recessísti longe?",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15 — the Day0 third-nocturn antiphon is `Ut quid, Dómine, * recessísti longe?` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Representative entry for the Rubrics 1960 Jan 14 Matins Sunday antiphon surface family where Perl adds a trailing `‡` that is not present in the psalter-matins source.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "b9bf979"
+  },
   "Rubrics 1960 - 1960/2024-03-17/None/4a1aadd8": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-17",
@@ -9198,6 +9570,18 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm62.txt:3 — the psalm corpus explicitly encodes 62:3 with a half-verse marker `‡` before the `*` split. The compositor preserves that structure while the Perl comparison surface flattens it to a single `*` boundary.",
     "notes": "Representative Rubrics 1960 Psalm 62 half-verse family; fan out across matching 1960 Lauds rows.",
+    "resolvedAt": "2026-04-20",
+    "commitSha": "b9bf979"
+  },
+  "Rubrics 1960 - 1960/2024-03-24/Matins/57b37f6e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-24",
+    "hour": "Matins",
+    "firstExpected": "Ant. Ut quid, Dómine, * recessísti longe? ‡",
+    "firstActual": "Ant. Ut quid, Dómine, * recessísti longe?",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15 — the Day0 third-nocturn antiphon is `Ut quid, Dómine, * recessísti longe?` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Representative entry for the Rubrics 1960 Jan 14 Matins Sunday antiphon surface family where Perl adds a trailing `‡` that is not present in the psalter-matins source.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
@@ -9321,6 +9705,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-03-27/Matins/c12d0e8c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-27",
+    "hour": "Matins",
+    "firstExpected": "Ant. Confitebúntur tibi * pópuli, Deus, in ætérnum.",
+    "firstActual": "Ant. Confitebúntur tibi * pópuli Deus in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 — Ash Wednesday 2024 is a Wednesday, so Roman Matins correctly uses the `Day3` psalter source. That source gives the reopening antiphon as `Confitebúntur tibi * pópuli Deus in ætérnum.` without the extra comma after `pópuli`; the Perl comparison surface inserts unsupported punctuation.",
+    "notes": "Representative entry for the Roman Ash Wednesday Matins Psalm 44 reopening-antiphon punctuation family in 1960 form, after the structural split bug was fixed.",
+    "resolvedAt": "2026-04-23",
+    "commitSha": "7dcd747"
+  },
   "Rubrics 1960 - 1960/2024-03-28/Compline/fa4d64f6": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-28",
@@ -9417,18 +9813,6 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
-  "Rubrics 1960 - 1960/2024-04-01/Prime/29ec2a3d": {
-    "policy": "Rubrics 1960 - 1960",
-    "date": "2024-04-01",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Prime post-Martyrologium Easter-Octave seam under Rubrics 1960. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
-    "resolvedAt": "2026-04-21",
-    "commitSha": "f1fecef"
-  },
   "Rubrics 1960 - 1960/2024-04-01/Lauds/2af868c1": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-01",
@@ -9440,6 +9824,18 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Rubrics 1960 - 1960/2024-04-01/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-01",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Prime post-Martyrologium Easter-Octave seam under Rubrics 1960. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-21",
+    "commitSha": "f1fecef"
   },
   "Rubrics 1960 - 1960/2024-04-02/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -9453,54 +9849,6 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
-  "Rubrics 1960 - 1960/2024-04-02/Prime/29ec2a3d": {
-    "policy": "Rubrics 1960 - 1960",
-    "date": "2024-04-02",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Prime post-Martyrologium Easter-Octave seam under Rubrics 1960. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
-    "resolvedAt": "2026-04-21",
-    "commitSha": "f1fecef"
-  },
-  "Rubrics 1960 - 1960/2024-04-03/Prime/29ec2a3d": {
-    "policy": "Rubrics 1960 - 1960",
-    "date": "2024-04-03",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
-    "resolvedAt": "2026-04-22",
-    "commitSha": "790134e"
-  },
-  "Rubrics 1960 - 1960/2024-04-04/Prime/29ec2a3d": {
-    "policy": "Rubrics 1960 - 1960",
-    "date": "2024-04-04",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
-    "resolvedAt": "2026-04-22",
-    "commitSha": "790134e"
-  },
-  "Rubrics 1960 - 1960/2024-04-05/Prime/29ec2a3d": {
-    "policy": "Rubrics 1960 - 1960",
-    "date": "2024-04-05",
-    "hour": "Prime",
-    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
-    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
-    "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
-    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
-    "resolvedAt": "2026-04-22",
-    "commitSha": "790134e"
-  },
   "Rubrics 1960 - 1960/2024-04-02/Lauds/2af868c1": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-02",
@@ -9512,6 +9860,18 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Rubrics 1960 - 1960/2024-04-02/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-02",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Prime post-Martyrologium Easter-Octave seam under Rubrics 1960. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-21",
+    "commitSha": "f1fecef"
   },
   "Rubrics 1960 - 1960/2024-04-03/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -9537,6 +9897,18 @@
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
   },
+  "Rubrics 1960 - 1960/2024-04-03/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-03",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
+    "resolvedAt": "2026-04-22",
+    "commitSha": "790134e"
+  },
   "Rubrics 1960 - 1960/2024-04-04/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-04",
@@ -9561,6 +9933,18 @@
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
   },
+  "Rubrics 1960 - 1960/2024-04-04/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-04",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
+    "resolvedAt": "2026-04-22",
+    "commitSha": "790134e"
+  },
   "Rubrics 1960 - 1960/2024-04-05/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-05",
@@ -9584,6 +9968,18 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Rubrics 1960 - 1960/2024-04-05/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-05",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
+    "resolvedAt": "2026-04-22",
+    "commitSha": "790134e"
   },
   "Rubrics 1960 - 1960/2024-04-06/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

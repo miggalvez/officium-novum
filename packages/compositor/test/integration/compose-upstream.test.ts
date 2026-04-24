@@ -1477,6 +1477,88 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Reduced 1955 Lauds source-backed full opening antiphons', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Reduced - 1955');
+
+    for (const [date, expected] of [
+      [
+        '2024-01-28',
+        'Miserére * mei, Deus, et a delícto meo munda me: quia tibi soli peccávi.'
+      ],
+      [
+        '2024-02-11',
+        'Secúndum multitúdinem * miseratiónum tuárum, Dómine, dele iniquitátem meam.'
+      ],
+      ['2024-02-14', 'Ámplius lava me, * Dómine, ab injustítia mea.'],
+      [
+        '2024-02-18',
+        'Cor mundum * crea in me Deus, et spíritum rectum ínnova in viscéribus meis.'
+      ],
+      ['2024-02-24', 'Benígne fac, Dómine, * in bona voluntáte tua Sion.'],
+      [
+        '2024-02-25',
+        'Dómine, * lábia mea apéries, et os meum annuntiábit laudem tuam.'
+      ],
+      [
+        '2024-03-03',
+        'Fac benígne * in bona voluntáte tua, ut ædificéntur, Dómine, muri Jerúsalem.'
+      ],
+      [
+        '2024-03-10',
+        'Tunc acceptábis * sacrifícium justítiæ, si avérteris fáciem tuam a peccátis meis.'
+      ],
+      [
+        '2024-03-17',
+        'Vide, Dómine, * afflictiónem meam, quóniam eréctus est inimícus meus.'
+      ],
+      ['2024-03-24', 'Dóminus Deus * auxiliátor meus: et ídeo non sum confúsus.'],
+      [
+        '2024-03-25',
+        'Fáciem meam * non avérti ab increpántibus, et conspuéntibus in me.'
+      ],
+      [
+        '2024-03-26',
+        'Vide, Dómine, * et consídera, quóniam tríbulor: velóciter exáudi me.'
+      ],
+      [
+        '2024-03-27',
+        'Líbera me * de sanguínibus, Deus, Deus meus: et exsultábit lingua mea justítiam tuam.'
+      ],
+      [
+        '2024-04-03',
+        'Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.'
+      ],
+      ['2024-06-20', 'Jubiláte * in conspéctu regis Dómini.'],
+      ['2024-11-05', 'Cantáte * Dómino et benedícite nómini ejus.'],
+      ['2024-11-08', 'Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.'],
+      [
+        '2024-12-01',
+        'In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.'
+      ],
+      [
+        '2024-12-15',
+        'Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.'
+      ],
+      [
+        '2024-12-22',
+        'Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.'
+      ]
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'lauds',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(normalizeLatin(firstPsalmodyAntiphon(composed)), `${date} Lauds opening antiphon`).toBe(
+        normalizeLatin(expected)
+      );
+    }
+  }, 240_000);
+
   it('keeps January Roman Vespers later-block headings on the source-backed proper and Psalm116 refs', async () => {
     for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
       const { engine, resolvedCorpus } = await createHarness(version);

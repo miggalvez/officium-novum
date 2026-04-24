@@ -2034,6 +2034,61 @@ The full ledger refresh keeps Roman divergent-hour totals at
 full-antiphon / incipit family, and `Rubrics 1960 - 1960` now surfaces
 on the Ash Wednesday Lauds later-block boundary.
 
+### 2026-04-24 — Pattern: Reduced 1955 major-hour opening antiphons are truncated to incipits by Perl (perl-bug)
+
+**Commit.** pending tranche commit
+
+**Ledger signal.** The refreshed `Reduced - 1955` Lauds frontier exposed a
+repeated family where Perl expected an incipit-only antiphon such as
+`Ant. Miserére. ‡`, `Ant. Secúndum multitúdinem.`, or `Ant. Véniet
+Dóminus.`, while the compositor emitted the full source-backed opening
+antiphon with its `*` mediation.
+
+**Root cause.** No compositor or Phase 2 routing defect was found. The
+upstream corpus carries the full antiphon text in the owning temporal or
+psalter-major source sections, and the compositor emits those source
+forms. The Perl comparison surface abbreviates the same openings to
+incipits and sometimes preserves a trailing `‡` that is not the complete
+source antiphon.
+
+**Resolution.** Class `perl-bug`. Added a focused upstream regression in
+`packages/compositor/test/integration/compose-upstream.test.ts` covering
+representative `Reduced - 1955` Lauds openings from Septuagesima/Lent,
+Holy Week, Easter week, psalter-major weekdays, and Advent. Recorded `20`
+representative row adjudications in `adjudications.json`, then ran the
+full-ledger fanout workflow (`compare:phase-3-perl -- --max-doc-rows
+600`, `adjudications:fanout`, standard ledger restore). The fanout added
+`13` more exact-signature mappings, `9` of them in this major-hour
+antiphon family and `4` from already-adjudicated signatures exposed
+outside the default sample window.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Quadp1-0.txt:150-151`
+- `upstream/web/www/horas/Latin/Tempora/Quadp3-0.txt:144-145`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:43-44,71-72,85-86,106-107,134-135`
+- `upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:142-143`
+- `upstream/web/www/horas/Latin/Tempora/Quad2-0.txt:149-150`
+- `upstream/web/www/horas/Latin/Tempora/Quad3-0.txt:152-153`
+- `upstream/web/www/horas/Latin/Tempora/Quad4-0.txt:135-136`
+- `upstream/web/www/horas/Latin/Tempora/Quad5-0.txt:138-139`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-0.txt:132-133`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-1.txt:52-53`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-2.txt:62-63`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-3.txt:56-57`
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99`
+- `upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:132-133`
+- `upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:137-138`
+- `upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136`
+
+**Impact.** The `Reduced - 1955` unadjudicated count drops from `282` to
+`252`; `Rubrics 1960 - 1960` also drops from `190` to `187` via the
+same full-ledger fanout pass. Overall Phase 3 unadjudicated rows drop
+from `493` to `460`. The next live frontier is now `Reduced - 1955` Mar
+`19` Lauds (`Psalmus 92 [1]` vs `Psalmus 50 [1]`) and the parallel
+`Rubrics 1960 - 1960` Ash Wednesday Lauds later-block boundary (`Rom
+13:12-13` vs `Ant. Cum jejunátis...`).
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
