@@ -1,5 +1,6 @@
 import type {
   ConditionEvalContext,
+  DayOfficeSummary,
   HourName,
   HourStructure,
   SlotContent,
@@ -15,6 +16,7 @@ export interface DirectiveSlotContentArgs {
   readonly directives: HourStructure['directives'];
   readonly structure: HourStructure;
   readonly context: ConditionEvalContext;
+  readonly summary: DayOfficeSummary;
 }
 
 export function directiveDrivenSlotContent(args: DirectiveSlotContentArgs): SlotContent | undefined {
@@ -111,13 +113,22 @@ function majorHourConclusionContent(args: DirectiveSlotContentArgs): SlotContent
       commonPrayerRef('Domine exaudi'),
       {
         path: COMMON_PRAYERS_PATH,
-        section: args.directives.includes('add-versicle-alleluia')
-          ? 'Benedicamus Domino1'
-          : 'Benedicamus Domino'
+        section: majorHourBenedicamusSection(args)
       },
       commonPrayerRef('Fidelium animae')
     ]
   };
+}
+
+function majorHourBenedicamusSection(args: DirectiveSlotContentArgs): string {
+  return isPaschalOctaveMajorHour(args) ? 'Benedicamus Domino1' : 'Benedicamus Domino';
+}
+
+function isPaschalOctaveMajorHour(args: DirectiveSlotContentArgs): boolean {
+  return (
+    (args.hour === 'lauds' || args.hour === 'vespers') &&
+    args.summary.temporal.dayName.startsWith('Pasc0-')
+  );
 }
 
 function usesWrappedMajorHourConclusion(args: DirectiveSlotContentArgs): boolean {

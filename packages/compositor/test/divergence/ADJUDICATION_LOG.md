@@ -2416,7 +2416,7 @@ short-responsory, hymn-doxology, or conclusion boundaries.
 
 ### 2026-04-24 — Pattern: Paschaltide minor-hour short responsories render as source-backed blocks (perl-bug)
 
-**Commit.** pending
+**Commit.** 9112a23
 
 **Ledger signal.** After the bare `Deo gratias` chapter-response fix,
 the exposed Paschaltide minor-hour rows moved to the next later-block
@@ -2445,6 +2445,39 @@ full ledger is regenerated: Reduced 1955 May `9` Terce/Sext/None and
 Rubrics 1960 May `19` Sext/None. The remaining adjacent May `9` 1960
 minor-hour rows are still blocked earlier by the hymn-doxology family,
 and Ascension Vespers now exposes the ordinary conclusion boundary.
+
+### 2026-04-24 — Pattern: Roman Ascension Vespers conclusion keeps ordinary Benedicamus (engine-bug)
+
+**Commit.** pending
+
+**Ledger signal.** After the Paschaltide short-responsory adjudication
+sweep, the next shared Roman Vespers seam was the Ascension conclusion.
+Reduced 1955 and Rubrics 1960 both first diverged at line `125`: Perl
+rendered `V. Benedicámus Dómino.`, while the compositor emitted the
+Easter-octave double-alleluia dismissal.
+
+**Root cause.** This was a Phase 3 conclusion-wrapper bug. The
+compositor selected `Benedicamus Domino1` whenever the hour had the broad
+`add-versicle-alleluia` directive, which covers all Paschaltide. The
+legacy Roman helper limits the double-alleluia major-hour dismissal to
+the Easter octave (`Pasc0`) in non-GABC output; Ascensiontide keeps the
+ordinary `Benedicamus Domino` conclusion.
+
+**Resolution.** Fixed in Phase 3. The major-hour conclusion wrapper now
+selects `Benedicamus Domino1` only when the temporal day name starts with
+`Pasc0-`; otherwise it uses the ordinary `Benedicamus Domino` section.
+The existing Easter-octave conclusion regression still covers the double
+alleluia case, and a new Ascension Vespers regression covers the ordinary
+post-octave case.
+
+**Citation.**
+
+- `upstream/web/cgi-bin/horas/horasscripts.pl:158-181`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:158-166`
+
+**Impact.** No adjudication was needed. The targeted May `9` Vespers
+compare now advances past the conclusion dismissal under both simplified
+Roman policies.
 
 ### Open pattern backlog
 

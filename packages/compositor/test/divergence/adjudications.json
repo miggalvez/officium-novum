@@ -7471,7 +7471,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:354-360 — the Ascension source explicitly provides the None short responsory beginning `R.br. Ascéndo ad Patrem meum, et Patrem vestrum...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Ascension minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "9112a23"
   },
   "Reduced - 1955/2024-05-09/Sext/3c70c657": {
     "policy": "Reduced - 1955",
@@ -7483,7 +7483,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:339-345 — the Ascension source explicitly provides the Sext short responsory beginning `R.br. Ascéndens Christus in altum...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Ascension minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "9112a23"
   },
   "Reduced - 1955/2024-05-09/Terce/470ce973": {
     "policy": "Reduced - 1955",
@@ -7495,7 +7495,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:323-329 — the Ascension source explicitly provides the Terce short responsory beginning `R.br. Ascéndit Deus in jubilatióne...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Ascension minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "9112a23"
   },
   "Reduced - 1955/2024-05-19/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -10639,7 +10639,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:263-269 — the Pentecost source explicitly provides the None short responsory beginning `R.br. Repléti sunt omnes Spíritu Sancto...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Pentecost minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "9112a23"
   },
   "Rubrics 1960 - 1960/2024-05-19/Sext/ac7cdff5": {
     "policy": "Rubrics 1960 - 1960",
@@ -10651,7 +10651,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:248-254 — the Pentecost source explicitly provides the Sext short responsory beginning `R.br. Spíritus Paráclitus...`. The compositor emits that source-backed block, while the Perl comparison surface leaves an underscore separator at the first divergence.",
     "notes": "Pentecost minor-hour short-responsory render-surface family after the bare Deo gratias chapter response was fixed.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "9112a23"
   },
   "Rubrics 1960 - 1960/2024-05-19/Vespers/39846534": {
     "policy": "Rubrics 1960 - 1960",

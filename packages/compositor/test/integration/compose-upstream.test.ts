@@ -764,6 +764,28 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('uses the ordinary Benedicamus conclusion after the Easter octave', async () => {
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-05-09');
+      const vespers = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+
+      const conclusionLines = sectionTexts(vespers, 'conclusion').map(normalizeLatin);
+      expect(conclusionLines, `${version} Ascension Vespers conclusion`).toContain(
+        normalizeLatin('Benedicámus Dómino.')
+      );
+      expect(conclusionLines, `${version} Ascension Vespers conclusion`).not.toContain(
+        normalizeLatin('Benedicámus Dómino, allelúja, allelúja.')
+      );
+    }
+  }, 240_000);
+
   it('keeps bare Deo gratias chapter responses unseasoned in Paschaltide', async () => {
     const cases = [
       ['Reduced - 1955', '2024-05-09', 'terce'],
