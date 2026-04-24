@@ -276,7 +276,7 @@ function resolveKeyedMinorHourContent(
 
     const out: TextContent[] = [];
     if (keyed.value.length > 0 && keyed.value !== '_') {
-      out.push({ type: 'text', value: keyed.value });
+      out.push({ type: 'verseMarker', marker: 'Ant.', text: keyed.value });
       out.push({ type: 'separator' });
     }
 

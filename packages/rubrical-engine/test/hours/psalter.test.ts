@@ -184,6 +184,63 @@ describe('selectPsalmodyRoman1960', () => {
     expect(refs[0]?.psalmRef.selector).toBe('Feria III');
   });
 
+  it('splits weekday Prime rows and applies the bracketed-psalm rule', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Prima]
+Feria IV = Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.
+25,51,52,[96]
+`.trim()
+    );
+
+    const pre1960Penitential = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Quadp3-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-02-14', 'Quadp3-3', 'lent', 3),
+      corpus: textIndex
+    });
+    expect(pre1960Penitential.map((entry) => entry.psalmRef.selector)).toEqual([
+      '25',
+      '51',
+      '52',
+      '[96]'
+    ]);
+    expect(pre1960Penitential[0]?.antiphonRef?.selector).toBe('Feria IV#antiphon');
+
+    const rubrics1960Penitential = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Quadp3-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-02-14', 'Quadp3-3', 'lent', 3),
+      corpus: textIndex,
+      omitPrimeBracketPsalm: true
+    });
+    expect(rubrics1960Penitential.map((entry) => entry.psalmRef.selector)).toEqual([
+      '25',
+      '51',
+      '52'
+    ]);
+
+    const pre1960OrdinaryWeekday = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Pent03-3'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime'),
+      temporal: temporal('2024-06-12', 'Pent03-3', 'time-after-pentecost', 3),
+      corpus: textIndex
+    });
+    expect(pre1960OrdinaryWeekday.map((entry) => entry.psalmRef.selector)).toEqual([
+      '25',
+      '51',
+      '52'
+    ]);
+  });
+
   it('uses the Tridentinum Prime festis table for weekday feasts with Psalmi Dominica', () => {
     const textIndex = new TestOfficeTextIndex();
     textIndex.add(

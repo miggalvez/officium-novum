@@ -2312,6 +2312,46 @@ rows drop from `426` to `421`. The next live frontier is the Rubrics
 1960 Ash Wednesday Prime antiphon / psalmody boundary and the remaining
 Reduced 1955 Ash Wednesday minor-hour psalmody rows.
 
+### 2026-04-24 — Pattern: Ash Wednesday Roman ferial minor-hour psalmody rows split into source-backed units (mixed fix)
+
+**Commit.** pending
+
+**Ledger signal.** The live Roman frontier after the Feb `11` doxology
+tranche was Ash Wednesday Prime/Terce/Sext/None. Reduced 1955 and
+Rubrics 1960 both first diverged at the opening ferial antiphon /
+first psalm heading boundary, with Phase 2 handing Phase 3 a single
+combined `Psalmi minor` row instead of the source's per-psalm units.
+
+**Root cause.** This was a mixed Phase 2 / Phase 3 seam. Phase 2
+selected weekday `Psalmi minor` sections by key but collapsed the row's
+comma-separated psalm list into one assignment, so Phase 3 emitted one
+large psalm bundle under the first heading. Phase 3 also placed the
+heading before the row antiphon for the newly materialized weekday row
+shape. Finally, Prime needed the legacy bracketed-psalm rule: the
+bracketed fourth psalm is retained only for pre-1960 penitential Prime
+and is omitted in the 1960 family.
+
+**Resolution.** Fixed in the owning layers. Phase 2 now expands weekday
+`Psalmi minor` rows into per-token `PsalmAssignment`s and attaches the
+row antiphon as `selector#antiphon` on the first assignment. Rubrics
+1960 passes an explicit `omitPrimeBracketPsalm` psalter option, while
+pre-1960 keeps the bracketed Prime psalm only on penitential days. Phase
+3 now resolves `Psalmi minor:*#antiphon` selectors for both weekday and
+`Tridentinum` rows and emits a leading antiphon before the first
+`Psalmus N [M]` heading.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:1-62`
+- `upstream/web/cgi-bin/horas/specials/psalmi.pl:268-272`
+
+**Impact.** No new adjudication was needed. The targeted Feb `14`
+Prime/Terce/Sext/None compares now advance past psalmody into the later
+preces/chapter/conclusion seams: Reduced 1955 average matching prefix
+rises from `44.1` to `46.5`, and Rubrics 1960 rises from `46.2` to
+`48.6`. Overall unadjudicated rows remain `421`; the tranche burned down
+a structural blocker rather than a row-classification family.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

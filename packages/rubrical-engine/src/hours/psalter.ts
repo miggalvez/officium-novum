@@ -19,6 +19,7 @@ export interface SelectPsalmodyInput {
   readonly hourRules: HourRuleSet;
   readonly temporal: TemporalContext;
   readonly corpus: OfficeTextIndex;
+  readonly omitPrimeBracketPsalm?: boolean;
 }
 
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
@@ -122,7 +123,7 @@ function minorHourReferences(
 ): readonly PsalmAssignment[] {
   const { hour, temporal, hourRules, corpus } = params;
   if (hourRules.minorHoursFerialPsalter) {
-    return weekdayMinorHourReferences(hour, temporal.dayOfWeek);
+    return weekdayMinorHourReferences(params);
   }
 
   const useSundayOrFestalMinorHours =
@@ -146,15 +147,25 @@ function minorHourReferences(
     }
   }
 
-  return weekdayMinorHourReferences(hour, temporal.dayOfWeek);
+  return weekdayMinorHourReferences(params);
 }
 
 function weekdayMinorHourReferences(
-  hour: 'prime' | 'terce' | 'sext' | 'none',
-  dayOfWeek: number
+  params: SelectPsalmodyInput & {
+    readonly hour: 'prime' | 'terce' | 'sext' | 'none';
+  }
 ): readonly PsalmAssignment[] {
+  const { hour, temporal, corpus } = params;
   const hourSection = MINOR_HOUR_SECTION[hour];
-  const weekdayKey = WEEKDAY_KEYS[dayOfWeek];
+  const weekdayKey = WEEKDAY_KEYS[temporal.dayOfWeek] ?? 'Dominica';
+  const keyed = resolveWeekdayMinorHourAssignments(corpus, hourSection, weekdayKey, {
+    includePrimeBracketPsalm:
+      hour === 'prime' && !params.omitPrimeBracketPsalm && isPenitentialDay(temporal)
+  });
+  if (keyed.length > 0) {
+    return keyed;
+  }
+
   return [
     {
       psalmRef: {
@@ -164,6 +175,54 @@ function weekdayMinorHourReferences(
       }
     }
   ];
+}
+
+function resolveWeekdayMinorHourAssignments(
+  corpus: OfficeTextIndex,
+  sectionName: string,
+  weekdayKey: string,
+  options: {
+    readonly includePrimeBracketPsalm: boolean;
+  }
+): readonly PsalmAssignment[] {
+  const file = corpus.getFile(`${PSALMI_MINOR}.txt`);
+  const section = file?.sections.find((entry) => entry.header === sectionName);
+  if (!section) {
+    return [];
+  }
+
+  const row = findSequentialKeyedRow(section.content, weekdayKey);
+  if (!row?.psalmSpec) {
+    return [];
+  }
+
+  const tokens = row.psalmSpec
+    .split(',')
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0)
+    .filter((token) => options.includePrimeBracketPsalm || !isBracketedPsalmToken(token));
+  if (tokens.length === 0) {
+    return [];
+  }
+
+  return Object.freeze(
+    tokens.map((token, index): PsalmAssignment => ({
+      psalmRef: psalmTokenReference(token),
+      ...(index === 0 && row.antiphon
+        ? {
+            antiphonRef: {
+              path: PSALMI_MINOR,
+              section: sectionName,
+              selector: `${weekdayKey}#antiphon`
+            }
+          }
+        : {})
+    }))
+  );
+}
+
+function isBracketedPsalmToken(token: string): boolean {
+  return /^\[\d+\]$/u.test(token);
 }
 
 function properFeastReferences(
@@ -449,6 +508,54 @@ function findKeyedRow(
     const value = match[2]?.trim();
     if (key === selector && value) {
       return value;
+    }
+  }
+  return undefined;
+}
+
+function findSequentialKeyedRow(
+  content: readonly TextContent[],
+  selector: string
+): { readonly antiphon?: string; readonly psalmSpec?: string } | undefined {
+  for (let index = 0; index < content.length; index += 1) {
+    const node = content[index];
+    if (node?.type === 'conditional') {
+      const nested = findSequentialKeyedRow(node.content, selector);
+      if (nested) {
+        return nested;
+      }
+      continue;
+    }
+    if (node?.type !== 'text') {
+      continue;
+    }
+    const match = node.value.match(/^([^=]+?)\s*=\s*(.*)$/u);
+    if (!match) {
+      continue;
+    }
+    const key = match[1]?.trim();
+    if (key !== selector) {
+      continue;
+    }
+    return {
+      antiphon: match[2]?.trim(),
+      psalmSpec: nextTextValue(content, index + 1)
+    };
+  }
+  return undefined;
+}
+
+function nextTextValue(content: readonly TextContent[], startIndex: number): string | undefined {
+  for (let index = startIndex; index < content.length; index += 1) {
+    const node = content[index];
+    if (node?.type === 'text') {
+      return node.value.trim();
+    }
+    if (node?.type === 'conditional') {
+      const nested = nextTextValue(node.content, 0);
+      if (nested !== undefined) {
+        return nested;
+      }
     }
   }
   return undefined;

@@ -327,8 +327,11 @@ describe('resolveReference', () => {
     );
 
     const rendered = (resolved.Latin?.content ?? [])
-      .filter((node) => node.type === 'text')
-      .map((node) => node.value)
+      .flatMap((node) => {
+        if (node.type === 'text') return [node.value];
+        if (node.type === 'verseMarker') return [node.text];
+        return [];
+      })
       .join('|');
 
     expect(rendered).toContain('62:1 Deus Deus meus');
@@ -366,10 +369,7 @@ describe('resolveReference', () => {
       { languages: ['Latin'] }
     );
 
-    const rendered = (resolved.Latin?.content ?? [])
-      .filter((node) => node.type === 'text')
-      .map((node) => node.value)
-      .join('|');
+    const rendered = collectTexts(resolved.Latin?.content ?? []).join('|');
 
     expect(rendered).toContain('Monday antiphon');
     expect(rendered).toContain('23:1 Domini est terra');

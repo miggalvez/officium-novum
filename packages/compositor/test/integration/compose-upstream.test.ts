@@ -1250,6 +1250,47 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
   }, 240_000);
 
+  it('renders Ash Wednesday Roman minor-hour weekday antiphons before the psalm heading', async () => {
+    for (const [version, expectations] of [
+      [
+        'Reduced - 1955',
+        {
+          prime: ['Misericórdia tua.', 'Psalmus 25 [1]'],
+          terce: ['Deus ádjuvat me:', 'Psalmus 53 [1]'],
+          sext: ['In Deo sperávi.', 'Psalmus 55 [1]'],
+          none: ['Deus meus.', 'Psalmus 58(2-11) [1]']
+        }
+      ],
+      [
+        'Rubrics 1960 - 1960',
+        {
+          prime: ['Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.', 'Psalmus 25 [1]'],
+          terce: ['Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.', 'Psalmus 53 [1]'],
+          sext: ['In Deo sperávi * non timébo quid fáciat mihi homo.', 'Psalmus 55 [1]'],
+          none: ['Deus meus * misericórdia tua prævéniet me.', 'Psalmus 58(2-11) [1]']
+        }
+      ]
+    ] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+      const summary = engine.resolveDayOfficeSummary('2024-02-14');
+
+      for (const [hour, expected] of Object.entries(expectations) as Array<
+        [Extract<HourName, 'prime' | 'terce' | 'sext' | 'none'>, readonly [string, string]]
+      >) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+        expect(psalmodyTexts(composed).map(normalizeLatin).slice(0, 2), `${version} ${hour}`).toEqual(
+          expected.map(normalizeLatin)
+        );
+      }
+    }
+  }, 240_000);
+
   it('removes bare carry-over markers from January 7 Matins psalmody across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
