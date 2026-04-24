@@ -30,6 +30,7 @@ import {
   isMinorHour,
   normalizeOpeningPsalmodyAntiphonContent,
   normalizeRepeatedAntiphonContent,
+  replaceLeadingCanticleTitleWithCitation,
   withPsalmGloriaPatri
 } from './compose/psalmody.js';
 import { applyDirectives } from './directives/index.js';
@@ -547,7 +548,12 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
           ]);
         }
       }
-      appendContentWithBoundary(bucket, markered);
+      appendContentWithBoundary(
+        bucket,
+        args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+          ? replaceLeadingCanticleTitleWithCitation(markered)
+          : markered
+      );
     }
   }
 

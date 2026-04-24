@@ -684,6 +684,56 @@ describe('Psalmus N [index] heading emission', () => {
     expect(texts[0]).toBe('Psalmus 118(1-16) [1]');
   });
 
+  it('uses Old Testament canticle titles as headings after leading separators and preserves the citation', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Psalmorum/Psalm223.txt',
+      sections: [
+        {
+          header: '__preamble',
+          startLine: 1,
+          endLine: 2,
+          content: [
+            { type: 'separator' },
+            { type: 'text', value: '' },
+            { type: 'text', value: '(Canticum Annæ * 3 Reg 2:1-16)' },
+            {
+              type: 'text',
+              value: '2:1 Exsultávit cor meum in Dómino, * et exaltátum est cornu meum in Deo meo.'
+            }
+          ]
+        }
+      ]
+    });
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        psalmody: {
+          kind: 'psalmody',
+          psalms: [
+            { psalmRef: { path: 'horas/Latin/Psalterium/Psalmorum/Psalm223', section: '__preamble' } }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'psalmody', 'Latin')).toEqual([
+      'Canticum Annæ [1]',
+      '3 Reg 2:1-16',
+      '2:1 Exsultávit cor meum in Dómino, * et exaltátum est cornu meum in Deo meo.'
+    ]);
+  });
+
   it('emits the heading after the antiphon when the assignment pairs both', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile({

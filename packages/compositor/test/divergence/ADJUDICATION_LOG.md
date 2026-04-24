@@ -1990,6 +1990,50 @@ source row.
 now fully closed: the structural split is fixed, and the remaining
 reopening-antiphon punctuation is adjudicated as a Perl surface bug.
 
+### 2026-04-23 — Pattern: Ash Wednesday 1960 Lauds Old Testament canticle heading (engine-bug)
+
+**Commit.** pending tranche commit
+
+**Ledger signal.** After the Ash Wednesday Matins Psalm `44` tranche,
+`Rubrics 1960 - 1960` / `2024-02-14` / `Lauds` first diverged at the
+fourth psalmody assignment: Perl rendered `Canticum Annæ [4]`, while
+the compositor rendered `Psalmus 223 [4]`.
+
+**Root cause.** This was a Phase 3 composition bug. The Phase 2
+psalmody structure correctly selected Wednesday Lauds II from
+`Psalmi major`, whose fourth assignment points at Psalmorum number
+`223`. The Psalmorum source itself declares that unit as a canticle:
+`(Canticum Annæ * 3 Reg 2:1-16)`. The compositor's psalm heading helper
+only looked at the numeric Psalmorum path / inline psalm number, so it
+mislabelled Old Testament canticles as ordinary psalms and also leaked
+the raw parenthesized source-title line into the emitted body.
+
+**Resolution.** Fixed in Phase 3. Psalmody heading construction now
+detects a leading `Canticum ...` title line in the resolved content,
+emits that title as the numbered heading (`Canticum Annæ [4]`), and
+keeps the post-asterisk citation (`3 Reg 2:1-16`) as the next rendered
+line. The raw parenthesized source-title line is no longer emitted.
+Locked with:
+
+- `packages/compositor/test/canonical-lines.test.ts`
+- `packages/compositor/test/integration/compose-upstream.test.ts`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:71-75`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm223.txt:1-2`
+
+**Impact.** The targeted compare for `Rubrics 1960 - 1960` Ash
+Wednesday Lauds now advances from `Psalmus 223 [4]` to the later
+chapter/antiphon boundary (`Rom 13:12-13` vs `Ant. Cum jejunátis...`).
+The full ledger refresh keeps Roman divergent-hour totals at
+`460/488` for `Reduced - 1955` and `457/488` for
+`Rubrics 1960 - 1960`, while average matching prefix improves to
+`44.4` and `46.6`. The next live frontier remains bifurcated:
+`Reduced - 1955` first surfaces on the Jan `28` Lauds penitential
+full-antiphon / incipit family, and `Rubrics 1960 - 1960` now surfaces
+on the Ash Wednesday Lauds later-block boundary.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

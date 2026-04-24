@@ -1081,6 +1081,30 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('labels the Ash Wednesday 1960 Lauds Old Testament canticle from the Psalmorum source title', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2024-02-14');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const lines = psalmodyTexts(composed).map(normalizeLatin);
+    const canticleHeading = lines.indexOf(normalizeLatin('Canticum Annæ [4]'));
+    expect(canticleHeading, 'Rubrics 1960 - 1960 2024-02-14 Lauds is missing the Anna canticle heading').toBeGreaterThan(
+      0
+    );
+    expect(lines).not.toContain(normalizeLatin('Psalmus 223 [4]'));
+    expect(lines).not.toContain(normalizeLatin('(Canticum Annæ * 3 Reg 2:1-16)'));
+    expect(lines[canticleHeading + 1]).toBe(normalizeLatin('3 Reg 2:1-16'));
+    expect(lines[canticleHeading + 2]).toBe(
+      normalizeLatin('2:1 Exsultávit cor meum in Dómino, * et exaltátum est cornu meum in Deo meo.')
+    );
+  }, 240_000);
+
   it('removes bare carry-over markers from January 7 Matins psalmody across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
