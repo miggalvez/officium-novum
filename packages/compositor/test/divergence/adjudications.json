@@ -6247,7 +6247,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quadp1-0.txt:150-151 — the source carries the full major-hour opening antiphon `Miserére * mei, Deus, et a delícto meo munda me: quia tibi soli peccávi.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Miserére. ‡`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-01-28/Matins/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -6307,7 +6307,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quadp3-0.txt:144-145 — the source carries the full major-hour opening antiphon `Secúndum multitúdinem * miseratiónum tuárum, Dómine, dele iniquitátem meam.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Secúndum multitúdinem.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-02-11/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6343,7 +6343,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:71-72 — the source carries the full major-hour opening antiphon `Ámplius lava me, * Dómine, ab injustítia mea.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Ámplius lava me.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-02-14/Matins/d6ab45d4": {
     "policy": "Reduced - 1955",
@@ -6379,7 +6379,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:142-143 — the source carries the full major-hour opening antiphon `Cor mundum * crea in me Deus, et spíritum rectum ínnova in viscéribus meis.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cor mundum.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-02-18/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6427,7 +6427,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:134-135 — the source carries the full major-hour opening antiphon `Benígne fac, Dómine, * in bona voluntáte tua Sion.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Benígne fac, Dómine.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-02-25/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6451,7 +6451,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad2-0.txt:149-150 — the source carries the full major-hour opening antiphon `Dómine, * lábia mea apéries, et os meum annuntiábit laudem tuam.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Dómine.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-02-25/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6499,7 +6499,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad3-0.txt:152-153 — the source carries the full major-hour opening antiphon `Fac benígne * in bona voluntáte tua, ut ædificéntur, Dómine, muri Jerúsalem.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Fac benígne.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-03/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6547,7 +6547,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad4-0.txt:135-136 — the source carries the full major-hour opening antiphon `Tunc acceptábis * sacrifícium justítiæ, si avérteris fáciem tuam a peccátis meis.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Tunc acceptábis.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-10/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6595,7 +6595,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad5-0.txt:138-139 — the source carries the full major-hour opening antiphon `Vide, Dómine, * afflictiónem meam, quóniam eréctus est inimícus meus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Vide, Dómine.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-17/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6667,7 +6667,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-0.txt:132-133 — the source carries the full major-hour opening antiphon `Dóminus Deus * auxiliátor meus: et ídeo non sum confúsus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Dóminus Deus.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-24/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
@@ -6715,7 +6715,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-1.txt:52-53 — the source carries the full major-hour opening antiphon `Fáciem meam * non avérti ab increpántibus, et conspuéntibus in me.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Fáciem meam.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-26/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6739,7 +6739,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-2.txt:62-63 — the source carries the full major-hour opening antiphon `Vide, Dómine, * et consídera, quóniam tríbulor: velóciter exáudi me.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Vide, Dómine.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -6763,7 +6763,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-3.txt:56-57 — the source carries the full major-hour opening antiphon `Líbera me * de sanguínibus, Deus, Deus meus: et exsultábit lingua mea justítiam tuam.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Líbera me.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-03-27/Matins/d6ab45d4": {
     "policy": "Reduced - 1955",
@@ -6955,7 +6955,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-03/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -6979,7 +6979,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-04/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7003,7 +7003,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-04/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -7027,7 +7027,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-05/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7051,7 +7051,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-05/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -7075,7 +7075,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-06/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7099,7 +7099,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:98-99 — the source carries the full major-hour opening antiphon `Angelus autem Dómini * descéndit de cælo, et accédens revólvit lápidem, et sedébat super eum, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Angelus autem Dómini.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-04-07/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7399,7 +7399,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:85-86 — the source carries the full major-hour opening antiphon `Jubiláte * in conspéctu regis Dómini.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Jubiláte.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-06-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8035,7 +8035,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:43-44 — the source carries the full major-hour opening antiphon `Cantáte * Dómino et benedícite nómini ejus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cantáte. ‡`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-11-08/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8059,7 +8059,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:106-107 — the source carries the full major-hour opening antiphon `Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Exaltáte.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-01/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8083,7 +8083,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:132-133 — the source carries the full major-hour opening antiphon `In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. In illa die.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-01/Prime/5531f29c": {
     "policy": "Reduced - 1955",
@@ -8107,7 +8107,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:132-133 — the source carries the full major-hour opening antiphon `In illa die * stillábunt montes dulcédinem, et colles fluent lac et mel, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. In illa die.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-08/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8179,7 +8179,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:137-138 — the source carries the full major-hour opening antiphon `Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Véniet Dóminus.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-15/Prime/5531f29c": {
     "policy": "Reduced - 1955",
@@ -8203,7 +8203,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:137-138 — the source carries the full major-hour opening antiphon `Véniet Dóminus, * et non tardábit, et illuminábit abscóndita tenebrárum, et manifestábit se ad omnes gentes, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Véniet Dóminus.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-22/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8227,7 +8227,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136 — the source carries the full major-hour opening antiphon `Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cánite tuba.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-22/Prime/5531f29c": {
     "policy": "Reduced - 1955",
@@ -8251,7 +8251,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136 — the source carries the full major-hour opening antiphon `Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.`. The compositor emits that corpus-backed antiphon, while the Perl comparison surface truncates it to the incipit-only `Ant. Cánite tuba.`.",
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
-    "commitSha": "pending"
+    "commitSha": "dfbe3fe"
   },
   "Reduced - 1955/2024-12-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",

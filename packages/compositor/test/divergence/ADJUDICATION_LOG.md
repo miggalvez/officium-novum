@@ -2036,7 +2036,7 @@ on the Ash Wednesday Lauds later-block boundary.
 
 ### 2026-04-24 — Pattern: Reduced 1955 major-hour opening antiphons are truncated to incipits by Perl (perl-bug)
 
-**Commit.** pending tranche commit
+**Commit.** `dfbe3fe`
 
 **Ledger signal.** The refreshed `Reduced - 1955` Lauds frontier exposed a
 repeated family where Perl expected an incipit-only antiphon such as
