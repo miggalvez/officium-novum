@@ -3,6 +3,7 @@ import type { HourDirective } from '../types/hour-structure.js';
 import type { TemporalContext } from '../types/model.js';
 import type { HourName } from '../types/ordo.js';
 import type { CelebrationRuleSet, HourRuleSet } from '../types/rule-set.js';
+import { classifyDirective } from '../rules/classify.js';
 
 export interface HourDirectivesInput {
   readonly hour: HourName;
@@ -55,6 +56,7 @@ export function deriveSeasonalDirectives1960(
   if (shouldSayPreces(hour, temporal, isFerial) && !hourRules.omit.includes('preces')) {
     directives.add('preces-feriales');
   }
+  addExplicitRuleDirectives(directives, params);
 
   // RI §169: the suffragium of the saints is abolished under 1960. The
   // directive is unconditional for Lauds/Vespers; Phase 3 honours it whether
@@ -76,6 +78,27 @@ export function deriveSeasonalDirectives1960(
   }
 
   return directives;
+}
+
+function addExplicitRuleDirectives(
+  directives: Set<HourDirective>,
+  params: HourDirectivesInput
+): void {
+  for (const scoped of params.celebrationRules.hourScopedDirectives) {
+    if (scoped.hours && !scoped.hours.includes(params.hour)) {
+      continue;
+    }
+
+    const classified = classifyDirective(scoped.directive);
+    if (
+      classified.target === 'hour' &&
+      classified.effect.kind === 'hour-flag' &&
+      classified.effect.value === 'preces-feriales' &&
+      !params.hourRules.omit.includes('preces')
+    ) {
+      directives.add('preces-feriales');
+    }
+  }
 }
 
 function isTriduum(temporal: TemporalContext): boolean {

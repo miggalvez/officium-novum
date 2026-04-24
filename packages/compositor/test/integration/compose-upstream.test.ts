@@ -1145,6 +1145,47 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     );
   }, 240_000);
 
+  it('fills the Ash Wednesday 1960 Lauds later block from the ferial Major Special sections', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2024-02-14');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'], joinLaudsToMatins: false }
+    });
+
+    expect(sectionTexts(composed, 'chapter').map(normalizeLatin)).toEqual([
+      normalizeLatin(' Rom 13:12-13'),
+      normalizeLatin(
+        'Nox præcéssit, dies autem appropinquávit. Abiciámus ergo ópera tenebrárum, et induámur arma lucis. Sicut in die honéste ambulémus.'
+      ),
+      normalizeLatin('Deo grátias.')
+    ]);
+    expect(sectionTexts(composed, 'hymn').map(normalizeLatin).slice(0, 2)).toEqual([
+      normalizeLatin('Hymnus'),
+      normalizeLatin('Nox, et tenébræ, et núbila,')
+    ]);
+    expect(sectionTexts(composed, 'versicle').map(normalizeLatin)).toEqual([
+      normalizeLatin('Repléti sumus mane misericórdia tua.'),
+      normalizeLatin('Exsultávimus, et delectáti sumus.')
+    ]);
+    expect(sectionTexts(composed, 'preces').map(normalizeLatin).slice(0, 3)).toEqual([
+      normalizeLatin('Kýrie, eléison. Christe, eléison. Kýrie, eléison.'),
+      normalizeLatin(
+        'Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris:'
+      ),
+      normalizeLatin('Et ne nos indúcas in tentatiónem:')
+    ]);
+
+    const lines = canonicalLatinLines(composed);
+    const chapterIndex = lines.indexOf(normalizeLatin('Rom 13:12-13'));
+    const benedictusAntiphonIndex = lines.findIndex((line) => line.includes('Cum jejunátis'));
+    expect(chapterIndex).toBeGreaterThan(0);
+    expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
+  }, 240_000);
+
   it('removes bare carry-over markers from January 7 Matins psalmody across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
@@ -1841,8 +1882,10 @@ function sectionTexts(
   composed: ReturnType<typeof composeHour>,
   slot:
     | 'chapter'
+    | 'hymn'
     | 'responsory'
     | 'versicle'
+    | 'preces'
     | 'oration'
     | 'conclusion'
     | 'martyrology'

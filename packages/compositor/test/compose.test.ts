@@ -315,6 +315,13 @@ describe('composeHour', () => {
   it('injects ferial Lauds preces from the special corpus section when the slot is empty', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'mLitany', [
+        { type: 'text', value: 'Kýrie, eléison. Christe, eléison. Kýrie, eléison.' },
+        { type: 'verseMarker', marker: 'V.', text: 'Et ne nos indúcas in tentatiónem:' },
+        { type: 'verseMarker', marker: 'R.', text: 'Sed líbera nos a malo.' }
+      ])
+    );
+    corpus.addFile(
       makeFile('horas/Latin/Psalterium/Special/Preces', 'Preces feriales Laudes', [
         { type: 'verseMarker', marker: 'V.', text: 'Ego dixi: Dómine, miserére mei.' },
         { type: 'verseMarker', marker: 'R.', text: 'Sana ánimam meam quia peccávi tibi.' }
@@ -340,9 +347,12 @@ describe('composeHour', () => {
     expect(composed.sections).toHaveLength(1);
     expect(composed.sections[0]!.slot).toBe('preces');
     expect(composed.sections[0]!.reference).toBe(
-      'horas/Latin/Psalterium/Special/Preces#Preces feriales Laudes'
+      'horas/Latin/Psalterium/Common/Prayers#mLitany'
     );
     expect(renderRuns(composed.sections[0]!.lines[0]!, 'Latin')).toBe(
+      'Kýrie, eléison. Christe, eléison. Kýrie, eléison.'
+    );
+    expect(renderRuns(composed.sections[0]!.lines[3]!, 'Latin')).toBe(
       'Ego dixi: Dómine, miserére mei.'
     );
   });

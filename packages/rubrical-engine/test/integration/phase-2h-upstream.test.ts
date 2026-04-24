@@ -238,6 +238,34 @@ describeIfReady('Phase 2h DA/1955 upstream matrix', () => {
     if (ashPsalmody?.kind === 'matins-nocturns') {
       expect(ashPsalmody.nocturns.flatMap((entry) => entry.lessons)).toHaveLength(3);
     }
+    expect(ashWednesday.hours.lauds?.slots.chapter).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Feria Laudes'
+      }
+    });
+    expect(ashWednesday.hours.lauds?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Hymnus Day3 Laudes'
+      }
+    });
+    expect(ashWednesday.hours.lauds?.slots.versicle).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Feria Versum 2'
+      }
+    });
+    expect(ashWednesday.hours.lauds?.slots.oration).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Tempora/Quadp3-3',
+        section: 'Oratio 2'
+      }
+    });
 
     const emberSaturday = roman1960.resolveDayOfficeSummary('2024-02-24');
     const emberPsalmody = emberSaturday.hours.matins?.slots.psalmody;

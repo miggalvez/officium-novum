@@ -166,7 +166,7 @@ function linesFromContent(
     line.parts.push(run);
   };
   const pushInlineRubric = (value: string) => {
-    const normalized = value.trim();
+    const normalized = normalizeRubricText(value).trim();
     if (normalized.length === 0) return;
     const line = ensure();
     const previous = line.parts.at(-1);
@@ -220,7 +220,9 @@ function linesFromContent(
           break;
         }
         flush();
-        lines.push(singleRunLine(language, undefined, { type: 'rubric', value: node.value }));
+        lines.push(
+          singleRunLine(language, undefined, { type: 'rubric', value: normalizeRubricText(node.value) })
+        );
         break;
       case 'heading':
         flush();
@@ -297,10 +299,11 @@ function stripHymnDoxologyMarker(text: string): string {
 }
 
 function normalizeSlotText(slot: SlotName, text: string): string {
+  const withoutContractionMarkerResidue = normalizeContractedMarkerText(text);
   if (slot !== 'psalmody') {
-    return text;
+    return withoutContractionMarkerResidue;
   }
-  return text
+  return withoutContractionMarkerResidue
     .replace(/^(\d+:\d+)[a-z](\b)/iu, '$1$2')
     .replace(/\s*†\s*/gu, ' ')
     .replace(/\s*\(\d+[a-z]?\)\s*/giu, ' ')
@@ -313,6 +316,16 @@ function normalizeVerseMarkerText(slot: SlotName, marker: string, text: string):
     return text.replace(/[+*^=_]\s/gu, '');
   }
   return normalizeSlotText(slot, text);
+}
+
+function normalizeContractedMarkerText(text: string): string {
+  return text
+    .replace(/(\S)r\. N\./gu, '$1 N.')
+    .replace(/\s+r\. N\./gu, ' N.');
+}
+
+function normalizeRubricText(text: string): string {
+  return text.replace('secunda «Domine, exaudi» omittitur', 'secunda Domine, exaudi omittitur');
 }
 
 function renderGabcHeaderText(

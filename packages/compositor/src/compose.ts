@@ -480,10 +480,10 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         });
         continue;
       }
-      const sourceForExpansion = prependSimplifiedTriduumOrationPrelude(
+      const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        sourceContent
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceContent)
       );
       const expanded = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -695,6 +695,53 @@ function stripSimplifiedTriduumDismissal(
         node.value.includes('Et dato signo a Superiore omnes surgunt et discedunt.')
       )
   );
+}
+
+function stripTridentineFerialPrecesPsalmBlock(
+  args: ComposeSlotArgs,
+  ref: TextReference,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (
+    args.slot !== 'preces' ||
+    ref.path !== 'horas/Latin/Psalterium/Special/Preces' ||
+    !ref.section.startsWith('Preces feriales') ||
+    args.context.version.handle.includes('Trident')
+  ) {
+    return content;
+  }
+
+  const filtered: TextContent[] = [];
+  let removing = false;
+  let sawPsalm = false;
+  for (const node of content) {
+    if (!removing && isDomineExaudiNode(node)) {
+      removing = true;
+      continue;
+    }
+
+    if (removing) {
+      if (node.type === 'psalmInclude') {
+        sawPsalm = true;
+      }
+      if (sawPsalm && node.type === 'separator') {
+        removing = false;
+        sawPsalm = false;
+      }
+      continue;
+    }
+
+    filtered.push(node);
+  }
+
+  return filtered;
+}
+
+function isDomineExaudiNode(node: TextContent): boolean {
+  if (node.type === 'formulaRef' && node.name === 'Domine exaudi') {
+    return true;
+  }
+  return node.type === 'conditional' && node.content.some(isDomineExaudiNode);
 }
 
 function isSimplifiedTriduumOration(args: ComposeSlotArgs, ref: TextReference): boolean {

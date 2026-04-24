@@ -35,6 +35,7 @@ import { resolveRuleReferenceFiles } from '../rules/resolve-vide-ex.js';
 const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
 const PSALMORUM_ROOT = 'horas/Latin/Psalterium/Psalmorum';
+const MAJOR_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Major Special';
 
 export interface ApplyRuleSetInput {
   readonly hour: HourName;
@@ -195,6 +196,7 @@ function resolveSlot(
     properRef ??
     inheritedSecondVespersRef ??
     communeRef ??
+    majorHourLaterBlockFallbackReference(input, slot.name) ??
     minorHourLaterBlockFallbackReference(input, slot.name) ??
     ordinariumFallbackReference(input.skeleton, slot);
 
@@ -1120,6 +1122,66 @@ function minorHourLaterBlockFallbackSection(
   }
 }
 
+function majorHourLaterBlockFallbackReference(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): TextReference | undefined {
+  // Weekday 1960 Lauds/Vespers still say `#Capitulum Hymnus Versus` in the
+  // Ordinarium, but Perl expands that wrapper from the ferial sections in
+  // `Psalterium/Special/Major Special` when the proper supplies no later block.
+  if (
+    input.policy.name !== 'rubrics-1960' ||
+    input.celebration.source !== 'temporal' ||
+    input.celebration.kind ||
+    input.temporal.dayOfWeek === 0
+  ) {
+    return undefined;
+  }
+
+  const section = majorHourLaterBlockFallbackSection(input.hour, slot, input.temporal.dayOfWeek);
+  if (!section) {
+    return undefined;
+  }
+
+  return {
+    path: MAJOR_SPECIAL_PATH,
+    section
+  };
+}
+
+function majorHourLaterBlockFallbackSection(
+  hour: HourName,
+  slot: SlotName,
+  dayOfWeek: number
+): string | undefined {
+  switch (hour) {
+    case 'lauds':
+      switch (slot) {
+        case 'chapter':
+          return 'Feria Laudes';
+        case 'hymn':
+          return `Hymnus Day${dayOfWeek} Laudes`;
+        case 'versicle':
+          return 'Feria Versum 2';
+        default:
+          return undefined;
+      }
+    case 'vespers':
+      switch (slot) {
+        case 'chapter':
+          return 'Feria Vespera';
+        case 'hymn':
+          return `Hymnus Day${dayOfWeek} Vespera`;
+        case 'versicle':
+          return 'Feria Versum 3';
+        default:
+          return undefined;
+      }
+    default:
+      return undefined;
+  }
+}
+
 function usesVersum2InPlaceOfLaterBlock(input: ApplyRuleSetInput): boolean {
   return input.hour !== 'compline' && input.hourRules.capitulumVariant?.scheme === 2;
 }
@@ -1277,6 +1339,12 @@ function properHeadersForSlot(
     case 'antiphon-ad-nunc-dimittis':
       return ['Ant Completorium', 'Ant Nunc dimittis'];
     case 'oration':
+      if (hour === 'lauds') {
+        return ['Oratio 2', 'Oratio'];
+      }
+      if (hour === 'vespers') {
+        return ['Oratio 3', 'Oratio'];
+      }
       return ['Oratio'];
     case 'invitatory':
       return ['Invit', 'Invitatorium'];

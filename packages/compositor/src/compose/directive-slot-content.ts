@@ -34,15 +34,12 @@ export function directiveDrivenSlotContent(args: DirectiveSlotContentArgs): Slot
   }
 
   if (args.slot === 'preces') {
-    const ref = precesDirectiveReference(args.hour, args.directives);
-    if (!ref) {
+    const content = precesDirectiveContent(args.hour, args.directives);
+    if (!content) {
       return undefined;
     }
 
-    return {
-      kind: 'single-ref',
-      ref
-    };
+    return content;
   }
 
   if (args.slot !== 'suffragium') {
@@ -76,11 +73,26 @@ function majorHourOrationPreludeContent(args: DirectiveSlotContentArgs): SlotCon
   return {
     kind: 'ordered-refs',
     refs: [
-      commonPrayerRef('Domine exaudi'),
+      ...majorHourOrationOpeningRefs(args),
       commonPrayerRef('Oremus'),
       ...innerRefs
     ]
   };
+}
+
+function majorHourOrationOpeningRefs(args: DirectiveSlotContentArgs): readonly TextReference[] {
+  if (args.directives.includes('preces-feriales')) {
+    return [
+      commonPrayerRef('Domine exaudi'),
+      {
+        path: COMMON_PRAYERS_PATH,
+        section: 'Dominus',
+        selector: '5'
+      }
+    ];
+  }
+
+  return [commonPrayerRef('Domine exaudi')];
 }
 
 function majorHourConclusionContent(args: DirectiveSlotContentArgs): SlotContent | undefined {
@@ -122,16 +134,19 @@ function usesWrappedMajorHourConclusion(args: DirectiveSlotContentArgs): boolean
   );
 }
 
-function precesDirectiveReference(
+function precesDirectiveContent(
   hour: HourName,
   directives: HourStructure['directives']
-): TextReference | undefined {
+): SlotContent | undefined {
   const flags = new Set(directives);
   if (flags.has('preces-dominicales')) {
     if (hour === 'compline') {
       return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces dominicales Completorium'
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Preces',
+          section: 'Preces dominicales Completorium'
+        }
       };
     }
     return undefined;
@@ -141,32 +156,41 @@ function precesDirectiveReference(
     return undefined;
   }
 
+  let section: string | undefined;
   switch (hour) {
     case 'lauds':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales Laudes'
-      };
+      section = 'Preces feriales Laudes';
+      break;
     case 'vespers':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales Vespera'
-      };
+      section = 'Preces feriales Vespera';
+      break;
     case 'prime':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales Prima'
-      };
+      section = 'Preces feriales Prima';
+      break;
     case 'terce':
     case 'sext':
     case 'none':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales minora'
-      };
+      section = 'Preces feriales minora';
+      break;
     default:
-      return undefined;
+      section = undefined;
+      break;
   }
+
+  if (!section) {
+    return undefined;
+  }
+
+  return {
+    kind: 'ordered-refs',
+    refs: [
+      commonPrayerRef('mLitany'),
+      {
+        path: 'horas/Latin/Psalterium/Special/Preces',
+        section
+      }
+    ]
+  };
 }
 
 function suffragiumDirectiveReference(args: DirectiveSlotContentArgs): TextReference | undefined {
