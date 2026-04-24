@@ -699,6 +699,12 @@ function parseOmitDirective(
   if (containsWord(normalized, 'incipit')) {
     slots.push('incipit');
   }
+  if (containsWord(normalized, 'conclusion')) {
+    slots.push('conclusion');
+  }
+  if (containsPhrase(normalized, 'antiphona finalis')) {
+    slots.push('antiphona-finalis');
+  }
   if (containsWord(normalized, 'invitatorium')) {
     slots.push('invitatorium');
   }

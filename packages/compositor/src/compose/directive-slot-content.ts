@@ -33,16 +33,18 @@ export function directiveDrivenSlotContent(args: DirectiveSlotContentArgs): Slot
     return oneAloneWrapper;
   }
 
+  const minorHourWrapper = minorHourOrationWrapperContent(args);
+  if (minorHourWrapper) {
+    return minorHourWrapper;
+  }
+
   if (args.slot === 'preces') {
-    const ref = precesDirectiveReference(args.hour, args.directives);
-    if (!ref) {
+    const content = precesDirectiveContent(args.hour, args.directives);
+    if (!content) {
       return undefined;
     }
 
-    return {
-      kind: 'single-ref',
-      ref
-    };
+    return content;
   }
 
   if (args.slot !== 'suffragium') {
@@ -69,15 +71,33 @@ function majorHourOrationPreludeContent(args: DirectiveSlotContentArgs): SlotCon
   if (!innerRefs) {
     return undefined;
   }
+  if (args.structure.slots.conclusion?.kind === 'empty') {
+    return undefined;
+  }
 
   return {
     kind: 'ordered-refs',
     refs: [
-      commonPrayerRef('Domine exaudi'),
+      ...majorHourOrationOpeningRefs(args),
       commonPrayerRef('Oremus'),
       ...innerRefs
     ]
   };
+}
+
+function majorHourOrationOpeningRefs(args: DirectiveSlotContentArgs): readonly TextReference[] {
+  if (args.directives.includes('preces-feriales')) {
+    return [
+      commonPrayerRef('Domine exaudi'),
+      {
+        path: COMMON_PRAYERS_PATH,
+        section: 'Dominus',
+        selector: '5'
+      }
+    ];
+  }
+
+  return [commonPrayerRef('Domine exaudi')];
 }
 
 function majorHourConclusionContent(args: DirectiveSlotContentArgs): SlotContent | undefined {
@@ -119,16 +139,19 @@ function usesWrappedMajorHourConclusion(args: DirectiveSlotContentArgs): boolean
   );
 }
 
-function precesDirectiveReference(
+function precesDirectiveContent(
   hour: HourName,
   directives: HourStructure['directives']
-): TextReference | undefined {
+): SlotContent | undefined {
   const flags = new Set(directives);
   if (flags.has('preces-dominicales')) {
     if (hour === 'compline') {
       return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces dominicales Completorium'
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Preces',
+          section: 'Preces dominicales Completorium'
+        }
       };
     }
     return undefined;
@@ -138,32 +161,41 @@ function precesDirectiveReference(
     return undefined;
   }
 
+  let section: string | undefined;
   switch (hour) {
     case 'lauds':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales Laudes'
-      };
+      section = 'Preces feriales Laudes';
+      break;
     case 'vespers':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales Vespera'
-      };
+      section = 'Preces feriales Vespera';
+      break;
     case 'prime':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales Prima'
-      };
+      section = 'Preces feriales Prima';
+      break;
     case 'terce':
     case 'sext':
     case 'none':
-      return {
-        path: 'horas/Latin/Psalterium/Special/Preces',
-        section: 'Preces feriales minora'
-      };
+      section = 'Preces feriales minora';
+      break;
     default:
-      return undefined;
+      section = undefined;
+      break;
   }
+
+  if (!section) {
+    return undefined;
+  }
+
+  return {
+    kind: 'ordered-refs',
+    refs: [
+      commonPrayerRef('mLitany'),
+      {
+        path: 'horas/Latin/Psalterium/Special/Preces',
+        section
+      }
+    ]
+  };
 }
 
 function suffragiumDirectiveReference(args: DirectiveSlotContentArgs): TextReference | undefined {
@@ -238,6 +270,64 @@ function oneAloneMinorHourWrapperContent(args: DirectiveSlotContentArgs): SlotCo
   }
 
   return undefined;
+}
+
+function minorHourOrationWrapperContent(args: DirectiveSlotContentArgs): SlotContent | undefined {
+  if (!usesMinorHourOrationWrapper(args)) {
+    return undefined;
+  }
+
+  if (args.slot === 'oration') {
+    const innerRefs = refsForWrappedOration(args.content);
+    if (!innerRefs) {
+      return undefined;
+    }
+
+    return {
+      kind: 'ordered-refs',
+      refs: [
+        commonPrayerRef('Domine exaudi'),
+        commonPrayerRef('Oremus'),
+        ...innerRefs
+      ]
+    };
+  }
+
+  return {
+    kind: 'ordered-refs',
+    refs: [
+      commonPrayerRef('Domine exaudi'),
+      commonPrayerRef('Benedicamus Domino'),
+      commonPrayerRef('Fidelium animae')
+    ]
+  };
+}
+
+function usesMinorHourOrationWrapper(args: DirectiveSlotContentArgs): boolean {
+  if (
+    (args.hour !== 'terce' && args.hour !== 'sext' && args.hour !== 'none') ||
+    (args.slot !== 'oration' && args.slot !== 'conclusion')
+  ) {
+    return false;
+  }
+
+  if (!args.context.version.handle.includes('1955') && !args.context.version.handle.includes('1960')) {
+    return false;
+  }
+
+  if (args.slot === 'conclusion') {
+    return isMinorHourConclusionContent(args.content);
+  }
+
+  return refsForWrappedOration(args.content) !== undefined;
+}
+
+function isMinorHourConclusionContent(content: SlotContent): boolean {
+  return (
+    content.kind === 'single-ref' &&
+    content.ref.path === 'horas/Ordinarium/Minor' &&
+    content.ref.section === 'Conclusio'
+  );
 }
 
 function usesOneAloneMinorHourWrapper(args: DirectiveSlotContentArgs): boolean {

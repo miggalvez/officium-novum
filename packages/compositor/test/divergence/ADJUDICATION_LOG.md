@@ -1811,7 +1811,7 @@ Christmas-octave Vespers fifth-slot/later-block split, starting with Dec
 
 ### 2026-04-22 — Pattern: Christmas-octave Vespers fifth-psalm precedence (engine-bug)
 
-**Commit.** pending tranche commit
+**Commit.** `69156ac`
 
 **Ledger signal.** After the fourth-psalm routing fix, the remaining
 shared Roman Christmas-octave Vespers seam narrowed to Dec `27` in both
@@ -1853,7 +1853,7 @@ refresh, Roman divergent-hour / unadjudicated totals stay
 
 ### 2026-04-23 — Pattern: Dec 27 Roman Christmas-octave Vespers chapter / hymn boundary (cross-layer bug)
 
-**Commit.** pending tranche commit
+**Commit.** `aa03e60`
 
 **Ledger signal.** After the fifth-psalm precedence tranche, both Roman
 policies on Dec `27` `Vespers` first diverged at the later-block seam:
@@ -1992,7 +1992,7 @@ reopening-antiphon punctuation is adjudicated as a Perl surface bug.
 
 ### 2026-04-23 — Pattern: Ash Wednesday 1960 Lauds Old Testament canticle heading (engine-bug)
 
-**Commit.** pending tranche commit
+**Commit.** `91aab83`
 
 **Ledger signal.** After the Ash Wednesday Matins Psalm `44` tranche,
 `Rubrics 1960 - 1960` / `2024-02-14` / `Lauds` first diverged at the
@@ -2088,6 +2088,229 @@ from `493` to `460`. The next live frontier is now `Reduced - 1955` Mar
 `19` Lauds (`Psalmus 92 [1]` vs `Psalmus 50 [1]`) and the parallel
 `Rubrics 1960 - 1960` Ash Wednesday Lauds later-block boundary (`Rom
 13:12-13` vs `Ant. Cum jejunátis...`).
+
+### 2026-04-24 — Pattern: weekday `Psalmi Dominica` feasts use Sunday Lauds I (engine-bug + fanout)
+
+**Commit.** `69156ac`
+
+**Ledger signal.** The next shared Roman frontier was St Joseph on Mar
+`19` Lauds under both `Reduced - 1955` and `Rubrics 1960 - 1960`: Perl
+opened the psalmody with `Psalmus 92 [1]`, while the compositor opened
+with penitential `Psalmus 50 [1]`.
+
+**Root cause.** This was a Phase 2 psalmody-selection bug. The St Joseph
+source rule says `Psalmi Dominica`, which the file-format contract defines
+as the Sunday psalm scheme. The engine already used Sunday weekday `Day0`
+selection for the row, but `laudsReferences()` still treated the Lenten
+date as penitential and chose `Day0 Laudes2`. Explicit `Psalmi Dominica`
+on a weekday feast should force the Sunday Lauds I table; ordinary
+Lenten Sundays continue to use their penitential source where appropriate.
+
+**Resolution.** Fixed in Phase 2. `selectPsalmodyRoman1960()` now carries
+whether the Sunday scheme came from the explicit `Psalmi Dominica` rule,
+and Lauds suppresses the penitential-table override only for that explicit
+rule. Added a shared Roman integration regression in
+`packages/rubrical-engine/test/integration/temporal-sunday-minor-antiphons.test.ts`
+for `2024-03-19` Lauds. The targeted compare now advances both Roman
+rows to the already-adjudicated Psalm 99 half-verse family; a full-ledger
+fanout added those two row keys to `adjudications.json`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/03-19.txt:9-13`
+- `docs/file-format-specification.md:634`
+
+**Impact.** The wrong `Psalmus 50 [1]` frontier is closed for both Roman
+policies. Unadjudicated counts drop to `251` for `Reduced - 1955` and
+`186` for `Rubrics 1960 - 1960` after the exposed Psalm 99 rows fan out.
+The next live frontiers are now `Reduced - 1955` Mar `28` Lauds Triduum
+conclusion (`Christus factus est...` vs `V. Dómine, exáudi...`) and
+`Rubrics 1960 - 1960` Ash Wednesday Lauds later-block boundary (`Rom
+13:12-13` vs `Ant. Cum jejunátis...`).
+
+### 2026-04-24 — Pattern: simplified Roman Triduum Lauds uses the self-contained proper oration (mixed fix)
+
+**Commit.** `75262f0`
+
+**Ledger signal.** The next Reduced 1955 frontier was Maundy Thursday
+Lauds on Mar `28`: Perl expected the Triduum prayer to begin with
+`Christus factus est pro nobis obédiens usque ad mortem.`, while the
+compositor inserted the ordinary major-hour `V. Dómine, exáudi... /
+Orémus` wrapper before the collect. The same source-backed issue was
+present in the parallel Rubrics 1960 Maundy Thursday Lauds row.
+
+**Root cause.** This was a mixed Phase 2/Phase 3 seam. The Triduum source
+rule explicitly says `Omit ... Conclusion`, but the hour-rule classifier
+did not map `Conclusion` into an omittable slot, so Lauds retained the
+ordinary conclusion shape. Then Phase 3 treated the proper `[Oratio]` as
+an ordinary collect and wrapped it with `Dómine, exáudi... / Orémus`,
+even though `Tempora/Quad6-4:[Oratio]` is already a self-contained
+Triduum prayer block for the simplified Roman forms.
+
+**Resolution.** Fixed in both owning layers. Phase 2 now classifies and
+applies `Omit Conclusion` (and the paired `Antiphona finalis` token) as
+typed hour omissions. Phase 3 now skips the ordinary major-hour collect
+wrapper when the conclusion slot is explicitly empty, restores the
+source-carried `Christus factus... / Pater noster... / aliquantulum
+altius` Triduum prelude from the conditional source block for 1955/1960,
+and filters the Cistercian-only dismissal rubric that Perl does not emit
+for the simplified Roman rows. A focused upstream regression now locks
+Maundy Thursday Lauds for both `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:7-15`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:24-41`
+- `upstream/web/www/horas/Latin/Tempora/Quad6-4r.txt:1`
+
+**Impact.** The Mar `28` Lauds row now compares cleanly under both
+simplified Roman policies. Unadjudicated counts drop to `249` for
+`Reduced - 1955` and `184` for `Rubrics 1960 - 1960`. The next live
+frontiers are `Reduced - 1955` Jan `28` Terce one-alone later-block
+collect (`_` vs `Preces pópuli tui...`) and `Rubrics 1960 - 1960` Ash
+Wednesday Lauds later-block boundary (`Rom 13:12-13` vs
+`Ant. Cum jejunátis...`).
+
+### 2026-04-24 — Pattern: 1960 Ash Wednesday Lauds ferial later block, preces, and collect (mixed fix)
+
+**Commit.** `dc80bbd`
+
+**Ledger signal.** The next Rubrics 1960 frontier was Ash Wednesday
+Lauds on Feb `14`. After the canticle-heading fix, the row first
+diverged when Perl continued from psalmody into the ferial later block
+beginning `Rom 13:12-13`, while the compositor jumped to the Benedictus
+antiphon. Once that boundary was corrected, the same row exposed the
+ferial preces and the Ash Wednesday proper collect selector.
+
+**Root cause.** This was a mixed Phase 2/Phase 3 seam. Phase 2 had
+correctly identified Ash Wednesday as a privileged temporal feria, but
+major-hour slot resolution did not use the 1960 ferial
+`Psalterium/Special/Major Special` fallback for weekday temporal Lauds,
+so `chapter`, `hymn`, and `versicle` went empty. The rule stage also
+missed the source's explicit `Preces Feriales` rule for the
+`septuagesima` season key. Finally, Lauds collect lookup only tried the
+generic `[Oratio]` header, while Ash Wednesday's proper Lauds collect
+lives at `[Oratio 2]`.
+
+**Resolution.** Fixed in both owning layers. Phase 2 now falls back to
+`Major Special` for 1960 weekday temporal Lauds/Vespers later-block
+slots and carries explicit hour-scoped `Preces Feriales` rules into the
+structured Hour. Lauds now prefers `Oratio 2` before `Oratio`, while
+Vespers prefers `Oratio 3` before `Oratio`. Phase 3 now composes ferial
+Lauds preces as the litany opening plus `Preces feriales Laudes`, strips
+the Tridentine-only penitential-psalm block for simplified Roman
+policies, and emits the source-backed `Dómine, exáudi...` / second
+`Dómine, exaudi` rubric before `Orémus` when ferial preces precede a
+major-hour collect.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:258-260`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:395-423`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:523-526`
+- `upstream/web/www/horas/Latin/Tempora/Quadp3-3.txt:10-12`
+- `upstream/web/www/horas/Latin/Tempora/Quadp3-3.txt:42-47`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Preces.txt:188-238`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90`
+
+**Impact.** The targeted compare for `Rubrics 1960 - 1960` Ash
+Wednesday Lauds is now clean. The full ledger refresh drops Rubrics 1960
+divergent hours from `455/488` to `454/488` and unadjudicated rows from
+`184` to `183`, with average matching prefix at `46.2`. The next live
+frontiers are `Reduced - 1955` Jan `28` Terce/Sext/None one-alone
+later-block collect (`_` vs `Preces pópuli tui...`) and the newly
+exposed `Rubrics 1960 - 1960` Ash Wednesday minor-hour psalmody boundary.
+
+### 2026-04-24 — Pattern: Reduced 1955 Sunday minor-hour later blocks use Minor Special (mixed fix + fanout)
+
+**Commit.** `7ca4874`
+
+**Ledger signal.** The next Reduced 1955 frontier was Jan `28`
+Terce/Sext/None. Before the fix, those rows matched through psalmody and
+the proper chapter, then jumped directly to the temporal collect
+(`Preces pópuli tui...`) where Perl still had the Sunday short
+responsory / versicle stream.
+
+**Root cause.** This was a mixed seam. Phase 2 already had a 1960-only
+fallback for Sunday minor-hour later blocks whose text does not live in
+`Ordinarium/Minor#Capitulum Responsorium Versus`; Reduced 1955 needed
+the same `Psalterium/Special/Minor Special` Sunday fallback. Phase 3 also
+only restored the `Dómine, exáudi... / Orémus` collect wrapper for the
+Easter-Octave one-alone shape, so ordinary Terce/Sext/None collects were
+emitted as bare collect bodies with no minor-hour conclusion block.
+
+**Resolution.** Fixed in both owning layers. Phase 2 now resolves
+Reduced 1955 Sunday Terce/Sext/None responsory and versicle slots from
+the same `Minor Special` sections used by 1960. Phase 3 now wraps
+simplified Roman Terce/Sext/None collects with `Dómine, exáudi... /
+Orémus` and emits the ordinary minor-hour conclusion block. The refreshed
+compare then moved Jan `28` Terce/Sext/None onto the already
+source-backed separator disagreement (`_` vs `R.br.`), so new
+`perl-bug` sidecar entries plus fanout classify the matching Reduced
+1955 rows rather than adding separator lines absent from the source.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80`
+- `upstream/web/www/horas/Ordinarium/Minor.txt:21-34`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:306-307`
+
+**Impact.** Reduced 1955 divergent-hour totals remain `458/488`, but
+the unadjudicated count drops from `249` to `222` after the three
+representative Jan `28` rows and fanout add `27` source-backed
+classifications. Overall Phase 3 unadjudicated rows drop from `453` to
+`426`. The next live frontier is now the Reduced 1955 Feb `11` Matins /
+minor-hour doxology family and the Rubrics 1960 Ash Wednesday minor-hour
+psalmody boundary.
+
+### 2026-04-24 — Pattern: Reduced 1955 commemorated Lourdes doxology is not carried into Sunday hymns (perl-bug)
+
+**Commit.** `029a6fd`
+
+**Ledger signal.** The next Reduced 1955 frontier was Feb `11`
+Quinquagesima Sunday. Matins, Prime, Terce, Sext, and None all first
+diverged on the final hymn stanza: Perl substituted the Lourdes /
+Nativity doxology `Jesu, tibi sit glória,` while the compositor kept the
+ordinary Sunday / minor-hour closes (`Præsta, Pater piíssime,` or `Deo
+Patri sit glória,`).
+
+**Root cause.** This is a legacy render-surface drift, not a remaining
+Phase 2 or Phase 3 selection bug. `Sancti/02-11` does carry
+`Doxology=Nat`, but under Reduced 1955 the day's winning office is
+Quinquagesima Sunday and Lourdes is only an occurrence-impeded
+commemoration. The 1955 changes explicitly say commemorated feasts no
+longer have a special hymn doxology in the Office except the named
+January / Ascensiontide exception days, and Feb `11` is not in that
+exception set.
+
+**Resolution.** Class `perl-bug`. No code change is needed. Focused
+regressions now lock the source-backed boundary: Phase 2 does not attach
+a `doxology-variant` slot to the 1955 Feb `11` fallback minor-hour hymns,
+and Phase 3 renders the ordinary Matins / minor-hour hymn endings rather
+than importing the commemorated Lourdes `Nat` doxology.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:116-123`
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:129-137`
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:141-147`
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:150-158`
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:219-222`
+- `upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:165-174`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:102-111`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:657-707`
+
+**Impact.** Reduced 1955 divergent-hour totals remain `458/488`, but
+the unadjudicated count drops from `222` to `217` after classifying the
+five Feb `11` Matins / minor-hour rows. Overall Phase 3 unadjudicated
+rows drop from `426` to `421`. The next live frontier is the Rubrics
+1960 Ash Wednesday Prime antiphon / psalmody boundary and the remaining
+Reduced 1955 Ash Wednesday minor-hour psalmody rows.
 
 ### Open pattern backlog
 

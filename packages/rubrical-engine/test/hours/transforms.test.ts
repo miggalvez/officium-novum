@@ -101,6 +101,32 @@ describe('deriveSeasonalDirectives1960', () => {
     expect(directives.has('omit-suffragium')).toBe(true);
   });
 
+  it('honors explicit Preces Feriales rules outside the ordinary seasonal test', () => {
+    const rules = {
+      ...celebrationRules(),
+      hourScopedDirectives: [
+        {
+          directive: {
+            kind: 'action',
+            keyword: 'Preces Feriales',
+            args: [],
+            raw: 'Preces Feriales'
+          },
+          hours: ['lauds']
+        }
+      ]
+    } satisfies CelebrationRuleSet;
+
+    const directives = deriveSeasonalDirectives1960({
+      hour: 'lauds',
+      celebrationRules: rules,
+      hourRules: hourRules('lauds'),
+      temporal: temporal('Quadp3-3', 'septuagesima', 3)
+    });
+
+    expect(directives.has('preces-feriales')).toBe(true);
+  });
+
   it('surfaces dirge-vespers when overlay.dirgeAtVespers is present', () => {
     const directives = deriveSeasonalDirectives1960({
       hour: 'vespers',

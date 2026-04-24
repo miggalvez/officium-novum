@@ -76,6 +76,46 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'keeps 1955 Sunday minor-hour later blocks on the source-backed Minor Special responsories',
+    async () => {
+      const engines = await loadEngines(['Reduced - 1955']);
+      const engine = engines.get('Reduced - 1955');
+      expect(engine).toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      const cases = [
+        {
+          hour: 'terce',
+          chapter: 'horas/Latin/Tempora/Quadp1-0:Capitulum Laudes',
+          responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Dominica Tertia',
+          versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Dominica Tertia'
+        },
+        {
+          hour: 'sext',
+          chapter: 'horas/Latin/Tempora/Quadp1-0:Capitulum Sexta',
+          responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Dominica Sexta',
+          versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Dominica Sexta'
+        },
+        {
+          hour: 'none',
+          chapter: 'horas/Latin/Tempora/Quadp1-0:Capitulum Nona',
+          responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Dominica Nona',
+          versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Dominica Nona'
+        }
+      ] as const;
+
+      for (const entry of cases) {
+        expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'chapter'), entry.chapter);
+        expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'responsory'), entry.responsory);
+        expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'versicle'), entry.versicle);
+      }
+    },
+    240_000
+  );
+
+  it(
     'keeps festal Sunday Prime on Prima Festis when Psalmi Dominica combines with proper minor-hour antiphons',
     async () => {
       const engines = await loadEngines([
@@ -101,6 +141,35 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
             '118(17-32)'
           ]);
         }
+      }
+    },
+    240_000
+  );
+
+  it(
+    'keeps weekday feasts with Psalmi Dominica on Sunday Lauds I instead of penitential Lauds II',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        const lauds = psalmodyAt(engine, '2024-03-19', 'lauds');
+        expectMajorHour(lauds, 'horas/Latin/Sancti/03-19:Ant Laudes');
+        expect(lauds.map((entry) => `${entry.psalmRef.section}:${entry.psalmRef.selector}`)).toEqual([
+          'Day0 Laudes1:1',
+          'Day0 Laudes1:2',
+          'Day0 Laudes1:3',
+          'Day0 Laudes1:4',
+          'Day0 Laudes1:5'
+        ]);
       }
     },
     240_000

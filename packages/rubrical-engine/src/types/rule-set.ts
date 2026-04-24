@@ -118,7 +118,9 @@ export type OmittableSlot =
   | 'invitatorium'
   | 'tedeum'
   | 'gloria-patri'
-  | 'incipit';
+  | 'incipit'
+  | 'conclusion'
+  | 'antiphona-finalis';
 
 export type AntiphonScheme = 'default' | 'proper-minor-hours';
 export type PsalterScheme = 'ferial' | 'dominica' | 'festal' | 'proper';

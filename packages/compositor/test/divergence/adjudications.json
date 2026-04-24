@@ -6261,6 +6261,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-01-28/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-28",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-01-28/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-01-28",
@@ -6272,6 +6284,30 @@
     "notes": "Representative entry for the Roman Quad-Sunday Prime SQP family (`1955`) where Perl omits the source-backed first psalm from `Prima Dominica SQP`.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-01-28/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-28",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-01-28/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-01-28",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-01-28/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6308,6 +6344,66 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-02-11/Matins/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-11",
+    "hour": "Matins",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Matins hymn ending from `Psalterium/Special/Matutinum Special.txt:165-174`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-02-11/None/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-11",
+    "hour": "None",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary None hymn ending from `Psalterium/Special/Minor Special.txt:696-707`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-02-11/Prime/36739df3": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-11",
+    "hour": "Prime",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Deo Patri sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Prime hymn ending from `Psalterium/Special/Prima Special.txt:102-111`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-02-11/Sext/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-11",
+    "hour": "Sext",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Sext hymn ending from `Psalterium/Special/Minor Special.txt:674-685`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
+  },
+  "Reduced - 1955/2024-02-11/Terce/b241f834": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-11",
+    "hour": "Terce",
+    "firstExpected": "Jesu, tibi sit glória,",
+    "firstActual": "Præsta, Pater piíssime,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/1955.txt:219-222 and upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15 — the Lourdes office carries `Doxology=Nat`, but under Reduced 1955 it is only commemorated on Quinquagesima Sunday; commemorated feasts no longer contribute a special hymn doxology outside the named Title II exception days. The compositor therefore preserves the ordinary Terce hymn ending from `Psalterium/Special/Minor Special.txt:657-668`, while Perl imports the commemorated doxology.",
+    "notes": "Representative entry for the Reduced 1955 Feb 11 commemorated-Lourdes doxology family.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "029a6fd"
   },
   "Reduced - 1955/2024-02-11/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6453,6 +6549,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-02-25/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-25",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-02-25/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-02-25",
@@ -6464,6 +6572,30 @@
     "notes": "Representative entry for the Roman Quad-Sunday Prime SQP family (`1955`) where Perl omits the source-backed first psalm from `Prima Dominica SQP`.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-02-25/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-25",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-02-25/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-25",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-02-25/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6501,6 +6633,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-03-03/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-03",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-03-03/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-03",
@@ -6512,6 +6656,30 @@
     "notes": "Representative entry for the Roman Quad-Sunday Prime SQP family (`1955`) where Perl omits the source-backed first psalm from `Prima Dominica SQP`.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-03-03/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-03",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-03-03/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-03",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-03-03/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6549,6 +6717,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-03-10/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-10",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-03-10/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-10",
@@ -6560,6 +6740,30 @@
     "notes": "Representative entry for the Roman Quad-Sunday Prime SQP family (`1955`) where Perl omits the source-backed first psalm from `Prima Dominica SQP`.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-03-10/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-10",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-03-10/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-10",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-03-10/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6597,6 +6801,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-03-17/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-17",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-03-17/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-17",
@@ -6608,6 +6824,30 @@
     "notes": "Representative entry for the Roman Quad-Sunday Prime SQP family (`1955`) where Perl omits the source-backed first psalm from `Prima Dominica SQP`.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-03-17/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-17",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-03-17/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-17",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-03-17/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -6632,6 +6872,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-03-19/Lauds/2af868c1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-19",
+    "hour": "Lauds",
+    "firstExpected": "99:3 Pópulus ejus, et oves páscuæ ejus: * introíte portas ejus in confessióne, átria ejus in hymnis: confitémini illi.",
+    "firstActual": "99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
+    "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "379dd72"
   },
   "Reduced - 1955/2024-03-19/Matins/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -6669,6 +6921,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-03-24/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-24",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-03-24/Prime/2e28d92b": {
     "policy": "Reduced - 1955",
     "date": "2024-03-24",
@@ -6680,6 +6944,30 @@
     "notes": "Representative entry for the Roman Quad-Sunday Prime SQP family (`1955`) where Perl omits the source-backed first psalm from `Prima Dominica SQP`.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-03-24/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-24",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-03-24/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-24",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-03-24/Vespers/557f2156": {
     "policy": "Reduced - 1955",
@@ -8085,6 +8373,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-12-01/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-01",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-12-01/Prime/5531f29c": {
     "policy": "Reduced - 1955",
     "date": "2024-12-01",
@@ -8096,6 +8396,30 @@
     "notes": "Representative entry for the Roman Jan 14 Sunday Prime psalm-table family where the source-backed `Tridentinum` row begins with Psalm 53 before Psalm 117.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-01/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-01",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-12-01/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-01",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-12-01/Vespers/1bcd4136": {
     "policy": "Reduced - 1955",
@@ -8181,6 +8505,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-12-15/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-15",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-12-15/Prime/5531f29c": {
     "policy": "Reduced - 1955",
     "date": "2024-12-15",
@@ -8192,6 +8528,30 @@
     "notes": "Representative entry for the Roman Jan 14 Sunday Prime psalm-table family where the source-backed `Tridentinum` row begins with Psalm 53 before Psalm 117.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-15/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-15",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-12-15/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-15",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-12-15/Vespers/5d3345ac": {
     "policy": "Reduced - 1955",
@@ -8229,6 +8589,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-12-22/None/4a1aadd8": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-22",
+    "hour": "None",
+    "firstExpected": "_",
+    "firstActual": "R.br. Clamávi in toto corde meo: * Exáudi me, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:66-80 — the Sunday None later block consists of the chapter, the short responsory beginning `R.br. Clamávi in toto corde meo...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
   "Reduced - 1955/2024-12-22/Prime/5531f29c": {
     "policy": "Reduced - 1955",
     "date": "2024-12-22",
@@ -8240,6 +8612,30 @@
     "notes": "Representative entry for the Roman Jan 14 Sunday Prime psalm-table family where the source-backed `Tridentinum` row begins with Psalm 53 before Psalm 117.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-22/Sext/bc17de3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-22",
+    "hour": "Sext",
+    "firstExpected": "_",
+    "firstActual": "R.br. In ætérnum, Dómine, * Pérmanet verbum tuum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:36-50 — the Sunday Sext later block consists of the chapter, the short responsory beginning `R.br. In ætérnum, Dómine...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
+  },
+  "Reduced - 1955/2024-12-22/Terce/89c6190b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-22",
+    "hour": "Terce",
+    "firstExpected": "_",
+    "firstActual": "R.br. Inclína cor meum, Deus, * In testimónia tua.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20 — the Sunday Terce later block consists of the chapter, the short responsory beginning `R.br. Inclína cor meum, Deus...`, and the versicle, with no underscore separator lines in the source. The compositor now emits that source-backed sequence; the Perl comparison surface inserts `_` separator lines into the rendered stream.",
+    "notes": "Representative entry for the Reduced 1955 Sunday minor-hour later-block separator family exposed after restoring the source-backed Minor Special fallback.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "7ca4874"
   },
   "Reduced - 1955/2024-12-22/Vespers/88310db2": {
     "policy": "Reduced - 1955",
@@ -9536,6 +9932,18 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-03-19/Lauds/2af868c1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-19",
+    "hour": "Lauds",
+    "firstExpected": "99:3 Pópulus ejus, et oves páscuæ ejus: * introíte portas ejus in confessióne, átria ejus in hymnis: confitémini illi.",
+    "firstActual": "99:3 Pópulus ejus, et oves páscuæ ejus: ‡ introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm99.txt:3-5 — the psalm corpus explicitly encodes 99:3b as `Pópulus ejus, et oves páscuæ ejus: ‡ (4a) introíte portas ejus in confessióne, * átria ejus in hymnis: confitémini illi.` The compositor preserves that half-verse structure while removing the numeric carry marker; the Perl comparison surface flattens the same line to a single `*` split.",
+    "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "379dd72"
   },
   "Rubrics 1960 - 1960/2024-03-19/Matins/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",

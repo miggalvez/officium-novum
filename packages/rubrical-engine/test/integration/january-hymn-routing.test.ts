@@ -92,6 +92,9 @@ describeIfUpstream('January hymn routing regressions', () => {
 
       // Non-January controls: ordinary dates should not sprout a doxology
       // slot just because the hymn fell back to Prima/Minor Special.
+      for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+        expectNoDoxologyVariant(reduced, '2024-02-11', hour);
+      }
       expectNoDoxologyVariant(reduced, '2024-02-18', 'prime');
       expectNoDoxologyVariant(roman1960, '2024-02-18', 'prime');
     },

@@ -480,18 +480,23 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         });
         continue;
       }
+      const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
+        args,
+        ref,
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceContent)
+      );
       const expanded = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? withPsalmGloriaPatri(sourceContent)
-          : sourceContent,
+          ? withPsalmGloriaPatri(sourceForExpansion)
+          : sourceForExpansion,
         {
-        index: args.corpus,
-        language: lang,
-        langfb: args.options.langfb,
-        season: args.context.season,
-        seen: new Set(),
-        maxDepth: MAX_DEFERRED_DEPTH,
-        ...(args.onWarning ? { onWarning: args.onWarning } : {})
+          index: args.corpus,
+          language: lang,
+          langfb: args.options.langfb,
+          season: args.context.season,
+          seen: new Set(),
+          maxDepth: MAX_DEFERRED_DEPTH,
+          ...(args.onWarning ? { onWarning: args.onWarning } : {})
         }
       );
       const flattened = flattenConditionals(expanded, args.context);
@@ -512,6 +517,11 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         args.slot === 'hymn'
           ? prependMajorHourHymnWrapper(args, withHymnDoxology, transformed)
           : withHymnDoxology;
+      const withTriduumOrationFilter = stripSimplifiedTriduumDismissal(
+        args,
+        ref,
+        withMajorHourHymnWrapper
+      );
       // Synthesise the `Ant.` marker the Perl renderer adds at presentation
       // time. Scoped per-ref: whole-antiphon slots (invitatory, canticle
       // antiphons, commemoration antiphons) mark every ref; psalmody marks
@@ -521,13 +531,13 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
           ? normalizeRepeatedAntiphonContent(withMajorHourHymnWrapper)
           : openingAntiphon
             ? normalizeOpeningPsalmodyAntiphonContent(
-                withMajorHourHymnWrapper,
+                withTriduumOrationFilter,
                 args.hour,
                 args.context.version,
                 ref
               )
-            : withMajorHourHymnWrapper
-        : withMajorHourHymnWrapper;
+            : withTriduumOrationFilter
+        : withTriduumOrationFilter;
       // Phase 3 §3h — emit a `Psalmus N [index]` heading before each psalm
       // of the psalmody slot (and only for the psalmody slot — Matins
       // psalmody runs through its own composer and gets its headings from
@@ -627,6 +637,121 @@ function taggedReferencesFrom(
   }
 
   return [];
+}
+
+function prependSimplifiedTriduumOrationPrelude(
+  args: ComposeSlotArgs,
+  ref: TextReference,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (!isSimplifiedTriduumOration(args, ref)) {
+    return content;
+  }
+
+  const prelude = extractTriduumPrayerPrelude(content);
+  return prelude.length > 0 ? [...prelude, ...content] : content;
+}
+
+function extractTriduumPrayerPrelude(content: readonly TextContent[]): readonly TextContent[] {
+  for (const node of content) {
+    if (node.type !== 'conditional') {
+      continue;
+    }
+
+    const psalmIndex = node.content.findIndex((item) => item.type === 'psalmInclude');
+    const prelude = node.content.slice(0, psalmIndex >= 0 ? psalmIndex : node.content.length);
+    const hasVerse = prelude.some((item) => item.type === 'verseMarker');
+    const hasPater = prelude.some(
+      (item) => item.type === 'formulaRef' && item.name === 'Pater noster'
+    );
+    if (!hasVerse || !hasPater) {
+      continue;
+    }
+
+    let end = prelude.length;
+    while (prelude[end - 1]?.type === 'separator') {
+      end--;
+    }
+    return prelude.slice(0, end);
+  }
+
+  return [];
+}
+
+function stripSimplifiedTriduumDismissal(
+  args: ComposeSlotArgs,
+  ref: TextReference,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (!isSimplifiedTriduumOration(args, ref)) {
+    return content;
+  }
+
+  return content.filter(
+    (node) =>
+      !(
+        node.type === 'rubric' &&
+        node.value.includes('Et dato signo a Superiore omnes surgunt et discedunt.')
+      )
+  );
+}
+
+function stripTridentineFerialPrecesPsalmBlock(
+  args: ComposeSlotArgs,
+  ref: TextReference,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (
+    args.slot !== 'preces' ||
+    ref.path !== 'horas/Latin/Psalterium/Special/Preces' ||
+    !ref.section.startsWith('Preces feriales') ||
+    args.context.version.handle.includes('Trident')
+  ) {
+    return content;
+  }
+
+  const filtered: TextContent[] = [];
+  let removing = false;
+  let sawPsalm = false;
+  for (const node of content) {
+    if (!removing && isDomineExaudiNode(node)) {
+      removing = true;
+      continue;
+    }
+
+    if (removing) {
+      if (node.type === 'psalmInclude') {
+        sawPsalm = true;
+      }
+      if (sawPsalm && node.type === 'separator') {
+        removing = false;
+        sawPsalm = false;
+      }
+      continue;
+    }
+
+    filtered.push(node);
+  }
+
+  return filtered;
+}
+
+function isDomineExaudiNode(node: TextContent): boolean {
+  if (node.type === 'formulaRef' && node.name === 'Domine exaudi') {
+    return true;
+  }
+  return node.type === 'conditional' && node.content.some(isDomineExaudiNode);
+}
+
+function isSimplifiedTriduumOration(args: ComposeSlotArgs, ref: TextReference): boolean {
+  return (
+    args.slot === 'oration' &&
+    (args.hour === 'lauds' || args.hour === 'vespers') &&
+    args.structure.slots.conclusion?.kind === 'empty' &&
+    Boolean(args.context.version.handle.match(/(?:1955|1960)/u)) &&
+    ref.section === 'Oratio' &&
+    /\/Tempora\/Quad6-[45]r?$/u.test(ref.path)
+  );
 }
 
 function referenceKey(ref: TextReference): string {

@@ -106,6 +106,23 @@ describe('classifyDirective', () => {
       }
     });
   }
+
+  it('maps omitted conclusion and final antiphon into typed hour omissions', () => {
+    const directive = parseOrThrow('Omit Antiphona finalis Conclusion');
+    const classified = classifyDirective(directive);
+
+    expect(classified.target).toBe('hour');
+    if (classified.target !== 'hour') {
+      return;
+    }
+
+    expect(classified.effect).toEqual({
+      kind: 'omit',
+      slots: ['conclusion', 'antiphona-finalis'],
+      hours: undefined,
+      omitCommemoration: false
+    });
+  });
 });
 
 function parseOrThrow(line: string): RuleDirective {

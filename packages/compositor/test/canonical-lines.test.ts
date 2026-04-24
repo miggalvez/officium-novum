@@ -411,6 +411,123 @@ describe('Ant. marker emission', () => {
     ]);
   });
 
+  it('detects the simplified Triduum oration prelude by structure in non-Latin sources', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/English/Tempora/Quad6-4.txt',
+      sections: [
+        {
+          header: 'Oratio',
+          startLine: 1,
+          endLine: 1,
+          content: [
+            {
+              type: 'conditional',
+              condition: {
+                expression: { type: 'match', subject: 'rubrica', predicate: 'Tridentine' }
+              },
+              content: [
+                {
+                  type: 'verseMarker',
+                  marker: 'v.',
+                  text: 'Christ became obedient for us unto death.'
+                },
+                { type: 'rubric', value: 'in secret' },
+                { type: 'separator' },
+                { type: 'formulaRef', name: 'Pater noster' },
+                { type: 'separator' },
+                { type: 'psalmInclude', psalmNumber: 50 }
+              ]
+            },
+            { type: 'text', value: 'Look down, we beseech thee, O Lord.' }
+          ]
+        }
+      ]
+    });
+    corpus.addFile({
+      path: 'horas/English/Psalterium/Common/Prayers.txt',
+      sections: [
+        {
+          header: 'Pater noster',
+          startLine: 1,
+          endLine: 1,
+          content: [
+            {
+              type: 'verseMarker',
+              marker: 'v.',
+              text: 'Our Father, who art in heaven.'
+            }
+          ]
+        }
+      ]
+    });
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        oration: {
+          kind: 'single-ref',
+          ref: { path: 'horas/English/Tempora/Quad6-4', section: 'Oratio' }
+        },
+        conclusion: { kind: 'empty' }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['English'], joinLaudsToMatins: false }
+    });
+
+    expect(lineTexts(composed, 'oration', 'English')).toEqual([
+      'Christ became obedient for us unto death.',
+      'in secret',
+      'Our Father, who art in heaven.',
+      'Look down, we beseech thee, O Lord.'
+    ]);
+  });
+
+  it('normalizes accented omitted-response rubrics before canonical line emission', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Common/Prayers.txt',
+      sections: [
+        {
+          header: 'Domine exaudi',
+          startLine: 1,
+          endLine: 1,
+          content: [{ type: 'rubric', value: 'secúnda «Dómine, exáudi»   omittitur' }]
+        }
+      ]
+    });
+
+    const hour: HourStructure = {
+      hour: 'prime',
+      slots: {
+        oration: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Psalterium/Common/Prayers', section: 'Domine exaudi' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'prime',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'oration', 'Latin')).toEqual([
+      'secunda Domine, exaudi omittitur'
+    ]);
+  });
+
   it('prefixes psalmRef-inline antiphons (Vespers/Matins style) with "Ant."', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile({

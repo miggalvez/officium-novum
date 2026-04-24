@@ -24,6 +24,52 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-24 — Reduced 1955 commemorated Lourdes doxology is carried into Quinquagesima Sunday hymns by the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Under `Reduced - 1955` on Feb `11`, the winning office is
+Quinquagesima Sunday and Lourdes is only commemorated. The compositor
+therefore keeps the ordinary Matins and minor-hour hymn endings. The
+Perl render surface nevertheless substitutes the Lourdes `Doxology=Nat`
+line `Jesu, tibi sit glória,` into Matins, Prime, Terce, Sext, and None.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:219-222`
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:116-123,129-137,141-147,150-158`
+- `upstream/web/www/horas/Latin/Sancti/02-11.txt:10-15`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:165-174`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:102-111`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:657-707`
+
+The 1955 changes say commemorated feasts no longer contribute a special
+hymn doxology in the Office, outside the named January / Ascensiontide
+exception days. Feb `11` is not one of those exceptions, so the
+commemorated Lourdes `Doxology=Nat` rule should not overwrite the
+ordinary Sunday and minor-hour hymn endings.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-11 --no-write-docs
+```
+
+Matins and the minor hours first diverge on the doxology line, with Perl
+expecting `Jesu, tibi sit glória,` and the compositor preserving the
+source-backed ordinary endings.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-11 | Matins | `b241f834` |
+| Reduced - 1955 | 2024-02-11 | Prime | `36739df3` |
+| Reduced - 1955 | 2024-02-11 | Terce | `b241f834` |
+| Reduced - 1955 | 2024-02-11 | Sext | `b241f834` |
+| Reduced - 1955 | 2024-02-11 | None | `b241f834` |
+
 ### 2026-04-24 — Reduced 1955 major-hour opening antiphons are truncated to incipits by the Perl render surface
 
 **Classification.** `perl-bug`
@@ -615,16 +661,16 @@ override `Psalmus 116 [5]`.
 | Reduced - 1955 | 2024-01-13 | Vespers | `39846534` |
 | Rubrics 1960 - 1960 | 2024-01-13 | Vespers | `39846534` |
 
-### 2026-04-19 — Rubrics 1960 Jan 14 minor hours gain underscore separators around the short responsory in the Perl render surface
+### 2026-04-19 — Roman Sunday minor hours gain underscore separators around the short responsory in the Perl render surface
 
 **Classification.** `perl-bug`
 
-**Summary.** After the Jan `14` `Rubrics 1960` minor-hour fallback fix,
-`Terce`, `Sext`, and `None` now correctly emit the Sunday chapter,
-short responsory, versicle, and oration. The remaining first divergence
-is a literal `_` line that the Perl comparison surface inserts before
-the short responsory. The source-backed compositor output begins
-directly with the `R.br.` line.
+**Summary.** After the Roman Sunday minor-hour fallback fixes, `Terce`,
+`Sext`, and `None` now correctly emit the Sunday chapter, short
+responsory, versicle, and oration from the source-backed later block.
+The remaining first divergence is a literal `_` line that the Perl
+comparison surface inserts before the short responsory. The source-backed
+compositor output begins directly with the `R.br.` line.
 
 **Primary source.**
 `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:1-20,36-50,66-80`
@@ -640,6 +686,7 @@ Run:
 pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-14 --hour Tertia
 pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-14 --hour Sexta
 pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-01-14 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-01-28 --hour Tertia
 ```
 
 Each row now first diverges on `expected="_"` versus the compositor's
@@ -652,6 +699,9 @@ source-backed `R.br.` opening line.
 | Rubrics 1960 - 1960 | 2024-01-14 | Terce | `89c6190b` |
 | Rubrics 1960 - 1960 | 2024-01-14 | Sext | `bc17de3d` |
 | Rubrics 1960 - 1960 | 2024-01-14 | None | `4a1aadd8` |
+| Reduced - 1955 | 2024-01-28 | Terce | `89c6190b` |
+| Reduced - 1955 | 2024-01-28 | Sext | `bc17de3d` |
+| Reduced - 1955 | 2024-01-28 | None | `4a1aadd8` |
 
 ### 2026-04-19 — Reduced 1955 Jan 6/7 minor hours keep the office's proper lesson and short responsories while Perl leaves the later block absent
 

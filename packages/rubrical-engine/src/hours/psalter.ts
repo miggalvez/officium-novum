@@ -53,11 +53,17 @@ export function selectPsalmodyRoman1960(
   } else {
     // §16.2 step 4: `psalterScheme === 'dominica'` (e.g. `Psalmi Dominica` in a
     // feast's [Rule]) forces the Sunday distribution even on a weekday.
+    const useDominicaRule = hourRules.psalterScheme === 'dominica';
     const useSundayPsalmody =
-      hourRules.psalterScheme === 'dominica' || isSundayForMajorHour(hour, temporal);
+      useDominicaRule || isSundayForMajorHour(hour, temporal);
 
     if (hour === 'lauds') {
-      assignments = laudsReferences(temporal, celebrationRules, useSundayPsalmody);
+      assignments = laudsReferences(
+        temporal,
+        celebrationRules,
+        useSundayPsalmody,
+        useDominicaRule
+      );
     } else if (hour === 'vespers') {
       assignments = vespersReferences(temporal, useSundayPsalmody);
     } else {
@@ -75,11 +81,13 @@ function isSundayForMajorHour(hour: HourName, temporal: TemporalContext): boolea
 function laudsReferences(
   temporal: TemporalContext,
   celebrationRules: CelebrationRuleSet,
-  useSundayPsalmody: boolean
+  useSundayPsalmody: boolean,
+  useDominicaRule: boolean
 ): readonly PsalmAssignment[] {
   // RI §§170-172: 1960 restores Lauds I (festive) for Sundays and feasts;
   // Lauds II (penitential) remains for penitential ferias.
-  const usePenitential = isPenitentialDay(temporal) && !celebrationRules.festumDomini;
+  const usePenitential =
+    isPenitentialDay(temporal) && !celebrationRules.festumDomini && !useDominicaRule;
   const scheme = usePenitential ? 'Laudes2' : 'Laudes1';
   const weekday = useSundayPsalmody ? 0 : temporal.dayOfWeek;
   const section = `Day${weekday} ${scheme}`;
