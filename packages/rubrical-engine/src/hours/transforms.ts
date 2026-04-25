@@ -49,6 +49,12 @@ export function deriveSeasonalDirectives1960(
     directives.add('omit-gloria-patri');
     directives.add('short-chapter-only');
   }
+  if (
+    temporal.season === 'passiontide' &&
+    (hour === 'prime' || hour === 'terce' || hour === 'sext' || hour === 'none')
+  ) {
+    directives.add('omit-responsory-gloria');
+  }
 
   // RI §260: preces are retained only in Offices of the Season, and then
   // only at Lauds/Vespers on the appointed weekdays and Ember days.

@@ -32,6 +32,7 @@ const EMBER_DAY_KEYS = new Set([
 ]);
 const LAUDS_VESPERS_HOURS = ['lauds', 'vespers'] as const;
 const MATINS_LAUDS_VESPERS_HOURS = ['matins', 'lauds', 'vespers'] as const;
+const MINOR_HOURS = new Set(['prime', 'terce', 'sext', 'none']);
 
 export function compareRomanCandidates(
   a: Candidate,
@@ -100,6 +101,9 @@ export function deriveSeasonalDirectivesRomanPre1960(
   if (TRIDUUM_KEYS.has(temporal.dayName)) {
     directives.add('omit-gloria-patri');
     directives.add('short-chapter-only');
+  }
+  if (temporal.season === 'passiontide' && MINOR_HOURS.has(hour)) {
+    directives.add('omit-responsory-gloria');
   }
 
   const ferialDay =

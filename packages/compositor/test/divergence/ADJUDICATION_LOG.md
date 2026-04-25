@@ -3114,6 +3114,35 @@ the corresponding `Psalterium/Special/Minor Special` `Quad5` sections.
 responsory family to the next, narrower Passiontide `Gloria omittitur`
 responsory surface.
 
+### 2026-04-25 — Pattern: Passiontide minor-hour responsories omit `Gloria Patri` (engine-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** After the Passiontide later-block routing fix, Roman
+Passiontide minor-hour rows reached the short-responsory `&Gloria`
+boundary. Perl emitted `Gloria omittitur`; the compositor expanded the
+macro to `V. Glória Patri, et Fílio, * et Spirítui Sancto.`.
+
+**Root cause.** Phase 2 had only a broad `omit-gloria-patri` directive
+for psalm/canticle doxologies in the Triduum. It did not expose the
+narrow Passiontide minor-hour responsory omission seam, so Phase 3 had
+no typed instruction to replace responsory `&Gloria` with the omitted
+Gloria rubric.
+
+**Resolution.** Class `engine-bug`. Phase 2 now emits
+`omit-responsory-gloria` for Passiontide Prime/Terce/Sext/None. Phase 3
+applies that directive only to the responsory slot, replacing the
+resolved `Gloria Patri` line with `Gloria omittitur`, dropping any
+`Sicut erat` continuation, and preserving the final repeated responsory.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Translate.txt:22-23`
+and the Passiontide responsory sources in
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-493`.
+
+**Impact.** Passion Sunday Terce reaches exact line-stream parity under
+both Reduced 1955 and Rubrics 1960; the full ledger regeneration records
+the family-level row movement.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

@@ -367,7 +367,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const bucket = perLanguage.get(lang);
       if (!bucket) continue;
       const gloriaOmittiturReplacement =
-        args.slot === 'psalmody'
+        args.slot === 'psalmody' || args.slot === 'responsory'
           ? resolveGloriaOmittiturReplacement({
               directives: args.directives,
               corpus: args.corpus,

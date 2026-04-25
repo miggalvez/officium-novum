@@ -63,6 +63,11 @@ function transformsFor(
       omitGloriaPatri(slot, content, context.gloriaOmittiturReplacement)
     );
   }
+  if (flags.has('omit-responsory-gloria')) {
+    pipeline.push((slot, content) =>
+      omitResponsoryGloria(slot, content, context.gloriaOmittiturReplacement)
+    );
+  }
 
   if (flags.has('omit-alleluia')) pipeline.push(omitAlleluia);
   if (flags.has('add-alleluia')) pipeline.push(addAlleluia);
@@ -143,6 +148,42 @@ function isGloriaPatriNode(node: TextContent): boolean {
 
 const GLORIA_PATRI_RX = /gl[óo]ria\s+patri/iu;
 const SICUT_ERAT_RX = /sicut\s+erat\s+in\s+princ/iu;
+
+function omitResponsoryGloria(
+  slot: SlotName,
+  content: readonly TextContent[],
+  replacement: readonly TextContent[] = DEFAULT_GLORIA_OMITTITUR_REPLACEMENT
+): readonly TextContent[] {
+  if (slot !== 'responsory') return content;
+
+  const out: TextContent[] = [];
+  let replaced = false;
+  for (const node of content) {
+    if (isSicutEratNode(node)) {
+      continue;
+    }
+    if (isGloriaPatriNode(node)) {
+      if (!replaced) {
+        out.push(...replacement);
+        replaced = true;
+      }
+      continue;
+    }
+    out.push(node);
+  }
+
+  return replaced ? Object.freeze(out) : content;
+}
+
+function isSicutEratNode(node: TextContent): boolean {
+  if (node.type === 'text') {
+    return SICUT_ERAT_RX.test(node.value);
+  }
+  if (node.type === 'verseMarker') {
+    return SICUT_ERAT_RX.test(node.text);
+  }
+  return false;
+}
 
 // --------------------------------------------------------------------------
 // omit-alleluia / add-alleluia / add-versicle-alleluia

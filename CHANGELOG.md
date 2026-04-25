@@ -14,6 +14,15 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Closed the Roman Passiontide minor-hour short-responsory
+  Gloria omission seam. Phase 2 now emits a typed
+  `omit-responsory-gloria` directive for Passiontide minor hours, and
+  Phase 3 replaces responsory `&Gloria` expansions with the localized
+  `Gloria omittitur` line while preserving the repeated responsory.
+  Passion Sunday Terce now reaches exact line-stream parity for both
+  Reduced 1955 and Rubrics 1960; the refreshed ledgers drop
+  unadjudicated rows to `144` for Reduced 1955 and `110` for Rubrics
+  1960.
 - **2026-04-25.** Closed the Passiontide Sunday minor-hour later-block
   seam for Reduced 1955 and Rubrics 1960. Phase 2 now routes Passion
   Sunday and Palm Sunday Terce/Sext/None through the source-backed
