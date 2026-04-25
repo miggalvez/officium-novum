@@ -8863,6 +8863,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-07-01/Matins/2b3f8937": {
+    "policy": "Reduced - 1955",
+    "date": "2024-07-01",
+    "hour": "Matins",
+    "firstExpected": "Imbre aquárum víndice,",
+    "firstActual": "Imbr[e] aquárum víndice,",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:78-80 carries the Matins hymn line as `Imbr[e] aquárum víndice,`. Perl expands the bracketed spelling to `Imbre`; the compositor preserves the corpus token. This is an orthographic rendering difference, not a source-selection disagreement.",
+    "notes": "Shared simplified Roman Precious Blood Matins hymn bracketed-letter rendering family.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-07-01/None/3032e01a": {
     "policy": "Reduced - 1955",
     "date": "2024-07-01",
@@ -13666,6 +13678,18 @@
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-07-01/Matins/2b3f8937": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-07-01",
+    "hour": "Matins",
+    "firstExpected": "Imbre aquárum víndice,",
+    "firstActual": "Imbr[e] aquárum víndice,",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:78-80 carries the Matins hymn line as `Imbr[e] aquárum víndice,`. Perl expands the bracketed spelling to `Imbre`; the compositor preserves the corpus token. This is an orthographic rendering difference, not a source-selection disagreement.",
+    "notes": "Shared simplified Roman Precious Blood Matins hymn bracketed-letter rendering family.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-07-01/None/3032e01a": {
     "policy": "Rubrics 1960 - 1960",

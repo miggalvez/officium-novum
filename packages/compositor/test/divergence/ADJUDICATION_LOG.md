@@ -3587,6 +3587,28 @@ row as a fanout of the already-established proper Prime lesson family.
 **Impact.** One Reduced 1955 Prime row moves from `unadjudicated` to
 `perl-bug`.
 
+### 2026-04-25 — Pattern: simplified Roman Precious Blood Matins bracketed hymn letter (rendering-difference)
+
+**Commit.** `pending`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Jul `1` Matins first
+diverged in the Precious Blood Matins hymn line: Perl rendered
+`Imbre aquárum víndice,` while the compositor preserved
+`Imbr[e] aquárum víndice,`.
+
+**Root cause.** The source hymn line carries the bracketed-letter form
+`Imbr[e]`. Perl expands that editorial spelling to `Imbre`; the
+compositor preserves the corpus token. The office and hymn selection
+are the same.
+
+**Resolution.** Class `rendering-difference`. Added sidecar
+classifications for the two simplified Roman Jul `1` Matins rows.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/07-01.txt:78-80`.
+
+**Impact.** Two simplified Roman Matins rows move from `unadjudicated`
+to `rendering-difference`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

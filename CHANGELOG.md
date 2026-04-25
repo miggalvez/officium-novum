@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Classified the simplified Roman Precious Blood Matins bracketed-letter rendering family. Reduced 1955 and Rubrics 1960 Jul `1` now cite the source hymn's `Imbr[e] aquárum víndice,` spelling as a rendering difference from Perl's expanded `Imbre` form.
 - **2026-04-25.** Fanned the proper Prime lesson adjudication onto Reduced 1955 Christmas Day. Dec `25` Prime now cites `Sancti/12-25:[Lectio Prima]` for `Heb 1:11-12` instead of leaving Perl's ordinary `1 Tim. 1:17` fallback unclassified.
 - **2026-04-25.** Classified the Reduced 1955 Christmas-octave minor-hour antiphon family. Dec `26` and Dec `27` Prime, Terce, Sext, and None now cite the proper offices' `Antiphonas horas` rules and source antiphon sets instead of leaving Perl's ordinary-psalter fallback unadjudicated.
 - **2026-04-25.** Classified the simplified Roman Marian common-antiphon family. Ten Reduced 1955 / Rubrics 1960 rows now cite the affected offices' C11 routing plus C11's `Antiphonas horas` rule and Marian antiphon references; Matins and versicle divergences stay in the live frontier as separate families.
