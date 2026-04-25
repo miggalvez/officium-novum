@@ -3198,6 +3198,34 @@ erroneous `Kýrie...` block to the shared Roman minor-hour collect-wrapper
 frontier; unadjudicated counts are unchanged because the next exposed
 seam still needs its own source decision.
 
+### 2026-04-25 — Pattern: simplified Roman minor-hour collect wrapper (perl-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** After the later-block and preces fixes, shared Roman
+Terce/Sext/None rows in Lent, Holy Week, and ordinary ferias reached the
+minor-hour collect handoff. Perl jumped directly to the collect text,
+while the compositor emitted the source-backed
+`V. Dómine, exáudi oratiónem meam.` prelude.
+
+**Root cause.** This is the same ordinary minor-hour wrapper source
+settled by the earlier Reduced 1955 Sunday later-block tranche. The
+minor-hour ordinary carries `#Oratio` followed by `#Conclusio`; the
+common prayers supply the `Domine exaudi` / response and `Oremus` lines
+around the collect. These newly exposed rows are not a fresh compositor
+bug; they are later members of the same source-backed wrapper family.
+
+**Resolution.** Class `perl-bug`. Added row-level sidecar
+classifications for the exposed Reduced 1955 and Rubrics 1960
+Terce/Sext/None rows and regenerated the ledgers.
+
+**Citation.** `upstream/web/www/horas/Ordinarium/Minor.txt:28-34` and
+`upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307`.
+
+**Impact.** Forty rows move from `unadjudicated` to `perl-bug`.
+Reduced 1955 unadjudicated rows drop from `141` to `121`; Rubrics 1960
+drops from `107` to `87`.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

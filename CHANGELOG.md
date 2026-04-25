@@ -14,6 +14,12 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Classified the shared Roman minor-hour collect-wrapper
+  frontier exposed by the later-block work. Forty Reduced 1955 / Rubrics
+  1960 Terce/Sext/None rows now cite the source-backed
+  `Dómine, exáudi... / Orémus` wrapper from `Ordinarium/Minor` and
+  `Common/Prayers`, dropping unadjudicated rows to `121` for Reduced
+  1955 and `87` for Rubrics 1960.
 - **2026-04-25.** Narrowed the Rubrics 1960 Ash Wednesday minor-hour
   preces frontier. Explicit `Preces Feriales` rules now obey the 1960
   Lauds/Vespers-only scope instead of leaking into Terce/Sext/None; the

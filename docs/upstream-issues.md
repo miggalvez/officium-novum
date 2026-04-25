@@ -24,6 +24,39 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-25 — Simplified Roman minor hours skip the source-backed collect wrapper
+
+**Classification.** `perl-bug`
+
+**Summary.** Several Reduced 1955 and Rubrics 1960 Terce/Sext/None rows
+now reach the ordinary minor-hour collect handoff. Officium Novum emits
+the source-backed `Dómine, exáudi... / Orémus` wrapper before the
+collect, while the Perl comparison surface jumps directly to the collect
+text.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Ordinarium/Minor.txt:28-34`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:306-307`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-02-14 --date 2024-03-25 --date 2024-11-05
+```
+
+Then inspect Terce/Sext/None under `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Affected stable divergence-row key groups.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
+| Rubrics 1960 - 1960 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
+
 ### 2026-04-25 — Rubrics 1960 appends unsupported trailing `‡` markers to complete psalter antiphons
 
 **Classification.** `perl-bug`
