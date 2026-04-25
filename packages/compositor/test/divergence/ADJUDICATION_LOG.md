@@ -3171,7 +3171,7 @@ Passion Sunday temporal row remains exact.
 
 ### 2026-04-25 — Pattern: 1960 minor-hour explicit ferial preces leak (engine-bug)
 
-**Commit.** `pending`
+**Commit.** `fb81347`
 
 **Ledger signal.** Rubrics 1960 Ash Wednesday Terce/Sext/None first
 diverged after the minor-hour later block: Perl reached
@@ -3200,7 +3200,7 @@ seam still needs its own source decision.
 
 ### 2026-04-25 — Pattern: simplified Roman minor-hour collect wrapper (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `ee3ec3c`
 
 **Ledger signal.** After the later-block and preces fixes, shared Roman
 Terce/Sext/None rows in Lent, Holy Week, and ordinary ferias reached the
@@ -3228,7 +3228,7 @@ drops from `107` to `87`.
 
 ### 2026-04-25 — Pattern: Lent weekday minor-hour antiphon routing (engine-bug)
 
-**Commit.** `pending`
+**Commit.** `63c5c80`
 
 **Ledger signal.** The 2024 Lent Saturday rows for the shared Roman
 policies exposed ordinary Saturday minor-hour antiphons at Prime,
@@ -3261,7 +3261,7 @@ adjudication tranche.
 
 ### 2026-04-25 — Pattern: Reduced 1955 Lent minor-hour incipit antiphons (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `f487708`
 
 **Ledger signal.** After the seasonal Lent weekday antiphon routing fix,
 Reduced 1955 Feb `24` Terce/Sext/None first diverged on the antiphon
@@ -3285,7 +3285,7 @@ later-block separator row plus broader Matins/Vespers selection seams.
 
 ### 2026-04-25 — Pattern: Reduced 1955 ferial Prime implicit Deo gratias (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `9576d3e`
 
 **Ledger signal.** Eight Reduced 1955 Prime rows across Lent, summer
 ferias, and November ferias first diverged at the same later-block
