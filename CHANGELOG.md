@@ -14,6 +14,13 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Closed the Passiontide Sunday minor-hour later-block
+  seam for Reduced 1955 and Rubrics 1960. Phase 2 now routes Passion
+  Sunday and Palm Sunday Terce/Sext/None through the source-backed
+  `Minor Special` `Quad5` chapter/responsory/versicle sections instead
+  of the generic Lent or ordinary Sunday fallback blocks. The affected
+  rows now advance to the separate Passiontide `Gloria omittitur`
+  responsory surface.
 - **2026-04-25.** Closed the shared Roman minor-hour combined-wrapper
   parity seam for Reduced 1955 and Rubrics 1960. Phase 2 now preserves
   duplicate proper sections that differ only by condition, so Lent Sunday

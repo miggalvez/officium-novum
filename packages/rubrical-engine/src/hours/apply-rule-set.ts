@@ -1275,9 +1275,16 @@ function minorHourQuadragesimaLaterBlockSection(
 ): string | undefined {
   if (
     input.celebration.source !== 'temporal' ||
-    input.celebration.kind ||
-    !/^Quad[1-5]-/u.test(input.temporal.dayName)
+    input.celebration.kind
   ) {
+    return undefined;
+  }
+
+  if (input.temporal.dayName === 'Quad5-0' || input.temporal.dayName === 'Quad6-0') {
+    return minorHourHolyWeekMonWedLaterBlockSection(input.hour, slot);
+  }
+
+  if (!/^Quad[1-4]-/u.test(input.temporal.dayName)) {
     return undefined;
   }
 

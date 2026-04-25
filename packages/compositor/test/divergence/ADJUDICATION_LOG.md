@@ -3086,6 +3086,34 @@ The affected major-hour rows now advance to existing source-backed
 families such as the post-collect `Dómine, exáudi` bridge, psalm
 half-verse rendering, or proper later-block adjudications.
 
+### 2026-04-25 — Pattern: Passiontide Sunday minor hours use `Quad5` later blocks (engine-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Passion Sunday and
+Palm Sunday Terce/Sext/None rows reached the later-block seam with
+ordinary or generic-Lent short responsories. Representative Rubrics 1960
+rows showed `R.br. Ipse liberávit me...` or `R.br. Inclína cor meum...`
+where Perl expected the Passiontide `R.br. Érue a frámea...`,
+`R.br. De ore leónis...`, and `R.br. Ne perdas cum ímpiis...` blocks.
+
+**Root cause.** Phase 2's simplified Roman minor-hour fallback handled
+ordinary Lent Sundays with the generic `Quad` sections and Holy Week
+Monday-Wednesday with `Quad5`, but it let Passion Sunday (`Quad5-0`) hit
+the generic branch and Palm Sunday (`Quad6-0`) fall back to ordinary
+Sunday sections.
+
+**Resolution.** Class `engine-bug`. Phase 2 now treats both Passion
+Sunday and Palm Sunday as `Quad5` minor-hour later-block Sundays,
+routing Terce/Sext/None chapter, responsory, and versicle slots through
+the corresponding `Psalterium/Special/Minor Special` `Quad5` sections.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:381-508`.
+
+**Impact.** The affected Sunday minor-hour rows move past the wrong
+responsory family to the next, narrower Passiontide `Gloria omittitur`
+responsory surface.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
