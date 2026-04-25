@@ -3484,6 +3484,35 @@ The Compline benediction-verb issue is already adjudicated in
 [ADR-012](../../../../docs/adr/012-compline-benediction-verb.md) and is
 tracked separately from this Phase 3 per-pattern backlog.
 
+### 2026-04-25 — Pattern: Simplified Roman Confessor non-pontiff common antiphons (perl-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 rows for Aug `19`
+and Oct `4` first diverged at Lauds, Prime, Terce, Sext, None, and
+Vespers antiphons. Perl kept the ordinary psalter antiphons while the
+compositor used the Confessor non-pontiff common antiphons.
+
+**Root cause.** The day offices explicitly point to `vide C5`, and
+`Commune/C5` declares `Antiphonas horas` with the common antiphon set.
+The compositor is following the source-backed common; the legacy Perl
+comparison surface remains on the ordinary psalter antiphons for these
+simplified Roman rows.
+
+**Resolution.** Class `perl-bug`. Added sidecar classifications for the
+24 Reduced 1955 / Rubrics 1960 non-Matins rows. The adjacent Matins
+invitatory rows remain unclassified because they follow a separate
+invitatory path.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9`;
+`upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:9-19`.
+
+**Impact.** Twenty-four simplified Roman rows move from
+`unadjudicated` to `perl-bug`. The next frontier still includes the
+separate Aug `19` / Oct `4` Matins invitatory rows and the broader
+Marian/common-antiphon families.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
