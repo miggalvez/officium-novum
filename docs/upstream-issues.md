@@ -24,6 +24,40 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-25 — Simplified Roman Marian common antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** Several simplified Roman Marian-common rows keep ordinary
+psalter antiphons in the Perl comparison surface. Officium Novum emits
+the C11 Marian common antiphons at the affected Lauds, Vespers, and
+minor-hour rows.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10`
+- `upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17`
+- `upstream/web/www/horas/Latin/Commune/C11.txt:7-10,15-24,251-256`
+- `upstream/web/www/horas/Latin/Commune/C7.txt:9-14,67`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:116-125`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --max-doc-rows 500
+```
+
+Then inspect Reduced 1955 Aug `22` / Sep `12` minor hours and Rubrics
+1960 Sep `12` Lauds / Vespers.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-08-22, 2024-09-12 | Prime, Terce, Sext, None | `725e1611`, `1a19d166`, `0868e7bf`, `4f6bebb1` |
+| Rubrics 1960 - 1960 | 2024-09-12 | Lauds, Vespers | `6d4720a5`, `a3dcd0af` |
+
 ### 2026-04-25 — Simplified Roman Confessor non-pontiff common antiphons fall back to the psalter
 
 **Classification.** `perl-bug`

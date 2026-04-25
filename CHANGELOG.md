@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Classified the simplified Roman Marian common-antiphon family. Ten Reduced 1955 / Rubrics 1960 rows now cite the affected offices' C11 routing plus C11's `Antiphonas horas` rule and Marian antiphon references; Matins and versicle divergences stay in the live frontier as separate families.
 - **2026-04-25.** Classified the simplified Roman Confessor non-pontiff common-antiphon family. Twenty-four Reduced 1955 / Rubrics 1960 Lauds, Prime, Terce, Sext, None, and Vespers rows now cite the saints' `vide C5` rules plus `Commune/C5:[Rule] Antiphonas horas`; the adjacent Matins invitatory rows remain open as a separate frontier.
 - **2026-04-25.** Classified the next proper Prime lesson comparison-surface family. Eleven Reduced 1955 / Rubrics 1960 Prime rows now cite the winning office's `[Lectio Prima]` source, while Perl's ordinary `1 Tim. 1:17` chapter remains documented as a source-backed render discrepancy.
 - **2026-04-25.** Closed the simplified Roman Advent minor-hour responsory/versicle fallback seam. Reduced 1955 and Rubrics 1960 now route Advent temporal Terce, Sext, and None later blocks through the source-backed `Minor Special` `Adv` responsories and versicles, collapsing nine divergent hours in each simplified Roman ledger.

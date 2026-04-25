@@ -3513,6 +3513,36 @@ invitatory path.
 separate Aug `19` / Oct `4` Matins invitatory rows and the broader
 Marian/common-antiphon families.
 
+### 2026-04-25 — Pattern: simplified Roman Marian common antiphons (perl-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Reduced 1955 Aug `22` and Sep `12` minor-hour rows,
+plus Rubrics 1960 Sep `12` Lauds and Vespers, first diverged on
+ordinary psalter antiphons versus Marian common antiphons such as
+`Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa`.
+
+**Root cause.** The affected offices route to the Marian common C11,
+whose rule declares `Antiphonas horas`. The common supplies the Marian
+antiphon set directly or by reference to C6/C7. The compositor follows
+those source-backed common antiphons; the legacy Perl comparison
+surface remains on ordinary psalter antiphons for these simplified
+Roman rows.
+
+**Resolution.** Class `perl-bug`. Added sidecar classifications for ten
+visible Marian-common antiphon rows. Matins and minor-hour versicle rows
+are left for separate tranches.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10`;
+`upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17`;
+`upstream/web/www/horas/Latin/Commune/C11.txt:7-10,15-24,251-256`;
+`upstream/web/www/horas/Latin/Commune/C7.txt:9-14,67`;
+`upstream/web/www/horas/Latin/Commune/C6.txt:116-125`.
+
+**Impact.** Ten simplified Roman rows move from `unadjudicated` to
+`perl-bug`, narrowing the Marian common frontier to Matins, versicles,
+and unrelated Vespers selection rows.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -9091,6 +9091,54 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-08-22/None/4f6bebb1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-22",
+    "hour": "None",
+    "firstExpected": "Ant. Invocábimus.",
+    "firstActual": "Ant. Speciósa.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-08-22/Prime/725e1611": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-22",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ.",
+    "firstActual": "Ant. Dum esset Rex.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-08-22/Sext/0868e7bf": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-22",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto.",
+    "firstActual": "Ant. Nigra sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-08-22/Terce/1a19d166": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-22",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus. ‡",
+    "firstActual": "Ant. Læva ejus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-08-22/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
     "date": "2024-08-22",
@@ -9186,6 +9234,54 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-09-12/None/4f6bebb1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-12",
+    "hour": "None",
+    "firstExpected": "Ant. Invocábimus.",
+    "firstActual": "Ant. Speciósa.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-09-12/Prime/725e1611": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-12",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ.",
+    "firstActual": "Ant. Dum esset Rex.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-09-12/Sext/0868e7bf": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-12",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto.",
+    "firstActual": "Ant. Nigra sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-09-12/Terce/1a19d166": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-12",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus. ‡",
+    "firstActual": "Ant. Læva ejus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-09-12/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
@@ -13979,6 +14075,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-09-12/Lauds/6d4720a5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-09-12",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-09-12/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-09-12",
@@ -14038,6 +14146,18 @@
     "notes": "Representative entry for the Rubrics 1960 January Terce/Sext/None fallback-hymn doxology family where the default `Præsta, Pater piíssime,` close is replaced by the Christmas or Epiphany stanza required by the winning office.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-09-12/Vespers/a3dcd0af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-09-12",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-09-15/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
