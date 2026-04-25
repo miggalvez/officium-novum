@@ -22,6 +22,157 @@ anchor.
 
 ## Entries
 
+### 2026-04-25 — Pattern: proper Prime lessons keep office `[Lectio Prima]` (perl-bug)
+
+**Commit.** `34d6dc1`
+
+**Ledger signal.** Several high feast Prime rows under Reduced 1955
+and Rubrics 1960 first diverge at the Prime chapter citation. Perl
+keeps the ordinary `1 Tim. 1:17`; the compositor emits the winning
+office's proper `[Lectio Prima]` citation such as `Act. 1:11`,
+`Judith 15:10`, `Apo 7:12`, or `Rom 1:5-6`.
+
+**Root cause.** The affected temporal and sanctoral source files
+explicitly supply `[Lectio Prima]` sections. The compositor follows the
+winning office source; the Perl comparison surface falls back to the
+ordinary Prime chapter on these rows.
+
+**Resolution.** Class `perl-bug`. Added eleven row-level adjudications
+for the visible 2024 frontier: Ascension, Pentecost, Corpus Christi,
+Assumption, St Michael, All Saints, Immaculate Conception, and
+Christmas Eve where present in the simplified Roman ledgers.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:320`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:228`
+- `upstream/web/www/horas/Latin/Tempora/Pent01-4.txt:298`
+- `upstream/web/www/horas/Latin/Sancti/08-15.txt:293`
+- `upstream/web/www/horas/Latin/Sancti/05-08.txt:320`
+- `upstream/web/www/horas/Latin/Sancti/11-01.txt:329`
+- `upstream/web/www/horas/Latin/Sancti/12-08.txt:219`
+- `upstream/web/www/horas/Latin/Sancti/12-24.txt:77`
+
+**Impact.** Eleven Prime rows move from `unadjudicated` to
+source-backed `perl-bug` without changing compositor behavior.
+
+### 2026-04-25 — Pattern: simplified Roman Advent minor-hour responsory/versicle fallbacks (engine-bug, fixed)
+
+**Commit.** `be31b80`
+
+**Ledger signal.** Advent Sundays Dec `1`, Dec `15`, and Dec `22` under
+Reduced 1955 and Rubrics 1960 first diverged at Terce, Sext, and None
+short responsories. The compositor fell through to ordinary Sunday
+minor-hour responsories (`Inclína cor meum`, `In ætérnum`, `Clamávi`),
+while the source/Perl surface expected the seasonal Advent responsories
+(`Veni ad liberándum nos`, `Osténde nobis`, `Super te, Jerúsalem`).
+After the responsory fix, the same rows exposed temporal-office
+versicles; those also belong to the seasonal `Minor Special` `Adv`
+sections.
+
+**Root cause.** `Psalterium/Special/Minor Special` contains dedicated
+`Responsory breve Adv Tertia/Sexta/Nona` and
+`Versum Adv Tertia/Sexta/Nona` sections. The simplified Roman fallback
+selector already knew about ordinary Sunday, Lent, and Passiontide
+minor-hour later blocks, but not the Advent seasonal seam.
+
+**Resolution.** Class `engine-bug`, fixed in Phase 2 hour structuring.
+`minorHourLaterBlockFallbackReference` now selects Advent seasonal
+responsories for temporal Advent minor hours, and
+`minorHourLaterBlockOverrideReference` uses the matching Advent
+versicles even when the temporal office has a generic `Versum` section.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:154-238`
+
+**Impact.** Eighteen simplified Roman divergent hours collapse:
+Reduced 1955 drops from `110` to `101` unadjudicated rows and Rubrics
+1960 drops from `80` to `71`.
+
+### 2026-04-25 — Pattern: Rubrics 1960 Marian Matins Nativity-doxology punctuation (perl-bug)
+
+**Commit.** `0a9db53`
+
+**Ledger signal.** Rubrics 1960 Matins rows on Jul `6`, Aug `22`, and
+Sep `12` first diverge inside the Marian Nativity doxology. Perl shows
+`Cum Patre, et almo Spíritu`; the compositor emits
+`Cum Patre et almo Spíritu,`.
+
+**Root cause.** The selected `[Nat]` doxology source carries
+`Cum Patre et almo Spíritu,` without a comma after `Patre` and with the
+line-ending comma after `Spíritu`.
+
+**Resolution.** Class `perl-bug`. Added the three Rubrics 1960 Matins
+row keys to `adjudications.json` with the source-backed
+`Psalterium/Doxologies` citation.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`
+
+**Impact.** Three Rubrics 1960 Matins rows move from `unadjudicated` to
+source-backed `perl-bug` without changing compositor behavior.
+
+### 2026-04-25 — Pattern: Rubrics 1960 Lent Saturday minor-hour collect wrapper fanout (perl-bug)
+
+**Commit.** `b109589`
+
+**Ledger signal.** Rubrics 1960 Feb `24` Terce, Sext, and None now
+reach the same minor-hour collect boundary already classified for the
+simplified Roman policies: Perl jumps directly to the collect text
+(`Pópulum tuum, quǽsumus...`), while the compositor first emits
+`V. Dómine, exáudi oratiónem meam.` from the ordinary minor-hour
+conclusion wrapper.
+
+**Root cause.** `Ordinarium/Minor` carries the minor-hour oration
+handoff, and `Common/Prayers` supplies the `Domine exaudi` / `Oremus`
+lines before the collect. The compositor follows that source-backed
+ordinary wrapper; the Perl comparison surface skips it on these rows.
+
+**Resolution.** Class `perl-bug`. Added the three newly exposed
+Rubrics 1960 Lent Saturday row keys to `adjudications.json` as fanout
+of the existing minor-hour collect-wrapper family.
+
+**Citation.**
+
+- `upstream/web/www/horas/Ordinarium/Minor.txt:28-34`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:306-307`
+
+**Impact.** Three Rubrics 1960 rows move from `unadjudicated` to
+source-backed `perl-bug` without changing compositor behavior.
+
+### 2026-04-25 — Pattern: Ash Wednesday minor hours take seasonal `Quad` antiphons (perl-bug)
+
+**Commit.** `47fcf5a`
+
+**Ledger signal.** After the seasonal minor-hour routing fix, Ash
+Wednesday Prime, Terce, Sext, and None under both simplified Roman
+policies now first diverge at the opening antiphon. Perl keeps the
+ordinary Wednesday psalter antiphons (`Misericórdia tua`,
+`Deus ádjuvat me`, `In Deo sperávi`, `Deus meus`), while the compositor
+emits the Lenten `Quad` antiphons (`Vivo ego`, `Advenérunt nobis`,
+`Commendémus nosmetípsos`, `Per arma justítiæ`).
+
+**Root cause.** Ash Wednesday is a Wednesday in Quadragesima. The
+ordinary weekday rows in `Psalmi minor` still govern the psalm
+distribution, but the seasonal `[Quad]` table supplies the minor-hour
+antiphons for these Lenten ferias.
+
+**Resolution.** Class `perl-bug`. Recorded the eight Reduced 1955 /
+Rubrics 1960 Ash Wednesday minor-hour row keys in `adjudications.json`
+with citations to both the ordinary Wednesday rows and the seasonal
+`[Quad]` antiphon table.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:8`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:24`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:40`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:56`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:158-163`
+
+**Impact.** Eight newly exposed Ash Wednesday rows move from
+`unadjudicated` to source-backed `perl-bug` without changing compositor
+behavior.
+
 ### 2026-04-18 — 3h kickoff: baseline regeneration
 
 **Commit.** `8cc3de1`

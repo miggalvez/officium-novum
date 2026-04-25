@@ -14,6 +14,30 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Classified the next proper Prime lesson
+  comparison-surface family. Eleven Reduced 1955 / Rubrics 1960 Prime
+  rows now cite the winning office's `[Lectio Prima]` source, while
+  Perl's ordinary `1 Tim. 1:17` chapter remains documented as a
+  source-backed render discrepancy.
+- **2026-04-25.** Closed the simplified Roman Advent minor-hour
+  responsory/versicle fallback seam. Reduced 1955 and Rubrics 1960 now
+  route Advent temporal Terce, Sext, and None later blocks through the
+  source-backed `Minor Special` `Adv` responsories and versicles,
+  collapsing nine divergent hours in each simplified Roman ledger.
+- **2026-04-25.** Classified the Rubrics 1960 Marian Matins
+  Nativity-doxology punctuation family. Three rows now cite
+  `Psalterium/Doxologies:[Nat]`, whose `Cum Patre et almo Spíritu,`
+  line lacks Perl's inserted comma after `Patre`.
+- **2026-04-25.** Fanned the source-backed minor-hour collect-wrapper
+  adjudication onto the Rubrics 1960 Lent Saturday rows exposed after
+  the Ash Wednesday seasonal-antiphon pass. Feb `24` Terce, Sext, and
+  None now cite the ordinary `Dómine, exáudi... / Orémus` wrapper
+  instead of remaining in the unadjudicated frontier.
+- **2026-04-25.** Classified the Ash Wednesday seasonal `Quad`
+  minor-hour antiphon fallout exposed by the latest routing fix. Both
+  simplified Roman policies now cite `Psalmi minor:[Quad]` for the
+  source-backed Prime, Terce, Sext, and None antiphons, leaving Perl's
+  ordinary Wednesday antiphons recorded as a comparison-surface bug.
 - **2026-04-25.** Extended the Reduced 1955 ferial Prime later-block
   adjudication across the live 2024 frontier. Eight Prime rows now cite
   `Prima Special` for the source-backed absence of an implicit

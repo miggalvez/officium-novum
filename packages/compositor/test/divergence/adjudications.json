@@ -6453,6 +6453,18 @@
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
   },
+  "Reduced - 1955/2024-02-14/None/0d70a971": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "None",
+    "firstExpected": "Ant. Deus meus.",
+    "firstActual": "Ant. Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:56,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday None row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Per arma justítiæ * virtútis Dei...` for None. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
   "Reduced - 1955/2024-02-14/None/1ab5e32c": {
     "policy": "Reduced - 1955",
     "date": "2024-02-14",
@@ -6476,6 +6488,30 @@
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
   },
+  "Reduced - 1955/2024-02-14/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-02-14/Prime/45afba84": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua.",
+    "firstActual": "Ant. Vivo ego.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:8,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Prime row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Vivo ego * dicit Dóminus...` for the first minor-hour antiphon. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
   "Reduced - 1955/2024-02-14/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-02-14",
@@ -6498,6 +6534,18 @@
     "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
+  },
+  "Reduced - 1955/2024-02-14/Sext/90328e34": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi.",
+    "firstActual": "Ant. Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:40,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Sext row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Commendémus nosmetípsos * in multa patiéntia...` for Sext. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
   },
   "Reduced - 1955/2024-02-14/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
@@ -6533,6 +6581,18 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-02-14/Terce/be96b56d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me:",
+    "firstActual": "Ant. Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:24,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Terce row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Advenérunt nobis * dies pœniténtiæ...` for Terce. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
   },
   "Reduced - 1955/2024-02-14/Vespers/55b74284": {
     "policy": "Reduced - 1955",
@@ -6629,6 +6689,54 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-02-24/None/f60c28f2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "None",
+    "firstExpected": "Ant. Per arma justítiæ.",
+    "firstActual": "Ant. Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Per arma justítiæ * virtútis Dei...` antiphon for None. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
+    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "f487708"
+  },
+  "Reduced - 1955/2024-02-24/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-02-24/Sext/62fa2e12": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Sext",
+    "firstExpected": "Ant. Commendémus nosmetípsos.",
+    "firstActual": "Ant. Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Commendémus nosmetípsos * in multa patiéntia...` antiphon for Sext. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
+    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "f487708"
+  },
+  "Reduced - 1955/2024-02-24/Terce/50e62c35": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Terce",
+    "firstExpected": "Ant. Advenérunt nobis.",
+    "firstActual": "Ant. Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Advenérunt nobis * dies pœniténtiæ...` antiphon for Terce. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
+    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "f487708"
   },
   "Reduced - 1955/2024-02-25/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -7253,6 +7361,18 @@
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
   },
+  "Reduced - 1955/2024-03-25/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
   "Reduced - 1955/2024-03-25/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-03-25",
@@ -7369,6 +7489,18 @@
     "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
+  },
+  "Reduced - 1955/2024-03-26/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
   },
   "Reduced - 1955/2024-03-26/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -7498,6 +7630,18 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Reduced - 1955/2024-03-27/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
   },
   "Reduced - 1955/2024-03-27/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -8049,6 +8193,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "9112a23"
   },
+  "Reduced - 1955/2024-05-09/Prime/1f932f3a": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Act. 1:11",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:320 — the Ascension office supplies `[Lectio Prima]` with citation `Act. 1:11`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
+  },
   "Reduced - 1955/2024-05-09/Sext/3c70c657": {
     "policy": "Reduced - 1955",
     "date": "2024-05-09",
@@ -8096,6 +8252,18 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
+  },
+  "Reduced - 1955/2024-05-19/Prime/9c18c7ac": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-19",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Act. 2:11",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:228 — the Pentecost office supplies `[Lectio Prima]` with citation `Act. 2:11`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
   },
   "Reduced - 1955/2024-05-19/Vespers/39846534": {
     "policy": "Reduced - 1955",
@@ -8192,6 +8360,18 @@
     "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-05-30/Prime/ebd3ffa2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-30",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "1 Cor 11:27",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-4.txt:298 — the Corpus Christi office supplies `[Lectio Prima]` with citation `1 Cor 11:27`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
   },
   "Reduced - 1955/2024-05-30/Vespers/c3e5bb37": {
     "policy": "Reduced - 1955",
@@ -8347,6 +8527,18 @@
     "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
+  },
+  "Reduced - 1955/2024-06-20/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
   },
   "Reduced - 1955/2024-06-20/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -8767,6 +8959,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-08-15/Prime/68a6aa15": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-15",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Judith 15:10",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-15.txt:293 — the Assumption office supplies `[Lectio Prima]` with citation `Judith 15:10`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
+  },
   "Reduced - 1955/2024-08-15/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
     "date": "2024-08-15",
@@ -9031,6 +9235,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-09-29/Prime/93d19f1b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-29",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 12:7-8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-08.txt:320 — the St Michael office supplies `[Lectio Prima]` with citation `Apo 12:7-8`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
+  },
   "Reduced - 1955/2024-10-04/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-10-04",
@@ -9175,6 +9391,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Reduced - 1955/2024-11-01/Prime/d2312ee1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 7:12",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:329 — the All Saints office supplies `[Lectio Prima]` with citation `Apo 7:12`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
+  },
   "Reduced - 1955/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Reduced - 1955",
     "date": "2024-11-01",
@@ -9233,6 +9461,18 @@
     "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
+  },
+  "Reduced - 1955/2024-11-05/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
   },
   "Reduced - 1955/2024-11-05/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -9350,6 +9590,18 @@
     "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
+  },
+  "Reduced - 1955/2024-11-08/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
   },
   "Reduced - 1955/2024-11-08/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
@@ -9528,6 +9780,18 @@
     "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Reduced 1955. Fan out to all 1955 Matins rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-08/Prime/269de10f": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-08",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 12:1",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-08.txt:219 — the Immaculate Conception office supplies `[Lectio Prima]` with citation `Apo 12:1`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
   },
   "Reduced - 1955/2024-12-08/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
@@ -9744,6 +10008,18 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-24/Prime/17defeec": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-24",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Rom 1:5-6",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-24.txt:77 — the Christmas Eve office supplies `[Lectio Prima]` with citation `Rom 1:5-6`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
   },
   "Reduced - 1955/2024-12-25/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -10668,6 +10944,30 @@
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
   },
+  "Rubrics 1960 - 1960/2024-02-14/None/4ba829b4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "None",
+    "firstExpected": "Ant. Deus meus * misericórdia tua prævéniet me.",
+    "firstActual": "Ant. Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:56,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday None row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Per arma justítiæ * virtútis Dei...` for None. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Prime/936f4c9a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Vivo ego * dicit Dóminus: nolo mortem peccatóris, sed ut magis convertátur et vivat.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:8,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Prime row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Vivo ego * dicit Dóminus...` for the first minor-hour antiphon. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
   "Rubrics 1960 - 1960/2024-02-14/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-14",
@@ -10691,6 +10991,18 @@
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
   },
+  "Rubrics 1960 - 1960/2024-02-14/Sext/65ecf20b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:40,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Sext row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Commendémus nosmetípsos * in multa patiéntia...` for Sext. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
   "Rubrics 1960 - 1960/2024-02-14/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-14",
@@ -10713,6 +11025,18 @@
     "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
     "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
     "resolvedAt": "2026-04-25"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Terce/869834f0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:24,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Terce row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Advenérunt nobis * dies pœniténtiæ...` for Terce. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
   },
   "Rubrics 1960 - 1960/2024-02-14/Terce/9d0c4734": {
     "policy": "Rubrics 1960 - 1960",
@@ -10809,6 +11133,54 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-02-24/None/f2474b69": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "None",
+    "firstExpected": "Pópulum tuum, quǽsumus, Dómine, propítius réspice: atque ab eo flagélla tuæ iracúndiæ cleménter avérte.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Rubrics 1960 Lent Saturday minor-hour collect-wrapper rows exposed after the Ash Wednesday seasonal-antiphon reclassification restored the next frontier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
+  "Rubrics 1960 - 1960/2024-02-24/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 — the Sunday Prime chapter is `[Dominica]` / `1 Tim. 1:17`, while the temporal feria chapter is `[Feria]` / `Zach 8:19`. On Ash Wednesday the compositor uses the source-backed ferial Prime chapter; the Perl comparison surface keeps the Sunday citation.",
+    "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "da7166b"
+  },
+  "Rubrics 1960 - 1960/2024-02-24/Sext/f2474b69": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "Sext",
+    "firstExpected": "Pópulum tuum, quǽsumus, Dómine, propítius réspice: atque ab eo flagélla tuæ iracúndiæ cleménter avérte.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Rubrics 1960 Lent Saturday minor-hour collect-wrapper rows exposed after the Ash Wednesday seasonal-antiphon reclassification restored the next frontier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
+  },
+  "Rubrics 1960 - 1960/2024-02-24/Terce/f2474b69": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "Terce",
+    "firstExpected": "Pópulum tuum, quǽsumus, Dómine, propítius réspice: atque ab eo flagélla tuæ iracúndiæ cleménter avérte.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Rubrics 1960 Lent Saturday minor-hour collect-wrapper rows exposed after the Ash Wednesday seasonal-antiphon reclassification restored the next frontier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "47fcf5a"
   },
   "Rubrics 1960 - 1960/2024-02-25/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -13007,6 +13379,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-07-06/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-07-06",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries `Cum Patre et almo Spíritu,` without a comma after `Patre`. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after `Patre` and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 Marian Matins Nativity-doxology punctuation surface; source has no comma after `Patre`.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "0a9db53"
+  },
   "Rubrics 1960 - 1960/2024-07-06/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-07-06",
@@ -13187,6 +13571,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-08-22/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-08-22",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries `Cum Patre et almo Spíritu,` without a comma after `Patre`. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after `Patre` and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 Marian Matins Nativity-doxology punctuation surface; source has no comma after `Patre`.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "0a9db53"
+  },
   "Rubrics 1960 - 1960/2024-08-22/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-08-22",
@@ -13366,6 +13762,18 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-09-12/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-09-12",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries `Cum Patre et almo Spíritu,` without a comma after `Patre`. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after `Patre` and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 Marian Matins Nativity-doxology punctuation surface; source has no comma after `Patre`.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "0a9db53"
   },
   "Rubrics 1960 - 1960/2024-09-12/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -13559,6 +13967,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-09-29/Prime/93d19f1b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-09-29",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 12:7-8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-08.txt:320 — the St Michael office supplies `[Lectio Prima]` with citation `Apo 12:7-8`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
+  },
   "Rubrics 1960 - 1960/2024-10-04/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-10-04",
@@ -13714,6 +14134,18 @@
     "notes": "Representative Rubrics 1960 Psalm 4 half-verse family; fan out across matching 1960 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Prime/d2312ee1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 7:12",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:329 — the All Saints office supplies `[Lectio Prima]` with citation `Apo 7:12`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
   },
   "Rubrics 1960 - 1960/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Rubrics 1960 - 1960",
@@ -14285,6 +14717,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-12-24/Prime/17defeec": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-24",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Rom 1:5-6",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-24.txt:77 — the Christmas Eve office supplies `[Lectio Prima]` with citation `Rom 1:5-6`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "34d6dc1"
+  },
   "Rubrics 1960 - 1960/2024-12-25/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-12-25",
@@ -14524,137 +14968,5 @@
     "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
     "resolvedAt": "2026-04-24",
     "commitSha": "26e2fdd"
-  },
-  "Reduced - 1955/2024-02-24/Terce/50e62c35": {
-    "policy": "Reduced - 1955",
-    "date": "2024-02-24",
-    "hour": "Terce",
-    "firstExpected": "Ant. Advenérunt nobis.",
-    "firstActual": "Ant. Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Advenérunt nobis * dies pœniténtiæ...` antiphon for Terce. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
-    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "f487708"
-  },
-  "Reduced - 1955/2024-02-24/Sext/62fa2e12": {
-    "policy": "Reduced - 1955",
-    "date": "2024-02-24",
-    "hour": "Sext",
-    "firstExpected": "Ant. Commendémus nosmetípsos.",
-    "firstActual": "Ant. Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Commendémus nosmetípsos * in multa patiéntia...` antiphon for Sext. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
-    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "f487708"
-  },
-  "Reduced - 1955/2024-02-24/None/f60c28f2": {
-    "policy": "Reduced - 1955",
-    "date": "2024-02-24",
-    "hour": "None",
-    "firstExpected": "Ant. Per arma justítiæ.",
-    "firstActual": "Ant. Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Per arma justítiæ * virtútis Dei...` antiphon for None. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
-    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "f487708"
-  },
-  "Reduced - 1955/2024-02-14/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-02-14",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-02-24/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-02-24",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-03-25/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-03-25",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-03-26/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-03-26",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-03-27/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-03-27",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-06-20/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-06-20",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-11-05/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-11-05",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
-  },
-  "Reduced - 1955/2024-11-08/Prime/26b1abb4": {
-    "policy": "Reduced - 1955",
-    "date": "2024-11-08",
-    "hour": "Prime",
-    "firstExpected": "R. Deo grátias.",
-    "firstActual": "_",
-    "class": "perl-bug",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
-    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
-    "resolvedAt": "2026-04-25",
-    "commitSha": "9576d3e"
   }
 }

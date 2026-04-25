@@ -117,6 +117,50 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'keeps Advent temporal minor-hour later blocks on the source-backed Adv responsories',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        const cases = [
+          {
+            hour: 'terce',
+            responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Tertia',
+            versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Tertia'
+          },
+          {
+            hour: 'sext',
+            responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Sexta',
+            versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Sexta'
+          },
+          {
+            hour: 'none',
+            responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Nona',
+            versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Nona'
+          }
+        ] as const;
+
+        for (const date of ['2024-12-01', '2024-12-15', '2024-12-22'] as const) {
+          for (const entry of cases) {
+            expectSingleRef(slotAt(engine, date, entry.hour, 'responsory'), entry.responsory);
+            expectSingleRef(slotAt(engine, date, entry.hour, 'versicle'), entry.versicle);
+          }
+        }
+      }
+    },
+    240_000
+  );
+
+  it(
     'keeps Lent Sunday minor-hour later blocks on the source-backed Quad responsories',
     async () => {
       const engines = await loadEngines([

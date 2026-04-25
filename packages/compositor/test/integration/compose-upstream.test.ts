@@ -1485,24 +1485,27 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
   }, 240_000);
 
-  it('renders Ash Wednesday Roman minor-hour weekday antiphons before the psalm heading', async () => {
+  it('renders Ash Wednesday Roman minor-hour seasonal antiphons before the psalm heading', async () => {
     for (const [version, expectations] of [
       [
         'Reduced - 1955',
         {
-          prime: ['Misericórdia tua.', 'Psalmus 25 [1]'],
-          terce: ['Deus ádjuvat me:', 'Psalmus 53 [1]'],
-          sext: ['In Deo sperávi.', 'Psalmus 55 [1]'],
-          none: ['Deus meus.', 'Psalmus 58(2-11) [1]']
+          prime: ['Vivo ego.', 'Psalmus 25 [1]'],
+          terce: ['Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.', 'Psalmus 53 [1]'],
+          sext: ['Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.', 'Psalmus 55 [1]'],
+          none: ['Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.', 'Psalmus 58(2-11) [1]']
         }
       ],
       [
         'Rubrics 1960 - 1960',
         {
-          prime: ['Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.', 'Psalmus 25 [1]'],
-          terce: ['Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.', 'Psalmus 53 [1]'],
-          sext: ['In Deo sperávi * non timébo quid fáciat mihi homo.', 'Psalmus 55 [1]'],
-          none: ['Deus meus * misericórdia tua prævéniet me.', 'Psalmus 58(2-11) [1]']
+          prime: [
+            'Vivo ego * dicit Dóminus: nolo mortem peccatóris, sed ut magis convertátur et vivat.',
+            'Psalmus 25 [1]'
+          ],
+          terce: ['Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.', 'Psalmus 53 [1]'],
+          sext: ['Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.', 'Psalmus 55 [1]'],
+          none: ['Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.', 'Psalmus 58(2-11) [1]']
         }
       ]
     ] as const) {

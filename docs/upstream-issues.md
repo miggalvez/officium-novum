@@ -24,6 +24,105 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-25 — Simplified Roman Prime keeps ordinary chapter instead of office `[Lectio Prima]`
+
+**Classification.** `perl-bug`
+
+**Summary.** Several high feast Prime rows have explicit `[Lectio
+Prima]` sections in the winning temporal or sanctoral office. Officium
+Novum emits those source-backed Prime lessons, while the Perl
+comparison surface keeps the ordinary `1 Tim. 1:17` chapter.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:320`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:228`
+- `upstream/web/www/horas/Latin/Tempora/Pent01-4.txt:298`
+- `upstream/web/www/horas/Latin/Sancti/08-15.txt:293`
+- `upstream/web/www/horas/Latin/Sancti/05-08.txt:320`
+- `upstream/web/www/horas/Latin/Sancti/11-01.txt:329`
+- `upstream/web/www/horas/Latin/Sancti/12-08.txt:219`
+- `upstream/web/www/horas/Latin/Sancti/12-24.txt:77`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --max-doc-rows 500
+```
+
+Then inspect Prime on the affected dates under `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hour | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-05-09, 2024-05-19, 2024-05-30, 2024-08-15, 2024-09-29, 2024-11-01, 2024-12-08, 2024-12-24 | Prime | `1f932f3a`, `9c18c7ac`, `ebd3ffa2`, `68a6aa15`, `93d19f1b`, `d2312ee1`, `269de10f`, `17defeec` |
+| Rubrics 1960 - 1960 | 2024-09-29, 2024-11-01, 2024-12-24 | Prime | `93d19f1b`, `d2312ee1`, `17defeec` |
+
+### 2026-04-25 — Rubrics 1960 Marian Matins doxology inserts an unsupported comma after `Patre`
+
+**Classification.** `perl-bug`
+
+**Summary.** Several Rubrics 1960 Marian Matins rows use the
+source-backed Nativity doxology line `Cum Patre et almo Spíritu,`.
+The Perl comparison surface changes the punctuation to
+`Cum Patre, et almo Spíritu`.
+
+**Primary source.**
+
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --max-doc-rows 500
+```
+
+Then inspect Matins on Jul `6`, Aug `22`, and Sep `12`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hour | Row key suffix |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2024-07-06, 2024-08-22, 2024-09-12 | Matins | `9d86e50c` |
+
+### 2026-04-25 — Simplified Roman Ash Wednesday minor hours keep ordinary Wednesday antiphons
+
+**Classification.** `perl-bug`
+
+**Summary.** On Ash Wednesday, Officium Novum keeps the ordinary
+Wednesday minor-hour psalm distribution but takes the opening antiphons
+from the seasonal `Quad` table. The Perl comparison surface keeps the
+ordinary Wednesday antiphons at Prime, Terce, Sext, and None.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:8`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:24`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:40`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:56`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:158-163`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-02-14
+```
+
+Then inspect Prime, Terce, Sext, and None under `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Affected stable divergence-row key groups.**
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-14 | Prime/Terce/Sext/None | `45afba84`, `be96b56d`, `90328e34`, `0d70a971` |
+| Rubrics 1960 - 1960 | 2024-02-14 | Prime/Terce/Sext/None | `936f4c9a`, `869834f0`, `65ecf20b`, `4ba829b4` |
+
 ### 2026-04-25 — Simplified Roman minor hours skip the source-backed collect wrapper
 
 **Classification.** `perl-bug`
@@ -55,7 +154,7 @@ Then inspect Terce/Sext/None under `Reduced - 1955` and
 | Policy | Dates | Hours | Row key suffixes |
 |---|---|---|---|
 | Reduced - 1955 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
-| Rubrics 1960 - 1960 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
+| Rubrics 1960 - 1960 | 2024-02-14, 2024-02-24, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de`, `f2474b69` |
 
 ### 2026-04-25 — Rubrics 1960 appends unsupported trailing `‡` markers to complete psalter antiphons
 

@@ -241,7 +241,9 @@ function minorHourLaterBlockOverrideReference(
     return undefined;
   }
 
-  const section = minorHourQuadragesimaLaterBlockSection(input, slot);
+  const section =
+    minorHourAdventLaterBlockSection(input, slot) ??
+    minorHourQuadragesimaLaterBlockSection(input, slot);
   if (!section) {
     return undefined;
   }
@@ -1143,7 +1145,8 @@ function minorHourLaterBlockFallbackReference(
 
   const section =
     input.temporal.dayOfWeek === 0
-      ? minorHourQuadragesimaLaterBlockSection(input, slot) ??
+      ? minorHourAdventLaterBlockSection(input, slot) ??
+        minorHourQuadragesimaLaterBlockSection(input, slot) ??
         minorHourSundayLaterBlockFallbackSection(input.hour, slot)
       : minorHourFerialLaterBlockFallbackSection(input, slot);
   if (!section) {
@@ -1218,6 +1221,11 @@ function minorHourFerialLaterBlockFallbackSection(
     return holyWeekMonWedSection;
   }
 
+  const adventSection = minorHourAdventLaterBlockSection(input, slot);
+  if (adventSection) {
+    return adventSection;
+  }
+
   const quadragesimaSection = minorHourQuadragesimaLaterBlockSection(input, slot);
   if (quadragesimaSection) {
     return quadragesimaSection;
@@ -1265,6 +1273,51 @@ function minorHourFerialLaterBlockFallbackSection(
           return 'Responsory breve Feria Nona';
         case 'versicle':
           return 'Versum Feria Nona';
+        default:
+          return undefined;
+      }
+    default:
+      return undefined;
+  }
+}
+
+function minorHourAdventLaterBlockSection(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): string | undefined {
+  if (
+    input.celebration.source !== 'temporal' ||
+    input.celebration.kind ||
+    !/^Adv[1-4]-/u.test(input.temporal.dayName)
+  ) {
+    return undefined;
+  }
+
+  switch (input.hour) {
+    case 'terce':
+      switch (slot) {
+        case 'responsory':
+          return 'Responsory breve Adv Tertia';
+        case 'versicle':
+          return 'Versum Adv Tertia';
+        default:
+          return undefined;
+      }
+    case 'sext':
+      switch (slot) {
+        case 'responsory':
+          return 'Responsory breve Adv Sexta';
+        case 'versicle':
+          return 'Versum Adv Sexta';
+        default:
+          return undefined;
+      }
+    case 'none':
+      switch (slot) {
+        case 'responsory':
+          return 'Responsory breve Adv Nona';
+        case 'versicle':
+          return 'Versum Adv Nona';
         default:
           return undefined;
       }
