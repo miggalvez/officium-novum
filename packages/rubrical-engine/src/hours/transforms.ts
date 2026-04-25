@@ -101,6 +101,8 @@ function addExplicitRuleDirectives(
       classified.target === 'hour' &&
       classified.effect.kind === 'hour-flag' &&
       classified.effect.value === 'preces-feriales' &&
+      isOfficeOfSeason(params.celebration) &&
+      (params.hour === 'lauds' || params.hour === 'vespers') &&
       !params.hourRules.omit.includes('preces')
     ) {
       directives.add('preces-feriales');

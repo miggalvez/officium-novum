@@ -14,6 +14,11 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Narrowed the Rubrics 1960 Ash Wednesday minor-hour
+  preces frontier. Explicit `Preces Feriales` rules now obey the 1960
+  Lauds/Vespers-only scope instead of leaking into Terce/Sext/None; the
+  affected rows advance from the erroneous `Kýrie...` block to the shared
+  minor-hour collect-wrapper frontier.
 - **2026-04-25.** Backfilled the current tranche set's Phase 3
   adjudication-log provenance anchors. The Passiontide Sunday
   later-block, Passiontide responsory-Gloria omission, and Passiontide

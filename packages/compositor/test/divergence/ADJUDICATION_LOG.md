@@ -3169,6 +3169,35 @@ its sanctoral office instead of inheriting that seasonal omission.
 **Impact.** St Joseph Terce reaches exact line-stream parity while the
 Passion Sunday temporal row remains exact.
 
+### 2026-04-25 — Pattern: 1960 minor-hour explicit ferial preces leak (engine-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Rubrics 1960 Ash Wednesday Terce/Sext/None first
+diverged after the minor-hour later block: Perl reached
+`V. Dómine, exáudi oratiónem meam.`, while the compositor emitted the
+ferial-preces `Kýrie, eléison...` block.
+
+**Root cause.** The 1960 seasonal preces derivation already limited
+ferial preces to Offices of the Season at Lauds and Vespers, but the
+explicit `Preces Feriales` rule path admitted hour-scoped directives
+without the same hour guard. That let the ordinary minor-hour
+`#Preces Feriales` heading leak into Terce/Sext/None.
+
+**Resolution.** Class `engine-bug`. The explicit-rule path now honors
+the same 1960 source boundary: only Offices of the Season at Lauds or
+Vespers may emit `preces-feriales`. A focused transform regression locks
+the Terce exclusion.
+
+**Citation.** `upstream/web/www/horas/Ordinarium/Minor.txt:23-26` and
+`upstream/web/www/horas/Ordinarium/Laudes.txt:35` /
+`upstream/web/www/horas/Ordinarium/Vespera.txt:25`.
+
+**Impact.** The Ash Wednesday 1960 minor-hour rows move past the
+erroneous `Kýrie...` block to the shared Roman minor-hour collect-wrapper
+frontier; unadjudicated counts are unchanged because the next exposed
+seam still needs its own source decision.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
