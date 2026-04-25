@@ -8193,6 +8193,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "9112a23"
   },
+  "Reduced - 1955/2024-05-09/Prime/1f932f3a": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-09",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Act. 1:11",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:320 — the Ascension office supplies `[Lectio Prima]` with citation `Act. 1:11`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-05-09/Sext/3c70c657": {
     "policy": "Reduced - 1955",
     "date": "2024-05-09",
@@ -8240,6 +8252,18 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
+  },
+  "Reduced - 1955/2024-05-19/Prime/9c18c7ac": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-19",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Act. 2:11",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:228 — the Pentecost office supplies `[Lectio Prima]` with citation `Act. 2:11`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-05-19/Vespers/39846534": {
     "policy": "Reduced - 1955",
@@ -8336,6 +8360,18 @@
     "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-05-30/Prime/ebd3ffa2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-30",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "1 Cor 11:27",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-4.txt:298 — the Corpus Christi office supplies `[Lectio Prima]` with citation `1 Cor 11:27`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-05-30/Vespers/c3e5bb37": {
     "policy": "Reduced - 1955",
@@ -8923,6 +8959,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-08-15/Prime/68a6aa15": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-15",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Judith 15:10",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-15.txt:293 — the Assumption office supplies `[Lectio Prima]` with citation `Judith 15:10`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-08-15/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
     "date": "2024-08-15",
@@ -9187,6 +9235,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-09-29/Prime/93d19f1b": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-29",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 12:7-8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-08.txt:320 — the St Michael office supplies `[Lectio Prima]` with citation `Apo 12:7-8`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-10-04/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-10-04",
@@ -9330,6 +9390,18 @@
     "notes": "Representative Reduced 1955 Psalm 4 half-verse family; fan out across matching 1955 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Reduced - 1955/2024-11-01/Prime/d2312ee1": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 7:12",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:329 — the All Saints office supplies `[Lectio Prima]` with citation `Apo 7:12`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Reduced - 1955",
@@ -9709,6 +9781,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-12-08/Prime/269de10f": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-08",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 12:1",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-08.txt:219 — the Immaculate Conception office supplies `[Lectio Prima]` with citation `Apo 12:1`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Reduced - 1955/2024-12-08/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
     "date": "2024-12-08",
@@ -9924,6 +10008,18 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-12-24/Prime/17defeec": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-24",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Rom 1:5-6",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-24.txt:77 — the Christmas Eve office supplies `[Lectio Prima]` with citation `Rom 1:5-6`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Reduced - 1955/2024-12-25/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -13871,6 +13967,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-09-29/Prime/93d19f1b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-09-29",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 12:7-8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-08.txt:320 — the St Michael office supplies `[Lectio Prima]` with citation `Apo 12:7-8`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-10-04/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-10-04",
@@ -14026,6 +14134,18 @@
     "notes": "Representative Rubrics 1960 Psalm 4 half-verse family; fan out across matching 1960 Matins rows.",
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Prime/d2312ee1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Apo 7:12",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:329 — the All Saints office supplies `[Lectio Prima]` with citation `Apo 7:12`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Rubrics 1960 - 1960",
@@ -14596,6 +14716,18 @@
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-12-24/Prime/17defeec": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-24",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Rom 1:5-6",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-24.txt:77 — the Christmas Eve office supplies `[Lectio Prima]` with citation `Rom 1:5-6`. The compositor emits that source-backed Prime lesson while the Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
+    "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-12-25/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

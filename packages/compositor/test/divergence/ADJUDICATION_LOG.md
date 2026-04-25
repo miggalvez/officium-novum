@@ -22,6 +22,40 @@ anchor.
 
 ## Entries
 
+### 2026-04-25 — Pattern: proper Prime lessons keep office `[Lectio Prima]` (perl-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Several high feast Prime rows under Reduced 1955
+and Rubrics 1960 first diverge at the Prime chapter citation. Perl
+keeps the ordinary `1 Tim. 1:17`; the compositor emits the winning
+office's proper `[Lectio Prima]` citation such as `Act. 1:11`,
+`Judith 15:10`, `Apo 7:12`, or `Rom 1:5-6`.
+
+**Root cause.** The affected temporal and sanctoral source files
+explicitly supply `[Lectio Prima]` sections. The compositor follows the
+winning office source; the Perl comparison surface falls back to the
+ordinary Prime chapter on these rows.
+
+**Resolution.** Class `perl-bug`. Added eleven row-level adjudications
+for the visible 2024 frontier: Ascension, Pentecost, Corpus Christi,
+Assumption, St Michael, All Saints, Immaculate Conception, and
+Christmas Eve where present in the simplified Roman ledgers.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:320`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:228`
+- `upstream/web/www/horas/Latin/Tempora/Pent01-4.txt:298`
+- `upstream/web/www/horas/Latin/Sancti/08-15.txt:293`
+- `upstream/web/www/horas/Latin/Sancti/05-08.txt:320`
+- `upstream/web/www/horas/Latin/Sancti/11-01.txt:329`
+- `upstream/web/www/horas/Latin/Sancti/12-08.txt:219`
+- `upstream/web/www/horas/Latin/Sancti/12-24.txt:77`
+
+**Impact.** Eleven Prime rows move from `unadjudicated` to
+source-backed `perl-bug` without changing compositor behavior.
+
 ### 2026-04-25 — Pattern: simplified Roman Advent minor-hour responsory/versicle fallbacks (engine-bug, fixed)
 
 **Commit.** `pending`

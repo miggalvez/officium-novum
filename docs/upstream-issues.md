@@ -24,6 +24,43 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-25 — Simplified Roman Prime keeps ordinary chapter instead of office `[Lectio Prima]`
+
+**Classification.** `perl-bug`
+
+**Summary.** Several high feast Prime rows have explicit `[Lectio
+Prima]` sections in the winning temporal or sanctoral office. Officium
+Novum emits those source-backed Prime lessons, while the Perl
+comparison surface keeps the ordinary `1 Tim. 1:17` chapter.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:320`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:228`
+- `upstream/web/www/horas/Latin/Tempora/Pent01-4.txt:298`
+- `upstream/web/www/horas/Latin/Sancti/08-15.txt:293`
+- `upstream/web/www/horas/Latin/Sancti/05-08.txt:320`
+- `upstream/web/www/horas/Latin/Sancti/11-01.txt:329`
+- `upstream/web/www/horas/Latin/Sancti/12-08.txt:219`
+- `upstream/web/www/horas/Latin/Sancti/12-24.txt:77`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --max-doc-rows 500
+```
+
+Then inspect Prime on the affected dates under `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hour | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-05-09, 2024-05-19, 2024-05-30, 2024-08-15, 2024-09-29, 2024-11-01, 2024-12-08, 2024-12-24 | Prime | `1f932f3a`, `9c18c7ac`, `ebd3ffa2`, `68a6aa15`, `93d19f1b`, `d2312ee1`, `269de10f`, `17defeec` |
+| Rubrics 1960 - 1960 | 2024-09-29, 2024-11-01, 2024-12-24 | Prime | `93d19f1b`, `d2312ee1`, `17defeec` |
+
 ### 2026-04-25 — Rubrics 1960 Marian Matins doxology inserts an unsupported comma after `Patre`
 
 **Classification.** `perl-bug`

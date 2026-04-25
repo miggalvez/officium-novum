@@ -14,6 +14,11 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Classified the next proper Prime lesson
+  comparison-surface family. Eleven Reduced 1955 / Rubrics 1960 Prime
+  rows now cite the winning office's `[Lectio Prima]` source, while
+  Perl's ordinary `1 Tim. 1:17` chapter remains documented as a
+  source-backed render discrepancy.
 - **2026-04-25.** Closed the simplified Roman Advent minor-hour
   responsory/versicle fallback seam. Reduced 1955 and Rubrics 1960 now
   route Advent temporal Terce, Sext, and None later blocks through the
