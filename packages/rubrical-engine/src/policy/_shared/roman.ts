@@ -160,11 +160,11 @@ function shouldSayFerialPrecesPre1960(
     return true;
   }
 
-  if (!EMBER_DAY_KEYS.has(temporal.dayName) || temporal.season === 'pentecost-octave') {
+  if (!isEmberDay(temporal) || temporal.season === 'pentecost-octave') {
     return false;
   }
 
-  return temporal.dayOfWeek === 3 || temporal.dayOfWeek === 5 || temporal.dayOfWeek === 6;
+  return temporal.dayOfWeek === 3 || temporal.dayOfWeek === 5 || (hour === 'lauds' && temporal.dayOfWeek === 6);
 }
 
 export function defaultRomanScriptureCourse(temporal: TemporalContext): ScriptureCourse {

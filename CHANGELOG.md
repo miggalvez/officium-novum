@@ -41,7 +41,8 @@ Newest tranche first:
   source-backed weekday scope. Rubrics 1960 now emits Lauds/Vespers preces
   only for Offices of the Season on Wednesdays and Fridays of Advent, Lent,
   and Passiontide, plus the specified Ember-day shape; the pre-1960 Roman
-  path follows the parallel 1955 help text. This removes the erroneous
+  path follows the parallel 1955 help text, including September Ember days
+  and Lauds-only Ember Saturdays. This removes the erroneous
   `Kýrie...` preces block from 1960 feast and Holy Week Monday/Tuesday
   major-hour rows, dropping Rubrics 1960 unadjudicated rows to `95`.
 - **2026-04-25.** Closed the Rubrics 1960 Holy Week Lauds `Quad5`

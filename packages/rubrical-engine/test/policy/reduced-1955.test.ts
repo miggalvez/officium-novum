@@ -119,6 +119,35 @@ describe('reduced1955Policy', () => {
     ).toEqual(['add-alleluia', 'add-versicle-alleluia', 'suffragium-of-the-saints']);
   });
 
+  it('emits preces for September Ember days but only Lauds on Ember Saturday', () => {
+    const septemberEmberWednesday = reduced1955Policy.hourDirectives({
+      hour: 'vespers',
+      celebration: celebration('Tempora/Pent18-3', 'feria', 'temporal'),
+      celebrationRules: rules(),
+      hourRules: hourRules(),
+      temporal: temporal('2024-09-18', 'Pent18-3', 'time-after-pentecost', 'feria')
+    });
+    expect(septemberEmberWednesday.has('preces-feriales')).toBe(true);
+
+    const emberSaturdayVespers = reduced1955Policy.hourDirectives({
+      hour: 'vespers',
+      celebration: celebration('Tempora/Pent18-6', 'feria', 'temporal'),
+      celebrationRules: rules(),
+      hourRules: hourRules(),
+      temporal: temporal('2024-09-21', 'Pent18-6', 'time-after-pentecost', 'feria')
+    });
+    expect(emberSaturdayVespers.has('preces-feriales')).toBe(false);
+
+    const emberSaturdayLauds = reduced1955Policy.hourDirectives({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Pent18-6', 'feria', 'temporal'),
+      celebrationRules: rules(),
+      hourRules: hourRules(),
+      temporal: temporal('2024-09-21', 'Pent18-6', 'time-after-pentecost', 'feria')
+    });
+    expect(emberSaturdayLauds.has('preces-feriales')).toBe(true);
+  });
+
   it('routes Matins between ferial, paschal-octave, and festal shapes', () => {
     expect(
       reduced1955Policy.resolveMatinsShape({
