@@ -2965,6 +2965,28 @@ before falling back to the generic feria sections.
 chapter mismatch, improving the policy average prefix from `48.1` to
 `48.3` and dropping Rubrics 1960 unadjudicated rows from `98` to `97`.
 
+### 2026-04-25 — Pattern: existing `Dómine, exáudi` Vespers bridge fanout (perl-bug)
+
+**Commit.** `TBD-tranche-2`
+
+**Ledger signal.** After the ferial-preces directive fix, Rubrics 1960
+St Joseph and Immaculate Conception Vespers advanced to the already
+known post-collect bridge seam: Perl stops at `_`, while the compositor
+continues with `V. Dómine, exáudi oratiónem meam.`.
+
+**Root cause.** No new Phase 2 or Phase 3 behavior is implicated. The
+new rows are exact fanout of the already-cited major-hour conclusion
+bridge family where `Psalterium/Common/Prayers` supplies the
+source-backed `Domine exaudi` versicle and response after the collect.
+
+**Resolution.** Class `perl-bug`. Ran the sidecar fanout workflow
+against the expanded current ledgers and recorded the two missing
+Rubrics 1960 row keys in `adjudications.json`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86`.
+
+**Impact.** Rubrics 1960 unadjudicated rows drop from `95` to `93`.
+
 ### 2026-04-25 — Pattern: Roman ferial preces limited to appointed weekdays (engine-bug)
 
 **Commit.** `TBD-tranche-1`

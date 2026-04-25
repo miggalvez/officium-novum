@@ -14,6 +14,12 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Fanned out the existing Roman Vespers
+  post-collect `Dómine, exáudi` adjudication onto the Rubrics 1960
+  rows newly exposed by the ferial-preces fix. St Joseph and Immaculate
+  Conception Vespers now inherit the already-cited
+  `Psalterium/Common/Prayers` source-backed Perl-render classification,
+  dropping Rubrics 1960 unadjudicated rows to `93`.
 - **2026-04-25.** Narrowed Roman ferial-preces directive emission to the
   source-backed weekday scope. Rubrics 1960 now emits Lauds/Vespers preces
   only for Offices of the Season on Wednesdays and Fridays of Advent, Lent,

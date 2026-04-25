@@ -11025,6 +11025,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "a5a065c"
   },
+  "Rubrics 1960 - 1960/2024-03-19/Vespers/843b6667": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-19",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86 - the source-backed Domine exaudi section supplies V. Domine, exaudi orationem meam and R. Et clamor meus ad te veniat after the Vespers collect; the compositor emits that bridge while the Perl comparison surface stops at `_` on these rows.",
+    "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "26e2fdd"
+  },
   "Rubrics 1960 - 1960/2024-03-24/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-24",
@@ -13580,6 +13592,18 @@
     "notes": "Representative entry for the Rubrics 1960 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1960 rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-12-08/Vespers/843b6667": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-08",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86 - the source-backed Domine exaudi section supplies V. Domine, exaudi orationem meam and R. Et clamor meus ad te veniat after the Vespers collect; the compositor emits that bridge while the Perl comparison surface stops at `_` on these rows.",
+    "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "26e2fdd"
   },
   "Rubrics 1960 - 1960/2024-12-15/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
