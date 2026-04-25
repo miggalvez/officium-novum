@@ -146,8 +146,9 @@ function mergePreambleOfficeFile(
         nextVisited
       );
       for (const section of mergedReference.sections) {
-        if (!mergedSections.has(section.header)) {
-          mergedSections.set(section.header, cloneParsedSection(section));
+        const key = sectionOverlayKey(section);
+        if (!mergedSections.has(key)) {
+          mergedSections.set(key, cloneParsedSection(section));
         }
       }
     } catch {
@@ -160,7 +161,7 @@ function mergePreambleOfficeFile(
       continue;
     }
 
-    mergedSections.set(section.header, cloneParsedSection(section));
+    mergedSections.set(sectionOverlayKey(section), cloneParsedSection(section));
   }
 
   return {
@@ -184,6 +185,10 @@ function preambleReferencePaths(file: ParsedFile): readonly string[] {
 
 function cloneParsedSection(section: ParsedFile['sections'][number]): ParsedFile['sections'][number] {
   return structuredClone(section);
+}
+
+function sectionOverlayKey(section: ParsedFile['sections'][number]): string {
+  return `${section.header}\u0000${JSON.stringify(section.condition ?? null)}`;
 }
 
 function resolveOfficeSelection(

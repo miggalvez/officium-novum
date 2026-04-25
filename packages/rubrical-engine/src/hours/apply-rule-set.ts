@@ -180,7 +180,8 @@ function resolveSlot(
     return lucanCanticle;
   }
 
-  const properRef = findProperReference(properFiles, slot, input);
+  const minorHourLaterBlockOverride = minorHourLaterBlockOverrideReference(input, slot.name);
+  const properRef = minorHourLaterBlockOverride ? undefined : findProperReference(properFiles, slot, input);
   const inheritedSecondVespersRef = properRef
     ? undefined
     : findInheritedSecondVespersReference(properFiles, slot, input);
@@ -194,6 +195,7 @@ function resolveSlot(
       : { kind: 'ordered-refs', refs };
   }
   const ref =
+    minorHourLaterBlockOverride ??
     properRef ??
     inheritedSecondVespersRef ??
     communeRef ??
@@ -225,6 +227,25 @@ function resolveSlot(
   }
 
   return { kind: 'single-ref', ref };
+}
+
+function minorHourLaterBlockOverrideReference(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): TextReference | undefined {
+  if (slot !== 'versicle') {
+    return undefined;
+  }
+
+  const section = minorHourQuadragesimaLaterBlockSection(input, slot);
+  if (!section) {
+    return undefined;
+  }
+
+  return {
+    path: minorHourLaterBlockFallbackPath(input.hour, input.temporal.dayOfWeek),
+    section
+  };
 }
 
 function isSuppressed(slot: SlotName, omit: readonly OmittableSlot[]): boolean {
@@ -1118,7 +1139,8 @@ function minorHourLaterBlockFallbackReference(
 
   const section =
     input.temporal.dayOfWeek === 0
-      ? minorHourSundayLaterBlockFallbackSection(input.hour, slot)
+      ? minorHourQuadragesimaLaterBlockSection(input, slot) ??
+        minorHourSundayLaterBlockFallbackSection(input.hour, slot)
       : minorHourFerialLaterBlockFallbackSection(input, slot);
   if (!section) {
     return undefined;
@@ -1192,6 +1214,11 @@ function minorHourFerialLaterBlockFallbackSection(
     return holyWeekMonWedSection;
   }
 
+  const quadragesimaSection = minorHourQuadragesimaLaterBlockSection(input, slot);
+  if (quadragesimaSection) {
+    return quadragesimaSection;
+  }
+
   switch (input.hour) {
     case 'prime':
       switch (slot) {
@@ -1234,6 +1261,57 @@ function minorHourFerialLaterBlockFallbackSection(
           return 'Responsory breve Feria Nona';
         case 'versicle':
           return 'Versum Feria Nona';
+        default:
+          return undefined;
+      }
+    default:
+      return undefined;
+  }
+}
+
+function minorHourQuadragesimaLaterBlockSection(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): string | undefined {
+  if (
+    input.celebration.source !== 'temporal' ||
+    input.celebration.kind ||
+    !/^Quad[1-5]-/u.test(input.temporal.dayName)
+  ) {
+    return undefined;
+  }
+
+  switch (input.hour) {
+    case 'terce':
+      switch (slot) {
+        case 'chapter':
+          return 'Quad Tertia';
+        case 'responsory':
+          return 'Responsory breve Quad Tertia';
+        case 'versicle':
+          return 'Versum Quad Tertia';
+        default:
+          return undefined;
+      }
+    case 'sext':
+      switch (slot) {
+        case 'chapter':
+          return 'Quad Sexta';
+        case 'responsory':
+          return 'Responsory breve Quad Sexta';
+        case 'versicle':
+          return 'Versum Quad Sexta';
+        default:
+          return undefined;
+      }
+    case 'none':
+      switch (slot) {
+        case 'chapter':
+          return 'Quad Nona';
+        case 'responsory':
+          return 'Responsory breve Quad Nona';
+        case 'versicle':
+          return 'Versum Quad Nona';
         default:
           return undefined;
       }

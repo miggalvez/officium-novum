@@ -135,6 +135,35 @@ describe('resolveOfficeFile', () => {
       args: ['Commemoration']
     });
   });
+
+  it('preserves local duplicate headers when their conditions differ', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Tempora/Quad1-0.txt',
+      [
+        '[Ant Tertia]',
+        'Tunc assumpsit',
+        '',
+        '[Ant Tertia] (rubrica cisterciensis)',
+        'In spiritu humilitatis'
+      ].join('\n')
+    );
+
+    const file = resolveOfficeFile(corpus, 'Tempora/Quad1-0');
+    const antTertia = file.sections.filter((section) => section.header === 'Ant Tertia');
+
+    expect(antTertia).toHaveLength(2);
+    expect(antTertia[0]?.condition).toBeUndefined();
+    expect(antTertia[0]?.content[0]).toMatchObject({
+      type: 'text',
+      value: 'Tunc assumpsit'
+    });
+    expect(antTertia[1]?.condition).toBeDefined();
+    expect(antTertia[1]?.content[0]).toMatchObject({
+      type: 'text',
+      value: 'In spiritu humilitatis'
+    });
+  });
 });
 
 function makeVersion(handle: string, policy: RubricalPolicy): ResolvedVersion {

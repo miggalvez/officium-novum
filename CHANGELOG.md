@@ -14,6 +14,17 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Closed the shared Roman minor-hour combined-wrapper
+  parity seam for Reduced 1955 and Rubrics 1960. Phase 2 now preserves
+  duplicate proper sections that differ only by condition, so Lent Sunday
+  `[Ant Tertia/Sexta/Nona]` sections survive beside Cistercian variants;
+  Quadragesima minor-hour later blocks now route through the source-backed
+  `Minor Special` `Quad` responsories/versicles. Phase 3 now mirrors the
+  visible separator lines around minor-hour responsory/versicle slots and
+  normalizes short-responsory `&Gloria` expansion to the legacy line stream.
+  The refreshed ledgers improve exact 1955/1960 Hour parity materially
+  (`Reduced 1955` exact matches `43→103`, `Rubrics 1960` `50→104`), while
+  exposing later unadjudicated row keys for the next burn-down tranche.
 - **2026-04-25.** Backfilled the current tranche set's adjudication
   provenance anchors. The ferial-preces, Vespers bridge fanout, Matins
   doxology, and trailing-marker entries now cite their actual commit SHAs in

@@ -47,7 +47,8 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
 
         for (const [date, officePath] of [
           ['2024-01-28', 'horas/Latin/Tempora/Quadp1-0'],
-          ['2024-02-11', 'horas/Latin/Tempora/Quadp3-0']
+          ['2024-02-11', 'horas/Latin/Tempora/Quadp3-0'],
+          ['2024-02-18', 'horas/Latin/Tempora/Quad1-0']
         ] as const) {
           expectMinorHour(
             psalmodyAt(engine, date, 'prime'),
@@ -110,6 +111,52 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
         expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'chapter'), entry.chapter);
         expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'responsory'), entry.responsory);
         expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'versicle'), entry.versicle);
+      }
+    },
+    240_000
+  );
+
+  it(
+    'keeps Lent Sunday minor-hour later blocks on the source-backed Quad responsories',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        const cases = [
+          {
+            hour: 'terce',
+            chapter: 'horas/Latin/Tempora/Quad1-0:Capitulum Laudes',
+            responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Quad Tertia',
+            versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Quad Tertia'
+          },
+          {
+            hour: 'sext',
+            chapter: 'horas/Latin/Tempora/Quad1-0:Capitulum Sexta',
+            responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Quad Sexta',
+            versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Quad Sexta'
+          },
+          {
+            hour: 'none',
+            chapter: 'horas/Latin/Tempora/Quad1-0:Capitulum Nona',
+            responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Quad Nona',
+            versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Quad Nona'
+          }
+        ] as const;
+
+        for (const entry of cases) {
+          expectSingleRef(slotAt(engine, '2024-02-18', entry.hour, 'chapter'), entry.chapter);
+          expectSingleRef(slotAt(engine, '2024-02-18', entry.hour, 'responsory'), entry.responsory);
+          expectSingleRef(slotAt(engine, '2024-02-18', entry.hour, 'versicle'), entry.versicle);
+        }
       }
     },
     240_000
