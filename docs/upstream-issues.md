@@ -24,6 +24,46 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-25 — Rubrics 1960 appends unsupported trailing `‡` markers to complete psalter antiphons
+
+**Classification.** `perl-bug`
+
+**Summary.** Several Rubrics 1960 rows now reach punctuation-only
+antiphon surfaces where Perl appends a trailing `‡` to a complete
+psalter antiphon. The compositor preserves the corpus row as written.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:29`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:87`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:111`
+
+These rows carry the complete antiphon text without a final
+continuation marker.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --max-doc-rows 500
+```
+
+Then inspect the affected rows in `rubrics-1960-2024.md`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2024-03-25 | Matins | `86cb45c3` |
+| Rubrics 1960 - 1960 | 2024-06-20 | Matins | `02b507e6` |
+| Rubrics 1960 - 1960 | 2024-06-20 | Lauds | `52cc7e9c` |
+| Rubrics 1960 - 1960 | 2024-06-20 | Terce | `2807ff6e` |
+| Rubrics 1960 - 1960 | 2024-06-20 | Vespers | `2eac8bef` |
+| Rubrics 1960 - 1960 | 2024-11-08 | Lauds | `d64d0218` |
+
 ### 2026-04-24 — Roman Paschaltide fallback minor-hour hymn doxologies retain ordinary endings in the Perl render surface
 
 **Classification.** `perl-bug`

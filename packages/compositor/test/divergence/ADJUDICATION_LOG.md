@@ -2965,6 +2965,39 @@ before falling back to the generic feria sections.
 chapter mismatch, improving the policy average prefix from `48.1` to
 `48.3` and dropping Rubrics 1960 unadjudicated rows from `98` to `97`.
 
+### 2026-04-25 — Pattern: Rubrics 1960 trailing `‡` antiphon markers (perl-bug)
+
+**Commit.** `TBD-tranche-4`
+
+**Ledger signal.** The widened Rubrics 1960 ledger exposed six
+unclassified rows where the first divergence was only an unsupported
+trailing continuation marker: Perl expected the same complete antiphon
+with a final `‡`, while the compositor emitted the corpus text without
+that marker.
+
+**Root cause.** The cited psalter sources carry complete antiphon rows
+without a trailing `‡`. The compositor preserves those rows; the legacy
+Perl render surface appends a continuation marker that is not present in
+the source.
+
+**Resolution.** Class `perl-bug`. Added row-level entries for stable
+key-hashes `86cb45c3`, `02b507e6`, `52cc7e9c`, `2807ff6e`,
+`2eac8bef`, and `d64d0218`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:29`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:87`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:111`
+
+**Impact.** Rubrics 1960 unadjudicated rows drop from `93` to `87`.
+The remaining frontier is now the source-selection families around
+Lenten minor-hour antiphons, Paschal-week Matins, and proper/ferial
+ownership rows rather than these punctuation-only marker rows.
+
 ### 2026-04-25 — Pattern: Matins proper-hymn doxology variants (mixed fix)
 
 **Commit.** `TBD-tranche-3`

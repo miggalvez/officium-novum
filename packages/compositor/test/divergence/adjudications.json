@@ -11145,6 +11145,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-03-25/Matins/86cb45c3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-25",
+    "hour": "Matins",
+    "firstExpected": "Ant. Exáudiat te * Dóminus in die tribulatiónis. ‡",
+    "firstActual": "Ant. Exáudiat te * Dóminus in die tribulatiónis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:29 — the psalter-matins row carries `Exáudiat te * Dóminus in die tribulatiónis.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "TBD-tranche-4"
+  },
   "Rubrics 1960 - 1960/2024-03-25/None/2071fc88": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-25",
@@ -12177,6 +12189,30 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-06-20/Lauds/52cc7e9c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dómine, * refúgium factus es nobis. ‡",
+    "firstActual": "Ant. Dómine, * refúgium factus es nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:87 — the psalter-major row carries `Dómine, * refúgium factus es nobis.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "TBD-tranche-4"
+  },
+  "Rubrics 1960 - 1960/2024-06-20/Matins/02b507e6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Matins",
+    "firstExpected": "Ant. Exsúrgat Deus, * et dissipéntur inimíci ejus. ‡",
+    "firstActual": "Ant. Exsúrgat Deus, * et dissipéntur inimíci ejus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92 — the psalter-matins row carries `Exsúrgat Deus, * et dissipéntur inimíci ejus.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "TBD-tranche-4"
+  },
   "Rubrics 1960 - 1960/2024-06-20/None/1ab5e32c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-06-20",
@@ -12212,6 +12248,30 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-06-20/Terce/2807ff6e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "TBD-tranche-4"
+  },
+  "Rubrics 1960 - 1960/2024-06-20/Vespers/2eac8bef": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100 — the psalter-major row carries `Ecce quam bonum * et quam jucúndum habitáre fratres in unum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "TBD-tranche-4"
   },
   "Rubrics 1960 - 1960/2024-06-24/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -13376,6 +13436,18 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-11-08/Lauds/d64d0218": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Lauda, * Jerúsalem, Dóminum. ‡",
+    "firstActual": "Ant. Lauda, * Jerúsalem, Dóminum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:111 — the psalter-major row carries `Lauda, * Jerúsalem, Dóminum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "TBD-tranche-4"
   },
   "Rubrics 1960 - 1960/2024-11-08/None/1ab5e32c": {
     "policy": "Rubrics 1960 - 1960",

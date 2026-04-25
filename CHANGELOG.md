@@ -14,6 +14,10 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Classified the next Rubrics 1960 unsupported trailing
+  continuation-marker family. Six Matins, Lauds, Terce, and Vespers rows now
+  cite the psalter sources that carry complete antiphons without a final `‡`,
+  dropping Rubrics 1960 unadjudicated rows from `93` to `87`.
 - **2026-04-25.** Carried feast Matins hymn doxology variants across the
   Phase 2/Phase 3 boundary. Proper Matins hymns such as the Reduced 1955
   Marian common now surface a `doxology-variant` slot when the winning office
