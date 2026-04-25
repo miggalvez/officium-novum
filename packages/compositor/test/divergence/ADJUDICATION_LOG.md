@@ -2730,7 +2730,7 @@ as source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: seasonal Paschal fallback-hymn doxologies reach Roman minor hours (engine-bug fixed plus perl-bug residuals)
 
-**Commit.** `pending`
+**Commit.** `26e2fdd`
 
 **Ledger signal.** The Paschal Sunday rows exposed fallback minor-hour
 hymns whose final stanza stayed on the ordinary `Præsta, Pater
@@ -2758,7 +2758,7 @@ rows are now classified as source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: 1960 Tridentinum Sunday Prime Paschal antiphon (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `26e2fdd`
 
 **Ledger signal.** Five Rubrics 1960 Sunday Prime rows show Perl's
 older full `Dominica` antiphon at the first divergence, while the
@@ -2782,7 +2782,7 @@ as source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: Roman Vespers post-collect conclusion bridge is skipped by Perl (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `26e2fdd`
 
 **Ledger signal.** Selected Reduced 1955 Vespers rows and one Rubrics
 1960 row reach the post-collect boundary where Perl stops at `_` while
@@ -2805,7 +2805,7 @@ source-backed Perl render-surface bugs.
 
 ### 2026-04-24 — Pattern: simplified Roman Triduum minor hours omit ordinary later blocks and use the proper oration (mixed fix)
 
-**Commit.** `pending`
+**Commit.** `26e2fdd`
 
 **Ledger signal.** Reduced 1955 and Rubrics 1960 Prime/Terce/Sext/None
 rows on Mar 28-30 reached the minor-hour later-block boundary where
@@ -2847,7 +2847,7 @@ left as their own open family.
 
 ### 2026-04-25 — Pattern: simplified Roman Triduum Vespers `Prelude Vespera` notices (mixed fix)
 
-**Commit.** `pending`
+**Commit.** `ab9a302`
 
 **Ledger signal.** Reduced 1955 and Rubrics 1960 Good Friday Vespers
 were blocked at line `1`: Perl opened with the Triduum
@@ -2880,7 +2880,7 @@ half-verse adjudication under both simplified Roman policies.
 
 ### 2026-04-25 — Pattern: existing source-backed adjudication fanout sweep (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `cece022`
 
 **Ledger signal.** The expanded live ledger still contained exact
 first-divergence signatures already classified in earlier source-backed
@@ -2910,7 +2910,7 @@ Reduced 1955 moves from `143` to `138`, and Rubrics 1960 moves from
 
 ### 2026-04-25 — Pattern: Reduced 1955 Lenten Sunday Matins seasonal versicles (engine-bug)
 
-**Commit.** `pending`
+**Commit.** `9060874`
 
 **Ledger signal.** Reduced 1955 Lenten and Passiontide Sunday Matins
 rows first diverged at the first-nocturn versicle: Perl used the
@@ -2939,7 +2939,7 @@ rendering family, and the six newly exposed row keys were fanned out in
 
 ### 2026-04-25 — Pattern: Rubrics 1960 Holy Week Lauds `Quad5` later block (engine-bug)
 
-**Commit.** `pending`
+**Commit.** `2823f84`
 
 **Ledger signal.** Rubrics 1960 Holy Week Lauds rows on Mar 25-27
 reached the later-block boundary where Perl selected the Passiontide
