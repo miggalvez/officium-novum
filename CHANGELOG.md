@@ -14,6 +14,37 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Backfilled the current tranche set's adjudication
+  provenance anchors. The ferial-preces, Vespers bridge fanout, Matins
+  doxology, and trailing-marker entries now cite their actual commit SHAs in
+  `ADJUDICATION_LOG.md`, and the new trailing-marker sidecar entries cite
+  `d635e10`.
+- **2026-04-25.** Classified the next Rubrics 1960 unsupported trailing
+  continuation-marker family. Six Matins, Lauds, Terce, and Vespers rows now
+  cite the psalter sources that carry complete antiphons without a final `‡`,
+  dropping Rubrics 1960 unadjudicated rows from `93` to `87`.
+- **2026-04-25.** Carried feast Matins hymn doxology variants across the
+  Phase 2/Phase 3 boundary. Proper Matins hymns such as the Reduced 1955
+  Marian common now surface a `doxology-variant` slot when the winning office
+  declares `Doxology=Nat`, and Matins composition replaces the final hymn
+  stanza with the source-backed `Psalterium/Doxologies` variant. The old
+  `Cum Patre, et almo Spíritu` blocker now advances to later Matins/antiphon
+  seams; the full progress report remains `132` Reduced 1955 and `93` Rubrics
+  1960 unadjudicated rows.
+- **2026-04-25.** Fanned out the existing Roman Vespers
+  post-collect `Dómine, exáudi` adjudication onto the Rubrics 1960
+  rows newly exposed by the ferial-preces fix. St Joseph and Immaculate
+  Conception Vespers now inherit the already-cited
+  `Psalterium/Common/Prayers` source-backed Perl-render classification,
+  dropping Rubrics 1960 unadjudicated rows to `93`.
+- **2026-04-25.** Narrowed Roman ferial-preces directive emission to the
+  source-backed weekday scope. Rubrics 1960 now emits Lauds/Vespers preces
+  only for Offices of the Season on Wednesdays and Fridays of Advent, Lent,
+  and Passiontide, plus the specified Ember-day shape; the pre-1960 Roman
+  path follows the parallel 1955 help text, including September Ember days
+  and Lauds-only Ember Saturdays. This removes the erroneous
+  `Kýrie...` preces block from 1960 feast and Holy Week Monday/Tuesday
+  major-hour rows, dropping Rubrics 1960 unadjudicated rows to `95`.
 - **2026-04-25.** Closed the Rubrics 1960 Holy Week Lauds `Quad5`
   later-block seam in Phase 2. The 1960 major-hour fallback now prefers
   Passiontide Monday-Wednesday `Major Special` sections (`Quad5 Laudes`,

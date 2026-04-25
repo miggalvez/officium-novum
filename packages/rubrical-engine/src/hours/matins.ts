@@ -99,6 +99,16 @@ export function structureMatins(input: StructureMatinsInput): StructureMatinsRes
     conclusion: applied.slots.conclusion ?? { kind: 'empty' }
   };
 
+  if (planResult.plan.hymn.kind === 'feast' && planResult.plan.hymn.doxologyVariant) {
+    slots['doxology-variant'] = {
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Doxologies',
+        section: planResult.plan.hymn.doxologyVariant
+      }
+    };
+  }
+
   const directives = directivesFromPolicy({
     hour: 'matins',
     skeleton: input.skeleton,

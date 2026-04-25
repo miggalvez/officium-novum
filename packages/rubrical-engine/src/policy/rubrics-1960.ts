@@ -307,10 +307,11 @@ export const rubrics1960Policy: RubricalPolicy = {
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective> {
     return deriveSeasonalDirectives1960({
       hour: params.hour,
+      celebration: params.celebration,
       celebrationRules: params.celebrationRules,
       hourRules: params.hourRules,
       temporal: params.temporal,
-        ...(params.overlay ? { overlay: params.overlay } : {})
+      ...(params.overlay ? { overlay: params.overlay } : {})
     });
   },
   limitCommemorations(

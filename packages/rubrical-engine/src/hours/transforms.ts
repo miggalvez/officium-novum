@@ -1,12 +1,13 @@
 import type { DirectoriumOverlay } from '../types/directorium.js';
 import type { HourDirective } from '../types/hour-structure.js';
 import type { TemporalContext } from '../types/model.js';
-import type { HourName } from '../types/ordo.js';
+import type { Celebration, HourName } from '../types/ordo.js';
 import type { CelebrationRuleSet, HourRuleSet } from '../types/rule-set.js';
 import { classifyDirective } from '../rules/classify.js';
 
 export interface HourDirectivesInput {
   readonly hour: HourName;
+  readonly celebration: Celebration;
   readonly celebrationRules: CelebrationRuleSet;
   readonly hourRules: HourRuleSet;
   readonly temporal: TemporalContext;
@@ -49,10 +50,9 @@ export function deriveSeasonalDirectives1960(
     directives.add('short-chapter-only');
   }
 
-  // RI §181: preces at Prime are retained only on penitential ferias,
-  // vigils of II class, and Ember Days — never as *dominicales*.
-  // RI §§180-182: preces at Lauds/Vespers retained on the same days.
-  const isFerial = isFerialClass(params.celebrationRules);
+  // RI §260: preces are retained only in Offices of the Season, and then
+  // only at Lauds/Vespers on the appointed weekdays and Ember days.
+  const isFerial = isOfficeOfSeason(params.celebration);
   if (shouldSayPreces(hour, temporal, isFerial) && !hourRules.omit.includes('preces')) {
     directives.add('preces-feriales');
   }
@@ -117,10 +117,8 @@ function isEmberWednesday(temporal: TemporalContext): boolean {
   return temporal.rank.classSymbol === 'II-ember-day' && temporal.dayOfWeek === 3;
 }
 
-function isFerialClass(rules: CelebrationRuleSet): boolean {
-  // A rough proxy: ferial days do not carry `festumDomini` and are not
-  // promoted to a double-class rank. Callers pass their merged rule set.
-  return !rules.festumDomini;
+function isOfficeOfSeason(celebration: Celebration): boolean {
+  return celebration.source === 'temporal' && !celebration.kind && !celebration.vigil;
 }
 
 function shouldSayPreces(
@@ -132,12 +130,24 @@ function shouldSayPreces(
     return false;
   }
 
-  if (hour === 'lauds' || hour === 'vespers' || hour === 'prime' || hour === 'compline') {
-    return (
-      temporal.season === 'advent' ||
+  if (hour !== 'lauds' && hour !== 'vespers') {
+    return false;
+  }
+
+  if (
+    (temporal.season === 'advent' ||
       temporal.season === 'lent' ||
-      temporal.season === 'passiontide' ||
-      temporal.rank.classSymbol === 'II-ember-day'
+      temporal.season === 'passiontide') &&
+    (temporal.dayOfWeek === 3 || temporal.dayOfWeek === 5)
+  ) {
+    return true;
+  }
+
+  if (temporal.rank.classSymbol === 'II-ember-day') {
+    return (
+      temporal.dayOfWeek === 3 ||
+      temporal.dayOfWeek === 5 ||
+      (hour === 'lauds' && temporal.dayOfWeek === 6 && temporal.season !== 'pentecost-octave')
     );
   }
 

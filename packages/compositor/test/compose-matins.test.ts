@@ -128,6 +128,57 @@ function renderRuns(
 }
 
 describe('composeHour(matins)', () => {
+  it('applies Matins hymn doxology variants to feast hymns', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Commune/C11', 'Hymnus Matutinum', [
+        { type: 'text', value: 'Quem terra, pontus, æthera' },
+        { type: 'separator' },
+        { type: 'text', value: '* Jesu, tibi sit glória,' },
+        { type: 'text', value: 'Qui natus es de Vírgine,' },
+        { type: 'text', value: 'Cum Patre, et almo Spíritu,' },
+        { type: 'text', value: 'In sempitérna sǽcula.' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Doxologies', 'Nat', [
+        { type: 'text', value: 'Jesu, tibi sit glória,' },
+        { type: 'text', value: 'Qui natus es de Vírgine,' },
+        { type: 'text', value: 'Cum Patre et almo Spíritu,' },
+        { type: 'text', value: 'In sempitérna sǽcula.' }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        hymn: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Commune/C11', section: 'Hymnus Matutinum' }
+        },
+        'doxology-variant': {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Psalterium/Doxologies', section: 'Nat' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummaryForVersion(hour, reducedVersion),
+      version: reducedVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+    const rendered = composed.sections.flatMap((section) =>
+      section.lines.map((line) => renderRuns(line, 'Latin'))
+    );
+
+    expect(rendered).toContain('Cum Patre et almo Spíritu,');
+    expect(rendered).not.toContain('Cum Patre, et almo Spíritu,');
+  });
+
   it('emits the fixed invitatory psalm with feast antiphon repetitions, then nocturn heading, psalmody, lectio, responsory, and Te Deum', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(

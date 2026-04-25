@@ -16,6 +16,10 @@ import { conditionMatches } from '@officium-novum/rubrical-engine';
 import { applyDirectives } from '../directives/apply-directives.js';
 import { resolveGloriaOmittiturReplacement } from './gloria-omittitur.js';
 import { appendContentWithBoundary } from './content-boundary.js';
+import {
+  replaceFinalHymnDoxology,
+  resolveHymnDoxologyByLanguage
+} from './major-hour-hymn.js';
 import { isWholeAntiphonSlot, markAntiphonFirstText } from '../emit/antiphon-marker.js';
 import { emitSection } from '../emit/sections.js';
 import { flattenConditionals } from '../flatten/evaluate-conditionals.js';
@@ -125,7 +129,19 @@ export function composeMatinsSections(
 
   const hymn = hour.slots.hymn;
   if (hymn && hymn.kind === 'single-ref') {
-    const section = composeReferenceSlot('hymn', hymn.ref, args);
+    const hymnDoxology = resolveHymnDoxologyByLanguage({
+      slot: 'hymn',
+      hour: 'matins',
+      summary: args.summary,
+      directives: args.directives,
+      structure: hour,
+      corpus: args.corpus,
+      options: args.options,
+      context: args.context,
+      ...(hour.slots['doxology-variant'] ? { hymnDoxology: hour.slots['doxology-variant'] } : {}),
+      ...(args.onWarning ? { onWarning: args.onWarning } : {})
+    });
+    const section = composeReferenceSlot('hymn', hymn.ref, args, hymnDoxology);
     if (section) sections.push(section);
   }
 
@@ -471,19 +487,22 @@ interface MatinsSlotRef {
 function composeReferenceSlot(
   slot: Parameters<typeof emitSection>[0],
   ref: TextReference,
-  args: MatinsComposeContext
+  args: MatinsComposeContext,
+  hymnDoxology?: ReadonlyMap<string, readonly TextContent[]>
 ): Section | undefined {
   return composeMergedSlot(
     slot,
     [{ ref, isAntiphon: isWholeAntiphonSlot(slot) }],
-    args
+    args,
+    hymnDoxology
   );
 }
 
 function composeMergedSlot(
   slot: Parameters<typeof emitSection>[0],
   refs: readonly MatinsSlotRef[],
-  args: MatinsComposeContext
+  args: MatinsComposeContext,
+  hymnDoxology?: ReadonlyMap<string, readonly TextContent[]>
 ): Section | undefined {
   if (refs.length === 0) return undefined;
   const perLanguage = new Map<string, TextContent[]>();
@@ -588,10 +607,14 @@ function composeMergedSlot(
         directives: args.directives,
         gloriaOmittiturReplacement
       });
+      const withDoxology =
+        slot === 'hymn'
+          ? replaceFinalHymnDoxology(transformed, hymnDoxology?.get(lang))
+          : transformed;
       const lineSeparated =
         slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? separatePsalmVerseLines(transformed)
-          : transformed;
+          ? separatePsalmVerseLines(withDoxology)
+          : withDoxology;
       const rangedPsalmBody =
         slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
           ? slicePsalmContentByVerseRange(

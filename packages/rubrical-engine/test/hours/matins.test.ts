@@ -365,6 +365,37 @@ describe('structureMatins', () => {
     }
   });
 
+  it('carries festal Matins hymn doxology variants as a slot', () => {
+    const { corpus, skeleton, version } = setup();
+    const celeb = celebration('Sancti/08-15', 'I', 'sanctoral');
+    const rules: CelebrationRuleSet = {
+      ...baseRules(),
+      doxologyVariant: 'Nat'
+    };
+    const hourRules = deriveHourRuleSet(celeb, rules, 'matins');
+
+    const result = structureMatins({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules: rules,
+      hourRules,
+      temporal: temporal('2024-08-15', 'Pent12-4', 'time-after-pentecost', 'IV'),
+      policy: rubrics1960Policy,
+      corpus,
+      version
+    });
+
+    expect(result.hour.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: 'horas/Latin/Sancti/08-15', section: 'Hymnus Matutinum' }
+    });
+    expect(result.hour.slots['doxology-variant']).toEqual({
+      kind: 'single-ref',
+      ref: { path: 'horas/Latin/Psalterium/Doxologies', section: 'Nat' }
+    });
+  });
+
   it('omits Te Deum in Triduum and keeps hymn empty when omitted by hour rules', () => {
     const { corpus, skeleton, version } = setup();
     const celeb = celebration('Tempora/Quad6-5', 'I-privilegiata-triduum', 'temporal');

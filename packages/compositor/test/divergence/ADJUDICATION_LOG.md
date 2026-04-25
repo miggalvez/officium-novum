@@ -2965,6 +2965,127 @@ before falling back to the generic feria sections.
 chapter mismatch, improving the policy average prefix from `48.1` to
 `48.3` and dropping Rubrics 1960 unadjudicated rows from `98` to `97`.
 
+### 2026-04-25 — Pattern: Rubrics 1960 trailing `‡` antiphon markers (perl-bug)
+
+**Commit.** `d635e10`
+
+**Ledger signal.** The widened Rubrics 1960 ledger exposed six
+unclassified rows where the first divergence was only an unsupported
+trailing continuation marker: Perl expected the same complete antiphon
+with a final `‡`, while the compositor emitted the corpus text without
+that marker.
+
+**Root cause.** The cited psalter sources carry complete antiphon rows
+without a trailing `‡`. The compositor preserves those rows; the legacy
+Perl render surface appends a continuation marker that is not present in
+the source.
+
+**Resolution.** Class `perl-bug`. Added row-level entries for stable
+key-hashes `86cb45c3`, `02b507e6`, `52cc7e9c`, `2807ff6e`,
+`2eac8bef`, and `d64d0218`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:29`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:87`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:111`
+
+**Impact.** Rubrics 1960 unadjudicated rows drop from `93` to `87`.
+The remaining frontier is now the source-selection families around
+Lenten minor-hour antiphons, Paschal-week Matins, and proper/ferial
+ownership rows rather than these punctuation-only marker rows.
+
+### 2026-04-25 — Pattern: Matins proper-hymn doxology variants (mixed fix)
+
+**Commit.** `fe8c5d9`
+
+**Ledger signal.** Reduced 1955 Marian Matins rows for July `06`,
+August `22`, September `08`, and September `12` diverged in the final
+hymn doxology stanza: Perl and the source-backed variant read
+`Cum Patre et almo Spíritu,`, while the compositor retained the common
+hymn source line `Cum Patre, et almo Spíritu`.
+
+**Root cause.** Phase 2 Matins planning already detected a feast hymn
+with `celebrationRules.doxologyVariant`, but `structureMatins` dropped
+that variant when converting the rich Matins plan into generic
+`HourStructure` slots. Phase 3 Matins composition also had no Matins
+equivalent of the major-hour hymn doxology replacement path, so the
+proper common hymn's default stanza survived unchanged.
+
+**Resolution.** Class `engine-bug`. Phase 2 now carries a festal Matins
+`doxology-variant` slot into `HourStructure`, and Phase 3 consumes it
+when composing the Matins hymn by replacing the final hymn doxology
+stanza with the variant section.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/08-22.txt:7-10`
+- `upstream/web/www/horas/Latin/Commune/C11.txt:102-105`
+- `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`
+
+**Impact.** The targeted Reduced 1955 `2024-08-22` probe now advances
+past the `Cum Patre...` doxology seam to the later Matins antiphon
+selection boundary. The full progress report remains `132` Reduced 1955
+and `93` Rubrics 1960 unadjudicated rows, because the fixed doxology
+family exposed later unadjudicated seams in the same hours.
+
+### 2026-04-25 — Pattern: existing `Dómine, exáudi` Vespers bridge fanout (perl-bug)
+
+**Commit.** `d9c4204`
+
+**Ledger signal.** After the ferial-preces directive fix, Rubrics 1960
+St Joseph and Immaculate Conception Vespers advanced to the already
+known post-collect bridge seam: Perl stops at `_`, while the compositor
+continues with `V. Dómine, exáudi oratiónem meam.`.
+
+**Root cause.** No new Phase 2 or Phase 3 behavior is implicated. The
+new rows are exact fanout of the already-cited major-hour conclusion
+bridge family where `Psalterium/Common/Prayers` supplies the
+source-backed `Domine exaudi` versicle and response after the collect.
+
+**Resolution.** Class `perl-bug`. Ran the sidecar fanout workflow
+against the expanded current ledgers and recorded the two missing
+Rubrics 1960 row keys in `adjudications.json`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86`.
+
+**Impact.** Rubrics 1960 unadjudicated rows drop from `95` to `93`.
+
+### 2026-04-25 — Pattern: Roman ferial preces limited to appointed weekdays (engine-bug)
+
+**Commit.** `a313e74`
+
+**Ledger signal.** Rubrics 1960 major-hour rows for St Joseph, Holy
+Monday/Tuesday, and the Immaculate Conception reached a boundary where
+Perl continued with the ordinary `Dómine, exáudi` bridge, while the
+compositor inserted the ferial-preces `Kýrie, eléison...` block.
+
+**Root cause.** Phase 2 emitted `preces-feriales` too broadly whenever
+the season was Advent, Lent, Passiontide, or an Ember day, using
+`!festumDomini` as a rough ferial proxy. Under the governing 1960
+rubrics, preces are said only in Offices of the Season, and then only
+at Lauds/Vespers on Wednesdays and Fridays of Advent/Lent/Passiontide,
+with the specified Ember-day exceptions. The pre-1960 Roman helper had
+the same broad seasonal shape against the 1955 help text.
+
+**Resolution.** Class `engine-bug`. Phase 2 now requires a temporal
+Office of the Season and the appointed weekday/Ember shape before
+emitting `preces-feriales`; it no longer emits these preces for
+sanctoral feasts or Monday/Tuesday Passiontide ferias.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:358-364`
+- `upstream/web/www/horas/Help/Rubrics/1955.txt:270-276`
+
+**Impact.** Rubrics 1960 unadjudicated rows drop from `97` to `95`.
+The affected major-hour rows now advance to existing source-backed
+families such as the post-collect `Dómine, exáudi` bridge, psalm
+half-verse rendering, or proper later-block adjudications.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

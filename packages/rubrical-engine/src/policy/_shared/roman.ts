@@ -102,23 +102,22 @@ export function deriveSeasonalDirectivesRomanPre1960(
     directives.add('short-chapter-only');
   }
 
-  const privilegedSeason =
-    temporal.season === 'advent' ||
-    temporal.season === 'lent' ||
-    temporal.season === 'passiontide' ||
-    temporal.season === 'septuagesima';
   const ferialDay =
     celebration.source === 'temporal' && !celebration.kind && !celebration.vigil;
 
   if (
-    (hour === 'prime' || hour === 'lauds' || hour === 'vespers' || hour === 'compline') &&
     ferialDay &&
-    privilegedSeason &&
+    shouldSayFerialPrecesPre1960(hour, temporal) &&
     !hourRules.omit.includes('preces')
   ) {
     directives.add('preces-feriales');
   }
 
+  const privilegedSeason =
+    temporal.season === 'advent' ||
+    temporal.season === 'lent' ||
+    temporal.season === 'passiontide' ||
+    temporal.season === 'septuagesima';
   const shouldSaySuffragium =
     (hour === 'lauds' || hour === 'vespers') &&
     ferialDay &&
@@ -142,6 +141,30 @@ export function deriveSeasonalDirectivesRomanPre1960(
   }
 
   return directives;
+}
+
+function shouldSayFerialPrecesPre1960(
+  hour: HourDirectivesParams['hour'],
+  temporal: TemporalContext
+): boolean {
+  if (hour !== 'lauds' && hour !== 'vespers') {
+    return false;
+  }
+
+  const seasonalWednesdayOrFriday =
+    (temporal.season === 'advent' ||
+      temporal.season === 'lent' ||
+      temporal.season === 'passiontide') &&
+    (temporal.dayOfWeek === 3 || temporal.dayOfWeek === 5);
+  if (seasonalWednesdayOrFriday) {
+    return true;
+  }
+
+  if (!isEmberDay(temporal) || temporal.season === 'pentecost-octave') {
+    return false;
+  }
+
+  return temporal.dayOfWeek === 3 || temporal.dayOfWeek === 5 || (hour === 'lauds' && temporal.dayOfWeek === 6);
 }
 
 export function defaultRomanScriptureCourse(temporal: TemporalContext): ScriptureCourse {

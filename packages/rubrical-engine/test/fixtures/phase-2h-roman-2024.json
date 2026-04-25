@@ -72,8 +72,8 @@
       "hours": [
         {
           "date": "2024-03-25",
-          "laudsDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"],
-          "vespersDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"]
+          "laudsDirectives": ["omit-alleluia", "omit-suffragium"],
+          "vespersDirectives": ["omit-alleluia", "omit-suffragium"]
         },
         {
           "date": "2024-05-09",
@@ -227,8 +227,8 @@
       "hours": [
         {
           "date": "2024-03-25",
-          "laudsDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"],
-          "vespersDirectives": ["omit-alleluia", "preces-feriales", "omit-suffragium"]
+          "laudsDirectives": ["omit-alleluia", "omit-suffragium"],
+          "vespersDirectives": ["omit-alleluia", "omit-suffragium"]
         },
         {
           "date": "2024-05-09",
