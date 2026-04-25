@@ -11155,7 +11155,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:29 — the psalter-matins row carries `Exáudiat te * Dóminus in die tribulatiónis.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "TBD-tranche-4"
+    "commitSha": "d635e10"
   },
   "Rubrics 1960 - 1960/2024-03-25/None/2071fc88": {
     "policy": "Rubrics 1960 - 1960",
@@ -12199,7 +12199,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:87 — the psalter-major row carries `Dómine, * refúgium factus es nobis.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "TBD-tranche-4"
+    "commitSha": "d635e10"
   },
   "Rubrics 1960 - 1960/2024-06-20/Matins/02b507e6": {
     "policy": "Rubrics 1960 - 1960",
@@ -12211,7 +12211,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92 — the psalter-matins row carries `Exsúrgat Deus, * et dissipéntur inimíci ejus.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "TBD-tranche-4"
+    "commitSha": "d635e10"
   },
   "Rubrics 1960 - 1960/2024-06-20/None/1ab5e32c": {
     "policy": "Rubrics 1960 - 1960",
@@ -12259,7 +12259,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "TBD-tranche-4"
+    "commitSha": "d635e10"
   },
   "Rubrics 1960 - 1960/2024-06-20/Vespers/2eac8bef": {
     "policy": "Rubrics 1960 - 1960",
@@ -12271,7 +12271,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100 — the psalter-major row carries `Ecce quam bonum * et quam jucúndum habitáre fratres in unum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "TBD-tranche-4"
+    "commitSha": "d635e10"
   },
   "Rubrics 1960 - 1960/2024-06-24/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -13447,7 +13447,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:111 — the psalter-major row carries `Lauda, * Jerúsalem, Dóminum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "TBD-tranche-4"
+    "commitSha": "d635e10"
   },
   "Rubrics 1960 - 1960/2024-11-08/None/1ab5e32c": {
     "policy": "Rubrics 1960 - 1960",

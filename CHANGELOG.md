@@ -14,6 +14,11 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Backfilled the current tranche set's adjudication
+  provenance anchors. The ferial-preces, Vespers bridge fanout, Matins
+  doxology, and trailing-marker entries now cite their actual commit SHAs in
+  `ADJUDICATION_LOG.md`, and the new trailing-marker sidecar entries cite
+  `d635e10`.
 - **2026-04-25.** Classified the next Rubrics 1960 unsupported trailing
   continuation-marker family. Six Matins, Lauds, Terce, and Vespers rows now
   cite the psalter sources that carry complete antiphons without a final `‡`,

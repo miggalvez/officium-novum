@@ -2967,7 +2967,7 @@ chapter mismatch, improving the policy average prefix from `48.1` to
 
 ### 2026-04-25 — Pattern: Rubrics 1960 trailing `‡` antiphon markers (perl-bug)
 
-**Commit.** `TBD-tranche-4`
+**Commit.** `d635e10`
 
 **Ledger signal.** The widened Rubrics 1960 ledger exposed six
 unclassified rows where the first divergence was only an unsupported
@@ -3000,7 +3000,7 @@ ownership rows rather than these punctuation-only marker rows.
 
 ### 2026-04-25 — Pattern: Matins proper-hymn doxology variants (mixed fix)
 
-**Commit.** `TBD-tranche-3`
+**Commit.** `fe8c5d9`
 
 **Ledger signal.** Reduced 1955 Marian Matins rows for July `06`,
 August `22`, September `08`, and September `12` diverged in the final
@@ -3034,7 +3034,7 @@ family exposed later unadjudicated seams in the same hours.
 
 ### 2026-04-25 — Pattern: existing `Dómine, exáudi` Vespers bridge fanout (perl-bug)
 
-**Commit.** `TBD-tranche-2`
+**Commit.** `d9c4204`
 
 **Ledger signal.** After the ferial-preces directive fix, Rubrics 1960
 St Joseph and Immaculate Conception Vespers advanced to the already
@@ -3056,7 +3056,7 @@ Rubrics 1960 row keys in `adjudications.json`.
 
 ### 2026-04-25 — Pattern: Roman ferial preces limited to appointed weekdays (engine-bug)
 
-**Commit.** `TBD-tranche-1`
+**Commit.** `a313e74`
 
 **Ledger signal.** Rubrics 1960 major-hour rows for St Joseph, Holy
 Monday/Tuesday, and the Immaculate Conception reached a boundary where
