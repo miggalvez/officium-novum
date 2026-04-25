@@ -458,7 +458,12 @@ function resolveStructuredSelector(
 }
 
 function isPsalmiMinorAntiphonSection(sectionName: string): boolean {
-  return sectionName === 'Tridentinum' || isKeyedPsalterSection(sectionName);
+  return (
+    sectionName === 'Tridentinum' ||
+    sectionName === 'Quad' ||
+    sectionName === 'Quad5_' ||
+    isKeyedPsalterSection(sectionName)
+  );
 }
 
 function parseAntiphonSelector(selector: string): string | undefined {

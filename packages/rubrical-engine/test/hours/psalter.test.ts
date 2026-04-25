@@ -209,7 +209,8 @@ Feria IV = Misericórdia tua, * Dómine, ante óculos meos: et complácui in ver
       '52',
       '[96]'
     ]);
-    expect(pre1960Penitential[0]?.antiphonRef?.selector).toBe('Feria IV#antiphon');
+    expect(pre1960Penitential[0]?.antiphonRef?.section).toBe('Quad');
+    expect(pre1960Penitential[0]?.antiphonRef?.selector).toBe('1#antiphon');
 
     const rubrics1960Penitential = selectPsalmodyRoman1960({
       hour: 'prime',
@@ -265,7 +266,8 @@ Feria IV = Misericórdia tua, * Dómine, ante óculos meos: et complácui in ver
       '118(81-96)',
       '118(97-112)'
     ]);
-    expect(refs[0]?.antiphonRef?.selector).toBe('Feria IV#antiphon');
+    expect(refs[0]?.antiphonRef?.section).toBe('Quad');
+    expect(refs[0]?.antiphonRef?.selector).toBe('3#antiphon');
   });
 
   it('does not emit a minor-hour antiphon reference for underscore sentinels', () => {

@@ -262,6 +262,70 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'uses the source-backed Lent weekday minor-hour antiphon table over ordinary weekday psalms',
+    async () => {
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
+
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-24', 'prime'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:1#antiphon',
+          handle === 'Reduced - 1955'
+            ? ['93(1-11)', '93(12-23)', '107', '[149]']
+            : ['93(1-11)', '93(12-23)', '107']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-14', 'prime'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:1#antiphon',
+          handle === 'Reduced - 1955'
+            ? ['25', '51', '52', '[96]']
+            : ['25', '51', '52']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-24', 'terce'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:2#antiphon',
+          ['101(2-13)', '101(14-23)', '101(24-29)']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-14', 'terce'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:2#antiphon',
+          ['53', '54(2-16)', '54(17-24)']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-24', 'sext'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:3#antiphon',
+          ['103(1-12)', '103(13-23)', '103(24-35)']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-14', 'sext'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:3#antiphon',
+          ['55', '56', '57']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-24', 'none'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:5#antiphon',
+          ['108(2-13)', '108(14-21)', '108(22-31)']
+        );
+        expectMinorHour(
+          psalmodyAt(engine, '2024-02-14', 'none'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:5#antiphon',
+          ['58(2-11)', '58(12-18)', '59']
+        );
+      }
+    },
+    240_000
+  );
+
+  it(
     'keeps festal Sunday Prime on Prima Festis when Psalmi Dominica combines with proper minor-hour antiphons',
     async () => {
       const engines = await loadEngines([

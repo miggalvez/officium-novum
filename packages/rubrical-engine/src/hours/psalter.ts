@@ -163,7 +163,7 @@ function weekdayMinorHourReferences(
       hour === 'prime' && !params.omitPrimeBracketPsalm && isPenitentialDay(temporal)
   });
   if (keyed.length > 0) {
-    return keyed;
+    return applySeasonalWeekdayMinorHourAntiphon(keyed, params);
   }
 
   return [
@@ -175,6 +175,64 @@ function weekdayMinorHourReferences(
       }
     }
   ];
+}
+
+const LENTEN_MINOR_HOUR_ANTIPHON_SELECTOR: Readonly<
+  Record<'prime' | 'terce' | 'sext' | 'none', string>
+> = {
+  prime: '1',
+  terce: '2',
+  sext: '3',
+  none: '5'
+};
+
+function applySeasonalWeekdayMinorHourAntiphon(
+  assignments: readonly PsalmAssignment[],
+  params: SelectPsalmodyInput & {
+    readonly hour: 'prime' | 'terce' | 'sext' | 'none';
+  }
+): readonly PsalmAssignment[] {
+  const section = seasonalWeekdayMinorHourAntiphonSection(params);
+  if (!section || assignments.length === 0) {
+    return assignments;
+  }
+
+  const first = assignments[0];
+  if (!first) {
+    return assignments;
+  }
+
+  return Object.freeze([
+    {
+      ...first,
+      antiphonRef: {
+        path: PSALMI_MINOR,
+        section,
+        selector: `${LENTEN_MINOR_HOUR_ANTIPHON_SELECTOR[params.hour]}#antiphon`
+      }
+    },
+    ...assignments.slice(1)
+  ]);
+}
+
+function seasonalWeekdayMinorHourAntiphonSection(
+  params: SelectPsalmodyInput & {
+    readonly hour: 'prime' | 'terce' | 'sext' | 'none';
+  }
+): 'Quad' | 'Quad5_' | undefined {
+  if (!isTemporalCelebration(params) || params.temporal.dayOfWeek === 0) {
+    return undefined;
+  }
+
+  if (/^Quad[56]-[1-6]/u.test(params.temporal.dayName)) {
+    return 'Quad5_';
+  }
+
+  if (/^Quad(?:p3-[3-6]|[1-4]-[1-6])/u.test(params.temporal.dayName)) {
+    return 'Quad';
+  }
+
+  return undefined;
 }
 
 function resolveWeekdayMinorHourAssignments(

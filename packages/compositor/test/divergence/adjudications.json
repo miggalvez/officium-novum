@@ -6465,6 +6465,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-02-14/None/40f185d2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "None",
+    "firstExpected": "Præsta, Dómine, fidélibus tuis: ut jejuniórum veneránda solémnia, et cóngrua pietáte suscípiant, et secúra devotióne percúrrant.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-02-14/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-02-14",
@@ -6477,6 +6488,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Reduced - 1955/2024-02-14/Sext/40f185d2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Sext",
+    "firstExpected": "Præsta, Dómine, fidélibus tuis: ut jejuniórum veneránda solémnia, et cóngrua pietáte suscípiant, et secúra devotióne percúrrant.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-02-14/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
     "date": "2024-02-14",
@@ -6488,6 +6510,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-02-14/Terce/40f185d2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Terce",
+    "firstExpected": "Præsta, Dómine, fidélibus tuis: ut jejuniórum veneránda solémnia, et cóngrua pietáte suscípiant, et secúra devotióne percúrrant.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-02-14/Terce/9d0c4734": {
     "policy": "Reduced - 1955",
@@ -7209,6 +7242,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
   },
+  "Reduced - 1955/2024-03-25/None/9435787d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "None",
+    "firstExpected": "Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-03-25/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-03-25",
@@ -7232,6 +7276,28 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Reduced - 1955/2024-03-25/Sext/9435787d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Sext",
+    "firstExpected": "Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
+  "Reduced - 1955/2024-03-25/Terce/9435787d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Terce",
+    "firstExpected": "Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-03-25/Terce/cedac887": {
     "policy": "Reduced - 1955",
@@ -7293,6 +7359,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
   },
+  "Reduced - 1955/2024-03-26/None/e227f3f5": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "None",
+    "firstExpected": "Omnípotens sempitérne Deus: da nobis ita Domínicæ passiónis sacraménta perágere; ut indulgéntiam percípere mereámur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-03-26/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-03-26",
@@ -7317,6 +7394,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
   },
+  "Reduced - 1955/2024-03-26/Sext/e227f3f5": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Sext",
+    "firstExpected": "Omnípotens sempitérne Deus: da nobis ita Domínicæ passiónis sacraménta perágere; ut indulgéntiam percípere mereámur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-03-26/Terce/cedac887": {
     "policy": "Reduced - 1955",
     "date": "2024-03-26",
@@ -7328,6 +7416,17 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Reduced - 1955/2024-03-26/Terce/e227f3f5": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Terce",
+    "firstExpected": "Omnípotens sempitérne Deus: da nobis ita Domínicæ passiónis sacraménta perágere; ut indulgéntiam percípere mereámur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-03-26/Vespers/19479180": {
     "policy": "Reduced - 1955",
@@ -7377,6 +7476,17 @@
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
   },
+  "Reduced - 1955/2024-03-27/None/14880dfe": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "None",
+    "firstExpected": "Præsta, quǽsumus, omnípotens Deus: ut, qui nostris excéssibus incessánter afflígimur, per unigéniti Fílii tui passiónem liberémur:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-03-27/None/2071fc88": {
     "policy": "Reduced - 1955",
     "date": "2024-03-27",
@@ -7401,6 +7511,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Reduced - 1955/2024-03-27/Sext/14880dfe": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Sext",
+    "firstExpected": "Præsta, quǽsumus, omnípotens Deus: ut, qui nostris excéssibus incessánter afflígimur, per unigéniti Fílii tui passiónem liberémur:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-03-27/Sext/3acfd479": {
     "policy": "Reduced - 1955",
     "date": "2024-03-27",
@@ -7412,6 +7533,17 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Reduced - 1955/2024-03-27/Terce/14880dfe": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Terce",
+    "firstExpected": "Præsta, quǽsumus, omnípotens Deus: ut, qui nostris excéssibus incessánter afflígimur, per unigéniti Fílii tui passiónem liberémur:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-03-27/Terce/cedac887": {
     "policy": "Reduced - 1955",
@@ -8205,6 +8337,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-06-20/None/ef4f7902": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "None",
+    "firstExpected": "Da nobis, quǽsumus, Dómine: ut et mundi cursus pacífice nobis tuo órdine dirigátur; et Ecclésia tua tranquílla devotióne lætétur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-06-20/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-06-20",
@@ -8228,6 +8371,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-06-20/Sext/ef4f7902": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Sext",
+    "firstExpected": "Da nobis, quǽsumus, Dómine: ut et mundi cursus pacífice nobis tuo órdine dirigátur; et Ecclésia tua tranquílla devotióne lætétur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-06-24/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -9069,6 +9223,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-11-05/None/56e276de": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "None",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-11-05/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-11-05",
@@ -9081,6 +9246,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Reduced - 1955/2024-11-05/Sext/56e276de": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Sext",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-11-05/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
     "date": "2024-11-05",
@@ -9092,6 +9268,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-05/Terce/56e276de": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Terce",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-11-05/Terce/9d0c4734": {
     "policy": "Reduced - 1955",
@@ -9153,6 +9340,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Reduced - 1955/2024-11-08/None/56e276de": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "None",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-11-08/Prime/6081a8cc": {
     "policy": "Reduced - 1955",
     "date": "2024-11-08",
@@ -9165,6 +9363,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Reduced - 1955/2024-11-08/Sext/56e276de": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Sext",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Reduced - 1955/2024-11-08/Sext/c92f80b2": {
     "policy": "Reduced - 1955",
     "date": "2024-11-08",
@@ -9176,6 +9385,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Reduced - 1955/2024-11-08/Terce/56e276de": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Terce",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Reduced - 1955/2024-11-08/Terce/9d0c4734": {
     "policy": "Reduced - 1955",
@@ -10437,6 +10657,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Rubrics 1960 - 1960/2024-02-14/None/40f185d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "None",
+    "firstExpected": "Præsta, Dómine, fidélibus tuis: ut jejuniórum veneránda solémnia, et cóngrua pietáte suscípiant, et secúra devotióne percúrrant.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-02-14/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-14",
@@ -10449,6 +10680,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Rubrics 1960 - 1960/2024-02-14/Sext/40f185d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Sext",
+    "firstExpected": "Præsta, Dómine, fidélibus tuis: ut jejuniórum veneránda solémnia, et cóngrua pietáte suscípiant, et secúra devotióne percúrrant.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-02-14/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-14",
@@ -10460,6 +10702,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-02-14/Terce/40f185d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-14",
+    "hour": "Terce",
+    "firstExpected": "Præsta, Dómine, fidélibus tuis: ut jejuniórum veneránda solémnia, et cóngrua pietáte suscípiant, et secúra devotióne percúrrant.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-02-14/Terce/9d0c4734": {
     "policy": "Rubrics 1960 - 1960",
@@ -11169,6 +11422,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
   },
+  "Rubrics 1960 - 1960/2024-03-25/None/9435787d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-25",
+    "hour": "None",
+    "firstExpected": "Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-03-25/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-25",
@@ -11192,6 +11456,28 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Rubrics 1960 - 1960/2024-03-25/Sext/9435787d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-25",
+    "hour": "Sext",
+    "firstExpected": "Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
+  "Rubrics 1960 - 1960/2024-03-25/Terce/9435787d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-25",
+    "hour": "Terce",
+    "firstExpected": "Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-03-25/Terce/cedac887": {
     "policy": "Rubrics 1960 - 1960",
@@ -11241,6 +11527,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
   },
+  "Rubrics 1960 - 1960/2024-03-26/None/e227f3f5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-26",
+    "hour": "None",
+    "firstExpected": "Omnípotens sempitérne Deus: da nobis ita Domínicæ passiónis sacraménta perágere; ut indulgéntiam percípere mereámur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-03-26/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-26",
@@ -11265,6 +11562,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
   },
+  "Rubrics 1960 - 1960/2024-03-26/Sext/e227f3f5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-26",
+    "hour": "Sext",
+    "firstExpected": "Omnípotens sempitérne Deus: da nobis ita Domínicæ passiónis sacraménta perágere; ut indulgéntiam percípere mereámur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-03-26/Terce/cedac887": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-26",
@@ -11276,6 +11584,17 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Rubrics 1960 - 1960/2024-03-26/Terce/e227f3f5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-26",
+    "hour": "Terce",
+    "firstExpected": "Omnípotens sempitérne Deus: da nobis ita Domínicæ passiónis sacraménta perágere; ut indulgéntiam percípere mereámur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-03-26/Vespers/b1fc00bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -11313,6 +11632,17 @@
     "resolvedAt": "2026-04-23",
     "commitSha": "7dcd747"
   },
+  "Rubrics 1960 - 1960/2024-03-27/None/14880dfe": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-27",
+    "hour": "None",
+    "firstExpected": "Præsta, quǽsumus, omnípotens Deus: ut, qui nostris excéssibus incessánter afflígimur, per unigéniti Fílii tui passiónem liberémur:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-03-27/None/2071fc88": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-27",
@@ -11337,6 +11667,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Rubrics 1960 - 1960/2024-03-27/Sext/14880dfe": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-27",
+    "hour": "Sext",
+    "firstExpected": "Præsta, quǽsumus, omnípotens Deus: ut, qui nostris excéssibus incessánter afflígimur, per unigéniti Fílii tui passiónem liberémur:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-03-27/Sext/3acfd479": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-03-27",
@@ -11348,6 +11689,17 @@
     "notes": "Representative entry for the Holy Week Quad5 minor-hour short-responsory separator family exposed by the fallback fix.",
     "resolvedAt": "2026-04-24",
     "commitSha": "895eada"
+  },
+  "Rubrics 1960 - 1960/2024-03-27/Terce/14880dfe": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-27",
+    "hour": "Terce",
+    "firstExpected": "Præsta, quǽsumus, omnípotens Deus: ut, qui nostris excéssibus incessánter afflígimur, per unigéniti Fílii tui passiónem liberémur:",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-03-27/Terce/cedac887": {
     "policy": "Rubrics 1960 - 1960",
@@ -12225,6 +12577,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Rubrics 1960 - 1960/2024-06-20/None/ef4f7902": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "None",
+    "firstExpected": "Da nobis, quǽsumus, Dómine: ut et mundi cursus pacífice nobis tuo órdine dirigátur; et Ecclésia tua tranquílla devotióne lætétur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-06-20/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-06-20",
@@ -12248,6 +12611,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-06-20/Sext/ef4f7902": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-20",
+    "hour": "Sext",
+    "firstExpected": "Da nobis, quǽsumus, Dómine: ut et mundi cursus pacífice nobis tuo órdine dirigátur; et Ecclésia tua tranquílla devotióne lætétur.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-06-20/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -13377,6 +13751,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Rubrics 1960 - 1960/2024-11-05/None/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "None",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-11-05/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-05",
@@ -13389,6 +13774,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Rubrics 1960 - 1960/2024-11-05/Sext/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Sext",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-11-05/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-05",
@@ -13400,6 +13796,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-05/Terce/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Terce",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-11-05/Terce/9d0c4734": {
     "policy": "Rubrics 1960 - 1960",
@@ -13461,6 +13868,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
   },
+  "Rubrics 1960 - 1960/2024-11-08/None/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "None",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-11-08/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-08",
@@ -13473,6 +13891,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
   },
+  "Rubrics 1960 - 1960/2024-11-08/Sext/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Sext",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-11-08/Sext/c92f80b2": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-08",
@@ -13484,6 +13913,17 @@
     "notes": "Representative entry for the ferial minor-hour short-responsory separator family exposed after the later-block fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "4dd9d33"
+  },
+  "Rubrics 1960 - 1960/2024-11-08/Terce/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Terce",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
   },
   "Rubrics 1960 - 1960/2024-11-08/Terce/9d0c4734": {
     "policy": "Rubrics 1960 - 1960",
@@ -14084,5 +14524,137 @@
     "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
     "resolvedAt": "2026-04-24",
     "commitSha": "26e2fdd"
+  },
+  "Reduced - 1955/2024-02-24/Terce/50e62c35": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Terce",
+    "firstExpected": "Ant. Advenérunt nobis.",
+    "firstActual": "Ant. Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Advenérunt nobis * dies pœniténtiæ...` antiphon for Terce. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
+    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "f487708"
+  },
+  "Reduced - 1955/2024-02-24/Sext/62fa2e12": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Sext",
+    "firstExpected": "Ant. Commendémus nosmetípsos.",
+    "firstActual": "Ant. Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Commendémus nosmetípsos * in multa patiéntia...` antiphon for Sext. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
+    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "f487708"
+  },
+  "Reduced - 1955/2024-02-24/None/f60c28f2": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "None",
+    "firstExpected": "Ant. Per arma justítiæ.",
+    "firstActual": "Ant. Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163 — the Lent weekday minor-hour antiphon table carries the full `Per arma justítiæ * virtútis Dei...` antiphon for None. The compositor now emits that source-backed text while the 1955 Perl comparison surface abbreviates it to an incipit.",
+    "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "f487708"
+  },
+  "Reduced - 1955/2024-02-14/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-02-24/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-03-25/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-03-26/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-03-27/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-06-20/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-11-05/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
+  },
+  "Reduced - 1955/2024-11-08/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "9576d3e"
   }
 }

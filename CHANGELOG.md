@@ -14,6 +14,34 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Extended the Reduced 1955 ferial Prime later-block
+  adjudication across the live 2024 frontier. Eight Prime rows now cite
+  `Prima Special` for the source-backed absence of an implicit
+  `R. Deo grátias.` before the short responsory, moving that repeated
+  Perl render-surface issue out of the unadjudicated set.
+- **2026-04-25.** Classified the Reduced 1955 Lent Saturday minor-hour
+  incipit surface exposed by the seasonal-antiphon routing fix. The
+  `ADJUDICATION_LOG.md`, `adjudications.json`, and upstream issue log
+  now cite `Psalmi minor:[Quad]` for the source-backed full Terce,
+  Sext, and None antiphons while preserving Perl's incipit-only 1955
+  output as a comparison-surface bug.
+- **2026-04-25.** Closed the Lent weekday minor-hour antiphon routing
+  seam for the shared Roman policies. Weekday temporal ferias in Lent
+  and Passiontide now keep the ordinary weekday psalm distribution while
+  taking their first antiphons from the source-backed seasonal
+  `Psalmi minor` tables (`Quad` / `Quad5_`), and Phase 3's
+  `#antiphon` selector support now covers those keyed seasonal sections.
+- **2026-04-25.** Classified the shared Roman minor-hour collect-wrapper
+  frontier exposed by the later-block work. Forty Reduced 1955 / Rubrics
+  1960 Terce/Sext/None rows now cite the source-backed
+  `Dómine, exáudi... / Orémus` wrapper from `Ordinarium/Minor` and
+  `Common/Prayers`, dropping unadjudicated rows to `121` for Reduced
+  1955 and `87` for Rubrics 1960.
+- **2026-04-25.** Narrowed the Rubrics 1960 Ash Wednesday minor-hour
+  preces frontier. Explicit `Preces Feriales` rules now obey the 1960
+  Lauds/Vespers-only scope instead of leaking into Terce/Sext/None; the
+  affected rows advance from the erroneous `Kýrie...` block to the shared
+  minor-hour collect-wrapper frontier.
 - **2026-04-25.** Backfilled the current tranche set's Phase 3
   adjudication-log provenance anchors. The Passiontide Sunday
   later-block, Passiontide responsory-Gloria omission, and Passiontide

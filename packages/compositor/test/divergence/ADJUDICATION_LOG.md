@@ -3169,6 +3169,145 @@ its sanctoral office instead of inheriting that seasonal omission.
 **Impact.** St Joseph Terce reaches exact line-stream parity while the
 Passion Sunday temporal row remains exact.
 
+### 2026-04-25 — Pattern: 1960 minor-hour explicit ferial preces leak (engine-bug)
+
+**Commit.** `fb81347`
+
+**Ledger signal.** Rubrics 1960 Ash Wednesday Terce/Sext/None first
+diverged after the minor-hour later block: Perl reached
+`V. Dómine, exáudi oratiónem meam.`, while the compositor emitted the
+ferial-preces `Kýrie, eléison...` block.
+
+**Root cause.** The 1960 seasonal preces derivation already limited
+ferial preces to Offices of the Season at Lauds and Vespers, but the
+explicit `Preces Feriales` rule path admitted hour-scoped directives
+without the same hour guard. That let the ordinary minor-hour
+`#Preces Feriales` heading leak into Terce/Sext/None.
+
+**Resolution.** Class `engine-bug`. The explicit-rule path now honors
+the same 1960 source boundary: only Offices of the Season at Lauds or
+Vespers may emit `preces-feriales`. A focused transform regression locks
+the Terce exclusion.
+
+**Citation.** `upstream/web/www/horas/Ordinarium/Minor.txt:23-26` and
+`upstream/web/www/horas/Ordinarium/Laudes.txt:35` /
+`upstream/web/www/horas/Ordinarium/Vespera.txt:25`.
+
+**Impact.** The Ash Wednesday 1960 minor-hour rows move past the
+erroneous `Kýrie...` block to the shared Roman minor-hour collect-wrapper
+frontier; unadjudicated counts are unchanged because the next exposed
+seam still needs its own source decision.
+
+### 2026-04-25 — Pattern: simplified Roman minor-hour collect wrapper (perl-bug)
+
+**Commit.** `ee3ec3c`
+
+**Ledger signal.** After the later-block and preces fixes, shared Roman
+Terce/Sext/None rows in Lent, Holy Week, and ordinary ferias reached the
+minor-hour collect handoff. Perl jumped directly to the collect text,
+while the compositor emitted the source-backed
+`V. Dómine, exáudi oratiónem meam.` prelude.
+
+**Root cause.** This is the same ordinary minor-hour wrapper source
+settled by the earlier Reduced 1955 Sunday later-block tranche. The
+minor-hour ordinary carries `#Oratio` followed by `#Conclusio`; the
+common prayers supply the `Domine exaudi` / response and `Oremus` lines
+around the collect. These newly exposed rows are not a fresh compositor
+bug; they are later members of the same source-backed wrapper family.
+
+**Resolution.** Class `perl-bug`. Added row-level sidecar
+classifications for the exposed Reduced 1955 and Rubrics 1960
+Terce/Sext/None rows and regenerated the ledgers.
+
+**Citation.** `upstream/web/www/horas/Ordinarium/Minor.txt:28-34` and
+`upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307`.
+
+**Impact.** Forty rows move from `unadjudicated` to `perl-bug`.
+Reduced 1955 unadjudicated rows drop from `141` to `121`; Rubrics 1960
+drops from `107` to `87`.
+
+### 2026-04-25 — Pattern: Lent weekday minor-hour antiphon routing (engine-bug)
+
+**Commit.** `63c5c80`
+
+**Ledger signal.** The 2024 Lent Saturday rows for the shared Roman
+policies exposed ordinary Saturday minor-hour antiphons at Prime,
+Terce, Sext, and None (`Exaltáre`, `Clamor meus`, `Dómine, Deus meus`,
+`Ne tacúeris`) where Perl expected the seasonal Lent minor-hour
+antiphons (`Vivo ego`, `Advenérunt nobis`, `Commendémus nosmetípsos`,
+`Per arma justítiæ`).
+
+**Root cause.** Phase 2 correctly retained the weekday psalm
+distribution, but it carried the ordinary weekday row's antiphon across
+the Phase 2 / Phase 3 boundary. The source keeps the Lent and
+Passiontide weekday minor-hour antiphons in keyed seasonal sections of
+`Psalmi minor` (`[Quad]` and `[Quad5_]`), separate from the ordinary
+weekday psalm rows.
+
+**Resolution.** Class `engine-bug`. Weekday temporal ferias in Lent and
+Passiontide now overlay the first minor-hour antiphon from the seasonal
+`Psalmi minor` table while preserving the ordinary weekday psalms. Phase
+3 also treats those keyed seasonal sections as `#antiphon`-selectable
+sources, so the rendered line is the antiphon text rather than the raw
+`1 = ...` keyed row.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:1-56,154-167`.
+
+**Impact.** Rubrics 1960 Feb `24` Prime/Terce/Sext/None move past the
+seasonal-antiphon frontier into later chapter/collect seams. Reduced
+1955 Prime advances to a later separator seam; Terce/Sext/None expose
+the existing incipit-vs-full-antiphon render surface for their own
+adjudication tranche.
+
+### 2026-04-25 — Pattern: Reduced 1955 Lent minor-hour incipit antiphons (perl-bug)
+
+**Commit.** `f487708`
+
+**Ledger signal.** After the seasonal Lent weekday antiphon routing fix,
+Reduced 1955 Feb `24` Terce/Sext/None first diverged on the antiphon
+surface. Perl displayed only the incipit (`Advenérunt nobis`,
+`Commendémus nosmetípsos`, `Per arma justítiæ`), while the compositor
+displayed the full antiphon lines from `Psalmi minor:[Quad]`.
+
+**Root cause.** No additional Phase 2 or Phase 3 selection bug is
+involved. The source-backed `Quad` table carries full antiphons for
+Terce, Sext, and None; the 1955 Perl comparison surface abbreviates
+those antiphons to incipit-only display.
+
+**Resolution.** Class `perl-bug`. Added sidecar classifications for the
+three exposed Reduced 1955 Lent Saturday minor-hour rows.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163`.
+
+**Impact.** Three Reduced 1955 rows move from `unadjudicated` to
+`perl-bug`. The next Reduced 1955 Feb `24` minor-hour frontier is Prime's
+later-block separator row plus broader Matins/Vespers selection seams.
+
+### 2026-04-25 — Pattern: Reduced 1955 ferial Prime implicit Deo gratias (perl-bug)
+
+**Commit.** `9576d3e`
+
+**Ledger signal.** Eight Reduced 1955 Prime rows across Lent, summer
+ferias, and November ferias first diverged at the same later-block
+surface: Perl emitted `R. Deo grátias.`, while the compositor advanced
+directly to the source-backed separator before the short responsory.
+
+**Root cause.** The source-backed ferial Prime fallback uses
+`Prima Special:Feria` for the chapter and `Prima Special:Responsory` for
+the short responsory. That source does not carry a `$Deo gratias` marker
+or an implicit response between the chapter and responsory; the Reduced
+1955 Perl comparison surface inserts `R. Deo grátias.` anyway.
+
+**Resolution.** Class `perl-bug`. Added sidecar classifications for the
+current Reduced 1955 ferial Prime rows with this exact first-divergence
+pair.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`.
+
+**Impact.** Eight Reduced 1955 rows move from `unadjudicated` to
+`perl-bug`, reducing that policy's unadjudicated count from `118` to
+`110`.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

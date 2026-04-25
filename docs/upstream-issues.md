@@ -24,6 +24,39 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-25 — Simplified Roman minor hours skip the source-backed collect wrapper
+
+**Classification.** `perl-bug`
+
+**Summary.** Several Reduced 1955 and Rubrics 1960 Terce/Sext/None rows
+now reach the ordinary minor-hour collect handoff. Officium Novum emits
+the source-backed `Dómine, exáudi... / Orémus` wrapper before the
+collect, while the Perl comparison surface jumps directly to the collect
+text.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Ordinarium/Minor.txt:28-34`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:306-307`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-02-14 --date 2024-03-25 --date 2024-11-05
+```
+
+Then inspect Terce/Sext/None under `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
+
+**Affected stable divergence-row key groups.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
+| Rubrics 1960 - 1960 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
+
 ### 2026-04-25 — Rubrics 1960 appends unsupported trailing `‡` markers to complete psalter antiphons
 
 **Classification.** `perl-bug`
@@ -1561,6 +1594,14 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 19
 | Policy | Date | Hour | Row key suffix |
 |---|---|---|---|
 | Reduced - 1955 | 2024-02-14 | Prime | `6081a8cc` |
+| Reduced - 1955 | 2024-02-14 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-02-24 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-03-25 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-03-26 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-03-27 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-06-20 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-11-05 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-11-08 | Prime | `26b1abb4` |
 | Rubrics 1960 - 1960 | 2024-02-14 | Prime | `b7853e49` |
 
 ### 2026-04-24 — Holy Week minor-hour `Quad5` short responsories gain underscore separators after source-backed fallback
@@ -1601,6 +1642,41 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 19
 | Rubrics 1960 - 1960 | 2024-03-25 | Terce | `cedac887` |
 | Rubrics 1960 - 1960 | 2024-03-25 | Sext | `3acfd479` |
 | Rubrics 1960 - 1960 | 2024-03-25 | None | `2071fc88` |
+
+### 2026-04-25 — Reduced 1955 Lent weekday minor-hour antiphons are abbreviated to incipits in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** After the compositor began routing Lent weekday minor-hour
+antiphons through the seasonal `Psalmi minor:[Quad]` table, the Reduced
+1955 Perl surface still abbreviates Terce, Sext, and None antiphons to
+incipit-only lines. The source-backed compositor output carries the full
+antiphon text from the seasonal table.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:154-163`
+
+The `[Quad]` table carries the full `Advenérunt nobis * ...`,
+`Commendémus nosmetípsos * ...`, and `Per arma justítiæ * ...`
+antiphons. It does not contain incipit-only alternates for the 1955
+surface.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-24 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-24 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-02-24 --hour Nona
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-24 | Terce | `50e62c35` |
+| Reduced - 1955 | 2024-02-24 | Sext | `62fa2e12` |
+| Reduced - 1955 | 2024-02-24 | None | `f60c28f2` |
 
 ## See also
 

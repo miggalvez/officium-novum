@@ -167,6 +167,33 @@ describe('deriveSeasonalDirectives1960', () => {
     expect(directives.has('preces-feriales')).toBe(true);
   });
 
+  it('does not let explicit 1960 Preces Feriales rules leak into minor hours', () => {
+    const rules = {
+      ...celebrationRules(),
+      hourScopedDirectives: [
+        {
+          directive: {
+            kind: 'action',
+            keyword: 'Preces Feriales',
+            args: [],
+            raw: 'Preces Feriales'
+          },
+          hours: ['terce']
+        }
+      ]
+    } satisfies CelebrationRuleSet;
+
+    const directives = deriveSeasonalDirectives1960({
+      hour: 'terce',
+      celebration: celebration('Tempora/Quadp3-3'),
+      celebrationRules: rules,
+      hourRules: hourRules('terce'),
+      temporal: temporal('Quadp3-3', 'septuagesima', 3)
+    });
+
+    expect(directives.has('preces-feriales')).toBe(false);
+  });
+
   it('limits 1960 seasonal preces to offices of the season on the appointed days', () => {
     const monday = deriveSeasonalDirectives1960({
       hour: 'lauds',
