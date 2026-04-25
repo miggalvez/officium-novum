@@ -14560,5 +14560,101 @@
     "notes": "Reduced 1955 Lent Saturday minor-hour incipit-vs-full-antiphon surface exposed after the seasonal `Quad` antiphon routing fix.",
     "resolvedAt": "2026-04-25",
     "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-02-14/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-14",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-02-24/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-02-24",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-03-25/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-25",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-03-26/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-26",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-03-27/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-27",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-06-20/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-11-05/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Reduced - 1955/2024-11-08/Prime/26b1abb4": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Prime",
+    "firstExpected": "R. Deo grátias.",
+    "firstActual": "_",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; it does not carry an implicit `R. Deo grátias.` line before the responsory. The Reduced 1955 Perl comparison surface inserts that line on these ferial Prime rows.",
+    "notes": "Reduced 1955 ferial Prime later-block row where Perl inserts an implicit `R. Deo grátias.` before the source-backed Prima Special responsory.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   }
 }

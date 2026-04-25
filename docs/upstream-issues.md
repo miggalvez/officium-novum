@@ -1594,6 +1594,14 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 19
 | Policy | Date | Hour | Row key suffix |
 |---|---|---|---|
 | Reduced - 1955 | 2024-02-14 | Prime | `6081a8cc` |
+| Reduced - 1955 | 2024-02-14 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-02-24 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-03-25 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-03-26 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-03-27 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-06-20 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-11-05 | Prime | `26b1abb4` |
+| Reduced - 1955 | 2024-11-08 | Prime | `26b1abb4` |
 | Rubrics 1960 - 1960 | 2024-02-14 | Prime | `b7853e49` |
 
 ### 2026-04-24 — Holy Week minor-hour `Quad5` short responsories gain underscore separators after source-backed fallback

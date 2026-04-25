@@ -14,6 +14,11 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Extended the Reduced 1955 ferial Prime later-block
+  adjudication across the live 2024 frontier. Eight Prime rows now cite
+  `Prima Special` for the source-backed absence of an implicit
+  `R. Deo grátias.` before the short responsory, moving that repeated
+  Perl render-surface issue out of the unadjudicated set.
 - **2026-04-25.** Classified the Reduced 1955 Lent Saturday minor-hour
   incipit surface exposed by the seasonal-antiphon routing fix. The
   `ADJUDICATION_LOG.md`, `adjudications.json`, and upstream issue log

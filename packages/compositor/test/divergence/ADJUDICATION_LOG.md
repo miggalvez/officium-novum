@@ -3283,6 +3283,31 @@ three exposed Reduced 1955 Lent Saturday minor-hour rows.
 `perl-bug`. The next Reduced 1955 Feb `24` minor-hour frontier is Prime's
 later-block separator row plus broader Matins/Vespers selection seams.
 
+### 2026-04-25 — Pattern: Reduced 1955 ferial Prime implicit Deo gratias (perl-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Eight Reduced 1955 Prime rows across Lent, summer
+ferias, and November ferias first diverged at the same later-block
+surface: Perl emitted `R. Deo grátias.`, while the compositor advanced
+directly to the source-backed separator before the short responsory.
+
+**Root cause.** The source-backed ferial Prime fallback uses
+`Prima Special:Feria` for the chapter and `Prima Special:Responsory` for
+the short responsory. That source does not carry a `$Deo gratias` marker
+or an implicit response between the chapter and responsory; the Reduced
+1955 Perl comparison surface inserts `R. Deo grátias.` anyway.
+
+**Resolution.** Class `perl-bug`. Added sidecar classifications for the
+current Reduced 1955 ferial Prime rows with this exact first-divergence
+pair.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`.
+
+**Impact.** Eight Reduced 1955 rows move from `unadjudicated` to
+`perl-bug`, reducing that policy's unadjudicated count from `118` to
+`110`.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own
