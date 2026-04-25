@@ -89,7 +89,7 @@ Then inspect Terce/Sext/None under `Reduced - 1955` and
 | Policy | Dates | Hours | Row key suffixes |
 |---|---|---|---|
 | Reduced - 1955 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
-| Rubrics 1960 - 1960 | 2024-02-14, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de` |
+| Rubrics 1960 - 1960 | 2024-02-14, 2024-02-24, 2024-03-25, 2024-03-26, 2024-03-27, 2024-06-20, 2024-11-05, 2024-11-08 | Terce/Sext/None where present | `40f185d2`, `9435787d`, `e227f3f5`, `14880dfe`, `ef4f7902`, `56e276de`, `f2474b69` |
 
 ### 2026-04-25 — Rubrics 1960 appends unsupported trailing `‡` markers to complete psalter antiphons
 

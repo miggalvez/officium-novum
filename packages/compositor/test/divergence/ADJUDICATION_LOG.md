@@ -22,6 +22,35 @@ anchor.
 
 ## Entries
 
+### 2026-04-25 — Pattern: Rubrics 1960 Lent Saturday minor-hour collect wrapper fanout (perl-bug)
+
+**Commit.** `pending`
+
+**Ledger signal.** Rubrics 1960 Feb `24` Terce, Sext, and None now
+reach the same minor-hour collect boundary already classified for the
+simplified Roman policies: Perl jumps directly to the collect text
+(`Pópulum tuum, quǽsumus...`), while the compositor first emits
+`V. Dómine, exáudi oratiónem meam.` from the ordinary minor-hour
+conclusion wrapper.
+
+**Root cause.** `Ordinarium/Minor` carries the minor-hour oration
+handoff, and `Common/Prayers` supplies the `Domine exaudi` / `Oremus`
+lines before the collect. The compositor follows that source-backed
+ordinary wrapper; the Perl comparison surface skips it on these rows.
+
+**Resolution.** Class `perl-bug`. Added the three newly exposed
+Rubrics 1960 Lent Saturday row keys to `adjudications.json` as fanout
+of the existing minor-hour collect-wrapper family.
+
+**Citation.**
+
+- `upstream/web/www/horas/Ordinarium/Minor.txt:28-34`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:306-307`
+
+**Impact.** Three Rubrics 1960 rows move from `unadjudicated` to
+source-backed `perl-bug` without changing compositor behavior.
+
 ### 2026-04-25 — Pattern: Ash Wednesday minor hours take seasonal `Quad` antiphons (perl-bug)
 
 **Commit.** `pending`

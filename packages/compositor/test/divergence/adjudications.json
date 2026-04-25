@@ -11038,6 +11038,18 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-02-24/None/f2474b69": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "None",
+    "firstExpected": "Pópulum tuum, quǽsumus, Dómine, propítius réspice: atque ab eo flagélla tuæ iracúndiæ cleménter avérte.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Rubrics 1960 Lent Saturday minor-hour collect-wrapper rows exposed after the Ash Wednesday seasonal-antiphon reclassification restored the next frontier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2024-02-24/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-02-24",
@@ -11049,6 +11061,30 @@
     "notes": "Representative entry for the ferial Prime later-block family exposed after source-backed Prime fallback was restored.",
     "resolvedAt": "2026-04-24",
     "commitSha": "da7166b"
+  },
+  "Rubrics 1960 - 1960/2024-02-24/Sext/f2474b69": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "Sext",
+    "firstExpected": "Pópulum tuum, quǽsumus, Dómine, propítius réspice: atque ab eo flagélla tuæ iracúndiæ cleménter avérte.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Rubrics 1960 Lent Saturday minor-hour collect-wrapper rows exposed after the Ash Wednesday seasonal-antiphon reclassification restored the next frontier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-02-24/Terce/f2474b69": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-02-24",
+    "hour": "Terce",
+    "firstExpected": "Pópulum tuum, quǽsumus, Dómine, propítius réspice: atque ab eo flagélla tuæ iracúndiæ cleménter avérte.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Rubrics 1960 Lent Saturday minor-hour collect-wrapper rows exposed after the Ash Wednesday seasonal-antiphon reclassification restored the next frontier.",
+    "resolvedAt": "2026-04-25",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2024-02-25/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
