@@ -32,6 +32,7 @@ const EMBER_DAY_KEYS = new Set([
 ]);
 const LAUDS_VESPERS_HOURS = ['lauds', 'vespers'] as const;
 const MATINS_LAUDS_VESPERS_HOURS = ['matins', 'lauds', 'vespers'] as const;
+const MINOR_HOURS = new Set(['prime', 'terce', 'sext', 'none']);
 
 export function compareRomanCandidates(
   a: Candidate,
@@ -101,9 +102,12 @@ export function deriveSeasonalDirectivesRomanPre1960(
     directives.add('omit-gloria-patri');
     directives.add('short-chapter-only');
   }
-
   const ferialDay =
     celebration.source === 'temporal' && !celebration.kind && !celebration.vigil;
+
+  if (ferialDay && temporal.season === 'passiontide' && MINOR_HOURS.has(hour)) {
+    directives.add('omit-responsory-gloria');
+  }
 
   if (
     ferialDay &&

@@ -14,6 +14,43 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-25.** Backfilled the current tranche set's Phase 3
+  adjudication-log provenance anchors. The Passiontide Sunday
+  later-block, Passiontide responsory-Gloria omission, and Passiontide
+  feast-scope entries now cite the commits that landed them.
+- **2026-04-25.** Narrowed the Passiontide minor-hour responsory Gloria
+  omission directive to Offices of the Season. Sanctoral feasts that fall
+  in Passiontide, such as St Joseph, now keep their source-backed
+  responsory `Gloria Patri`, while temporal Passiontide minor hours still
+  emit `Gloria omittitur`; the refreshed ledgers drop unadjudicated rows
+  to `141` for Reduced 1955 and `107` for Rubrics 1960.
+- **2026-04-25.** Closed the Roman Passiontide minor-hour short-responsory
+  Gloria omission seam. Phase 2 now emits a typed
+  `omit-responsory-gloria` directive for Passiontide minor hours, and
+  Phase 3 replaces responsory `&Gloria` expansions with the localized
+  `Gloria omittitur` line while preserving the repeated responsory.
+  Passion Sunday Terce now reaches exact line-stream parity for both
+  Reduced 1955 and Rubrics 1960; the refreshed ledgers drop
+  unadjudicated rows to `144` for Reduced 1955 and `110` for Rubrics
+  1960.
+- **2026-04-25.** Closed the Passiontide Sunday minor-hour later-block
+  seam for Reduced 1955 and Rubrics 1960. Phase 2 now routes Passion
+  Sunday and Palm Sunday Terce/Sext/None through the source-backed
+  `Minor Special` `Quad5` chapter/responsory/versicle sections instead
+  of the generic Lent or ordinary Sunday fallback blocks. The affected
+  rows now advance to the separate Passiontide `Gloria omittitur`
+  responsory surface.
+- **2026-04-25.** Closed the shared Roman minor-hour combined-wrapper
+  parity seam for Reduced 1955 and Rubrics 1960. Phase 2 now preserves
+  duplicate proper sections that differ only by condition, so Lent Sunday
+  `[Ant Tertia/Sexta/Nona]` sections survive beside Cistercian variants;
+  Quadragesima minor-hour later blocks now route through the source-backed
+  `Minor Special` `Quad` responsories/versicles. Phase 3 now mirrors the
+  visible separator lines around minor-hour responsory/versicle slots and
+  normalizes short-responsory `&Gloria` expansion to the legacy line stream.
+  The refreshed ledgers improve exact 1955/1960 Hour parity materially
+  (`Reduced 1955` exact matches `43→103`, `Rubrics 1960` `50→104`), while
+  exposing later unadjudicated row keys for the next burn-down tranche.
 - **2026-04-25.** Backfilled the current tranche set's adjudication
   provenance anchors. The ferial-preces, Vespers bridge fanout, Matins
   doxology, and trailing-marker entries now cite their actual commit SHAs in

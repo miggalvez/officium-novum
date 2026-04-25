@@ -21,7 +21,10 @@ export interface GloriaOmittiturReplacementArgs {
 export function resolveGloriaOmittiturReplacement(
   args: GloriaOmittiturReplacementArgs
 ): readonly TextContent[] | undefined {
-  if (!args.directives.includes('omit-gloria-patri')) {
+  if (
+    !args.directives.includes('omit-gloria-patri') &&
+    !args.directives.includes('omit-responsory-gloria')
+  ) {
     return undefined;
   }
 

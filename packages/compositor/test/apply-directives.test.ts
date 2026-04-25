@@ -66,6 +66,31 @@ describe('applyDirectives — omit-gloria-patri', () => {
   });
 });
 
+describe('applyDirectives — omit-responsory-gloria', () => {
+  it('replaces responsory Gloria Patri with Gloria omittitur and preserves the repeat', () => {
+    const content: TextContent[] = [
+      { type: 'verseMarker', marker: 'R.br.', text: 'Érue a frámea, * Deus, ánimam meam.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Érue a frámea, * Deus, ánimam meam.' },
+      { type: 'verseMarker', marker: 'V.', text: 'Et de manu canis únicam meam.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Deus, ánimam meam.' },
+      { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Sicut erat in princípio.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Érue a frámea, * Deus, ánimam meam.' }
+    ];
+
+    const out = run('responsory', content, ['omit-responsory-gloria']);
+
+    expect(out).toEqual([
+      { type: 'verseMarker', marker: 'R.br.', text: 'Érue a frámea, * Deus, ánimam meam.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Érue a frámea, * Deus, ánimam meam.' },
+      { type: 'verseMarker', marker: 'V.', text: 'Et de manu canis únicam meam.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Deus, ánimam meam.' },
+      { type: 'text', value: 'Gloria omittitur' },
+      { type: 'verseMarker', marker: 'R.', text: 'Érue a frámea, * Deus, ánimam meam.' }
+    ]);
+  });
+});
+
 describe('applyDirectives — omit-alleluia / add-alleluia', () => {
   it('strips trailing alleluia from antiphon text', () => {
     const content: TextContent[] = [

@@ -3086,6 +3086,89 @@ The affected major-hour rows now advance to existing source-backed
 families such as the post-collect `Dómine, exáudi` bridge, psalm
 half-verse rendering, or proper later-block adjudications.
 
+### 2026-04-25 — Pattern: Passiontide Sunday minor hours use `Quad5` later blocks (engine-bug)
+
+**Commit.** `75ed011`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Passion Sunday and
+Palm Sunday Terce/Sext/None rows reached the later-block seam with
+ordinary or generic-Lent short responsories. Representative Rubrics 1960
+rows showed `R.br. Ipse liberávit me...` or `R.br. Inclína cor meum...`
+where Perl expected the Passiontide `R.br. Érue a frámea...`,
+`R.br. De ore leónis...`, and `R.br. Ne perdas cum ímpiis...` blocks.
+
+**Root cause.** Phase 2's simplified Roman minor-hour fallback handled
+ordinary Lent Sundays with the generic `Quad` sections and Holy Week
+Monday-Wednesday with `Quad5`, but it let Passion Sunday (`Quad5-0`) hit
+the generic branch and Palm Sunday (`Quad6-0`) fall back to ordinary
+Sunday sections.
+
+**Resolution.** Class `engine-bug`. Phase 2 now treats both Passion
+Sunday and Palm Sunday as `Quad5` minor-hour later-block Sundays,
+routing Terce/Sext/None chapter, responsory, and versicle slots through
+the corresponding `Psalterium/Special/Minor Special` `Quad5` sections.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:381-508`.
+
+**Impact.** The affected Sunday minor-hour rows move past the wrong
+responsory family to the next, narrower Passiontide `Gloria omittitur`
+responsory surface.
+
+### 2026-04-25 — Pattern: Passiontide minor-hour responsories omit `Gloria Patri` (engine-bug)
+
+**Commit.** `e42b915`
+
+**Ledger signal.** After the Passiontide later-block routing fix, Roman
+Passiontide minor-hour rows reached the short-responsory `&Gloria`
+boundary. Perl emitted `Gloria omittitur`; the compositor expanded the
+macro to `V. Glória Patri, et Fílio, * et Spirítui Sancto.`.
+
+**Root cause.** Phase 2 had only a broad `omit-gloria-patri` directive
+for psalm/canticle doxologies in the Triduum. It did not expose the
+narrow Passiontide minor-hour responsory omission seam, so Phase 3 had
+no typed instruction to replace responsory `&Gloria` with the omitted
+Gloria rubric.
+
+**Resolution.** Class `engine-bug`. Phase 2 now emits
+`omit-responsory-gloria` for Passiontide Prime/Terce/Sext/None. Phase 3
+applies that directive only to the responsory slot, replacing the
+resolved `Gloria Patri` line with `Gloria omittitur`, dropping any
+`Sicut erat` continuation, and preserving the final repeated responsory.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Translate.txt:22-23`
+and the Passiontide responsory sources in
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-493`.
+
+**Impact.** Passion Sunday Terce reaches exact line-stream parity under
+both Reduced 1955 and Rubrics 1960; the full ledger regeneration records
+the family-level row movement.
+
+### 2026-04-25 — Pattern: Passiontide feast responsories retain `Gloria Patri` (engine-bug)
+
+**Commit.** `e60438a`
+
+**Ledger signal.** After adding the Passiontide responsory-Gloria
+directive, the St Joseph minor-hour rows under Reduced 1955 exposed the
+inverse seam: Perl and the source-backed feast office retained
+`V. Glória Patri...`, while the compositor emitted `Gloria omittitur`.
+
+**Root cause.** The new Phase 2 directive was keyed only to the
+Passiontide season and minor-hour name. It therefore leaked from
+temporal Passiontide ferias and Sundays into sanctoral feast offices
+occurring during Passiontide.
+
+**Resolution.** Class `engine-bug`. Phase 2 now emits
+`omit-responsory-gloria` only when the winning celebration is a temporal
+Office of the Season. Sanctoral feasts in Passiontide keep their
+ordinary responsory Gloria.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:391-493`
+for the temporal Passiontide responsory omission seam; St Joseph uses
+its sanctoral office instead of inheriting that seasonal omission.
+
+**Impact.** St Joseph Terce reaches exact line-stream parity while the
+Passion Sunday temporal row remains exact.
+
 ### Open pattern backlog
 
 The following families remain open and have not yet received their own

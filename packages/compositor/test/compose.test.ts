@@ -277,6 +277,146 @@ describe('composeHour', () => {
     expect(renderRuns(composed.sections[0]!.lines[0]!, 'Latin')).toBe('Beatus vir, alleluia');
   });
 
+  it('prefixes minor-hour responsory and versicle slots with the combined-wrapper separator line', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+        {
+          type: 'verseMarker',
+          marker: 'R.',
+          text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Special/Minor Special', [
+        {
+          header: 'Quad Tertia',
+          content: [{ type: 'text', value: 'Fratres: hortámur vos.' }]
+        },
+        {
+          header: 'Responsory breve Quad Tertia',
+          content: [
+            { type: 'verseMarker', marker: 'R.br.', text: 'Ipse liberávit me' },
+            { type: 'macroRef', name: 'Gloria' },
+            { type: 'verseMarker', marker: 'R.', text: 'Ipse liberávit me' }
+          ]
+        },
+        {
+          header: 'Versum Quad Tertia',
+          content: [{ type: 'verseMarker', marker: 'V.', text: 'Scápulis suis obumbrábit tibi.' }]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'terce',
+      slots: {
+        chapter: {
+          kind: 'single-ref',
+          ref: {
+            path: 'horas/Latin/Psalterium/Special/Minor Special',
+            section: 'Quad Tertia'
+          }
+        },
+        responsory: {
+          kind: 'single-ref',
+          ref: {
+            path: 'horas/Latin/Psalterium/Special/Minor Special',
+            section: 'Responsory breve Quad Tertia'
+          }
+        },
+        versicle: {
+          kind: 'single-ref',
+          ref: {
+            path: 'horas/Latin/Psalterium/Special/Minor Special',
+            section: 'Versum Quad Tertia'
+          }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'terce',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = composed.sections.find((section) => section.slot === 'responsory');
+    const versicle = composed.sections.find((section) => section.slot === 'versicle');
+
+    expect(responsory?.lines.map((line) => renderRuns(line, 'Latin'))).toEqual([
+      '_',
+      'Ipse liberávit me',
+      'Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'Ipse liberávit me'
+    ]);
+    expect(versicle?.lines.map((line) => renderRuns(line, 'Latin'))).toEqual([
+      '_',
+      'Scápulis suis obumbrábit tibi.'
+    ]);
+  });
+
+  it('removes responsory Gloria repetition when Sicut erat is parsed as text', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Special/Minor Special', [
+        {
+          header: 'Quad Tertia',
+          content: [{ type: 'text', value: 'Fratres: hortámur vos.' }]
+        },
+        {
+          header: 'Responsory breve Quad Tertia',
+          content: [
+            { type: 'verseMarker', marker: 'R.br.', text: 'Ipse liberávit me' },
+            { type: 'text', value: 'R. Sicut erat in princípio, et nunc, et semper.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Ipse liberávit me' }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'terce',
+      slots: {
+        chapter: {
+          kind: 'single-ref',
+          ref: {
+            path: 'horas/Latin/Psalterium/Special/Minor Special',
+            section: 'Quad Tertia'
+          }
+        },
+        responsory: {
+          kind: 'single-ref',
+          ref: {
+            path: 'horas/Latin/Psalterium/Special/Minor Special',
+            section: 'Responsory breve Quad Tertia'
+          }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'terce',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = composed.sections.find((section) => section.slot === 'responsory');
+    expect(responsory?.lines.map((line) => renderRuns(line, 'Latin'))).toEqual([
+      '_',
+      'Ipse liberávit me',
+      'Ipse liberávit me'
+    ]);
+  });
+
   it('injects Sunday Compline preces from the special corpus section when the slot is empty', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(

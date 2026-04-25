@@ -45,7 +45,14 @@ import { emitSection } from './emit/index.js';
 import { flattenConditionals } from './flatten/index.js';
 import { expandDeferredNodes } from './resolve/expand-deferred-nodes.js';
 import { resolveReference } from './resolve/reference-resolver.js';
-import type { ComposedHour, ComposeOptions, ComposeWarning, Section } from './types/composed-hour.js';
+import type {
+  ComposedHour,
+  ComposedLine,
+  ComposedRun,
+  ComposeOptions,
+  ComposeWarning,
+  Section
+} from './types/composed-hour.js';
 
 export interface ComposeInput {
   readonly corpus: TextIndex;
@@ -187,7 +194,7 @@ export function composeHour(input: ComposeInput): ComposedHour {
       onWarning
     });
     if (section) {
-      sections.push(section);
+      sections.push(withMinorHourLaterBlockSeparator(input.hour, slotName, hour, section));
     }
   }
 
@@ -198,6 +205,90 @@ export function composeHour(input: ComposeInput): ComposedHour {
     languages: Object.freeze(Array.from(input.options.languages)),
     sections: Object.freeze(sections),
     warnings: Object.freeze(warnings)
+  });
+}
+
+function normalizeResponsoryGloria(
+  args: ComposeSlotArgs,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (args.slot !== 'responsory') {
+    return content;
+  }
+
+  let changed = false;
+  const out: TextContent[] = [];
+  for (let index = 0; index < content.length; index += 1) {
+    const node = content[index]!;
+    if (node.type === 'conditional') {
+      const normalizedContent = normalizeResponsoryGloria(args, node.content);
+      if (normalizedContent !== node.content) {
+        changed = true;
+        out.push({
+          ...node,
+          content: [...normalizedContent]
+        });
+      } else {
+        out.push(node);
+      }
+      continue;
+    }
+    if (isResponsorySicutEratNode(node)) {
+      changed = true;
+      continue;
+    }
+    out.push(node);
+  }
+  return changed ? Object.freeze(out) : content;
+}
+
+function isResponsorySicutEratNode(node: TextContent): boolean {
+  if (node.type === 'verseMarker') {
+    return /^r\.?$/iu.test(node.marker.trim()) && /^sicut erat\b/iu.test(node.text.trim());
+  }
+  if (node.type === 'text') {
+    return /^r\.\s*sicut erat\b/iu.test(node.value.trim());
+  }
+  return false;
+}
+
+function withMinorHourLaterBlockSeparator(
+  hour: HourName,
+  slot: SlotName,
+  structure: HourStructure,
+  section: Section
+): Section {
+  if (!isMinorHour(hour) || (slot !== 'responsory' && slot !== 'versicle')) {
+    return section;
+  }
+  if (slot === 'responsory' && !isRenderableLaterBlockSlot(structure.slots.chapter)) {
+    return section;
+  }
+  if (
+    slot === 'versicle' &&
+    !isRenderableLaterBlockSlot(structure.slots.chapter) &&
+    !isRenderableLaterBlockSlot(structure.slots.responsory)
+  ) {
+    return section;
+  }
+
+  return Object.freeze({
+    ...section,
+    lines: Object.freeze([minorHourSeparatorLine(section.languages), ...section.lines])
+  });
+}
+
+function isRenderableLaterBlockSlot(content: SlotContent | undefined): boolean {
+  return content !== undefined && content.kind !== 'empty';
+}
+
+function minorHourSeparatorLine(languages: readonly string[]): ComposedLine {
+  const texts: Record<string, readonly ComposedRun[]> = {};
+  for (const language of languages) {
+    texts[language] = Object.freeze([{ type: 'text', value: '_' }]);
+  }
+  return Object.freeze({
+    texts: Object.freeze(texts)
   });
 }
 
@@ -290,7 +381,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const bucket = perLanguage.get(lang);
       if (!bucket) continue;
       const gloriaOmittiturReplacement =
-        args.slot === 'psalmody'
+        args.slot === 'psalmody' || args.slot === 'responsory'
           ? resolveGloriaOmittiturReplacement({
               directives: args.directives,
               corpus: args.corpus,
@@ -372,19 +463,22 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         ref,
         prependSimplifiedTriduumOrationPrelude(args, ref, sourceContent)
       );
-      const expanded = expandDeferredNodes(
-        args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? withPsalmGloriaPatri(sourceForExpansion)
-          : sourceForExpansion,
-        {
-          index: args.corpus,
-          language: lang,
-          langfb: args.options.langfb,
-          season: args.context.season,
-          seen: new Set(),
-          maxDepth: MAX_DEFERRED_DEPTH,
-          ...(args.onWarning ? { onWarning: args.onWarning } : {})
-        }
+      const expanded = normalizeResponsoryGloria(
+        args,
+        expandDeferredNodes(
+          args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+            ? withPsalmGloriaPatri(sourceForExpansion)
+            : sourceForExpansion,
+          {
+            index: args.corpus,
+            language: lang,
+            langfb: args.options.langfb,
+            season: args.context.season,
+            seen: new Set(),
+            maxDepth: MAX_DEFERRED_DEPTH,
+            ...(args.onWarning ? { onWarning: args.onWarning } : {})
+          }
+        )
       );
       const flattened = flattenConditionals(expanded, args.context);
       // Directives run before final emission. For psalmody antiphon refs we
