@@ -8873,7 +8873,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:78-80 carries the Matins hymn line as `Imbr[e] aquárum víndice,`. Perl expands the bracketed spelling to `Imbre`; the compositor preserves the corpus token. This is an orthographic rendering difference, not a source-selection disagreement.",
     "notes": "Shared simplified Roman Precious Blood Matins hymn bracketed-letter rendering family.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "ba2cda0"
   },
   "Reduced - 1955/2024-07-01/None/3032e01a": {
     "policy": "Reduced - 1955",
@@ -9017,7 +9017,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-08-19/None/d06b3f15": {
     "policy": "Reduced - 1955",
@@ -9029,7 +9029,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-08-19/Prime/5e2bc918": {
     "policy": "Reduced - 1955",
@@ -9041,7 +9041,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-08-19/Sext/ca496847": {
     "policy": "Reduced - 1955",
@@ -9053,7 +9053,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-08-19/Terce/94d8530b": {
     "policy": "Reduced - 1955",
@@ -9065,7 +9065,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-08-19/Vespers/b8382b61": {
     "policy": "Reduced - 1955",
@@ -9077,7 +9077,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-08-22/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -9113,7 +9113,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-08-22/Prime/725e1611": {
     "policy": "Reduced - 1955",
@@ -9125,7 +9125,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-08-22/Sext/0868e7bf": {
     "policy": "Reduced - 1955",
@@ -9137,7 +9137,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-08-22/Terce/1a19d166": {
     "policy": "Reduced - 1955",
@@ -9149,7 +9149,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-08-22/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
@@ -9257,7 +9257,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-09-12/Prime/725e1611": {
     "policy": "Reduced - 1955",
@@ -9269,7 +9269,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-09-12/Sext/0868e7bf": {
     "policy": "Reduced - 1955",
@@ -9281,7 +9281,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-09-12/Terce/1a19d166": {
     "policy": "Reduced - 1955",
@@ -9293,7 +9293,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Reduced - 1955/2024-09-12/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
@@ -9449,7 +9449,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-10-04/None/ee9cd993": {
     "policy": "Reduced - 1955",
@@ -9461,7 +9461,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-10-04/Prime/c9286c91": {
     "policy": "Reduced - 1955",
@@ -9473,7 +9473,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-10-04/Sext/ee83352e": {
     "policy": "Reduced - 1955",
@@ -9485,7 +9485,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-10-04/Terce/3f0bca99": {
     "policy": "Reduced - 1955",
@@ -9497,7 +9497,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-10-04/Vespers/7d120c6f": {
     "policy": "Reduced - 1955",
@@ -9509,7 +9509,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Reduced - 1955/2024-10-06/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -10319,7 +10319,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-25.txt:382-384 supplies Christmas Day `[Lectio Prima]` as `Heb 1:11-12`; the compositor follows that source-backed Prime lesson while the Reduced 1955 Perl comparison surface keeps the ordinary `1 Tim. 1:17` chapter.",
     "notes": "Fanout of the simplified Roman proper Prime lesson comparison-surface family to Christmas Day Reduced 1955.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "c4e98df"
   },
   "Reduced - 1955/2024-12-26/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -10367,7 +10367,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-26/Prime/36739df3": {
     "policy": "Reduced - 1955",
@@ -10391,7 +10391,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-26/Sext/011b4616": {
     "policy": "Reduced - 1955",
@@ -10403,7 +10403,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-26/Sext/b241f834": {
     "policy": "Reduced - 1955",
@@ -10427,7 +10427,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-26/Terce/b241f834": {
     "policy": "Reduced - 1955",
@@ -10475,7 +10475,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-27/None/b241f834": {
     "policy": "Reduced - 1955",
@@ -10511,7 +10511,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-27/Sext/17c3b847": {
     "policy": "Reduced - 1955",
@@ -10523,7 +10523,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-27/Sext/b241f834": {
     "policy": "Reduced - 1955",
@@ -10559,7 +10559,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 and upstream/web/www/horas/Latin/Sancti/12-27.txt:9-13 declare `Antiphonas horas`; upstream/web/www/horas/Latin/Sancti/12-26.txt:149-157 and upstream/web/www/horas/Latin/Sancti/12-27.txt:140-148 supply the proper Christmas-octave minor-hour antiphon set used by the compositor. The Reduced 1955 Perl comparison surface keeps ordinary psalter antiphons instead.",
     "notes": "Reduced 1955 Christmas-octave proper minor-hour antiphon family for St Stephen and St John. Major-hour and Matins rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "41452e7"
   },
   "Reduced - 1955/2024-12-27/Vespers/843b6667": {
     "policy": "Reduced - 1955",
@@ -13689,7 +13689,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:78-80 carries the Matins hymn line as `Imbr[e] aquárum víndice,`. Perl expands the bracketed spelling to `Imbre`; the compositor preserves the corpus token. This is an orthographic rendering difference, not a source-selection disagreement.",
     "notes": "Shared simplified Roman Precious Blood Matins hymn bracketed-letter rendering family.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "ba2cda0"
   },
   "Rubrics 1960 - 1960/2024-07-01/None/3032e01a": {
     "policy": "Rubrics 1960 - 1960",
@@ -13929,7 +13929,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-08-19/None/e01745bd": {
     "policy": "Rubrics 1960 - 1960",
@@ -13941,7 +13941,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-08-19/Prime/63c54bc5": {
     "policy": "Rubrics 1960 - 1960",
@@ -13953,7 +13953,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-08-19/Sext/5c9ad87e": {
     "policy": "Rubrics 1960 - 1960",
@@ -13965,7 +13965,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-08-19/Terce/993822fb": {
     "policy": "Rubrics 1960 - 1960",
@@ -13977,7 +13977,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-08-19/Vespers/b8382b61": {
     "policy": "Rubrics 1960 - 1960",
@@ -13989,7 +13989,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-08-22/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -14217,7 +14217,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Rubrics 1960 - 1960/2024-09-12/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -14289,7 +14289,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "38800ac"
   },
   "Rubrics 1960 - 1960/2024-09-15/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -14469,7 +14469,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-10-04/None/21ab0ed2": {
     "policy": "Rubrics 1960 - 1960",
@@ -14481,7 +14481,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-10-04/Prime/ae30f785": {
     "policy": "Rubrics 1960 - 1960",
@@ -14493,7 +14493,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-10-04/Sext/b40640d0": {
     "policy": "Rubrics 1960 - 1960",
@@ -14505,7 +14505,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-10-04/Terce/f420db38": {
     "policy": "Rubrics 1960 - 1960",
@@ -14517,7 +14517,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-10-04/Vespers/7d120c6f": {
     "policy": "Rubrics 1960 - 1960",
@@ -14529,7 +14529,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
-    "commitSha": "pending"
+    "commitSha": "90c34b9"
   },
   "Rubrics 1960 - 1960/2024-10-06/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

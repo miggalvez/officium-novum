@@ -3486,7 +3486,7 @@ tracked separately from this Phase 3 per-pattern backlog.
 
 ### 2026-04-25 — Pattern: Simplified Roman Confessor non-pontiff common antiphons (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `90c34b9`
 
 **Ledger signal.** Reduced 1955 and Rubrics 1960 rows for Aug `19`
 and Oct `4` first diverged at Lauds, Prime, Terce, Sext, None, and
@@ -3515,7 +3515,7 @@ Marian/common-antiphon families.
 
 ### 2026-04-25 — Pattern: simplified Roman Marian common antiphons (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `38800ac`
 
 **Ledger signal.** Reduced 1955 Aug `22` and Sep `12` minor-hour rows,
 plus Rubrics 1960 Sep `12` Lauds and Vespers, first diverged on
@@ -3545,7 +3545,7 @@ and unrelated Vespers selection rows.
 
 ### 2026-04-25 — Pattern: Reduced 1955 Christmas-octave minor-hour antiphons (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `41452e7`
 
 **Ledger signal.** Reduced 1955 Dec `26` and Dec `27` Prime, Terce,
 Sext, and None rows first diverged on ordinary psalter antiphons versus
@@ -3568,7 +3568,7 @@ frontiers.
 
 ### 2026-04-25 — Pattern: Reduced 1955 Christmas Day proper Prime lesson (perl-bug)
 
-**Commit.** `pending`
+**Commit.** `c4e98df`
 
 **Ledger signal.** Reduced 1955 Dec `25` Prime first diverged at the
 Prime chapter citation: Perl kept the ordinary `1 Tim. 1:17`, while the
@@ -3589,7 +3589,7 @@ row as a fanout of the already-established proper Prime lesson family.
 
 ### 2026-04-25 — Pattern: simplified Roman Precious Blood Matins bracketed hymn letter (rendering-difference)
 
-**Commit.** `pending`
+**Commit.** `ba2cda0`
 
 **Ledger signal.** Reduced 1955 and Rubrics 1960 Jul `1` Matins first
 diverged in the Precious Blood Matins hymn line: Perl rendered
