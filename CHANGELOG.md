@@ -14,179 +14,33 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
-- **2026-04-25.** Classified the next proper Prime lesson
-  comparison-surface family. Eleven Reduced 1955 / Rubrics 1960 Prime
-  rows now cite the winning office's `[Lectio Prima]` source, while
-  Perl's ordinary `1 Tim. 1:17` chapter remains documented as a
-  source-backed render discrepancy.
-- **2026-04-25.** Closed the simplified Roman Advent minor-hour
-  responsory/versicle fallback seam. Reduced 1955 and Rubrics 1960 now
-  route Advent temporal Terce, Sext, and None later blocks through the
-  source-backed `Minor Special` `Adv` responsories and versicles,
-  collapsing nine divergent hours in each simplified Roman ledger.
-- **2026-04-25.** Classified the Rubrics 1960 Marian Matins
-  Nativity-doxology punctuation family. Three rows now cite
-  `Psalterium/Doxologies:[Nat]`, whose `Cum Patre et almo Spíritu,`
-  line lacks Perl's inserted comma after `Patre`.
-- **2026-04-25.** Fanned the source-backed minor-hour collect-wrapper
-  adjudication onto the Rubrics 1960 Lent Saturday rows exposed after
-  the Ash Wednesday seasonal-antiphon pass. Feb `24` Terce, Sext, and
-  None now cite the ordinary `Dómine, exáudi... / Orémus` wrapper
-  instead of remaining in the unadjudicated frontier.
-- **2026-04-25.** Classified the Ash Wednesday seasonal `Quad`
-  minor-hour antiphon fallout exposed by the latest routing fix. Both
-  simplified Roman policies now cite `Psalmi minor:[Quad]` for the
-  source-backed Prime, Terce, Sext, and None antiphons, leaving Perl's
-  ordinary Wednesday antiphons recorded as a comparison-surface bug.
-- **2026-04-25.** Extended the Reduced 1955 ferial Prime later-block
-  adjudication across the live 2024 frontier. Eight Prime rows now cite
-  `Prima Special` for the source-backed absence of an implicit
-  `R. Deo grátias.` before the short responsory, moving that repeated
-  Perl render-surface issue out of the unadjudicated set.
-- **2026-04-25.** Classified the Reduced 1955 Lent Saturday minor-hour
-  incipit surface exposed by the seasonal-antiphon routing fix. The
-  `ADJUDICATION_LOG.md`, `adjudications.json`, and upstream issue log
-  now cite `Psalmi minor:[Quad]` for the source-backed full Terce,
-  Sext, and None antiphons while preserving Perl's incipit-only 1955
-  output as a comparison-surface bug.
-- **2026-04-25.** Closed the Lent weekday minor-hour antiphon routing
-  seam for the shared Roman policies. Weekday temporal ferias in Lent
-  and Passiontide now keep the ordinary weekday psalm distribution while
-  taking their first antiphons from the source-backed seasonal
-  `Psalmi minor` tables (`Quad` / `Quad5_`), and Phase 3's
-  `#antiphon` selector support now covers those keyed seasonal sections.
-- **2026-04-25.** Classified the shared Roman minor-hour collect-wrapper
-  frontier exposed by the later-block work. Forty Reduced 1955 / Rubrics
-  1960 Terce/Sext/None rows now cite the source-backed
-  `Dómine, exáudi... / Orémus` wrapper from `Ordinarium/Minor` and
-  `Common/Prayers`, dropping unadjudicated rows to `121` for Reduced
-  1955 and `87` for Rubrics 1960.
-- **2026-04-25.** Narrowed the Rubrics 1960 Ash Wednesday minor-hour
-  preces frontier. Explicit `Preces Feriales` rules now obey the 1960
-  Lauds/Vespers-only scope instead of leaking into Terce/Sext/None; the
-  affected rows advance from the erroneous `Kýrie...` block to the shared
-  minor-hour collect-wrapper frontier.
-- **2026-04-25.** Backfilled the current tranche set's Phase 3
-  adjudication-log provenance anchors. The Passiontide Sunday
-  later-block, Passiontide responsory-Gloria omission, and Passiontide
-  feast-scope entries now cite the commits that landed them.
-- **2026-04-25.** Narrowed the Passiontide minor-hour responsory Gloria
-  omission directive to Offices of the Season. Sanctoral feasts that fall
-  in Passiontide, such as St Joseph, now keep their source-backed
-  responsory `Gloria Patri`, while temporal Passiontide minor hours still
-  emit `Gloria omittitur`; the refreshed ledgers drop unadjudicated rows
-  to `141` for Reduced 1955 and `107` for Rubrics 1960.
-- **2026-04-25.** Closed the Roman Passiontide minor-hour short-responsory
-  Gloria omission seam. Phase 2 now emits a typed
-  `omit-responsory-gloria` directive for Passiontide minor hours, and
-  Phase 3 replaces responsory `&Gloria` expansions with the localized
-  `Gloria omittitur` line while preserving the repeated responsory.
-  Passion Sunday Terce now reaches exact line-stream parity for both
-  Reduced 1955 and Rubrics 1960; the refreshed ledgers drop
-  unadjudicated rows to `144` for Reduced 1955 and `110` for Rubrics
-  1960.
-- **2026-04-25.** Closed the Passiontide Sunday minor-hour later-block
-  seam for Reduced 1955 and Rubrics 1960. Phase 2 now routes Passion
-  Sunday and Palm Sunday Terce/Sext/None through the source-backed
-  `Minor Special` `Quad5` chapter/responsory/versicle sections instead
-  of the generic Lent or ordinary Sunday fallback blocks. The affected
-  rows now advance to the separate Passiontide `Gloria omittitur`
-  responsory surface.
-- **2026-04-25.** Closed the shared Roman minor-hour combined-wrapper
-  parity seam for Reduced 1955 and Rubrics 1960. Phase 2 now preserves
-  duplicate proper sections that differ only by condition, so Lent Sunday
-  `[Ant Tertia/Sexta/Nona]` sections survive beside Cistercian variants;
-  Quadragesima minor-hour later blocks now route through the source-backed
-  `Minor Special` `Quad` responsories/versicles. Phase 3 now mirrors the
-  visible separator lines around minor-hour responsory/versicle slots and
-  normalizes short-responsory `&Gloria` expansion to the legacy line stream.
-  The refreshed ledgers improve exact 1955/1960 Hour parity materially
-  (`Reduced 1955` exact matches `43→103`, `Rubrics 1960` `50→104`), while
-  exposing later unadjudicated row keys for the next burn-down tranche.
-- **2026-04-25.** Backfilled the current tranche set's adjudication
-  provenance anchors. The ferial-preces, Vespers bridge fanout, Matins
-  doxology, and trailing-marker entries now cite their actual commit SHAs in
-  `ADJUDICATION_LOG.md`, and the new trailing-marker sidecar entries cite
-  `d635e10`.
-- **2026-04-25.** Classified the next Rubrics 1960 unsupported trailing
-  continuation-marker family. Six Matins, Lauds, Terce, and Vespers rows now
-  cite the psalter sources that carry complete antiphons without a final `‡`,
-  dropping Rubrics 1960 unadjudicated rows from `93` to `87`.
-- **2026-04-25.** Carried feast Matins hymn doxology variants across the
-  Phase 2/Phase 3 boundary. Proper Matins hymns such as the Reduced 1955
-  Marian common now surface a `doxology-variant` slot when the winning office
-  declares `Doxology=Nat`, and Matins composition replaces the final hymn
-  stanza with the source-backed `Psalterium/Doxologies` variant. The old
-  `Cum Patre, et almo Spíritu` blocker now advances to later Matins/antiphon
-  seams; the full progress report remains `132` Reduced 1955 and `93` Rubrics
-  1960 unadjudicated rows.
-- **2026-04-25.** Fanned out the existing Roman Vespers
-  post-collect `Dómine, exáudi` adjudication onto the Rubrics 1960
-  rows newly exposed by the ferial-preces fix. St Joseph and Immaculate
-  Conception Vespers now inherit the already-cited
-  `Psalterium/Common/Prayers` source-backed Perl-render classification,
-  dropping Rubrics 1960 unadjudicated rows to `93`.
-- **2026-04-25.** Narrowed Roman ferial-preces directive emission to the
-  source-backed weekday scope. Rubrics 1960 now emits Lauds/Vespers preces
-  only for Offices of the Season on Wednesdays and Fridays of Advent, Lent,
-  and Passiontide, plus the specified Ember-day shape; the pre-1960 Roman
-  path follows the parallel 1955 help text, including September Ember days
-  and Lauds-only Ember Saturdays. This removes the erroneous
-  `Kýrie...` preces block from 1960 feast and Holy Week Monday/Tuesday
-  major-hour rows, dropping Rubrics 1960 unadjudicated rows to `95`.
-- **2026-04-25.** Closed the Rubrics 1960 Holy Week Lauds `Quad5`
-  later-block seam in Phase 2. The 1960 major-hour fallback now prefers
-  Passiontide Monday-Wednesday `Major Special` sections (`Quad5 Laudes`,
-  `Hymnus Quad5 Laudes`, `Quad5 Versum 2`) before the generic feria
-  sections, moving Holy Monday Lauds past `Rom 13:12-13` onto the next
-  later-block boundary and dropping Rubrics 1960 unadjudicated rows to
-  `97`.
-- **2026-04-25.** Closed the Reduced 1955 Lenten Sunday Matins
-  seasonal-versicle seam in Phase 2. Matins planning now uses
-  `Psalmi matutinum` seasonal Sunday versicle sections such as
-  `Quad 1 Versum` and `Quad5 1 Versum` before falling back to the
-  ordinary `Day0` psalter versicle. The affected Lenten/Passiontide
-  Sunday Matins rows now advance to the already-adjudicated
-  `Pater Noster` guillemet rendering family, dropping Reduced 1955
-  unadjudicated rows to `132`.
-- **2026-04-25.** Completed an existing-adjudication fanout sweep over
-  the current expanded Phase 3 ledgers. The sidecar now classifies 14
-  rows that exactly match already-cited source-backed `perl-bug`
-  families: Holy Thursday Psalm `115:7` Vespers half-verse rendering,
-  Reduced 1955 Low Sunday `Psalmi minor` Prime/minor-hour surfaces, and
-  Rubrics 1960 Christmas-octave fallback-hymn doxology substitutions.
-  Live unadjudicated rows drop to `138` for Reduced 1955 and `98` for
-  Rubrics 1960.
-- **2026-04-25.** Closed the simplified Roman Triduum Vespers
-  `Prelude Vespera` seam in Phase 3. The compositor now prepends the
-  source-backed Holy Thursday / Good Friday Vespers suppression notice
-  for Reduced 1955 and Rubrics 1960, then continues into ordinary
-  Triduum Vespers psalmody. Good Friday Vespers now advances to the
-  already-documented Psalm `115:7` half-verse Perl-render seam, and the
-  newly exposed row keys are recorded as fanout of that `perl-bug`
-  family.
-- **2026-04-24.** Closed the simplified Roman Triduum minor-hour
-  ordinary-short-reading leak as a mixed Phase 2 / Phase 3 fix. The
-  1955/1960 `Omit ... Capitulum Lectio ... De Officium Capituli` rule
-  now suppresses the typed chapter, short-reading, responsory, versicle,
-  and Prime tail slots; Holy Saturday minor hours select the temporal
-  `Oratio 2` when present; and Phase 3 extends the existing
-  `Christus factus...` Triduum prelude handoff to Prime/Terce/Sext/None
-  without ordinary minor-hour oration wrappers. The March `28`-`30`
-  simplified Roman minor-hour compares now advance past the former
-  ordinary `Zach 8:19`, `Jer 17:14`, `Rom 13:8`, and `1 Pet 1:17-19`
-  short-reading divergences, dropping live unadjudicated counts to `144`
-  for Reduced 1955 and `108` for Rubrics 1960.
+- **2026-04-25.** Classified the next proper Prime lesson comparison-surface family. Eleven Reduced 1955 / Rubrics 1960 Prime rows now cite the winning office's `[Lectio Prima]` source, while Perl's ordinary `1 Tim. 1:17` chapter remains documented as a source-backed render discrepancy.
+- **2026-04-25.** Closed the simplified Roman Advent minor-hour responsory/versicle fallback seam. Reduced 1955 and Rubrics 1960 now route Advent temporal Terce, Sext, and None later blocks through the source-backed `Minor Special` `Adv` responsories and versicles, collapsing nine divergent hours in each simplified Roman ledger.
+- **2026-04-25.** Classified the Rubrics 1960 Marian Matins Nativity-doxology punctuation family. Three rows now cite `Psalterium/Doxologies:[Nat]`, whose `Cum Patre et almo Spíritu,` line lacks Perl's inserted comma after `Patre`.
+- **2026-04-25.** Fanned the source-backed minor-hour collect-wrapper adjudication onto the Rubrics 1960 Lent Saturday rows exposed after the Ash Wednesday seasonal-antiphon pass. Feb `24` Terce, Sext, and None now cite the ordinary `Dómine, exáudi... / Orémus` wrapper instead of remaining in the unadjudicated frontier.
+- **2026-04-25.** Classified the Ash Wednesday seasonal `Quad` minor-hour antiphon fallout exposed by the latest routing fix. Both simplified Roman policies now cite `Psalmi minor:[Quad]` for the source-backed Prime, Terce, Sext, and None antiphons, leaving Perl's ordinary Wednesday antiphons recorded as a comparison-surface bug.
+- **2026-04-25.** Extended the Reduced 1955 ferial Prime later-block adjudication across the live 2024 frontier. Eight Prime rows now cite `Prima Special` for the source-backed absence of an implicit `R. Deo grátias.` before the short responsory, moving that repeated Perl render-surface issue out of the unadjudicated set.
+- **2026-04-25.** Classified the Reduced 1955 Lent Saturday minor-hour incipit surface exposed by the seasonal-antiphon routing fix. The `ADJUDICATION_LOG.md`, `adjudications.json`, and upstream issue log now cite `Psalmi minor:[Quad]` for the source-backed full Terce, Sext, and None antiphons while preserving Perl's incipit-only 1955 output as a comparison-surface bug.
+- **2026-04-25.** Closed the Lent weekday minor-hour antiphon routing seam for the shared Roman policies. Weekday temporal ferias in Lent and Passiontide now keep the ordinary weekday psalm distribution while taking their first antiphons from the source-backed seasonal `Psalmi minor` tables (`Quad` / `Quad5_`), and Phase 3's `#antiphon` selector support now covers those keyed seasonal sections.
+- **2026-04-25.** Classified the shared Roman minor-hour collect-wrapper frontier exposed by the later-block work. Forty Reduced 1955 / Rubrics 1960 Terce/Sext/None rows now cite the source-backed `Dómine, exáudi... / Orémus` wrapper from `Ordinarium/Minor` and `Common/Prayers`, dropping unadjudicated rows to `121` for Reduced 1955 and `87` for Rubrics 1960.
+- **2026-04-25.** Narrowed the Rubrics 1960 Ash Wednesday minor-hour preces frontier. Explicit `Preces Feriales` rules now obey the 1960 Lauds/Vespers-only scope instead of leaking into Terce/Sext/None; the affected rows advance from the erroneous `Kýrie...` block to the shared minor-hour collect-wrapper frontier.
+- **2026-04-25.** Backfilled the current tranche set's Phase 3 adjudication-log provenance anchors. The Passiontide Sunday later-block, Passiontide responsory-Gloria omission, and Passiontide feast-scope entries now cite the commits that landed them.
+- **2026-04-25.** Narrowed the Passiontide minor-hour responsory Gloria omission directive to Offices of the Season. Sanctoral feasts that fall in Passiontide, such as St Joseph, now keep their source-backed responsory `Gloria Patri`, while temporal Passiontide minor hours still emit `Gloria omittitur`; the refreshed ledgers drop unadjudicated rows to `141` for Reduced 1955 and `107` for Rubrics 1960.
+- **2026-04-25.** Closed the Roman Passiontide minor-hour short-responsory Gloria omission seam. Phase 2 now emits a typed `omit-responsory-gloria` directive for Passiontide minor hours, and Phase 3 replaces responsory `&Gloria` expansions with the localized `Gloria omittitur` line while preserving the repeated responsory. Passion Sunday Terce now reaches exact line-stream parity for both Reduced 1955 and Rubrics 1960; the refreshed ledgers drop unadjudicated rows to `144` for Reduced 1955 and `110` for Rubrics 1960.
+- **2026-04-25.** Closed the Passiontide Sunday minor-hour later-block seam for Reduced 1955 and Rubrics 1960. Phase 2 now routes Passion Sunday and Palm Sunday Terce/Sext/None through the source-backed `Minor Special` `Quad5` chapter/responsory/versicle sections instead of the generic Lent or ordinary Sunday fallback blocks. The affected rows now advance to the separate Passiontide `Gloria omittitur` responsory surface.
+- **2026-04-25.** Closed the shared Roman minor-hour combined-wrapper parity seam for Reduced 1955 and Rubrics 1960. Phase 2 now preserves duplicate proper sections that differ only by condition, so Lent Sunday `[Ant Tertia/Sexta/Nona]` sections survive beside Cistercian variants; Quadragesima minor-hour later blocks now route through the source-backed `Minor Special` `Quad` responsories/versicles. Phase 3 now mirrors the visible separator lines around minor-hour responsory/versicle slots and normalizes short-responsory `&Gloria` expansion to the legacy line stream. The refreshed ledgers improve exact 1955/1960 Hour parity materially (`Reduced 1955` exact matches `43→103`, `Rubrics 1960` `50→104`), while exposing later unadjudicated row keys for the next burn-down tranche.
+- **2026-04-25.** Backfilled the current tranche set's adjudication provenance anchors. The ferial-preces, Vespers bridge fanout, Matins doxology, and trailing-marker entries now cite their actual commit SHAs in `ADJUDICATION_LOG.md`, and the new trailing-marker sidecar entries cite `d635e10`.
+- **2026-04-25.** Classified the next Rubrics 1960 unsupported trailing continuation-marker family. Six Matins, Lauds, Terce, and Vespers rows now cite the psalter sources that carry complete antiphons without a final `‡`, dropping Rubrics 1960 unadjudicated rows from `93` to `87`.
+- **2026-04-25.** Carried feast Matins hymn doxology variants across the Phase 2/Phase 3 boundary. Proper Matins hymns such as the Reduced 1955 Marian common now surface a `doxology-variant` slot when the winning office declares `Doxology=Nat`, and Matins composition replaces the final hymn stanza with the source-backed `Psalterium/Doxologies` variant. The old `Cum Patre, et almo Spíritu` blocker now advances to later Matins/antiphon seams; the full progress report remains `132` Reduced 1955 and `93` Rubrics 1960 unadjudicated rows.
+- **2026-04-25.** Fanned out the existing Roman Vespers post-collect `Dómine, exáudi` adjudication onto the Rubrics 1960 rows newly exposed by the ferial-preces fix. St Joseph and Immaculate Conception Vespers now inherit the already-cited `Psalterium/Common/Prayers` source-backed Perl-render classification, dropping Rubrics 1960 unadjudicated rows to `93`.
+- **2026-04-25.** Narrowed Roman ferial-preces directive emission to the source-backed weekday scope. Rubrics 1960 now emits Lauds/Vespers preces only for Offices of the Season on Wednesdays and Fridays of Advent, Lent, and Passiontide, plus the specified Ember-day shape; the pre-1960 Roman path follows the parallel 1955 help text, including September Ember days and Lauds-only Ember Saturdays. This removes the erroneous `Kýrie...` preces block from 1960 feast and Holy Week Monday/Tuesday major-hour rows, dropping Rubrics 1960 unadjudicated rows to `95`.
+- **2026-04-25.** Closed the Rubrics 1960 Holy Week Lauds `Quad5` later-block seam in Phase 2. The 1960 major-hour fallback now prefers Passiontide Monday-Wednesday `Major Special` sections (`Quad5 Laudes`, `Hymnus Quad5 Laudes`, `Quad5 Versum 2`) before the generic feria sections, moving Holy Monday Lauds past `Rom 13:12-13` onto the next later-block boundary and dropping Rubrics 1960 unadjudicated rows to `97`.
+- **2026-04-25.** Closed the Reduced 1955 Lenten Sunday Matins seasonal-versicle seam in Phase 2. Matins planning now uses `Psalmi matutinum` seasonal Sunday versicle sections such as `Quad 1 Versum` and `Quad5 1 Versum` before falling back to the ordinary `Day0` psalter versicle. The affected Lenten/Passiontide Sunday Matins rows now advance to the already-adjudicated `Pater Noster` guillemet rendering family, dropping Reduced 1955 unadjudicated rows to `132`.
+- **2026-04-25.** Completed an existing-adjudication fanout sweep over the current expanded Phase 3 ledgers. The sidecar now classifies 14 rows that exactly match already-cited source-backed `perl-bug` families: Holy Thursday Psalm `115:7` Vespers half-verse rendering, Reduced 1955 Low Sunday `Psalmi minor` Prime/minor-hour surfaces, and Rubrics 1960 Christmas-octave fallback-hymn doxology substitutions. Live unadjudicated rows drop to `138` for Reduced 1955 and `98` for Rubrics 1960.
+- **2026-04-25.** Closed the simplified Roman Triduum Vespers `Prelude Vespera` seam in Phase 3. The compositor now prepends the source-backed Holy Thursday / Good Friday Vespers suppression notice for Reduced 1955 and Rubrics 1960, then continues into ordinary Triduum Vespers psalmody. Good Friday Vespers now advances to the already-documented Psalm `115:7` half-verse Perl-render seam, and the newly exposed row keys are recorded as fanout of that `perl-bug` family.
+- **2026-04-24.** Closed the simplified Roman Triduum minor-hour ordinary-short-reading leak as a mixed Phase 2 / Phase 3 fix. The 1955/1960 `Omit ... Capitulum Lectio ... De Officium Capituli` rule now suppresses the typed chapter, short-reading, responsory, versicle, and Prime tail slots; Holy Saturday minor hours select the temporal `Oratio 2` when present; and Phase 3 extends the existing `Christus factus...` Triduum prelude handoff to Prime/Terce/Sext/None without ordinary minor-hour oration wrappers. The March `28`-`30` simplified Roman minor-hour compares now advance past the former ordinary `Zach 8:19`, `Jer 17:14`, `Rom 13:8`, and `1 Pet 1:17-19` short-reading divergences, dropping live unadjudicated counts to `144` for Reduced 1955 and `108` for Rubrics 1960.
 - **2026-04-24.** Closed the next five Phase 3 tranche slices across the Paschal minor-hour and major-hour conclusion frontier. Phase 2 now supplies seasonal Paschal/Ascension/Pentecost doxology variants to fallback minor-hour hymns when no proper doxology is declared, focused compositor regressions lock the 1955 Paschal fallback surface, the Rubrics 1960 residual Paschal doxology rows are adjudicated as Perl render-surface bugs, the 1960 `Tridentinum` Sunday Prime Paschal antiphon rows are classified from `Psalmi minor`, and selected 1955/1960 Vespers post-collect `Dómine, exáudi` bridge rows are recorded in the sidecar and upstream issue log.
-- **2026-04-24.** Closed the next shared Roman source-backed `perl-bug`
-  adjudication sweep without changing compositor behavior. Focused upstream
-  regressions now lock Lenten ferial Vespers opening antiphons and the
-  proper-feast minor-hour later blocks for St Joseph, the Nativity of St John
-  the Baptist, Ss Peter and Paul, and the Precious Blood. `adjudications.json`,
-  `ADJUDICATION_LOG.md`, and `docs/upstream-issues.md` now classify those
-  1955/1960 rows as Perl render-surface bugs where the corpus supplies full
-  antiphons, proper Prime lessons, or `R.br.` short-responsory blocks but the
-  Perl comparison surface abbreviates, over-marks, or leaves `_`.
+- **2026-04-24.** Closed the next shared Roman source-backed `perl-bug` adjudication sweep without changing compositor behavior. Focused upstream regressions now lock Lenten ferial Vespers opening antiphons and the proper-feast minor-hour later blocks for St Joseph, the Nativity of St John the Baptist, Ss Peter and Paul, and the Precious Blood. `adjudications.json`, `ADJUDICATION_LOG.md`, and `docs/upstream-issues.md` now classify those 1955/1960 rows as Perl render-surface bugs where the corpus supplies full antiphons, proper Prime lessons, or `R.br.` short-responsory blocks but the Perl comparison surface abbreviates, over-marks, or leaves `_`.
 - **2026-04-24.** Closed the Roman Ascension Vespers conclusion alleluia seam in Phase 3. The 1955/1960 major-hour conclusion wrapper now uses `Benedicamus Domino1` only during the Easter octave (`Pasc0-*`), matching the legacy helper's Roman scope, so Ascension Vespers returns to the ordinary `Benedicámus Dómino.` while Easter-octave Vespers keeps the double-alleluia dismissal.
 - **2026-04-24.** Closed the Paschaltide minor-hour short-responsory underscore family as a source-backed Perl-render adjudication. Ascension and Pentecost source files explicitly carry the `R.br.` responsory blocks for Terce/Sext/None; the compositor keeps those source-backed later blocks while Perl's rendered comparison surface leaves `_` at the first divergence. `adjudications.json` now classifies the exposed Reduced 1955 Ascension Terce/Sext/None rows and Rubrics 1960 Pentecost Sext/None rows.
 - **2026-04-24.** Closed the Paschaltide bare `Deo grátias` chapter-response seam in Phase 3. The ordinary `$Deo gratias` macro from `Common/Prayers` remains unseasoned under the chapter `add-alleluia` transform, matching the source and Perl's explicit `Deo gratias` bypass while leaving explicit Paschaltide dismissal sections such as `Benedicamus Domino1` untouched. The targeted Ascension / Pentecost reduced-1955 and 1960 probes now advance past `R. Deo grátias.` to the next short-responsory, hymn-doxology, or conclusion seams.
