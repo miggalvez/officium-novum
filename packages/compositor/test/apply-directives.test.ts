@@ -136,6 +136,16 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
     );
   });
 
+  it('on psalmody, appends alleluia before a legacy psalm payload', () => {
+    const content: TextContent[] = [
+      { type: 'verseMarker', marker: 'Ant.', text: 'Missus est * Gábriel Angelus;;109' }
+    ];
+    const out = run('psalmody', content, ['add-alleluia']);
+    expect(out).toEqual([
+      { type: 'verseMarker', marker: 'Ant.', text: 'Missus est * Gábriel Angelus, allelúja.;;109' }
+    ]);
+  });
+
   it('is idempotent when alleluia is already present', () => {
     const content: TextContent[] = [{ type: 'text', value: 'Ecce sacérdos magnus, allelúja.' }];
     const out = run('antiphon-ad-benedictus', content, ['add-alleluia']);
@@ -143,11 +153,14 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
   });
 
   it('is idempotent when alleluia is present inside a parenthetical tail', () => {
-    const content: TextContent[] = [
-      { type: 'verseMarker', marker: 'Ant.', text: 'Missus est * Gábriel Angelus. (Allelúja.);;109' }
-    ];
-    const out = run('psalmody', content, ['add-alleluia']);
-    expect(out).toEqual(content);
+    for (const text of [
+      'Missus est * Gábriel Angelus. (Allelúja.);;109',
+      'Missus est * Gábriel Angelus. (Allelúja).;;109'
+    ]) {
+      const content: TextContent[] = [{ type: 'verseMarker', marker: 'Ant.', text }];
+      const out = run('psalmody', content, ['add-alleluia']);
+      expect(out).toEqual(content);
+    }
   });
 
   it('does not append alleluia when a chapter slot is carrying an Ant. substitution', () => {

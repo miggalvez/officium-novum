@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-26.** Review follow-up: hardened Paschaltide alleluia handling for legacy psalm payloads and parenthetical variants, and made Confessor `mtv` Matins hymn-variant detection work when `mtv` starts its own rule line.
 - **2026-04-26.** Fixed the Paschaltide `add-alleluia` idempotence seam for parenthetical source tails. Psalmody antiphon rows such as Annunciation `Missus est... (Allelúja.);;109` no longer receive an extra appended `, allelúja.` when the source already carries the parenthetical alleluia.
 - **2026-04-26.** Classified the Reduced 1955 Nativity of the BVM minor-hour versicle-slot family. Sep `8` Terce and Sext now cite the feast's own `[Versum 1]` and local `[Versum 2]` / `[Versum 3]` aliases for the source-backed `Natívitas est hódie...` versicle.
 - **2026-04-26.** Classified the shared Roman proper first-Vespers fifth-psalm override family. Jul `1` and Sep `29` Vespers now cite the offices' explicit `Psalm5 Vespera=116` rules, documenting Perl's retained `Vespera3` fifth psalm headings as comparison-surface bugs.

@@ -287,7 +287,7 @@ function shouldUseFirstConfessorMatinsHymn(
 
   const ruleText = collectRuleText(officeFile);
   const postCumNostraHacAetate =
-    /1955|196/u.test(input.version?.handle ?? '') || /;\s*mtv\b/iu.test(ruleText);
+    /1955|196/u.test(input.version?.handle ?? '') || /(?:^|;)\s*mtv\b/ium.test(ruleText);
   if (!postCumNostraHacAetate) {
     return false;
   }

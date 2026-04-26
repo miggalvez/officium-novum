@@ -271,6 +271,47 @@ describe('buildMatinsPlan', () => {
     });
   });
 
+  it('detects an mtv Confessor hymn variant rule at the start of a rule line', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Sancti/04-28.txt',
+      ['[Rule]', 'vide C5;', 'mtv', '', '[Lectio1]', 'Text'].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Commune/C5.txt',
+      ['@Commune/C4', '', '[Rule]', 'Psalmi Dominica', 'Antiphonas horas'].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Commune/C4.txt',
+      [
+        '[Hymnus Matutinum]',
+        'Hac die lætus méruit beátas',
+        '',
+        '[Hymnus1 Matutinum]',
+        'Hac die lætus méruit suprémos'
+      ].join('\n')
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/04-28', 'III', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-04-28', 'Pasc1-0', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1954()
+    });
+
+    expect(result.plan.hymn).toEqual({
+      kind: 'feast',
+      reference: {
+        path: 'horas/Latin/Commune/C5',
+        section: 'Hymnus1 Matutinum'
+      }
+    });
+  });
+
   it('honors forced Te Deum override on an otherwise ferial day', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add('horas/Latin/Tempora/Pent07-2.txt', ferialMatinsSections());
@@ -394,6 +435,16 @@ function version1960(): ResolvedVersion {
     kalendar: '1960',
     transfer: '1960',
     stransfer: '1960',
+    policy: rubrics1960Policy
+  };
+}
+
+function version1954(): ResolvedVersion {
+  return {
+    handle: asVersionHandle('Divino Afflatu - 1954'),
+    kalendar: 'Divino Afflatu',
+    transfer: 'Divino Afflatu',
+    stransfer: 'Divino Afflatu',
     policy: rubrics1960Policy
   };
 }
