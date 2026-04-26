@@ -9727,6 +9727,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Reduced - 1955/2024-11-01/None/b9b2100a": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "None",
+    "firstExpected": "V. Exsultábunt Sancti in glória.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
   "Reduced - 1955/2024-11-01/Prime/d2312ee1": {
     "policy": "Reduced - 1955",
     "date": "2024-11-01",
@@ -9738,6 +9750,30 @@
     "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
     "resolvedAt": "2026-04-25",
     "commitSha": "34d6dc1"
+  },
+  "Reduced - 1955/2024-11-01/Sext/651ec0ba": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Sext",
+    "firstExpected": "V. Justi autem in perpétuum vivent.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
+  "Reduced - 1955/2024-11-01/Terce/a39a1839": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Terce",
+    "firstExpected": "V. Exsúltent justi in conspéctu Dei.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
   },
   "Reduced - 1955/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Reduced - 1955",
@@ -14855,6 +14891,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Rubrics 1960 - 1960/2024-11-01/None/b9b2100a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "None",
+    "firstExpected": "V. Exsultábunt Sancti in glória.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
   "Rubrics 1960 - 1960/2024-11-01/Prime/d2312ee1": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-01",
@@ -14866,6 +14914,30 @@
     "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
     "resolvedAt": "2026-04-25",
     "commitSha": "34d6dc1"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Sext/651ec0ba": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Sext",
+    "firstExpected": "V. Justi autem in perpétuum vivent.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Terce/a39a1839": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Terce",
+    "firstExpected": "V. Exsúltent justi in conspéctu Dei.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
   },
   "Rubrics 1960 - 1960/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Rubrics 1960 - 1960",

@@ -3859,6 +3859,35 @@ versicle surface while leaving the compositor's source-backed `[Versum
 **Impact.** Six simplified Roman rows move from `unadjudicated` to
 `perl-bug`, narrowing the shared June Apostle minor-hour frontier.
 
+### 2026-04-26 — Pattern: All Saints minor-hour versicle slot (perl-bug)
+
+**Commit.** `089618b`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Nov `1` Terce, Sext,
+and None first diverge after the proper short responsory. Perl expects
+`Exsúltent justi...`, `Justi autem...`, and `Exsultábunt Sancti...`,
+while the compositor emits the C3 generic minor-hour versicle
+`V. Lætámini in Dómino, et exsultáte justi.` in each slot.
+
+**Root cause.** `Sancti/11-01` routes All Saints through `vide C3` and
+sets `Antiphonas horas`. C3 supplies `[Versum 1]` as the generic
+minor-hour versicle, while the other proper All Saints texts live in the
+`Responsory Breve Tertia`, `Responsory Breve Sexta`, `Responsory Breve
+Nona`, and `[Versum 2]` sections. The source does not provide separate
+`[Versum Tertia]`, `[Versum Sexta]`, or `[Versum Nona]` sections for the
+post-responsory versicle.
+
+**Resolution.** Class `perl-bug`. Added the six simplified Roman Nov
+`1` Terce/Sext/None row keys to document Perl's shifted minor-hour
+versicle surface while leaving the compositor's source-backed `[Versum
+1]` selection unchanged.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13` and
+`upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337`.
+
+**Impact.** Six simplified Roman rows move from `unadjudicated` to
+`perl-bug`, narrowing the shared All Saints minor-hour frontier.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

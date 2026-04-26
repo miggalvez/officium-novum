@@ -1964,6 +1964,50 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 19
 | Rubrics 1960 - 1960 | 2024-06-29 | Sext | `447aec80` |
 | Rubrics 1960 - 1960 | 2024-06-29 | None | `c29f6574` |
 
+### 2026-04-26 — All Saints minor-hour versicles shift in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** On Nov `1`, the simplified Roman Perl comparison surface
+shifts later C3 common versicle material into the Terce/Sext/None
+post-responsory versicle slot. The source-backed compositor output keeps
+the proper texts in their encoded short responsory / major-hour versicle
+sections and emits C3's generic `[Versum 1]` (`Lætámini...`) as the
+minor-hour versicle.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13` and
+`upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337`
+
+`Sancti/11-01` routes All Saints through `vide C3` with `Antiphonas
+horas`. The C3 common provides `[Versum 1]` as `V. Lætámini in Dómino,
+et exsultáte justi.` and carries the other proper texts under
+`Responsory Breve Tertia/Sexta/Nona` plus `[Versum 2]`, not as separate
+minor-hour versicle sections.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-11-01 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-11-01 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-11-01 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-11-01 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-11-01 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-11-01 --hour Nona
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-11-01 | Terce | `a39a1839` |
+| Reduced - 1955 | 2024-11-01 | Sext | `651ec0ba` |
+| Reduced - 1955 | 2024-11-01 | None | `b9b2100a` |
+| Rubrics 1960 - 1960 | 2024-11-01 | Terce | `a39a1839` |
+| Rubrics 1960 - 1960 | 2024-11-01 | Sext | `651ec0ba` |
+| Rubrics 1960 - 1960 | 2024-11-01 | None | `b9b2100a` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

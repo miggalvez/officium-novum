@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-26.** Classified the simplified Roman All Saints minor-hour versicle-slot family. Nov `1` Terce, Sext, and None now cite `Sancti/11-01` plus `Commune/C3` for the source-backed generic `[Versum 1]` after the proper short responsory blocks.
 - **2026-04-26.** Classified the simplified Roman Ss Peter and Paul minor-hour versicle-slot family. Jun `29` Terce, Sext, and None now cite `Sancti/06-29` plus `Commune/C1` for the source-backed generic `[Versum 1]` after the proper short responsory blocks.
 - **2026-04-26.** Fixed Matins planning for `vide` commons whose inherited office text comes through a preamble reference. Confessor non-pontiff C5 offices such as Aug `19` and Oct `4` now use the source-backed `Regem Confessórum Dóminum...` invitatory from the inherited C4 common before advancing to later Matins seams.
 - **2026-04-26.** Extended the Roman Matins pre-lesson `Pater Noster` guillemet adjudication across the remaining visible shared-Roman row keys. The compositor continues to preserve the source punctuation from `[Pater secreto]`.
