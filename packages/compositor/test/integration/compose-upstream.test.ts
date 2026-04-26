@@ -1235,6 +1235,9 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
         expect(canonicalLatinLines(composed), `${version} ${date} Matins Advent versicle`).toContain(
           normalizeLatin('Ex Sion spécies decóris ejus.')
         );
+        expect(canonicalLatinLines(composed), `${version} ${date} Matins Advent versicle response`).toContain(
+          normalizeLatin('Deus noster maniféste véniet.')
+        );
       }
     }
   }, 240_000);

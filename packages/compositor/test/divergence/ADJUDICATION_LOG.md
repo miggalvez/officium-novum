@@ -3714,6 +3714,33 @@ composition regression now locks both the Advent Sunday antiphon and the
 **Impact.** Four simplified Roman Matins rows advance past the Advent
 Sunday versicle seam to the next pre-lesson transition.
 
+### 2026-04-26 — Pattern: Psalter-Matins embedded versicle responses (compositor-bug fixed)
+
+**Commit.** `3f1fda3`
+
+**Ledger signal.** After the Advent Sunday versicle selector fix,
+Reduced 1955 Dec `15` and Rubrics 1960 Dec `15` Matins reached the
+paired `Ex Sion...` versicle but diverged on the following line: Perl
+expected `R. Deus noster maniféste véniet.`, while the compositor
+continued directly to the pre-lesson `Pater Noster` transition.
+
+**Root cause.** The compositor already had a Matins helper that appends
+the response line after a selected psalter `V.` node, matching the
+source's embedded V./R. pair layout. That helper was hard-coded to the
+ordinary Sunday `Day0` table, so the newly selected Advent Sunday
+`Adv 0 Ant Matutinum` table emitted only the `V.` line.
+
+**Resolution.** Fixed. Psalter-Matins versicle selectors now use the
+same response-extension path for any `Psalmi matutinum` section with an
+integer selector. The upstream composition regression now asserts both
+the Advent Sunday `V.` and `R.` lines.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:140-142`.
+
+**Impact.** Four simplified Roman Matins rows advance past the
+source-backed Advent Sunday V./R. pair to the pre-lesson Pater Noster
+rendering surface.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -258,7 +258,6 @@ export function extendPsalterMatinsVersicleContent(
 ): readonly TextContent[] {
   if (
     ref.path !== 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum' ||
-    ref.section !== 'Day0' ||
     !ref.selector ||
     !/^\d+$/u.test(ref.selector)
   ) {
