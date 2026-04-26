@@ -681,7 +681,31 @@ function resolveProperMatinsFiles(
     corpus: input.corpus
   });
 
-  return [feastFile, ...inherited.files];
+  return [
+    feastFile,
+    ...inherited.files.map((file) => resolvePreambleMergedRuleReferenceFile(file, input.corpus))
+  ];
+}
+
+function resolvePreambleMergedRuleReferenceFile(
+  file: ParsedFile,
+  corpus: OfficeTextIndex
+): ParsedFile {
+  const canonicalPath = canonicalOfficePathFromParsedFile(file);
+  if (!canonicalPath) {
+    return file;
+  }
+
+  try {
+    return resolveOfficeFile(corpus, canonicalPath);
+  } catch {
+    return file;
+  }
+}
+
+function canonicalOfficePathFromParsedFile(file: ParsedFile): string | undefined {
+  const match = /^horas\/Latin\/(.+)\.txt$/u.exec(file.path);
+  return match?.[1];
 }
 
 function resolveFeastFile(

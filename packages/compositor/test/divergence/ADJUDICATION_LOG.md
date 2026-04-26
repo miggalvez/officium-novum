@@ -3008,7 +3008,7 @@ directly at the ordinary Vespers antiphon.
 **Root cause.** `Quad6-4` and `Quad6-5` both carry a conditioned
 `[Prelude Vespera] (rubrica 1955 aut rubrica 196)` notice. Phase 2 was
 already selecting the correct Triduum celebration, but Phase 3 had no
-source seam for pre-pending the special Vespers prelude before ordinary
+source seam for pre-a82e9fa the special Vespers prelude before ordinary
 psalmody. Once the compositor emits that prelude, the remaining Good
 Friday first divergence moves to the already-adjudicated Psalm 115
 half-verse render surface.
@@ -3740,6 +3740,153 @@ the Advent Sunday `V.` and `R.` lines.
 **Impact.** Four simplified Roman Matins rows advance past the
 source-backed Advent Sunday V./R. pair to the pre-lesson Pater Noster
 rendering surface.
+
+### 2026-04-26 — Pattern: Simplified Roman Advent Sunday Matins pre-lesson guillemets (rendering-difference)
+
+**Commit.** `a82e9fa`
+
+**Ledger signal.** After the Advent Sunday psalter, versicle, and
+response fixes, Reduced 1955 and Rubrics 1960 Dec `15` / Dec `22`
+Matins first diverge at the ordinary pre-lesson `Pater Noster` rubric:
+Perl expects `Pater Noster dicitur secreto usque ad Et ne nos indúcas in
+tentatiónem:`, while the compositor emits the source-backed
+`« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in
+tentatiónem: »`.
+
+**Root cause.** This is the established Roman Matins pre-lesson
+guillemet rendering family. `Psalterium/Common/Rubricae:[Pater
+secreto]` carries guillemets around both phrases; Perl strips them in
+its rendered comparison surface, while the compositor preserves the
+corpus punctuation.
+
+**Resolution.** Class `rendering-difference`. Added the four Advent
+Sunday Matins row keys as a fanout of the existing Matins guillemet
+family and tightened the Advent Sunday Matins regression to assert the
+source-backed guillemeted `Pater secreto` line.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`.
+
+**Impact.** Four simplified Roman Matins rows move from
+`unadjudicated` to `rendering-difference`, narrowing the Advent Sunday
+Matins frontier to whatever later row surfaces remain after this
+punctuation-only family.
+
+### 2026-04-26 — Pattern: Remaining Roman Matins pre-lesson guillemets (rendering-difference)
+
+**Commit.** `e7b3145`
+
+**Ledger signal.** The expanded live frontier still showed the same
+pre-lesson `Pater Noster` guillemet signature on additional Reduced
+1955 and Rubrics 1960 Matins rows, including summer, November, and
+early-Advent offices. The first divergent lines are identical to the
+already-adjudicated Roman Matins family.
+
+**Root cause.** Same source-backed rendering surface as the earlier
+Matins guillemet entries: `[Pater secreto]` in
+`Psalterium/Common/Rubricae.txt` carries guillemets around both rubric
+phrases. Perl strips those punctuation marks in its rendered comparison
+surface; the compositor preserves the corpus text.
+
+**Resolution.** Class `rendering-difference`. Added the eight remaining
+visible shared-Roman Matins row keys with this exact first-divergence
+signature as fanout of the established family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`.
+
+**Impact.** Eight additional Roman Matins rows move from
+`unadjudicated` to `rendering-difference`, clearing the repeated
+pre-lesson guillemet surface from the visible shared-Roman frontier.
+
+### 2026-04-26 — Pattern: Confessor C5 Matins inherited invitatory (engine-bug fixed)
+
+**Commit.** `6cf9616`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Aug `19` / Oct `4`
+Matins first diverged at the invitatory. Perl expected the Confessor
+common antiphon `Regem Confessórum Dóminum, * Veníte, adorémus.`, while
+the compositor fell back to the ordinary seasonal invitatory (`Veníte`
+or `Dóminum, Deum nostrum`).
+
+**Root cause.** The winning saints' files route Matins through `vide
+C5`, and `Commune/C5` inherits its `[Invit]` section from `Commune/C4`
+via a preamble reference. The Matins plan already resolved the feast
+file with preamble merging, but it used raw `vide` target files when
+searching for inherited Matins sections, so the C4 invitatory was
+invisible behind C5.
+
+**Resolution.** Fixed. Matins planning now preamble-merges inherited
+rule-reference files before looking for feast/common sections. The
+upstream composition regression asserts the source-backed C5 invitatory
+for Aug `19` and Oct `4` under both simplified Roman policies.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/08-19.txt:5-8`,
+`upstream/web/www/horas/Latin/Sancti/10-04.txt:5-12`,
+`upstream/web/www/horas/Latin/Commune/C5.txt:1`, and
+`upstream/web/www/horas/Latin/Commune/C4.txt:91-92`.
+
+**Impact.** The four Confessor C5 Matins rows advance past the
+invitatory defect to later Matins seams. The total unadjudicated counts
+do not drop in this tranche because those same hours still expose later
+unclassified divergences after the corrected invitatory.
+
+### 2026-04-26 — Pattern: Ss Peter and Paul minor-hour versicle slot (perl-bug)
+
+**Commit.** `b0c1a20`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Jun `29` Terce, Sext,
+and None first diverge after the proper short responsory. Perl expects
+the shifting sequence `Constítues...`, `Nimis honoráti...`, and
+`Annuntiavérunt...`, while the compositor emits `V. In omnem terram
+exívit sonus eórum.` in each minor-hour versicle slot.
+
+**Root cause.** `Sancti/06-29` routes the office through `ex C1` and
+sets `Antiphonas horas`. The C1 common supplies a generic `[Versum 1]`
+for the versicle slot, while the hour-specific Apostle material is
+encoded in the `Responsory Breve Tertia`, `Responsory Breve Sexta`, and
+`Responsory Breve Nona` sections that the compositor already renders as
+the short responsories. The source does not provide separate
+`[Versum Tertia]`, `[Versum Sexta]`, or `[Versum Nona]` sections for the
+post-responsory versicle.
+
+**Resolution.** Class `perl-bug`. Added the six simplified Roman Jun
+`29` Terce/Sext/None row keys to document Perl's shifted minor-hour
+versicle surface while leaving the compositor's source-backed `[Versum
+1]` selection unchanged.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12` and
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324`.
+
+**Impact.** Six simplified Roman rows move from `unadjudicated` to
+`perl-bug`, narrowing the shared June Apostle minor-hour frontier.
+
+### 2026-04-26 — Pattern: All Saints minor-hour versicle slot (perl-bug)
+
+**Commit.** `089618b`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Nov `1` Terce, Sext,
+and None first diverge after the proper short responsory. Perl expects
+`Exsúltent justi...`, `Justi autem...`, and `Exsultábunt Sancti...`,
+while the compositor emits the C3 generic minor-hour versicle
+`V. Lætámini in Dómino, et exsultáte justi.` in each slot.
+
+**Root cause.** `Sancti/11-01` routes All Saints through `vide C3` and
+sets `Antiphonas horas`. C3 supplies `[Versum 1]` as the generic
+minor-hour versicle, while the other proper All Saints texts live in the
+`Responsory Breve Tertia`, `Responsory Breve Sexta`, `Responsory Breve
+Nona`, and `[Versum 2]` sections. The source does not provide separate
+`[Versum Tertia]`, `[Versum Sexta]`, or `[Versum Nona]` sections for the
+post-responsory versicle.
+
+**Resolution.** Class `perl-bug`. Added the six simplified Roman Nov
+`1` Terce/Sext/None row keys to document Perl's shifted minor-hour
+versicle surface while leaving the compositor's source-backed `[Versum
+1]` selection unchanged.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13` and
+`upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337`.
+
+**Impact.** Six simplified Roman rows move from `unadjudicated` to
+`perl-bug`, narrowing the shared All Saints minor-hour frontier.
 
 ## See also
 

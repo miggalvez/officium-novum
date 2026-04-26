@@ -1502,6 +1502,17 @@ Noster` rubric surface.
 | Reduced - 1955 | 2024-01-14 | Matins | `29ec2a3d` |
 | Rubrics 1960 - 1960 | 2024-01-06 | Matins | `29ec2a3d` |
 
+**Additional fanout.** The Advent Sunday Matins fixes exposed the same
+source-backed `[Pater secreto]` guillemet surface on Dec `15` and Dec
+`22` under both simplified Roman policies. Stable row key suffix:
+`29ec2a3d`.
+
+**Additional fanout.** A later expanded-ledger pass found the remaining
+visible shared-Roman Matins rows with the same exact first-divergence
+signature: Reduced 1955 Jun `20`, Jul `6`, Nov `5`, Nov `8`, and Dec
+`1`; Rubrics 1960 Nov `5`, Nov `8`, and Dec `1`. Stable row key suffix:
+`29ec2a3d`.
+
 ### 2026-04-22 — Roman Easter-Octave Prime preserves the corpus guillemets around `Pater Noster`
 
 **Classification.** `rendering-difference`
@@ -1909,6 +1920,93 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" -
 | Reduced - 1955 | 2024-02-24 | Terce | `50e62c35` |
 | Reduced - 1955 | 2024-02-24 | Sext | `62fa2e12` |
 | Reduced - 1955 | 2024-02-24 | None | `f60c28f2` |
+
+### 2026-04-26 — Ss Peter and Paul minor-hour versicles shift in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** On Jun `29`, the simplified Roman Perl comparison surface
+shifts the Apostle common's later versicles into the Terce/Sext/None
+post-responsory versicle slot. The source-backed compositor output keeps
+the hour-specific Apostle material in the proper short responsory blocks
+and emits C1's generic `[Versum 1]` (`In omnem terram...`) as the
+minor-hour versicle.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12` and
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324`
+
+`Sancti/06-29` routes through `ex C1` with `Antiphonas horas`. The C1
+common provides `[Versum 1]` as `V. In omnem terram exívit sonus eórum.`
+and carries the hour-specific Apostle texts under `Responsory Breve
+Tertia/Sexta/Nona`, not as separate minor-hour versicle sections.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-06-29 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-06-29 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-06-29 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-06-29 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-06-29 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-06-29 --hour Nona
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-06-29 | Terce | `c4c52d87` |
+| Reduced - 1955 | 2024-06-29 | Sext | `447aec80` |
+| Reduced - 1955 | 2024-06-29 | None | `c29f6574` |
+| Rubrics 1960 - 1960 | 2024-06-29 | Terce | `c4c52d87` |
+| Rubrics 1960 - 1960 | 2024-06-29 | Sext | `447aec80` |
+| Rubrics 1960 - 1960 | 2024-06-29 | None | `c29f6574` |
+
+### 2026-04-26 — All Saints minor-hour versicles shift in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** On Nov `1`, the simplified Roman Perl comparison surface
+shifts later C3 common versicle material into the Terce/Sext/None
+post-responsory versicle slot. The source-backed compositor output keeps
+the proper texts in their encoded short responsory / major-hour versicle
+sections and emits C3's generic `[Versum 1]` (`Lætámini...`) as the
+minor-hour versicle.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13` and
+`upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337`
+
+`Sancti/11-01` routes All Saints through `vide C3` with `Antiphonas
+horas`. The C3 common provides `[Versum 1]` as `V. Lætámini in Dómino,
+et exsultáte justi.` and carries the other proper texts under
+`Responsory Breve Tertia/Sexta/Nona` plus `[Versum 2]`, not as separate
+minor-hour versicle sections.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-11-01 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-11-01 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-11-01 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-11-01 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-11-01 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-11-01 --hour Nona
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-11-01 | Terce | `a39a1839` |
+| Reduced - 1955 | 2024-11-01 | Sext | `651ec0ba` |
+| Reduced - 1955 | 2024-11-01 | None | `b9b2100a` |
+| Rubrics 1960 - 1960 | 2024-11-01 | Terce | `a39a1839` |
+| Rubrics 1960 - 1960 | 2024-11-01 | Sext | `651ec0ba` |
+| Rubrics 1960 - 1960 | 2024-11-01 | None | `b9b2100a` |
 
 ## See also
 

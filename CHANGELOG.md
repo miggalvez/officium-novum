@@ -14,6 +14,11 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-26.** Classified the simplified Roman All Saints minor-hour versicle-slot family. Nov `1` Terce, Sext, and None now cite `Sancti/11-01` plus `Commune/C3` for the source-backed generic `[Versum 1]` after the proper short responsory blocks.
+- **2026-04-26.** Classified the simplified Roman Ss Peter and Paul minor-hour versicle-slot family. Jun `29` Terce, Sext, and None now cite `Sancti/06-29` plus `Commune/C1` for the source-backed generic `[Versum 1]` after the proper short responsory blocks.
+- **2026-04-26.** Fixed Matins planning for `vide` commons whose inherited office text comes through a preamble reference. Confessor non-pontiff C5 offices such as Aug `19` and Oct `4` now use the source-backed `Regem Confessórum Dóminum...` invitatory from the inherited C4 common before advancing to later Matins seams.
+- **2026-04-26.** Extended the Roman Matins pre-lesson `Pater Noster` guillemet adjudication across the remaining visible shared-Roman row keys. The compositor continues to preserve the source punctuation from `[Pater secreto]`.
+- **2026-04-26.** Classified the simplified Roman Advent Sunday Matins pre-lesson `Pater Noster` guillemet fanout. Dec `15` and Dec `22` Matins now cite the existing source-backed `[Pater secreto]` rendering family after the Advent psalter fixes exposed that row surface.
 - **2026-04-26.** Review follow-up: limited the `Adv 0 Ant Matutinum` first-versicle shortcut to one-nocturn Matins. Three-nocturn Advent fallback offices now keep their per-nocturn psalter versicle selectors.
 - **2026-04-26.** Fixed the psalter-Matins versicle response materializer for non-`Day0` psalter tables. Advent Sunday Matins now emits the full `Ex Sion... / Deus noster...` V./R. pair before the pre-lesson Pater Noster transition.
 - **2026-04-26.** Fixed the Advent Sunday one-nocturn Matins versicle selector. Simplified Roman Dec `15` and Dec `22` Matins now take the first embedded `Ex Sion... / Deus noster...` versicle pair from `Adv 0 Ant Matutinum` instead of the final `Egrediétur...` pair.

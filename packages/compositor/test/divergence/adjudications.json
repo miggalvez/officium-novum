@@ -8505,6 +8505,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-06-20/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-20",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
+  },
   "Reduced - 1955/2024-06-20/None/1ab5e32c": {
     "policy": "Reduced - 1955",
     "date": "2024-06-20",
@@ -8719,6 +8731,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
   },
+  "Reduced - 1955/2024-06-29/None/c29f6574": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "None",
+    "firstExpected": "V. Annuntiavérunt ópera Dei.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
+  },
   "Reduced - 1955/2024-06-29/Prime/4e634936": {
     "policy": "Reduced - 1955",
     "date": "2024-06-29",
@@ -8730,6 +8754,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Reduced - 1955/2024-06-29/Sext/447aec80": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "Sext",
+    "firstExpected": "V. Nimis honoráti sunt amíci tui, Deus.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Reduced - 1955/2024-06-29/Sext/5e6c5f39": {
     "policy": "Reduced - 1955",
@@ -8754,6 +8790,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Reduced - 1955/2024-06-29/Terce/c4c52d87": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "Terce",
+    "firstExpected": "V. Constítues eos príncipes super omnem terram.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Reduced - 1955/2024-06-29/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
@@ -8958,6 +9006,18 @@
     "notes": "Representative entry for the Reduced 1955 Compline cross-glyph family. Fan out to all matching 1955 Compline rows with the same first-divergence text.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-07-06/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-07-06",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
   },
   "Reduced - 1955/2024-08-15/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -9667,6 +9727,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Reduced - 1955/2024-11-01/None/b9b2100a": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "None",
+    "firstExpected": "V. Exsultábunt Sancti in glória.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
   "Reduced - 1955/2024-11-01/Prime/d2312ee1": {
     "policy": "Reduced - 1955",
     "date": "2024-11-01",
@@ -9678,6 +9750,30 @@
     "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
     "resolvedAt": "2026-04-25",
     "commitSha": "34d6dc1"
+  },
+  "Reduced - 1955/2024-11-01/Sext/651ec0ba": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Sext",
+    "firstExpected": "V. Justi autem in perpétuum vivent.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
+  "Reduced - 1955/2024-11-01/Terce/a39a1839": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-01",
+    "hour": "Terce",
+    "firstExpected": "V. Exsúltent justi in conspéctu Dei.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
   },
   "Reduced - 1955/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Reduced - 1955",
@@ -9714,6 +9810,18 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-11-05/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-05",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
   },
   "Reduced - 1955/2024-11-05/None/1ab5e32c": {
     "policy": "Reduced - 1955",
@@ -9844,6 +9952,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-11-08/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-11-08",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
+  },
   "Reduced - 1955/2024-11-08/None/1ab5e32c": {
     "policy": "Reduced - 1955",
     "date": "2024-11-08",
@@ -9960,6 +10080,18 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-12-01/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-01",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
   },
   "Reduced - 1955/2024-12-01/None/4a1aadd8": {
     "policy": "Reduced - 1955",
@@ -10117,6 +10249,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-12-15/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-15",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Advent Sunday Matins fanout of the established Roman Matins pre-lesson guillemet family after the Adv 0 Ant Matutinum selector fixes exposed the source-backed Pater secreto line.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "a82e9fa"
+  },
   "Reduced - 1955/2024-12-15/None/4a1aadd8": {
     "policy": "Reduced - 1955",
     "date": "2024-12-15",
@@ -10200,6 +10344,18 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-12-22/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-12-22",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Advent Sunday Matins fanout of the established Roman Matins pre-lesson guillemet family after the Adv 0 Ant Matutinum selector fixes exposed the source-backed Pater secreto line.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "a82e9fa"
   },
   "Reduced - 1955/2024-12-22/None/4a1aadd8": {
     "policy": "Reduced - 1955",
@@ -13523,6 +13679,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
   },
+  "Rubrics 1960 - 1960/2024-06-29/None/c29f6574": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "None",
+    "firstExpected": "V. Annuntiavérunt ópera Dei.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
+  },
   "Rubrics 1960 - 1960/2024-06-29/Prime/4e634936": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-06-29",
@@ -13534,6 +13702,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Rubrics 1960 - 1960/2024-06-29/Sext/447aec80": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "Sext",
+    "firstExpected": "V. Nimis honoráti sunt amíci tui, Deus.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Rubrics 1960 - 1960/2024-06-29/Sext/5e6c5f39": {
     "policy": "Rubrics 1960 - 1960",
@@ -13558,6 +13738,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Rubrics 1960 - 1960/2024-06-29/Terce/c4c52d87": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "Terce",
+    "firstExpected": "V. Constítues eos príncipes super omnem terram.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Rubrics 1960 - 1960/2024-06-29/Vespers/22de27ef": {
     "policy": "Rubrics 1960 - 1960",
@@ -14699,6 +14891,18 @@
     "resolvedAt": "2026-04-20",
     "commitSha": "b9bf979"
   },
+  "Rubrics 1960 - 1960/2024-11-01/None/b9b2100a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "None",
+    "firstExpected": "V. Exsultábunt Sancti in glória.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
   "Rubrics 1960 - 1960/2024-11-01/Prime/d2312ee1": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-01",
@@ -14710,6 +14914,30 @@
     "notes": "Prime proper-lesson row where the office source supplies `[Lectio Prima]` but the Perl comparison surface keeps the ordinary Prime chapter.",
     "resolvedAt": "2026-04-25",
     "commitSha": "34d6dc1"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Sext/651ec0ba": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Sext",
+    "firstExpected": "V. Justi autem in perpétuum vivent.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
+  },
+  "Rubrics 1960 - 1960/2024-11-01/Terce/a39a1839": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-01",
+    "hour": "Terce",
+    "firstExpected": "V. Exsúltent justi in conspéctu Dei.",
+    "firstActual": "V. Lætámini in Dómino, et exsultáte justi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:5-13 and upstream/web/www/horas/Latin/Commune/C3.txt:84-85,294-337 — All Saints routes through vide C3 with Antiphonas horas; C3 supplies the generic [Versum 1] after the minor-hour later blocks while the other proper texts are encoded in Responsory Breve Tertia/Sexta/Nona and [Versum 2]. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the All Saints minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "089618b"
   },
   "Rubrics 1960 - 1960/2024-11-01/Vespers/c3e5bb37": {
     "policy": "Rubrics 1960 - 1960",
@@ -14734,6 +14962,18 @@
     "notes": "Pattern affects every Compline row across every policy and date. This single entry is representative; the full row-key fan-out is a follow-up bulk-populate task (see ADJUDICATION_LOG.md).",
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-11-05/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
   },
   "Rubrics 1960 - 1960/2024-11-05/None/1ab5e32c": {
     "policy": "Rubrics 1960 - 1960",
@@ -14852,6 +15092,18 @@
     "resolvedAt": "2026-04-25",
     "commitSha": "d635e10"
   },
+  "Rubrics 1960 - 1960/2024-11-08/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-08",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
+  },
   "Rubrics 1960 - 1960/2024-11-08/None/1ab5e32c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-08",
@@ -14956,6 +15208,18 @@
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-12-01/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-01",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Remaining visible Roman Matins fanout of the established pre-lesson guillemet family.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "e7b3145"
   },
   "Rubrics 1960 - 1960/2024-12-01/None/4a1aadd8": {
     "policy": "Rubrics 1960 - 1960",
@@ -15137,6 +15401,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-12-15/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-15",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Advent Sunday Matins fanout of the established Roman Matins pre-lesson guillemet family after the Adv 0 Ant Matutinum selector fixes exposed the source-backed Pater secreto line.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "a82e9fa"
+  },
   "Rubrics 1960 - 1960/2024-12-15/None/4a1aadd8": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-12-15",
@@ -15208,6 +15484,18 @@
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-12-22/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-22",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Advent Sunday Matins fanout of the established Roman Matins pre-lesson guillemet family after the Adv 0 Ant Matutinum selector fixes exposed the source-backed Pater secreto line.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "a82e9fa"
   },
   "Rubrics 1960 - 1960/2024-12-22/None/4a1aadd8": {
     "policy": "Rubrics 1960 - 1960",
