@@ -189,7 +189,7 @@ function linesFromContent(
           // text. The legacy Perl renderer strips it; we do too so the
           // compositor matches the source author's intent.
           // See `upstream/.../Psalterium/Special/Prima Special.txt:107`.
-          const cleaned = stripHymnDoxologyMarker(node.value);
+          const cleaned = normalizeHymnText(node.value);
           current = {
             parts: [{ type: 'text', value: cleaned }]
           };
@@ -298,6 +298,16 @@ function stripHymnDoxologyMarker(text: string): string {
   return text.replace(/^\*\s+/u, '');
 }
 
+function stripLeadingGabcInlineCue(text: string): string {
+  return text.replace(/^\{:[^}]+:\}\s*/u, '');
+}
+
+function normalizeHymnText(text: string): string {
+  const withoutCue = stripLeadingGabcInlineCue(text);
+  const verseMatch = withoutCue === text ? undefined : withoutCue.match(/^v\.\s+(.*)$/u);
+  return stripHymnDoxologyMarker(verseMatch?.[1] ?? withoutCue);
+}
+
 function normalizeSlotText(slot: SlotName, text: string): string {
   const withoutContractionMarkerResidue = normalizeContractedMarkerText(text);
   if (slot !== 'psalmody') {
@@ -339,7 +349,12 @@ function renderGabcHeaderText(
     return undefined;
   }
 
-  const verseMatch = notation.text.match(
+  const text = stripLeadingGabcInlineCue(notation.text);
+  if (!text) {
+    return undefined;
+  }
+
+  const verseMatch = text.match(
     /^(v\.|r\.|V\.|R\.|R\.br\.|Responsorium\.|Ant\.|Benedictio\.|Absolutio\.|M\.|S\.)\s+(.*)$/u
   );
   if (verseMatch) {
@@ -358,7 +373,7 @@ function renderGabcHeaderText(
   }
 
   return {
-    text: slot === 'hymn' ? stripHymnDoxologyMarker(notation.text) : normalizeSlotText(slot, notation.text)
+    text: slot === 'hymn' ? stripHymnDoxologyMarker(text) : normalizeSlotText(slot, text)
   };
 }
 

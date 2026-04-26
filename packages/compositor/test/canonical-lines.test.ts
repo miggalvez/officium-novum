@@ -699,6 +699,87 @@ describe('hymn stanza separator emission', () => {
       'Beáta mundum cóndidit,'
     ]);
   });
+
+  it('strips inline gabc cues before rendering hymn header verse text', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Special/Matutinum Special.txt',
+      sections: [
+        {
+          header: 'Day0 Hymnus1',
+          startLine: 263,
+          endLine: 265,
+          content: [
+            {
+              type: 'gabcNotation',
+              notation: {
+                kind: 'header',
+                notation: '{:Ogloriosavirginum:}',
+                text: '{:Ogloriosavirginum:}v. O gloriósa vírginum,'
+              }
+            },
+            { type: 'text', value: 'Sublímis inter sídera,' }
+          ]
+        }
+      ]
+    });
+
+    const hour = buildHour(
+      'hymn',
+      { path: 'horas/Latin/Psalterium/Special/Matutinum Special', section: 'Day0 Hymnus1' },
+      'matins'
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'hymn', 'Latin')).toEqual([
+      'O gloriósa vírginum,',
+      'Sublímis inter sídera,'
+    ]);
+  });
+
+  it('strips inline gabc cues when parser leaves the hymn header as text', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Special/Matutinum Special.txt',
+      sections: [
+        {
+          header: 'Day0 Hymnus1',
+          startLine: 263,
+          endLine: 265,
+          content: [
+            { type: 'text', value: '{:Ogloriosavirginum:}v. O gloriósa vírginum,' },
+            { type: 'text', value: 'Sublímis inter sídera,' }
+          ]
+        }
+      ]
+    });
+
+    const hour = buildHour(
+      'hymn',
+      { path: 'horas/Latin/Psalterium/Special/Matutinum Special', section: 'Day0 Hymnus1' },
+      'matins'
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'hymn', 'Latin')).toEqual([
+      'O gloriósa vírginum,',
+      'Sublímis inter sídera,'
+    ]);
+  });
 });
 
 describe('Psalmus N [index] heading emission', () => {
