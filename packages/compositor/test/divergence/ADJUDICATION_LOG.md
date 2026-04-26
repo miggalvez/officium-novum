@@ -3513,7 +3513,7 @@ invitatory path.
 separate Aug `19` / Oct `4` Matins invitatory rows and the broader
 Marian/common-antiphon families.
 
-### 2026-04-25 — Pattern: simplified Roman Marian common antiphons (perl-bug)
+### 2026-04-25 — Pattern: Simplified Roman Marian common antiphons (perl-bug)
 
 **Commit.** `38800ac`
 
@@ -3587,7 +3587,7 @@ row as a fanout of the already-established proper Prime lesson family.
 **Impact.** One Reduced 1955 Prime row moves from `unadjudicated` to
 `perl-bug`.
 
-### 2026-04-25 — Pattern: simplified Roman Precious Blood Matins bracketed hymn letter (rendering-difference)
+### 2026-04-25 — Pattern: Simplified Roman Precious Blood Matins bracketed hymn letter (rendering-difference)
 
 **Commit.** `ba2cda0`
 
