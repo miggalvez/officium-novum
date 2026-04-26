@@ -87,6 +87,38 @@ Then inspect Reduced 1955 Aug `22` / Sep `12` minor hours and Rubrics
 | Reduced - 1955 | 2024-08-22, 2024-09-12 | Prime, Terce, Sext, None | `725e1611`, `1a19d166`, `0868e7bf`, `4f6bebb1` |
 | Rubrics 1960 - 1960 | 2024-09-12 | Lauds, Vespers | `6d4720a5`, `a3dcd0af` |
 
+### 2026-04-26 — Reduced 1955 Nativity of the BVM minor hours shift from the feast versicle in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Reduced 1955 Sep `8` Terce and Sext show Marian-common
+versicles in the Perl comparison surface. Officium Novum emits the
+Nativity office's source-backed `V. Natívitas est hódie sanctæ Maríæ
+Vírginis.` versicle.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/09-08.txt:10-15,24-26,140-147`
+- `upstream/web/www/horas/Latin/Commune/C11.txt:67-69,307-339`
+
+These sources establish that the feast supplies `[Versum 1]` and aliases
+its later versicle slots back to that feast-proper text.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --date 2024-09-08
+```
+
+Then inspect Reduced 1955 Terce and Sext.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Reduced - 1955 | 2024-09-08 | Terce, Sext | `45abc077`, `3da503ad` |
+
 ### 2026-04-25 — Simplified Roman Confessor non-pontiff common antiphons fall back to the psalter
 
 **Classification.** `perl-bug`

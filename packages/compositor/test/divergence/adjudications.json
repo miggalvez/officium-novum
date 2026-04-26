@@ -9307,6 +9307,30 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
   },
+  "Reduced - 1955/2024-09-08/Sext/3da503ad": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-08",
+    "hour": "Sext",
+    "firstExpected": "V. Elégit eam Deus, et præelégit eam.",
+    "firstActual": "V. Natívitas est hódie sanctæ Maríæ Vírginis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-08.txt:10-15,24-26,140-147 and upstream/web/www/horas/Latin/Commune/C11.txt:67-69,307-339 — the Nativity of the BVM office supplies its own `[Versum 1]` (`Natívitas est hódie...`) and aliases `[Versum 2]` / `[Versum 3]` back to it. The compositor emits that feast-proper versicle while the Perl comparison surface shifts to a Marian-common Sext versicle.",
+    "notes": "Reduced 1955 Nativity of the BVM minor-hour versicle slot; source keeps the feast-proper `Natívitas est hódie...` versicle for Terce/Sext.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "c3ad33b"
+  },
+  "Reduced - 1955/2024-09-08/Terce/45abc077": {
+    "policy": "Reduced - 1955",
+    "date": "2024-09-08",
+    "hour": "Terce",
+    "firstExpected": "V. Adjuvábit eam Deus vultu suo.",
+    "firstActual": "V. Natívitas est hódie sanctæ Maríæ Vírginis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-08.txt:10-15,24-26,140-147 and upstream/web/www/horas/Latin/Commune/C11.txt:67-69,307-339 — the Nativity of the BVM office supplies its own `[Versum 1]` (`Natívitas est hódie...`) and aliases `[Versum 2]` / `[Versum 3]` back to it. The compositor emits that feast-proper versicle while the Perl comparison surface shifts to a Marian-common Terce versicle.",
+    "notes": "Reduced 1955 Nativity of the BVM minor-hour versicle slot; source keeps the feast-proper `Natívitas est hódie...` versicle for Terce/Sext.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "c3ad33b"
+  },
   "Reduced - 1955/2024-09-08/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
     "date": "2024-09-08",

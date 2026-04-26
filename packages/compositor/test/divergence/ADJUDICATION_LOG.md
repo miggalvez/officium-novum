@@ -3980,6 +3980,34 @@ keys for Jul `1` and Sep `29` Vespers to document the source-backed
 `perl-bug`, clearing this proper first-Vespers fifth-psalm override
 family from the visible frontier.
 
+### 2026-04-26 — Pattern: Nativity of the BVM minor-hour versicle slot (perl-bug)
+
+**Commit.** `c3ad33b`
+
+**Ledger signal.** Reduced 1955 Sep `8` Terce and Sext first diverged
+at the post-responsory versicle. Perl expected `V. Adjuvábit eam Deus
+vultu suo.` at Terce and `V. Elégit eam Deus, et præelégit eam.` at
+Sext, while the compositor emitted `V. Natívitas est hódie sanctæ Maríæ
+Vírginis.` in both slots.
+
+**Root cause.** `Sancti/09-08` routes the Nativity of the BVM through
+C11, sets `Antiphonas horas`, and supplies its own `[Versum 1]` with
+the feast-proper Nativity versicle. The same file aliases `[Versum 2]`
+and `[Versum 3]` back to `[Versum 1]`. The Marian common's generic
+versicles remain available in C11, but the winning feast source owns the
+Sep `8` minor-hour versicle slot.
+
+**Resolution.** Class `perl-bug`. Added the two Reduced 1955 Sep `8`
+Terce/Sext row keys to document the Perl comparison surface's shifted
+Marian-common versicles while leaving the compositor's source-backed
+feast-proper versicle unchanged.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/09-08.txt:10-15,24-26,140-147`
+and `upstream/web/www/horas/Latin/Commune/C11.txt:67-69,307-339`.
+
+**Impact.** Two Reduced 1955 rows move from `unadjudicated` to
+`perl-bug`, narrowing the live Marian minor-hour frontier.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
