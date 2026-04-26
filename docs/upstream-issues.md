@@ -92,8 +92,8 @@ Then inspect Reduced 1955 Aug `22` / Sep `12` minor hours and Rubrics
 **Classification.** `perl-bug`
 
 **Summary.** On Aug `19` and Oct `4`, the Reduced 1955 and Rubrics
-1960 comparison surfaces keep ordinary psalter antiphons at Lauds,
-Prime, Terce, Sext, None, and Vespers. Officium Novum emits the
+1960 comparison surfaces keep ordinary psalter antiphons at Matins,
+Lauds, Prime, Terce, Sext, None, and Vespers. Officium Novum emits the
 source-backed Confessor non-pontiff common antiphons.
 
 **Primary source.**
@@ -109,15 +109,16 @@ Run:
 pnpm -C packages/compositor compare:phase-3-perl -- --max-doc-rows 500
 ```
 
-Then inspect Lauds, Prime, Terce, Sext, None, and Vespers on Aug `19`
-and Oct `4` under `Reduced - 1955` and `Rubrics 1960 - 1960`.
+Then inspect Matins, Lauds, Prime, Terce, Sext, None, and Vespers on
+Aug `19` and Oct `4` under `Reduced - 1955` and
+`Rubrics 1960 - 1960`.
 
 **Affected stable divergence-row keys.**
 
 | Policy | Dates | Hours | Row key suffixes |
 |---|---|---|---|
-| Reduced - 1955 | 2024-08-19, 2024-10-04 | Lauds, Prime, Terce, Sext, None, Vespers | `1ac985ea`, `5e2bc918`, `94d8530b`, `ca496847`, `d06b3f15`, `b8382b61`, `30af99f1`, `c9286c91`, `3f0bca99`, `ee83352e`, `ee9cd993`, `7d120c6f` |
-| Rubrics 1960 - 1960 | 2024-08-19, 2024-10-04 | Lauds, Prime, Terce, Sext, None, Vespers | `1ac985ea`, `63c54bc5`, `993822fb`, `5c9ad87e`, `e01745bd`, `b8382b61`, `30af99f1`, `ae30f785`, `f420db38`, `b40640d0`, `21ab0ed2`, `7d120c6f` |
+| Reduced - 1955 | 2024-08-19, 2024-10-04 | Matins, Lauds, Prime, Terce, Sext, None, Vespers | `2bbb208c`, `1ac985ea`, `5e2bc918`, `94d8530b`, `ca496847`, `d06b3f15`, `b8382b61`, `88adb0ee`, `30af99f1`, `c9286c91`, `3f0bca99`, `ee83352e`, `ee9cd993`, `7d120c6f` |
+| Rubrics 1960 - 1960 | 2024-08-19, 2024-10-04 | Matins, Lauds, Prime, Terce, Sext, None, Vespers | `2bbb208c`, `1ac985ea`, `63c54bc5`, `993822fb`, `5c9ad87e`, `e01745bd`, `b8382b61`, `88adb0ee`, `30af99f1`, `ae30f785`, `f420db38`, `b40640d0`, `21ab0ed2`, `7d120c6f` |
 
 ### 2026-04-25 — Simplified Roman Prime keeps ordinary chapter instead of office `[Lectio Prima]`
 

@@ -9103,6 +9103,18 @@
     "resolvedAt": "2026-04-25",
     "commitSha": "90c34b9"
   },
+  "Reduced - 1955/2024-08-19/Matins/2bbb208c": {
+    "policy": "Reduced - 1955",
+    "date": "2024-08-19",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. Beátus vir, * qui in lege Dómini meditátur: volúntas ejus pérmanet die ac nocte, et ómnia quæcúmque fáciet, semper prosperabúntur.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff Matins antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
+    "notes": "Matins fanout of the shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family, exposed after the C5 inherited-invitatory and hymn-variant engine fixes.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "94bdfc9"
+  },
   "Reduced - 1955/2024-08-19/None/d06b3f15": {
     "policy": "Reduced - 1955",
     "date": "2024-08-19",
@@ -9534,6 +9546,18 @@
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
     "commitSha": "90c34b9"
+  },
+  "Reduced - 1955/2024-10-04/Matins/88adb0ee": {
+    "policy": "Reduced - 1955",
+    "date": "2024-10-04",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. Beátus vir, * qui in lege Dómini meditátur: volúntas ejus pérmanet die ac nocte, et ómnia quæcúmque fáciet, semper prosperabúntur.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff Matins antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
+    "notes": "Matins fanout of the shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family, exposed after the C5 inherited-invitatory and hymn-variant engine fixes.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "94bdfc9"
   },
   "Reduced - 1955/2024-10-04/None/ee9cd993": {
     "policy": "Reduced - 1955",
@@ -14147,6 +14171,18 @@
     "resolvedAt": "2026-04-25",
     "commitSha": "90c34b9"
   },
+  "Rubrics 1960 - 1960/2024-08-19/Matins/2bbb208c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-08-19",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. Beátus vir, * qui in lege Dómini meditátur: volúntas ejus pérmanet die ac nocte, et ómnia quæcúmque fáciet, semper prosperabúntur.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff Matins antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
+    "notes": "Matins fanout of the shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family, exposed after the C5 inherited-invitatory and hymn-variant engine fixes.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "94bdfc9"
+  },
   "Rubrics 1960 - 1960/2024-08-19/None/e01745bd": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-08-19",
@@ -14686,6 +14722,18 @@
     "notes": "Shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family. Matins invitatory rows are intentionally left unclassified because they follow a different inherited invitatory path.",
     "resolvedAt": "2026-04-25",
     "commitSha": "90c34b9"
+  },
+  "Rubrics 1960 - 1960/2024-10-04/Matins/88adb0ee": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-10-04",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. Beátus vir, * qui in lege Dómini meditátur: volúntas ejus pérmanet die ac nocte, et ómnia quæcúmque fáciet, semper prosperabúntur.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9 and upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14 point the offices to `vide C5`; upstream/web/www/horas/Latin/Commune/C5.txt:9-19 declares `Antiphonas horas` and supplies the Confessor non-pontiff Matins antiphons used by the compositor. The Perl comparison surface keeps ordinary psalter antiphons for these simplified Roman rows instead.",
+    "notes": "Matins fanout of the shared Reduced 1955 / Rubrics 1960 Confessor non-pontiff common-antiphon family, exposed after the C5 inherited-invitatory and hymn-variant engine fixes.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "94bdfc9"
   },
   "Rubrics 1960 - 1960/2024-10-04/None/21ab0ed2": {
     "policy": "Rubrics 1960 - 1960",

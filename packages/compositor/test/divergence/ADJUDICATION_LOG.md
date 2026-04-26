@@ -22,6 +22,35 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: simplified Roman Confessor C5 Matins antiphons (perl-bug)
+
+**Commit.** `94bdfc9`
+
+**Ledger signal.** After the inherited-invitatory and hymn-variant
+fixes, the Reduced 1955 and Rubrics 1960 Matins rows for Aug `19` and
+Oct `4` first diverge at the opening Matins antiphon. Perl keeps the
+ordinary psalter antiphons (`Dóminus de cælo...` or
+`Suscitávit Dóminus...`), while the compositor emits the Confessor
+non-pontiff common antiphon `Beátus vir...`.
+
+**Root cause.** Same source-backed Perl comparison-surface bug as the
+already-classified C5 non-Matins antiphon rows. The day offices point to
+`vide C5`, and `Commune/C5` declares `Antiphonas horas`; after C5's
+inherited Matins sections are visible, the Matins antiphons belong to
+the same C5 common-antiphon family.
+
+**Resolution.** Class `perl-bug`. Added four Matins row keys as fanout
+of the Simplified Roman Confessor non-pontiff common-antiphon family.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/08-19.txt:4-9`;
+`upstream/web/www/horas/Latin/Sancti/10-04.txt:4-14`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:9-19`;
+`upstream/web/www/horas/Latin/Commune/C4.txt:106-115`.
+
+**Impact.** Four Matins rows move from `unadjudicated` to
+source-backed `perl-bug`: two under Reduced 1955 and two under Rubrics
+1960.
+
 ### 2026-04-26 — Pattern: simplified Roman Confessor C5 Matins hymn variant (engine-bug, fixed)
 
 **Commit.** `6682b44`
