@@ -3008,7 +3008,7 @@ directly at the ordinary Vespers antiphon.
 **Root cause.** `Quad6-4` and `Quad6-5` both carry a conditioned
 `[Prelude Vespera] (rubrica 1955 aut rubrica 196)` notice. Phase 2 was
 already selecting the correct Triduum celebration, but Phase 3 had no
-source seam for pre-pending the special Vespers prelude before ordinary
+source seam for pre-a82e9fa the special Vespers prelude before ordinary
 psalmody. Once the compositor emits that prelude, the remaining Good
 Friday first divergence moves to the already-adjudicated Psalm 115
 half-verse render surface.
@@ -3740,6 +3740,36 @@ the Advent Sunday `V.` and `R.` lines.
 **Impact.** Four simplified Roman Matins rows advance past the
 source-backed Advent Sunday V./R. pair to the pre-lesson Pater Noster
 rendering surface.
+
+### 2026-04-26 — Pattern: Simplified Roman Advent Sunday Matins pre-lesson guillemets (rendering-difference)
+
+**Commit.** `a82e9fa`
+
+**Ledger signal.** After the Advent Sunday psalter, versicle, and
+response fixes, Reduced 1955 and Rubrics 1960 Dec `15` / Dec `22`
+Matins first diverge at the ordinary pre-lesson `Pater Noster` rubric:
+Perl expects `Pater Noster dicitur secreto usque ad Et ne nos indúcas in
+tentatiónem:`, while the compositor emits the source-backed
+`« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in
+tentatiónem: »`.
+
+**Root cause.** This is the established Roman Matins pre-lesson
+guillemet rendering family. `Psalterium/Common/Rubricae:[Pater
+secreto]` carries guillemets around both phrases; Perl strips them in
+its rendered comparison surface, while the compositor preserves the
+corpus punctuation.
+
+**Resolution.** Class `rendering-difference`. Added the four Advent
+Sunday Matins row keys as a fanout of the existing Matins guillemet
+family and tightened the Advent Sunday Matins regression to assert the
+source-backed guillemeted `Pater secreto` line.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`.
+
+**Impact.** Four simplified Roman Matins rows move from
+`unadjudicated` to `rendering-difference`, narrowing the Advent Sunday
+Matins frontier to whatever later row surfaces remain after this
+punctuation-only family.
 
 ## See also
 

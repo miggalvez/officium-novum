@@ -1502,6 +1502,11 @@ Noster` rubric surface.
 | Reduced - 1955 | 2024-01-14 | Matins | `29ec2a3d` |
 | Rubrics 1960 - 1960 | 2024-01-06 | Matins | `29ec2a3d` |
 
+**Additional fanout.** The Advent Sunday Matins fixes exposed the same
+source-backed `[Pater secreto]` guillemet surface on Dec `15` and Dec
+`22` under both simplified Roman policies. Stable row key suffix:
+`29ec2a3d`.
+
 ### 2026-04-22 — Roman Easter-Octave Prime preserves the corpus guillemets around `Pater Noster`
 
 **Classification.** `rendering-difference`

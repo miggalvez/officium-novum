@@ -1238,6 +1238,9 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
         expect(canonicalLatinLines(composed), `${version} ${date} Matins Advent versicle response`).toContain(
           normalizeLatin('Deus noster maniféste véniet.')
         );
+        expect(canonicalLatinLines(composed), `${version} ${date} Matins Advent pre-lesson Pater`).toContain(
+          normalizeLatin('« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »')
+        );
       }
     }
   }, 240_000);
