@@ -3686,6 +3686,34 @@ the Dec `15` / Dec `22` simplified Roman Matins opening antiphon surface.
 **Impact.** Four simplified Roman Matins rows advance past the first
 nocturn antiphon seam to later Matins boundaries.
 
+### 2026-04-26 — Pattern: Simplified Roman Advent Sunday one-nocturn Matins versicle (engine-bug fixed)
+
+**Commit.** `70e9c17`
+
+**Ledger signal.** After the Advent Sunday Matins antiphon fix, Rubrics
+1960 Dec `15` and Dec `22` Matins first diverged at the nocturn
+versicle: Perl expected `Ex Sion spécies decóris ejus.`, while the
+compositor emitted the final embedded Advent versicle
+`Egrediétur Dóminus de loco sancto suo.` Reduced 1955 exposed the same
+source seam immediately before its next `Pater Noster` transition.
+
+**Root cause.** The generic one-nocturn selector took the final
+embedded versicle when a psalter section had more than three antiphons.
+For `Adv 0 Ant Matutinum`, the one-nocturn simplified Roman shape still
+uses the first embedded versicle pair following the first three Advent
+Sunday antiphons.
+
+**Resolution.** Fixed. `Adv 0 Ant Matutinum` now selects its first
+embedded versicle pair for one-nocturn Matins while preserving the
+generic final-versicle behavior for other sections. The upstream
+composition regression now locks both the Advent Sunday antiphon and the
+`Ex Sion...` versicle surface.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:137-152`.
+
+**Impact.** Four simplified Roman Matins rows advance past the Advent
+Sunday versicle seam to the next pre-lesson transition.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

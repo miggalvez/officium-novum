@@ -1232,6 +1232,9 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
         expect(normalizeLatin(firstPsalmodyAntiphon(composed)), `${version} ${date} Matins psalmody`).toBe(
           normalizeLatin(expected)
         );
+        expect(canonicalLatinLines(composed), `${version} ${date} Matins Advent versicle`).toContain(
+          normalizeLatin('Ex Sion spécies decóris ejus.')
+        );
       }
     }
   }, 240_000);

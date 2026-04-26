@@ -574,7 +574,8 @@ function versicleSelectorForNocturn(
   }
 
   const startLine =
-    totalNocturns === 1 && antiphonCount > 3
+    section.header === 'Adv 0 Ant Matutinum' ? versicleLines[0]
+    : totalNocturns === 1 && antiphonCount > 3
       ? versicleLines.at(-1)
       : versicleLines[nocturnIndex - 1];
   return startLine ? String(startLine) : undefined;
