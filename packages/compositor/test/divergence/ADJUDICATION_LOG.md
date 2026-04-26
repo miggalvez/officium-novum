@@ -3661,6 +3661,31 @@ opening.
 **Impact.** Four simplified Roman Matins rows advance past the
 invitatory seam to the next psalmody antiphon frontier.
 
+### 2026-04-26 — Pattern: Simplified Roman Advent Sunday Matins psalter antiphons (engine-bug fixed)
+
+**Commit.** `92abe09`
+
+**Ledger signal.** After the late-Advent invitatory selector fix,
+Reduced 1955 and Rubrics 1960 Dec `15` and Dec `22` Matins reached the
+first nocturn psalmody and diverged on ordinary Sunday `Day0` antiphons
+such as `Beátus vir...` instead of the Advent Sunday `Véniet ecce
+Rex...` antiphon.
+
+**Root cause.** Phase 2 always resolved the Matins psalter fallback from
+`Psalmi matutinum:Day{weekday}`. Advent Sundays have their own
+source-backed seasonal table, `Adv 0 Ant Matutinum`, which owns the
+Matins psalm-antiphon set.
+
+**Resolution.** Fixed. Advent Sundays now select
+`Psalmi matutinum:[Adv 0 Ant Matutinum]` before falling back to the
+ordinary weekday table. A focused upstream composition regression locks
+the Dec `15` / Dec `22` simplified Roman Matins opening antiphon surface.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:137-157`.
+
+**Impact.** Four simplified Roman Matins rows advance past the first
+nocturn antiphon seam to later Matins boundaries.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

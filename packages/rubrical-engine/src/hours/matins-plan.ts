@@ -698,6 +698,12 @@ function resolvePsalteriumMatinsDaySection(
 ): ParsedFile['sections'][number] | undefined {
   try {
     const file = resolveOfficeFile(input.corpus, PSALTERIUM_MATINS_PATH);
+    if (input.temporal.season === 'advent' && input.temporal.dayOfWeek === 0) {
+      const adventSunday = findSection([file], 'Adv 0 Ant Matutinum', input)?.section;
+      if (adventSunday) {
+        return adventSunday;
+      }
+    }
     return findSection([file], `Day${input.temporal.dayOfWeek}`, input)?.section;
   } catch {
     return undefined;
