@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-26.** Review follow-up: broadened hymn text-node normalization so bare `v.` hymn openings are stripped even without a leading GABC cue, and added regression coverage proving only the leading inline GABC cue is removed.
 - **2026-04-26.** Fixed GABC cue normalization for hymn openings. Hymn lines such as C11's `{:Ogloriosavirginum:}v. O gloriósa vírginum,` now strip the chant cue and verse marker before canonical line comparison, clearing the Rubrics 1960 Jul `6` Lauds row without changing source selection.
 - **2026-04-26.** Classified the Reduced 1955 Saturday Office BVM Prime lesson surface. Jul `6` Prime now cites C10's `[Lectio Prima]` delegation to C11 and documents Perl's retained ordinary `1 Tim. 1:17` Prime chapter as a comparison-surface bug.
 - **2026-04-26.** Closed the Saturday Office BVM inactive-antiphon seam for Reduced 1955. Phase 2 now respects condition-gated `Ant Laudes` sections before attaching proper/common antiphon refs, allowing Jul `6` to use the Saturday psalter antiphons; the newly exposed full-antiphon vs incipit rows are classified from the psalter sources.

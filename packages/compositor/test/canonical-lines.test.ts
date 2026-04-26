@@ -780,6 +780,68 @@ describe('hymn stanza separator emission', () => {
       'Sublímis inter sídera,'
     ]);
   });
+
+  it('only strips the leading inline gabc cue from hymn text nodes', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Special/Matutinum Special.txt',
+      sections: [
+        {
+          header: 'Day0 Hymnus1',
+          startLine: 1,
+          endLine: 1,
+          content: [{ type: 'text', value: '{:cue1:} text {:cue2:} rest' }]
+        }
+      ]
+    });
+
+    const hour = buildHour(
+      'hymn',
+      { path: 'horas/Latin/Psalterium/Special/Matutinum Special', section: 'Day0 Hymnus1' },
+      'matins'
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'hymn', 'Latin')).toEqual(['text {:cue2:} rest']);
+  });
+
+  it('strips verse markers from hymn text nodes even without an inline gabc cue', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Special/Matutinum Special.txt',
+      sections: [
+        {
+          header: 'Day0 Hymnus1',
+          startLine: 1,
+          endLine: 1,
+          content: [{ type: 'text', value: 'v. Primo die, quo Trínitas' }]
+        }
+      ]
+    });
+
+    const hour = buildHour(
+      'hymn',
+      { path: 'horas/Latin/Psalterium/Special/Matutinum Special', section: 'Day0 Hymnus1' },
+      'matins'
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'hymn', 'Latin')).toEqual(['Primo die, quo Trínitas']);
+  });
 });
 
 describe('Psalmus N [index] heading emission', () => {

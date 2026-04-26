@@ -304,7 +304,7 @@ function stripLeadingGabcInlineCue(text: string): string {
 
 function normalizeHymnText(text: string): string {
   const withoutCue = stripLeadingGabcInlineCue(text);
-  const verseMatch = withoutCue === text ? undefined : withoutCue.match(/^v\.\s+(.*)$/u);
+  const verseMatch = withoutCue.match(/^v\.\s+(.*)$/u);
   return stripHymnDoxologyMarker(verseMatch?.[1] ?? withoutCue);
 }
 
