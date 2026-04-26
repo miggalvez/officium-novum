@@ -81,17 +81,19 @@ function normalizePsalmRangeDisplay(range: string): string {
 }
 
 export function replaceLeadingCanticleTitleWithCitation(
-  content: readonly TextContent[]
+  content: readonly TextContent[],
+  selector?: string
 ): readonly TextContent[] {
   const titleEntry = findLeadingCanticleTitleLine(content);
   if (!titleEntry) return content;
 
   const { index, node, titleLine } = titleEntry;
   if (titleLine.citation) {
+    const citation = applySelectorRangeToCanticleCitation(titleLine.citation, selector);
     const rest = content.slice(index + 1);
     const boundary: TextContent = { type: 'separator' };
     const contentRest = rest[0]?.type === 'separator' ? rest : [boundary, ...rest];
-    return [{ ...node, value: titleLine.citation }, ...contentRest];
+    return [{ ...node, value: citation }, ...contentRest];
   }
   return content.slice(index + 1);
 }
@@ -170,7 +172,7 @@ export function appendExpandedPsalmWrapper(
         { type: 'separator' }
       ]);
     }
-    appendContentWithBoundary(target, replaceLeadingCanticleTitleWithCitation(psalmBody));
+    appendContentWithBoundary(target, replaceLeadingCanticleTitleWithCitation(psalmBody, node.selector));
     const trailingAntiphon =
       args.suppressTrailingAntiphon ? undefined : node.antiphon?.trim();
     if (trailingAntiphon) {
@@ -273,7 +275,9 @@ function buildInlinePsalmHeading(
   if (!psalmNumber) {
     return undefined;
   }
-  return `Psalmus ${psalmNumber} [${psalmIndex}]`;
+  const tokenRange = node.selector?.trim().match(/^\d+\(([^)]+)\)$/u)?.[1];
+  const rangeSuffix = tokenRange ? `(${normalizePsalmRangeDisplay(tokenRange)})` : '';
+  return `Psalmus ${psalmNumber}${rangeSuffix} [${psalmIndex}]`;
 }
 
 function extractCanticleTitleFromContent(content: readonly TextContent[]): string | undefined {
@@ -310,6 +314,16 @@ function parseCanticleTitleLine(text: string): CanticleTitleLine | undefined {
   if (!title) return undefined;
   const citation = match?.[2]?.replace(/\s+/gu, ' ').trim();
   return citation ? { title, citation } : { title };
+}
+
+function applySelectorRangeToCanticleCitation(citation: string, selector?: string): string {
+  const range = selector?.trim().match(/^\d+\(([^)]+)\)$/u)?.[1];
+  if (!range) return citation;
+
+  const normalizedRange = normalizePsalmRangeDisplay(range);
+  const match = citation.match(/^(.*?:)\s*[\dA-Za-z]+(?:\s*-\s*[\dA-Za-z]+)?$/u);
+  if (!match) return citation;
+  return `${match[1]}${normalizedRange}`;
 }
 
 export function splitLeadingPsalmAntiphon(

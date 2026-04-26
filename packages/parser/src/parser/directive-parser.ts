@@ -6,7 +6,7 @@ import { parseCondition, ConditionParseError } from './condition-parser.js';
 
 const VERSE_MARKER_REGEX =
   /^(R\.br\.|Responsorium\.|Benedictio\.|Absolutio\.|Ant\.|v\.|r\.|V\.|R\.|M\.|S\.)\s*(.*)$/u;
-const PSALM_DIRECTIVE_REGEX = /^(.*?)\s*;;\s*(\d+)(?:\s*;;\s*(.+))?$/u;
+const PSALM_DIRECTIVE_REGEX = /^(.*?)\s*;;\s*(\d+(?:\([^)]+\))?)(?:\s*;;\s*(.+))?$/u;
 const SUBSTITUTION_REGEX = /^s\/((?:\\.|[^/])*)\/((?:\\.|[^/])*)\/([a-z]*)$/iu;
 type VerseMarker = Extract<TextContent, { type: 'verseMarker' }>['marker'];
 const TRAILING_CONTRACTION_REGEX = /~\s*$/u;
@@ -574,19 +574,29 @@ function parsePsalmReference(line: string): TextContent | undefined {
   }
 
   const antiphonValue = match[1];
-  const psalmNumberValue = match[2];
+  const psalmTokenValue = match[2];
   const toneValue = match[3];
 
-  if (antiphonValue === undefined || psalmNumberValue === undefined) {
+  if (antiphonValue === undefined || psalmTokenValue === undefined) {
     throw new DirectiveParseError(`Invalid psalm directive '${line}'.`);
   }
 
   const antiphon = antiphonValue.trim();
+  const psalmToken = psalmTokenValue.trim();
+  const psalmTokenMatch = psalmToken.match(/^(\d+)(?:\([^)]+\))?$/u);
+  const psalmNumberValue = psalmTokenMatch?.[1];
+  if (!psalmNumberValue) {
+    throw new DirectiveParseError(`Invalid psalm directive '${line}'.`);
+  }
   const tone = toneValue?.trim();
   const parsed: Extract<TextContent, { type: 'psalmRef' }> = {
     type: 'psalmRef',
     psalmNumber: Number(psalmNumberValue)
   };
+
+  if (psalmToken !== psalmNumberValue) {
+    parsed.selector = psalmToken;
+  }
 
   if (antiphon.length > 0) {
     parsed.antiphon = antiphon;

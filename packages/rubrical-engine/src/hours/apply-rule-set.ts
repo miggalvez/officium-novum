@@ -732,7 +732,7 @@ function extractMajorHourPsalmRefs(
       refs.push({
         path: `${PSALMORUM_ROOT}/Psalm${node.psalmNumber}`,
         section: '__preamble',
-        selector: String(node.psalmNumber)
+        selector: node.selector ?? String(node.psalmNumber)
       });
       if (refs.length >= count) {
         break;

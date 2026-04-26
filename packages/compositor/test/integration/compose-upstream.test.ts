@@ -1554,6 +1554,27 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     );
   }, 240_000);
 
+  it('slices the 1960 Saturday Lauds Moyses canticle to the Psalmorum source range', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2024-02-24');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const lines = psalmodyTexts(composed).map(normalizeLatin);
+    const canticleHeading = lines.indexOf(normalizeLatin('Canticum Moysis [4]'));
+    expect(canticleHeading, 'Rubrics 1960 - 1960 2024-02-24 Lauds is missing the Moyses canticle heading').toBeGreaterThan(
+      0
+    );
+    expect(lines[canticleHeading + 1]).toBe(normalizeLatin('Deut 32:1-27'));
+    expect(lines).toContain(normalizeLatin('32:27 Deum qui te génuit dereliquísti, * et oblítus es Dómini, creatóris tui.'));
+    expect(lines).not.toContain(normalizeLatin('32:28 Vidit Dóminus, et ad iracúndiam concitátus est: * quia provocavérunt eum fílii sui et fíliæ.'));
+  }, 240_000);
+
   it('fills the Ash Wednesday 1960 Lauds later block from the ferial Major Special sections', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2024-02-14');

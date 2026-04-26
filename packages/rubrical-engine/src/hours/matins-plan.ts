@@ -452,11 +452,13 @@ function collectMatinsAntiphons(
     };
 
     const psalmNumber = extractPsalmNumber(content) ?? extractPsalmNumberFromLine(antiphon);
+    const psalmSelector = extractPsalmSelector(content) ?? extractPsalmSelectorFromLine(antiphon);
     const psalmRef = psalmNumber
       ? {
           psalmRef: {
             path: `horas/Latin/Psalterium/Psalmorum/Psalm${psalmNumber}`,
-            section: '__preamble'
+            section: '__preamble',
+            ...(psalmSelector ? { selector: psalmSelector } : {})
           },
           antiphonRef: ref
         }
@@ -587,6 +589,23 @@ function extractPsalmNumber(content: TextContent): string | undefined {
 
 function extractPsalmNumberFromLine(line: string): string | undefined {
   const match = /;;\s*([0-9]+)/u.exec(line);
+  return match?.[1];
+}
+
+function extractPsalmSelector(content: TextContent): string | undefined {
+  if (content.type === 'psalmRef') {
+    return content.selector ?? String(content.psalmNumber);
+  }
+
+  if (content.type === 'text') {
+    return extractPsalmSelectorFromLine(content.value);
+  }
+
+  return undefined;
+}
+
+function extractPsalmSelectorFromLine(line: string): string | undefined {
+  const match = /;;\s*([0-9]+(?:\([^)]+\))?)/u.exec(line);
   return match?.[1];
 }
 

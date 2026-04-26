@@ -395,7 +395,11 @@ function flattenVisibleContent(
       continue;
     }
 
-    out.push(...flattenVisibleContent(node.content, context));
+    const visibleChildren = flattenVisibleContent(node.content, context);
+    if (node.condition.stopword === 'sed' && visibleChildren.length > 0 && out.length > 0) {
+      out.pop();
+    }
+    out.push(...visibleChildren);
   }
 
   return Object.freeze(out);

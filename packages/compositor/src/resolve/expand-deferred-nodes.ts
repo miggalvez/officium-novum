@@ -80,7 +80,8 @@ export function expandDeferredNodes(
         const expanded = expandReference(
           {
             path: `horas/Latin/Psalterium/Psalmorum/Psalm${node.psalmNumber}`,
-            section: '__preamble'
+            section: '__preamble',
+            ...(node.selector ? { selector: node.selector } : {})
           },
           context
         );
@@ -161,7 +162,7 @@ function expandReference(
   reference: TextReference,
   context: DeferredNodeContext
 ): readonly TextContent[] | undefined {
-  const key = `${context.language}:${reference.path}#${reference.section}`;
+  const key = `${context.language}:${reference.path}#${reference.section}:${reference.selector ?? ''}`;
   if (context.seen.has(key)) {
     return undefined;
   }

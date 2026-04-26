@@ -4145,6 +4145,35 @@ directive regression covers the `Ant.` marker plus `;;109` source shape.
 duplicate-alleluia compositor bug to the next Annunciation Vespers
 antiphon-selection seam.
 
+### 2026-04-26 — Pattern: Rubrics 1960 Lent Saturday Lauds ranged canticle (engine-bug fixed)
+
+**Commit.** This tranche commit.
+
+**Ledger signal.** Rubrics 1960 Feb `24` Lauds first diverged in the
+fourth psalmody slot. Perl expected the Saturday Moyses canticle citation
+`Deut 32:1-27`, while the compositor emitted the Psalmorum title's full
+`Deut 32:1-65` citation and body. After the fix, the same focused probe
+advances to the next Lenten Lauds later-block frontier.
+
+**Root cause.** The parser collapsed inline psalm rows such as
+`;;226(1-27)` to a bare `psalmRef` number, so Phase 2/3 lost the source
+range before resolving `Psalm226`. The major-hour integer selector also
+counted a default row and a matching inline `(sed rubrica 1960)` row as two
+visible psalm rows instead of treating the latter as the source override.
+
+**Resolution.** Fixed. Ranged inline psalm refs now retain their selector
+through parser, Phase 2 assignment, Matins planning, deferred expansion,
+and canticle citation replacement. Integer selector narrowing now treats a
+matching inline `sed` conditional as a replacement for the preceding
+visible row.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:134-140`
+and `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm226.txt:1`.
+
+**Impact.** The Feb `24` Rubrics 1960 Lauds probe advances past the
+ranged Moyses canticle blocker to the next major-hour later-block
+boundary.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

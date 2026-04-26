@@ -550,13 +550,13 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
             { type: 'separator' }
           ]);
         }
-        appendContentWithBoundary(bucket, replaceLeadingCanticleTitleWithCitation(psalmBody));
+        appendContentWithBoundary(bucket, replaceLeadingCanticleTitleWithCitation(psalmBody, ref.selector));
         continue;
       }
       appendContentWithBoundary(
         bucket,
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? replaceLeadingCanticleTitleWithCitation(markered)
+          ? replaceLeadingCanticleTitleWithCitation(markered, ref.selector)
           : markered
       );
     }
