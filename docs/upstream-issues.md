@@ -1921,6 +1921,49 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" -
 | Reduced - 1955 | 2024-02-24 | Sext | `62fa2e12` |
 | Reduced - 1955 | 2024-02-24 | None | `f60c28f2` |
 
+### 2026-04-26 — Ss Peter and Paul minor-hour versicles shift in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** On Jun `29`, the simplified Roman Perl comparison surface
+shifts the Apostle common's later versicles into the Terce/Sext/None
+post-responsory versicle slot. The source-backed compositor output keeps
+the hour-specific Apostle material in the proper short responsory blocks
+and emits C1's generic `[Versum 1]` (`In omnem terram...`) as the
+minor-hour versicle.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12` and
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324`
+
+`Sancti/06-29` routes through `ex C1` with `Antiphonas horas`. The C1
+common provides `[Versum 1]` as `V. In omnem terram exívit sonus eórum.`
+and carries the hour-specific Apostle texts under `Responsory Breve
+Tertia/Sexta/Nona`, not as separate minor-hour versicle sections.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-06-29 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-06-29 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-06-29 --hour Nona
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-06-29 --hour Tertia
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-06-29 --hour Sexta
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-06-29 --hour Nona
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-06-29 | Terce | `c4c52d87` |
+| Reduced - 1955 | 2024-06-29 | Sext | `447aec80` |
+| Reduced - 1955 | 2024-06-29 | None | `c29f6574` |
+| Rubrics 1960 - 1960 | 2024-06-29 | Terce | `c4c52d87` |
+| Rubrics 1960 - 1960 | 2024-06-29 | Sext | `447aec80` |
+| Rubrics 1960 - 1960 | 2024-06-29 | None | `c29f6574` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

@@ -3829,6 +3829,36 @@ invitatory defect to later Matins seams. The total unadjudicated counts
 do not drop in this tranche because those same hours still expose later
 unclassified divergences after the corrected invitatory.
 
+### 2026-04-26 — Pattern: Ss Peter and Paul minor-hour versicle slot (perl-bug)
+
+**Commit.** `b0c1a20`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Jun `29` Terce, Sext,
+and None first diverge after the proper short responsory. Perl expects
+the shifting sequence `Constítues...`, `Nimis honoráti...`, and
+`Annuntiavérunt...`, while the compositor emits `V. In omnem terram
+exívit sonus eórum.` in each minor-hour versicle slot.
+
+**Root cause.** `Sancti/06-29` routes the office through `ex C1` and
+sets `Antiphonas horas`. The C1 common supplies a generic `[Versum 1]`
+for the versicle slot, while the hour-specific Apostle material is
+encoded in the `Responsory Breve Tertia`, `Responsory Breve Sexta`, and
+`Responsory Breve Nona` sections that the compositor already renders as
+the short responsories. The source does not provide separate
+`[Versum Tertia]`, `[Versum Sexta]`, or `[Versum Nona]` sections for the
+post-responsory versicle.
+
+**Resolution.** Class `perl-bug`. Added the six simplified Roman Jun
+`29` Terce/Sext/None row keys to document Perl's shifted minor-hour
+versicle surface while leaving the compositor's source-backed `[Versum
+1]` selection unchanged.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12` and
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324`.
+
+**Impact.** Six simplified Roman rows move from `unadjudicated` to
+`perl-bug`, narrowing the shared June Apostle minor-hour frontier.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -8731,6 +8731,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
   },
+  "Reduced - 1955/2024-06-29/None/c29f6574": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "None",
+    "firstExpected": "V. Annuntiavérunt ópera Dei.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
+  },
   "Reduced - 1955/2024-06-29/Prime/4e634936": {
     "policy": "Reduced - 1955",
     "date": "2024-06-29",
@@ -8742,6 +8754,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Reduced - 1955/2024-06-29/Sext/447aec80": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "Sext",
+    "firstExpected": "V. Nimis honoráti sunt amíci tui, Deus.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Reduced - 1955/2024-06-29/Sext/5e6c5f39": {
     "policy": "Reduced - 1955",
@@ -8766,6 +8790,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Reduced - 1955/2024-06-29/Terce/c4c52d87": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-29",
+    "hour": "Terce",
+    "firstExpected": "V. Constítues eos príncipes super omnem terram.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Reduced - 1955/2024-06-29/Vespers/22de27ef": {
     "policy": "Reduced - 1955",
@@ -13607,6 +13643,18 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
   },
+  "Rubrics 1960 - 1960/2024-06-29/None/c29f6574": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "None",
+    "firstExpected": "V. Annuntiavérunt ópera Dei.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
+  },
   "Rubrics 1960 - 1960/2024-06-29/Prime/4e634936": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-06-29",
@@ -13618,6 +13666,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Rubrics 1960 - 1960/2024-06-29/Sext/447aec80": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "Sext",
+    "firstExpected": "V. Nimis honoráti sunt amíci tui, Deus.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Rubrics 1960 - 1960/2024-06-29/Sext/5e6c5f39": {
     "policy": "Rubrics 1960 - 1960",
@@ -13642,6 +13702,18 @@
     "notes": "Representative entry for the shared Roman Ss Peter and Paul proper minor-hour later-block family where Perl keeps the weekday Prime chapter or an underscore separator instead of the source-backed office proper and apostle common responsories.",
     "resolvedAt": "2026-04-24",
     "commitSha": "81889c1"
+  },
+  "Rubrics 1960 - 1960/2024-06-29/Terce/c4c52d87": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-06-29",
+    "hour": "Terce",
+    "firstExpected": "V. Constítues eos príncipes super omnem terram.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "b0c1a20"
   },
   "Rubrics 1960 - 1960/2024-06-29/Vespers/22de27ef": {
     "policy": "Rubrics 1960 - 1960",
