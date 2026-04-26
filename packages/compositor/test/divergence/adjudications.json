@@ -16024,5 +16024,41 @@
     "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
     "resolvedAt": "2026-04-24",
     "commitSha": "26e2fdd"
+  },
+  "Rubrics 1960 - 1960/2024-12-01/Vespers/9bc43811": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-01",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Roráte, cæli, désuper, et nubes pluant justum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016 — the source-backed Advent Vespers versicle is `V. Rorate, caeli...`; the compositor emits the encoded versicle while the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-12-15/Vespers/7d7b6199": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-15",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "Ant. Beáta es, María, * quæ credidísti Dómino: perficiéntur in te, quæ dicta sunt tibi a Dómino, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:162-166 — `[Ant Vespera 3]` delegates to `[Ant Laudes]`, whose third antiphon is the source-backed `Beata es, Maria...`; the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2024-12-22/Vespers/940e44dc": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-12-22",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "Ant. Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136 — the fourth Sunday of Advent source carries `Canite tuba...` as the first `[Ant Laudes]` antiphon used by the Vespers antiphon reference; the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-04-26",
+    "commitSha": "pending"
   }
 }

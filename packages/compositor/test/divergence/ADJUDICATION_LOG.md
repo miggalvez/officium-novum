@@ -4174,6 +4174,31 @@ and `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm226.txt:1`.
 ranged Moyses canticle blocker to the next major-hour later-block
 boundary.
 
+### 2026-04-26 — Pattern: Rubrics 1960 Advent Vespers blank later-block rows (perl-bug)
+
+**Commit.** Pending in tranche commit.
+
+**Ledger signal.** Rubrics 1960 Dec `1`, Dec `15`, and Dec `22` Vespers
+first diverged in the Advent later block with Perl expecting `_` while
+the compositor emitted source-backed Advent versicle or antiphon material.
+
+**Root cause.** The corpus supplies the Advent Vespers material directly:
+`[Adv Versum 3]` carries `V. Roráte, cæli...`; the third Sunday source
+routes `[Ant Vespera 3]` through `[Ant Laudes]` to `Beáta es, María...`;
+and the fourth Sunday source carries `Cánite tuba...` in `[Ant Laudes]`.
+The compositor preserves these source rows. The Perl comparison surface
+leaves the first divergent row blank.
+
+**Resolution.** Class `perl-bug`. Added the three Rubrics 1960 Advent
+Vespers row keys to the sidecar.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016`,
+`upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:162-166`, and
+`upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136`.
+
+**Impact.** Three Rubrics 1960 rows move from `unadjudicated` to
+`perl-bug`, narrowing the visible Advent Vespers frontier.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -2173,6 +2173,32 @@ pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 19
 | Rubrics 1960 - 1960 | 2024-11-01 | Sext | `651ec0ba` |
 | Rubrics 1960 - 1960 | 2024-11-01 | None | `b9b2100a` |
 
+### 2026-04-26 — Rubrics 1960 Advent Vespers later-block rows are blank in the Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** On Dec `1`, Dec `15`, and Dec `22`, the Rubrics 1960 Perl
+comparison surface leaves the first divergent Advent Vespers later-block
+row blank. The source-backed compositor emits the encoded Advent versicle
+or antiphon material.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016`,
+`upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:162-166`, and
+`upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136`.
+
+The source rows carry `V. Roráte, cæli...`, `Beáta es, María...`, and
+`Cánite tuba...`; the compositor preserves those rows rather than matching
+the blank Perl comparison surface.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2024-12-01 | Vespers | `9bc43811` |
+| Rubrics 1960 - 1960 | 2024-12-15 | Vespers | `7d7b6199` |
+| Rubrics 1960 - 1960 | 2024-12-22 | Vespers | `940e44dc` |
+
 ## See also
 
 - [ADR-011 — Phase 3 divergence adjudication](./adr/011-phase-3-divergence-adjudication.md)

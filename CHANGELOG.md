@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-26.** Classified the Rubrics 1960 Advent Vespers later-block blank-row family. Dec `1`, Dec `15`, and Dec `22` Vespers now cite the source-backed Advent versicle/antiphon sections while documenting Perl's blank comparison surface as a source-backed render discrepancy.
 - **2026-04-26.** Closed the Rubrics 1960 Lent Saturday Lauds psalm-range seam. Inline psalm references now preserve ranged selectors such as `226(1-27)` through parser, engine, and compositor expansion, so the 1960 Moyses canticle emits `Deut 32:1-27` and slices the body at verse 27 before advancing to the next Lenten later-block frontier.
 - **2026-04-26.** Review follow-up: broadened hymn text-node normalization so bare `v.` hymn openings are stripped even without a leading GABC cue, and added regression coverage proving only the leading inline GABC cue is removed.
 - **2026-04-26.** Fixed GABC cue normalization for hymn openings. Hymn lines such as C11's `{:Ogloriosavirginum:}v. O gloriósa vírginum,` now strip the chant cue and verse marker before canonical line comparison, clearing the Rubrics 1960 Jul `6` Lauds row without changing source selection.
