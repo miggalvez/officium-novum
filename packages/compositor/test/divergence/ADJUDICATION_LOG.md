@@ -3008,7 +3008,7 @@ directly at the ordinary Vespers antiphon.
 **Root cause.** `Quad6-4` and `Quad6-5` both carry a conditioned
 `[Prelude Vespera] (rubrica 1955 aut rubrica 196)` notice. Phase 2 was
 already selecting the correct Triduum celebration, but Phase 3 had no
-source seam for pre-a82e9fa the special Vespers prelude before ordinary
+source seam for pre-pending the special Vespers prelude before ordinary
 psalmody. Once the compositor emits that prelude, the remaining Good
 Friday first divergence moves to the already-adjudicated Psalm 115
 half-verse render surface.
