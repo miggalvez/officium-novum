@@ -1245,6 +1245,41 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('uses the inherited Confessor common invitatory for C5 Matins offices', async () => {
+    for (const version of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+      const { engine, resolvedCorpus } = await createHarness(version);
+
+      for (const date of ['2024-08-19', '2024-10-04'] as const) {
+        const summary = engine.resolveDayOfficeSummary(date);
+        const matins = summary.hours.matins;
+        expect(matins).toBeDefined();
+        if (!matins) continue;
+
+        expect(matins.slots.invitatory?.kind).toBe('matins-invitatorium');
+        if (matins.slots.invitatory?.kind === 'matins-invitatorium') {
+          expect(matins.slots.invitatory.source.kind).toBe('feast');
+          expect(matins.slots.invitatory.source.reference).toMatchObject({
+            path: 'horas/Latin/Commune/C5',
+            section: 'Invit'
+          });
+        }
+
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+        const invitatory = composed.sections.find((section) => section.slot === 'invitatory');
+        const invitatoryLines = invitatory?.lines.map(renderLatinText) ?? [];
+        expect(invitatoryLines[0], `${version} ${date} Matins invitatory`).toBe(
+          'Regem Confessórum Dóminum, * Veníte, adorémus.'
+        );
+      }
+    }
+  }, 240_000);
+
   it('applies the January 28 Invit2 feast materialization before the hymn across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);

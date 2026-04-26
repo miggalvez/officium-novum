@@ -3797,6 +3797,38 @@ signature as fanout of the established family.
 `unadjudicated` to `rendering-difference`, clearing the repeated
 pre-lesson guillemet surface from the visible shared-Roman frontier.
 
+### 2026-04-26 — Pattern: Confessor C5 Matins inherited invitatory (engine-bug fixed)
+
+**Commit.** `6cf9616`
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Aug `19` / Oct `4`
+Matins first diverged at the invitatory. Perl expected the Confessor
+common antiphon `Regem Confessórum Dóminum, * Veníte, adorémus.`, while
+the compositor fell back to the ordinary seasonal invitatory (`Veníte`
+or `Dóminum, Deum nostrum`).
+
+**Root cause.** The winning saints' files route Matins through `vide
+C5`, and `Commune/C5` inherits its `[Invit]` section from `Commune/C4`
+via a preamble reference. The Matins plan already resolved the feast
+file with preamble merging, but it used raw `vide` target files when
+searching for inherited Matins sections, so the C4 invitatory was
+invisible behind C5.
+
+**Resolution.** Fixed. Matins planning now preamble-merges inherited
+rule-reference files before looking for feast/common sections. The
+upstream composition regression asserts the source-backed C5 invitatory
+for Aug `19` and Oct `4` under both simplified Roman policies.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/08-19.txt:5-8`,
+`upstream/web/www/horas/Latin/Sancti/10-04.txt:5-12`,
+`upstream/web/www/horas/Latin/Commune/C5.txt:1`, and
+`upstream/web/www/horas/Latin/Commune/C4.txt:91-92`.
+
+**Impact.** The four Confessor C5 Matins rows advance past the
+invitatory defect to later Matins seams. The total unadjudicated counts
+do not drop in this tranche because those same hours still expose later
+unclassified divergences after the corrected invitatory.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
