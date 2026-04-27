@@ -670,38 +670,7 @@ function findSections(
     return [];
   }
 
-  const date = normalizeDateInput(input.temporal.date);
-  const matches: SectionMatch[] = [];
-
-  for (const file of files) {
-    for (const section of file.sections) {
-      if (section.header !== header) {
-        continue;
-      }
-
-      if (!section.condition) {
-        matches.push({ file, section });
-        continue;
-      }
-
-      if (!input.version) {
-        continue;
-      }
-
-      if (
-        conditionMatches(section.condition, {
-          date,
-          dayOfWeek: input.temporal.dayOfWeek,
-          season: input.temporal.season,
-          version: input.version
-        })
-      ) {
-        matches.push({ file, section });
-      }
-    }
-  }
-
-  return matches;
+  return findSectionCandidates(files, header, input);
 }
 
 function flattenVisibleMatinsAntiphonContent(

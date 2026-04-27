@@ -206,6 +206,30 @@ describe('buildMatinsPlan', () => {
     });
   });
 
+  it('prefers version-gated Matins antiphon sections over unconditional fallbacks', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/TestConditional.txt', conditionalMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/TestConditional', 'I', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-05-19', 'Pasc7-0', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(
+      result.plan.nocturnPlan[0]?.antiphons.map((antiphon) => antiphon.psalmRef?.psalmRef.path)
+    ).toEqual([
+      'horas/Latin/Psalterium/Psalmorum/Psalm10',
+      'horas/Latin/Psalterium/Psalmorum/Psalm11',
+      'horas/Latin/Psalterium/Psalmorum/Psalm12'
+    ]);
+  });
+
   it('substitutes seasonal Matins versicle on a Lenten Saturday ferial 1-nocturn', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add('horas/Latin/Tempora/Quad1-6.txt', ferialMatinsSectionsWithoutVersicle());
@@ -951,6 +975,42 @@ function pentecostMatinsSections(): string {
     '[Versum 1]',
     'V. Repléti sunt omnes Spíritu Sancto, allelúja.',
     'R. Et cœpérunt loqui, allelúja.',
+    '',
+    '[Lectio1]',
+    'Text',
+    '',
+    '[Lectio2]',
+    'Text',
+    '',
+    '[Lectio3]',
+    'Text',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
+    'Resp'
+  ].join('\n');
+}
+
+function conditionalMatinsSections(): string {
+  return [
+    '[Ant Matutinum]',
+    'Default 1;;1',
+    'Default 2;;2',
+    'Default 3;;3',
+    'V. Default.',
+    'R. Default.',
+    '',
+    '[Ant Matutinum] (rubrica 1960)',
+    'Proper 1;;10',
+    'Proper 2;;11',
+    'Proper 3;;12',
+    'V. Proper.',
+    'R. Proper.',
     '',
     '[Lectio1]',
     'Text',
