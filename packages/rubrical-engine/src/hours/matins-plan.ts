@@ -411,7 +411,14 @@ function seasonNameForVersicle(season: TemporalContext['season']): string | unde
       return 'Quad';
     case 'passiontide':
       return 'Quad5';
+    case 'eastertide':
+    case 'pentecost-octave':
+      return 'Pasch';
     default:
+      // Advent Sunday Matins is owned by `[Adv 0 Ant Matutinum]` which
+      // already encodes the per-nocturn Advent versicles inline; the
+      // ferial weekday Advent path keeps the day-default versicle, so
+      // no general `Adv N Versum` substitution applies.
       return undefined;
   }
 }

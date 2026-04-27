@@ -7917,6 +7917,18 @@
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
   },
+  "Reduced - 1955/2024-04-01/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-01",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Reduced 1955. Fan out to all 1955 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "379dd72"
+  },
   "Reduced - 1955/2024-04-01/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
     "date": "2024-04-01",
@@ -13129,6 +13141,18 @@
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
   },
+  "Rubrics 1960 - 1960/2024-04-01/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-01",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Rubrics 1960. Fan out to all 1960 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "379dd72"
+  },
   "Rubrics 1960 - 1960/2024-04-01/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-01",
@@ -13236,6 +13260,18 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Rubrics 1960 - 1960/2024-04-04/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-04",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Representative entry for the Roman Matins pre-lesson guillemet family under Rubrics 1960. Fan out to all 1960 Matins rows with the same first-divergence text.",
+    "resolvedAt": "2026-04-19",
+    "commitSha": "379dd72"
   },
   "Rubrics 1960 - 1960/2024-04-04/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",

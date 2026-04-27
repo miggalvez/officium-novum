@@ -22,6 +22,41 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: paschal-tide ferial Matins versicle override (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 / Rubrics 1960 Easter-Octave Matins
+for `2024-04-01` (Easter Monday) and `2024-04-04` (Easter Thursday)
+diverged at the third-nocturn-position versicle. The compositor
+emitted the psalter day's default `V. Mirífica Dómine
+misericórdias tuas` / `V. Non amóvit Dóminus oratiónem meam`,
+while Perl emitted `V. Surréxit Dóminus de sepúlcro, allelúja.` from
+`[Pasch 1 Versum]`.
+
+**Root cause.** The seasonal Matins versicle helper introduced in
+the prior tranche only mapped `lent` → `Quad` and `passiontide` →
+`Quad5`. The horas Perl harness gates the same substitution on
+`$name eq 'Pasch'` whenever the winner is from tempora.
+
+**Resolution.** Extended `seasonNameForVersicle` in Phase 2's
+matins-plan to map `eastertide` and `pentecost-octave` → `Pasch`.
+Advent's Sunday Matins still uses the inline versicles inside
+`[Adv 0 Ant Matutinum]`, so it intentionally stays out of the
+helper.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:221-298`
+(`[Pasch 0/1/2/3/6 Versum]` sections);
+`upstream/web/cgi-bin/horas/specmatins.pl:252-266` (the seasonal
+substitution loop gated on `$name =~ /^(?:Adv|Quad5?|Pasch)$/`).
+
+**Impact.** Easter Octave Monday and Thursday Matins now match Perl
+through the third-nocturn versicle in both Roman policies. The
+newly exposed pre-lesson `Pater Noster` guillemet rows fan out
+from the existing rendering-difference family. Net unadjudicated
+drop: Reduced 1955 from `22` → `21`, Rubrics 1960 from `22` → `20`.
+
 ### 2026-04-26 — Pattern: First Vespers prefers `[Versum 1]` and `[Ant 1]` (engine-bug, fixed)
 
 **Commit.** Current tranche commit.
