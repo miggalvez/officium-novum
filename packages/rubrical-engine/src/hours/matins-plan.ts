@@ -315,7 +315,9 @@ function buildNocturnVersicle(
   antiphonCount: number
 ): VersicleSource {
   const sectionName = `Nocturn ${nocturnIndex} Versum`;
-  const match = findSection(feastFiles, sectionName, input);
+  const match =
+    findSection(feastFiles, sectionName, input) ??
+    (nocturnIndex === 1 ? findConcreteSection(feastFiles, 'Versum 1', input) : undefined);
   if (match) {
     return {
       reference: officeReference(match.file.path, match.section.header)
@@ -719,6 +721,59 @@ function findSection(
   }
 
   return fallback;
+}
+
+function findConcreteSection(
+  files: readonly ParsedFile[],
+  header: string,
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): SectionMatch | undefined {
+  const matches = findSectionCandidates(files, header, input);
+  return matches.find((match) => hasConcreteContent(match.section)) ?? matches[0];
+}
+
+function findSectionCandidates(
+  files: readonly ParsedFile[],
+  header: string,
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): SectionMatch[] {
+  const date = normalizeDateInput(input.temporal.date);
+  const conditionalMatches: SectionMatch[] = [];
+  const fallbackMatches: SectionMatch[] = [];
+
+  for (const file of files) {
+    for (const section of file.sections) {
+      if (section.header !== header) {
+        continue;
+      }
+
+      if (!section.condition) {
+        fallbackMatches.push({ file, section });
+        continue;
+      }
+
+      if (!input.version) {
+        continue;
+      }
+
+      if (
+        conditionMatches(section.condition, {
+          date,
+          dayOfWeek: input.temporal.dayOfWeek,
+          season: input.temporal.season,
+          version: input.version
+        })
+      ) {
+        conditionalMatches.push({ file, section });
+      }
+    }
+  }
+
+  return conditionalMatches.length > 0 ? conditionalMatches : fallbackMatches;
+}
+
+function hasConcreteContent(section: ParsedFile['sections'][number]): boolean {
+  return section.content.some((node) => node.type !== 'reference');
 }
 
 function resolveProperMatinsFiles(

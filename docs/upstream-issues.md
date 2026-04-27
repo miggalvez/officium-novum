@@ -1678,6 +1678,11 @@ signature: Reduced 1955 Jun `20`, Jul `6`, Nov `5`, Nov `8`, and Dec
 `1`; Rubrics 1960 Nov `5`, Nov `8`, and Dec `1`. Stable row key suffix:
 `29ec2a3d`.
 
+**Additional fanout.** The Reduced 1955 Christmas-octave Matins
+first-nocturn versicle fix exposed the same source-backed `[Pater
+secreto]` guillemet surface on Dec `26`. Stable row key suffix:
+`29ec2a3d`.
+
 ### 2026-04-22 — Roman Easter-Octave Prime preserves the corpus guillemets around `Pater Noster`
 
 **Classification.** `rendering-difference`
@@ -2198,6 +2203,74 @@ the blank Perl comparison surface.
 | Rubrics 1960 - 1960 | 2024-12-01 | Vespers | `9bc43811` |
 | Rubrics 1960 - 1960 | 2024-12-15 | Vespers | `7d7b6199` |
 | Rubrics 1960 - 1960 | 2024-12-22 | Vespers | `940e44dc` |
+
+### 2026-04-26 — Reduced 1955 St John Matins keeps the feast-proper first-nocturn versicle
+
+**Classification.** `perl-bug`
+
+**Summary.** On Dec `27`, the Reduced 1955 Perl comparison surface uses
+the Apostle common `[Versum 1]` (`In omnem terram...`) at the first
+nocturn versicle. The St John office itself supplies a proper
+`[Versum 1]` (`Valde honorandus...`), and the compositor emits that
+source-backed proper versicle after the first-nocturn versicle fallback
+fix.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Sancti/12-27.txt:15-17` and
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-12-27 | Matins | `f7c619e9` |
+
+### 2026-04-26 — Plain `Versum 1` first-nocturn Matins offices override the psalter versicle
+
+**Classification.** `perl-bug`
+
+**Summary.** Several Roman Matins offices encode their first-nocturn
+versicle as plain `[Versum 1]` rather than `[Nocturn 1 Versum]`. After
+the Matins fallback fix, the compositor emits those office-owned
+versicles. The Perl comparison surface keeps the prior psalter versicle
+at the first divergent row.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:11-12`,
+`upstream/web/www/horas/Latin/Sancti/07-06.txt:15-16`,
+`upstream/web/www/horas/Latin/Commune/C6.txt:260-262`,
+`upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:15-16`, and
+`upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016,1124-1179`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-02-18 | Matins | `7ca37aff` |
+| Reduced - 1955 | 2024-07-06 | Matins | `1d5e3be7` |
+| Reduced - 1955 | 2024-12-01 | Matins | `4e580c99` |
+| Rubrics 1960 - 1960 | 2024-12-01 | Matins | `4e580c99` |
+
+### 2026-04-26 — Rubrics 1960 Christmas-octave Matins uses the Nativity doxology
+
+**Classification.** `perl-bug`
+
+**Summary.** On Dec `26` and Dec `27`, Rubrics 1960 Matins now receives
+the seasonal Nativity doxology stanza. The compositor substitutes
+`Jesu, tibi sit glória,` from `Psalterium/Doxologies`, while the Perl
+comparison surface leaves the C2/C1 common default hymn endings.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`,
+`upstream/web/www/horas/Latin/Commune/C2.txt:20-45`, and
+`upstream/web/www/horas/Latin/Commune/C1.txt:94-118`.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2024-12-26 | Matins | `4956efcc` |
+| Rubrics 1960 - 1960 | 2024-12-27 | Matins | `2e537874` |
 
 ## See also
 

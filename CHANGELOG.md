@@ -14,6 +14,7 @@ The `@officium-novum/compositor` package turns a `DayOfficeSummary` + Phase-1-re
 
 Newest tranche first:
 
+- **2026-04-26.** Closed the Reduced 1955 Christmas-octave Matins first-nocturn versicle seam. Phase 2 now treats plain `[Versum 1]` as the first-nocturn versicle when no `[Nocturn 1 Versum]` exists, including delegated common aliases, and the newly exposed Dec `26` guillemet and Dec `27` St John proper-versicle rows are classified from their source citations.
 - **2026-04-26.** Closed the Reduced 1955 Christmas-octave Matins doxology seam. Feast/common Matins hymns now receive the same seasonal fallback doxology variant already used by minor-hour fallback hymns, so Dec `26` and Dec `27` move past the Nativity stanza mismatch and expose later Matins versicle frontiers.
 - **2026-04-26.** Classified the Rubrics 1960 Nov `8` Vespers trailing-marker row as fanout of the documented unsupported `‡` comparison-surface family. The Friday Vespers psalter row carries no trailing continuation marker.
 - **2026-04-26.** Classified the Rubrics 1960 Advent Vespers later-block blank-row family. Dec `1`, Dec `15`, and Dec `22` Vespers now cite the source-backed Advent versicle/antiphon sections while documenting Perl's blank comparison surface as a source-backed render discrepancy.

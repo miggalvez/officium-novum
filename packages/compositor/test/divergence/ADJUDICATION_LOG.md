@@ -22,6 +22,44 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: Reduced 1955 Christmas-octave Matins first-nocturn versicles (mixed fix + adjudication)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the Christmas-octave Matins doxology fix,
+Reduced 1955 Dec `26` and Dec `27` Matins first diverged at the first
+nocturn versicle. The compositor still used ordinary psalter versicles,
+while Perl expected the feast/common versicle material.
+
+**Root cause.** Phase 2 Matins planning only searched for
+`[Nocturn 1 Versum]`. Several feast/common offices encode the first
+nocturn versicle as plain `[Versum 1]`; St Stephen delegates that section
+through the common, while St John supplies a local proper `[Versum 1]`.
+
+**Resolution.** Fixed the first-nocturn versicle fallback to use
+`[Versum 1]` when `[Nocturn 1 Versum]` is absent, preferring inherited
+concrete common text over a proper delegating alias. The exposed rows are
+classified from their source-backed final surfaces: Dec `26` as fanout of
+the established `[Pater secreto]` guillemet family, Dec `27` from St
+John's local proper versicle, Advent I / Lent I / BVM Saturday from their
+own plain `[Versum 1]` aliases, and the Rubrics 1960 Christmas-octave
+Matins rows from the same seasonal doxology rule fixed in the prior
+tranche.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:11-12`;
+`upstream/web/www/horas/Latin/Sancti/07-06.txt:15-16`;
+`upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:15-16`;
+`upstream/web/www/horas/Latin/Sancti/12-26.txt:16-17`;
+`upstream/web/www/horas/Latin/Commune/C2.txt:50-51`;
+`upstream/web/www/horas/Latin/Sancti/12-27.txt:15-17`;
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83`;
+`upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`;
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`.
+
+**Impact.** The structural first-nocturn versicle fix lands without a
+net unadjudicated-row increase because the exposed source-backed surfaces
+are classified in the same tranche.
+
 ### 2026-04-26 — Pattern: Reduced 1955 Christmas-octave Matins seasonal doxology (engine-bug, fixed)
 
 **Commit.** Current tranche commit.
