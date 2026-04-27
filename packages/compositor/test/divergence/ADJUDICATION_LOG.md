@@ -22,6 +22,36 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Pentecost Matins embedded versicle pair (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Pentecost Sunday
+Matins (`2024-05-19`) diverged at the nocturn versicle: Perl emitted
+`V. Spíritus Dómini replévit orbem terrárum, allelúja.` while the
+compositor emitted `V. Repléti sunt omnes Spíritu Sancto, allelúja.`
+
+**Root cause.** `Tempora/Pasc7-0` carries the Matins versicle inside
+its own `[Ant Matutinum]` block immediately after the three Matins
+antiphon rows. The planner preferred the plain `[Versum 1]` section,
+which belongs to another hour surface on this feast, and the compositor
+only supported single numeric line selectors for such embedded V/R
+pairs.
+
+**Resolution.** The Matins planner now prefers an embedded
+`[Ant Matutinum]` V/R pair before falling back to plain `[Versum 1]`,
+and the compositor resolver now supports narrow numeric range selectors
+such as `4-5` for these paired embedded versicles. Added focused tests
+for both the planner selection and resolver range behavior.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:136-141`.
+
+**Impact.** The two Pentecost Matins rows advance to the already
+documented Roman Matins pre-lesson `Pater Noster` guillemet rendering
+family, dropping both Reduced 1955 and Rubrics 1960 by one
+unadjudicated row.
+
 ### 2026-04-27 — Pattern: Easter Octave inherited Matins antiphons (engine-bug fix + adjudication fanout)
 
 **Commit.** Current tranche commit.

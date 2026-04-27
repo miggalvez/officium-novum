@@ -178,8 +178,31 @@ describe('buildMatinsPlan', () => {
     ]);
     expect(result.plan.nocturnPlan[0]?.psalmody).toHaveLength(3);
     expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
-      path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
-      section: 'Pasch 2 Versum'
+      path: 'horas/Latin/Tempora/Pasc0-2',
+      section: 'Ant Matutinum',
+      selector: '5-6'
+    });
+  });
+
+  it('prefers the Matins antiphon block versicle before plain Versum 1', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Pasc7-0.txt', pentecostMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Pasc7-0', 'I', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-05-19', 'Pasc7-0', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Tempora/Pasc7-0',
+      section: 'Ant Matutinum',
+      selector: '4-5'
     });
   });
 
@@ -895,6 +918,39 @@ function easterWeekdayMatinsSections(): string {
     '@Tempora/Pasc0-0::s/^V\\..*//sm',
     'V. Surréxit Dóminus vere, allelúja.',
     'R. Et appáruit Simóni, allelúja.',
+    '',
+    '[Lectio1]',
+    'Text',
+    '',
+    '[Lectio2]',
+    'Text',
+    '',
+    '[Lectio3]',
+    'Text',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
+    'Resp'
+  ].join('\n');
+}
+
+function pentecostMatinsSections(): string {
+  return [
+    '[Ant Matutinum]',
+    'Factus est * repénte de cælo sonus adveniéntis spíritus veheméntis, allelúja, allelúja.;;47',
+    'Confírma hoc, Deus, * quod operátus es in nobis: a templo sancto tuo, quod est in Jerúsalem, allelúja, allelúja.;;67',
+    'Emítte Spíritum tuum, * et creabúntur: et renovábis fáciem terræ, allelúja, allelúja.;;103',
+    'V. Spíritus Dómini replévit orbem terrárum, allelúja.',
+    'R. Et hoc quod cóntinet ómnia, sciéntiam habet vocis, allelúja.',
+    '',
+    '[Versum 1]',
+    'V. Repléti sunt omnes Spíritu Sancto, allelúja.',
+    'R. Et cœpérunt loqui, allelúja.',
     '',
     '[Lectio1]',
     'Text',

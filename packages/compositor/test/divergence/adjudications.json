@@ -8681,6 +8681,17 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
   },
+  "Reduced - 1955/2024-05-19/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-19",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Pentecost embedded Matins versicle seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
+  },
   "Reduced - 1955/2024-05-19/Prime/9c18c7ac": {
     "policy": "Reduced - 1955",
     "date": "2024-05-19",
@@ -13948,6 +13959,17 @@
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
+  },
+  "Rubrics 1960 - 1960/2024-05-19/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-19",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Pentecost embedded Matins versicle seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-05-19/None/c7624535": {
     "policy": "Rubrics 1960 - 1960",

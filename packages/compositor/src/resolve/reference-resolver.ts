@@ -301,6 +301,22 @@ function applySelector(
     });
   }
 
+  const integerRange = parseIntegerRangeSelector(selector);
+  if (integerRange) {
+    const conditionContext = selectorConditionContext(context);
+    return Object.freeze({
+      language,
+      path,
+      section,
+      content:
+        conditionContext
+          ? selectVisibleContentNodeRange(section.content, integerRange.start, integerRange.end, conditionContext)
+          : selectContentNodeRange(section.content, integerRange.start, integerRange.end),
+      selectorUnhandled: false,
+      selectorMissing: false
+    });
+  }
+
   if (context.onWarning) {
     context.onWarning({
       code: 'resolve-unhandled-selector',
@@ -331,6 +347,18 @@ function parseIntegerSelector(selector: string): number | undefined {
   return value > 0 ? value : undefined;
 }
 
+function parseIntegerRangeSelector(
+  selector: string
+): { readonly start: number; readonly end: number } | undefined {
+  const match = /^\s*([0-9]+)\s*-\s*([0-9]+)\s*$/u.exec(selector);
+  if (!match) return undefined;
+
+  const start = Number(match[1]);
+  const end = Number(match[2]);
+  if (start <= 0 || end < start) return undefined;
+  return { start, end };
+}
+
 function selectNthContentNode(
   content: readonly TextContent[],
   index: number
@@ -352,6 +380,29 @@ function selectNthContentNode(
 
   const pick = content[index - 1];
   return pick ? Object.freeze([pick]) : Object.freeze([]);
+}
+
+function selectContentNodeRange(
+  content: readonly TextContent[],
+  start: number,
+  end: number
+): readonly TextContent[] {
+  if (content.every((node) => node.type === 'conditional')) {
+    const narrowed: TextContent[] = [];
+    for (const node of content) {
+      const selectedChildren = selectContentNodeRange(node.content, start, end);
+      if (selectedChildren.length === 0) {
+        continue;
+      }
+      narrowed.push({
+        ...node,
+        content: [...selectedChildren]
+      });
+    }
+    return Object.freeze(narrowed);
+  }
+
+  return Object.freeze(content.slice(start - 1, end));
 }
 
 function selectorConditionContext(
@@ -377,6 +428,15 @@ function selectNthVisibleContentNode(
   const flattened = flattenVisibleContent(content, context);
   const pick = flattened[index - 1];
   return pick ? Object.freeze([pick]) : Object.freeze([]);
+}
+
+function selectVisibleContentNodeRange(
+  content: readonly TextContent[],
+  start: number,
+  end: number,
+  context: ConditionEvalContext
+): readonly TextContent[] {
+  return Object.freeze(flattenVisibleContent(content, context).slice(start - 1, end));
 }
 
 function flattenVisibleContent(
