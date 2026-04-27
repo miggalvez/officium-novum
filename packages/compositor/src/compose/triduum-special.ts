@@ -66,6 +66,15 @@ interface ComposeEasterSundayPreludeArgs {
   readonly onWarning?: (warning: ComposeWarning) => void;
 }
 
+interface ComposeDATriduumSecretoArgs {
+  readonly hour: HourName;
+  readonly summary: DayOfficeSummary;
+  readonly corpus: TextIndex;
+  readonly options: ComposeOptions;
+  readonly context: ConditionEvalContext;
+  readonly onWarning?: (warning: ComposeWarning) => void;
+}
+
 /**
  * Easter Sunday Matins / Lauds carry a `[Prelude Matutinum]` /
  * `[Prelude Laudes]` rubric block under 1955 and 1960 rubrics. The block
@@ -105,6 +114,89 @@ export function composeEasterSundayPreludeSection(
     },
     perLanguage,
     referenceKey(ref)
+  );
+}
+
+/**
+ * Divino Afflatu (Tridentine-style) Triduum Lauds / Prime / Terce / Sext /
+ * None / Vespers prepend the legacy `Secreto` opening rubric. The Ordinarium
+ * `#Incipit` block carries `$rubrica Secreto a Laudibus` followed by the
+ * silent `Pater noster` / `Ave Maria`, but `Quad6-{4,5,6}.txt` Triduum days
+ * carry `Omit Incipit` rules which strip the entire #Incipit block. Under
+ * Tridentine rubrics those rubric annotations are still recited (the
+ * conditional `(sed rubrica ^Trident omittuntur)` only suppresses them under
+ * non-Tridentine rubrics), so Phase 3 surfaces the appropriate Secreto
+ * rubric here for DA Triduum hours.
+ */
+export function composeDATriduumSecretoSection(
+  args: ComposeDATriduumSecretoArgs
+): Section | undefined {
+  if (args.context.version.handle.match(/(?:1955|1960)/u)) {
+    return undefined;
+  }
+  if (
+    args.hour !== 'lauds' &&
+    args.hour !== 'prime' &&
+    args.hour !== 'terce' &&
+    args.hour !== 'sext' &&
+    args.hour !== 'none' &&
+    args.hour !== 'vespers'
+  ) {
+    return undefined;
+  }
+  if (!/^Tempora\/Quad6-[456]r?$/u.test(args.summary.celebration.feastRef.path)) {
+    return undefined;
+  }
+
+  const rubricSectionName = args.hour === 'lauds' ? 'Secreto a Laudibus' : 'Secreto';
+  const rubricRef: TextReference = {
+    path: 'horas/Latin/Psalterium/Common/Rubricae',
+    section: rubricSectionName
+  };
+  const rubricPerLanguage = resolveFlatSection(rubricRef, args);
+  const paterRef: TextReference = {
+    path: 'horas/Latin/Psalterium/Common/Prayers',
+    section: 'Pater noster'
+  };
+  const paterPerLanguage = resolveFlatSection(paterRef, args);
+  const aveRef: TextReference = {
+    path: 'horas/Latin/Psalterium/Common/Prayers',
+    section: 'Ave Maria'
+  };
+  const avePerLanguage = resolveFlatSection(aveRef, args);
+
+  const merged = new Map<string, readonly TextContent[]>();
+  for (const lang of args.options.languages) {
+    const bucket: TextContent[] = [];
+    const rubric = rubricPerLanguage.get(lang);
+    if (rubric) {
+      bucket.push(...rubric);
+    }
+    const pater = paterPerLanguage.get(lang);
+    if (pater) {
+      bucket.push(...pater);
+    }
+    const ave = avePerLanguage.get(lang);
+    if (ave) {
+      bucket.push(...ave);
+    }
+    if (bucket.length > 0) {
+      merged.set(lang, Object.freeze(bucket));
+    }
+  }
+
+  if (merged.size === 0) {
+    return undefined;
+  }
+
+  return emitConfiguredSection(
+    {
+      slot: 'psalmody',
+      sectionSlot: 'da-triduum-secreto',
+      sectionType: 'rubric'
+    },
+    merged,
+    referenceKey(rubricRef)
   );
 }
 
@@ -238,7 +330,10 @@ export function composeTriduumSpecialComplineSection(
 
 function resolveFlatSection(
   ref: TextReference,
-  args: ComposeTriduumSuppressedVespersArgs | ComposeEasterSundayPreludeArgs
+  args:
+    | ComposeTriduumSuppressedVespersArgs
+    | ComposeEasterSundayPreludeArgs
+    | ComposeDATriduumSecretoArgs
 ): Map<string, readonly TextContent[]> {
   const resolved = resolveReference(args.corpus, ref, {
     languages: args.options.languages,

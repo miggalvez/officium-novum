@@ -22,6 +22,66 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Divino Afflatu Triduum `Secreto` opening rubric + silent prayers (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Divino Afflatu (`Divino Afflatu - 1954`) Triduum
+hours `2024-03-28` / `2024-03-29` / `2024-03-30` Lauds, Prime,
+Terce, Sext, None, and Vespers all opened at line 1 with the
+silent-recitation rubric:
+
+- Lauds: `Si Matutinum a Laudibus separatur, tunc dicitur secreto:`
+- Other hours: `secreto:`
+
+followed by the full silent `Pater noster` and `Ave Maria`. The
+compositor opened directly with the antiphon / psalm.
+
+**Root cause.** The Triduum feast files (`Tempora/Quad6-{4,5,6}.txt`)
+carry an unconditional `Omit Incipit` rule which strips the entire
+`#Incipit` block. Under Tridentine rubrics (DA), the Ordinarium
+`#Incipit` content
+(`$rubrica Secreto a Laudibus`, `$Pater noster`, `$Ave Maria`) is
+preserved because the conditional `(sed rubrica ^Trident
+omittuntur)` only suppresses them under non-Tridentine rubrics. The
+compositor's omit logic stripped them anyway.
+
+**Resolution.** Added `composeDATriduumSecretoSection` in Phase 3.
+For `Tempora/Quad6-{4,5,6}` Lauds / Prime / Terce / Sext / None /
+Vespers under Divino Afflatu, prepends:
+
+1. `[Secreto a Laudibus]` (Lauds) or `[Secreto]` (other hours) from
+   `Common/Rubricae.txt`.
+2. `[Pater noster]` from `Common/Prayers.txt`.
+3. `[Ave Maria]` from `Common/Prayers.txt`.
+
+The 1955 / 1960 paths are intentionally untouched — those rubrics
+strip the same content via the non-Tridentine omission conditional.
+
+**Citation.**
+- `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:27-47`
+  (Secreto / Secreto a Laudibus rubric definitions).
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:1-10`
+  (Pater noster / Ave Maria text).
+- `upstream/web/www/horas/Ordinarium/Laudes.txt:3-15` (Ordinarium
+  `#Incipit` block with the `(sed rubrica ^Trident omittuntur)`
+  conditional that gates these recited rubrics under DA).
+
+**Impact.** Best matching prefix on DA Triduum advances from `5` →
+`136` (Lauds 0 → 133, Vespers 0 → 11, minor hours 0 → 61). The
+newly exposed downstream rows are classified from existing
+half-verse `‡` / blank-line rendering families:
+
+- 9 fanout entries for the DA Triduum Lauds / Terce / Sext / None
+  Psalm 50:3a inline-marker rendering family (compositor preserves
+  source-backed `50:3a Miserére mei, Deus, *...`; Perl emits a
+  blank `_` line).
+- 3 fanout entries for the DA Triduum Vespers Psalm 115:7
+  half-verse `‡` family already documented for other dates.
+
+Net unadjudicated drop: Divino Afflatu from `21` → `8` (under
+threshold). Total from `53` → `40`.
+
 ### 2026-04-27 — Pattern: St Stephen Vespers `no Psalm5` rule (perl-bug, classified)
 
 **Commit.** Current tranche commit.

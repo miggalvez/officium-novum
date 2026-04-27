@@ -36,6 +36,7 @@ import {
 } from './compose/psalmody.js';
 import { MAX_DEFERRED_DEPTH, referenceKey } from './compose/shared.js';
 import {
+  composeDATriduumSecretoSection,
   composeEasterSundayPreludeSection,
   composeTriduumSpecialComplineSection,
   composeTriduumSuppressedVespersSection
@@ -121,6 +122,18 @@ export function composeHour(input: ComposeInput): ComposedHour {
   });
   if (easterSundayPrelude) {
     sections.push(easterSundayPrelude);
+  }
+
+  const daTriduumSecreto = composeDATriduumSecretoSection({
+    hour: input.hour,
+    summary: input.summary,
+    corpus: input.corpus,
+    options: input.options,
+    context,
+    onWarning
+  });
+  if (daTriduumSecreto) {
+    sections.push(daTriduumSecreto);
   }
 
   const specialCompline = composeTriduumSpecialComplineSection({
