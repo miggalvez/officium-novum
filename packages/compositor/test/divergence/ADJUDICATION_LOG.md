@@ -22,6 +22,48 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: First Vespers of Sunday uses today's Saturday psalter day (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 / Rubrics 1960 Saturday Vespers for
+`2024-02-24` and the wider Saturday-before-Sunday Vespers family
+opened the 1st antiphon at the wrong psalter day. The compositor
+emitted Sunday's `[Day0 Vespera]` antiphon (`Dixit Dóminus * Dómino
+meo: Sede a dextris meis`) on Saturday evening. Perl emitted the
+Saturday `[Day6 Vespera]` antiphon (`Benedíctus Dóminus * suscéptor
+meus et liberátor meus`).
+
+**Root cause.** The Phase 2 engine fed `winner.temporal` into Vespers
+for both Second Vespers (today) and First Vespers (tomorrow). When
+concurrence handed the boundary to tomorrow's celebration, the
+`temporal.dayOfWeek` jumped to Sunday (`0`), and the psalter selector
+routed the psalmody to Sunday's `[Day0 Vespera]` block. The Roman
+1960 rubrics instead key Vespers psalmody off the *evening's*
+day-of-week — Saturday evening always uses Saturday's psalter, even
+when the office is Sunday's First Vespers.
+
+**Resolution.** When `vespersSide === 'first'`, override
+`temporal.dayOfWeek` with today's value so the psalter falls back to
+the correct evening-day (`Day6 Vespera` for Saturday evening,
+`Day5 Vespera` for Friday evening, etc.). The celebration object
+keeps the winner's feast metadata, so proper antiphons / hymns / etc.
+still come from the Sunday office when present.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi
+major.txt:142-147` (Day6 Vespera psalter section);
+`upstream/web/cgi-bin/horas/horas.pl` Vespers psalmody flow keys off
+`$dayofweek` (the evening's day) regardless of the celebrated office.
+
+**Impact.** Saturday Vespers for `2024-02-24` (Sat in Lent 1) now
+matches Perl's psalter through the entire 5-psalm block; the
+remaining drift is the existing incipit-vs-full / trailing-`‡`
+rendering family. Rubrics 1960 matching prefix on the Saturday
+moves from `5` lines to `56` lines. Reduced 1955 / Rubrics 1960
+each gain one classified row in this tranche; further Saturday
+Vespers rows (paschaltide `Daya6 Vespera`, BVM Saturday Office, etc.)
+remain to be addressed in follow-up tranches.
+
 ### 2026-04-26 — Pattern: ferial 1-nocturn seasonal Matins versicle (engine-bug, fixed)
 
 **Commit.** Current tranche commit.

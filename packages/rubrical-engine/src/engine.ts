@@ -211,13 +211,22 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     const hourRules = deriveHourRuleSet(celebration, celebrationRules, 'vespers');
     const overlay = summary.overlay;
     const vespersSide = concurrence.winner === 'tomorrow' ? 'first' : 'second';
+    // First Vespers happens on the *current* evening (today). The Roman 1960
+    // psalter selection keys off the actual evening's day-of-week (e.g.
+    // Saturday's [Day6 Vespera] for First Vespers of Sunday). Without this
+    // override the celebrant temporal would carry tomorrow's `dayOfWeek`,
+    // routing the psalter into Sunday's `[Day0 Vespera]`.
+    const vespersTemporal: TemporalContext =
+      vespersSide === 'first'
+        ? { ...winner.temporal, dayOfWeek: today.temporal.dayOfWeek }
+        : winner.temporal;
     const result = structureVespers({
       skeleton,
       celebration,
       commemorations: concurrence.commemorations,
       celebrationRules,
       hourRules,
-      temporal: winner.temporal,
+      temporal: vespersTemporal,
       policy: version.policy,
       corpus,
       version,
