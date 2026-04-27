@@ -22,6 +22,58 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Marian common Matins antiphon section reference resolution (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 Marian feasts on `2024-08-22`
+(Immaculate Heart), `2024-09-08` (Nativity BVM), and `2024-09-12`
+(Most Holy Name of Mary) Matins all opened with the wrong antiphon at
+the first Nocturn, e.g. `Ant. In Deo salutáre meum.` instead of
+`Ant. Benedícta tu * in muliéribus, et benedíctus fructus ventris
+tui.` from C11's `[Ant MatutinumBMV]`.
+
+**Root cause.** `Commune/C11.txt`'s `[Ant Matutinum]` body is *not* a
+literal antiphon list — it is three reference nodes:
+
+```
+@:Ant MatutinumBMV:1-3
+@Commune/C6::4-5
+@:Ant MatutinumBMV:4-7
+```
+
+Phase 2's `collectMatinsAntiphonEntriesFromSection` iterates the raw
+section's content and uses `antiphonLineValue` to extract antiphon
+strings. Reference nodes have no literal antiphon value, so the
+function returned an empty list and the engine fell back to the
+psalter day's Matins (`Day4` for an Aug 22 Thursday, etc.). The
+parser-resolved corpus already inlines these references into nine
+`psalmRef` nodes, but Phase 2 reads from the raw corpus by contract.
+
+**Resolution.** When every visible content node in a feast's
+`[Ant Matutinum]` is a reference, Phase 2 now expands those
+same-file or cross-file references in-place against the raw corpus —
+honoring the `lineSelector` range — before walking the antiphon
+lines. The emitted entries still point to the original section
+header so Phase 3's reference resolution against the *resolved*
+corpus continues to surface the inlined antiphon text. The expansion
+intentionally only applies when the section is otherwise empty: feast
+files that mix literal antiphons with references retain their
+existing pre-flatten behaviour.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Commune/C11.txt:111-123`
+- `packages/rubrical-engine/src/hours/matins-plan.ts:617-735`
+  (collectMatinsAntiphonEntriesFromSection +
+  expandSameFileMatinsAntiphonReferences)
+
+**Impact.** All three Reduced 1955 Marian Matins rows advance past
+the antiphon-mismatch frontier to the already-classified Pater Noster
+guillemet rendering family. Three fanout adjudications inherit. Net
+unadjudicated drop: Reduced 1955 from `7` to `4`, total from `18` to
+`15`.
+
 ### 2026-04-27 — Pattern: `Omit Suffragium` rule action propagation to shared Roman policy (engine-bug, fixed)
 
 **Commit.** Current tranche commit.

@@ -596,7 +596,8 @@ function collectMatinsAntiphons(
     const entries = collectMatinsAntiphonEntriesFromSection(
       match.section,
       sourcePath,
-      input
+      input,
+      match.file
     );
     if (entries.length > 0) {
       return entries;
@@ -617,7 +618,8 @@ function collectMatinsAntiphons(
 function collectMatinsAntiphonEntriesFromSection(
   section: ParsedFile['sections'][number],
   sourcePath: string,
-  input: BuildMatinsPlanInput
+  input: BuildMatinsPlanInput,
+  hostFile?: ParsedFile
 ): readonly {
   readonly reference: TextReference;
   readonly psalmRef?: PsalmAssignment;
@@ -627,7 +629,20 @@ function collectMatinsAntiphonEntriesFromSection(
     ? flattenVisibleMatinsAntiphonContent(section.content, input)
     : section.content;
 
-  for (const [contentIndex, content] of visibleContent.entries()) {
+  // Sections like Commune/C11's `[Ant Matutinum]` carry only inline references
+  // such as `@:Ant MatutinumBMV:1-3` plus `@Commune/C6::4-5`. The raw corpus
+  // preserves those as reference nodes; if every visible node is a reference,
+  // expand them in-place so antiphon lines surface for collection. The Phase 3
+  // resolved corpus inlines these references into the same section, so the
+  // emitted entries can still point to the original section header.
+  const allReferences =
+    visibleContent.length > 0 &&
+    visibleContent.every((node) => node.type === 'reference');
+  const expandedContent = allReferences
+    ? expandSameFileMatinsAntiphonReferences(visibleContent, section.header, hostFile, input)
+    : visibleContent;
+
+  for (const [contentIndex, content] of expandedContent.entries()) {
     const antiphon = antiphonLineValue(content);
     if (!antiphon) {
       continue;
@@ -659,6 +674,61 @@ function collectMatinsAntiphonEntriesFromSection(
   }
 
   return entries;
+}
+
+function expandSameFileMatinsAntiphonReferences(
+  content: readonly TextContent[],
+  hostSectionHeader: string,
+  hostFile: ParsedFile | undefined,
+  input: BuildMatinsPlanInput
+): readonly TextContent[] {
+  const out: TextContent[] = [];
+  for (const node of content) {
+    if (node.type !== 'reference') {
+      out.push(node);
+      continue;
+    }
+    const targetFile = node.ref.path
+      ? safeResolveOfficeFile(input.corpus, canonicalOfficePath(node.ref.path))
+      : hostFile;
+    if (!targetFile) {
+      continue;
+    }
+    const targetHeader = node.ref.section ?? hostSectionHeader;
+    const targetSection = targetFile.sections.find((s) => s.header === targetHeader);
+    if (!targetSection) {
+      continue;
+    }
+    const flattened = input.version
+      ? flattenVisibleMatinsAntiphonContent(targetSection.content, input)
+      : targetSection.content;
+    const sliced = applyAntiphonRangeSelector(flattened, node.ref.lineSelector);
+    out.push(...sliced);
+  }
+  return out;
+}
+
+function applyAntiphonRangeSelector(
+  content: readonly TextContent[],
+  lineSelector: { readonly type: string; readonly start: number; readonly end?: number } | undefined
+): readonly TextContent[] {
+  if (!lineSelector || lineSelector.type !== 'range') {
+    return content;
+  }
+  const start = Math.max(0, lineSelector.start - 1);
+  const end = lineSelector.end !== undefined ? lineSelector.end : content.length;
+  return content.slice(start, end);
+}
+
+function safeResolveOfficeFile(
+  corpus: OfficeTextIndex,
+  canonicalPath: string
+): ParsedFile | undefined {
+  try {
+    return resolveOfficeFile(corpus, canonicalPath);
+  } catch {
+    return undefined;
+  }
 }
 
 function findSections(
