@@ -2,6 +2,11 @@ import { describe, expect, it } from 'vitest';
 
 import { InMemoryTextIndex } from '@officium-novum/parser';
 import type { ParsedFile } from '@officium-novum/parser';
+import {
+  asVersionHandle,
+  rubrics1960Policy,
+  type ResolvedVersion
+} from '@officium-novum/rubrical-engine';
 
 import {
   materializeInvitatoryContent,
@@ -795,6 +800,107 @@ describe('resolveReference', () => {
       content: [{ type: 'text', value: 'Cistercian line 2' }]
     });
   });
+
+  it('replaces every node from the immediately preceding row for matching sed selectors', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Tempora/Adv1-0.txt',
+      sections: [
+        {
+          header: 'Oratio',
+          content: [
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'not',
+                  inner: { type: 'match', subject: 'rubrica', predicate: '1955' }
+                }
+              },
+              content: [
+                { type: 'text', value: 'Default line 1' },
+                { type: 'text', value: 'Default line 2' }
+              ],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            },
+            {
+              type: 'conditional',
+              condition: {
+                expression: { type: 'match', subject: 'rubrica', predicate: '1960' },
+                stopword: 'sed'
+              },
+              content: [{ type: 'text', value: 'Rubrics 1960 replacement' }],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            }
+          ],
+          startLine: 1,
+          endLine: 4
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Tempora/Adv1-0',
+        section: 'Oratio',
+        selector: '1'
+      },
+      rubrics1960SelectorOptions()
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      { type: 'text', value: 'Rubrics 1960 replacement' }
+    ]);
+  });
+
+  it('does not let matching sed selectors delete unrelated earlier rows', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Tempora/Adv1-0.txt',
+      sections: [
+        {
+          header: 'Oratio',
+          content: [
+            { type: 'text', value: 'Stable opening' },
+            {
+              type: 'conditional',
+              condition: {
+                expression: { type: 'match', subject: 'rubrica', predicate: '1955' }
+              },
+              content: [{ type: 'text', value: 'Reduced 1955 default' }],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            },
+            {
+              type: 'conditional',
+              condition: {
+                expression: { type: 'match', subject: 'rubrica', predicate: '1960' },
+                stopword: 'sed'
+              },
+              content: [{ type: 'text', value: 'Rubrics 1960 replacement' }],
+              scope: { backwardLines: 0, forwardMode: 'line' }
+            }
+          ],
+          startLine: 1,
+          endLine: 4
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Tempora/Adv1-0',
+        section: 'Oratio',
+        selector: '2'
+      },
+      rubrics1960SelectorOptions()
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      { type: 'text', value: 'Rubrics 1960 replacement' }
+    ]);
+  });
 });
 
 function collectTexts(content: readonly import('@officium-novum/parser').TextContent[]): string[] {
@@ -815,4 +921,24 @@ function collectTexts(content: readonly import('@officium-novum/parser').TextCon
   }
 
   return out;
+}
+
+function rubrics1960SelectorOptions() {
+  return {
+    languages: ['Latin'],
+    date: { year: 2024, month: 12, day: 1 },
+    dayOfWeek: 0,
+    season: 'advent' as const,
+    version: rubrics1960Version()
+  };
+}
+
+function rubrics1960Version(): ResolvedVersion {
+  return {
+    handle: asVersionHandle('Rubrics 1960 - 1960'),
+    kalendar: '1960',
+    transfer: '1960',
+    stransfer: '1960',
+    policy: rubrics1960Policy
+  };
 }

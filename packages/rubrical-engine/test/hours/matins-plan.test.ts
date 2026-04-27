@@ -230,6 +230,118 @@ describe('buildMatinsPlan', () => {
     }
   });
 
+  it('adds seasonal Nativity doxology metadata to Christmas-octave common Matins hymns', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Sancti/12-26.txt', festalMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/12-26', 'II', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-12-26', 'Nat2-0', 'christmas', 'II'),
+      policy: rubrics1960Policy,
+      corpus
+    });
+
+    expect(result.plan.hymn.kind).toBe('feast');
+    if (result.plan.hymn.kind === 'feast') {
+      expect(result.plan.hymn.doxologyVariant).toBe('Nat');
+    }
+  });
+
+  it('uses plain Versum 1 as the first nocturn versicle when no Nocturn 1 Versum exists', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Sancti/12-27.txt', firstNocturnVersumSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/12-27', 'II', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-12-27', 'Nat3-0', 'christmas', 'II'),
+      policy: rubrics1960Policy,
+      corpus
+    });
+
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Sancti/12-27',
+      section: 'Versum 1'
+    });
+  });
+
+  it('prefers inherited concrete Versum 1 over a delegating proper alias', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Sancti/12-26.txt',
+      [
+        '[Rule]',
+        'ex C2a;',
+        '',
+        '[Versum 1]',
+        '@Commune/C2a',
+        '',
+        festalMatinsSectionsWithoutFirstVersicle()
+      ].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Commune/C2a.txt',
+      ['[Versum 1]', 'V. Glória et honóre coronásti eum, Dómine.'].join('\n')
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/12-26', 'II', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-12-26', 'Nat2-0', 'christmas', 'II'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Commune/C2a',
+      section: 'Versum 1'
+    });
+  });
+
+  it('prefers inherited concrete Versum 1 over a separator-only proper placeholder', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Sancti/12-26.txt',
+      [
+        '[Rule]',
+        'ex C2a;',
+        '',
+        '[Versum 1]',
+        '_',
+        '',
+        festalMatinsSectionsWithoutFirstVersicle()
+      ].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Commune/C2a.txt',
+      ['[Versum 1]', 'V. Glória et honóre coronásti eum, Dómine.'].join('\n')
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/12-26', 'II', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-12-26', 'Nat2-0', 'christmas', 'II'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Commune/C2a',
+      section: 'Versum 1'
+    });
+  });
+
   it('uses the post-Cum Nostra Hac Aetate Confessor hymn variant for inherited C5 Matins', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add(
@@ -308,7 +420,8 @@ describe('buildMatinsPlan', () => {
       reference: {
         path: 'horas/Latin/Commune/C5',
         section: 'Hymnus1 Matutinum'
-      }
+      },
+      doxologyVariant: 'Pasch'
     });
   });
 
@@ -615,6 +728,118 @@ function festalMatinsSections(): string {
     '',
     '[Nocturn 3 Versum]',
     'Versus',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
+    'Resp',
+    '',
+    '[Responsory4]',
+    'Resp',
+    '',
+    '[Responsory5]',
+    'Resp',
+    '',
+    '[Responsory6]',
+    'Resp',
+    '',
+    '[Responsory7]',
+    'Resp',
+    '',
+    '[Responsory8]',
+    'Resp',
+    '',
+    '[Responsory9]',
+    'Resp'
+  ].join('\n');
+}
+
+function firstNocturnVersumSections(): string {
+  return [
+    '[Invit]',
+    'Invit festale',
+    '',
+    '[Hymnus Matutinum]',
+    'Hymnus festalis',
+    '',
+    '[Ant Matutinum]',
+    'Ant 1;;8',
+    'Ant 2;;18',
+    'Ant 3;;23',
+    'Ant 4;;44',
+    'Ant 5;;45',
+    'Ant 6;;86',
+    'Ant 7;;95',
+    'Ant 8;;96',
+    'Ant 9;;97',
+    '',
+    '[Versum 1]',
+    'V. Versum proprium.',
+    'R. Responsum proprium.',
+    '',
+    '[Nocturn 2 Versum]',
+    'Versus II',
+    '',
+    '[Nocturn 3 Versum]',
+    'Versus III',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
+    'Resp',
+    '',
+    '[Responsory4]',
+    'Resp',
+    '',
+    '[Responsory5]',
+    'Resp',
+    '',
+    '[Responsory6]',
+    'Resp',
+    '',
+    '[Responsory7]',
+    'Resp',
+    '',
+    '[Responsory8]',
+    'Resp',
+    '',
+    '[Responsory9]',
+    'Resp'
+  ].join('\n');
+}
+
+function festalMatinsSectionsWithoutFirstVersicle(): string {
+  return [
+    '[Invit]',
+    'Invit festale',
+    '',
+    '[Hymnus Matutinum]',
+    'Hymnus festalis',
+    '',
+    '[Ant Matutinum]',
+    'Ant 1;;8',
+    'Ant 2;;18',
+    'Ant 3;;23',
+    'Ant 4;;44',
+    'Ant 5;;45',
+    'Ant 6;;86',
+    'Ant 7;;95',
+    'Ant 8;;96',
+    'Ant 9;;97',
+    '',
+    '[Nocturn 2 Versum]',
+    'Versus II',
+    '',
+    '[Nocturn 3 Versum]',
+    'Versus III',
     '',
     '[Responsory1]',
     'Resp',

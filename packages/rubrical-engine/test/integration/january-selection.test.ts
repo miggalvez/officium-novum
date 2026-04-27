@@ -451,9 +451,9 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Sancti/01-06:Ant Matutinum:3'
       ]);
       expectPsalmRefs(jan6Nocturns[0]?.psalmody ?? []).toEqual([
-        'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble',
-        'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble',
-        'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble'
+        'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble:28',
+        'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble:45',
+        'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble:46'
       ]);
 
       const jan13Matins = engine.resolveDayOfficeSummary('2024-01-13').hours.matins;
@@ -474,9 +474,9 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Sancti/01-06:Ant Matutinum:3'
       ]);
       expectPsalmRefs(jan13Nocturns[0]?.psalmody ?? []).toEqual([
-        'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble',
-        'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble',
-        'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble'
+        'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble:28',
+        'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble:45',
+        'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble:46'
       ]);
     }
 
@@ -495,15 +495,15 @@ describeIfUpstream('January selection regressions', () => {
       'horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day0:13'
     ]);
     expectPsalmRefs(jan14Roman1960[0]?.psalmody ?? []).toEqual([
-      'horas/Latin/Psalterium/Psalmorum/Psalm1:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm2:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm3:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm8:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble',
-      'horas/Latin/Psalterium/Psalmorum/Psalm10:__preamble'
+      'horas/Latin/Psalterium/Psalmorum/Psalm1:__preamble:1',
+      'horas/Latin/Psalterium/Psalmorum/Psalm2:__preamble:2',
+      'horas/Latin/Psalterium/Psalmorum/Psalm3:__preamble:3',
+      'horas/Latin/Psalterium/Psalmorum/Psalm8:__preamble:8',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble:9(2-11)',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble:9(12-21)',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble:9(22-32)',
+      'horas/Latin/Psalterium/Psalmorum/Psalm9:__preamble:9(33-39)',
+      'horas/Latin/Psalterium/Psalmorum/Psalm10:__preamble:10'
     ]);
     expect(jan14Roman1960[0]?.versicle.reference).toEqual({
       path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',

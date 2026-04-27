@@ -1039,6 +1039,60 @@ describe('Psalmus N [index] heading emission', () => {
     ]);
   });
 
+  it('uses selected ranges when replacing Old Testament canticle title citations', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Psalterium/Psalmorum/Psalm226.txt',
+      sections: [
+        {
+          header: '__preamble',
+          startLine: 1,
+          endLine: 2,
+          content: [
+            { type: 'text', value: '(Canticum Moysis * Deut 32:1-65)' },
+            {
+              type: 'text',
+              value: '32:1 Audíte, cæli, quæ loquor: * áudiat terra verba oris mei.'
+            }
+          ]
+        }
+      ]
+    });
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        psalmody: {
+          kind: 'psalmody',
+          psalms: [
+            {
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm226',
+                section: '__preamble',
+                selector: '226(1-27)'
+              }
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'psalmody', 'Latin')).toEqual([
+      'Canticum Moysis [1]',
+      'Deut 32:1-27',
+      '32:1 Audíte, cæli, quæ loquor: * áudiat terra verba oris mei.'
+    ]);
+  });
+
   it('emits the heading after the antiphon when the assignment pairs both', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile({

@@ -36,7 +36,7 @@ export interface TextBlock {
 export type TextContent =
   | { type: 'text'; value: string }
   | { type: 'reference'; ref: CrossReference }
-  | { type: 'psalmRef'; psalmNumber: number; antiphon?: string; tone?: string }
+  | { type: 'psalmRef'; psalmNumber: number; selector?: string; antiphon?: string; tone?: string }
   | { type: 'macroRef'; name: string }
   | { type: 'formulaRef'; name: string }
   | { type: 'psalmInclude'; psalmNumber: number }

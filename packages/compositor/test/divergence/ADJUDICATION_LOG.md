@@ -22,6 +22,74 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: Reduced 1955 Christmas-octave Matins first-nocturn versicles (mixed fix + adjudication)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the Christmas-octave Matins doxology fix,
+Reduced 1955 Dec `26` and Dec `27` Matins first diverged at the first
+nocturn versicle. The compositor still used ordinary psalter versicles,
+while Perl expected the feast/common versicle material.
+
+**Root cause.** Phase 2 Matins planning only searched for
+`[Nocturn 1 Versum]`. Several feast/common offices encode the first
+nocturn versicle as plain `[Versum 1]`; St Stephen delegates that section
+through the common, while St John supplies a local proper `[Versum 1]`.
+
+**Resolution.** Fixed the first-nocturn versicle fallback to use
+`[Versum 1]` when `[Nocturn 1 Versum]` is absent, preferring inherited
+concrete common text over a proper delegating alias. The exposed rows are
+classified from their source-backed final surfaces: Dec `26` as fanout of
+the established `[Pater secreto]` guillemet family, Dec `27` from St
+John's local proper versicle, Advent I / Lent I / BVM Saturday from their
+own plain `[Versum 1]` aliases, and the Rubrics 1960 Christmas-octave
+Matins rows from the same seasonal doxology rule fixed in the prior
+tranche.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:11-12`;
+`upstream/web/www/horas/Latin/Sancti/07-06.txt:15-16`;
+`upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:15-16`;
+`upstream/web/www/horas/Latin/Sancti/12-26.txt:16-17`;
+`upstream/web/www/horas/Latin/Commune/C2.txt:50-51`;
+`upstream/web/www/horas/Latin/Sancti/12-27.txt:15-17`;
+`upstream/web/www/horas/Latin/Commune/C1.txt:81-83`;
+`upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2`;
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`.
+
+**Impact.** The structural first-nocturn versicle fix lands without a
+net unadjudicated-row increase because the exposed source-backed surfaces
+are classified in the same tranche.
+
+### 2026-04-26 — Pattern: Reduced 1955 Christmas-octave Matins seasonal doxology (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 Dec `26` and Dec `27` Matins stopped in
+the common hymn doxology. Perl expected the Nativity stanza `Jesu, tibi
+sit glória,`, while the compositor kept the default C2/C1 common hymn
+endings (`Laus et perénnis glória` / `Patri, simúlque Fílio,`).
+
+**Root cause.** Phase 2 only attached seasonal fallback doxology variants
+to fallback minor-hour hymns and to Matins hymns with an explicit
+`Doxology=` rule. Feast/common Matins hymns inside Christmas and other
+seasonal doxology windows therefore missed the same source-backed
+variant slot.
+
+**Resolution.** Fixed in Phase 2. The seasonal fallback doxology
+selection is now shared, and Matins planning attaches it to feast/common
+Matins hymn sources when no explicit `Doxology=` rule overrides it.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/12-26.txt:9-15`;
+`upstream/web/www/horas/Latin/Sancti/12-27.txt:9-14`;
+`upstream/web/www/horas/Latin/Commune/C2.txt:20-45`;
+`upstream/web/www/horas/Latin/Commune/C1.txt:94-118`;
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`.
+
+**Impact.** The Dec `26` / Dec `27` Reduced 1955 Matins rows move past
+the hymn doxology mismatch and now expose later Matins versicle seams;
+unadjudicated counts are expected to stay flat because those later
+frontiers are different unresolved families.
+
 ### 2026-04-26 — Pattern: Saturday Office BVM Prime proper lesson (perl-bug)
 
 **Commit.** Current tranche commit.
@@ -4144,6 +4212,82 @@ directive regression covers the `Ant.` marker plus `;;109` source shape.
 **Impact.** The Apr `7` Reduced 1955 Vespers row advances past the
 duplicate-alleluia compositor bug to the next Annunciation Vespers
 antiphon-selection seam.
+
+### 2026-04-26 — Pattern: Rubrics 1960 Lent Saturday Lauds ranged canticle (engine-bug fixed)
+
+**Commit.** This tranche commit.
+
+**Ledger signal.** Rubrics 1960 Feb `24` Lauds first diverged in the
+fourth psalmody slot. Perl expected the Saturday Moyses canticle citation
+`Deut 32:1-27`, while the compositor emitted the Psalmorum title's full
+`Deut 32:1-65` citation and body. After the fix, the same focused probe
+advances to the next Lenten Lauds later-block frontier.
+
+**Root cause.** The parser collapsed inline psalm rows such as
+`;;226(1-27)` to a bare `psalmRef` number, so Phase 2/3 lost the source
+range before resolving `Psalm226`. The major-hour integer selector also
+counted a default row and a matching inline `(sed rubrica 1960)` row as two
+visible psalm rows instead of treating the latter as the source override.
+
+**Resolution.** Fixed. Ranged inline psalm refs now retain their selector
+through parser, Phase 2 assignment, Matins planning, deferred expansion,
+and canticle citation replacement. Integer selector narrowing now treats a
+matching inline `sed` conditional as a replacement for the preceding
+visible row.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:134-140`
+and `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm226.txt:1`.
+
+**Impact.** The Feb `24` Rubrics 1960 Lauds probe advances past the
+ranged Moyses canticle blocker to the next major-hour later-block
+boundary.
+
+### 2026-04-26 — Pattern: Rubrics 1960 Advent Vespers blank later-block rows (perl-bug)
+
+**Commit.** Pending in tranche commit.
+
+**Ledger signal.** Rubrics 1960 Dec `1`, Dec `15`, and Dec `22` Vespers
+first diverged in the Advent later block with Perl expecting `_` while
+the compositor emitted source-backed Advent versicle or antiphon material.
+
+**Root cause.** The corpus supplies the Advent Vespers material directly:
+`[Adv Versum 3]` carries `V. Roráte, cæli...`; the third Sunday source
+routes `[Ant Vespera 3]` through `[Ant Laudes]` to `Beáta es, María...`;
+and the fourth Sunday source carries `Cánite tuba...` in `[Ant Laudes]`.
+The compositor preserves these source rows. The Perl comparison surface
+leaves the first divergent row blank.
+
+**Resolution.** Class `perl-bug`. Added the three Rubrics 1960 Advent
+Vespers row keys to the sidecar.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016`,
+`upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:162-166`, and
+`upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136`.
+
+**Impact.** Three Rubrics 1960 rows move from `unadjudicated` to
+`perl-bug`, narrowing the visible Advent Vespers frontier.
+
+### 2026-04-26 — Pattern: Rubrics 1960 Nov 8 Vespers trailing marker fanout (perl-bug)
+
+**Commit.** Pending in tranche commit.
+
+**Ledger signal.** Rubrics 1960 Nov `8` Vespers first diverged on the
+Friday psalter antiphon: Perl expected `Ant. Dómine, * probásti me et
+cognovísti me. ‡`, while the compositor emitted the same text without
+the trailing marker.
+
+**Root cause.** `Psalmi major:[Day5 Vespera]` carries `Dómine, *
+probásti me et cognovísti me.;;138(1-13)` with no final `‡`. This is the
+same unsupported trailing-continuation-marker comparison-surface family
+already documented for Rubrics 1960.
+
+**Resolution.** Class `perl-bug`. Added the Rubrics 1960 Nov `8` Vespers
+row key to the sidecar as fanout of that family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121`.
+
+**Impact.** One Rubrics 1960 row moves from `unadjudicated` to
+`perl-bug`.
 
 ## See also
 

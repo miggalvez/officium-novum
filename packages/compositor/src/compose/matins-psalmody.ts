@@ -65,10 +65,14 @@ export function buildPsalmHeading(
   const psalmNumber = directPsalm ?? contentPsalm;
   if (!psalmNumber) return undefined;
 
+  const tokenRange =
+    directPsalm && selector ? selector.match(/^\d+\(([^)]+)\)$/u)?.[1] : undefined;
   const rangeSuffix =
     directPsalm && selector && /^\d+-\d+$/u.test(selector)
       ? `(${selector})`
-      : resolvePairedAntiphonRange(pairedAntiphonRef, language, args);
+      : tokenRange
+        ? `(${normalizeInlinePsalmRange(tokenRange)})`
+        : resolvePairedAntiphonRange(pairedAntiphonRef, language, args);
   return `Psalmus ${psalmNumber}${rangeSuffix} [${psalmIndex}]`;
 }
 
@@ -391,7 +395,8 @@ function buildInlinePsalmHeading(
   if (!psalmNumber) {
     return undefined;
   }
-  const rangeSuffix = extractInlinePsalmRange(node.antiphon);
+  const selectorRange = node.selector?.trim().match(/^\d+\(([^)]+)\)$/u)?.[1];
+  const rangeSuffix = selectorRange ? normalizeInlinePsalmRange(selectorRange) : extractInlinePsalmRange(node.antiphon);
   return `Psalmus ${psalmNumber}${rangeSuffix ? `(${rangeSuffix})` : ''} [${psalmIndex}]`;
 }
 
@@ -550,7 +555,11 @@ function extractInlinePsalmRange(text: string | undefined): string | undefined {
   if (!match?.[1]) {
     return undefined;
   }
-  return match[1].replace(/['"]/gu, '').replace(/\s*-\s*/gu, '-').trim();
+  return normalizeInlinePsalmRange(match[1]);
+}
+
+function normalizeInlinePsalmRange(range: string): string {
+  return range.replace(/['"]/gu, '').replace(/\s*-\s*/gu, '-').trim();
 }
 
 function parsePsalmVerseBoundary(boundary: string): PsalmVerseBoundary | undefined {

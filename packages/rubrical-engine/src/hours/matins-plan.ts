@@ -7,6 +7,7 @@ import type { ScriptureTransferEntry } from '@officium-novum/parser';
 import { routeLesson } from './matins-lessons.js';
 import { applyScriptureTransfer } from './matins-scripture.js';
 import { selectLessonAlternate } from './matins-alternates.js';
+import { seasonalFallbackDoxologyVariant } from './doxology.js';
 import { resolveRuleReferenceFiles } from '../rules/resolve-vide-ex.js';
 
 import type {
@@ -253,12 +254,13 @@ function buildHymnSource(
       ? findSection(feastFiles, 'Hymnus Matutinum', input)
       : undefined);
   if (match) {
+    const doxologyVariant =
+      input.celebrationRules.doxologyVariant ??
+      seasonalFallbackDoxologyVariant(input.temporal);
     return {
       kind: 'feast',
       reference: officeReference(match.file.path, match.section.header),
-      ...(input.celebrationRules.doxologyVariant
-        ? { doxologyVariant: input.celebrationRules.doxologyVariant }
-        : {}),
+      ...(doxologyVariant ? { doxologyVariant } : {}),
       ...(input.celebrationRules.papalNames
         ? { papalNameBinding: input.celebrationRules.papalNames }
         : {})
@@ -313,7 +315,9 @@ function buildNocturnVersicle(
   antiphonCount: number
 ): VersicleSource {
   const sectionName = `Nocturn ${nocturnIndex} Versum`;
-  const match = findSection(feastFiles, sectionName, input);
+  const match =
+    findSection(feastFiles, sectionName, input) ??
+    (nocturnIndex === 1 ? findConcreteSection(feastFiles, 'Versum 1', input) : undefined);
   if (match) {
     return {
       reference: officeReference(match.file.path, match.section.header)
@@ -452,11 +456,13 @@ function collectMatinsAntiphons(
     };
 
     const psalmNumber = extractPsalmNumber(content) ?? extractPsalmNumberFromLine(antiphon);
+    const psalmSelector = extractPsalmSelector(content) ?? extractPsalmSelectorFromLine(antiphon);
     const psalmRef = psalmNumber
       ? {
           psalmRef: {
             path: `horas/Latin/Psalterium/Psalmorum/Psalm${psalmNumber}`,
-            section: '__preamble'
+            section: '__preamble',
+            ...(psalmSelector ? { selector: psalmSelector } : {})
           },
           antiphonRef: ref
         }
@@ -590,6 +596,23 @@ function extractPsalmNumberFromLine(line: string): string | undefined {
   return match?.[1];
 }
 
+function extractPsalmSelector(content: TextContent): string | undefined {
+  if (content.type === 'psalmRef') {
+    return content.selector ?? String(content.psalmNumber);
+  }
+
+  if (content.type === 'text') {
+    return extractPsalmSelectorFromLine(content.value);
+  }
+
+  return undefined;
+}
+
+function extractPsalmSelectorFromLine(line: string): string | undefined {
+  const match = /;;\s*([0-9]+(?:\([^)]+\))?)/u.exec(line);
+  return match?.[1];
+}
+
 function versicleSelectorForNocturn(
   section: ParsedFile['sections'][number] | undefined,
   nocturnIndex: 1 | 2 | 3,
@@ -698,6 +721,71 @@ function findSection(
   }
 
   return fallback;
+}
+
+function findConcreteSection(
+  files: readonly ParsedFile[],
+  header: string,
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): SectionMatch | undefined {
+  const matches = findSectionCandidates(files, header, input);
+  return matches.find((match) => hasConcreteContent(match.section)) ?? matches[0];
+}
+
+function findSectionCandidates(
+  files: readonly ParsedFile[],
+  header: string,
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): SectionMatch[] {
+  const date = normalizeDateInput(input.temporal.date);
+  const conditionalMatches: SectionMatch[] = [];
+  const fallbackMatches: SectionMatch[] = [];
+
+  for (const file of files) {
+    for (const section of file.sections) {
+      if (section.header !== header) {
+        continue;
+      }
+
+      if (!section.condition) {
+        fallbackMatches.push({ file, section });
+        continue;
+      }
+
+      if (!input.version) {
+        continue;
+      }
+
+      if (
+        conditionMatches(section.condition, {
+          date,
+          dayOfWeek: input.temporal.dayOfWeek,
+          season: input.temporal.season,
+          version: input.version
+        })
+      ) {
+        conditionalMatches.push({ file, section });
+      }
+    }
+  }
+
+  return conditionalMatches.length > 0 ? conditionalMatches : fallbackMatches;
+}
+
+function hasConcreteContent(section: ParsedFile['sections'][number]): boolean {
+  return section.content.some(isConcreteContent);
+}
+
+function isConcreteContent(node: TextContent): boolean {
+  if (node.type === 'reference' || node.type === 'separator') {
+    return false;
+  }
+
+  if (node.type === 'conditional') {
+    return node.content.some(isConcreteContent);
+  }
+
+  return true;
 }
 
 function resolveProperMatinsFiles(

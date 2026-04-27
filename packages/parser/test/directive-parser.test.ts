@@ -54,6 +54,15 @@ describe('parseDirectiveLine', () => {
     });
   });
 
+  it('preserves ranged psalm selectors on inline psalm references', () => {
+    expect(parseDirectiveLine('In servis suis * miserébitur Dóminus.;;226(1-27)')).toEqual({
+      type: 'psalmRef',
+      psalmNumber: 226,
+      selector: '226(1-27)',
+      antiphon: 'In servis suis * miserébitur Dóminus.'
+    });
+  });
+
   it('parses Responsorium. as a verse marker prefix', () => {
     expect(parseDirectiveLine('Responsorium. Repléti sunt omnes Spíritu sancto')).toEqual({
       type: 'verseMarker',
