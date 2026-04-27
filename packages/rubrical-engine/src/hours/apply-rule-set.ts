@@ -1668,6 +1668,16 @@ function properHeadersForSlot(
         return ['Versum 2', `Versum ${hourSuffix}`, 'Versum 1'];
       }
       if (hour === 'vespers') {
+        // Roman convention (mirrors getantvers in upstream specials.pl):
+        // First Vespers prefers `[Versum 1]`, Second Vespers prefers
+        // `[Versum 3]` and falls back to `[Versum 1]` when the office only
+        // supplies a single versicle. When the side is unknown (e.g. tests
+        // wired without concurrence context) keep the legacy second-Vespers
+        // ordering.
+        const side = (input as InternalVespersAwareInput | undefined)?.__vespersSide;
+        if (side === 'first') {
+          return ['Versum 1', `Versum ${hourSuffix}`, 'Versum 3', 'Versum 2'];
+        }
         return ['Versum 3', `Versum ${hourSuffix}`, 'Versum 1'];
       }
       return [`Versum ${hourSuffix}`, 'Versum 1'];
@@ -1676,10 +1686,19 @@ function properHeadersForSlot(
       // (after the two psalm nocturns of Lauds I/II), and sanctoral files
       // use `[Ant Laudes]` or `[Ant Benedictus]`.
       return ['Ant 2', 'Ant Laudes', 'Ant Benedictus'];
-    case 'antiphon-ad-magnificat':
+    case 'antiphon-ad-magnificat': {
       // Temporal files use `[Ant 3]` for the Magnificat antiphon (after two
       // Vespers psalm segments); sanctoral files vary.
+      // Roman convention (mirrors getantvers in upstream specials.pl): First
+      // Vespers prefers `[Ant 1]`, Second Vespers prefers `[Ant 3]` and
+      // falls back to `[Ant 1]` when the office only carries one Magnificat
+      // antiphon.
+      const magSide = (input as InternalVespersAwareInput | undefined)?.__vespersSide;
+      if (magSide === 'first') {
+        return ['Ant 1', 'Ant Vespera 1', 'Ant Vespera', 'Ant Magnificat', 'Ant 3'];
+      }
       return ['Ant 3', 'Ant Vespera 3', 'Ant Vespera', 'Ant Magnificat'];
+    }
     case 'antiphon-ad-nunc-dimittis':
       return ['Ant Completorium', 'Ant Nunc dimittis'];
     case 'oration':

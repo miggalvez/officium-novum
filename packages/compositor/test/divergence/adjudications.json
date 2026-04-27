@@ -8205,6 +8205,18 @@
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
   },
+  "Reduced - 1955/2024-04-07/Vespers/843b6667": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-07",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86 - the source-backed Domine exaudi section supplies V. Domine, exaudi orationem meam and R. Et clamor meus ad te veniat after the Vespers collect; the compositor emits that bridge while the Perl comparison surface stops at `_` on these rows.",
+    "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "26e2fdd"
+  },
   "Reduced - 1955/2024-05-09/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-05-09",
@@ -8982,6 +8994,18 @@
     "notes": "Representative entry for the Reduced 1955 Jan 14 Sunday keyed `Psalmi minor` family where the source-backed full minor-hour antiphons are flattened by Perl to generic `Ant. Allelúja.` openings.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-06-30/Vespers/843b6667": {
+    "policy": "Reduced - 1955",
+    "date": "2024-06-30",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86 - the source-backed Domine exaudi section supplies V. Domine, exaudi orationem meam and R. Et clamor meus ad te veniat after the Vespers collect; the compositor emits that bridge while the Perl comparison surface stops at `_` on these rows.",
+    "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "26e2fdd"
   },
   "Reduced - 1955/2024-07-01/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -9918,6 +9942,18 @@
     "notes": "Representative entry for the Reduced 1955 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1955 rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Reduced - 1955/2024-10-06/Vespers/843b6667": {
+    "policy": "Reduced - 1955",
+    "date": "2024-10-06",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:79-86 - the source-backed Domine exaudi section supplies V. Domine, exaudi orationem meam and R. Et clamor meus ad te veniat after the Vespers collect; the compositor emits that bridge while the Perl comparison surface stops at `_` on these rows.",
+    "notes": "Phase 3 adjudication sweep: major-hour conclusion bridge remains source-backed after selected 1955/1960 Vespers collects.",
+    "resolvedAt": "2026-04-24",
+    "commitSha": "26e2fdd"
   },
   "Reduced - 1955/2024-11-01/Compline/5dc10d20": {
     "policy": "Reduced - 1955",

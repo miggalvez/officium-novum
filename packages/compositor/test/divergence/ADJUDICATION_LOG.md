@@ -22,6 +22,45 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: First Vespers prefers `[Versum 1]` and `[Ant 1]` (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Rubrics 1960 `2024-11-08` Vespers (First Vespers
+of Lateran Dedication) and the Saturday-Vespers-of-Sunday family
+diverged at the Vespers V/R and the Magnificat antiphon. The
+compositor consistently picked the Second-Vespers slot
+(`[Versum 3]` / `[Ant 3]`) even when concurrence handed Vespers to
+tomorrow's First Vespers, so the Lateran Dedication V/R came out as
+`Domum tuam, Dómine, decet sanctitúdo` and the Mag antiphon as
+`O quam metuéndus est * locus iste` instead of the First-Vespers
+proper `Hæc est domus Dómini fírmiter ædificáta` and
+`Sanctificávit Dóminus * tabernáculum suum`.
+
+**Root cause.** The `apply-rule-set.ts` slot-name lattice for
+`versicle` and `antiphon-ad-magnificat` ignored
+`__vespersSide`. Both slots returned the Second-Vespers ordering for
+every Vespers call.
+
+**Resolution.** Made the lattice side-aware so First Vespers prefers
+`[Versum 1]` / `[Ant 1]`, with `[Versum 3]` / `[Ant 3]` retained as
+the secondary fallback. Mirrors `getantvers` in
+`upstream/web/cgi-bin/horas/specials.pl:548` (`my $key = $num == 3 ?
+$vespera : $num`).
+
+**Citation.** `upstream/web/cgi-bin/horas/specials.pl:540-588`
+(`getantvers` First-vs-Second Vespers slot mapping);
+`upstream/web/www/horas/Latin/Commune/C8.txt:101-103,391-393`
+(Dedication Vespers Versum 1 vs Versum 3);
+`upstream/web/www/horas/Latin/Commune/C8.txt:105-106,395-396`
+(Dedication Mag antiphon Ant 1 vs Ant 3).
+
+**Impact.** Rubrics 1960 `2024-11-08` Vespers V/R now matches Perl;
+several Saturday-Vespers Magnificat antiphons advance their
+matching prefix. Three new fanout adjudications inherit the
+trailing-`‡` rendering-difference family. Net unadjudicated drop:
+Reduced 1955 from `27` → `22`, Rubrics 1960 from `24` → `22`.
+
 ### 2026-04-26 — Pattern: First Vespers of Sunday uses today's Saturday psalter day (engine-bug, fixed)
 
 **Commit.** Current tranche commit.
