@@ -122,7 +122,8 @@ function resolveSlot(
         celebrationRules: input.celebrationRules,
         hourRules: input.hourRules,
         temporal: input.temporal,
-        corpus: input.corpus
+        corpus: input.corpus,
+        vespersSide: (input as InternalVespersAwareInput).__vespersSide
       }),
       properFiles,
       input

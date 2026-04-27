@@ -20,6 +20,7 @@ export interface SelectPsalmodyInput {
   readonly temporal: TemporalContext;
   readonly corpus: OfficeTextIndex;
   readonly omitPrimeBracketPsalm?: boolean;
+  readonly vespersSide?: 'first' | 'second';
 }
 
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
@@ -54,7 +55,9 @@ export function selectPsalmodyRoman1960(
   } else {
     // §16.2 step 4: `psalterScheme === 'dominica'` (e.g. `Psalmi Dominica` in a
     // feast's [Rule]) forces the Sunday distribution even on a weekday.
-    const useDominicaRule = hourRules.psalterScheme === 'dominica';
+    const useDominicaRule =
+      hourRules.psalterScheme === 'dominica' &&
+      !(hour === 'vespers' && params.vespersSide === 'first');
     const useSundayPsalmody =
       useDominicaRule || isSundayForMajorHour(hour, temporal);
 

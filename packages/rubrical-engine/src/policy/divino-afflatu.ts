@@ -358,7 +358,8 @@ export const divinoAfflatuPolicy: RubricalPolicy = {
       celebrationRules: params.celebrationRules,
       hourRules: params.hourRules,
       temporal: params.temporal,
-      corpus: params.corpus
+      corpus: params.corpus,
+      vespersSide: params.vespersSide
     });
   },
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective> {

@@ -22,6 +22,39 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Saturday `Psalmi Dominica` First Vespers psalter day (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Vespers for
+`2024-07-06` still opened on Sunday's `[Day0 Vespera]` psalter row
+after the earlier Saturday-evening First Vespers fix. Perl opened on
+Saturday's `[Day6 Vespera]` row.
+
+**Root cause.** The engine already passed the evening day-of-week into
+First Vespers, but the policy `selectPsalmody` wrappers dropped the new
+Vespers-side hint before reaching the shared Roman psalter selector.
+With that hint missing, `Psalmi Dominica` from the incoming office still
+forced `Day0 Vespera` across the boundary.
+
+**Resolution.** `SelectPsalmodyParams` now preserves the Vespers-side
+hint through every Roman policy wrapper, and the shared Roman psalter
+selector suppresses the `Psalmi Dominica` Sunday override for First
+Vespers. Sunday offices keep their Sunday distribution; Saturday evening
+First Vespers now uses the Saturday psalter row.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147`
+- `docs/phase-2-rubrical-engine-design.md:1247-1250`
+- `packages/compositor/test/divergence/ADJUDICATION_LOG.md` entry
+  `2026-04-26 — Pattern: First Vespers of Sunday uses today's Saturday psalter day`
+
+**Impact.** Reduced 1955 `2024-07-06` Vespers advances to the
+source-backed Day6 full-antiphon-vs-incipit family, while Rubrics 1960
+advances to the unsupported trailing-`‡` surface on the fifth Day6
+antiphon. Both rows are now classified from the Day6 source citation.
+
 ### 2026-04-27 — Pattern: Easter Saturday Prime Mobile Martyrology rollover (engine-bug fix + rendering fanout)
 
 **Commit.** Current tranche commit.
