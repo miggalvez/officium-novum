@@ -22,6 +22,45 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: 1960 I-classis Sunday three-nocturn Matins shape (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Trinity Sunday (`2024-05-26`) Matins under Rubrics
+1960 emitted `Ad Nocturnum` (the 1-nocturn heading) at the start of
+the psalmody section instead of `Nocturnus I`. The compositor was
+collapsing Trinity's nine-lesson three-nocturn shape down to a single
+nocturn.
+
+**Root cause.** `resolveMatinsShape` in `policy/rubrics-1960.ts:412`
+short-circuited every Sunday office to one nocturn via
+`isSundayOffice1960`, and that check ran *before* the rank-class
+branch at `:434` that grants three nocturns to I and II classis
+celebrations. Trinity Sunday is a I classis Sunday (Pent01-0 — the
+Festum Sanctissimæ Trinitatis), so it hit the Sunday-simplification
+fallback before reaching the three-nocturn branch.
+
+**Resolution.** The Sunday short-circuit now excludes
+`celebration.rank.classSymbol === 'I'`, so I classis Sundays keep the
+nine-lesson three-nocturn shape (Codex Rubricarum §164 sets the
+per-class lesson counts; the 1-nocturn Sunday simplification is
+deliberate for II / III / IV classis Sundays, not for I classis).
+II / III / IV classis Sundays continue through the existing branch.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:7-9`
+  (`[Rank] (rubrica 196) ;;Duplex I classis;;6;;`)
+- `upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:13` (`9 lectiones`)
+- `packages/rubrical-engine/src/policy/rubrics-1960.ts:412-422`
+  (`resolveMatinsShape` Sunday branch)
+
+**Impact.** Trinity Sunday Matins under Rubrics 1960 now opens with
+`Nocturnus I` and emits three nocturns. The divergence advances to
+the already-classified Pater Noster guillemet rendering family at
+line 92. One fanout adjudication inherits. Net unadjudicated drop:
+Rubrics 1960 from `5` to `4`, total from `9` to `8`.
+
 ### 2026-04-27 — Pattern: `Symbolum Athanasium` rule directive + direct psalm-file interleave (engine-bug, fixed)
 
 **Commit.** Current tranche commit.

@@ -409,7 +409,15 @@ export const rubrics1960Policy: RubricalPolicy = {
       };
     }
 
-    if (isSundayOffice1960(params.celebration, params.temporal, params.celebrationRules)) {
+    // I classis Sundays (e.g. Trinity Sunday `Pent01-0`, Easter Octave Sundays)
+    // keep the 9-lesson three-nocturn shape under 1960 even though the
+    // generic Sunday office is reduced to 1 nocturn. Codex Rubricarum §164
+    // sets the per-class lesson counts; the 1-nocturn Sunday simplification
+    // applies to II / III / IV classis Sundays only.
+    if (
+      isSundayOffice1960(params.celebration, params.temporal, params.celebrationRules) &&
+      params.celebration.rank.classSymbol !== 'I'
+    ) {
       return {
         nocturns: 1,
         totalLessons: 3,
