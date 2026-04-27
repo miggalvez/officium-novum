@@ -1451,6 +1451,9 @@ function majorHourLaterBlockFallbackReference(
     (HOLY_WEEK_MON_WED_KEYS.has(input.temporal.dayName)
       ? majorHourHolyWeekMonWedLaterBlockSection(input.hour, slot)
       : undefined) ??
+    (input.temporal.season === 'lent' || input.temporal.season === 'passiontide'
+      ? majorHourLentFerialLaterBlockSection(input.hour, slot)
+      : undefined) ??
     majorHourLaterBlockFallbackSection(input.hour, slot, input.temporal.dayOfWeek);
   if (!section) {
     return undefined;
@@ -1460,6 +1463,45 @@ function majorHourLaterBlockFallbackReference(
     path: MAJOR_SPECIAL_PATH,
     section
   };
+}
+
+function majorHourLentFerialLaterBlockSection(
+  hour: HourName,
+  slot: SlotName
+): string | undefined {
+  // `Major Special.txt` carries `[Quad Laudes]` (Isa 58:1) /
+  // `[Hymnus Quad Laudes]` (`O sol salútis`) and `[Quad Vespera]` /
+  // `[Hymnus Quad Vespera]` for the generic Lent / Passiontide ferial later
+  // block, distinct from the year-round `[Feria Laudes]` (Rom 13:12-13) and
+  // the per-day `[Hymnus DayN Laudes]`. Holy Week Mon–Wed already routes to
+  // `[Quad5 ...]` above; this branch fills in the Lent-but-not-Holy-Week
+  // ferial fallback.
+  switch (hour) {
+    case 'lauds':
+      switch (slot) {
+        case 'chapter':
+          return 'Quad Laudes';
+        case 'hymn':
+          return 'Hymnus Quad Laudes';
+        case 'versicle':
+          return 'Quad Versum 2';
+        default:
+          return undefined;
+      }
+    case 'vespers':
+      switch (slot) {
+        case 'chapter':
+          return 'Quad Vespera';
+        case 'hymn':
+          return 'Hymnus Quad Vespera';
+        case 'versicle':
+          return 'Quad Versum 3';
+        default:
+          return undefined;
+      }
+    default:
+      return undefined;
+  }
 }
 
 function majorHourLaterBlockFallbackSection(

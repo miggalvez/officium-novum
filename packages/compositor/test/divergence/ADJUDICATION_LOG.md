@@ -22,6 +22,44 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: 1960 Lent ferial Lauds / Vespers later-block fallback (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Rubrics 1960 Saturday in week 1 of Lent
+(`2024-02-24`) Lauds emitted the year-round ferial later block —
+`Rom 13:12-13` capitulum, `Auróra jam spargit polum` Saturday Day6
+hymn, `V. Repléti sumus mane misericórdia tua.` versicle — instead of
+the Lent ferial trio: `Isa 58:1` (Clama, ne cesses), `O sol salútis`
+hymn, and `V. Ángelis suis Deus mandávit de te.` versicle.
+
+**Root cause.** Phase 2's `majorHourLaterBlockFallbackReference`
+already routed Holy Week Mon–Wed to `[Quad5 ...]` sections in
+`Major Special.txt`, but had no equivalent branch for the broader
+Lent / Passiontide ferial later block. The generic fallback path
+returned `[Feria Laudes]` / `[Feria Versum 2]` / `[Hymnus Day${dow}
+Laudes]`, which is the year-round non-seasonal ferial set.
+
+**Resolution.** Phase 2 now adds a Lent / Passiontide ferial branch
+that returns the `[Quad ...]` sections (`Quad Laudes`,
+`Hymnus Quad Laudes`, `Quad Versum 2`, `Quad Vespera`,
+`Hymnus Quad Vespera`, `Quad Versum 3`) for chapter / hymn / versicle
+slots respectively, ahead of the year-round generic fallback. Holy
+Week Mon–Wed continues to route to `[Quad5 ...]` first. The branch is
+gated on `policy.name === 'rubrics-1960'`, matching the existing
+Holy-Week branch's policy gate.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1045-1180`
+  (Quad Laudes / Quad Vespera / Quad Versum / Hymnus Quad Laudes / Hymnus Quad Vespera)
+- `packages/rubrical-engine/src/hours/apply-rule-set.ts:1450-1497`
+  (majorHourLaterBlockFallbackReference + majorHourLentFerialLaterBlockSection)
+
+**Impact.** Rubrics 1960 `2024-02-24` Lauds is now an exact match
+under the compare harness. Net unadjudicated drop: Rubrics 1960 from
+`8` to `7`, total from `14` to `13`.
+
 ### 2026-04-27 — Pattern: DA All Saints Compline → anticipated Office of the Dead Compline hybrid (perl-bug, classified)
 
 **Commit.** Current tranche commit.
