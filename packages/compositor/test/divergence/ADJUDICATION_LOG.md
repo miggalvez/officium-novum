@@ -22,6 +22,52 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: 1960 ferial Lauds / Vespers Benedictus / Magnificat antiphon fallback (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Rubrics 1960 Tuesday `2024-11-05` Lauds emitted
+`Canticum Zachariæ` directly, omitting the source-backed Tuesday
+Benedictus antiphon `Ant. Eréxit nobis * Dóminus cornu salútis...`.
+Phase 2 had no fallback for `antiphon-ad-benedictus` /
+`antiphon-ad-magnificat` to the per-feria sections in
+`Major Special.txt`, so on plain ferias with no proper Lauds antiphon
+the slot resolved to nothing and Phase 3 jumped straight into the
+canticle.
+
+**Root cause.** `properHeadersForSlot` already enumerates the
+Lauds-side preference order
+`['Ant 2', 'Ant Laudes', 'Ant Benedictus']` for feast files, but the
+1960-only `majorHourLaterBlockFallbackReference` only handled the
+`chapter`, `hymn`, and `versicle` slots. Plain 1960 ferias whose
+celebration files lack `[Ant 2]` therefore fell through to the
+ordinarium fallback (`Canticum Zachariæ` heading) with no antiphon
+attached.
+
+**Resolution.** The 1960 fallback now also returns
+`[Feria${dow + 1} Ant 2]` for `antiphon-ad-benedictus` on Mon–Sat and
+`[Feria${dow + 1} Ant 3]` for `antiphon-ad-magnificat` on Mon–Sat,
+both rooted in `Major Special.txt`. Sundays and ferias with proper
+Lauds/Vespers antiphons in their feast file or commune retain their
+existing precedence; the new fallback only activates when the slot
+has no other source.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:528-810`
+  ([Feria{2..7} Ant 2] / [Feria{2..7} Ant 3])
+- `upstream/web/cgi-bin/horas/specials/specials.pl` — Perl side picks
+  the same per-feria sections via `getantvers` lookup
+- `packages/rubrical-engine/src/hours/apply-rule-set.ts:1517-1593`
+  (majorHourLaterBlockFallbackSection +
+  ferialBenedictusAntiphonSection / ferialMagnificatAntiphonSection)
+
+**Impact.** Rubrics 1960 `2024-11-05` Lauds advances past the
+Benedictus antiphon to the existing 1960 ferial-collect missing
+family, which inherited an existing fanout adjudication. Net
+unadjudicated drop: Rubrics 1960 from `6` to `5`, total from `10` to
+`9`.
+
 ### 2026-04-27 — Pattern: Major-hour psalm-tie alignment for sparsely tagged `[Ant Laudes]` / `[Ant Vespera]` sections (engine-bug, fixed)
 
 **Commit.** Current tranche commit.

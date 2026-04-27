@@ -16015,6 +16015,17 @@
     "resolvedAt": "2026-04-18",
     "commitSha": "bfb3c52"
   },
+  "Rubrics 1960 - 1960/2024-11-05/Lauds/56e276de": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-11-05",
+    "hour": "Lauds",
+    "firstExpected": "Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.",
+    "firstActual": "V. Dómine, exáudi oratiónem meam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Ordinarium/Minor.txt:28-34 and upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-90,306-307 — the minor-hour ordinary carries the oration/conclusion wrapper, and Common/Prayers supplies the `Domine exaudi` and `Oremus` lines before the collect. The compositor preserves that source-backed wrapper while the Perl comparison surface skips directly to the collect on these rows.",
+    "notes": "Roman minor-hour collect-wrapper fanout for Terce/Sext/None rows exposed after later-block fixes.",
+    "resolvedAt": "2026-04-25"
+  },
   "Rubrics 1960 - 1960/2024-11-05/Matins/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-11-05",

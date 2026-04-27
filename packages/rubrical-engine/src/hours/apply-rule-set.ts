@@ -1525,6 +1525,8 @@ function majorHourLaterBlockFallbackSection(
           return `Hymnus Day${dayOfWeek} Laudes`;
         case 'versicle':
           return 'Feria Versum 2';
+        case 'antiphon-ad-benedictus':
+          return ferialBenedictusAntiphonSection(dayOfWeek);
         default:
           return undefined;
       }
@@ -1536,12 +1538,35 @@ function majorHourLaterBlockFallbackSection(
           return `Hymnus Day${dayOfWeek} Vespera`;
         case 'versicle':
           return 'Feria Versum 3';
+        case 'antiphon-ad-magnificat':
+          return ferialMagnificatAntiphonSection(dayOfWeek);
         default:
           return undefined;
       }
     default:
       return undefined;
   }
+}
+
+function ferialBenedictusAntiphonSection(dayOfWeek: number): string | undefined {
+  // `Major Special.txt` keys the per-feria Benedictus antiphon under
+  // `[Feria${N} Ant 2]` for Mon–Sat (N = dow + 1, so Saturday → Feria7).
+  // Sunday's Lauds I/II antiphons are owned by the temporal Sunday office,
+  // so no Sunday fallback is provided here.
+  if (dayOfWeek >= 1 && dayOfWeek <= 6) {
+    return `Feria${dayOfWeek + 1} Ant 2`;
+  }
+  return undefined;
+}
+
+function ferialMagnificatAntiphonSection(dayOfWeek: number): string | undefined {
+  // Mirror of `ferialBenedictusAntiphonSection` but on the Vespers side.
+  // `Major Special.txt` keys the per-feria Magnificat antiphon under
+  // `[Feria${N} Ant 3]` for Mon–Sat (N = dow + 1, so Saturday → Feria7).
+  if (dayOfWeek >= 1 && dayOfWeek <= 6) {
+    return `Feria${dayOfWeek + 1} Ant 3`;
+  }
+  return undefined;
 }
 
 function majorHourHolyWeekMonWedLaterBlockSection(
