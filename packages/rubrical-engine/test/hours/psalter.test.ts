@@ -430,6 +430,35 @@ Nona Dominica=Allelúja, * allelúja, allelúja;;118(129-144),118(145-160),118(1
     expect(refs[0]?.antiphonRef?.selector).toBe('Tertia Dominica#antiphon');
   });
 
+  it('drops the Sunday Psalm 117 slot when Easter Prime carries Prima=53', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Tridentinum]
+Prima Dominica=Allelúja, * allelúja, allelúja;;53,117,118(1-16),118(17-32)
+`.trim()
+    );
+
+    const refs = selectPsalmodyRoman1960({
+      hour: 'prime',
+      celebration: celebration('Tempora/Pasc0-0'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('prime', {
+        psalterScheme: 'dominica',
+        psalmOverrides: [{ key: 'Prima', value: '53' }]
+      }),
+      temporal: temporal('2024-03-31', 'Pasc0-0', 'eastertide', 0),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.selector)).toEqual([
+      '53',
+      '118(1-16)',
+      '118(17-32)'
+    ]);
+  });
+
   it('uses the Tridentinum SQP Prime row on Quad Sundays', () => {
     const textIndex = new TestOfficeTextIndex();
     textIndex.add(

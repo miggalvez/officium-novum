@@ -509,7 +509,6 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
 
         expectMinorHourWithoutAntiphon(psalmodyAt(engine, '2024-03-31', 'prime'), [
           '53',
-          '117',
           '118(1-16)',
           '118(17-32)'
         ]);

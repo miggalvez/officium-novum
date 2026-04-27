@@ -8181,6 +8181,17 @@
     "resolvedAt": "2026-04-21",
     "commitSha": "f1fecef"
   },
+  "Reduced - 1955/2024-03-31/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-31",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Easter Sunday Prime psalm override and Mobile.txt fixes advanced the row to the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-27"
+  },
   "Reduced - 1955/2024-04-02/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-04-02",
@@ -13555,6 +13566,17 @@
     "notes": "Prime post-Martyrologium Easter-Octave seam under Rubrics 1960. After the structural Prime fixes, the remaining stable divergence is only Perl stripping the corpus guillemets from the inherited `[Pater secreto]` rubric.",
     "resolvedAt": "2026-04-21",
     "commitSha": "f1fecef"
+  },
+  "Rubrics 1960 - 1960/2024-03-31/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-31",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Easter Sunday Prime psalm override and Mobile.txt fixes advanced the row to the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-04-02/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

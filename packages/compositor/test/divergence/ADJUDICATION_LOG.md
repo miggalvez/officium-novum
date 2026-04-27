@@ -22,6 +22,45 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Easter Sunday Prime psalm override and Mobile Martyrology (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Easter Sunday Prime
+(`2024-03-31`) diverged first at the second psalm heading: Perl emitted
+`Psalmus 118(1-16) [2]`, while the compositor emitted `Psalmus 117 [2]`.
+After that psalm seam was fixed, the row advanced to the Easter Monday
+Mobile Martyrology notice, where Perl emitted `Hac die quam fecit
+Dóminus...` and the compositor began directly with the April 1 lunar
+heading.
+
+**Root cause.** `Tempora/Pasc0-0` combines the Sunday Tridentinum Prime
+row with a local `Prima=53` rule. The engine treated that rule as a
+slot-1 replacement even though the source row already begins with Psalm
+53, leaving the Sunday Psalm 117 slot behind. The Prime Martyrology
+composer also read only the next-day dated Martyrology file and did not
+prepend the versioned `Martyrologium*/Mobile.txt` notice that upstream
+`specprima.pl` injects for `Pasc0-1`.
+
+**Resolution.** Phase 2 now applies `Prima=53` by dropping the Sunday
+Psalm 117 slot only when the Prime row already begins with Psalm 53.
+Phase 3 now resolves the next Easter-octave Mobile Martyrology key and
+prepends that notice, separated from the normal next-day Martyrology
+file, before appending the common tail.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:7-14`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:217-219`
+- `upstream/web/www/horas/Latin/Martyrologium1960/Mobile.txt:28-29`
+- `upstream/web/www/horas/Latin/Martyrologium1955R/Mobile.txt:28-29`
+- `upstream/web/cgi-bin/horas/specials/specprima.pl:146-170`
+
+**Impact.** The two Easter Sunday Prime rows advance to the already
+documented Prime post-Martyrologium `Pater Noster` guillemet rendering
+family, dropping both Reduced 1955 and Rubrics 1960 by one
+unadjudicated row.
+
 ### 2026-04-27 — Pattern: Pentecost Matins embedded versicle pair (engine-bug fix + rendering fanout)
 
 **Commit.** Current tranche commit.
