@@ -306,6 +306,42 @@ describe('buildMatinsPlan', () => {
     });
   });
 
+  it('prefers inherited concrete Versum 1 over a separator-only proper placeholder', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Sancti/12-26.txt',
+      [
+        '[Rule]',
+        'ex C2a;',
+        '',
+        '[Versum 1]',
+        '_',
+        '',
+        festalMatinsSectionsWithoutFirstVersicle()
+      ].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Commune/C2a.txt',
+      ['[Versum 1]', 'V. Glória et honóre coronásti eum, Dómine.'].join('\n')
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/12-26', 'II', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-12-26', 'Nat2-0', 'christmas', 'II'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Commune/C2a',
+      section: 'Versum 1'
+    });
+  });
+
   it('uses the post-Cum Nostra Hac Aetate Confessor hymn variant for inherited C5 Matins', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add(

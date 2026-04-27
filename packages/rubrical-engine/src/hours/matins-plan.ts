@@ -773,7 +773,19 @@ function findSectionCandidates(
 }
 
 function hasConcreteContent(section: ParsedFile['sections'][number]): boolean {
-  return section.content.some((node) => node.type !== 'reference');
+  return section.content.some(isConcreteContent);
+}
+
+function isConcreteContent(node: TextContent): boolean {
+  if (node.type === 'reference' || node.type === 'separator') {
+    return false;
+  }
+
+  if (node.type === 'conditional') {
+    return node.content.some(isConcreteContent);
+  }
+
+  return true;
 }
 
 function resolveProperMatinsFiles(
