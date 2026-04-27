@@ -1865,10 +1865,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Matins/e66d7177": {
     "policy": "Divino Afflatu - 1954",
@@ -1889,10 +1889,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Prime/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1901,10 +1901,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "441405e"
   },
   "Divino Afflatu - 1954/2024-03-28/Sext/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1913,10 +1913,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Terce/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1925,10 +1925,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Vespers/c3e5bb37": {
     "policy": "Divino Afflatu - 1954",
@@ -1940,7 +1940,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
     "notes": "Fanout of the Psalm 115 half-verse marker family for the DA Triduum Vespers row exposed by the new prelude rubric emit.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Lauds/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1949,10 +1949,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Matins/e66d7177": {
     "policy": "Divino Afflatu - 1954",
@@ -1973,10 +1973,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Prime/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1985,10 +1985,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "441405e"
   },
   "Divino Afflatu - 1954/2024-03-29/Sext/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1997,10 +1997,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Terce/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2009,10 +2009,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Vespers/c3e5bb37": {
     "policy": "Divino Afflatu - 1954",
@@ -2024,7 +2024,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
     "notes": "Fanout of the Psalm 115 half-verse marker family for the DA Triduum Vespers row exposed by the new prelude rubric emit.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Compline/799ec2fa": {
     "policy": "Divino Afflatu - 1954",
@@ -2045,10 +2045,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Matins/e66d7177": {
     "policy": "Divino Afflatu - 1954",
@@ -2069,10 +2069,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Prime/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2081,10 +2081,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "441405e"
   },
   "Divino Afflatu - 1954/2024-03-30/Sext/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2093,10 +2093,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Terce/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2105,10 +2105,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Vespers/c3e5bb37": {
     "policy": "Divino Afflatu - 1954",
@@ -2120,7 +2120,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
     "notes": "Fanout of the Psalm 115 half-verse marker family for the DA Triduum Vespers row exposed by the new prelude rubric emit.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-31/Compline/799ec2fa": {
     "policy": "Divino Afflatu - 1954",
@@ -11207,7 +11207,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 — the St Stephen feast carries an unconditional [Rule] line `no Psalm5` instructing the engine to omit the 5th Vespers psalm under any policy. The compositor honors that source-backed rule and emits 4 antiphons / 4 psalms before transitioning to the capitulum (`Act. 6:8`). The Perl comparison surface ignores the rule and renders the inherited 5th Christmas Day psalm antiphon `De fructu * ventris tui ponam super sedem tuam.`",
     "notes": "Representative entry for the St Stephen Vespers `no Psalm5` family where Perl ignores the source-backed rule that limits the Vespers psalmody to 4 psalms.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "9a4d397"
   },
   "Reduced - 1955/2024-12-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -13667,7 +13667,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:1-6 — the Day0 Laudes1 psalter source carries the proper Sunday paschal antiphon `Allelúja, * Dóminus regnávit, decórem índuit, allelúja, allelúja.` on Low Sunday Lauds. The compositor emits that source-backed antiphon; the Perl comparison surface collapses the paschal opening to a generic `Ant. Allelúja, * allelúja, allelúja.`.",
     "notes": "Fanout of the Reduced 1955 Low Sunday Lauds psalter-major paschal antiphon family for the Rubrics 1960 row.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "9a4d397"
   },
   "Rubrics 1960 - 1960/2024-04-07/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -16599,7 +16599,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 — the St Stephen feast carries an unconditional [Rule] line `no Psalm5` instructing the engine to omit the 5th Vespers psalm under any policy. The compositor honors that source-backed rule and emits 4 antiphons / 4 psalms before transitioning to the capitulum (`Act. 6:8`). The Perl comparison surface ignores the rule and renders the inherited 5th Christmas Day psalm antiphon `De fructu * ventris tui ponam super sedem tuam.`",
     "notes": "Representative entry for the St Stephen Vespers `no Psalm5` family where Perl ignores the source-backed rule that limits the Vespers psalmody to 4 psalms.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "9a4d397"
   },
   "Rubrics 1960 - 1960/2024-12-27/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

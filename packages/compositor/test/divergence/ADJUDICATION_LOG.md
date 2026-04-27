@@ -154,10 +154,11 @@ strip the same content via the non-Tridentine omission conditional.
 newly exposed downstream rows are classified from existing
 half-verse `‡` / blank-line rendering families:
 
-- 9 fanout entries for the DA Triduum Lauds / Terce / Sext / None
-  Psalm 50:3a inline-marker rendering family (compositor preserves
-  source-backed `50:3a Miserére mei, Deus, *...`; Perl emits a
-  blank `_` line).
+- 12 fanout entries for the DA Triduum Lauds / Terce / Sext / None
+  Psalm 50:3a inline-marker rendering family, plus 3 Prime rows after
+  the Credo closeout moved Prime to the same frontier (compositor
+  preserves source-backed `50:3a Miserére mei, Deus, *...`; Perl emits
+  a blank `_` line).
 - 3 fanout entries for the DA Triduum Vespers Psalm 115:7
   half-verse `‡` family already documented for other dates.
 
