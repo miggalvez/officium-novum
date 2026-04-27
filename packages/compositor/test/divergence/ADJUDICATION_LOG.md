@@ -22,6 +22,36 @@ anchor.
 
 ## Entries
 
+### 2026-04-26 — Pattern: Reduced 1955 Christmas-octave Matins seasonal doxology (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 Dec `26` and Dec `27` Matins stopped in
+the common hymn doxology. Perl expected the Nativity stanza `Jesu, tibi
+sit glória,`, while the compositor kept the default C2/C1 common hymn
+endings (`Laus et perénnis glória` / `Patri, simúlque Fílio,`).
+
+**Root cause.** Phase 2 only attached seasonal fallback doxology variants
+to fallback minor-hour hymns and to Matins hymns with an explicit
+`Doxology=` rule. Feast/common Matins hymns inside Christmas and other
+seasonal doxology windows therefore missed the same source-backed
+variant slot.
+
+**Resolution.** Fixed in Phase 2. The seasonal fallback doxology
+selection is now shared, and Matins planning attaches it to feast/common
+Matins hymn sources when no explicit `Doxology=` rule overrides it.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/12-26.txt:9-15`;
+`upstream/web/www/horas/Latin/Sancti/12-27.txt:9-14`;
+`upstream/web/www/horas/Latin/Commune/C2.txt:20-45`;
+`upstream/web/www/horas/Latin/Commune/C1.txt:94-118`;
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`.
+
+**Impact.** The Dec `26` / Dec `27` Reduced 1955 Matins rows move past
+the hymn doxology mismatch and now expose later Matins versicle seams;
+unadjudicated counts are expected to stay flat because those later
+frontiers are different unresolved families.
+
 ### 2026-04-26 — Pattern: Saturday Office BVM Prime proper lesson (perl-bug)
 
 **Commit.** Current tranche commit.

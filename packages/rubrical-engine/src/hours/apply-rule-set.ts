@@ -30,6 +30,7 @@ import type {
 import type { DirectoriumOverlay } from '../types/directorium.js';
 
 import type { OrdinariumSkeleton, SkeletonSlot } from './skeleton.js';
+import { seasonalFallbackDoxologyVariant } from './doxology.js';
 import { resolveRuleReferenceFiles } from '../rules/resolve-vide-ex.js';
 
 const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
@@ -1038,41 +1039,6 @@ function findVariantDoxologyReference(
     path: 'horas/Latin/Psalterium/Doxologies',
     section: variant
   };
-}
-
-function seasonalFallbackDoxologyVariant(
-  temporal: TemporalContext
-): string | undefined {
-  const dayName = temporal.dayName;
-
-  if (/^Nat/iu.test(dayName)) {
-    const dayOfMonth = Number.parseInt(temporal.date.slice(-2), 10);
-    return dayOfMonth >= 6 && dayOfMonth < 13 ? 'Epi' : 'Nat';
-  }
-
-  if (/^Epi[01]/iu.test(dayName)) {
-    const dayOfMonth = Number.parseInt(temporal.date.slice(-2), 10);
-    if (dayOfMonth < 14) {
-      return 'Epi';
-    }
-  }
-
-  if (
-    /^Pasc6/iu.test(dayName) ||
-    (/^Pasc5/iu.test(dayName) && temporal.dayOfWeek > 3)
-  ) {
-    return 'Asc';
-  }
-
-  if (/^Pasc[0-5]/iu.test(dayName)) {
-    return 'Pasch';
-  }
-
-  if (/^Pasc7/iu.test(dayName)) {
-    return 'Pent';
-  }
-
-  return undefined;
 }
 
 function ordinariumFallbackReference(

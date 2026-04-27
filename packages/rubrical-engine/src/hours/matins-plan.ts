@@ -7,6 +7,7 @@ import type { ScriptureTransferEntry } from '@officium-novum/parser';
 import { routeLesson } from './matins-lessons.js';
 import { applyScriptureTransfer } from './matins-scripture.js';
 import { selectLessonAlternate } from './matins-alternates.js';
+import { seasonalFallbackDoxologyVariant } from './doxology.js';
 import { resolveRuleReferenceFiles } from '../rules/resolve-vide-ex.js';
 
 import type {
@@ -253,12 +254,13 @@ function buildHymnSource(
       ? findSection(feastFiles, 'Hymnus Matutinum', input)
       : undefined);
   if (match) {
+    const doxologyVariant =
+      input.celebrationRules.doxologyVariant ??
+      seasonalFallbackDoxologyVariant(input.temporal);
     return {
       kind: 'feast',
       reference: officeReference(match.file.path, match.section.header),
-      ...(input.celebrationRules.doxologyVariant
-        ? { doxologyVariant: input.celebrationRules.doxologyVariant }
-        : {}),
+      ...(doxologyVariant ? { doxologyVariant } : {}),
       ...(input.celebrationRules.papalNames
         ? { papalNameBinding: input.celebrationRules.papalNames }
         : {})

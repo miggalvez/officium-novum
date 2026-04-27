@@ -230,6 +230,26 @@ describe('buildMatinsPlan', () => {
     }
   });
 
+  it('adds seasonal Nativity doxology metadata to Christmas-octave common Matins hymns', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Sancti/12-26.txt', festalMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/12-26', 'II', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-12-26', 'Nat2-0', 'christmas', 'II'),
+      policy: rubrics1960Policy,
+      corpus
+    });
+
+    expect(result.plan.hymn.kind).toBe('feast');
+    if (result.plan.hymn.kind === 'feast') {
+      expect(result.plan.hymn.doxologyVariant).toBe('Nat');
+    }
+  });
+
   it('uses the post-Cum Nostra Hac Aetate Confessor hymn variant for inherited C5 Matins', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add(
@@ -308,7 +328,8 @@ describe('buildMatinsPlan', () => {
       reference: {
         path: 'horas/Latin/Commune/C5',
         section: 'Hymnus1 Matutinum'
-      }
+      },
+      doxologyVariant: 'Pasch'
     });
   });
 
