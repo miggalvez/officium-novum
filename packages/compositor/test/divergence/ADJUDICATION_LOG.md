@@ -22,6 +22,49 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: parser `@PATH::sub` empty-section reference (parser-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Easter Octave weekday Matins (Apr `02`-`06`) for
+both Reduced 1955 and Rubrics 1960 close their feast-file
+`[Ant Matutinum]` block with an inherited substitution reference like
+`@Tempora/Pasc0-0::s/^V\..*//sm`. The intent is to inherit the
+preceding day's antiphon block while stripping its V/R lines. The
+parser previously stored the residual `:` as the literal section
+name (`section: ':'`) which is not a valid section header in any
+file, so the inheritance silently failed and the engine saw an
+[Ant Matutinum] containing only the local V/R lines.
+
+**Root cause.** `parsePathAndSection` in
+`packages/parser/src/parser/directive-parser.ts` parses
+`PATH::` as `{ path: 'PATH', section: ':' }`. After the substitution
+is extracted, the residual carries a stray colon that the trim() call
+preserved.
+
+**Resolution.** Stripped leading colons from the parsed section
+before deciding whether it is empty. The reference now resolves to
+the surrounding section name (the standard `@PATH:SECTION` semantics
+when SECTION is omitted). Added a parser unit test exercising the
+exact `@Tempora/Pasc0-0::s/^V\..*//sm` form. Updated the
+spot-check-validation snapshot whose `warningCount` totals dropped by
+2-3 per affected feast file (fewer unresolved references). All
+existing parser, rubrical-engine, and compositor tests stay green.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Tempora/Pasc0-2.txt:46-50`,
+`upstream/web/www/horas/Latin/Tempora/Pasc0-3.txt`,
+`upstream/web/www/horas/Latin/Tempora/Pasc0-5.txt`, and
+`upstream/web/www/horas/Latin/Tempora/Pasc0-6.txt` (Easter Octave
+weekday `[Ant Matutinum]` blocks using `@Tempora/Pasc0-0::sub`).
+
+**Impact.** This is a foundational parser correctness fix. The
+Easter Octave weekday Matins ledger rows (8 across both Roman
+policies) do not yet close because the compositor still needs
+follow-up work to emit the now-resolved antiphons in the 1-nocturn
+Matins shape. Counted as a non-row-count tranche; the compositor
+follow-up belongs to a subsequent tranche.
+
 ### 2026-04-27 — Pattern: DA Triduum Prime silent Credo emit (engine-bug, fixed)
 
 **Commit.** Current tranche commit.

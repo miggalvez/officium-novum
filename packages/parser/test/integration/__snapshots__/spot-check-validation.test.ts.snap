@@ -1031,7 +1031,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 59,
-      "warningCount": 50,
+      "warningCount": 48,
     },
     {
       "domain": "horas",
@@ -1062,7 +1062,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 59,
-      "warningCount": 51,
+      "warningCount": 49,
     },
     {
       "domain": "horas",
@@ -1093,7 +1093,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 59,
-      "warningCount": 51,
+      "warningCount": 49,
     },
     {
       "domain": "horas",
@@ -1375,7 +1375,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 70,
-      "warningCount": 53,
+      "warningCount": 51,
     },
     {
       "domain": "horas",
@@ -1442,7 +1442,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 58,
-      "warningCount": 58,
+      "warningCount": 56,
     },
     {
       "domain": "horas",
@@ -1472,7 +1472,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 70,
-      "warningCount": 54,
+      "warningCount": 52,
     },
   ],
   "skippedCount": 2,

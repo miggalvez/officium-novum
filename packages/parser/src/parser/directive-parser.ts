@@ -791,8 +791,16 @@ function parsePathAndSection(input: string): { path?: string; section?: string }
   const path = trimmed.slice(0, firstColonIndex).trim();
   const section = trimmed.slice(firstColonIndex + 1).trim();
 
+  // `@PATH::sub` (an empty section between two colons before a trailing
+  // substitution) carries an empty section name semantically — i.e. the
+  // reference inherits the current section. The substitution is already
+  // extracted by `extractSubstitutions`, so the residual input collapses to
+  // `PATH::` here. Treat the trailing colon-only section as undefined so
+  // the reference resolves against the surrounding section name.
+  const normalizedSection = section.replace(/^:+/u, '').trim();
+
   return {
     path: path.length > 0 ? path : undefined,
-    section: section.length > 0 ? section : undefined
+    section: normalizedSection.length > 0 ? normalizedSection : undefined
   };
 }

@@ -129,6 +129,29 @@ describe('cross-reference parsers', () => {
     });
   });
 
+  it('parses an empty section between two colons before a substitution', () => {
+    // `@PATH::sub` (used by the Easter Octave Tempora files to inherit the
+    // preceding-day's `[Ant Matutinum]` while stripping its V/R lines)
+    // semantically inherits the surrounding section name. The trailing
+    // colon must collapse to an undefined section so the resolver picks
+    // up the current section context.
+    expect(
+      parseCrossReference('@Tempora/Pasc0-0::s/^V\\..*//sm')
+    ).toEqual({
+      path: 'Tempora/Pasc0-0',
+      section: undefined,
+      lineSelector: undefined,
+      substitutions: [
+        {
+          pattern: '^V\\..*',
+          replacement: '',
+          flags: 'sm'
+        }
+      ],
+      isPreamble: false
+    });
+  });
+
   it('parses selector plus chained substitutions', () => {
     expect(
       parseCrossReference('@Tempora/Adv1-0o:Lectio3:1-3 s/-15/-11/ s/.$/./')
