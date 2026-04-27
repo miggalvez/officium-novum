@@ -139,6 +139,97 @@ describe('buildMatinsPlan', () => {
     ]);
   });
 
+  it('falls through to inherited Easter Octave Matins antiphons when the local section only overlays a reference and versicle', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Pasc0-0.txt', easterSundayMatinsSections());
+    corpus.add('horas/Latin/Tempora/Pasc0-2.txt', easterWeekdayMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Pasc0-2', 'I', 'temporal'),
+      celebrationRules: {
+        ...baseRules(),
+        officeReferenceRules: [{ kind: 'ex', target: 'Pasc0-0' }]
+      },
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-04-02', 'Pasc0-2', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturns).toBe(1);
+    expect(result.plan.nocturnPlan[0]?.antiphons.map((antiphon) => antiphon.reference)).toEqual([
+      {
+        path: 'horas/Latin/Tempora/Pasc0-0',
+        section: 'Ant Matutinum',
+        selector: '1'
+      },
+      {
+        path: 'horas/Latin/Tempora/Pasc0-0',
+        section: 'Ant Matutinum',
+        selector: '2'
+      },
+      {
+        path: 'horas/Latin/Tempora/Pasc0-0',
+        section: 'Ant Matutinum',
+        selector: '3'
+      }
+    ]);
+    expect(result.plan.nocturnPlan[0]?.psalmody).toHaveLength(3);
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Tempora/Pasc0-2',
+      section: 'Ant Matutinum',
+      selector: '5-6'
+    });
+  });
+
+  it('prefers the Matins antiphon block versicle before plain Versum 1', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Pasc7-0.txt', pentecostMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Pasc7-0', 'I', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-05-19', 'Pasc7-0', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturnPlan[0]?.versicle.reference).toEqual({
+      path: 'horas/Latin/Tempora/Pasc7-0',
+      section: 'Ant Matutinum',
+      selector: '4-5'
+    });
+  });
+
+  it('prefers version-gated Matins antiphon sections over unconditional fallbacks', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/TestConditional.txt', conditionalMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/TestConditional', 'I', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-05-19', 'Pasc7-0', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(
+      result.plan.nocturnPlan[0]?.antiphons.map((antiphon) => antiphon.psalmRef?.psalmRef.path)
+    ).toEqual([
+      'horas/Latin/Psalterium/Psalmorum/Psalm10',
+      'horas/Latin/Psalterium/Psalmorum/Psalm11',
+      'horas/Latin/Psalterium/Psalmorum/Psalm12'
+    ]);
+  });
+
   it('substitutes seasonal Matins versicle on a Lenten Saturday ferial 1-nocturn', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add('horas/Latin/Tempora/Quad1-6.txt', ferialMatinsSectionsWithoutVersicle());
@@ -827,6 +918,116 @@ function adventSundayMatinsSections(): string {
     'Resp',
     '',
     '[Responsory9]',
+    'Resp'
+  ].join('\n');
+}
+
+function easterSundayMatinsSections(): string {
+  return [
+    '[Ant Matutinum]',
+    'Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.;;1',
+    'Postulávi Patrem meum, * allelúja: dedit mihi gentes, allelúja, in hereditátem, allelúja.;;2',
+    'Ego dormívi, * et somnum cepi: et exsurréxi, quóniam Dóminus suscépit me, allelúja, allelúja.;;3',
+    'V. Surréxit Dóminus de sepúlcro, allelúja.',
+    'R. Qui pro nobis pepéndit in ligno, allelúja.'
+  ].join('\n');
+}
+
+function easterWeekdayMatinsSections(): string {
+  return [
+    '[Rule]',
+    'ex Pasc0-0;',
+    '',
+    '[Ant Matutinum]',
+    '@Tempora/Pasc0-0::s/^V\\..*//sm',
+    'V. Surréxit Dóminus vere, allelúja.',
+    'R. Et appáruit Simóni, allelúja.',
+    '',
+    '[Lectio1]',
+    'Text',
+    '',
+    '[Lectio2]',
+    'Text',
+    '',
+    '[Lectio3]',
+    'Text',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
+    'Resp'
+  ].join('\n');
+}
+
+function pentecostMatinsSections(): string {
+  return [
+    '[Ant Matutinum]',
+    'Factus est * repénte de cælo sonus adveniéntis spíritus veheméntis, allelúja, allelúja.;;47',
+    'Confírma hoc, Deus, * quod operátus es in nobis: a templo sancto tuo, quod est in Jerúsalem, allelúja, allelúja.;;67',
+    'Emítte Spíritum tuum, * et creabúntur: et renovábis fáciem terræ, allelúja, allelúja.;;103',
+    'V. Spíritus Dómini replévit orbem terrárum, allelúja.',
+    'R. Et hoc quod cóntinet ómnia, sciéntiam habet vocis, allelúja.',
+    '',
+    '[Versum 1]',
+    'V. Repléti sunt omnes Spíritu Sancto, allelúja.',
+    'R. Et cœpérunt loqui, allelúja.',
+    '',
+    '[Lectio1]',
+    'Text',
+    '',
+    '[Lectio2]',
+    'Text',
+    '',
+    '[Lectio3]',
+    'Text',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
+    'Resp'
+  ].join('\n');
+}
+
+function conditionalMatinsSections(): string {
+  return [
+    '[Ant Matutinum]',
+    'Default 1;;1',
+    'Default 2;;2',
+    'Default 3;;3',
+    'V. Default.',
+    'R. Default.',
+    '',
+    '[Ant Matutinum] (rubrica 1960)',
+    'Proper 1;;10',
+    'Proper 2;;11',
+    'Proper 3;;12',
+    'V. Proper.',
+    'R. Proper.',
+    '',
+    '[Lectio1]',
+    'Text',
+    '',
+    '[Lectio2]',
+    'Text',
+    '',
+    '[Lectio3]',
+    'Text',
+    '',
+    '[Responsory1]',
+    'Resp',
+    '',
+    '[Responsory2]',
+    'Resp',
+    '',
+    '[Responsory3]',
     'Resp'
   ].join('\n');
 }

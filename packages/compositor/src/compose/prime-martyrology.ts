@@ -90,7 +90,15 @@ export function composePrimeMartyrologySection(
       continue;
     }
 
-    const bucket = formatPrimeMartyrologyContent(resolvePrimeMartyrologyFile(path, language, nextDate, args));
+    const mobileKey = nextMobileMartyrologyKey(args.summary.temporal.dayName);
+    const mobile = resolvePrimeMobileMartyrologyContent(language, mobileKey, args);
+    const martyrology = formatPrimeMartyrologyContent(
+      resolvePrimeMartyrologyFile(path, language, nextDate, args)
+    );
+    const bucket =
+      mobileKey === 'Pasc0-1'
+        ? [...formatPrimePrependedMobileMartyrologyContent(mobile), ...martyrology]
+        : insertPrimeMobileMartyrologyContent(martyrology, mobile);
     appendPrimeMartyrologyTail(bucket, language, args, 'Conclmart');
     if (!shouldSkipPretiosa(args.summary)) {
       appendPrimeMartyrologyTail(bucket, language, args, 'Pretiosa');
@@ -167,6 +175,104 @@ function primeMartyrologyCandidates(
   return candidates;
 }
 
+function resolvePrimeMobileMartyrologyContent(
+  language: string,
+  key: string | undefined,
+  args: PrimeMartyrologyComposeArgs
+): readonly TextContent[] {
+  if (!key) {
+    return [];
+  }
+
+  const path = primeMobileMartyrologyPath(
+    args.corpus,
+    args.context.version.handle,
+    language,
+    args.options.langfb
+  );
+  if (!path) {
+    return [];
+  }
+
+  const resolved = resolveReference(
+    args.corpus,
+    {
+      path,
+      section: key
+    },
+    {
+      languages: [language],
+      langfb: args.options.langfb,
+      dayOfWeek: args.context.dayOfWeek,
+      date: args.context.date,
+      season: args.context.season,
+      version: args.context.version,
+      modernStyleMonthday: args.context.version.handle.includes('1960'),
+      ...(args.onWarning ? { onWarning: args.onWarning } : {})
+    }
+  );
+  const section = resolved[language];
+  if (!section || section.selectorMissing) {
+    return [];
+  }
+
+  const expanded = expandDeferredNodes(section.content, {
+    index: args.corpus,
+    language,
+    langfb: args.options.langfb,
+    season: args.context.season,
+    seen: new Set(),
+    maxDepth: MAX_DEFERRED_DEPTH,
+    ...(args.onWarning ? { onWarning: args.onWarning } : {})
+  });
+  return flattenConditionals(expanded, args.context);
+}
+
+function nextMobileMartyrologyKey(dayName: string): string | undefined {
+  const easterOctave = /^Pasc0-([0-6])$/u.exec(dayName);
+  if (easterOctave) {
+    const day = Number(easterOctave[1]);
+    return day === 6 ? 'Pasc1-0' : `Pasc0-${day + 1}`;
+  }
+
+  return undefined;
+}
+
+function primeMobileMartyrologyPath(
+  corpus: TextIndex,
+  handle: string,
+  language: string,
+  langfb: string | undefined
+): string | undefined {
+  const fallbackChain = languageFallbackChain(language, { langfb });
+  for (const candidateLanguage of fallbackChain) {
+    for (const candidatePath of primeMobileMartyrologyCandidates(handle, candidateLanguage)) {
+      if (corpus.getFile(`${candidatePath}.txt`)) {
+        return candidatePath;
+      }
+    }
+  }
+
+  return undefined;
+}
+
+function primeMobileMartyrologyCandidates(
+  handle: string,
+  language: string
+): readonly string[] {
+  const candidates: string[] = [];
+  const latin = /^(Latin|la)(?:-|$)/iu.test(language);
+  if (latin && handle.includes('1960')) {
+    candidates.push(`horas/${language}/Martyrologium1960/Mobile`);
+  } else if (latin && handle.includes('1955')) {
+    candidates.push(`horas/${language}/Martyrologium1955R/Mobile`);
+  } else if (latin && handle.includes('1570')) {
+    candidates.push(`horas/${language}/Martyrologium1570/Mobile`);
+  }
+  candidates.push(`horas/${language}/Martyrologium/Mobile`);
+  return candidates;
+}
+
 function resolvePrimeMartyrologyFile(
   path: string,
   language: string,
@@ -230,6 +336,56 @@ function formatPrimeMartyrologyContent(content: readonly TextContent[]): TextCon
   }
 
   return bucket;
+}
+
+function formatPrimePrependedMobileMartyrologyContent(content: readonly TextContent[]): TextContent[] {
+  if (content.length === 0) {
+    return [];
+  }
+
+  return [
+    ...content.map(
+      (node): TextContent =>
+        node.type === 'text'
+          ? {
+              type: 'verseMarker',
+              marker: 'v.',
+              text: node.value
+            }
+          : node
+    ),
+    { type: 'separator' }
+  ];
+}
+
+function insertPrimeMobileMartyrologyContent(
+  martyrology: readonly TextContent[],
+  mobile: readonly TextContent[]
+): TextContent[] {
+  if (mobile.length === 0) {
+    return [...martyrology];
+  }
+
+  const insertion = mobile.map(
+    (node): TextContent =>
+      node.type === 'text'
+        ? {
+            type: 'verseMarker',
+            marker: 'r.',
+            text: node.value
+          }
+        : node
+  );
+  const separatorIndex = martyrology.findIndex((node) => node.type === 'separator');
+  if (separatorIndex === -1) {
+    return [...martyrology, ...insertion];
+  }
+
+  return [
+    ...martyrology.slice(0, separatorIndex + 1),
+    ...insertion,
+    ...martyrology.slice(separatorIndex + 1)
+  ];
 }
 
 function appendPrimeMartyrologyTail(

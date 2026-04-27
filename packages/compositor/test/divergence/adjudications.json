@@ -1865,10 +1865,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Matins/e66d7177": {
     "policy": "Divino Afflatu - 1954",
@@ -1889,10 +1889,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Prime/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1901,10 +1901,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "441405e"
   },
   "Divino Afflatu - 1954/2024-03-28/Sext/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1913,10 +1913,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Terce/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1925,10 +1925,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-28/Vespers/c3e5bb37": {
     "policy": "Divino Afflatu - 1954",
@@ -1940,7 +1940,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
     "notes": "Fanout of the Psalm 115 half-verse marker family for the DA Triduum Vespers row exposed by the new prelude rubric emit.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Lauds/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1949,10 +1949,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Matins/e66d7177": {
     "policy": "Divino Afflatu - 1954",
@@ -1973,10 +1973,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Prime/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1985,10 +1985,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "441405e"
   },
   "Divino Afflatu - 1954/2024-03-29/Sext/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1997,10 +1997,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Terce/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2009,10 +2009,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-29/Vespers/c3e5bb37": {
     "policy": "Divino Afflatu - 1954",
@@ -2024,7 +2024,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
     "notes": "Fanout of the Psalm 115 half-verse marker family for the DA Triduum Vespers row exposed by the new prelude rubric emit.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Compline/799ec2fa": {
     "policy": "Divino Afflatu - 1954",
@@ -2045,10 +2045,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Matins/e66d7177": {
     "policy": "Divino Afflatu - 1954",
@@ -2069,10 +2069,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Prime/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2081,10 +2081,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "441405e"
   },
   "Divino Afflatu - 1954/2024-03-30/Sext/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2093,10 +2093,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Terce/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -2105,10 +2105,10 @@
     "firstExpected": "_",
     "firstActual": "50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam.",
     "class": "rendering-difference",
-    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:3 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank ) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
-    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank  line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers.",
+    "notes": "DA Triduum Lauds / minor-hour rendering family where Perl emits a blank `_` line where the compositor preserves the source-backed Psalm 50:3a opening verse.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-30/Vespers/c3e5bb37": {
     "policy": "Divino Afflatu - 1954",
@@ -2120,7 +2120,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm115.txt:7 — the source line explicitly encodes Psalm 115:7b as `Dirupísti víncula mea: ‡ (8) tibi sacrificábo hóstiam laudis, * et nomen Dómini invocábo.` The compositor preserves that half-verse structure while Perl flattens it to a single `*` boundary.",
     "notes": "Fanout of the Psalm 115 half-verse marker family for the DA Triduum Vespers row exposed by the new prelude rubric emit.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "5ba3f86"
   },
   "Divino Afflatu - 1954/2024-03-31/Compline/799ec2fa": {
     "policy": "Divino Afflatu - 1954",
@@ -8181,6 +8181,17 @@
     "resolvedAt": "2026-04-21",
     "commitSha": "f1fecef"
   },
+  "Reduced - 1955/2024-03-31/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-03-31",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Easter Sunday Prime psalm override and Mobile.txt fixes advanced the row to the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-27"
+  },
   "Reduced - 1955/2024-04-02/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
     "date": "2024-04-02",
@@ -8204,6 +8215,17 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Reduced - 1955/2024-04-02/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-02",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
   },
   "Reduced - 1955/2024-04-02/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -8240,6 +8262,29 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-04-03/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-03",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
+  },
+  "Reduced - 1955/2024-04-03/Matins/570ca05e": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-03",
+    "hour": "Matins",
+    "firstExpected": "Ant. Ego sum qui sum.",
+    "firstActual": "Ant. Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:60 — Easter Sunday Ant Matutinum carries the full antiphon `Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.`. The compositor preserves that source-backed antiphon on inherited Easter Octave weekday Matins; the Perl comparison surface abbreviates it to the incipit-only `Ant. Ego sum qui sum` on these days.",
+    "notes": "Fanout of the Reduced 1955 Easter Octave Matins full-antiphon source surface exposed after the inherited Ant Matutinum planner seam was fixed.",
+    "resolvedAt": "2026-04-27",
+    "commitSha": "8a2f1f7"
   },
   "Reduced - 1955/2024-04-03/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
@@ -8349,6 +8394,29 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
   },
+  "Reduced - 1955/2024-04-05/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-05",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
+  },
+  "Reduced - 1955/2024-04-05/Matins/570ca05e": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-05",
+    "hour": "Matins",
+    "firstExpected": "Ant. Ego sum qui sum.",
+    "firstActual": "Ant. Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:60 — Easter Sunday Ant Matutinum carries the full antiphon `Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.`. The compositor preserves that source-backed antiphon on inherited Easter Octave weekday Matins; the Perl comparison surface abbreviates it to the incipit-only `Ant. Ego sum qui sum` on these days.",
+    "notes": "Fanout of the Reduced 1955 Easter Octave Matins full-antiphon source surface exposed after the inherited Ant Matutinum planner seam was fixed.",
+    "resolvedAt": "2026-04-27",
+    "commitSha": "8a2f1f7"
+  },
   "Reduced - 1955/2024-04-05/Prime/29ec2a3d": {
     "policy": "Reduced - 1955",
     "date": "2024-04-05",
@@ -8360,6 +8428,17 @@
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Reduced 1955.",
     "resolvedAt": "2026-04-22",
     "commitSha": "790134e"
+  },
+  "Reduced - 1955/2024-04-06/Prime/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-06",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Mobile.txt Low Sunday rollover advanced Easter Saturday Prime to the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-27"
   },
   "Reduced - 1955/2024-04-05/Vespers/a214ae73": {
     "policy": "Reduced - 1955",
@@ -8396,6 +8475,29 @@
     "notes": "Representative entry for the Reduced 1955 major-hour full-antiphon opening family where Perl abbreviates source-backed antiphons to incipits.",
     "resolvedAt": "2026-04-24",
     "commitSha": "dfbe3fe"
+  },
+  "Reduced - 1955/2024-04-06/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-06",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
+  },
+  "Reduced - 1955/2024-04-06/Matins/570ca05e": {
+    "policy": "Reduced - 1955",
+    "date": "2024-04-06",
+    "hour": "Matins",
+    "firstExpected": "Ant. Ego sum qui sum.",
+    "firstActual": "Ant. Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:60 — Easter Sunday Ant Matutinum carries the full antiphon `Ego sum qui sum, * et consílium meum non est cum ímpiis, sed in lege Dómini volúntas mea est, allelúja.`. The compositor preserves that source-backed antiphon on inherited Easter Octave weekday Matins; the Perl comparison surface abbreviates it to the incipit-only `Ant. Ego sum qui sum` on these days.",
+    "notes": "Fanout of the Reduced 1955 Easter Octave Matins full-antiphon source surface exposed after the inherited Ant Matutinum planner seam was fixed.",
+    "resolvedAt": "2026-04-27",
+    "commitSha": "8a2f1f7"
   },
   "Reduced - 1955/2024-04-07/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8600,6 +8702,17 @@
     "notes": "Representative entry for the Reduced 1955 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
+  },
+  "Reduced - 1955/2024-05-19/Matins/29ec2a3d": {
+    "policy": "Reduced - 1955",
+    "date": "2024-05-19",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Pentecost embedded Matins versicle seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
   },
   "Reduced - 1955/2024-05-19/Prime/9c18c7ac": {
     "policy": "Reduced - 1955",
@@ -9474,6 +9587,17 @@
     "notes": "Reduced 1955 Saturday Office BVM psalter-antiphon incipit surface after condition-gated C10 antiphons were suppressed.",
     "resolvedAt": "2026-04-26",
     "commitSha": "118c6f5"
+  },
+  "Reduced - 1955/2024-07-06/Vespers/75b87843": {
+    "policy": "Reduced - 1955",
+    "date": "2024-07-06",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Benedíctus Dóminus. ‡",
+    "firstActual": "Ant. Benedíctus Dóminus * suscéptor meus et liberátor meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 `Vespera` psalter source carries the full Saturday opening antiphon `Benedíctus Dóminus * suscéptor meus et liberátor meus.`. The compositor now routes the First Vespers boundary to that source-backed Saturday row; the Perl comparison surface abbreviates it to incipit-only `Ant. Benedíctus Dóminus. ‡`.",
+    "notes": "Reduced 1955 Saturday-evening First Vespers row after `Psalmi Dominica` stopped forcing Sunday Day0 psalmody across the boundary.",
+    "resolvedAt": "2026-04-27"
   },
   "Reduced - 1955/2024-08-15/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -11207,7 +11331,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 — the St Stephen feast carries an unconditional [Rule] line `no Psalm5` instructing the engine to omit the 5th Vespers psalm under any policy. The compositor honors that source-backed rule and emits 4 antiphons / 4 psalms before transitioning to the capitulum (`Act. 6:8`). The Perl comparison surface ignores the rule and renders the inherited 5th Christmas Day psalm antiphon `De fructu * ventris tui ponam super sedem tuam.`",
     "notes": "Representative entry for the St Stephen Vespers `no Psalm5` family where Perl ignores the source-backed rule that limits the Vespers psalmody to 4 psalms.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "9a4d397"
   },
   "Reduced - 1955/2024-12-27/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -13465,6 +13589,17 @@
     "resolvedAt": "2026-04-21",
     "commitSha": "f1fecef"
   },
+  "Rubrics 1960 - 1960/2024-03-31/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-03-31",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Easter Sunday Prime psalm override and Mobile.txt fixes advanced the row to the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-27"
+  },
   "Rubrics 1960 - 1960/2024-04-02/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-02",
@@ -13488,6 +13623,17 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Rubrics 1960 - 1960/2024-04-02/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-02",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-04-02/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
@@ -13524,6 +13670,17 @@
     "notes": "Fanout of the Roman Lauds Psalm 99 half-verse family after the Easter-Octave Vespers burn-down exposed the same source-backed `‡ ... *` seam on April octave Lauds.",
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
+  },
+  "Rubrics 1960 - 1960/2024-04-03/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-03",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-04-03/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
@@ -13609,6 +13766,17 @@
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
   },
+  "Rubrics 1960 - 1960/2024-04-05/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-05",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
+  },
   "Rubrics 1960 - 1960/2024-04-05/Prime/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-05",
@@ -13620,6 +13788,17 @@
     "notes": "Fanout of the already-classified Roman Prime post-Martyrologium Easter-Octave guillemet family after the newly exposed Apr 3-5 Prime rows surfaced under Rubrics 1960.",
     "resolvedAt": "2026-04-22",
     "commitSha": "790134e"
+  },
+  "Rubrics 1960 - 1960/2024-04-06/Prime/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-06",
+    "hour": "Prime",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Mobile.txt Low Sunday rollover advanced Easter Saturday Prime to the inherited `[Pater secreto]` rubric.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-04-06/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -13645,6 +13824,17 @@
     "resolvedAt": "2026-04-22",
     "commitSha": "7508fb4"
   },
+  "Rubrics 1960 - 1960/2024-04-06/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-04-06",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Easter Octave weekday Matins inherited-antiphon seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
+  },
   "Rubrics 1960 - 1960/2024-04-07/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-07",
@@ -13667,7 +13857,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:1-6 — the Day0 Laudes1 psalter source carries the proper Sunday paschal antiphon `Allelúja, * Dóminus regnávit, decórem índuit, allelúja, allelúja.` on Low Sunday Lauds. The compositor emits that source-backed antiphon; the Perl comparison surface collapses the paschal opening to a generic `Ant. Allelúja, * allelúja, allelúja.`.",
     "notes": "Fanout of the Reduced 1955 Low Sunday Lauds psalter-major paschal antiphon family for the Rubrics 1960 row.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "9a4d397"
   },
   "Rubrics 1960 - 1960/2024-04-07/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -13824,6 +14014,17 @@
     "notes": "Representative entry for the Rubrics 1960 Lauds Psalm 99 half-verse family where the corpus keeps a `‡ ... *` structure and Perl flattens it to a single `*` boundary.",
     "resolvedAt": "2026-04-19",
     "commitSha": "034a6b9"
+  },
+  "Rubrics 1960 - 1960/2024-05-19/Matins/29ec2a3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-05-19",
+    "hour": "Matins",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Pentecost embedded Matins versicle seam advanced to the pre-lesson transition.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-05-19/None/c7624535": {
     "policy": "Rubrics 1960 - 1960",
@@ -14746,6 +14947,17 @@
     "notes": "Representative entry for the Rubrics 1960 January Terce/Sext/None fallback-hymn doxology family where the default `Præsta, Pater piíssime,` close is replaced by the Christmas or Epiphany stanza required by the winning office.",
     "resolvedAt": "2026-04-19",
     "commitSha": "bfb3c52"
+  },
+  "Rubrics 1960 - 1960/2024-07-06/Vespers/b047f132": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2024-07-06",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Fidélis Dóminus * in ómnibus verbis suis: et sanctus in ómnibus opéribus suis. ‡",
+    "firstActual": "Ant. Fidélis Dóminus * in ómnibus verbis suis: et sanctus in ómnibus opéribus suis.",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 `Vespera` psalter source carries the fifth Saturday antiphon without a trailing `‡`. The compositor preserves the corpus text after the First Vespers boundary routes to Day6; the Perl comparison surface adds a trailing continuation marker.",
+    "notes": "Rubrics 1960 Saturday-evening First Vespers row after `Psalmi Dominica` stopped forcing Sunday Day0 psalmody across the boundary.",
+    "resolvedAt": "2026-04-27"
   },
   "Rubrics 1960 - 1960/2024-08-15/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -16599,7 +16811,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 — the St Stephen feast carries an unconditional [Rule] line `no Psalm5` instructing the engine to omit the 5th Vespers psalm under any policy. The compositor honors that source-backed rule and emits 4 antiphons / 4 psalms before transitioning to the capitulum (`Act. 6:8`). The Perl comparison surface ignores the rule and renders the inherited 5th Christmas Day psalm antiphon `De fructu * ventris tui ponam super sedem tuam.`",
     "notes": "Representative entry for the St Stephen Vespers `no Psalm5` family where Perl ignores the source-backed rule that limits the Vespers psalmody to 4 psalms.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "9a4d397"
   },
   "Rubrics 1960 - 1960/2024-12-27/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",

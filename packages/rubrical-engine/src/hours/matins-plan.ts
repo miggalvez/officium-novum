@@ -315,13 +315,30 @@ function buildNocturnVersicle(
   antiphonCount: number
 ): VersicleSource {
   const sectionName = `Nocturn ${nocturnIndex} Versum`;
-  const match =
-    findSection(feastFiles, sectionName, input) ??
-    (nocturnIndex === 1 ? findConcreteSection(feastFiles, 'Versum 1', input) : undefined);
+  const match = findSection(feastFiles, sectionName, input);
   if (match) {
     return {
       reference: officeReference(match.file.path, match.section.header)
     };
+  }
+
+  if (nocturnIndex === 1) {
+    const antiphonVersicle = findMatinsAntiphonVersicle(
+      feastFiles,
+      input,
+      totalNocturns,
+      antiphonCount
+    );
+    if (antiphonVersicle) {
+      return antiphonVersicle;
+    }
+
+    const firstVersicle = findConcreteSection(feastFiles, 'Versum 1', input);
+    if (firstVersicle) {
+      return {
+        reference: officeReference(firstVersicle.file.path, firstVersicle.section.header)
+      };
+    }
   }
 
   const seasonalVersicle = seasonalMatinsVersicleSection(input, nocturnIndex, totalNocturns);
@@ -366,6 +383,105 @@ function buildNocturnVersicle(
       section: 'Psalmi cum lectionibus'
     }
   };
+}
+
+function findMatinsAntiphonVersicle(
+  feastFiles: readonly ParsedFile[],
+  input: Pick<BuildMatinsPlanInput, 'corpus' | 'temporal' | 'version'>,
+  totalNocturns: number,
+  antiphonCount: number
+): VersicleSource | undefined {
+  for (const match of findSections(feastFiles, 'Ant Matutinum', input)) {
+    const selector = versicleRangeSelectorForNocturn(
+      match.section,
+      1,
+      totalNocturns,
+      antiphonCount
+    );
+    if (!selector) {
+      const referenced = findReferencedMatinsAntiphonVersicle(
+        match.section,
+        input,
+        totalNocturns,
+        antiphonCount
+      );
+      if (referenced) {
+        return referenced;
+      }
+      continue;
+    }
+
+    return {
+      reference: {
+        ...officeReference(match.file.path, match.section.header),
+        selector
+      }
+    };
+  }
+
+  return undefined;
+}
+
+function findReferencedMatinsAntiphonVersicle(
+  section: ParsedFile['sections'][number],
+  input: Pick<BuildMatinsPlanInput, 'corpus' | 'temporal' | 'version'>,
+  totalNocturns: number,
+  antiphonCount: number
+): VersicleSource | undefined {
+  for (const node of section.content) {
+    if (node.type !== 'reference' || !node.ref.path) {
+      continue;
+    }
+
+    try {
+      const referenced = resolveOfficeFile(input.corpus, canonicalOfficePath(node.ref.path));
+      const match = findSection([referenced], node.ref.section ?? section.header, input);
+      const selector = versicleRangeSelectorForNocturn(
+        match?.section,
+        1,
+        totalNocturns,
+        antiphonCount
+      );
+      if (match && selector) {
+        return {
+          reference: {
+            ...officeReference(match.file.path, match.section.header),
+            selector
+          }
+        };
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  return undefined;
+}
+
+function canonicalOfficePath(path: string): string {
+  return path
+    .replace(/^horas\/Latin\//u, '')
+    .replace(/\.txt$/u, '');
+}
+
+function versicleRangeSelectorForNocturn(
+  section: ParsedFile['sections'][number] | undefined,
+  nocturnIndex: 1 | 2 | 3,
+  totalNocturns: number,
+  antiphonCount: number
+): string | undefined {
+  const start = versicleSelectorForNocturn(
+    section,
+    nocturnIndex,
+    totalNocturns,
+    antiphonCount
+  );
+  if (!start) {
+    return undefined;
+  }
+
+  const end = Number(start) + 1;
+  return `${start}-${end}`;
 }
 
 function seasonalMatinsVersicleSection(
@@ -474,15 +590,38 @@ function collectMatinsAntiphons(
   readonly reference: TextReference;
   readonly psalmRef?: PsalmAssignment;
 }[] {
-  const feastMatch = findSection(feastFiles, 'Ant Matutinum', input);
-  const section = feastMatch?.section ?? psalteriumDaySection;
-  if (!section) {
+  const feastMatches = findSections(feastFiles, 'Ant Matutinum', input);
+  for (const match of feastMatches) {
+    const sourcePath = match.file.path.replace(/\.txt$/u, '');
+    const entries = collectMatinsAntiphonEntriesFromSection(
+      match.section,
+      sourcePath,
+      input
+    );
+    if (entries.length > 0) {
+      return entries;
+    }
+  }
+
+  if (!psalteriumDaySection) {
     return [];
   }
 
-  const sourcePath = feastMatch
-    ? feastMatch.file.path.replace(/\.txt$/u, '')
-    : PSALTERIUM_MATINS_CONTENT_PATH;
+  return collectMatinsAntiphonEntriesFromSection(
+    psalteriumDaySection,
+    PSALTERIUM_MATINS_CONTENT_PATH,
+    input
+  );
+}
+
+function collectMatinsAntiphonEntriesFromSection(
+  section: ParsedFile['sections'][number],
+  sourcePath: string,
+  input: BuildMatinsPlanInput
+): readonly {
+  readonly reference: TextReference;
+  readonly psalmRef?: PsalmAssignment;
+}[] {
   const entries: Array<{ readonly reference: TextReference; readonly psalmRef?: PsalmAssignment }> = [];
   const visibleContent = input.version
     ? flattenVisibleMatinsAntiphonContent(section.content, input)
@@ -520,6 +659,18 @@ function collectMatinsAntiphons(
   }
 
   return entries;
+}
+
+function findSections(
+  files: readonly ParsedFile[],
+  header: string,
+  input: Pick<BuildMatinsPlanInput, 'temporal' | 'version'>
+): readonly SectionMatch[] {
+  if (files.length === 0) {
+    return [];
+  }
+
+  return findSectionCandidates(files, header, input);
 }
 
 function flattenVisibleMatinsAntiphonContent(
@@ -686,7 +837,15 @@ function versicleSelectorForNocturn(
         ? versicleLines[0]
         : versicleLines.at(-1)
       : versicleLines[nocturnIndex - 1];
-  return startLine ? String(startLine) : undefined;
+  if (!startLine) {
+    return undefined;
+  }
+
+  if (section.content.slice(0, startLine - 1).some((node) => node.type === 'reference')) {
+    return String(antiphonCount + startLine);
+  }
+
+  return String(startLine);
 }
 
 function markTeDeumReplacement(plan: MatinsPlan): MatinsPlan {

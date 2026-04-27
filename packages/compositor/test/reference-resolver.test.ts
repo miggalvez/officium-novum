@@ -801,6 +801,42 @@ describe('resolveReference', () => {
     });
   });
 
+  it('applies integer range selectors to embedded versicle pairs', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Tempora/Pasc7-0.txt',
+      sections: [
+        {
+          header: 'Ant Matutinum',
+          content: [
+            { type: 'text', value: 'Ant 1;;47' },
+            { type: 'text', value: 'Ant 2;;67' },
+            { type: 'text', value: 'Ant 3;;103' },
+            { type: 'verseMarker', marker: 'V.', text: 'Spíritus Dómini replévit orbem terrárum, allelúja.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Et hoc quod cóntinet ómnia, sciéntiam habet vocis, allelúja.' }
+          ],
+          startLine: 1,
+          endLine: 5
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Tempora/Pasc7-0',
+        section: 'Ant Matutinum',
+        selector: '4-5'
+      },
+      { languages: ['Latin'] }
+    );
+
+    expect(resolved.Latin?.content).toEqual([
+      { type: 'verseMarker', marker: 'V.', text: 'Spíritus Dómini replévit orbem terrárum, allelúja.' },
+      { type: 'verseMarker', marker: 'R.', text: 'Et hoc quod cóntinet ómnia, sciéntiam habet vocis, allelúja.' }
+    ]);
+  });
+
   it('replaces every node from the immediately preceding row for matching sed selectors', () => {
     const index = new InMemoryTextIndex();
     index.addFile({

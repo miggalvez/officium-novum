@@ -458,6 +458,10 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
           '108(22-31)'
           ]
         );
+        expectMajorHourPsalmodySection(
+          psalmodyAt(engine, '2024-07-06', 'vespers'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi major:Day6 Vespera'
+        );
       }
     },
     240_000
@@ -509,7 +513,6 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
 
         expectMinorHourWithoutAntiphon(psalmodyAt(engine, '2024-03-31', 'prime'), [
           '53',
-          '117',
           '118(1-16)',
           '118(17-32)'
         ]);
@@ -921,6 +924,17 @@ function expectMajorHour(
     `${antiphonSection}:4`,
     `${antiphonSection}:5`
   ]);
+}
+
+function expectMajorHourPsalmodySection(
+  psalms: readonly PsalmAssignment[],
+  section: string
+) {
+  expect(psalms).toHaveLength(5);
+  expect(
+    psalms.map((entry) => `${entry.psalmRef.path}:${entry.psalmRef.section}`)
+  ).toEqual(Array.from({ length: 5 }, () => section));
+  expect(psalms.map((entry) => entry.psalmRef.selector)).toEqual(['1', '2', '3', '4', '5']);
 }
 
 function expectMajorHourPsalmSlot(

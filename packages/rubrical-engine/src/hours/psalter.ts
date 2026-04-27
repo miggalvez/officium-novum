@@ -20,6 +20,7 @@ export interface SelectPsalmodyInput {
   readonly temporal: TemporalContext;
   readonly corpus: OfficeTextIndex;
   readonly omitPrimeBracketPsalm?: boolean;
+  readonly vespersSide?: 'first' | 'second';
 }
 
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
@@ -54,7 +55,9 @@ export function selectPsalmodyRoman1960(
   } else {
     // §16.2 step 4: `psalterScheme === 'dominica'` (e.g. `Psalmi Dominica` in a
     // feast's [Rule]) forces the Sunday distribution even on a weekday.
-    const useDominicaRule = hourRules.psalterScheme === 'dominica';
+    const useDominicaRule =
+      hourRules.psalterScheme === 'dominica' &&
+      !(hour === 'vespers' && params.vespersSide === 'first');
     const useSundayPsalmody =
       useDominicaRule || isSundayForMajorHour(hour, temporal);
 
@@ -390,6 +393,13 @@ function applyPsalmOverrides(
       continue;
     }
 
+    if (override.action === 'omit-prime-sunday-psalm117') {
+      if (isPsalmSelector(next[0], override.override.value) && isPsalmSelector(next[1], '117')) {
+        next.splice(override.index, 1);
+      }
+      continue;
+    }
+
     next[override.index] = {
       ...next[override.index],
       psalmRef: psalmOverrideReference({
@@ -405,8 +415,12 @@ function applyPsalmOverrides(
 interface ClassifiedPsalmOverride {
   readonly override: PsalmOverride;
   readonly index: number;
-  readonly action: 'replace' | 'omit';
+  readonly action: 'replace' | 'omit' | 'omit-prime-sunday-psalm117';
   readonly priority: number;
+}
+
+function isPsalmSelector(assignment: PsalmAssignment | undefined, selector: string): boolean {
+  return assignment?.psalmRef.selector === selector;
 }
 
 function classifyPsalmOverride(
@@ -429,6 +443,9 @@ function classifyPsalmOverride(
   }
 
   if (hour === 'prime' && normalized === 'prima') {
+    if (override.value === '53') {
+      return { override, index: 1, action: 'omit-prime-sunday-psalm117', priority: 2 };
+    }
     return { override, index: 0, action: omit ? 'omit' : 'replace', priority: 2 };
   }
 

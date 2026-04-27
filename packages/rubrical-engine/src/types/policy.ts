@@ -245,6 +245,7 @@ export interface SelectPsalmodyParams {
   readonly hourRules: HourRuleSet;
   readonly temporal: TemporalContext;
   readonly corpus: OfficeTextIndex;
+  readonly vespersSide?: 'first' | 'second';
 }
 
 export interface HourDirectivesParams {

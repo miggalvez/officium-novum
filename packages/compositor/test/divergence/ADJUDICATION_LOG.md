@@ -22,6 +22,177 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Saturday `Psalmi Dominica` First Vespers psalter day (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Vespers for
+`2024-07-06` still opened on Sunday's `[Day0 Vespera]` psalter row
+after the earlier Saturday-evening First Vespers fix. Perl opened on
+Saturday's `[Day6 Vespera]` row.
+
+**Root cause.** The engine already passed the evening day-of-week into
+First Vespers, but the policy `selectPsalmody` wrappers dropped the new
+Vespers-side hint before reaching the shared Roman psalter selector.
+With that hint missing, `Psalmi Dominica` from the incoming office still
+forced `Day0 Vespera` across the boundary.
+
+**Resolution.** `SelectPsalmodyParams` now preserves the Vespers-side
+hint through every Roman policy wrapper, and the shared Roman psalter
+selector suppresses the `Psalmi Dominica` Sunday override for First
+Vespers. Sunday offices keep their Sunday distribution; Saturday evening
+First Vespers now uses the Saturday psalter row.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147`
+- `docs/phase-2-rubrical-engine-design.md:1247-1250`
+- `packages/compositor/test/divergence/ADJUDICATION_LOG.md` entry
+  `2026-04-26 — Pattern: First Vespers of Sunday uses today's Saturday psalter day`
+
+**Impact.** Reduced 1955 `2024-07-06` Vespers advances to the
+source-backed Day6 full-antiphon-vs-incipit family, while Rubrics 1960
+advances to the unsupported trailing-`‡` surface on the fifth Day6
+antiphon. Both rows are now classified from the Day6 source citation.
+
+### 2026-04-27 — Pattern: Easter Saturday Prime Mobile Martyrology rollover (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Easter Saturday Prime
+(`2024-04-06`) diverged in the Martyrology body: Perl emitted the
+versioned Mobile notice `Domínica in Albis in Octáva Paschæ.`, while
+the compositor fell straight into the dated April 7 Martyrology file.
+
+**Root cause.** The preceding Easter Sunday tranche taught Phase 3 to
+read `Martyrologium*/Mobile.txt` for Easter-octave Prime, but the key
+rollover still naively advanced `Pasc0-6` to nonexistent `Pasc0-7`.
+Upstream uses `Pasc1-0` for the next day's Low Sunday notice, and
+`specprima.pl` inserts that non-high-day Mobile notice after the dated
+Martyrology heading separator rather than before the heading.
+
+**Resolution.** Phase 3 now rolls `Pasc0-6` to `Pasc1-0` and keeps the
+two Mobile insertion modes distinct: `Pasc0-1` is prepended as the high
+Easter notice, while `Pasc1-0` is inserted after the next-day dated
+Martyrology heading separator.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Martyrologium1960/Mobile.txt:31-32`
+- `upstream/web/www/horas/Latin/Martyrologium1955R/Mobile.txt:31-32`
+- `upstream/web/cgi-bin/horas/specials/specprima.pl:160-170`
+- `upstream/web/cgi-bin/horas/specials/specprima.pl:219-222`
+
+**Impact.** The two Easter Saturday Prime rows advance to the already
+documented Prime post-Martyrologium `Pater Noster` guillemet rendering
+family, dropping Reduced 1955 and Rubrics 1960 under the Phase 3
+sign-off threshold.
+
+### 2026-04-27 — Pattern: Easter Sunday Prime psalm override and Mobile Martyrology (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Easter Sunday Prime
+(`2024-03-31`) diverged first at the second psalm heading: Perl emitted
+`Psalmus 118(1-16) [2]`, while the compositor emitted `Psalmus 117 [2]`.
+After that psalm seam was fixed, the row advanced to the Easter Monday
+Mobile Martyrology notice, where Perl emitted `Hac die quam fecit
+Dóminus...` and the compositor began directly with the April 1 lunar
+heading.
+
+**Root cause.** `Tempora/Pasc0-0` combines the Sunday Tridentinum Prime
+row with a local `Prima=53` rule. The engine treated that rule as a
+slot-1 replacement even though the source row already begins with Psalm
+53, leaving the Sunday Psalm 117 slot behind. The Prime Martyrology
+composer also read only the next-day dated Martyrology file and did not
+prepend the versioned `Martyrologium*/Mobile.txt` notice that upstream
+`specprima.pl` injects for `Pasc0-1`.
+
+**Resolution.** Phase 2 now applies `Prima=53` by dropping the Sunday
+Psalm 117 slot only when the Prime row already begins with Psalm 53.
+Phase 3 now resolves the next Easter-octave Mobile Martyrology key and
+prepends that notice, separated from the normal next-day Martyrology
+file, before appending the common tail.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:7-14`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:217-219`
+- `upstream/web/www/horas/Latin/Martyrologium1960/Mobile.txt:28-29`
+- `upstream/web/www/horas/Latin/Martyrologium1955R/Mobile.txt:28-29`
+- `upstream/web/cgi-bin/horas/specials/specprima.pl:146-170`
+
+**Impact.** The two Easter Sunday Prime rows advance to the already
+documented Prime post-Martyrologium `Pater Noster` guillemet rendering
+family, dropping both Reduced 1955 and Rubrics 1960 by one
+unadjudicated row.
+
+### 2026-04-27 — Pattern: Pentecost Matins embedded versicle pair (engine-bug fix + rendering fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Pentecost Sunday
+Matins (`2024-05-19`) diverged at the nocturn versicle: Perl emitted
+`V. Spíritus Dómini replévit orbem terrárum, allelúja.` while the
+compositor emitted `V. Repléti sunt omnes Spíritu Sancto, allelúja.`
+
+**Root cause.** `Tempora/Pasc7-0` carries the Matins versicle inside
+its own `[Ant Matutinum]` block immediately after the three Matins
+antiphon rows. The planner preferred the plain `[Versum 1]` section,
+which belongs to another hour surface on this feast, and the compositor
+only supported single numeric line selectors for such embedded V/R
+pairs.
+
+**Resolution.** The Matins planner now prefers an embedded
+`[Ant Matutinum]` V/R pair before falling back to plain `[Versum 1]`,
+and the compositor resolver now supports narrow numeric range selectors
+such as `4-5` for these paired embedded versicles. Added focused tests
+for both the planner selection and resolver range behavior.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:136-141`.
+
+**Impact.** The two Pentecost Matins rows advance to the already
+documented Roman Matins pre-lesson `Pater Noster` guillemet rendering
+family, dropping both Reduced 1955 and Rubrics 1960 by one
+unadjudicated row.
+
+### 2026-04-27 — Pattern: Easter Octave inherited Matins antiphons (engine-bug fix + adjudication fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Reduced 1955 and Rubrics 1960 Easter Octave
+weekday Matins rows on Apr `02`, `03`, `05`, and `06` were stopping
+before their inherited Easter Sunday psalmody. The first divergence
+was the Easter Sunday antiphon expected by Perl while the compositor
+had already advanced to the nocturn versicle.
+
+**Root cause.** The parser now resolves the `@Tempora/Pasc0-0::...`
+empty-section form correctly, but the Matins planner still chose the
+local weekday `[Ant Matutinum]` overlay as the only antiphon source.
+That overlay contains a reference plus local V/R lines, not concrete
+antiphon rows, so the planner produced an empty psalmody plan instead
+of falling through to the inherited `Pasc0-0` antiphons.
+
+**Resolution.** `collectMatinsAntiphons` now scans visible
+`[Ant Matutinum]` candidates in precedence order and uses the first
+section that yields concrete antiphon/psalm assignments; reference-only
+overlays may still own the versicle seam, but they no longer suppress
+the inherited antiphons. Added focused planner coverage for the
+`Pasc0-2` overlay shape.
+
+**Citation.**
+`upstream/web/www/horas/Latin/Tempora/Pasc0-2.txt:18-24` and
+`upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:60-63`.
+
+**Impact.** Rubrics 1960 drops from `16` to `12` unadjudicated rows.
+Reduced 1955 drops from `16` to `12` after the newly exposed Apr
+`03`/`05`/`06` incipit-vs-full rows are classified as fanout of the
+already documented Reduced 1955 Easter Octave Matins antiphon
+`perl-bug` family. The Apr `02` rows in both simplified Roman policies
+advance to the existing pre-lesson `Pater Noster` guillemet rendering
+family.
+
 ### 2026-04-27 — Pattern: parser `@PATH::sub` empty-section reference (parser-bug, fixed)
 
 **Commit.** Current tranche commit.
@@ -154,10 +325,11 @@ strip the same content via the non-Tridentine omission conditional.
 newly exposed downstream rows are classified from existing
 half-verse `‡` / blank-line rendering families:
 
-- 9 fanout entries for the DA Triduum Lauds / Terce / Sext / None
-  Psalm 50:3a inline-marker rendering family (compositor preserves
-  source-backed `50:3a Miserére mei, Deus, *...`; Perl emits a
-  blank `_` line).
+- 12 fanout entries for the DA Triduum Lauds / Terce / Sext / None
+  Psalm 50:3a inline-marker rendering family, plus 3 Prime rows after
+  the Credo closeout moved Prime to the same frontier (compositor
+  preserves source-backed `50:3a Miserére mei, Deus, *...`; Perl emits
+  a blank `_` line).
 - 3 fanout entries for the DA Triduum Vespers Psalm 115:7
   half-verse `‡` family already documented for other dates.
 

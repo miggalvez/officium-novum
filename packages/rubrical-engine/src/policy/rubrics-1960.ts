@@ -301,6 +301,7 @@ export const rubrics1960Policy: RubricalPolicy = {
       hourRules: params.hourRules,
       temporal: params.temporal,
       corpus: params.corpus,
+      vespersSide: params.vespersSide,
       omitPrimeBracketPsalm: true
     });
   },
