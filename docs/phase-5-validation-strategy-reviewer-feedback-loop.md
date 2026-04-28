@@ -793,7 +793,7 @@ The maintained CI command mapping is recorded in
 | 2024 Roman compositor sign-off | `pnpm -C packages/compositor verify:phase-3-signoff` | Block | 0 unadjudicated rows, <800 lines per source file, and no pending SHAs. |
 | Newly added candidate years | divergence sidecars | Transitional block | <10 unadjudicated rows per policy per year during promotion window. |
 | Promoted gate-set years | divergence sidecars | Block | 0 unadjudicated rows. |
-| Multi-year exploratory coverage | validation package | Informational | Tracked only. |
+| Multi-year exploratory/candidate coverage | `pnpm -r test` via validation package | Informational until gated | Tracked in `packages/validation/fixtures/multi-year/phase-5-years.json`. |
 | Reviewer report triage SLO | `docs/REVIEWER_REPORTS.md` / dashboard | Informational | Target: triaged within 14 days. |
 | Upstream Perl issue filing | `docs/upstream-issues.md` | Informational | Tracked, not blocking. |
 
@@ -829,6 +829,9 @@ gated
   - requires 0 unadjudicated rows
   - unintended diffs block merge
 ```
+
+The current multi-year dashboard and 2025 candidate promotion record live in
+[`docs/phase-5-multi-year-status.md`](phase-5-multi-year-status.md).
 
 ### 14.3 Storage policy
 

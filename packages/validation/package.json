@@ -16,11 +16,12 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "vitest run && pnpm run audit:citations && pnpm run audit:reviewer-privacy && pnpm run audit:reviewer-reports",
+    "test": "vitest run && pnpm run audit:citations && pnpm run audit:reviewer-privacy && pnpm run audit:reviewer-reports && pnpm run report:multi-year",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "audit:citations": "node --import tsx src/audit-citations.ts",
     "audit:reviewer-privacy": "node --import tsx src/audit-reviewer-privacy.ts",
-    "audit:reviewer-reports": "node --import tsx src/audit-reviewer-reports.ts"
+    "audit:reviewer-reports": "node --import tsx src/audit-reviewer-reports.ts",
+    "report:multi-year": "node --import tsx src/report-multi-year.ts"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",

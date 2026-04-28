@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "year": 2025,
+  "status": "candidate",
+  "coverage": "Phase 5 candidate control ledger; full package divergence ledgers are the promotion follow-up.",
+  "createdAt": "2026-04-28",
+  "policies": [
+    {
+      "policy": "Divino Afflatu - 1954",
+      "slug": "divino-afflatu",
+      "unadjudicated": 0,
+      "noThrowFailures": 0,
+      "schemaFailures": 0,
+      "notes": "Candidate year is admitted to the validation dashboard with no known control-ledger blockers."
+    },
+    {
+      "policy": "Reduced - 1955",
+      "slug": "reduced-1955",
+      "unadjudicated": 0,
+      "noThrowFailures": 0,
+      "schemaFailures": 0,
+      "notes": "Candidate year is admitted to the validation dashboard with no known control-ledger blockers."
+    },
+    {
+      "policy": "Rubrics 1960 - 1960",
+      "slug": "rubrics-1960",
+      "unadjudicated": 0,
+      "noThrowFailures": 0,
+      "schemaFailures": 0,
+      "notes": "Candidate year is admitted to the validation dashboard with no known control-ledger blockers."
+    }
+  ]
+}

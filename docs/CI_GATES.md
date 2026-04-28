@@ -18,7 +18,7 @@ The validation package owns Phase 5 audit wiring through its package `test`
 script:
 
 ```text
-vitest run && pnpm run audit:citations && pnpm run audit:reviewer-privacy && pnpm run audit:reviewer-reports
+vitest run && pnpm run audit:citations && pnpm run audit:reviewer-privacy && pnpm run audit:reviewer-reports && pnpm run report:multi-year
 ```
 
 ## Package Coverage
@@ -29,7 +29,7 @@ vitest run && pnpm run audit:citations && pnpm run audit:reviewer-privacy && pnp
 | `@officium-novum/rubrical-engine` | `tsc -p tsconfig.json --noEmit` | rubrical unit tests and upstream-gated Phase 2 integration matrices |
 | `@officium-novum/compositor` | `tsc -p tsconfig.json --noEmit` | composition unit tests, no-throw sweep, and Appendix A goldens |
 | `@officium-novum/api` | `tsc -p tsconfig.json --noEmit` | API route tests, OpenAPI assertions, and Phase 4 contract gate |
-| `@officium-novum/validation` | `tsc -p tsconfig.json --noEmit` | Phase 5 schemas, citation audit, reviewer audits, and E2E harness |
+| `@officium-novum/validation` | `tsc -p tsconfig.json --noEmit` | Phase 5 schemas, citation audit, reviewer audits, E2E harness, and multi-year dashboard |
 
 ## Multi-Year Thresholds
 

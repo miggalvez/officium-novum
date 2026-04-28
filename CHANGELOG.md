@@ -6,6 +6,10 @@ Phase-by-phase implementation log for Officium Novum. The README's [Status](READ
 
 Phase 5 is the cross-stack quality gate described in [`docs/phase-5-validation-strategy-reviewer-feedback-loop.md`](docs/phase-5-validation-strategy-reviewer-feedback-loop.md). It preserves the package-local validation surfaces from Phases 1–4 while adding shared adjudication rules, citation audits, reviewer intake, privacy checks, cross-stack E2E validation, multi-year promotion, and reviewer-submitted fixture workflow.
 
+### 5g — Multi-year expansion (complete)
+
+- **2026-04-28.** Promoted 2025 to Phase 5 `candidate` status in `packages/validation/fixtures/multi-year/phase-5-years.json`, with a machine-readable 2025 candidate ledger and adjudication sidecar under `packages/validation/fixtures/multi-year/`. Added `packages/validation/src/report-multi-year.ts`, the `pnpm -C packages/validation report:multi-year` dashboard command, and regression tests that enforce candidate thresholds and print unadjudicated/no-throw/schema counts by policy/year. The validation package `test` script now includes the multi-year dashboard gate, and [`docs/phase-5-multi-year-status.md`](docs/phase-5-multi-year-status.md) records the current 2024 gated + 2025 candidate table and the follow-up required before 2025 can become gated.
+
 ### 5f — CI gate consolidation (complete)
 
 - **2026-04-28.** Added the required GitHub Actions workflow at `.github/workflows/ci.yml`. The workflow checks out the upstream submodule, installs with pnpm 10.11.0 on Node 22, and runs the same gates maintainers run locally: `pnpm -r typecheck`, `pnpm -r test`, and `pnpm -C packages/compositor verify:phase-3-signoff`. Added [`docs/CI_GATES.md`](docs/CI_GATES.md) to map each required CI step to the actual package scripts it exercises, including the validation package audits and Phase 5e E2E harness now wired through `pnpm -r test`. The Phase 5 plan’s gate table now points at the workflow and records candidate-vs-gated multi-year thresholds without weakening the 2024 Roman 0-unadjudicated baseline.

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "years": [
+    {
+      "year": 2024,
+      "status": "gated",
+      "owner": "compositor",
+      "promotionWindow": "Phase 3h baseline burn-down",
+      "followUp": "Keep the Roman 2024 baseline at 0 unadjudicated rows.",
+      "policies": [
+        {
+          "policy": "Divino Afflatu - 1954",
+          "slug": "divino-afflatu",
+          "ledger": "packages/compositor/test/divergence/divino-afflatu-2024.md",
+          "sidecar": "packages/compositor/test/divergence/adjudications.json",
+          "unadjudicated": 0,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        },
+        {
+          "policy": "Reduced - 1955",
+          "slug": "reduced-1955",
+          "ledger": "packages/compositor/test/divergence/reduced-1955-2024.md",
+          "sidecar": "packages/compositor/test/divergence/adjudications.json",
+          "unadjudicated": 0,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        },
+        {
+          "policy": "Rubrics 1960 - 1960",
+          "slug": "rubrics-1960",
+          "ledger": "packages/compositor/test/divergence/rubrics-1960-2024.md",
+          "sidecar": "packages/compositor/test/divergence/adjudications.json",
+          "unadjudicated": 0,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "status": "candidate",
+      "owner": "validation",
+      "promotionWindow": "Phase 5g candidate window",
+      "followUp": "Generate full 2025 package ledgers and promote to gated once each supported Roman policy reaches 0 unadjudicated rows.",
+      "policies": [
+        {
+          "policy": "Divino Afflatu - 1954",
+          "slug": "divino-afflatu",
+          "ledger": "packages/validation/fixtures/multi-year/2025-candidate-ledger.json",
+          "sidecar": "packages/validation/fixtures/multi-year/2025-candidate-adjudications.json",
+          "unadjudicated": 0,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        },
+        {
+          "policy": "Reduced - 1955",
+          "slug": "reduced-1955",
+          "ledger": "packages/validation/fixtures/multi-year/2025-candidate-ledger.json",
+          "sidecar": "packages/validation/fixtures/multi-year/2025-candidate-adjudications.json",
+          "unadjudicated": 0,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        },
+        {
+          "policy": "Rubrics 1960 - 1960",
+          "slug": "rubrics-1960",
+          "ledger": "packages/validation/fixtures/multi-year/2025-candidate-ledger.json",
+          "sidecar": "packages/validation/fixtures/multi-year/2025-candidate-adjudications.json",
+          "unadjudicated": 0,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        }
+      ]
+    }
+  ]
+}
