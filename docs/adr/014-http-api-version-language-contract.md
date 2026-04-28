@@ -106,8 +106,9 @@ is the public display profile for later text-run adaptation.
 - Positive: Mass/Missa-only handles are not flattened into generic unknown
   version errors.
 - Negative: the API package owns a non-trivial DTO/adaptation layer.
-- Follow-up work: finish the contract-test and release-gate tranche described
-  in the Phase 4 design.
+- Follow-up work: future API expansion can add optional feast lookup, more
+  corpus languages, and more display profiles without changing the Phase 4
+  core Breviary endpoints.
 - Revisit trigger: if Phase 4 adds more corpus languages or versioned display
   profiles, the language and orthography registries must become data-backed
   rather than hard-coded pairs.
