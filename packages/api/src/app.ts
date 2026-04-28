@@ -5,6 +5,7 @@ import swaggerUi from '@fastify/swagger-ui';
 import type { ApiConfig } from './config.js';
 import type { ApiContext } from './context.js';
 import { registerErrorHandler } from './services/errors.js';
+import { registerDayRoutes } from './routes/day.js';
 import { registerMetadataRoutes } from './routes/metadata.js';
 import { registerOfficeRoutes } from './routes/office.js';
 import { registerOpenApiRoutes } from './routes/openapi.js';
@@ -42,6 +43,7 @@ export async function createApp(options: CreateAppOptions): Promise<FastifyInsta
 
   await registerMetadataRoutes(app);
   await registerOfficeRoutes(app);
+  await registerDayRoutes(app);
   await registerOpenApiRoutes(app);
 
   return app;

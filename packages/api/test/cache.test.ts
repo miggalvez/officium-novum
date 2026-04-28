@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest';
 
 import {
   buildCanonicalOfficeKey,
+  buildCanonicalDayKey,
   buildDeterministicEtag,
+  canonicalDayPath,
   canonicalOfficePath,
   createEtagMemoryCache,
   DETERMINISTIC_CACHE_CONTROL,
@@ -34,6 +36,22 @@ describe('cache service', () => {
   it('builds a deterministic canonical office path', () => {
     expect(canonicalOfficePath(BASE_KEY)).toBe(
       '/api/v1/office/2024-01-01/lauds?version=Rubrics+1960+-+1960&lang=la%2Cen&langfb=en&orthography=version&joinLaudsToMatins=false&strict=false'
+    );
+  });
+
+  it('builds a deterministic canonical day path', () => {
+    const key = buildCanonicalDayKey({
+      date: '2024-01-01',
+      version: 'Rubrics 1960 - 1960',
+      languages: ['la', 'en'],
+      orthography: 'source',
+      hours: ['lauds', 'vespers'],
+      strict: false,
+      contentVersion: 'test-content'
+    });
+
+    expect(canonicalDayPath(key)).toBe(
+      '/api/v1/days/2024-01-01?version=Rubrics+1960+-+1960&lang=la%2Cen&orthography=source&hours=lauds%2Cvespers&strict=false'
     );
   });
 
