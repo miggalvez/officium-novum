@@ -775,17 +775,22 @@ Suggested commands:
 
 ## 13. CI gates and informational signals
 
+The maintained CI command mapping is recorded in
+[`docs/CI_GATES.md`](CI_GATES.md). The required workflow is
+`.github/workflows/ci.yml`.
+
 | Signal | Command or owner | Gate | Threshold |
 |---|---|---:|---|
 | Workspace typecheck | `pnpm -r typecheck` | Block | Must pass. |
 | Workspace tests | `pnpm -r test` | Block | Must pass. |
-| Phase 3 no-throw sweep | compositor package | Block | 0 exceptions for gate-set years. |
-| Phase 3 goldens | compositor package | Block | 0 unintended diffs. |
-| Phase 4 API contract tests | API package | Block | Must pass. |
-| Phase 5 E2E harness | validation package | Block once stable | Must pass. |
-| Citation audit | validation package | Block | 0 missing required citations. |
-| Reviewer privacy audit | validation package | Block | 0 public private-field leaks. |
-| 2024 Roman compositor/engine unadjudicated rows | divergence sidecars | Block | 0 unadjudicated rows. |
+| Phase 3 no-throw sweep | `pnpm -r test` via compositor package | Block | 0 exceptions for gate-set years. |
+| Phase 3 goldens | `pnpm -r test` via compositor package | Block | 0 unintended diffs. |
+| Phase 4 API contract tests | `pnpm -r test` via API package | Block | Must pass. |
+| Phase 5 E2E harness | `pnpm -r test` via validation package | Block | Must pass. |
+| Citation audit | `pnpm -r test` via validation package | Block | 0 missing required citations. |
+| Reviewer privacy audit | `pnpm -r test` via validation package | Block | 0 public private-field leaks. |
+| Reviewer report audit | `pnpm -r test` via validation package | Block | 0 schema or fixture errors. |
+| 2024 Roman compositor sign-off | `pnpm -C packages/compositor verify:phase-3-signoff` | Block | 0 unadjudicated rows, <800 lines per source file, and no pending SHAs. |
 | Newly added candidate years | divergence sidecars | Transitional block | <10 unadjudicated rows per policy per year during promotion window. |
 | Promoted gate-set years | divergence sidecars | Block | 0 unadjudicated rows. |
 | Multi-year exploratory coverage | validation package | Informational | Tracked only. |

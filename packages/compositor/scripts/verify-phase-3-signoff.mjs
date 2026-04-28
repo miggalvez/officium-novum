@@ -1,13 +1,11 @@
 import { readFileSync } from 'node:fs';
 
 import {
-  PHASE3_UNADJUDICATED_THRESHOLD,
   SRC_ROOT,
   findPendingCommitShaKeys,
   listSourceFiles,
   loadAdjudications,
-  loadPhase3LedgerSummaries,
-  rowsToClearForThreshold
+  loadPhase3LedgerSummaries
 } from './phase-3-ledgers.mjs';
 
 const MAX_LINES = 800;
@@ -24,7 +22,7 @@ const adjudications = loadAdjudications();
 const pendingCommitSha = findPendingCommitShaKeys(adjudications);
 const ledgerSummaries = loadPhase3LedgerSummaries();
 const thresholdFailures = ledgerSummaries.filter(
-  (summary) => summary.adjudicationBreakdown.unadjudicated >= PHASE3_UNADJUDICATED_THRESHOLD
+  (summary) => summary.adjudicationBreakdown.unadjudicated !== 0
 );
 
 if (lineFailures.length === 0 && pendingCommitSha.length === 0 && thresholdFailures.length === 0) {
@@ -40,10 +38,10 @@ if (lineFailures.length > 0) {
 }
 
 if (thresholdFailures.length > 0) {
-  console.error(`Policies over the Phase 3 sign-off threshold (<${PHASE3_UNADJUDICATED_THRESHOLD} unadjudicated required):`);
+  console.error('Policies failing the Phase 3 sign-off threshold (0 unadjudicated required):');
   for (const failure of thresholdFailures) {
     const unadjudicated = failure.adjudicationBreakdown.unadjudicated;
-    console.error(`- ${failure.policy}: ${unadjudicated} unadjudicated (${rowsToClearForThreshold(unadjudicated)} rows must clear)`);
+    console.error(`- ${failure.policy}: ${unadjudicated} unadjudicated`);
   }
 }
 

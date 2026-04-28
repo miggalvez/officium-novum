@@ -6,6 +6,10 @@ Phase-by-phase implementation log for Officium Novum. The README's [Status](READ
 
 Phase 5 is the cross-stack quality gate described in [`docs/phase-5-validation-strategy-reviewer-feedback-loop.md`](docs/phase-5-validation-strategy-reviewer-feedback-loop.md). It preserves the package-local validation surfaces from Phases 1–4 while adding shared adjudication rules, citation audits, reviewer intake, privacy checks, cross-stack E2E validation, multi-year promotion, and reviewer-submitted fixture workflow.
 
+### 5f — CI gate consolidation (complete)
+
+- **2026-04-28.** Added the required GitHub Actions workflow at `.github/workflows/ci.yml`. The workflow checks out the upstream submodule, installs with pnpm 10.11.0 on Node 22, and runs the same gates maintainers run locally: `pnpm -r typecheck`, `pnpm -r test`, and `pnpm -C packages/compositor verify:phase-3-signoff`. Added [`docs/CI_GATES.md`](docs/CI_GATES.md) to map each required CI step to the actual package scripts it exercises, including the validation package audits and Phase 5e E2E harness now wired through `pnpm -r test`. The Phase 5 plan’s gate table now points at the workflow and records candidate-vs-gated multi-year thresholds without weakening the 2024 Roman 0-unadjudicated baseline.
+
 ### 5e — End-to-end snapshot harness (complete)
 
 - **2026-04-28.** Added `packages/validation/test/e2e-api-harness.test.ts`, an upstream-gated in-process API E2E harness that builds the real API context over the parser, rubrical engine, compositor, and public API route layer. The harness intentionally stays smaller than the Phase 4 contract gate: three representative Roman-policy Office requests exercise Divino Afflatu, Reduced 1955, and Rubrics 1960, assert public DTO metadata, cache headers, ETags, `la` / `en` public language keys, absence of raw `Latin` / `English` / `policy` leakage, date-specific material content anchors, and a stable inline summary snapshot. Validation: `pnpm -C packages/validation test` is green.
