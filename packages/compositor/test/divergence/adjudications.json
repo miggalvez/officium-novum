@@ -1868,7 +1868,7 @@
     "citation": "upstream/web/cgi-bin/horas/horasscripts.pl:638 + officium.pl:186 — Perl emits the bracketed psalm-slot index from the global counters `$psalmnum1`/`$psalmnum2`, which are initialized once per officium.pl load and only re-zeroed inside `psalmi()`. The DA Triduum `Special Completorium` bypasses `psalmi()` (the `[Special Completorium]` block replaces the `#Psalmi` slot directly), so the counter retains the value left over from the first invocation of `collect_units` in `packages/compositor/test/fixtures/officium-content-snapshot.pl:74-103`. The harness calls `collect_units` once per language without resetting the counter, so the Latin pass starts at the post-English counter (4 for DA Maundy/Good Friday) and renders Psalm 4 as `[5]`. The compositor's `[4]` reflects the psalm number doubling as the bracket label in `packages/compositor/src/compose/triduum-special.ts:309`. Both renderings preserve the same `Psalmus 4` heading and identical psalm verses; the bracket index is a non-authoritative display counter that the source does not prescribe.",
     "notes": "Fan out to all DA Triduum Special Completorium rows where Perl's bracket counter diverges from the compositor's psalm-number bracket.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "a7c3287"
   },
   "Divino Afflatu - 1954/2024-03-28/Lauds/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -1964,7 +1964,7 @@
     "citation": "upstream/web/cgi-bin/horas/horasscripts.pl:638 + officium.pl:186 — Perl emits the bracketed psalm-slot index from the global counters `$psalmnum1`/`$psalmnum2`, which are initialized once per officium.pl load and only re-zeroed inside `psalmi()`. The DA Triduum `Special Completorium` bypasses `psalmi()` (the `[Special Completorium]` block replaces the `#Psalmi` slot directly), so the counter retains the value left over from the first invocation of `collect_units` in `packages/compositor/test/fixtures/officium-content-snapshot.pl:74-103`. The harness calls `collect_units` once per language without resetting the counter, so the Latin pass starts at the post-English counter (4 for DA Maundy/Good Friday) and renders Psalm 4 as `[5]`. The compositor's `[4]` reflects the psalm number doubling as the bracket label in `packages/compositor/src/compose/triduum-special.ts:309`. Both renderings preserve the same `Psalmus 4` heading and identical psalm verses; the bracket index is a non-authoritative display counter that the source does not prescribe.",
     "notes": "Fan out to all DA Triduum Special Completorium rows where Perl's bracket counter diverges from the compositor's psalm-number bracket.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "a7c3287"
   },
   "Divino Afflatu - 1954/2024-03-29/Lauds/9772c004": {
     "policy": "Divino Afflatu - 1954",
@@ -4940,7 +4940,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-02.txt:7-19 + upstream/web/www/horas/Latin/Commune/C9.txt — Office of the Dead under DA includes Matins, Lauds, and Vespers but **no Compline section** (C9 lacks any Compline slots; 11-02's Rule says `Omit Incipit Hymnus Capitulum Lectio Preces Commemoratio Suffragium`, with `(rubrica 1955 aut rubrica 1960) No prima Vespera` gating the no-prima-Vespera rule out under DA). On Nov 1 evening DA anticipates First Vespers of All Souls, but the Office of the Dead carries no Compline rubrics, so Compline that follows is of the day (All Saints). The compositor honors that and emits the standard All Saints Compline opening (`[Lectio brevis]` rubric → `$Adjutorium nostrum` → `$Pater noster` → `$Confiteor` …). Perl applies the Office-of-the-Dead `Omit Incipit` modifications to Compline anyway and replaces the entire Roman Compline incipit with the bare Confiteor line plus Réquiem ætérnam V/R after each psalm and a `Conclusio specialis` ending — a hybrid that has no corpus authority. Net: every Compline line shifts; the divergence is the entire pre-Confiteor opening (Lectio Brevis, Adjutorium, Pater Noster) the compositor preserves and Perl drops.",
     "notes": "DA-only family. Reduced 1955 / Rubrics 1960 set `No prima Vespera` so they do not anticipate Office of the Dead and Nov 1 Compline is just All Saints Compline on both sides. Stable across years — any DA-equivalent policy where Office of the Dead First Vespers is anticipated will exhibit the same Compline divergence.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "6ab05a7"
   },
   "Divino Afflatu - 1954/2024-11-01/Lauds/371d9deb": {
     "policy": "Divino Afflatu - 1954",
@@ -8545,7 +8545,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Low Sunday Pasch0 Matins antiphon substitution fix advanced the first visible divergence.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "fb51eff"
   },
   "Reduced - 1955/2024-04-06/Vespers/40a67109": {
     "policy": "Reduced - 1955",
@@ -8557,7 +8557,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries `Benedíctus Dóminus * suscéptor meus et liberátor meus.;;143(1-8)` for the Saturday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Tempora/Pasc0-6 has `No secunda Vespera`, so 2024-04-06 Vespers is First Vespers of Pasc1-0 (Dominica in Albis); Pasc1-0 has no proper `[Ant Vespera]` and inherits the Day6 Vespera psalter row for the Saturday-evening psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
     "notes": "Representative entry for the shared Roman paschaltide First Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "2c059d3"
   },
   "Reduced - 1955/2024-04-07/Compline/5dc10d20": {
     "policy": "Reduced - 1955",
@@ -8844,7 +8844,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:332-333 supplies `[Lectio Prima] @Psalterium/Special/Minor Special:Dominica NonaOP:1-2`; upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:61-64 defines `[Dominica NonaOP]` as `!1 Joann. 5:7 / v. Tres sunt, qui testimónium dant in cælo: Pater, Verbum et Spíritus Sanctus, et hi tres unum sunt.`. Codex Rubricarum (1960) §191 (and the parallel pre-1960 rubric) keeps the proper feast-day Prime capitulum when the office supplies one, so the Festum Sanctissimæ Trinitatis correctly carries `1 Joann. 5:7`. The Perl comparison surface keeps the weekday `1 Tim. 1:17` chapter, dropping the source-backed Trinity proper Prime lesson.",
     "notes": "Representative entry for the shared Roman Trinity Sunday proper Prime capitulum family where the feast file's `[Lectio Prima]` overrides the weekday `Regi sæculorum` chapter. Fan out to matching Roman rows on Trinity Sunday with the same first-divergence pair.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "d9ff76a"
   },
   "Reduced - 1955/2024-05-26/Vespers/39846534": {
     "policy": "Reduced - 1955",
@@ -13953,7 +13953,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
     "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Low Sunday 1960 one-nocturn shape and Pasch0 antiphon substitution fixes advanced the first visible divergence.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "fb51eff"
   },
   "Rubrics 1960 - 1960/2024-04-06/Vespers/40a67109": {
     "policy": "Rubrics 1960 - 1960",
@@ -13965,7 +13965,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries `Benedíctus Dóminus * suscéptor meus et liberátor meus.;;143(1-8)` for the Saturday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Tempora/Pasc0-6 has `No secunda Vespera`, so 2024-04-06 Vespers is First Vespers of Pasc1-0 (Dominica in Albis); Pasc1-0 has no proper `[Ant Vespera]` and inherits the Day6 Vespera psalter row for the Saturday-evening psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
     "notes": "Representative entry for the shared Roman paschaltide First Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "2c059d3"
   },
   "Rubrics 1960 - 1960/2024-04-07/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -14049,7 +14049,7 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Day0 Vespera psalter source carries `Dixit Dóminus * Dómino meo: Sede a dextris meis.;;109` for the Sunday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Pasc1-0 (Dominica in Albis) has no proper `[Ant Vespera]` and therefore inherits the Day0 Vespera psalter row for Second Vespers psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
     "notes": "Representative entry for the shared Roman paschaltide Second Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "2c059d3"
   },
   "Rubrics 1960 - 1960/2024-05-09/Compline/57de2841": {
     "policy": "Rubrics 1960 - 1960",
@@ -14288,7 +14288,7 @@
     "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:332-333 supplies `[Lectio Prima] @Psalterium/Special/Minor Special:Dominica NonaOP:1-2`; upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:61-64 defines `[Dominica NonaOP]` as `!1 Joann. 5:7 / v. Tres sunt, qui testimónium dant in cælo: Pater, Verbum et Spíritus Sanctus, et hi tres unum sunt.`. Codex Rubricarum (1960) §191 keeps the proper feast-day Prime capitulum when the office supplies one (and the parallel pre-1960 rubric is identical), so the Festum Sanctissimæ Trinitatis correctly carries `1 Joann. 5:7`. The Perl comparison surface keeps the weekday `1 Tim. 1:17` chapter, dropping the source-backed Trinity proper Prime lesson.",
     "notes": "Representative entry for the shared Roman Trinity Sunday proper Prime capitulum family where the feast file's `[Lectio Prima]` overrides the weekday `Regi sæculorum` chapter. Fan out to matching Roman rows on Trinity Sunday with the same first-divergence pair.",
     "resolvedAt": "2026-04-27",
-    "commitSha": "pending"
+    "commitSha": "d9ff76a"
   },
   "Rubrics 1960 - 1960/2024-05-26/Vespers/39846534": {
     "policy": "Rubrics 1960 - 1960",
