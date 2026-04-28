@@ -95,6 +95,22 @@ export function applyCacheHeaders(reply: FastifyReply, etag: string): void {
   reply.header('ETag', etag);
 }
 
+export class EtagMemoryCache {
+  private readonly etags = new Map<string, string>();
+
+  get(key: CanonicalOfficeKey): string | undefined {
+    return this.etags.get(stableJsonStringify(key));
+  }
+
+  set(key: CanonicalOfficeKey, etag: string): void {
+    this.etags.set(stableJsonStringify(key), etag);
+  }
+}
+
+export function createEtagMemoryCache(): EtagMemoryCache {
+  return new EtagMemoryCache();
+}
+
 export function requestMatchesEtag(request: FastifyRequest, etag: string): boolean {
   const header = request.headers['if-none-match'];
   if (!header) {
@@ -106,7 +122,7 @@ export function requestMatchesEtag(request: FastifyRequest, etag: string): boole
     value
       .split(',')
       .map((candidate: string) => candidate.trim())
-      .some((candidate: string) => candidate === '*' || candidate === etag)
+      .some((candidate: string) => candidate === '*' || weakEtagValue(candidate) === etag)
   );
 }
 
@@ -115,20 +131,16 @@ export function stableJsonStringify(value: unknown): string {
 }
 
 function toStableJson(value: unknown): unknown {
-  if (value === undefined) {
-    return undefined;
-  }
   if (value === null || typeof value !== 'object') {
     return value;
   }
   if (Array.isArray(value)) {
-    return value.map((item) => (item === undefined ? null : toStableJson(item)));
+    return value.map(toStableJson);
   }
 
   return Object.fromEntries(
     Object.entries(value as Readonly<Record<string, unknown>>)
-      .filter(([, child]) => child !== undefined)
-      .sort(([left], [right]) => left.localeCompare(right))
+      .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
       .map(([key, child]) => [key, toStableJson(child)])
   );
 }
@@ -139,4 +151,8 @@ function hashString(value: string): string {
 
 function etagSegment(value: string): string {
   return encodeURIComponent(value).replaceAll('%', '~');
+}
+
+function weakEtagValue(value: string): string {
+  return value.startsWith('W/') ? value.slice(2) : value;
 }

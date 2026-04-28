@@ -4,7 +4,9 @@ import {
   buildCanonicalOfficeKey,
   buildDeterministicEtag,
   canonicalOfficePath,
+  createEtagMemoryCache,
   DETERMINISTIC_CACHE_CONTROL,
+  requestMatchesEtag,
   stableJsonHash,
   stableJsonStringify
 } from '../src/services/cache.js';
@@ -45,6 +47,15 @@ describe('cache service', () => {
     expect(canonicalOfficePath(reversed)).toContain('lang=en%2Cla');
   });
 
+  it('stores ETags by canonical key without recomputing the body', () => {
+    const cache = createEtagMemoryCache();
+    const etag = '"v1:test-content:request:body"';
+
+    cache.set(BASE_KEY, etag);
+
+    expect(cache.get({ ...BASE_KEY })).toBe(etag);
+  });
+
   it('varies ETags by orthography and content version', () => {
     const body = { kind: 'office-hour', content: ['sample'] };
     const base = buildDeterministicEtag({ key: BASE_KEY, body });
@@ -60,6 +71,17 @@ describe('cache service', () => {
     expect(base).toMatch(/^"v1:test-content:[^:]+:[^:]+"$/u);
     expect(source).not.toBe(base);
     expect(differentContentVersion).not.toBe(base);
+  });
+
+  it('matches weak If-None-Match validators for GET semantics', () => {
+    expect(requestMatchesEtag(
+      {
+        headers: {
+          'if-none-match': 'W/"v1:test-content:request:body"'
+        }
+      } as never,
+      '"v1:test-content:request:body"'
+    )).toBe(true);
   });
 
   it('documents the deterministic cache-control policy', () => {
