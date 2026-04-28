@@ -143,7 +143,7 @@ export function resolveOfficeRequest(input: {
   };
 }
 
-function parseIsoDate(value: string): string {
+export function parseIsoDate(value: string): string {
   if (!/^\d{4}-\d{2}-\d{2}$/u.test(value)) {
     throw invalidDate(value);
   }
@@ -171,7 +171,7 @@ function parseHourName(value: string, supportedHours: readonly HourName[]): Hour
   throw invalidHour(value);
 }
 
-function parseBooleanQuery(
+export function parseBooleanQuery(
   value: string | boolean | undefined,
   field: string,
   defaultValue: boolean

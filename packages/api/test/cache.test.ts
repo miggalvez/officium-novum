@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest';
 
 import {
   buildCanonicalOfficeKey,
+  buildCanonicalDayKey,
   buildDeterministicEtag,
+  canonicalDayPath,
   canonicalOfficePath,
   createEtagMemoryCache,
   DETERMINISTIC_CACHE_CONTROL,
@@ -37,6 +39,22 @@ describe('cache service', () => {
     );
   });
 
+  it('builds a deterministic canonical day path', () => {
+    const key = buildCanonicalDayKey({
+      date: '2024-01-01',
+      version: 'Rubrics 1960 - 1960',
+      languages: ['la', 'en'],
+      orthography: 'source',
+      hours: ['lauds', 'vespers'],
+      strict: false,
+      contentVersion: 'test-content'
+    });
+
+    expect(canonicalDayPath(key)).toBe(
+      '/api/v1/days/2024-01-01?version=Rubrics+1960+-+1960&lang=la%2Cen&orthography=source&hours=lauds%2Cvespers&strict=false'
+    );
+  });
+
   it('keeps display-distinct language order in the cache key', () => {
     const reversed = buildCanonicalOfficeKey({
       ...BASE_KEY,
@@ -54,6 +72,22 @@ describe('cache service', () => {
     cache.set(BASE_KEY, etag);
 
     expect(cache.get({ ...BASE_KEY })).toBe(etag);
+  });
+
+  it('bounds ETag memory cache size with least-recently-used eviction', () => {
+    const cache = createEtagMemoryCache(2);
+    const first = BASE_KEY;
+    const second = { ...BASE_KEY, date: '2024-01-02' };
+    const third = { ...BASE_KEY, date: '2024-01-03' };
+
+    cache.set(first, '"first"');
+    cache.set(second, '"second"');
+    expect(cache.get(first)).toBe('"first"');
+    cache.set(third, '"third"');
+
+    expect(cache.get(first)).toBe('"first"');
+    expect(cache.get(second)).toBeUndefined();
+    expect(cache.get(third)).toBe('"third"');
   });
 
   it('varies ETags by orthography and content version', () => {

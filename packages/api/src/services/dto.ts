@@ -51,6 +51,32 @@ export interface OfficeHourResponse {
   };
 }
 
+export interface OfficeDayResponse {
+  readonly kind: 'office-day';
+  readonly apiVersion: 'v1';
+  readonly request: {
+    readonly date: string;
+    readonly version: VersionHandle;
+    readonly languages: readonly PublicLanguageTag[];
+    readonly langfb?: PublicLanguageTag;
+    readonly orthography: TextOrthographyProfile;
+    readonly hours: readonly HourName[];
+    readonly strict: boolean;
+  };
+  readonly version: VersionDescriptor;
+  readonly summary: DaySummaryDto;
+  readonly hours: Partial<Record<HourName, PublicComposedHourDto>>;
+  readonly warnings: {
+    readonly rubrical: readonly RubricalWarning[];
+    readonly composition: Partial<Record<HourName, readonly ComposeWarning[]>>;
+  };
+  readonly meta: {
+    readonly contentVersion: string;
+    readonly canonicalPath: string;
+    readonly quality: 'complete' | 'partial';
+  };
+}
+
 export interface DaySummaryDto {
   readonly date: string;
   readonly version: VersionDescriptor;
@@ -217,6 +243,69 @@ export function toDaySummaryDto(summary: DayOfficeSummary): DaySummaryDto {
     },
     candidates: summary.candidates.map(toCandidateDto),
     warnings: summary.warnings
+  };
+}
+
+export function toOfficeDayResponse(input: {
+  readonly date: string;
+  readonly version: VersionDescriptor;
+  readonly summary: DayOfficeSummary;
+  readonly composedHours: Readonly<Partial<Record<HourName, ComposedHour>>>;
+  readonly selectedHours: readonly HourName[];
+  readonly languageSelection: LanguageSelection;
+  readonly orthography: TextOrthographyProfile;
+  readonly strict: boolean;
+  readonly contentVersion: string;
+  readonly canonicalPath: string;
+}): OfficeDayResponse {
+  const hours: Partial<Record<HourName, PublicComposedHourDto>> = {};
+  const composition: Partial<Record<HourName, readonly ComposeWarning[]>> = {};
+
+  for (const hour of input.selectedHours) {
+    const composed = input.composedHours[hour];
+    if (!composed) {
+      continue;
+    }
+    hours[hour] = toPublicComposedHour({
+      composed,
+      selection: input.languageSelection,
+      orthography: input.orthography,
+      version: input.version.handle
+    });
+    composition[hour] = composed.warnings;
+  }
+
+  return {
+    kind: 'office-day',
+    apiVersion: 'v1',
+    request: {
+      date: input.date,
+      version: input.version.handle,
+      languages: input.languageSelection.publicTags,
+      ...(input.languageSelection.publicFallback
+        ? { langfb: input.languageSelection.publicFallback }
+        : {}),
+      orthography: input.orthography,
+      hours: input.selectedHours,
+      strict: input.strict
+    },
+    version: input.version,
+    summary: toDaySummaryDto(input.summary),
+    hours,
+    warnings: {
+      rubrical: input.summary.warnings,
+      composition
+    },
+    meta: {
+      contentVersion: input.contentVersion,
+      canonicalPath: input.canonicalPath,
+      quality: hasErrorWarnings(
+        input.summary.warnings,
+        input.selectedHours.flatMap((hour) => input.composedHours[hour]?.warnings ?? [])
+      )
+        ? 'partial'
+        : 'complete'
+    }
   };
 }
 
