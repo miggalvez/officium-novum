@@ -11,7 +11,8 @@ Phase 3 is complete, so the API contract should target the shipped `ComposedHour
 - **4c office endpoint:** Complete in `packages/api/`. Implemented `/api/v1/office/{date}/{hour}`, live context startup resources, version/language/query validation, public `ComposedHour` DTO adaptation, strict composition-error handling, and 1960 Latin `orthography=source|version` text/rubric adaptation.
 - **4d cache canonicalization and ETags:** Complete in `packages/api/`. Implemented canonical office cache keys, stable JSON hashing, deterministic ETags, `Cache-Control`, `If-None-Match` / `304` support, and canonical path metadata for the Office route.
 - **4e day bundle endpoint:** Complete in `packages/api/`. Implemented `/api/v1/days/{date}`, selected-Hour composition from one `DayOfficeSummary`, `hours=all`, per-Hour composition warnings, shared public DTO adaptation, and deterministic cache headers/ETags.
-- **4f calendar month endpoint and later:** Not implemented yet.
+- **4f calendar month endpoint:** Complete in `packages/api/`. Implemented `/api/v1/calendar/{year}/{month}`, month parameter validation, canonical version/rubrics handling, one rubrical summary per civil day, summary-only DTOs with no hour text composition, calendar cache keys, deterministic ETags, and conditional `304` handling.
+- **4g contract tests and release gate:** Not implemented yet.
 
 ## 0. Core Architectural Decisions
 

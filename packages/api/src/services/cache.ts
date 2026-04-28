@@ -3,7 +3,11 @@ import { createHash } from 'node:crypto';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { HourName, VersionHandle } from '@officium-novum/rubrical-engine';
 
-import type { OfficeDayResponse, OfficeHourResponse } from './dto.js';
+import type {
+  CalendarMonthResponse,
+  OfficeDayResponse,
+  OfficeHourResponse
+} from './dto.js';
 import type { PublicLanguageTag } from './language-map.js';
 import type { TextOrthographyProfile } from './orthography-profile.js';
 
@@ -37,7 +41,19 @@ export interface CanonicalDayKey {
   readonly contentVersion: string;
 }
 
-export type CanonicalCacheKey = CanonicalOfficeKey | CanonicalDayKey;
+export interface CanonicalCalendarKey {
+  readonly route: 'calendar';
+  readonly apiVersion: 'v1';
+  readonly year: string;
+  readonly month: number;
+  readonly version: VersionHandle;
+  readonly contentVersion: string;
+}
+
+export type CanonicalCacheKey =
+  | CanonicalOfficeKey
+  | CanonicalDayKey
+  | CanonicalCalendarKey;
 
 export function buildCanonicalOfficeKey(input: {
   readonly date: string;
@@ -116,6 +132,33 @@ export function dayResponseCacheKey(response: OfficeDayResponse): CanonicalDayKe
   });
 }
 
+export function buildCanonicalCalendarKey(input: {
+  readonly year: string;
+  readonly month: number;
+  readonly version: VersionHandle;
+  readonly contentVersion: string;
+}): CanonicalCalendarKey {
+  return {
+    route: 'calendar',
+    apiVersion: 'v1',
+    year: input.year,
+    month: input.month,
+    version: input.version,
+    contentVersion: input.contentVersion
+  };
+}
+
+export function calendarResponseCacheKey(
+  response: CalendarMonthResponse
+): CanonicalCalendarKey {
+  return buildCanonicalCalendarKey({
+    year: response.request.year,
+    month: response.month,
+    version: response.version.handle,
+    contentVersion: response.meta.contentVersion
+  });
+}
+
 export function canonicalOfficePath(key: CanonicalOfficeKey): string {
   const params = new URLSearchParams();
   params.set('version', key.version);
@@ -140,6 +183,12 @@ export function canonicalDayPath(key: CanonicalDayKey): string {
   params.set('hours', key.hours.join(','));
   params.set('strict', String(key.strict));
   return `/api/v1/days/${key.date}?${params.toString()}`;
+}
+
+export function canonicalCalendarPath(key: CanonicalCalendarKey): string {
+  const params = new URLSearchParams();
+  params.set('version', key.version);
+  return `/api/v1/calendar/${key.year}/${padMonth(key.month)}?${params.toString()}`;
 }
 
 export function stableJsonHash(value: unknown): string {
@@ -240,4 +289,8 @@ function etagSegment(value: string): string {
 
 function weakEtagValue(value: string): string {
   return value.startsWith('W/') ? value.slice(2) : value;
+}
+
+function padMonth(month: number): string {
+  return String(month).padStart(2, '0');
 }

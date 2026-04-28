@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest';
 
 import {
   buildCanonicalOfficeKey,
+  buildCanonicalCalendarKey,
   buildCanonicalDayKey,
   buildDeterministicEtag,
+  canonicalCalendarPath,
   canonicalDayPath,
   canonicalOfficePath,
   createEtagMemoryCache,
@@ -52,6 +54,19 @@ describe('cache service', () => {
 
     expect(canonicalDayPath(key)).toBe(
       '/api/v1/days/2024-01-01?version=Rubrics+1960+-+1960&lang=la%2Cen&orthography=source&hours=lauds%2Cvespers&strict=false'
+    );
+  });
+
+  it('builds a deterministic canonical calendar path', () => {
+    const key = buildCanonicalCalendarKey({
+      year: '2024',
+      month: 2,
+      version: 'Rubrics 1960 - 1960',
+      contentVersion: 'test-content'
+    });
+
+    expect(canonicalCalendarPath(key)).toBe(
+      '/api/v1/calendar/2024/02?version=Rubrics+1960+-+1960'
     );
   });
 
