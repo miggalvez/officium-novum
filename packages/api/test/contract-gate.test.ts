@@ -149,13 +149,22 @@ describeIfUpstream('Phase 4 API contract gate', () => {
 });
 
 function hasObjectKey(value: unknown, key: string): boolean {
-  if (value === null || typeof value !== 'object') {
-    return false;
+  const stack: unknown[] = [value];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    if (current === null || typeof current !== 'object') {
+      continue;
+    }
+    if (Array.isArray(current)) {
+      stack.push(...current);
+      continue;
+    }
+    for (const [entryKey, child] of Object.entries(current as Record<string, unknown>)) {
+      if (entryKey === key) {
+        return true;
+      }
+      stack.push(child);
+    }
   }
-  if (Array.isArray(value)) {
-    return value.some((item) => hasObjectKey(item, key));
-  }
-  return Object.entries(value as Record<string, unknown>).some(
-    ([entryKey, child]) => entryKey === key || hasObjectKey(child, key)
-  );
+  return false;
 }
