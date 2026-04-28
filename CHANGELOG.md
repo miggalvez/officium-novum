@@ -2,6 +2,14 @@
 
 Phase-by-phase implementation log for Officium Novum. The README's [Status](README.md#status) section summarizes the current phase state; this file records stable shipped changes by phase and sub-phase rather than live compare metrics.
 
+## Phase 4 — Read-only JSON API (in progress)
+
+Phase 4 is now open on the Fastify/TypeScript path described in [`docs/phase-4-API-design.md`](docs/phase-4-API-design.md). The API layer is a thin, deterministic HTTP boundary over the Parser → Rubrical Engine → Composition Engine pipeline: it owns request validation, version/language normalization, public DTO adaptation, OpenAPI route schemas, and caching concerns, while the earlier phases continue to own liturgical data, rubrical decisions, and composed Office structure.
+
+### 4b — API scaffold and metadata endpoints (complete)
+
+- **2026-04-28.** Added the `@officium-novum/api` package scaffold at `packages/api/` with Fastify 5, TypeBox route schemas, OpenAPI 3.1 generation, Swagger UI, a server entrypoint, config loading, and an immutable API context builder. The first public routes are `/api/v1/status`, `/api/v1/versions`, `/api/v1/languages`, `/api/v1/openapi.json`, and `/api/v1/docs`. `/versions` exposes the explicit Phase 4 status model (`supported`, `deferred`, `missa-only`) instead of treating every `VERSION_POLICY` row as servable; missa-only handles surface alias hints from `MISSA_ALIAS_HINTS` where available. `/languages` exposes public tags (`la`, `en`) while preserving the internal corpus-name mapping (`Latin`, `English`). The orthography adapter surface is present as a parser for `orthography=source|version`, but the office composition route and text-run adaptation remain in the next tranche. Validation: `pnpm -C packages/api typecheck`, `pnpm -C packages/api test`, `pnpm -r typecheck`, and `pnpm -r test` are green.
+
 ## Phase 3 — Composition Engine (complete)
 
 Sub-phases 3a–3h are shipped. The authoritative design is in [`docs/phase-3-composition-engine-design.md`](docs/phase-3-composition-engine-design.md), and the adjudication record is maintained in [`packages/compositor/test/divergence/ADJUDICATION_LOG.md`](packages/compositor/test/divergence/ADJUDICATION_LOG.md), [`packages/compositor/test/divergence/adjudications.json`](packages/compositor/test/divergence/adjudications.json), and [`docs/upstream-issues.md`](docs/upstream-issues.md).

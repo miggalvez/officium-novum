@@ -4,6 +4,12 @@ Phase 4 should be a thin, deterministic HTTP layer over the existing Parser → 
 
 Phase 3 is complete, so the API contract should target the shipped `ComposedHour` surface while keeping public v1 stability at the adapter boundary. Phase 4 owns wire-format choices such as public language tags, spelling/orthography profiles, cache keys, and response DTO shape; Phase 3 continues to own format-agnostic composition.
 
+## Implementation Status
+
+- **4a design record:** This design document plus [ADR-014](adr/014-http-api-version-language-contract.md) now record the API's canonical version, language, DTO, and orthography boundary.
+- **4b scaffold and metadata endpoints:** Complete in `packages/api/`. Implemented Fastify app/server setup, context/config loading, OpenAPI registration, error serializer, `/api/v1/status`, `/api/v1/versions`, and `/api/v1/languages`, with package and workspace validation green.
+- **4c office endpoint and later:** Not implemented yet.
+
 ## 0. Core Architectural Decisions
 
 ### Decision 1: Use `version`, not `rubrics`, as the canonical API binding

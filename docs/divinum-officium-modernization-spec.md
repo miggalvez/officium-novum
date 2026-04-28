@@ -313,26 +313,30 @@ This object can then be serialized to JSON (for the API), rendered to HTML (for 
 
 ```
 GET /api/v1/office/{date}/{hour}
-  ?rubrics=1960
+  ?version=Rubrics%201960%20-%201960
   &lang=la,en
 ```
 
-Returns a `ComposedHour` JSON payload.
+Returns a public DTO adapted from the current `ComposedHour` surface. The API
+uses canonical `version` handles; `rubrics=1960` is a compatibility alias that
+normalizes immediately to a `VersionHandle`.
 
 2. **Calendar endpoint:**
 
 ```
 GET /api/v1/calendar/{year}/{month}
-  ?rubrics=1960
+  ?version=Rubrics%201960%20-%201960
 ```
 
-Returns an array of `OrdoEntry` summaries (feast name, rank, color) for the month. Useful for calendar UIs.
+Returns lightweight day summaries for the month. Useful for calendar UIs. The
+API does not invent liturgical fields that the engine does not expose; for
+example, celebration color is omitted until the rubrical engine owns it.
 
 3. **Feast lookup:**
 
 ```
-GET /api/v1/feast/{feast-id}
-  ?rubrics=1960
+GET /api/v1/feasts?id={feast-id}
+  ?version=Rubrics%201960%20-%201960
   &lang=la
 ```
 
@@ -342,7 +346,7 @@ Returns all text blocks associated with a feast, independent of date. Useful for
 
 ```
 GET /api/v1/status
-GET /api/v1/rubrics       → lists supported rubrical systems
+GET /api/v1/versions      → lists canonical handles and support status
 GET /api/v1/languages     → lists supported languages
 ```
 
