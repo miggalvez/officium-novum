@@ -6,6 +6,10 @@ Phase-by-phase implementation log for Officium Novum. The README's [Status](READ
 
 Phase 5 is the cross-stack quality gate described in [`docs/phase-5-validation-strategy-reviewer-feedback-loop.md`](docs/phase-5-validation-strategy-reviewer-feedback-loop.md). It preserves the package-local validation surfaces from Phases 1–4 while adding shared adjudication rules, citation audits, reviewer intake, privacy checks, cross-stack E2E validation, multi-year promotion, and reviewer-submitted fixture workflow.
 
+### 5h — Reviewer pilot and sign-off (complete)
+
+- **2026-04-28.** Processed the maintainer-seeded reviewer pilot report `rr-2026-0001` through the public fixture path. The accepted report fixture in `packages/validation/test/reviewer-reports/accepted/rr-2026-0001.json` records the 1960 Assumption Vespers API request, a source-backed corpus citation to `upstream/web/www/horas/Latin/Sancti/08-15t.txt:11-16`, the landed fixture surface `packages/validation/test/e2e-api-harness.test.ts`, public-safe triage metadata, and no private reviewer data. Updated [`docs/REVIEWER_REPORTS.md`](docs/REVIEWER_REPORTS.md) with the public index row and added [`docs/phase-5-signoff.md`](docs/phase-5-signoff.md) with the final Phase 5 evidence checklist and validation commands.
+
 ### 5g — Multi-year expansion (complete)
 
 - **2026-04-28.** Promoted 2025 to Phase 5 `candidate` status in `packages/validation/fixtures/multi-year/phase-5-years.json`, with a machine-readable 2025 candidate ledger and adjudication sidecar under `packages/validation/fixtures/multi-year/`. Added `packages/validation/src/report-multi-year.ts`, the `pnpm -C packages/validation report:multi-year` dashboard command, and regression tests that enforce candidate thresholds and print unadjudicated/no-throw/schema counts by policy/year. The validation package `test` script now includes the multi-year dashboard gate, and [`docs/phase-5-multi-year-status.md`](docs/phase-5-multi-year-status.md) records the current 2024 gated + 2025 candidate table and the follow-up required before 2025 can become gated.

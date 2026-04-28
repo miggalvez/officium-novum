@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "rr-2026-0001",
+  "submittedAt": "2026-04-28",
+  "submittedVia": "maintainer",
+  "reviewer": {
+    "reviewerKind": "maintainer",
+    "attribution": "anonymous",
+    "publicName": null
+  },
+  "context": {
+    "calendarScope": "universal-roman",
+    "locality": null,
+    "communityOrUse": null,
+    "ordoFamily": "rubrics-1960"
+  },
+  "request": {
+    "date": "2024-08-15",
+    "version": "Rubrics 1960 - 1960",
+    "hour": "vespers",
+    "languages": ["la", "en"],
+    "langfb": null,
+    "orthography": "source",
+    "strict": false,
+    "apiVersion": "v1",
+    "apiPath": "/api/v1/office/2024-08-15/vespers?version=Rubrics%201960%20-%201960&lang=la,en&orthography=source",
+    "appBuildSha": null,
+    "apiBuildSha": null,
+    "upstreamSha": null
+  },
+  "output": {
+    "permalink": null,
+    "apiResponseFixture": "packages/validation/test/e2e-api-harness.test.ts",
+    "excerpt": "Assúmpta est María in cælum"
+  },
+  "disagreement": {
+    "scope": "dto",
+    "expected": "The public Office DTO for 1960 Assumption Vespers should expose the source-backed proper first Vespers antiphon from the Assumption corpus file.",
+    "actual": "Before the Phase 5 reviewer pilot, this reviewer-facing expectation had no public report fixture tying the API DTO anchor to the source citation."
+  },
+  "citation": {
+    "sourceType": "corpus",
+    "sourceId": null,
+    "edition": null,
+    "publisher": null,
+    "page": null,
+    "section": "Ant Vespera",
+    "paragraph": null,
+    "corpusPath": "upstream/web/www/horas/Latin/Sancti/08-15t.txt",
+    "lineStart": 11,
+    "lineEnd": 16,
+    "adr": null,
+    "reportId": null,
+    "archiveRef": null,
+    "checksum": null,
+    "excerptPolicy": "brief-public-excerpt"
+  },
+  "triage": {
+    "status": "implemented",
+    "resolution": "accepted",
+    "classification": "rendering-difference",
+    "fixtureStatus": "landed",
+    "ownerPackage": "validation",
+    "duplicateOf": null,
+    "decidedBy": "maintainer",
+    "decidedAt": "2026-04-28",
+    "publicSummary": "Maintainer-seeded reviewer pilot verifying that the 1960 Assumption Vespers public DTO preserves the source-backed proper antiphon and keeps it covered by the Phase 5 E2E harness."
+  },
+  "notes": "Phase 5h pilot fixture; no private reviewer data is recorded."
+}

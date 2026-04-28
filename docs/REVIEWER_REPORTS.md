@@ -85,6 +85,7 @@ public schema and index used for GitHub and email reports.
 
 | Report ID | Date received | Status | Resolution | Classification | Owner | Public summary | Fixture |
 |---|---:|---|---|---|---|---|---|
+| `rr-2026-0001` | 2026-04-28 | implemented | accepted | rendering-difference | validation | Maintainer-seeded pilot verifying that the 1960 Assumption Vespers public DTO preserves the source-backed proper antiphon from `Sancti/08-15t.txt`. | `packages/validation/test/reviewer-reports/accepted/rr-2026-0001.json`; `packages/validation/test/e2e-api-harness.test.ts` |
 
 ## Status Values
 

@@ -973,6 +973,10 @@ Acceptance criteria:
 - The fixture is owned by the correct package.
 - The report ID appears in the commit or fixture metadata.
 
+The Phase 5h sign-off record lives in
+[`docs/phase-5-signoff.md`](phase-5-signoff.md), and the pilot report is
+`rr-2026-0001`.
+
 ## 16. Risks and mitigations
 
 | Risk | Mitigation |
