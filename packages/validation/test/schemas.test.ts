@@ -63,7 +63,24 @@ describe('Phase 5 schemas', () => {
   });
 
   it('accepts a redacted public reviewer report', () => {
-    const report = {
+    const report = publicReviewerReport();
+
+    expect(validateReviewerReport(report)).toEqual({
+      ok: true,
+      errors: []
+    });
+  });
+
+  it('allows reviewer report notes to be null', () => {
+    expect(validateReviewerReport({ ...publicReviewerReport(), notes: null })).toEqual({
+      ok: true,
+      errors: []
+    });
+  });
+});
+
+function publicReviewerReport() {
+  return {
       schemaVersion: 1,
       id: 'rr-2026-0001',
       submittedAt: '2026-04-28T14:30:00-05:00',
@@ -72,6 +89,12 @@ describe('Phase 5 schemas', () => {
         reviewerKind: 'maintainer',
         attribution: 'anonymous',
         publicName: null
+      },
+      context: {
+        calendarScope: 'universal-roman',
+        locality: null,
+        communityOrUse: null,
+        ordoFamily: 'rubrics-1960'
       },
       request: {
         date: '2026-04-28',
@@ -82,7 +105,15 @@ describe('Phase 5 schemas', () => {
         orthography: 'version',
         strict: false,
         apiVersion: 'v1',
-        apiPath: '/api/v1/office/2026-04-28/lauds?version=Rubrics%201960%20-%201960'
+        apiPath: '/api/v1/office/2026-04-28/lauds?version=Rubrics%201960%20-%201960',
+        appBuildSha: null,
+        apiBuildSha: null,
+        upstreamSha: null
+      },
+      output: {
+        permalink: null,
+        apiResponseFixture: null,
+        excerpt: null
       },
       disagreement: {
         scope: 'rubric',
@@ -100,12 +131,7 @@ describe('Phase 5 schemas', () => {
         decidedBy: null,
         decidedAt: null,
         publicSummary: ''
-      }
+      },
+      notes: ''
     };
-
-    expect(validateReviewerReport(report)).toEqual({
-      ok: true,
-      errors: []
-    });
-  });
-});
+}

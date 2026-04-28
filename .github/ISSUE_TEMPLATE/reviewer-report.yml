@@ -1,0 +1,249 @@
+name: Reviewer report
+description: Report a disputed Office output with enough source detail to reproduce and adjudicate it.
+title: "Reviewer report: YYYY-MM-DD hour version"
+labels:
+  - reviewer-report
+  - phase-5
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping validate Officium Novum.
+
+        GitHub issues are public. Do not include private contact details, pastoral confidences, or long copyrighted excerpts. Give source locators such as Ordo edition/page, rubrical paragraph, breviary reference, or corpus file path when available.
+
+  - type: dropdown
+    id: reviewer-kind
+    attributes:
+      label: Reviewer kind
+      description: This helps triage reports. It does not override the cited sources.
+      options:
+        - clergy
+        - religious
+        - scholar
+        - trained-lay
+        - maintainer
+        - anonymous
+    validations:
+      required: true
+
+  - type: dropdown
+    id: public-attribution
+    attributes:
+      label: Public attribution
+      description: Choose anonymous unless you explicitly want a public name attached to this report.
+      options:
+        - anonymous
+        - public-name-opt-in
+    validations:
+      required: true
+
+  - type: input
+    id: public-name
+    attributes:
+      label: Public name
+      description: Optional. Fill this only if public attribution is public-name-opt-in.
+      placeholder: Leave blank for anonymous attribution.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: calendar-scope
+    attributes:
+      label: Calendar scope
+      options:
+        - universal-roman
+        - local
+        - institute
+        - unknown
+    validations:
+      required: true
+
+  - type: input
+    id: locality
+    attributes:
+      label: Locality
+      description: Optional. Use only when the report concerns a local calendar.
+      placeholder: Diocese, country, or locality.
+    validations:
+      required: false
+
+  - type: input
+    id: community-or-use
+    attributes:
+      label: Community or use
+      description: Optional. Use only when the report concerns an institute, order, or local use.
+      placeholder: Community, order, institute, or use.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: ordo-family
+    attributes:
+      label: Ordo family
+      options:
+        - rubrics-1960
+        - reduced-1955
+        - divino-afflatu
+        - unknown
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: ISO date for the disputed output.
+      placeholder: "2026-04-28"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version handle
+      description: Use the exact API/public version handle when possible.
+      placeholder: "Rubrics 1960 - 1960"
+    validations:
+      required: true
+
+  - type: input
+    id: hour
+    attributes:
+      label: Hour
+      placeholder: lauds
+    validations:
+      required: true
+
+  - type: input
+    id: languages
+    attributes:
+      label: Languages
+      description: Comma-separated public language tags.
+      placeholder: "la,en"
+    validations:
+      required: true
+
+  - type: input
+    id: langfb
+    attributes:
+      label: Language fallback
+      description: Optional fallback language tag, if used.
+      placeholder: en
+    validations:
+      required: false
+
+  - type: dropdown
+    id: orthography
+    attributes:
+      label: Orthography
+      options:
+        - version
+        - source
+    validations:
+      required: true
+
+  - type: dropdown
+    id: strict
+    attributes:
+      label: Strict mode
+      options:
+        - "false"
+        - "true"
+    validations:
+      required: true
+
+  - type: input
+    id: api-path
+    attributes:
+      label: API path or permalink
+      description: Paste the exact API path or hosted-demo permalink if available.
+      placeholder: "/api/v1/office/2026-04-28/lauds?version=Rubrics%201960%20-%201960&lang=la,en&orthography=version"
+    validations:
+      required: false
+
+  - type: input
+    id: build-shas
+    attributes:
+      label: Build SHAs
+      description: Optional. Include app/API/upstream SHAs if shown by the app or report payload.
+      placeholder: "app: ..., api: ..., upstream: ..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: disagreement-scope
+    attributes:
+      label: Disagreement scope
+      options:
+        - feast
+        - commemoration
+        - psalter
+        - lesson
+        - antiphon
+        - hymn
+        - versicle
+        - rubric
+        - color
+        - dto
+        - cache
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output or behavior
+      description: Describe what should appear or happen. Keep copyrighted excerpts brief.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual output or behavior
+      description: Describe what Officium Novum displayed or returned.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: citation-source-type
+    attributes:
+      label: Citation source type
+      options:
+        - ordo
+        - rubrical-book
+        - breviary
+        - corpus
+        - adr
+        - consultation
+        - reviewer-report
+        - none
+    validations:
+      required: true
+
+  - type: textarea
+    id: citation-locator
+    attributes:
+      label: Citation locator
+      description: Include edition/year, publisher, page, paragraph, corpus path and line range, ADR, report ID, or consultation reference.
+      placeholder: "FSSP Ordo 2026, p. 47"
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Optional. Add any reproduction details that do not fit above.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: privacy-confirmation
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I understand this issue is public and have not included private contact details or long copyrighted excerpts.
+          required: true

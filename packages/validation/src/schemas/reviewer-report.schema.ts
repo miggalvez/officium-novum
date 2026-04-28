@@ -65,6 +65,20 @@ export const DISAGREEMENT_SCOPES = [
   'other'
 ] as const;
 
+export const CALENDAR_SCOPES = [
+  'universal-roman',
+  'local',
+  'institute',
+  'unknown'
+] as const;
+
+export const ORDO_FAMILIES = [
+  'rubrics-1960',
+  'reduced-1955',
+  'divino-afflatu',
+  'unknown'
+] as const;
+
 export function validateReviewerReport(value: unknown): ValidationResult {
   const errors: string[] = [];
   if (!isRecord(value)) {
@@ -85,9 +99,14 @@ export function validateReviewerReport(value: unknown): ValidationResult {
   }
 
   validateReviewer(value.reviewer, errors);
+  validateContext(value.context, errors);
   validateRequest(value.request, errors);
+  validateOutput(value.output, errors);
   validateDisagreement(value.disagreement, errors);
   validateTriage(value.triage, errors);
+  if (!isNullableString(value.notes)) {
+    errors.push('notes must be a string or null');
+  }
 
   const citation = validateCitation(value.citation);
   errors.push(...citation.errors.map((error) => `citation: ${error}`));
@@ -111,6 +130,25 @@ function validateReviewer(value: unknown, errors: string[]): void {
   }
 }
 
+function validateContext(value: unknown, errors: string[]): void {
+  if (!isRecord(value)) {
+    errors.push('context must be an object');
+    return;
+  }
+  if (!enumIncludes(CALENDAR_SCOPES, value.calendarScope)) {
+    errors.push('context.calendarScope must be recognized');
+  }
+  if (!isNullableString(value.locality)) {
+    errors.push('context.locality must be a string or null');
+  }
+  if (!isNullableString(value.communityOrUse)) {
+    errors.push('context.communityOrUse must be a string or null');
+  }
+  if (!enumIncludes(ORDO_FAMILIES, value.ordoFamily)) {
+    errors.push('context.ordoFamily must be recognized');
+  }
+}
+
 function validateRequest(value: unknown, errors: string[]): void {
   if (!isRecord(value)) {
     errors.push('request must be an object');
@@ -129,6 +167,23 @@ function validateRequest(value: unknown, errors: string[]): void {
   }
   if (!isBoolean(value.strict)) {
     errors.push('request.strict must be a boolean');
+  }
+  for (const key of ['appBuildSha', 'apiBuildSha', 'upstreamSha'] as const) {
+    if (!isNullableString(value[key])) {
+      errors.push(`request.${key} must be a string or null`);
+    }
+  }
+}
+
+function validateOutput(value: unknown, errors: string[]): void {
+  if (!isRecord(value)) {
+    errors.push('output must be an object');
+    return;
+  }
+  for (const key of ['permalink', 'apiResponseFixture', 'excerpt'] as const) {
+    if (!isNullableString(value[key])) {
+      errors.push(`output.${key} must be a string or null`);
+    }
   }
 }
 
