@@ -24,6 +24,56 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-27 — Paschaltide Sunday Vespers psalmody — `alleluia_ant` substitution overrides source-backed Day-N Vespera psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** When a paschaltide Sunday office supplies no proper
+`[Ant Vespera]` section, `specials/psalmi.pl:604-622` fires the
+`alleluia_ant` override: it replaces the first antiphon with a
+single triple-alleluia antiphon (`Allelúja, * allelúja, allelúja.`)
+and strips antiphons from positions 1, 2, 3, and -1. The corpus's
+explicit `[Day6 Vespera]` and `[Day0 Vespera]` psalter rows in
+`Psalmi major.txt` carry plain non-alleluia antiphons; the
+compositor honours those source rows and applies the standard
+paschaltide `add-alleluia` decoration to append `, allelúja.` to
+each. This is the structural parallel to the already-classified
+`2024-04-07` Low Sunday Lauds family where the Day0 Laudes1 paschal
+antiphons are likewise overridden by Perl's triple-alleluia
+substitution.
+
+**Primary source.**
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147`
+  (`[Day6 Vespera]` Saturday Vespers psalter — `Benedíctus Dóminus *
+  suscéptor meus et liberátor meus.;;143(1-8)` etc.)
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`
+  (`[Day0 Vespera]` Sunday Vespers psalter — `Dixit Dóminus * Dómino
+  meo: Sede a dextris meis.;;109` etc.)
+- `upstream/web/www/horas/Latin/Tempora/Pasc1-0.txt:1-22`
+  (Dominica in Albis carries no `[Ant Vespera]` section)
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-6.txt:17`
+  (`No secunda Vespera`, hands Easter Saturday Vespers to Pasc1-0
+  First Vespers)
+- `upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622`
+  (`alleluia_ant` override that fires when `winner{Ant $hora}` is
+  absent)
+
+**Reproduction.**
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-04-06 --hour Vespers --debug-window 12
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-04-06 --hour Vespers --debug-window 12
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-04-07 --hour Vespers --debug-window 12
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-04-06 | Vespers | `40a67109` |
+| Rubrics 1960 - 1960 | 2024-04-06 | Vespers | `40a67109` |
+| Rubrics 1960 - 1960 | 2024-04-07 | Vespers | `4ad3678c` |
+
 ### 2026-04-27 — Trinity Sunday Prime keeps weekday `1 Tim. 1:17` instead of the proper `1 Joann. 5:7` chapter
 
 **Classification.** `perl-bug`

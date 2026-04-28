@@ -22,6 +22,74 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: shared Roman paschaltide Vespers psalmody-antiphon — Day6 / Day0 Vespera + add-alleluia decoration (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Three Easter-Octave-bracketing Vespers rows
+diverged at row `5`/`6` with the compositor emitting source-backed
+psalter antiphons (Day6 Vespera `Benedíctus Dóminus * suscéptor meus
+et liberátor meus` for Saturday First Vespers of Low Sunday; Day0
+Vespera `Dixit Dóminus * Dómino meo: Sede a dextris meis` for Sunday
+Second Vespers of Low Sunday) with paschaltide `, allelúja.`
+appended, while the Perl comparison surface emitted a single
+`Ant. Allelúja, * allelúja, allelúja.` covering all five psalms.
+Affected ledger rows:
+
+- `Reduced - 1955/2024-04-06/Vespers/40a67109`
+- `Rubrics 1960 - 1960/2024-04-06/Vespers/40a67109`
+- `Rubrics 1960 - 1960/2024-04-07/Vespers/4ad3678c`
+
+**Source seam.**
+`upstream/web/www/horas/Latin/Tempora/Pasc1-0.txt` (Dominica in
+Albis) carries no proper `[Ant Vespera]` section; its only Vespers
+antiphon is `[Ant 1]` (`Cum esset sero…`, the Magnificat antiphon).
+`Tempora/Pasc0-6.txt:17` (`No secunda Vespera`) hands Saturday's
+Vespers slot to Pasc1-0 First Vespers, so 2024-04-06 Vespers picks
+up the Saturday-evening psalter row from
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147`
+(`[Day6 Vespera]`). 2024-04-07 Vespers (Pasc1-0 Second Vespers)
+picks up the Sunday psalter row from `Psalmi major.txt:15-20`
+(`[Day0 Vespera]`). Both psalter rows carry plain antiphons (no
+baked-in alleluia); the paschaltide `add-alleluia` HourDirective
+appends `, allelúja.` to each at compose time.
+
+**Resolution.** Class `perl-bug`, parallel to the existing
+`Reduced - 1955/2024-04-07/Lauds/fe825d42` Day0 Laudes1 paschal
+antiphon family classified in tranche 16. The compositor's Day6 /
+Day0 Vespera + paschaltide decoration is source-backed; the Perl
+substitution fires from
+`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622`, which
+checks `alleluia_required($dayname[0], $votive) &&
+!exists($winner{Ant $hora})` and replaces the first antiphon with
+`alleluia_ant($lang)` while stripping antiphons from positions 1, 2,
+3, and -1. Per ADR-011 the source corpus is the highest authority,
+and the corpus-encoded Day-N Vespera psalter rows constitute that
+source authority for paschaltide Sunday Vespers psalmody when the
+office supplies no proper `[Ant Vespera]`. Three representative
+entries land; no fanout is needed since these are the only Roman
+ledger rows with this first-divergence pair.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147`
+  (`[Day6 Vespera]` Saturday Vespers psalter)
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`
+  (`[Day0 Vespera]` Sunday Vespers psalter)
+- `upstream/web/www/horas/Latin/Tempora/Pasc1-0.txt:1-22` (Pasc1-0
+  has no `[Ant Vespera]` section; rule has `Una Antiphona` but
+  Phase 2's psalter selector treats absent-`[Ant Vespera]` cases as
+  fall-through to the Day-N Vespera psalter row)
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-6.txt:17`
+  (`No secunda Vespera`, hands Easter Saturday Vespers to Pasc1-0
+  First Vespers)
+- `upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622`
+  (`alleluia_ant` override that fires when `winner{Ant $hora}` is
+  absent)
+
+**Impact.** Net unadjudicated drop: Reduced 1955 from `2` → `1`,
+Rubrics 1960 from `3` → `1`, total `6` → `3`.
+
 ### 2026-04-27 — Pattern: Trinity Sunday proper Prime capitulum override (perl-bug, classified)
 
 **Commit.** Current tranche commit.
