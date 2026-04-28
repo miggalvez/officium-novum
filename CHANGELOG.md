@@ -2,6 +2,22 @@
 
 Phase-by-phase implementation log for Officium Novum. The README's [Status](README.md#status) section summarizes the current phase state; this file records stable shipped changes by phase and sub-phase rather than live compare metrics.
 
+## Phase 5 — Validation Strategy and Reviewer Feedback Loop (in progress)
+
+Phase 5 is the cross-stack quality gate described in [`docs/phase-5-validation-strategy-reviewer-feedback-loop.md`](docs/phase-5-validation-strategy-reviewer-feedback-loop.md). It preserves the package-local validation surfaces from Phases 1–4 while adding shared adjudication rules, citation audits, reviewer intake, privacy checks, cross-stack E2E validation, multi-year promotion, and reviewer-submitted fixture workflow.
+
+### 5c — Reviewer intake v1 (complete)
+
+- **2026-04-28.** Added the Phase 5 reviewer intake path. New GitHub issue template `.github/ISSUE_TEMPLATE/reviewer-report.yml` collects reviewer kind, public-attribution consent, calendar scope, Ordo family, exact request metadata, API path/permalink, build SHAs, disagreement scope, expected/actual behavior, citation source type, citation locator, notes, and an explicit public-issue privacy confirmation. New public index/runbook `docs/REVIEWER_REPORTS.md` defines stable `rr-YYYY-NNNN` report IDs, GitHub issue transcription, email transcription, private reviewer-data storage outside the public repository, hosted-demo handoff expectations, allowed workflow statuses, resolutions, and classifications. The Phase 5 plan and README now point to these intake artifacts. Validation package support grew `context`, `output`, build-SHA, and `notes` validation for public reviewer reports plus `packages/validation/src/audit-reviewer-reports.ts`; `pnpm -C packages/validation test` now runs citation, reviewer-privacy, and reviewer-report fixture audits. Validation: `pnpm -C packages/validation typecheck`, `pnpm -C packages/validation test`, `pnpm -r typecheck`, and `pnpm -r test` are green.
+
+### 5b — Shared schemas and validation package scaffold (complete)
+
+- **2026-04-28.** Added the private `@officium-novum/validation` package under `packages/validation`, included automatically by the existing `packages/*` workspace. The package exports shared Phase 5 validators for citation objects, generalized adjudication entries, and reviewer reports; includes schema regression tests; and wires initial `audit:citations` and `audit:reviewer-privacy` scripts into its package `test` command. The citation audit currently accepts the existing ADR-011 compositor sidecar as a legacy string-citation migration state while reporting the structured-citation backlog count; reviewer privacy audit scans public reviewer-report fixture directories for private-field leaks. Validation: `pnpm -C packages/validation typecheck`, `pnpm -C packages/validation test`, `pnpm -r typecheck`, and `pnpm -r test` are green.
+
+### 5a — Phase 5 design and ADR-015 (complete)
+
+- **2026-04-28.** Accepted Phase 5 as the validation-and-reviewer-feedback phase rather than frontend work. Added [`docs/adr/015-cross-stack-adjudication.md`](docs/adr/015-cross-stack-adjudication.md), choosing a shared cross-stack adjudication protocol with package-owned fixtures. ADR-015 fixes the authority hierarchy (Ordo Recitandi → governing rubrical books → published breviaries / dispositive corpus lines → ADRs or recorded expert consultations → legacy Perl as comparison only), broadens the ADR-011 taxonomy across parser, rubrical-engine, compositor, API, corpus, Perl, ambiguity, rendering, invalid-report, and duplicate classifications, defines the structured citation object, records reviewer privacy rules, assigns package ownership for fixtures, and sets exploratory/candidate/gated year thresholds. README phase numbering now identifies Phase 5 as validation and Phase 6 as frontend; the Phase 5 plan is marked accepted and references ADR-015.
+
 ## Phase 4 — Read-only JSON API (complete for core Breviary scope)
 
 Phase 4 shipped on the Fastify/TypeScript path described in [`docs/phase-4-API-design.md`](docs/phase-4-API-design.md). The API layer is a thin, deterministic HTTP boundary over the Parser → Rubrical Engine → Composition Engine pipeline: it owns request validation, version/language normalization, public DTO adaptation, OpenAPI route schemas, and caching concerns, while the earlier phases continue to own liturgical data, rubrical decisions, and composed Office structure.

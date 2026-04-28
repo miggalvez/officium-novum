@@ -425,6 +425,9 @@ Lowest-friction intake.
 - Private identity/contact details remain outside the public repo.
 - Best for clergy and religious who do not use GitHub.
 
+The transcription procedure, public report ID format, and private-data storage
+rule live in [`docs/REVIEWER_REPORTS.md`](REVIEWER_REPORTS.md).
+
 #### Channel 2 — GitHub issue template
 
 Structured intake for technical users.
@@ -436,6 +439,8 @@ Recommended file:
 ```
 
 The issue template should collect request metadata, expected output, actual output, citation, and calendar scope. It should warn users not to include private personal details unless they want them public.
+
+The Phase 5 intake template is [`../.github/ISSUE_TEMPLATE/reviewer-report.yml`](../.github/ISSUE_TEMPLATE/reviewer-report.yml).
 
 #### Channel 3 — Hosted demo “Report this” button
 
@@ -634,6 +639,9 @@ Minimum columns:
 |---|---:|---|---|---|---|---|---|
 
 Include accepted, rejected, duplicate, and out-of-scope reports, but keep rejected entries minimal. Do not publish private details or long source excerpts.
+
+`docs/REVIEWER_REPORTS.md` also records the maintainer procedure for assigning
+`rr-YYYY-NNNN` IDs and transcribing email reports safely.
 
 Recommended rejected categories:
 
@@ -856,6 +864,7 @@ Deliverables:
 - schema tests;
 - citation audit script;
 - reviewer privacy audit script.
+- reviewer report fixture audit script.
 
 Acceptance criteria:
 
@@ -868,10 +877,11 @@ Acceptance criteria:
 Deliverables:
 
 - `.github/ISSUE_TEMPLATE/reviewer-report.yml`
-- email-transcription procedure in the Phase 5 doc or a short companion runbook;
+- email-transcription procedure in `docs/REVIEWER_REPORTS.md`;
 - public report ID format;
 - private reviewer-data storage decision;
 - `docs/REVIEWER_REPORTS.md` initial skeleton.
+- reviewer report fixture audit wired into `packages/validation`.
 
 Acceptance criteria:
 

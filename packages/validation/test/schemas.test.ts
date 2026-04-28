@@ -73,6 +73,12 @@ describe('Phase 5 schemas', () => {
         attribution: 'anonymous',
         publicName: null
       },
+      context: {
+        calendarScope: 'universal-roman',
+        locality: null,
+        communityOrUse: null,
+        ordoFamily: 'rubrics-1960'
+      },
       request: {
         date: '2026-04-28',
         version: 'Rubrics 1960 - 1960',
@@ -82,7 +88,15 @@ describe('Phase 5 schemas', () => {
         orthography: 'version',
         strict: false,
         apiVersion: 'v1',
-        apiPath: '/api/v1/office/2026-04-28/lauds?version=Rubrics%201960%20-%201960'
+        apiPath: '/api/v1/office/2026-04-28/lauds?version=Rubrics%201960%20-%201960',
+        appBuildSha: null,
+        apiBuildSha: null,
+        upstreamSha: null
+      },
+      output: {
+        permalink: null,
+        apiResponseFixture: null,
+        excerpt: null
       },
       disagreement: {
         scope: 'rubric',
@@ -100,7 +114,8 @@ describe('Phase 5 schemas', () => {
         decidedBy: null,
         decidedAt: null,
         publicSummary: ''
-      }
+      },
+      notes: ''
     };
 
     expect(validateReviewerReport(report)).toEqual({
