@@ -746,6 +746,9 @@ The audit should scan:
 - E2E snapshot manifests;
 - any golden manifest introduced by Phase 5.
 
+The current Phase 5d audit record and migration backlog live in
+[`docs/phase-5-citation-audit.md`](phase-5-citation-audit.md).
+
 Rules:
 
 1. Every adjudicated divergence has a classification.
