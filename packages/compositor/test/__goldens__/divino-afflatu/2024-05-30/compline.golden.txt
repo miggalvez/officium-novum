@@ -1,0 +1,148 @@
+policy: Divino Afflatu - 1954
+date: 2024-05-30
+hour: compline
+celebration: Festum Sanctissimi Corporis Christi
+languages: Latin
+section count: 11
+warning count: 8
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica examen}
+#3 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#4 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Dominus vobiscum}
+#5 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Deinde secreto}
+#6 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica CompletBMV}
+#7 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica PAC ad Completorium}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
+  Latin: rubric("Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio.")
+  Latin: [V.] text("Jube, domne, benedícere.")
+  Latin: [Benedictio.] text("Noctem quiétam et finem perféctum concédat nobis Dóminus omnípotens.")
+  Latin: [R.] text("Amen.")
+
+[section #1 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Psalterium/Special/Minor Special#Lectio Completorium languages=Latin]
+  Latin: text(" ") · citation("1 Pet 5:8-9")
+  Latin: [v.] text("Fratres: Sóbrii estóte, et vigiláte: quia adversárius vester diábolus tamquam leo rúgiens círcuit, quærens quem dévoret: cui resístite fortes in fide.")
+  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Adjutórium nostrum + in nómine Dómini.")
+  Latin: [R.] text("Qui fecit cælum et terram.")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
+  Latin: [v.] text("Confíteor Deo omnipoténti, beátæ Maríæ semper Vírgini, beáto Michaéli Archángelo, beáto Joánni Baptístæ, sanctis Apóstolis Petro et Paulo, et ómnibus Sanctis, quia peccávi nimis, cogitatióne, verbo et ópere:") · text(" ") · rubric("percutit sibi pectus") · text(" mea culpa, mea culpa, mea máxima culpa. Ídeo precor beátam Maríam semper Vírginem, beátum Michaélem Archángelum, beátum Joánnem Baptístam, sanctos Apóstolos Petrum et Paulum, et omnes Sanctos, oráre pro me ad Dóminum Deum nostrum.")
+  Latin: [v.] text("Misereátur nostri omnípotens Deus, et dimíssis peccátis nostris, perdúcat nos ad vitam ætérnam. Amen.")
+  Latin: [v.] text("Indulgéntiam, + absolutiónem et remissiónem peccatórum nostrórum tríbuat nobis omnípotens et miséricors Dóminus. Amen.")
+  Latin: [V.] text("Convérte nos +++ Deus, salutáris noster.")
+  Latin: [R.] text("Et avérte iram tuam a nobis.")
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Allelúja.")
+
+[section #2 type=psalm slot=psalmody reference=horas/Latin/Psalterium/Psalmi/Psalmi minor#Completorium:Feria V languages=Latin]
+  Latin: [Ant.] text("Adjútor meus * et liberátor meus esto, Dómine.")
+  Latin: text("Psalmus 69 [1]")
+  Latin: text("69:2 Deus, in adjutórium meum inténde: * Dómine, ad adjuvándum me festína.")
+  Latin: text("69:3 Confundántur et revereántur, * qui quærunt ánimam meam.")
+  Latin: text("69:4 Avertántur retrórsum, et erubéscant, * qui volunt mihi mala.")
+  Latin: text("69:4 Avertántur statim erubescéntes, * qui dicunt mihi: Euge, euge.")
+  Latin: text("69:5 Exsúltent et læténtur in te omnes qui quærunt te, * et dicant semper: Magnificétur Dóminus: qui díligunt salutáre tuum.")
+  Latin: text("69:6 Ego vero egénus, et pauper sum: * Deus, ádjuva me.")
+  Latin: text("69:6 Adjútor meus, et liberátor meus es tu: * Dómine, ne moréris.")
+  Latin: text("70:1 In te, Dómine, sperávi, non confúndar in ætérnum: * in justítia tua líbera me, et éripe me.")
+  Latin: text("70:2 Inclína ad me aurem tuam, * et salva me.")
+  Latin: text("70:3 Esto mihi in Deum protectórem, et in locum munítum: * ut salvum me fácias,")
+  Latin: text("70:3 Quóniam firmaméntum meum, * et refúgium meum es tu.")
+  Latin: text("70:4 Deus meus, éripe me de manu peccatóris, * et de manu contra legem agéntis et iníqui:")
+  Latin: text("70:5 Quóniam tu es patiéntia mea, Dómine: * Dómine, spes mea a juventúte mea.")
+  Latin: text("70:6 In te confirmátus sum ex útero: * de ventre matris meæ tu es protéctor meus.")
+  Latin: text("70:7 In te cantátio mea semper: * tamquam prodígium factus sum multis: et tu adjútor fortis.")
+  Latin: text("70:8 Repleátur os meum laude, ut cantem glóriam tuam: * tota die magnitúdinem tuam.")
+  Latin: text("70:9 Ne proícias me in témpore senectútis: * cum defécerit virtus mea, ne derelínquas me.")
+  Latin: text("70:10 Quia dixérunt inimíci mei mihi: * et qui custodiébant ánimam meam, consílium fecérunt in unum.")
+  Latin: text("70:11 Dicéntes: Deus derelíquit eum, persequímini, et comprehéndite eum: * quia non est qui erípiat.")
+  Latin: text("70:12 Deus, ne elongéris a me: * Deus meus, in auxílium meum réspice.")
+  Latin: text("70:13 Confundántur, et defíciant detrahéntes ánimæ meæ: * operiántur confusióne, et pudóre qui quærunt mala mihi.")
+  Latin: text("70:14 Ego autem semper sperábo: * et adíciam super omnem laudem tuam.")
+  Latin: text("70:15 Os meum annuntiábit justítiam tuam: * tota die salutáre tuum.")
+  Latin: text("70:16 Quóniam non cognóvi litteratúram, introíbo in poténtias Dómini: * Dómine, memorábor justítiæ tuæ solíus.")
+  Latin: text("70:17 Deus, docuísti me a juventúte mea: * et usque nunc pronuntiábo mirabília tua.")
+  Latin: text("70:18 Et usque in senéctam et sénium: * Deus, ne derelínquas me,")
+  Latin: text("70:18 Donec annúntiem brácchium tuum * generatióni omni, quæ ventúra est:")
+  Latin: text("70:19 Poténtiam tuam, et justítiam tuam, Deus, usque in altíssima, quæ fecísti magnália: * Deus, quis símilis tibi?")
+  Latin: text("70:20 Quantas ostendísti mihi tribulatiónes multas et malas: et convérsus vivificásti me: * et de abýssis terræ íterum reduxísti me:")
+  Latin: text("70:21 Multiplicásti magnificéntiam tuam: * et convérsus consolátus es me.")
+  Latin: text("70:22 Nam et ego confitébor tibi in vasis psalmi veritátem tuam: * Deus, psallam tibi in cíthara, Sanctus Israël.")
+  Latin: text("70:23 Exsultábunt lábia mea cum cantávero tibi: * et ánima mea, quam redemísti.")
+  Latin: text("70:24 Sed et lingua mea tota die meditábitur justítiam tuam: * cum confúsi et revériti fúerint, qui quærunt mala mihi.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+
+[section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
+  Latin: [v.] text("Te lucis ante términum,")
+  Latin: text("Rerum Creátor, póscimus,")
+  Latin: text("Ut pro tua cleméntia")
+  Latin: text("Sis præsul et custódia.")
+  Latin: text("_")
+  Latin: text("Procul recédant sómnia,")
+  Latin: text("Et nóctium phantásmata;")
+  Latin: text("Hostémque nostrum cómprime,")
+  Latin: text("Ne polluántur córpora.")
+  Latin: text("_")
+  Latin: text("Jesu, tibi sit glória,")
+  Latin: text("Qui natus es de Vírgine,")
+  Latin: text("Cum Patre et almo Spíritu,")
+  Latin: text("In sempitérna sǽcula.")
+  Latin: text("Amen.")
+
+[section #4 type=chapter slot=chapter reference=horas/Latin/Psalterium/Special/Minor Special#Completorium languages=Latin]
+  Latin: text(" ") · citation("Jer 14:9")
+  Latin: [v.] text("Tu autem in nobis es, Dómine, et nomen sanctum tuum invocátum est super nos: ne derelínquas nos, Dómine, Deus noster.")
+  Latin: [R.] text("Deo grátias.")
+
+[section #5 type=responsory slot=responsory reference=horas/Latin/Psalterium/Special/Minor Special#Responsory Completorium languages=Latin]
+  Latin: [R.br.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
+  Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
+  Latin: [V.] text("Redemísti nos, Dómine, Deus veritátis.")
+  Latin: [R.] text("Comméndo spíritum meum.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
+
+[section #6 type=versicle slot=versicle reference=horas/Latin/Tempora/Pent01-4#Versum 1 languages=Latin]
+  Latin: [V.] text("Panem de cælo præstitísti eis, allelúja.")
+  Latin: [R.] text("Omne delectaméntum in se habéntem, allelúja.")
+
+[section #7 type=canticle slot=canticle-ad-nunc-dimittis reference=horas/Latin/Psalterium/Psalmorum/Psalm233#__preamble languages=Latin]
+  Latin: text("Canticum Simeonis")
+  Latin: text("Luc. 2:29-32")
+  Latin: text("2:29 Nunc dimíttis + servum tuum, Dómine, * secúndum verbum tuum in pace:")
+  Latin: text("2:30 Quia vidérunt óculi mei * salutáre tuum,")
+  Latin: text("2:31 Quod parásti * ante fáciem ómnium populórum,")
+  Latin: text("2:32 Lumen ad revelatiónem géntium, * et glóriam plebis tuæ Israël.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+
+[section #8 type=oration slot=oration reference=horas/Latin/Tempora/Pent01-4#Oratio languages=Latin]
+  Latin: text("Deus, qui nobis sub Sacraménto mirábili passiónis tuæ memóriam reliquísti: tríbue, quǽsumus, ita nos Córporis, et Sánguinis tui sacra mystéria venerári; ut redemptiónis tuæ fructum in nobis júgiter sentiámus:")
+  Latin: [r.] text("Qui vivis et regnas cum Deo Patre, in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #9 type=conclusion slot=conclusion reference=horas/Ordinarium/Completorium#Conclusio languages=Latin]
+  Latin: [V.] text("Dóminus vobíscum.")
+  Latin: [R.] text("Et cum spíritu tuo.")
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: rubric("secunda Domine, exaudi omittitur")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
+  Latin: [R.] text("Amen.")
+
+[section #10 type=antiphon slot=final-antiphon-bvm reference=horas/Ordinarium/Completorium#Antiphona finalis languages=Latin]
+  Latin: rubric("Deinde dicitur secreto")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
+  Latin: [v.] text("Ave María, grátia plena; Dóminus tecum: benedícta tu in muliéribus, et benedíctus fructus ventris tui Jesus. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen.")
+  Latin: [v.] text("Credo in Deum, Patrem omnipoténtem, Creatórem cæli et terræ. Et in Jesum Christum, Fílium ejus únicum, Dóminum nostrum: qui concéptus est de Spíritu Sancto, natus ex María Vírgine, passus sub Póntio Piláto, crucifíxus, mórtuus, et sepúltus: descéndit ad ínferos; tértia die resurréxit a mórtuis; ascéndit ad cælos; sedet ad déxteram Dei Patris omnipoténtis: inde ventúrus est judicáre vivos et mórtuos. Credo in Spíritum Sanctum, sanctam Ecclésiam cathólicam, Sanctórum communiónem, remissiónem peccatórum, carnis resurrectiónem, vitam ætérnam. Amen.")
+  Latin: rubric("Si post Completorium immediate sequatur Matutinum, tunc bis dicitur «Pater noster, Ave Maria» et «Credo,» pro fine videlicet Officii diei præcedentis, et pro initio Officii diei sequentis.")

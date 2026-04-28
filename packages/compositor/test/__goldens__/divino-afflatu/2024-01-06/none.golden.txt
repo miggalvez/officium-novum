@@ -1,0 +1,147 @@
+policy: Divino Afflatu - 1954
+date: 2024-01-06
+hour: none
+celebration: In Epiphania Domini
+languages: Latin
+section count: 8
+warning count: 6
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+#3 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Dominus vobiscum}
+#4 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Conclusio cisterciensis}
+#5 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Pater post}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Minor#Incipit languages=Latin]
+  Latin: rubric("secreto")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
+  Latin: [v.] text("Ave María, grátia plena; Dóminus tecum: benedícta tu in muliéribus, et benedíctus fructus ventris tui Jesus. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen.")
+  Latin: rubric("Deinde, clara voce, dicitur Versus:")
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Allelúja.")
+
+[section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Nona languages=Latin]
+  Latin: [v.] text("Rerum, Deus, tenax vigor,")
+  Latin: text("Immótus in te pérmanens,")
+  Latin: text("Lucis diúrnæ témpora")
+  Latin: text("Succéssibus detérminans:")
+  Latin: text("_")
+  Latin: text("Largíre lumen véspere,")
+  Latin: text("Quo vita nusquam décidat,")
+  Latin: text("Sed prǽmium mortis sacræ")
+  Latin: text("Perénnis instet glória.")
+  Latin: text("_")
+  Latin: text("Jesu, tibi sit glória,")
+  Latin: text("Qui apparuísti Géntibus,")
+  Latin: text("Cum Patre et almo Spíritu,")
+  Latin: text("In sempitérna sǽcula.")
+  Latin: text("Amen.")
+
+[section #2 type=psalm slot=psalmody reference=horas/Latin/Sancti/01-06#Ant Laudes:5 languages=Latin]
+  Latin: [Ant.] text("Stella ista.")
+  Latin: text("Psalmus 118(129-144) [1]")
+  Latin: text("118:129 (Phe) Mirabília testimónia tua: * ídeo scrutáta est ea ánima mea.")
+  Latin: text("118:130 Declarátio sermónum tuórum illúminat: * et intelléctum dat párvulis.")
+  Latin: text("118:131 Os meum apérui, et attráxi spíritum: * quia mandáta tua desiderábam.")
+  Latin: text("118:132 Áspice in me, et miserére mei, * secúndum judícium diligéntium nomen tuum.")
+  Latin: text("118:133 Gressus meos dírige secúndum elóquium tuum: * et non dominétur mei omnis injustítia.")
+  Latin: text("118:134 Rédime me a calúmniis hóminum: * ut custódiam mandáta tua.")
+  Latin: text("118:135 Fáciem tuam illúmina super servum tuum: * et doce me justificatiónes tuas.")
+  Latin: text("118:136 Éxitus aquárum deduxérunt óculi mei: * quia non custodiérunt legem tuam.")
+  Latin: text("118:137 (Sade) Justus es, Dómine: * et rectum judícium tuum.")
+  Latin: text("118:138 Mandásti justítiam testimónia tua: * et veritátem tuam nimis.")
+  Latin: text("118:139 Tabéscere me fecit zelus meus: * quia oblíti sunt verba tua inimíci mei.")
+  Latin: text("118:140 Ignítum elóquium tuum veheménter: * et servus tuus diléxit illud.")
+  Latin: text("118:141 Adolescéntulus sum ego et contémptus: * justificatiónes tuas non sum oblítus.")
+  Latin: text("118:142 Justítia tua, justítia in ætérnum: * et lex tua véritas.")
+  Latin: text("118:143 Tribulátio, et angústia invenérunt me: * mandáta tua meditátio mea est.")
+  Latin: text("118:144 Ǽquitas testimónia tua in ætérnum: * intelléctum da mihi, et vivam.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: text("Psalmus 118(145-160) [2]")
+  Latin: text("118:145 (Coph) Clamávi in toto corde meo, exáudi me, Dómine: * justificatiónes tuas requíram.")
+  Latin: text("118:146 Clamávi ad te, salvum me fac: * ut custódiam mandáta tua.")
+  Latin: text("118:147 Prævéni in maturitáte, et clamávi: * quia in verba tua supersperávi.")
+  Latin: text("118:148 Prævenérunt óculi mei ad te dilúculo: * ut meditárer elóquia tua.")
+  Latin: text("118:149 Vocem meam audi secúndum misericórdiam tuam, Dómine: * et secúndum judícium tuum vivífica me.")
+  Latin: text("118:150 Appropinquavérunt persequéntes me iniquitáti: * a lege autem tua longe facti sunt.")
+  Latin: text("118:151 Prope es tu, Dómine: * et omnes viæ tuæ véritas.")
+  Latin: text("118:152 Inítio cognóvi de testimóniis tuis: * quia in ætérnum fundásti ea.")
+  Latin: text("118:153 (Res) Vide humilitátem meam, et éripe me: * quia legem tuam non sum oblítus.")
+  Latin: text("118:154 Júdica judícium meum, et rédime me: * propter elóquium tuum vivífica me.")
+  Latin: text("118:155 Longe a peccatóribus salus: * quia justificatiónes tuas non exquisiérunt.")
+  Latin: text("118:156 Misericórdiæ tuæ multæ, Dómine: * secúndum judícium tuum vivífica me.")
+  Latin: text("118:157 Multi qui persequúntur me, et tríbulant me: * a testimóniis tuis non declinávi.")
+  Latin: text("118:158 Vidi prævaricántes, et tabescébam: * quia elóquia tua non custodiérunt.")
+  Latin: text("118:159 Vide quóniam mandáta tua diléxi, Dómine: * in misericórdia tua vivífica me.")
+  Latin: text("118:160 Princípium verbórum tuórum, véritas: * in ætérnum ómnia judícia justítiæ tuæ.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: text("Psalmus 118(161-176) [3]")
+  Latin: text("118:161 (Sin) Príncipes persecúti sunt me gratis: * et a verbis tuis formidávit cor meum.")
+  Latin: text("118:162 Lætábor ego super elóquia tua: * sicut qui invénit spólia multa.")
+  Latin: text("118:163 Iniquitátem ódio hábui, et abominátus sum: * legem autem tuam diléxi.")
+  Latin: text("118:164 Sépties in die laudem dixi tibi, * super judícia justítiæ tuæ.")
+  Latin: text("118:165 Pax multa diligéntibus legem tuam: * et non est illis scándalum.")
+  Latin: text("118:166 Exspectábam salutáre tuum, Dómine: * et mandáta tua diléxi.")
+  Latin: text("118:167 Custodívit ánima mea testimónia tua: * et diléxit ea veheménter.")
+  Latin: text("118:168 Servávi mandáta tua, et testimónia tua: * quia omnes viæ meæ in conspéctu tuo.")
+  Latin: text("118:169 (Thau) Appropínquet deprecátio mea in conspéctu tuo, Dómine: * juxta elóquium tuum da mihi intelléctum.")
+  Latin: text("118:170 Intret postulátio mea in conspéctu tuo: * secúndum elóquium tuum éripe me.")
+  Latin: text("118:171 Eructábunt lábia mea hymnum, * cum docúeris me justificatiónes tuas.")
+  Latin: text("118:172 Pronuntiábit lingua mea elóquium tuum: * quia ómnia mandáta tua ǽquitas.")
+  Latin: text("118:173 Fiat manus tua ut salvet me: * quóniam mandáta tua elégi.")
+  Latin: text("118:174 Concupívi salutáre tuum, Dómine: * et lex tua meditátio mea est.")
+  Latin: text("118:175 Vivet ánima mea, et laudábit te: * et judícia tua adjuvábunt me.")
+  Latin: text("118:176 Errávi, sicut ovis, quæ périit: * quære servum tuum, quia mandáta tua non sum oblítus.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Stella ista sicut flamma corúscat, et Regem regum Deum demónstrat: Magi eam vidérunt, et magno Regi múnera obtulérunt.")
+
+[section #3 type=chapter slot=chapter reference=horas/Latin/Sancti/01-06#Capitulum Nona languages=Latin]
+  Latin: text(" ") · citation("Isa 60:6")
+  Latin: [v.] text("Omnes de Saba vénient, aurum et thus deferéntes, et laudem Dómino annuntiántes.")
+  Latin: [R.] text("Deo grátias.")
+
+[section #4 type=responsory slot=responsory reference=horas/Latin/Sancti/01-06#Responsory Breve Nona languages=Latin]
+  Latin: text("_")
+  Latin: [R.br.] text("Adoráte Dóminum, * Allelúja, allelúja.")
+  Latin: [R.] text("Adoráte Dóminum, * Allelúja, allelúja.")
+  Latin: [V.] text("In aula sancta ejus.")
+  Latin: [R.] text("Allelúja, allelúja.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Adoráte Dóminum, * Allelúja, allelúja.")
+
+[section #5 type=versicle slot=versicle reference=horas/Latin/Sancti/01-06#Versum Nona languages=Latin]
+  Latin: text("_")
+  Latin: [V.] text("Adoráte Deum, allelúja.")
+  Latin: [R.] text("Omnes Angeli ejus, allelúja.")
+
+[section #6 type=oration slot=oration reference=horas/Latin/Sancti/01-06#Oratio languages=Latin]
+  Latin: text("Deus, qui hodiérna die Unigénitum tuum géntibus stella duce revelásti: concéde propítius; ut qui jam te ex fide cognóvimus, usque ad contemplándam spéciem tuæ celsitúdinis perducámur.")
+  Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #7 type=conclusion slot=conclusion reference=horas/Ordinarium/Minor#Conclusio languages=Latin]
+  Latin: [V.] text("Dóminus vobíscum.")
+  Latin: [R.] text("Et cum spíritu tuo.")
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: rubric("secunda Domine, exaudi omittitur")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+  Latin: [R.] text("Amen.")
+  Latin: [Ant.] text("Spíritus sanctus in te descéndet, María, ne tímeas, habébis in útero Fílium Dei.")
+  Latin: [V.] text("Ecce ancílla Dómini.")
+  Latin: [R.] text("Fiat mihi secúndum verbum tuum.")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Lætífica, et ádjuva nos, omnípotens et miséricors Deus, Domínicæ Conceptiónis gáudia recoléntes, et pia Dei Génitrix Virgo semper María (in cujus veneratióne hæc commemorámus) in cunctis necessitátibus nostris grátiam sancti Spíritus nobis ímpetret, et levámen. Per eúmdem Christum Dóminum nostrum.")
+  Latin: [R.] text("Amen.")
+  Latin: rubric("Deinde dicitur tantum « Pater Noster » secreto, nisi sequatur alia Hora.")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")

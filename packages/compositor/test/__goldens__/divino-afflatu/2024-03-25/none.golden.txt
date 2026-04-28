@@ -1,0 +1,123 @@
+policy: Divino Afflatu - 1954
+date: 2024-03-25
+hour: none
+celebration: Feria Secunda Majoris Hebdomadæ
+languages: Latin
+section count: 4
+warning count: 18
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+#3 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Gloria omittitur}
+#4 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=Gloria omittitur}
+#5 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Gloria omittitur}
+#6 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=Gloria omittitur}
+#7 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Gloria omittitur}
+#8 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=Gloria omittitur}
+#9 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Gloria omittitur}
+#10 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=Gloria omittitur}
+#11 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Gloria omittitur}
+#12 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=Gloria omittitur}
+#13 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Gloria omittitur}
+#14 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=Gloria omittitur}
+#15 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Dominus vobiscum}
+#16 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Conclusio cisterciensis}
+#17 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Pater post}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Minor#Incipit languages=Latin]
+  Latin: rubric("secreto")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
+  Latin: [v.] text("Ave María, grátia plena; Dóminus tecum: benedícta tu in muliéribus, et benedíctus fructus ventris tui Jesus. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen.")
+  Latin: rubric("Deinde, clara voce, dicitur Versus:")
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Laus tibi, Dómine, Rex ætérnæ glóriæ.")
+
+[section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Nona languages=Latin]
+  Latin: [v.] text("Rerum, Deus, tenax vigor,")
+  Latin: text("Immótus in te pérmanens,")
+  Latin: text("Lucis diúrnæ témpora")
+  Latin: text("Succéssibus detérminans:")
+  Latin: text("_")
+  Latin: text("Largíre lumen véspere,")
+  Latin: text("Quo vita nusquam décidat,")
+  Latin: text("Sed prǽmium mortis sacræ")
+  Latin: text("Perénnis instet glória.")
+  Latin: text("_")
+  Latin: text("Præsta, Pater piíssime,")
+  Latin: text("Patríque compar Únice,")
+  Latin: text("Cum Spíritu Paráclito")
+  Latin: text("Regnans per omne sǽculum.")
+  Latin: text("Amen.")
+
+[section #2 type=psalm slot=psalmody reference=horas/Latin/Tempora/Quad6-1#Ant Laudes:5 languages=Latin]
+  Latin: [Ant.] text("Lábia insurgéntium.")
+  Latin: text("Psalmus 31 [1]")
+  Latin: text("31:1 Beáti quorum remíssæ sunt iniquitátes: * et quorum tecta sunt peccáta.")
+  Latin: text("31:2 Beátus vir, cui non imputávit Dóminus peccátum, * nec est in spíritu ejus dolus.")
+  Latin: text("31:3 Quóniam tácui, inveteravérunt ossa mea, * dum clamárem tota die.")
+  Latin: text("31:4 Quóniam die ac nocte graváta est super me manus tua: * convérsus sum in ærúmna mea, dum confígitur spina.")
+  Latin: text("31:5 Delíctum meum cógnitum tibi feci: * et injustítiam meam non abscóndi.")
+  Latin: text("31:5 Dixi: Confitébor advérsum me injustítiam meam Dómino: * et tu remisísti impietátem peccáti mei.")
+  Latin: text("31:6 Pro hac orábit ad te omnis sanctus, * in témpore opportúno.")
+  Latin: text("31:6 Verúmtamen in dilúvio aquárum multárum, * ad eum non approximábunt.")
+  Latin: text("31:7 Tu es refúgium meum a tribulatióne, quæ circúmdedit me: * exsultátio mea, érue me a circumdántibus me.")
+  Latin: text("31:8 Intelléctum tibi dabo, et ínstruam te in via hac, qua gradiéris: * firmábo super te óculos meos.")
+  Latin: text("31:9 Nolíte fíeri sicut equus et mulus, * quibus non est intelléctus.")
+  Latin: text("31:9 In camo et freno maxíllas eórum constrínge, * qui non appróximant ad te.")
+  Latin: text("31:10 Multa flagélla peccatóris, * sperántem autem in Dómino misericórdia circúmdabit.")
+  Latin: text("31:11 Lætámini in Dómino et exsultáte, justi, * et gloriámini, omnes recti corde.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: text("Psalmus 32(1-11) [2]")
+  Latin: text("32:1 Exsultáte, justi, in Dómino: * rectos decet collaudátio.")
+  Latin: text("32:2 Confitémini Dómino in cíthara: * in psaltério decem chordárum psállite illi.")
+  Latin: text("32:3 Cantáte ei cánticum novum: * bene psállite ei in vociferatióne.")
+  Latin: text("32:4 Quia rectum est verbum Dómini, * et ómnia ópera ejus in fide.")
+  Latin: text("32:5 Díligit misericórdiam et judícium: * misericórdia Dómini plena est terra.")
+  Latin: text("32:6 Verbo Dómini cæli firmáti sunt: * et spíritu oris ejus omnis virtus eórum.")
+  Latin: text("32:7 Cóngregans sicut in utre aquas maris: * ponens in thesáuris abýssos.")
+  Latin: text("32:8 Tímeat Dóminum omnis terra: * ab eo autem commoveántur omnes inhabitántes orbem.")
+  Latin: text("32:9 Quóniam ipse dixit, et facta sunt: * ipse mandávit, et creáta sunt.")
+  Latin: text("32:10 Dóminus díssipat consília géntium: * réprobat autem cogitatiónes populórum, et réprobat consília príncipum.")
+  Latin: text("32:11 Consílium autem Dómini in ætérnum manet: * cogitatiónes cordis ejus in generatióne et generatiónem.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: text("Psalmus 32(12-22) [3]")
+  Latin: text("32:12 Beáta gens, cujus est Dóminus, Deus ejus: * pópulus, quem elégit in hereditátem sibi.")
+  Latin: text("32:13 De cælo respéxit Dóminus: * vidit omnes fílios hóminum.")
+  Latin: text("32:14 De præparáto habitáculo suo * respéxit super omnes, qui hábitant terram.")
+  Latin: text("32:15 Qui finxit sigillátim corda eórum: * qui intéllegit ómnia ópera eórum.")
+  Latin: text("32:16 Non salvátur rex per multam virtútem: * et gigas non salvábitur in multitúdine virtútis suæ.")
+  Latin: text("32:17 Fallax equus ad salútem: * in abundántia autem virtútis suæ non salvábitur.")
+  Latin: text("32:18 Ecce, óculi Dómini super metuéntes eum: * et in eis, qui sperant super misericórdia ejus:")
+  Latin: text("32:19 Ut éruat a morte ánimas eórum: * et alat eos in fame.")
+  Latin: text("32:20 Ánima nostra sústinet Dóminum: * quóniam adjútor et protéctor noster est.")
+  Latin: text("32:21 Quia in eo lætábitur cor nostrum: * et in nómine sancto ejus sperávimus.")
+  Latin: text("32:22 Fiat misericórdia tua, Dómine, super nos: * quemádmodum sperávimus in te.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Lábia insurgéntium, et cogitatiónes eórum vide, Dómine.")
+
+[section #3 type=conclusion slot=conclusion reference=horas/Ordinarium/Minor#Conclusio languages=Latin]
+  Latin: [V.] text("Dóminus vobíscum.")
+  Latin: [R.] text("Et cum spíritu tuo.")
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: rubric("secunda Domine, exaudi omittitur")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+  Latin: [R.] text("Amen.")
+  Latin: [Ant.] text("Spíritus sanctus in te descéndet, María, ne tímeas, habébis in útero Fílium Dei.")
+  Latin: [V.] text("Ecce ancílla Dómini.")
+  Latin: [R.] text("Fiat mihi secúndum verbum tuum.")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Lætífica, et ádjuva nos, omnípotens et miséricors Deus, Domínicæ Conceptiónis gáudia recoléntes, et pia Dei Génitrix Virgo semper María (in cujus veneratióne hæc commemorámus) in cunctis necessitátibus nostris grátiam sancti Spíritus nobis ímpetret, et levámen. Per eúmdem Christum Dóminum nostrum.")
+  Latin: [R.] text("Amen.")
+  Latin: rubric("Deinde dicitur tantum « Pater Noster » secreto, nisi sequatur alia Hora.")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")

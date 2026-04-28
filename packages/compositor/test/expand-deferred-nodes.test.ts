@@ -162,4 +162,40 @@ describe('expandDeferredNodes', () => {
       { type: 'verseMarker', marker: 'v.', text: 'Pater noster, qui es in cælis...' }
     ]);
   });
+
+  it('resolves Dominus_vobiscum private-recitation variants to the preces suppression rubric', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Common/Prayers.txt',
+      sections: [
+        {
+          header: 'Dominus',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Dóminus vobíscum.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Et cum spíritu tuo.' },
+            { type: 'verseMarker', marker: 'V.', text: 'Dómine, exáudi oratiónem meam.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Et clamor meus ad te véniat.' },
+            { type: 'rubric', value: 'secunda «Domine, exaudi» omittitur' }
+          ],
+          startLine: 1,
+          endLine: 5
+        }
+      ]
+    });
+
+    const context = {
+      index,
+      language: 'Latin',
+      langfb: 'Latin',
+      seen: new Set<string>(),
+      maxDepth: 4
+    };
+
+    expect(
+      expandDeferredNodes([{ type: 'macroRef', name: 'Dominus_vobiscum1' }], context)
+    ).toEqual([{ type: 'rubric', value: 'secunda «Domine, exaudi» omittitur' }]);
+    expect(
+      expandDeferredNodes([{ type: 'macroRef', name: 'Dominus_vobiscum2' }], context)
+    ).toEqual([{ type: 'rubric', value: 'secunda «Domine, exaudi» omittitur' }]);
+  });
 });

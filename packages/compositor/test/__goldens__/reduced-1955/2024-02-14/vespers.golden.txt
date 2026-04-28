@@ -1,0 +1,128 @@
+policy: Reduced - 1955
+date: 2024-02-14
+hour: vespers
+celebration: Feria IV Cinerum
+languages: Latin
+section count: 6
+warning count: 3
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Vespera#Incipit languages=Latin]
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Laus tibi, Dómine, Rex ætérnæ glóriæ.")
+
+[section #1 type=psalm slot=psalmody reference=horas/Latin/Psalterium/Psalmi/Psalmi major#Day3 Vespera:1 languages=Latin]
+  Latin: [Ant.] text("Beáti omnes * qui timent Dóminum.")
+  Latin: text("Psalmus 127 [1]")
+  Latin: text("127:1 Beáti, omnes, qui timent Dóminum, * qui ámbulant in viis ejus.")
+  Latin: text("127:2 Labóres mánuum tuárum quia manducábis: * beátus es, et bene tibi erit.")
+  Latin: text("127:3 Uxor tua sicut vitis abúndans, * in latéribus domus tuæ.")
+  Latin: text("127:3 Fílii tui sicut novéllæ olivárum, * in circúitu mensæ tuæ.")
+  Latin: text("127:4 Ecce, sic benedicétur homo, * qui timet Dóminum.")
+  Latin: text("127:5 Benedícat tibi Dóminus ex Sion: * et vídeas bona Jerúsalem ómnibus diébus vitæ tuæ.")
+  Latin: text("127:6 Et vídeas fílios filiórum tuórum, * pacem super Israël.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Beáti omnes qui timent Dóminum.")
+  Latin: [Ant.] text("Confundántur omnes * qui odérunt Sion.")
+  Latin: text("Psalmus 128 [2]")
+  Latin: text("128:1 Sæpe expugnavérunt me a juventúte mea, * dicat nunc Israël.")
+  Latin: text("128:2 Sæpe expugnavérunt me a juventúte mea: * étenim non potuérunt mihi.")
+  Latin: text("128:3 Supra dorsum meum fabricavérunt peccatóres: * prolongavérunt iniquitátem suam.")
+  Latin: text("128:4 Dóminus justus concídit cervíces peccatórum: * confundántur et convertántur retrórsum omnes, qui odérunt Sion.")
+  Latin: text("128:6 Fiant sicut fænum tectórum: * quod priúsquam evellátur, exáruit:")
+  Latin: text("128:7 De quo non implévit manum suam qui metit, * et sinum suum qui manípulos cólligit.")
+  Latin: text("128:8 Et non dixérunt qui præteríbant: Benedíctio Dómini super vos: * benedíximus vobis in nómine Dómini.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Confundántur omnes qui odérunt Sion.")
+  Latin: [Ant.] text("De profúndis * clamávi ad te, Dómine.")
+  Latin: text("Psalmus 129 [3]")
+  Latin: text("129:1 De profúndis clamávi ad te, Dómine: * Dómine, exáudi vocem meam:")
+  Latin: text("129:2 Fiant aures tuæ intendéntes, * in vocem deprecatiónis meæ.")
+  Latin: text("129:3 Si iniquitátes observáveris, Dómine: * Dómine, quis sustinébit?")
+  Latin: text("129:4 Quia apud te propitiátio est: * et propter legem tuam sustínui te, Dómine.")
+  Latin: text("129:5 Sustínuit ánima mea in verbo ejus: * sperávit ánima mea in Dómino.")
+  Latin: text("129:6 A custódia matutína usque ad noctem: * speret Israël in Dómino.")
+  Latin: text("129:7 Quia apud Dóminum misericórdia: * et copiósa apud eum redémptio.")
+  Latin: text("129:8 Et ipse rédimet Israël, * ex ómnibus iniquitátibus ejus.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("De profúndis clamávi ad te, Dómine.")
+  Latin: [Ant.] text("Dómine, * non est exaltátum cor meum.")
+  Latin: text("Psalmus 130 [4]")
+  Latin: text("130:1 Dómine, non est exaltátum cor meum: * neque eláti sunt óculi mei.")
+  Latin: text("130:1 Neque ambulávi in magnis: * neque in mirabílibus super me.")
+  Latin: text("130:2 Si non humíliter sentiébam: * sed exaltávi ánimam meam:")
+  Latin: text("130:2 Sicut ablactátus est super matre sua, * ita retribútio in ánima mea.")
+  Latin: text("130:3 Speret Israël in Dómino, * ex hoc nunc et usque in sǽculum.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Dómine, non est exaltátum cor meum.")
+  Latin: [Ant.] text("Elégit Dóminus * Sion in habitatiónem sibi.")
+  Latin: text("Psalmus 131 [5]")
+  Latin: text("131:1 Meménto, Dómine, David, * et omnis mansuetúdinis ejus:")
+  Latin: text("131:2 Sicut jurávit Dómino, * votum vovit Deo Jacob:")
+  Latin: text("131:3 Si introíero in tabernáculum domus meæ, * si ascéndero in lectum strati mei:")
+  Latin: text("131:4 Si dédero somnum óculis meis, * et pálpebris meis dormitatiónem:")
+  Latin: text("131:5 Et réquiem tempóribus meis: donec invéniam locum Dómino, * tabernáculum Deo Jacob.")
+  Latin: text("131:6 Ecce, audívimus eam in Éphrata: * invénimus eam in campis silvæ.")
+  Latin: text("131:7 Introíbimus in tabernáculum ejus: * adorábimus in loco, ubi stetérunt pedes ejus.")
+  Latin: text("131:8 Surge, Dómine, in réquiem tuam, * tu et arca sanctificatiónis tuæ.")
+  Latin: text("131:9 Sacerdótes tui induántur justítiam: * et sancti tui exsúltent.")
+  Latin: text("131:10 Propter David, servum tuum, * non avértas fáciem Christi tui.")
+  Latin: text("131:11 Jurávit Dóminus David veritátem, et non frustrábitur eam: * De fructu ventris tui ponam super sedem tuam.")
+  Latin: text("131:12 Si custodíerint fílii tui testaméntum meum, * et testimónia mea hæc, quæ docébo eos:")
+  Latin: text("131:12 Et fílii eórum usque in sǽculum, * sedébunt super sedem tuam.")
+  Latin: text("131:13 Quóniam elégit Dóminus Sion: * elégit eam in habitatiónem sibi.")
+  Latin: text("131:14 Hæc réquies mea in sǽculum sǽculi: * hic habitábo quóniam elégi eam.")
+  Latin: text("131:15 Víduam ejus benedícens benedícam: * páuperes ejus saturábo pánibus.")
+  Latin: text("131:16 Sacerdótes ejus índuam salutári: * et sancti ejus exsultatióne exsultábunt.")
+  Latin: text("131:17 Illuc prodúcam cornu David, * parávi lucérnam Christo meo.")
+  Latin: text("131:18 Inimícos ejus índuam confusióne: * super ipsum autem efflorébit sanctificátio mea.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Elégit Dóminus Sion in habitatiónem sibi.")
+
+[section #2 type=antiphon slot=antiphon-ad-magnificat reference=horas/Latin/Tempora/Quadp3-3#Ant 3 languages=Latin]
+  Latin: [Ant.] text("Thesaurizáte vobis * thesáuros in cælo, ubi nec ærúgo, nec tínea demolítur.")
+
+[section #3 type=canticle slot=canticle-ad-magnificat reference=horas/Latin/Psalterium/Psalmorum/Psalm232#__preamble languages=Latin]
+  Latin: text("Canticum B. Mariæ Virginis")
+  Latin: text("Luc. 1:46-55")
+  Latin: text("1:46 Magníficat + * ánima mea Dóminum.")
+  Latin: text("1:47 Et exsultávit spíritus meus: * in Deo, salutári meo.")
+  Latin: text("1:48 Quia respéxit humilitátem ancíllæ suæ: * ecce enim ex hoc beátam me dicent omnes generatiónes.")
+  Latin: text("1:49 Quia fecit mihi magna qui potens est: * et sanctum nomen ejus.")
+  Latin: text("1:50 Et misericórdia ejus, a progénie in progénies: * timéntibus eum.")
+  Latin: text("1:51 Fecit poténtiam in brácchio suo: * dispérsit supérbos mente cordis sui.")
+  Latin: text("1:52 Depósuit poténtes de sede: * et exaltávit húmiles.")
+  Latin: text("1:53 Esuriéntes implévit bonis: * et dívites dimísit inánes.")
+  Latin: text("1:54 Suscépit Israël púerum suum: * recordátus misericórdiæ suæ.")
+  Latin: text("1:55 Sicut locútus est ad patres nostros: * Ábraham, et sémini ejus in sǽcula.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Thesaurizáte vobis thesáuros in cælo, ubi nec ærúgo, nec tínea demolítur.")
+
+[section #4 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [v.] text("Orémus.")
+  Latin: text("Inclinántes se, Dómine, majestáti tuæ, propitiátus inténde: ut, qui divíno múnere sunt refécti, cæléstibus semper nutriántur auxíliis.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #5 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+  Latin: [R.] text("Amen.")

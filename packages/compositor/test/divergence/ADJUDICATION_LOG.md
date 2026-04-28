@@ -5561,6 +5561,29 @@ row key to the sidecar as fanout of that family.
 **Impact.** One Rubrics 1960 row moves from `unadjudicated` to
 `perl-bug`.
 
+### 2026-04-27 — Phase 3 sign-off: Appendix-A snapshot goldens committed
+
+**Commit.** This tranche.
+
+**Scope.** Sub-phase 3h closure. With all three Roman policy ledgers at
+`0` `unadjudicated`, the 312 Appendix-A snapshot goldens (13 dates × 3
+policies × 8 Hours) were generated and committed under
+`packages/compositor/test/__goldens__/<policy-slug>/<date>/<hour>.golden.txt`.
+
+**Test wiring.** New file
+`packages/compositor/test/integration/appendix-a-snapshots.test.ts`
+serializes each `ComposedHour` to a deterministic line-oriented form and
+asserts via `toMatchFileSnapshot`. Runs as part of the standard
+`pnpm -r test` sweep; gated on `HAS_UPSTREAM` like the other integration
+tests. Idempotent on re-run.
+
+**Sign-off state.** §18 success criteria all met:
+no-throw sweep green (8,784 compositions), goldens committed,
+per-policy `unadjudicated` < 10 (0/0/0), `verify:phase-3-signoff` green,
+typecheck/test green, every compositor source file < 800 lines.
+
+**Citation.** [Phase 3 design §18 / §19.8](../../../../docs/phase-3-composition-engine-design.md).
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

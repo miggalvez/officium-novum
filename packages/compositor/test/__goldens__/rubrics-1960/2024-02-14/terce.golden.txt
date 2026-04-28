@@ -1,0 +1,115 @@
+policy: Rubrics 1960 - 1960
+date: 2024-02-14
+hour: terce
+celebration: Feria IV Cinerum
+languages: Latin
+section count: 8
+warning count: 3
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Minor#Incipit languages=Latin]
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Laus tibi, Dómine, Rex ætérnæ glóriæ.")
+
+[section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Tertia languages=Latin]
+  Latin: [v.] text("Nunc, Sancte, nobis, Spíritus,")
+  Latin: text("Unum Patri cum Fílio,")
+  Latin: text("Dignáre promptus íngeri")
+  Latin: text("Nostro refúsus péctori.")
+  Latin: text("_")
+  Latin: text("Os, lingua, mens, sensus, vigor")
+  Latin: text("Confessiónem pérsonent.")
+  Latin: text("Flamméscat igne cáritas,")
+  Latin: text("Accéndat ardor próximos.")
+  Latin: text("_")
+  Latin: text("Præsta, Pater piíssime,")
+  Latin: text("Patríque compar Únice,")
+  Latin: text("Cum Spíritu Paráclito")
+  Latin: text("Regnans per omne sǽculum.")
+  Latin: text("Amen.")
+
+[section #2 type=psalm slot=psalmody reference=horas/Latin/Psalterium/Psalmi/Psalmi minor#Quad:2#antiphon languages=Latin]
+  Latin: [Ant.] text("Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.")
+  Latin: text("Psalmus 53 [1]")
+  Latin: text("53:3 Deus, in nómine tuo salvum me fac: * et in virtúte tua júdica me.")
+  Latin: text("53:4 Deus, exáudi oratiónem meam: * áuribus pércipe verba oris mei.")
+  Latin: text("53:5 Quóniam aliéni insurrexérunt advérsum me, et fortes quæsiérunt ánimam meam: * et non proposuérunt Deum ante conspéctum suum.")
+  Latin: text("53:6 Ecce enim, Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.")
+  Latin: text("53:7 Avérte mala inimícis meis: * et in veritáte tua dispérde illos.")
+  Latin: text("53:8 Voluntárie sacrificábo tibi, * et confitébor nómini tuo, Dómine: quóniam bonum est:")
+  Latin: text("53:9 Quóniam ex omni tribulatióne eripuísti me: * et super inimícos meos despéxit óculus meus.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: text("Psalmus 54(2-16) [2]")
+  Latin: text("54:2 Exáudi, Deus, oratiónem meam, et ne despéxeris deprecatiónem meam: * inténde mihi, et exáudi me.")
+  Latin: text("54:3 Contristátus sum in exercitatióne mea: * et conturbátus sum a voce inimíci, et a tribulatióne peccatóris.")
+  Latin: text("54:4 Quóniam declinavérunt in me iniquitátes: * et in ira molésti erant mihi.")
+  Latin: text("54:5 Cor meum conturbátum est in me: * et formído mortis cécidit super me.")
+  Latin: text("54:6 Timor et tremor venérunt super me: * et contexérunt me ténebræ.")
+  Latin: text("54:7 Et dixi: Quis dabit mihi pennas sicut colúmbæ, * et volábo, et requiéscam?")
+  Latin: text("54:8 Ecce, elongávi fúgiens: * et mansi in solitúdine.")
+  Latin: text("54:9 Exspectábam eum, qui salvum me fecit * a pusillanimitáte spíritus et tempestáte.")
+  Latin: text("54:10 Præcípita, Dómine, dívide linguas eórum: * quóniam vidi iniquitátem, et contradictiónem in civitáte.")
+  Latin: text("54:11 Die ac nocte circúmdabit eam super muros ejus iníquitas: * et labor in médio ejus, et injustítia.")
+  Latin: text("54:12 Et non defécit de platéis ejus * usúra, et dolus.")
+  Latin: text("54:13 Quóniam si inimícus meus maledixísset mihi, * sustinuíssem útique.")
+  Latin: text("54:13 Et si is, qui óderat me, super me magna locútus fuísset, * abscondíssem me fórsitan ab eo.")
+  Latin: text("54:14 Tu vero, homo unánimis: * dux meus, et notus meus:")
+  Latin: text("54:15 Qui simul mecum dulces capiébas cibos: * in domo Dei ambulávimus cum consénsu.")
+  Latin: text("54:16 Véniat mors super illos: * et descéndant in inférnum vivéntes:")
+  Latin: text("54:16 Quóniam nequítiæ in habitáculis eórum: * in médio eórum.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: text("Psalmus 54(17-24) [3]")
+  Latin: text("54:17 Ego autem ad Deum clamávi: * et Dóminus salvábit me.")
+  Latin: text("54:18 Véspere, et mane, et merídie narrábo et annuntiábo: * et exáudiet vocem meam.")
+  Latin: text("54:19 Rédimet in pace ánimam meam ab his, qui appropínquant mihi: * quóniam inter multos erant mecum.")
+  Latin: text("54:20 Exáudiet Deus, et humiliábit illos, * qui est ante sǽcula.")
+  Latin: text("54:20 Non enim est illis commutátio, et non timuérunt Deum: * exténdit manum suam in retribuéndo.")
+  Latin: text("54:21 Contaminavérunt testaméntum ejus, divísi sunt ab ira vultus ejus: * et appropinquávit cor illíus.")
+  Latin: text("54:22 Mollíti sunt sermónes ejus super óleum: * et ipsi sunt jácula.")
+  Latin: text("54:23 Jacta super Dóminum curam tuam, et ipse te enútriet: * non dabit in ætérnum fluctuatiónem justo.")
+  Latin: text("54:24 Tu vero, Deus, dedúces eos, * in púteum intéritus.")
+  Latin: text("54:24 Viri sánguinum, et dolósi non dimidiábunt dies suos: * ego autem sperábo in te, Dómine.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Advenérunt nobis dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.")
+
+[section #3 type=chapter slot=chapter reference=horas/Latin/Psalterium/Special/Minor Special#Feria Tertia languages=Latin]
+  Latin: text(" ") · citation("Jer 17:14")
+  Latin: [v.] text("Sana me, Dómine, et sanábor: salvum me fac, et salvus ero: quóniam laus mea tu es.")
+  Latin: [R.] text("Deo grátias.")
+
+[section #4 type=responsory slot=responsory reference=horas/Latin/Psalterium/Special/Minor Special#Responsory breve Feria Tertia languages=Latin]
+  Latin: text("_")
+  Latin: [R.br.] text("Sana ánimam meam, * Quia peccávi tibi.")
+  Latin: [R.] text("Sana ánimam meam, * Quia peccávi tibi.")
+  Latin: [V.] text("Ego dixi: Dómine, miserére mei.")
+  Latin: [R.] text("Quia peccávi tibi.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sana ánimam meam, * Quia peccávi tibi.")
+
+[section #5 type=versicle slot=versicle reference=horas/Latin/Psalterium/Special/Minor Special#Versum Feria Tertia languages=Latin]
+  Latin: text("_")
+  Latin: [V.] text("Adjútor meus, esto, ne derelínquas me.")
+  Latin: [R.] text("Neque despícias me, Deus, salutáris meus.")
+
+[section #6 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [v.] text("Orémus.")
+
+[section #7 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+  Latin: [R.] text("Amen.")

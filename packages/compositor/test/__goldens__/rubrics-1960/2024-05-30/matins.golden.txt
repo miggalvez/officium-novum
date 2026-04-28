@@ -1,0 +1,512 @@
+policy: Rubrics 1960 - 1960
+date: 2024-05-30
+hour: matins
+celebration: Festum Sanctissimi Corporis Christi
+languages: Latin
+section count: 79
+warning count: 15
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+#3 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#4 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#5 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#6 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#7 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#8 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#9 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#10 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#11 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Tempora/Pent01-4, section=Responsory9, selector=missing}
+#12 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Jube}
+#13 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Dominus vobiscum}
+#14 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Pater totum secreto}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Matutinum#Incipit languages=Latin]
+  Latin: [V.] text("Dómine, lábia ++ mea apéries.")
+  Latin: [R.] text("Et os meum annuntiábit laudem tuam.")
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Allelúja.")
+
+[section #1 type=invitatory slot=invitatory reference=horas/Latin/Tempora/Pent01-4#Invit languages=Latin]
+  Latin: [Ant.] text("Christum Regem adorémus dominántem géntibus: * Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [Ant.] text("Christum Regem adorémus dominántem géntibus: * Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [v.] text("Veníte, exsultémus Dómino, jubilémus Deo, salutári nostro: præoccupémus fáciem ejus in confessióne, et in psalmis jubilémus ei.")
+  Latin: [Ant.] text("Christum Regem adorémus dominántem géntibus: * Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [v.] text("Quóniam Deus magnus Dóminus, et Rex magnus super omnes deos, quóniam non repéllet Dóminus plebem suam: quia in manu ejus sunt omnes fines terræ, et altitúdines móntium ipse cónspicit.")
+  Latin: [Ant.] text("Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [v.] text("Quóniam ipsíus est mare, et ipse fecit illud, et áridam fundavérunt manus ejus") · text(" ") · rubric("(genuflectitur)") · text(" veníte, adorémus, et procidámus ante Deum: plorémus coram Dómino, qui fecit nos, quia ipse est Dóminus, Deus noster; nos autem pópulus ejus, et oves páscuæ ejus.")
+  Latin: [Ant.] text("Christum Regem adorémus dominántem géntibus: * Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [v.] text("Hódie, si vocem ejus audiéritis, nolíte obduráre corda vestra, sicut in exacerbatióne secúndum diem tentatiónis in desérto: ubi tentavérunt me patres vestri, probavérunt et vidérunt ópera mea.")
+  Latin: [Ant.] text("Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [v.] text("Quadragínta annis próximus fui generatióni huic, et dixi: Semper hi errant corde, ipsi vero non cognovérunt vias meas: quibus jurávi in ira mea: Si introíbunt in réquiem meam.")
+  Latin: [Ant.] text("Christum Regem adorémus dominántem géntibus: * Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Qui se manducántibus dat spíritus pinguédinem.")
+  Latin: [Ant.] text("Christum Regem adorémus dominántem géntibus: * Qui se manducántibus dat spíritus pinguédinem.")
+
+[section #2 type=hymn slot=hymn reference=horas/Latin/Tempora/Pent01-4#Hymnus Matutinum languages=Latin]
+  Latin: text("Sacris solémniis juncta sint gáudia,")
+  Latin: text("Et ex præcórdiis sonent præcónia;")
+  Latin: text("Recédant vétera, nova sint ómnia, ")
+  Latin: text("Corda, voces, et ópera.")
+  Latin: text("_")
+  Latin: text("Noctis recólitur cœna novíssima,")
+  Latin: text("Qua Christus créditur agnum et ázyma")
+  Latin: text("Dedísse frátribus, juxta legítima")
+  Latin: text("Priscis indúlta pátribus.")
+  Latin: text("_")
+  Latin: text("Post agnum týpicum, explétis épulis,")
+  Latin: text("Corpus Domínicum datum discípulis,")
+  Latin: text("Sic totum ómnibus, quod totum síngulis,")
+  Latin: text("Ejus fatémur mánibus.")
+  Latin: text("_")
+  Latin: text("Dedit fragílibus córporis férculum,")
+  Latin: text("Dedit et trístibus sánguinis póculum,")
+  Latin: text("Dicens: Accípite quod trado vásculum;")
+  Latin: text("Omnes ex eo bíbite.")
+  Latin: text("_")
+  Latin: text("Sic sacrifícium istud instítuit,")
+  Latin: text("Cujus offícium commítti vóluit")
+  Latin: text("Solis presbýteris, quibus sic cóngruit,")
+  Latin: text("Ut sumant, et dent céteris.")
+  Latin: text("_")
+  Latin: text("Panis angélicus fit panis hóminum; ")
+  Latin: text("Dat panis cǽlicus figúris términum;")
+  Latin: text("O res mirábilis: mandúcat Dóminum")
+  Latin: text("Pauper, servus et húmilis.")
+  Latin: text("_")
+  Latin: text("Te, trina Déitas únaque, póscimus;")
+  Latin: text("Sic nos tu vísita, sicut te cólimus:")
+  Latin: text("Per tuas sémitas duc nos quo téndimus,")
+  Latin: text("Ad lucem quam inhábitas.  ")
+  Latin: text("Amen.")
+
+[section #3 type=heading slot=heading languages=]
+  heading: nocturn 1
+  (no lines)
+
+[section #4 type=psalm slot=psalmody reference=horas/Latin/Tempora/Pent01-4#Ant Matutinum:1 languages=Latin]
+  Latin: [Ant.] text("Fructum salutíferum * gustándum dedit Dóminus mortis suæ témpore.")
+  Latin: text("Psalmus 1 [1]")
+  Latin: text("1:1 Beátus vir, qui non ábiit in consílio impiórum, et in via peccatórum non stetit, * et in cáthedra pestiléntiæ non sedit:")
+  Latin: text("1:2 Sed in lege Dómini volúntas ejus, * et in lege ejus meditábitur die ac nocte.")
+  Latin: text("1:3 Et erit tamquam lignum, quod plantátum est secus decúrsus aquárum, * quod fructum suum dabit in témpore suo:")
+  Latin: text("1:3 Et fólium ejus non défluet: * et ómnia quæcúmque fáciet, prosperabúntur.")
+  Latin: text("1:4 Non sic ímpii, non sic: * sed tamquam pulvis, quem próicit ventus a fácie terræ.")
+  Latin: text("1:5 Ídeo non resúrgent ímpii in judício: * neque peccatóres in concílio justórum.")
+  Latin: text("1:6 Quóniam novit Dóminus viam justórum: * et iter impiórum períbit.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Fructum salutíferum gustándum dedit Dóminus mortis suæ témpore.")
+  Latin: [Ant.] text("A fructu fruménti * et vini multiplicáti fidéles in pace Christi requiéscunt.")
+  Latin: text("Psalmus 4 [2]")
+  Latin: text("4:2 Cum invocárem exaudívit me Deus justítiæ meæ: * in tribulatióne dilatásti mihi.")
+  Latin: text("4:2 Miserére mei, * et exáudi oratiónem meam.")
+  Latin: text("4:3 Fílii hóminum, úsquequo gravi corde? * ut quid dilígitis vanitátem, et quǽritis mendácium?")
+  Latin: text("4:4 Et scitóte quóniam mirificávit Dóminus sanctum suum: * Dóminus exáudiet me cum clamávero ad eum.")
+  Latin: text("4:5 Irascímini, et nolíte peccáre: ‡ quæ dícitis in córdibus vestris, * in cubílibus vestris compungímini.")
+  Latin: text("4:6 Sacrificáte sacrifícium justítiæ, et speráte in Dómino. * Multi dicunt: Quis osténdit nobis bona?")
+  Latin: text("4:7 Signátum est super nos lumen vultus tui, Dómine: * dedísti lætítiam in corde meo.")
+  Latin: text("4:8 A fructu fruménti, vini, et ólei sui * multiplicáti sunt.")
+  Latin: text("4:9 In pace in idípsum * dórmiam, et requiéscam;")
+  Latin: text("4:10 Quóniam tu, Dómine, singuláriter in spe * constituísti me.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("A fructu fruménti et vini multiplicáti fidéles in pace Christi requiéscunt.")
+  Latin: [Ant.] text("Communióne cálicis, * quo Deus ipse súmitur, non vitulórum sánguine, congregávit nos Dóminus.")
+  Latin: text("Psalmus 15 [3]")
+  Latin: text("15:1 Consérva me, Dómine, quóniam sperávi in te. ‡ Dixi Dómino: Deus meus es tu, * quóniam bonórum meórum non eges.")
+  Latin: text("15:3 Sanctis, qui sunt in terra ejus, * mirificávit omnes voluntátes meas in eis.")
+  Latin: text("15:4 Multiplicátæ sunt infirmitátes eórum: * póstea acceleravérunt.")
+  Latin: text("15:4 Non congregábo conventícula eórum de sanguínibus, * nec memor ero nóminum eórum per lábia mea.")
+  Latin: text("15:5 Dóminus pars hereditátis meæ, et cálicis mei: * tu es, qui restítues hereditátem meam mihi.")
+  Latin: text("15:6 Funes cecidérunt mihi in præcláris: * étenim heréditas mea præclára est mihi.")
+  Latin: text("15:7 Benedícam Dóminum, qui tríbuit mihi intelléctum: * ínsuper et usque ad noctem increpuérunt me renes mei.")
+  Latin: text("15:8 Providébam Dóminum in conspéctu meo semper: * quóniam a dextris est mihi, ne commóvear.")
+  Latin: text("15:9 Propter hoc lætátum est cor meum, et exsultávit lingua mea: * ínsuper et caro mea requiéscet in spe.")
+  Latin: text("15:10 Quóniam non derelínques ánimam meam in inférno: * nec dabis sanctum tuum vidére corruptiónem.")
+  Latin: text("15:11 Notas mihi fecísti vias vitæ, adimplébis me lætítia cum vultu tuo: * delectatiónes in déxtera tua usque in finem.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Communióne cálicis, quo Deus ipse súmitur, non vitulórum sánguine, congregávit nos Dóminus.")
+
+[section #5 type=versicle slot=versicle reference=horas/Latin/Tempora/Pent01-4#Nocturn 1 Versum languages=Latin]
+  Latin: [V.] text("Panem cæli dedit eis, allelúja.")
+  Latin: [R.] text("Panem Angelórum manducávit homo, allelúja.")
+
+[section #6 type=other slot=other reference=horas/Latin/Psalterium/Common/Rubricae#Pater secreto languages=Latin]
+  Latin: rubric("« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »")
+
+[section #7 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater noster Et languages=Latin]
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris:")
+  Latin: [V.] text("Et ne nos indúcas in tentatiónem:")
+  Latin: [R.] text("Sed líbera nos a malo.")
+
+[section #8 type=other slot=other reference=matins-absolutio languages=Latin]
+  Latin: [Absolutio.] text("Exáudi, Dómine Jesu Christe, preces servórum tuórum, et miserére nobis: Qui cum Patre et Spíritu Sancto vivis et regnas in sǽcula sæculórum.")
+
+[section #9 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #10 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #11 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 1:1 languages=Latin]
+  Latin: text("Benedictióne perpétua benedícat nos Pater ætérnus.")
+
+[section #12 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #13 type=heading slot=heading languages=]
+  heading: lesson 1
+  (no lines)
+
+[section #14 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio1 languages=Latin]
+  Latin: text("De Epístola prima beáti Pauli Apóstoli ad Corínthios ") · citation("1 Cor 11:20-22") · text("20 Conveniéntibus ergo vobis in unum, jam non est Domínicam cenam manducáre.21 Unusquísque enim suam cenam præsúmit ad manducándum. Et álius quidem ésurit, álius autem ébrius est. 22 Numquid domos non habétis ad manducándum et bibéndum? aut Ecclésiam Dei contémnitis, et confúnditis eos, qui non habent? Quid dicam vobis? Laudo vos? In hoc non laudo.")
+
+[section #15 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory1 languages=Latin]
+  Latin: [R.] text("Immolábit hædum multitúdo filiórum Israël ad vésperam Paschæ:")
+  Latin: text("* Et edent carnes et ázymos panes.")
+  Latin: [V.] text("Pascha nostrum immolátus est Christus: ítaque epulémur in ázymis sinceritátis et veritátis.")
+  Latin: [R.] text("Et edent carnes et ázymos panes.")
+
+[section #16 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #17 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 1:2 languages=Latin]
+  Latin: text("Unigénitus Dei Fílius nos benedícere et adjuváre dignétur.")
+
+[section #18 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #19 type=heading slot=heading languages=]
+  heading: lesson 2
+  (no lines)
+
+[section #20 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio2 languages=Latin]
+  Latin: text(" ") · citation("1 Cor 11:23-26") · text("23 Ego enim accépi a Dómino quod et trádidi vobis, quóniam Dóminus Jesus, in qua nocte tradebátur, accépit panem, 24 et grátias agens fregit, et dixit: Accípite, et manducáte: hoc est corpus meum, quod pro vobis tradétur: hoc fácite in meam commemoratiónem. 25 Simíliter et cálicem, postquam cœnávit, dicens: Hic calix novum testaméntum est in meo sánguine: hoc fácite, quotiescúmque bibétis, in meam commemoratiónem. 26 Quotiescúmque enim manducábitis panem hunc, et cálicem bibétis, mortem Dómini annuntiábitis donec véniat.")
+
+[section #21 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory2 languages=Latin]
+  Latin: [R.] text("Comedétis carnes, et saturabímini pánibus:")
+  Latin: text("* Iste est panis, quem dedit vobis Dóminus ad vescéndum.")
+  Latin: [V.] text("Non Móyses dedit vobis panem de cælo, sed Pater meus dat vobis panem de cælo verum.")
+  Latin: [R.] text("Iste est panis, quem dedit vobis Dóminus ad vescéndum.")
+
+[section #22 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #23 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 1:3 languages=Latin]
+  Latin: text("Spíritus Sancti grátia illúminet sensus et corda nostra.")
+
+[section #24 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #25 type=heading slot=heading languages=]
+  heading: lesson 3
+  (no lines)
+
+[section #26 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio3 languages=Latin]
+  Latin: text(" ") · citation("1 Cor 11:27-32") · text("27 Itaque quicúmque manducáverit panem hunc, vel bíberit cálicem Dómini indígne, reus erit córporis et sánguinis Dómini. 28 Probet autem seípsum homo: et sic de pane illo edat, et de cálice bibat. 29 Qui enim mandúcat et bibit indígne, judícium sibi mandúcat et bibit, non dijúdicans corpus Dómini. 30 Ideo inter vos multi infírmi et imbecílles, et dórmiunt multi. 31 Quod, si nosmetípsos dijudicarémus, non útique judicarémur. 32 Dum judicámur autem, a Dómino corrípimur, ut non cum hoc mundo damnémur.")
+
+[section #27 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory3 languages=Latin]
+  Latin: [R.] text("Respéxit Elías ad caput suum subcinerícium panem: qui surgens comédit et bibit:")
+  Latin: text("* Et ambulávit in fortitúdine cibi illíus usque ad montem Dei.")
+  Latin: [V.] text("Si quis manducáverit ex hoc pane, vivet in ætérnum.")
+  Latin: [R.] text("Et ambulávit in fortitúdine cibi illíus usque ad montem Dei.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [R.] text("Et ambulávit in fortitúdine cibi illíus usque ad montem Dei.")
+
+[section #28 type=heading slot=heading languages=]
+  heading: nocturn 2
+  (no lines)
+
+[section #29 type=psalm slot=psalmody reference=horas/Latin/Tempora/Pent01-4#Ant Matutinum:4 languages=Latin]
+  Latin: [Ant.] text("Memor sit Dóminus * sacrifícii nostri: et holocáustum nostrum pingue fiat.")
+  Latin: text("Psalmus 19 [1]")
+  Latin: text("19:2 Exáudiat te Dóminus in die tribulatiónis: * prótegat te nomen Dei Jacob.")
+  Latin: text("19:3 Mittat tibi auxílium de sancto: * et de Sion tueátur te.")
+  Latin: text("19:4 Memor sit omnis sacrifícii tui: * et holocáustum tuum pingue fiat.")
+  Latin: text("19:5 Tríbuat tibi secúndum cor tuum: * et omne consílium tuum confírmet.")
+  Latin: text("19:6 Lætábimur in salutári tuo: * et in nómine Dei nostri magnificábimur.")
+  Latin: text("19:7 Ímpleat Dóminus omnes petitiónes tuas: * nunc cognóvi quóniam salvum fecit Dóminus Christum suum.")
+  Latin: text("19:7 Exáudiet illum de cælo sancto suo: * in potentátibus salus déxteræ ejus.")
+  Latin: text("19:8 Hi in cúrribus, et hi in equis: * nos autem in nómine Dómini, Dei nostri invocábimus.")
+  Latin: text("19:9 Ipsi obligáti sunt, et cecidérunt: * nos autem surréximus et erécti sumus.")
+  Latin: text("19:10 Dómine, salvum fac regem: * et exáudi nos in die, qua invocavérimus te.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Memor sit Dóminus sacrifícii nostri: et holocáustum nostrum pingue fiat.")
+  Latin: [Ant.] text("Parátur * nobis mensa Dómini advérsus omnes, qui tríbulant nos.")
+  Latin: text("Psalmus 22 [2]")
+  Latin: text("22:1 Dóminus regit me, et nihil mihi déerit: * in loco páscuæ ibi me collocávit.")
+  Latin: text("22:2 Super aquam refectiónis educávit me: * ánimam meam convértit.")
+  Latin: text("22:3 Dedúxit me super sémitas justítiæ, * propter nomen suum.")
+  Latin: text("22:4 Nam, et si ambulávero in médio umbræ mortis, non timébo mala: * quóniam tu mecum es.")
+  Latin: text("22:4 Virga tua, et báculus tuus: * ipsa me consoláta sunt.")
+  Latin: text("22:5 Parásti in conspéctu meo mensam, * advérsus eos, qui tríbulant me.")
+  Latin: text("22:5 Impinguásti in óleo caput meum: * et calix meus inébrians quam præclárus est!")
+  Latin: text("22:6 Et misericórdia tua subsequétur me * ómnibus diébus vitæ meæ:")
+  Latin: text("22:6 Et ut inhábitem in domo Dómini, * in longitúdinem diérum.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Parátur nobis mensa Dómini advérsus omnes, qui tríbulant nos.")
+  Latin: [Ant.] text("In voce exsultatiónis * résonent epulántes in mensa Dómini.")
+  Latin: text("Psalmus 41 [3]")
+  Latin: text("41:2 Quemádmodum desíderat cervus ad fontes aquárum: * ita desíderat ánima mea ad te, Deus.")
+  Latin: text("41:3 Sitívit ánima mea ad Deum fortem vivum: * quando véniam, et apparébo ante fáciem Dei?")
+  Latin: text("41:4 Fuérunt mihi lácrimæ meæ panes die ac nocte: * dum dícitur mihi cotídie: Ubi est Deus tuus?")
+  Latin: text("41:5 Hæc recordátus sum, et effúdi in me ánimam meam: * quóniam transíbo in locum tabernáculi admirábilis, usque ad domum Dei.")
+  Latin: text("41:5 In voce exsultatiónis, et confessiónis: * sonus epulántis.")
+  Latin: text("41:6 Quare tristis es, ánima mea? * et quare contúrbas me?")
+  Latin: text("41:6 Spera in Deo, quóniam adhuc confitébor illi: * salutáre vultus mei, et Deus meus.")
+  Latin: text("41:7 Ad meípsum ánima mea conturbáta est: * proptérea memor ero tui de terra Jordánis, et Hermóniim a monte módico.")
+  Latin: text("41:8 Abýssus abýssum ínvocat, * in voce cataractárum tuárum.")
+  Latin: text("41:8 Ómnia excélsa tua, et fluctus tui * super me transiérunt.")
+  Latin: text("41:9 In die mandávit Dóminus misericórdiam suam: * et nocte cánticum ejus.")
+  Latin: text("41:9 Apud me orátio Deo vitæ meæ, * dicam Deo: Suscéptor meus es.")
+  Latin: text("41:10 Quare oblítus es mei? * et quare contristátus incédo, dum afflígit me inimícus?")
+  Latin: text("41:11 Dum confringúntur ossa mea, * exprobravérunt mihi qui tríbulant me inimíci mei.")
+  Latin: text("41:11 Dum dicunt mihi per síngulos dies: Ubi est Deus tuus? * quare tristis es, ánima mea? et quare contúrbas me?")
+  Latin: text("41:12 Spera in Deo, quóniam adhuc confitébor illi: * salutáre vultus mei, et Deus meus.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("In voce exsultatiónis résonent epulántes in mensa Dómini.")
+
+[section #30 type=versicle slot=versicle reference=horas/Latin/Tempora/Pent01-4#Nocturn 2 Versum languages=Latin]
+  Latin: [V.] text("Cibávit illos ex ádipe fruménti, allelúja.")
+  Latin: [R.] text("Et de petra, melle saturávit eos, allelúja.")
+
+[section #31 type=other slot=other reference=horas/Latin/Psalterium/Common/Rubricae#Pater secreto languages=Latin]
+  Latin: rubric("« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »")
+
+[section #32 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater noster Et languages=Latin]
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris:")
+  Latin: [V.] text("Et ne nos indúcas in tentatiónem:")
+  Latin: [R.] text("Sed líbera nos a malo.")
+
+[section #33 type=other slot=other reference=matins-absolutio languages=Latin]
+  Latin: [Absolutio.] text("Ipsíus píetas et misericórdia nos ádjuvet, qui cum Patre et Spíritu Sancto vivit et regnat in sǽcula sæculórum.")
+
+[section #34 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #35 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #36 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 2:1 languages=Latin]
+  Latin: text("Deus Pater omnípotens sit nobis propítius et clemens.")
+
+[section #37 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #38 type=heading slot=heading languages=]
+  heading: lesson 4
+  (no lines)
+
+[section #39 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio4 languages=Latin]
+  Latin: text("Sermo sancti Thomæ Aquinátis") · text(" ") · rubric("Lectio iv in opusculo 57") · text(" Imménsa divínæ largitátis benefícia, exhíbita pópulo christiáno, inæstimábilem ei cónferunt dignitátem. Neque enim est, aut fuit aliquándo tam grandis nátio, quæ hábeat deos appropinquántes sibi, sicut adest nobis Deus noster.  Unigénitus síquidem Dei Fílius, suæ divinitátis volens nos esse partícipes, natúram nostram assúmpsit, ut hómines deos fáceret factus homo. Et hoc ínsuper, quod de nostro assúmpsit, totum nobis cóntulit ad salútem. Corpus namque suum pro nostra reconcilatióne in ara crucis hóstiam óbtulit Deo Patri, sánguinem suum fudit in prétium simul et lavácrum; ut redémpti a miserábili servitúte, a peccátis ómnibus mundarémur. Ut autem tanti benefícii jugis in nobis manéret memória, corpus suum in cibum, et sánguinem suum in potum, sub spécie panis et vini suméndum fidélibus derelíquit.")
+
+[section #40 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory4 languages=Latin]
+  Latin: [R.] text("Cenántibus illis, accépit Jesus panem, et benedíxit, ac fregit, dedítque discípulis suis, et ait:")
+  Latin: text("* Accípite et comédite: hoc est corpus meum.")
+  Latin: [V.] text("Dixérunt viri tabernáculi mei: Quis det de cárnibus ejus, ut saturémur?")
+  Latin: [R.] text("Accípite et comédite: hoc est corpus meum.")
+
+[section #41 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #42 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 2:2 languages=Latin]
+  Latin: text("Christus perpétuæ det nobis gáudia vitæ.")
+
+[section #43 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #44 type=heading slot=heading languages=]
+  heading: lesson 5
+  (no lines)
+
+[section #45 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio5 languages=Latin]
+  Latin: text("O pretiósum et admirándum convívium, salutíferum et omni suavitáte replétum! Quid enim hoc convívio pretiósius esse potest? in quo non carnes vitulórum et hircórum, ut olim in lege, sed nobis Christus suméndus propónitur verus Deus. Quid hoc Sacraménto mirabílius? In ipso namque panis et vinum in Christi corpus et sánguinem substantiáliter convertúntur; ideóque Christus, Deus et homo perféctus, sub módici panis et vini spécie continétur. Manducátur ítaque a fidélibus, sed mínime lacerátur; quinímmo, divíso Sacraménto, sub quálibet divisiónis partícula ínteger persevérat. Accidéntia autem sine subjécto in eódem subsístunt, ut fides locum hábeat, dum visíbile invisibíliter súmitur aliéna spécie occultátum; et sensus a deceptióne reddántur immúnes, qui de accidéntibus júdicant sibi notis.")
+
+[section #46 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory5 languages=Latin]
+  Latin: [R.] text("Accépit Jesus cálicem, postquam cenávit, dicens: Hic calix novum testaméntum est in meo sánguine:")
+  Latin: text("* Hoc fácite in meam commemoratiónem.")
+  Latin: [V.] text("Memória memor ero, et tabéscet in me ánima mea.")
+  Latin: [R.] text("Hoc fácite in meam commemoratiónem.")
+
+[section #47 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #48 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 2:3 languages=Latin]
+  Latin: text("Ignem sui amóris accéndat Deus in córdibus nostris.")
+
+[section #49 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #50 type=heading slot=heading languages=]
+  heading: lesson 6
+  (no lines)
+
+[section #51 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio6 languages=Latin]
+  Latin: text("Nullum étiam sacraméntum est isto salúbrius, quo purgántur peccáta, virtútes augéntur, et mens ómnium spirituálium charísmatum abundántia impinguátur. Offértur in Ecclésia pro vivis et mórtuis, ut ómnibus prosit, quod est pro salúte ómnium institútum. Suavitátem dénique hujus Sacraménti nullus exprímere súfficit, per quod spirituális dulcédo in suo fonte gustátur; et recólitur memória illíus, quam in sua passióne Christus monstrávit, excellentíssimæ caritátis. Unde, ut árctius hujus caritátis imménsitas fidélium córdibus infigerétur, in última cena, quando Pascha cum discípulis celebráto, transitúrus erat de hoc mundo ad Patrem, hoc Sacraméntum instítuit, tamquam passiónis suæ memoriále perénne, figurárum véterum impletívum, miraculórum ab ipso factórum máximum; et de sua contristátis abséntia solátium singuláre relíquit.")
+
+[section #52 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory6 languages=Latin]
+  Latin: [R.] text("Ego sum panis vitæ; patres vestri manducavérunt manna in desérto, et mórtui sunt:")
+  Latin: text("* Hic est panis de cælo descéndens, ut, si quis ex ipso mandúcet, non moriátur.")
+  Latin: [V.] text("Ego sum panis vivus, qui de cælo descéndi: si quis manducáverit ex hoc pane, vivet in ætérnum.")
+  Latin: [R.] text("Hic est panis de cælo descéndens, ut, si quis ex ipso mandúcet, non moriátur.")
+
+[section #53 type=heading slot=heading languages=]
+  heading: nocturn 3
+  (no lines)
+
+[section #54 type=psalm slot=psalmody reference=horas/Latin/Tempora/Pent01-4#Ant Matutinum:7 languages=Latin]
+  Latin: [Ant.] text("Introíbo * ad altáre Dei: sumam Christum, qui rénovat juventútem meam.")
+  Latin: text("Psalmus 42 [1]")
+  Latin: text("42:1 Júdica me, Deus, et discérne causam meam de gente non sancta, * ab hómine iníquo, et dolóso érue me.")
+  Latin: text("42:2 Quia tu es, Deus, fortitúdo mea: * quare me repulísti? et quare tristis incédo, dum afflígit me inimícus?")
+  Latin: text("42:3 Emítte lucem tuam et veritátem tuam: * ipsa me deduxérunt, et adduxérunt in montem sanctum tuum, et in tabernácula tua.")
+  Latin: text("42:4 Et introíbo ad altáre Dei: * ad Deum, qui lætíficat juventútem meam.")
+  Latin: text("42:5 Confitébor tibi in cíthara, Deus, Deus meus: * quare tristis es, ánima mea? et quare contúrbas me?")
+  Latin: text("42:6 Spera in Deo, quóniam adhuc confitébor illi: * salutáre vultus mei, et Deus meus.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Introíbo ad altáre Dei: sumam Christum, qui rénovat juventútem meam.")
+  Latin: [Ant.] text("Cibávit nos Dóminus * ex ádipe fruménti: et de petra, melle saturávit nos.")
+  Latin: text("Psalmus 80 [2]")
+  Latin: text("80:2 Exsultáte Deo, adjutóri nostro: * jubiláte Deo Jacob.")
+  Latin: text("80:3 Súmite psalmum, et date týmpanum: * psaltérium jucúndum cum cíthara.")
+  Latin: text("80:4 Buccináte in Neoménia tuba, * in insígni die solemnitátis vestræ.")
+  Latin: text("80:5 Quia præcéptum in Israël est: * et judícium Deo Jacob.")
+  Latin: text("80:6 Testimónium in Joseph pósuit illud, cum exíret de terra Ægýpti: * linguam, quam non nóverat, audívit.")
+  Latin: text("80:7 Divértit ab onéribus dorsum ejus: * manus ejus in cóphino serviérunt.")
+  Latin: text("80:8 In tribulatióne invocásti me, et liberávi te: * exaudívi te in abscóndito tempestátis: probávi te apud aquam contradictiónis.")
+  Latin: text("80:9 Audi, pópulus meus, et contestábor te: * Israël, si audíeris me, non erit in te deus recens, neque adorábis deum aliénum.")
+  Latin: text("80:11 Ego enim sum Dóminus Deus tuus, qui edúxi te de terra Ægýpti: * diláta os tuum, et implébo illud.")
+  Latin: text("80:12 Et non audívit pópulus meus vocem meam: * et Israël non inténdit mihi.")
+  Latin: text("80:13 Et dimísi eos secúndum desidéria cordis eórum: * ibunt in adinventiónibus suis.")
+  Latin: text("80:14 Si pópulus meus audísset me: * Israël si in viis meis ambulásset:")
+  Latin: text("80:15 Pro níhilo fórsitan inimícos eórum humiliássem: * et super tribulántes eos misíssem manum meam.")
+  Latin: text("80:16 Inimíci Dómini mentíti sunt ei: * et erit tempus eórum in sǽcula.")
+  Latin: text("80:17 Et cibávit eos ex ádipe fruménti: * et de petra, melle saturávit eos.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Cibávit nos Dóminus ex ádipe fruménti: et de petra, melle saturávit nos.")
+  Latin: [Ant.] text("Ex altári tuo, * Dómine, Christum súmimus: in quem cor et caro nostra exsúltant.")
+  Latin: text("Psalmus 83 [3]")
+  Latin: text("83:2 Quam dilécta tabernácula tua, Dómine virtútum: * concupíscit, et déficit ánima mea in átria Dómini.")
+  Latin: text("83:3 Cor meum, et caro mea * exsultavérunt in Deum vivum.")
+  Latin: text("83:4 Étenim passer invénit sibi domum: * et turtur nidum sibi, ubi ponat pullos suos.")
+  Latin: text("83:4 Altária tua, Dómine virtútum: * Rex meus, et Deus meus.")
+  Latin: text("83:5 Beáti, qui hábitant in domo tua, Dómine: * in sǽcula sæculórum laudábunt te.")
+  Latin: text("83:6 Beátus vir, cujus est auxílium abs te: * ascensiónes in corde suo dispósuit, in valle lacrimárum in loco, quem pósuit.")
+  Latin: text("83:8 Étenim benedictiónem dabit legislátor, ibunt de virtúte in virtútem: * vidébitur Deus deórum in Sion.")
+  Latin: text("83:9 Dómine, Deus virtútum, exáudi oratiónem meam: * áuribus pércipe, Deus Jacob.")
+  Latin: text("83:10 Protéctor noster, áspice, Deus: * et réspice in fáciem Christi tui:")
+  Latin: text("83:11 Quia mélior est dies una in átriis tuis, * super míllia.")
+  Latin: text("83:11 Elégi abjéctus esse in domo Dei mei: * magis quam habitáre in tabernáculis peccatórum.")
+  Latin: text("83:12 Quia misericórdiam, et veritátem díligit Deus: * grátiam et glóriam dabit Dóminus.")
+  Latin: text("83:13 Non privábit bonis eos, qui ámbulant in innocéntia: * Dómine virtútum, beátus homo, qui sperat in te.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Ex altári tuo, Dómine, Christum súmimus: in quem cor et caro nostra exsúltant.")
+
+[section #55 type=versicle slot=versicle reference=horas/Latin/Tempora/Pent01-4#Nocturn 3 Versum languages=Latin]
+  Latin: [V.] text("Edúcas panem de terra, allelúja.")
+  Latin: [R.] text("Et vinum lætíficet cor hóminis, allelúja.")
+
+[section #56 type=other slot=other reference=horas/Latin/Psalterium/Common/Rubricae#Pater secreto languages=Latin]
+  Latin: rubric("« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »")
+
+[section #57 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater noster Et languages=Latin]
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris:")
+  Latin: [V.] text("Et ne nos indúcas in tentatiónem:")
+  Latin: [R.] text("Sed líbera nos a malo.")
+
+[section #58 type=other slot=other reference=matins-absolutio languages=Latin]
+  Latin: [Absolutio.] text("A vínculis peccatórum nostrórum absólvat nos omnípotens et miséricors Dóminus.")
+
+[section #59 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #60 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #61 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 3:1 languages=Latin]
+  Latin: text("Ille nos benedícat, qui sine fine vivit et regnat.")
+
+[section #62 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #63 type=heading slot=heading languages=]
+  heading: lesson 7
+  (no lines)
+
+[section #64 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio7 languages=Latin]
+  Latin: text("Léctio sancti Evangélii secúndum Joánnem ") · citation("Joannes 6:56-59") · text("In illo témpore: Dixit Jesus turbis Judæórum: Caro mea vere est cibus, et sanguis meus vere est potus. Et réliqua.")
+  Latin: text("Homilía sancti Augustíni Epíscopi") · text(" ") · rubric("Tractatus 26 in Joannem, sub finem") · text(" Cum cibo et potu id áppetant hómines, ut neque esúriant, neque sítiant: hoc veráciter non præstat, nisi iste cibus et potus, qui eos, a quibus súmitur, immortáles et incorruptíbiles facit; id est, socíetas ipsa Sanctórum, ubi pax erit et únitas plena atque perfécta. Proptérea quippe, sicut étiam ante nos hoc intellexérunt hómines Dei, Dóminus noster Jesus Christus corpus et sánguinem suum in eis rebus commendávit, quæ ad unum áliquid redigúntur ex multis. Namque áliud in unum ex multis granis confícitur: áliud in unum ex multis ácinis cónfluit. Dénique jam expónit, quómodo id fiat, quod lóquitur; et quid sit manducáre corpus ejus, et sánguinem bíbere.")
+
+[section #65 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory7 languages=Latin]
+  Latin: [R.] text("Qui mandúcat meam carnem et bibit meum sánguinem,")
+  Latin: text("* In me manet, et ego in eo.")
+  Latin: [V.] text("Non est ália nátio tam grandis, quæ hábeat deos appropinquántes sibi, sicut Deus noster adest nobis.")
+  Latin: [R.] text("In me manet, et ego in eo.")
+
+[section #66 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #67 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 3:2 languages=Latin]
+  Latin: text("Divínum auxílium máneat semper nobíscum.")
+
+[section #68 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #69 type=heading slot=heading languages=]
+  heading: lesson 8
+  (no lines)
+
+[section #70 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio7 languages=Latin]
+  Latin: text("Léctio sancti Evangélii secúndum Joánnem ") · citation("Joannes 6:56-59") · text("In illo témpore: Dixit Jesus turbis Judæórum: Caro mea vere est cibus, et sanguis meus vere est potus. Et réliqua.")
+  Latin: text("Homilía sancti Augustíni Epíscopi") · text(" ") · rubric("Tractatus 26 in Joannem, sub finem") · text(" Cum cibo et potu id áppetant hómines, ut neque esúriant, neque sítiant: hoc veráciter non præstat, nisi iste cibus et potus, qui eos, a quibus súmitur, immortáles et incorruptíbiles facit; id est, socíetas ipsa Sanctórum, ubi pax erit et únitas plena atque perfécta. Proptérea quippe, sicut étiam ante nos hoc intellexérunt hómines Dei, Dóminus noster Jesus Christus corpus et sánguinem suum in eis rebus commendávit, quæ ad unum áliquid redigúntur ex multis. Namque áliud in unum ex multis granis confícitur: áliud in unum ex multis ácinis cónfluit. Dénique jam expónit, quómodo id fiat, quod lóquitur; et quid sit manducáre corpus ejus, et sánguinem bíbere.")
+
+[section #71 type=responsory slot=responsory reference=horas/Latin/Tempora/Pent01-4#Responsory8 languages=Latin]
+  Latin: [R.] text("Misit me vivens Pater, et ego vivo propter Patrem:")
+  Latin: text("* Et qui mandúcat me, vivet propter me.")
+  Latin: [V.] text("Cibávit illum Dóminus pane vitæ et intelléctus.")
+  Latin: [R.] text("Et qui mandúcat me, vivet propter me.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [R.] text("Et qui mandúcat me, vivet propter me.")
+
+[section #72 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Jube domne languages=Latin]
+  Latin: [V.] text("Jube, Dómine, benedícere.")
+
+[section #73 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 3:3 languages=Latin]
+  Latin: text("Ad societátem cívium supernórum perdúcat nos Rex Angelórum.")
+
+[section #74 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
+  Latin: [R.] text("Amen.")
+
+[section #75 type=heading slot=heading languages=]
+  heading: lesson 9
+  (no lines)
+
+[section #76 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Tempora/Pent01-4#Lectio7 languages=Latin]
+  Latin: text("Léctio sancti Evangélii secúndum Joánnem ") · citation("Joannes 6:56-59") · text("In illo témpore: Dixit Jesus turbis Judæórum: Caro mea vere est cibus, et sanguis meus vere est potus. Et réliqua.")
+  Latin: text("Homilía sancti Augustíni Epíscopi") · text(" ") · rubric("Tractatus 26 in Joannem, sub finem") · text(" Cum cibo et potu id áppetant hómines, ut neque esúriant, neque sítiant: hoc veráciter non præstat, nisi iste cibus et potus, qui eos, a quibus súmitur, immortáles et incorruptíbiles facit; id est, socíetas ipsa Sanctórum, ubi pax erit et únitas plena atque perfécta. Proptérea quippe, sicut étiam ante nos hoc intellexérunt hómines Dei, Dóminus noster Jesus Christus corpus et sánguinem suum in eis rebus commendávit, quæ ad unum áliquid redigúntur ex multis. Namque áliud in unum ex multis granis confícitur: áliud in unum ex multis ácinis cónfluit. Dénique jam expónit, quómodo id fiat, quod lóquitur; et quid sit manducáre corpus ejus, et sánguinem bíbere.")
+
+[section #77 type=te-deum slot=te-deum reference=horas/Latin/Psalterium/Common/Prayers#Te Deum languages=Latin]
+  Latin: [v.] text("Te Deum laudámus: * te Dóminum confitémur.")
+  Latin: text("Te ætérnum Patrem * omnis terra venerátur.Tibi omnes Ángeli, * tibi Cæli, et univérsæ Potestátes:Tibi Chérubim et Séraphim * incessábili voce proclámant:") · text(" ") · rubric("Fit reverentia") · text(" Sanctus, Sanctus, Sanctus * Dóminus Deus Sábaoth.Pleni sunt cæli et terra * majestátis glóriæ tuæ.Te gloriósus * Apostolórum chorus,Te Prophetárum * laudábilis númerus,Te Mártyrum candidátus * laudat exércitus.Te per orbem terrárum * sancta confitétur Ecclésia,Patrem * imménsæ majestátis;Venerándum tuum verum * et únicum Fílium;Sanctum quoque * Paráclitum Spíritum.Tu Rex glóriæ, * Christe.Tu Patris * sempitérnus es Fílius.") · text(" ") · rubric("Fit reverentia") · text(" Tu, ad liberándum susceptúrus hóminem: * non horruísti Vírginis úterum.Tu, devícto mortis acúleo, * aperuísti credéntibus regna cælórum.Tu ad déxteram Dei sedes, * in glória Patris.Judex créderis * esse ventúrus.") · text(" ") · rubric("Sequens versus dicitur flexis genibus") · text(" (sed rubrica cisterciensis dicitur)") · text(" ") · rubric("Fratres, quando incipiunt « Te ergo quæsumus, » exeuntes e Stallis, reverenter inclinent ad verba « Quos pretioso » et cetera") · text(" Te ergo quǽsumus, tuis fámulis súbveni, * quos pretióso sánguine redemísti.Ætérna fac cum Sanctis tuis * in glória numerári.Salvum fac pópulum tuum, Dómine, * et bénedic hereditáti tuæ.Et rege eos, * et extólle illos usque in ætérnum.Per síngulos dies * benedícimus te.") · text(" ") · rubric("Fit reverentia, secundum consuetudinem") · text(" Et laudámus nomen tuum in sǽculum, * et in sǽculum sǽculi.Dignáre, Dómine, die isto * sine peccáto nos custodíre.Miserére nostri, Dómine, * miserére nostri.Fiat misericórdia tua, Dómine, super nos, * quemádmodum sperávimus in te.In te, Dómine, sperávi: * non confúndar in ætérnum.")
+
+[section #78 type=oration slot=oration reference=horas/Latin/Tempora/Pent01-4#Oratio languages=Latin]
+  Latin: text("Deus, qui nobis sub Sacraménto mirábili passiónis tuæ memóriam reliquísti: tríbue, quǽsumus, ita nos Córporis, et Sánguinis tui sacra mystéria venerári; ut redemptiónis tuæ fructum in nobis júgiter sentiámus:")
+  Latin: [r.] text("Qui vivis et regnas cum Deo Patre, in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")

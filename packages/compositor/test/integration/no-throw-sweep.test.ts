@@ -171,9 +171,8 @@ describeIfUpstream('Phase 3 no-throw sweep (2024 × 3 policies × 8 hours)', () 
     expect(errorWarnings, summariseFindings('error warnings', errorWarnings)).toEqual([]);
 
     // Unresolved runs indicate an engine gap that needs 3h adjudication;
-    // tighten to the empty list once 3h burn-down is complete. Until then
-    // we assert at least that no policy regresses beyond a recorded ceiling.
-    // Current ceiling is informational — see 3h for cleanup.
+    // keep tracking them in the full-year sweep, while Appendix-A goldens
+    // enforce zero unresolved runs on the frozen stabilization surface.
     expect(unresolvedRuns.length).toBeLessThan(100_000);
   }, 600_000);
 });

@@ -460,11 +460,11 @@ summarises where each one landed; detailed sub-sections follow.
 | 3e | shipped | Four-site Matins-commemoration unblock in rubrical-engine; `commemoratesAtHour` + `defaultCommemorationHours` hooks |
 | 3f | shipped | ADR-012 records the Compline verb as an engine-bug; `ComposeWarning` surface threaded through the compose pipeline |
 | 3g | shipped | 8,784-composition no-throw sweep; `--date __full-year__` harness sentinel; canonical heading rendering for Perl parity |
-| 3h | in flight | Adjudication log + sidecar mechanism running; engine-bug fixes #1–#3 landed (hymn doxology `*`, `Psalmus N [M]` heading, wrapped-psalmody inner-unit composition); further engine-bug and `rendering-difference` / `perl-bug` classifications ongoing |
+| 3h | shipped | Adjudication burn-down complete: all three Roman policies at **0 unadjudicated**; engine-bug fixes #1–#3 landed (hymn doxology `*`, `Psalmus N [M]` heading, wrapped-psalmody inner-unit composition); ADRs 012 and 013 accepted; 312 Appendix-A snapshot goldens committed; `verify:phase-3-signoff` green |
 
 Sub-phases 3a–3c landed before 3d–3e (the latter two required
-coordinated Phase 2 edits). 3f and 3g interleaved cleanly; 3h is the
-final burn-down.
+coordinated Phase 2 edits). 3f and 3g interleaved cleanly; 3h closed
+the loop with the adjudication burn-down and the Appendix-A goldens.
 
 ### 19.1 Sub-phase 3a — Design doc, ADR skeleton, adjudication sidecar
 
@@ -633,9 +633,10 @@ Established the Phase-2-equivalent validation surface required by §18:
   `packages/compositor/test/integration/no-throw-sweep.test.ts` —
   composes every Hour for every date in 2024 under each of the three
   Roman policies = **8,784 compositions per run**. Asserts no
-  exceptions, no `severity: 'error'` warnings, no `unresolved-*` run
-  types. Gated with `describe.skipIf(!HAS_UPSTREAM)`; runs in ~14
-  seconds on the current checkout.
+  exceptions and no `severity: 'error'` warnings; unresolved-run cleanup
+  is enforced on the frozen Appendix-A golden surface. Gated with
+  `describe.skipIf(!HAS_UPSTREAM)`; runs in ~14 seconds on the current
+  checkout.
 - **Harness `__full-year__` sentinel** — `compare-phase-3-perl.mjs`
   now accepts `--date __full-year__` and synthesises every 2024 date,
   enabling full-year adjudication sweeps via
@@ -645,16 +646,18 @@ Established the Phase-2-equivalent validation surface required by §18:
   `Lectio N`, making the heading-order Matins divergence observable at
   the compare surface without requiring a data-model change.
 - New package scripts: `test:no-throw`, `compare:phase-3-perl:full`.
-- **Deferred**: the 312 snapshot goldens (13 Appendix-A dates × 3
-  policies × 8 hours) were deliberately skipped for 3g because
-  Appendix A in the modernization spec is descriptive (no fixed ISO
-  dates) and the goldens would churn heavily during 3h adjudication.
-  Goldens become a stabilization tripwire after 3h settles.
+- The 312 snapshot goldens (13 Appendix-A dates × 3 policies × 8 hours)
+  were deliberately deferred at 3g because Appendix A in the
+  modernization spec is descriptive (no fixed ISO dates) and the goldens
+  would churn heavily during 3h adjudication. They landed in 3h once
+  the ledgers stabilised at zero `unadjudicated` rows; see §19.8.
 
 ### 19.8 Sub-phase 3h — Divergence adjudication burn-down
 
-In flight; the opening-session work ships the infrastructure and three
-engine-bug fixes:
+Shipped. The burn-down landed the infrastructure, three engine-bug
+fixes, ADR-012 and ADR-013, and the 312 Appendix-A snapshot goldens.
+At sign-off all three Roman policy ledgers report **0 unadjudicated**;
+`pnpm -C packages/compositor verify:phase-3-signoff` is green:
 
 - **[ADJUDICATION_LOG.md](../packages/compositor/test/divergence/ADJUDICATION_LOG.md)** — chronological audit trail per ADR-011. Captures every
   pattern-level resolution with citation and commit context. Initial
@@ -686,28 +689,36 @@ engine-bug fixes:
   verse content before the heading. Wrapper-shape coverage lives in
   `packages/compositor/test/canonical-lines.test.ts`.
 - **Representative adjudications** landed in `adjudications.json`:
-  current live sidecar count is 53 row mappings: 35 `perl-bug`,
-  17 `rendering-difference`, and 1 `engine-bug`.
+  the live sidecar carries 943 `perl-bug`, 280 `rendering-difference`,
+  and 0 `engine-bug` rows — every prior engine bug was either fixed or
+  reclassified.
 - **Progress reporting** lives in
   `pnpm -C packages/compositor report:phase-3-progress`, which reads the
   three generated divergence ledgers and prints the current per-policy
   `unadjudicated` / adjudicated counts together with the matching-prefix
   metrics.
-- **Pattern catalogue** documented for follow-up sessions:
-  Matins Invitatorium Psalm 94 responsorial structure and wrong-psalm
-  selection under 1960 for Christmas Octave (Phase 2
-  psalter-selection).
+- **312 Appendix-A snapshot goldens** committed at
+  `packages/compositor/test/__goldens__/<policy>/<date>/<hour>.golden.txt`
+  and exercised by
+  `packages/compositor/test/integration/appendix-a-snapshots.test.ts`.
+  The serialization is line-oriented text so reviewers can read goldens
+  as Office text rather than as opaque structured snapshots; vitest's
+  `toMatchFileSnapshot` writes one file per cell. To regenerate
+  intentionally:
+  `pnpm -C packages/compositor test -u -- test/integration/appendix-a-snapshots.test.ts`.
 
-**Exit progress:** the <10-unadjudicated-rows-per-policy threshold is
-not yet met. The remaining budget is bounded by the pattern
-catalogue; each next pattern fix collapses many rows at once.
+**Exit state:** the <10-unadjudicated-rows-per-policy threshold is met
+(0/0/0). Phase 3 §18 success criteria all hold; sign-off verification
+is automated via `verify:phase-3-signoff`.
 
 ### 19.9 Finish strategy for 3h
 
-The endgame for Phase 3 is **not** "match every 2024 ledger row by hand"
-and it is **not** "fix one civil year at a time." The 2024 ledgers are the
-sign-off surface because they provide a stable, source-backed comparison
-matrix. The implementation strategy remains architecture-first:
+This is the discipline that 3h followed to closure; it is preserved here
+as the operating record. The endgame for Phase 3 was **not** "match
+every 2024 ledger row by hand" and it was **not** "fix one civil year at
+a time." The 2024 ledgers were the sign-off surface because they
+provided a stable, source-backed comparison matrix. The implementation
+strategy stayed architecture-first throughout:
 
 - **Phase 2 owns year-specific structure.** Date-specific overlays,
   `Transfer/<year-key>.txt`, `Stransfer/<year-key>.txt`, and other
@@ -784,16 +795,20 @@ Each family burn-down should end with all of the following:
 - updates to `ADJUDICATION_LOG.md`, `adjudications.json`, and
   `docs/upstream-issues.md` when applicable.
 
-#### 19.9.4 Definition of done for Phase 3 from the current state
+#### 19.9.4 Definition of done for Phase 3 — final state
 
-From the current 3h state, Phase 3 finishes in this sequence:
+The four-step closure sequence ran as planned:
 
-1. Eliminate the remaining large shared structural families.
-2. Convert source-backed residual rows into adjudications fast enough that
-   the ledgers stop being dominated by `unadjudicated`.
-3. Stabilize the output surface with the deferred 312 snapshots.
-4. Reach the existing §18 success criteria without introducing any
-   date-specific compositor behavior.
+1. The remaining large shared structural families were eliminated by the
+   engine-bug fixes #1–#3 in §19.8 plus the family-first burn-down on
+   each Roman ledger.
+2. Source-backed residual rows were converted into adjudications until
+   each policy sits at 0 `unadjudicated`.
+3. The output surface is stabilised by the 312 Appendix-A snapshot
+   goldens (§19.8) wired into the standard test suite.
+4. The §18 success criteria are met without any date-specific
+   compositor behaviour. `pnpm -C packages/compositor verify:phase-3-signoff`
+   is the automated gate.
 
 ---
 

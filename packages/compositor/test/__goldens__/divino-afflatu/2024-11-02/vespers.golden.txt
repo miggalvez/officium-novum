@@ -1,0 +1,154 @@
+policy: Divino Afflatu - 1954
+date: 2024-11-02
+hour: vespers
+celebration: In Commemoratione Omnium Fidelium Defunctorum
+languages: Latin
+section count: 7
+warning count: 9
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+#3 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Prayers, section=Dominus vobiscum}
+#4 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Conclusio cisterciensis}
+#5 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Pater post V}
+#6 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/11-02, section=Ant 3}
+#7 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/11-02, section=Versum 3}
+#8 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/11-02, section=Oratio}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Vespera#Incipit languages=Latin]
+  Latin: rubric("secreto")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
+  Latin: [v.] text("Ave María, grátia plena; Dóminus tecum: benedícta tu in muliéribus, et benedíctus fructus ventris tui Jesus. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen.")
+  Latin: rubric("Deinde, clara voce, dicitur Versus:")
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Allelúja.")
+
+[section #1 type=psalm slot=psalmody reference=horas/Latin/Psalterium/Psalmi/Psalmi major#Day6 Vespera:1 languages=Latin]
+  Latin: [Ant.] text("Benedíctus Dóminus * suscéptor meus et liberátor meus.")
+  Latin: text("Psalmus 143(1-8) [1]")
+  Latin: text("143:1 Benedíctus Dóminus, Deus meus, qui docet manus meas ad prǽlium, * et dígitos meos ad bellum.")
+  Latin: text("143:2 Misericórdia mea, et refúgium meum: * suscéptor meus, et liberátor meus:")
+  Latin: text("143:2 Protéctor meus, et in ipso sperávi: * qui subdit pópulum meum sub me.")
+  Latin: text("143:3 Dómine, quid est homo, quia innotuísti ei? * aut fílius hóminis, quia réputas eum?")
+  Latin: text("143:4 Homo vanitáti símilis factus est: * dies ejus sicut umbra prætéreunt.")
+  Latin: text("143:5 Dómine, inclína cælos tuos, et descénde: * tange montes, et fumigábunt.")
+  Latin: text("143:6 Fúlgura coruscatiónem, et dissipábis eos: * emítte sagíttas tuas, et conturbábis eos.")
+  Latin: text("143:7 Emítte manum tuam de alto, éripe me, et líbera me de aquis multis: * de manu filiórum alienórum.")
+  Latin: text("143:8 Quorum os locútum est vanitátem: * et déxtera eórum, déxtera iniquitátis.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Benedíctus Dóminus suscéptor meus et liberátor meus.")
+  Latin: [Ant.] text("Beátus pópulus * cujus Dóminus Deus ejus.")
+  Latin: text("Psalmus 143(9-15) [2]")
+  Latin: text("143:9 Deus, cánticum novum cantábo tibi: * in psaltério decachórdo psallam tibi.")
+  Latin: text("143:10 Qui das salútem régibus: * qui redemísti David, servum tuum, de gládio malígno: éripe me.")
+  Latin: text("143:11 Et érue me de manu filiórum alienórum, quorum os locútum est vanitátem: * et déxtera eórum, déxtera iniquitátis:")
+  Latin: text("143:12 Quorum fílii, sicut novéllæ plantatiónes * in juventúte sua.")
+  Latin: text("143:12 Fíliæ eórum compósitæ: * circumornátæ ut similitúdo templi.")
+  Latin: text("143:13 Promptuária eórum plena, * eructántia ex hoc in illud.")
+  Latin: text("143:13 Oves eórum fœtósæ, abundántes in egréssibus suis: * boves eórum crassæ.")
+  Latin: text("143:14 Non est ruína macériæ, neque tránsitus: * neque clamor in platéis eórum.")
+  Latin: text("143:15 Beátum dixérunt pópulum, cui hæc sunt: * beátus pópulus, cujus Dóminus Deus ejus.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Beátus pópulus cujus Dóminus Deus ejus.")
+  Latin: [Ant.] text("Magnus Dóminus * et laudábilis nimis: et magnitúdinis ejus non est finis.")
+  Latin: text("Psalmus 144(1-7) [3]")
+  Latin: text("144:1 Exaltábo te, Deus meus, rex: * et benedícam nómini tuo in sǽculum, et in sǽculum sǽculi.")
+  Latin: text("144:2 Per síngulos dies benedícam tibi: * et laudábo nomen tuum in sǽculum, et in sǽculum sǽculi.")
+  Latin: text("144:3 Magnus Dóminus, et laudábilis nimis: * et magnitúdinis ejus non est finis.")
+  Latin: text("144:4 Generátio et generátio laudábit ópera tua: * et poténtiam tuam pronuntiábunt.")
+  Latin: text("144:5 Magnificéntiam glóriæ sanctitátis tuæ loquéntur: * et mirabília tua narrábunt.")
+  Latin: text("144:6 Et virtútem terribílium tuórum dicent: * et magnitúdinem tuam narrábunt.")
+  Latin: text("144:7 Memóriam abundántiæ suavitátis tuæ eructábunt: * et justítia tua exsultábunt.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Magnus Dóminus et laudábilis nimis: et magnitúdinis ejus non est finis.")
+  Latin: [Ant.] text("Suávis Dóminus * univérsis: et miseratiónes ejus super ómnia ópera ejus.")
+  Latin: text("Psalmus 144(8-13a) [4]")
+  Latin: text("144:8 Miserátor, et miséricors Dóminus: * pátiens, et multum miséricors.")
+  Latin: text("144:9 Suávis Dóminus univérsis: * et miseratiónes ejus super ómnia ópera ejus.")
+  Latin: text("144:10 Confiteántur tibi, Dómine, ómnia ópera tua: * et sancti tui benedícant tibi.")
+  Latin: text("144:11 Glóriam regni tui dicent: * et poténtiam tuam loquéntur:")
+  Latin: text("144:12 Ut notam fáciant fíliis hóminum poténtiam tuam: * et glóriam magnificéntiæ regni tui.")
+  Latin: text("144:13 Regnum tuum regnum ómnium sæculórum: * et dominátio tua in omni generatióne et generatiónem.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Suávis Dóminus univérsis: et miseratiónes ejus super ómnia ópera ejus.")
+  Latin: [Ant.] text("Fidélis Dóminus * in ómnibus verbis suis: et sanctus in ómnibus opéribus suis.")
+  Latin: text("Psalmus 144(13b-21) [5]")
+  Latin: text("144:13 Fidélis Dóminus in ómnibus verbis suis: * et sanctus in ómnibus opéribus suis.")
+  Latin: text("144:14 Állevat Dóminus omnes qui córruunt: * et érigit omnes elísos.")
+  Latin: text("144:15 Óculi ómnium in te sperant, Dómine: * et tu das escam illórum in témpore opportúno.")
+  Latin: text("144:16 Áperis tu manum tuam: * et imples omne ánimal benedictióne.")
+  Latin: text("144:17 Justus Dóminus in ómnibus viis suis: * et sanctus in ómnibus opéribus suis.")
+  Latin: text("144:18 Prope est Dóminus ómnibus invocántibus eum: * ómnibus invocántibus eum in veritáte.")
+  Latin: text("144:19 Voluntátem timéntium se fáciet: ‡ et deprecatiónem eórum exáudiet: * et salvos fáciet eos.")
+  Latin: text("144:20 Custódit Dóminus omnes diligéntes se: * et omnes peccatóres dispérdet.")
+  Latin: text("144:21 Laudatiónem Dómini loquétur os meum: * et benedícat omnis caro nómini sancto ejus in sǽculum, et in sǽculum sǽculi.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Fidélis Dóminus in ómnibus verbis suis: et sanctus in ómnibus opéribus suis.")
+
+[section #2 type=antiphon slot=antiphon-ad-magnificat reference=horas/Latin/Tempora/Epi4-0#Ant 3 languages=Latin]
+  Latin: [Ant.] text("Dómine, salva nos, * perímus: ímpera, et fac, Deus, tranquillitátem.")
+
+[section #3 type=canticle slot=canticle-ad-magnificat reference=horas/Latin/Psalterium/Psalmorum/Psalm232#__preamble languages=Latin]
+  Latin: text("Canticum B. Mariæ Virginis")
+  Latin: text("Luc. 1:46-55")
+  Latin: text("1:46 Magníficat + * ánima mea Dóminum.")
+  Latin: text("1:47 Et exsultávit spíritus meus: * in Deo, salutári meo.")
+  Latin: text("1:48 Quia respéxit humilitátem ancíllæ suæ: * ecce enim ex hoc beátam me dicent omnes generatiónes.")
+  Latin: text("1:49 Quia fecit mihi magna qui potens est: * et sanctum nomen ejus.")
+  Latin: text("1:50 Et misericórdia ejus, a progénie in progénies: * timéntibus eum.")
+  Latin: text("1:51 Fecit poténtiam in brácchio suo: * dispérsit supérbos mente cordis sui.")
+  Latin: text("1:52 Depósuit poténtes de sede: * et exaltávit húmiles.")
+  Latin: text("1:53 Esuriéntes implévit bonis: * et dívites dimísit inánes.")
+  Latin: text("1:54 Suscépit Israël púerum suum: * recordátus misericórdiæ suæ.")
+  Latin: text("1:55 Sicut locútus est ad patres nostros: * Ábraham, et sémini ejus in sǽcula.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Dómine, salva nos, perímus: ímpera, et fac, Deus, tranquillitátem.")
+
+[section #4 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [v.] text("Orémus.")
+  Latin: text("Deus, qui nos in tantis perículis constitútos, pro humána scis fragilitáte non posse subsístere: da nobis salútem mentis et córporis; ut ea, quæ pro peccátis nostris pátimur, te adjuvánte vincámus.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #5 type=suffragium slot=suffragium reference=horas/Latin/Psalterium/Special/Major Special#Suffragium languages=Latin]
+  Latin: [Ant.] text("Beáta Dei Génitrix Virgo María, Sanctíque omnes intercédant pro nobis ad Dóminum.")
+  Latin: [V.] text("Mirificávit Dóminus Sanctos suos.")
+  Latin: [R.] text("Et exaudívit eos clamántes ad se.")
+  Latin: rubric("Oratio")
+  Latin: rubric("In hac oratione, ad litteram N. exprimitur nomen Titularis propriæ ecclesiæ, dummodo Titulus non sit Persona divina vel Mysterium Domini, aut de ipso ratione Festi factum non fuerit Officium vel Commemoratio, aut illius nomen non sit in eadem Suffragii Oratione expressum; ac nomina sanctorum Angelorum et sancti Joannis Baptistæ, si Titulares fuerint, præponuntur nomini sancti Joseph. In hisce autem omnibus casibus omittuntur verba «atque beáto N.»")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("A cunctis nos, quǽsumus, Dómine, mentis et córporis defénde perículis: et, intercedénte beáta et gloriósa semper Vírgine Dei Genitríce María, cum beáto Joseph, beátis Apóstolis tuis Petro et Paulo, atque beáto N. et ómnibus Sanctis, salútem nobis tríbue benígnus et pacem; ut, destrúctis adversitátibus et erróribus univérsis, Ecclésia tua secúra tibi sérviat libertáte.")
+  Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #6 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
+  Latin: [V.] text("Dóminus vobíscum.")
+  Latin: [R.] text("Et cum spíritu tuo.")
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: rubric("secunda Domine, exaudi omittitur")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+  Latin: [R.] text("Amen.")
+  Latin: [Ant.] text("Spíritus sanctus in te descéndet, María, ne tímeas, habébis in útero Fílium Dei.")
+  Latin: [V.] text("Ecce ancílla Dómini.")
+  Latin: [R.] text("Fiat mihi secúndum verbum tuum.")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Lætífica, et ádjuva nos, omnípotens et miséricors Deus, Domínicæ Conceptiónis gáudia recoléntes, et pia Dei Génitrix Virgo semper María (in cujus veneratióne hæc commemorámus) in cunctis necessitátibus nostris grátiam sancti Spíritus nobis ímpetret, et levámen. Per eúmdem Christum Dóminum nostrum.")
+  Latin: [R.] text("Amen.")
+  Latin: rubric("Et si tunc terminetur Officium, dicitur tantum « Pater Noster » secreto.")
+  Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")

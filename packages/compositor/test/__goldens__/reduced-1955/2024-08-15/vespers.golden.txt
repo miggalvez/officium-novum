@@ -1,0 +1,183 @@
+policy: Reduced - 1955
+date: 2024-08-15
+hour: vespers
+celebration: In Assumptione Beatæ Mariæ Virginis
+languages: Latin
+section count: 12
+warning count: 3
+
+# warnings
+#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Secreto}
+#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Clara voce}
+#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Psalterium/Common/Rubricae, section=rubrica Incipit}
+
+[section #0 type=other slot=incipit reference=horas/Ordinarium/Vespera#Incipit languages=Latin]
+  Latin: [V.] text("Deus + in adjutórium meum inténde.")
+  Latin: [R.] text("Dómine, ad adjuvándum me festína.")
+  Latin: [v.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [v.] text("Allelúja.")
+
+[section #1 type=psalm slot=psalmody reference=horas/Latin/Sancti/08-15#Ant Vespera:1 languages=Latin]
+  Latin: [Ant.] text("Assúmpta est María in cælum: * gaudent Angeli, laudántes benedícunt Dóminum.")
+  Latin: text("Psalmus 109 [1]")
+  Latin: text("109:1 Dixit Dóminus Dómino meo: * Sede a dextris meis:")
+  Latin: text("109:1 Donec ponam inimícos tuos, * scabéllum pedum tuórum.")
+  Latin: text("109:2 Virgam virtútis tuæ emíttet Dóminus ex Sion: * domináre in médio inimicórum tuórum.")
+  Latin: text("109:3 Tecum princípium in die virtútis tuæ in splendóribus sanctórum: * ex útero ante lucíferum génui te.")
+  Latin: text("109:4 Jurávit Dóminus, et non pœnitébit eum: * Tu es sacérdos in ætérnum secúndum órdinem Melchísedech.")
+  Latin: text("109:5 Dóminus a dextris tuis, * confrégit in die iræ suæ reges.")
+  Latin: text("109:6 Judicábit in natiónibus, implébit ruínas: * conquassábit cápita in terra multórum.")
+  Latin: text("109:7 De torrénte in via bibet: * proptérea exaltábit caput.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Assúmpta est María in cælum: gaudent Angeli, laudántes benedícunt Dóminum.")
+  Latin: [Ant.] text("María Virgo assúmpta est * ad æthéreum thálamum, in quo Rex regum stelláto sedet sólio.")
+  Latin: text("Psalmus 112 [2]")
+  Latin: text("112:1 Laudáte, púeri, Dóminum: * laudáte nomen Dómini.")
+  Latin: text("112:2 (fit reverentia) Sit nomen Dómini benedíctum, * ex hoc nunc, et usque in sǽculum.")
+  Latin: text("112:3 A solis ortu usque ad occásum, * laudábile nomen Dómini.")
+  Latin: text("112:4 Excélsus super omnes gentes Dóminus, * et super cælos glória ejus.")
+  Latin: text("112:5 Quis sicut Dóminus, Deus noster, qui in altis hábitat, * et humília réspicit in cælo et in terra?")
+  Latin: text("112:7 Súscitans a terra ínopem, * et de stércore érigens páuperem:")
+  Latin: text("112:8 Ut cóllocet eum cum princípibus, * cum princípibus pópuli sui.")
+  Latin: text("112:9 Qui habitáre facit stérilem in domo, * matrem filiórum lætántem.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("María Virgo assúmpta est ad æthéreum thálamum, in quo Rex regum stelláto sedet sólio.")
+  Latin: [Ant.] text("In odórem * unguentórum tuórum cúrrimus: adolescéntulæ dilexérunt te nimis.")
+  Latin: text("Psalmus 121 [3]")
+  Latin: text("121:1 Lætátus sum in his, quæ dicta sunt mihi: * In domum Dómini íbimus.")
+  Latin: text("121:2 Stantes erant pedes nostri, * in átriis tuis, Jerúsalem.")
+  Latin: text("121:3 Jerúsalem, quæ ædificátur ut cívitas: * cujus participátio ejus in idípsum.")
+  Latin: text("121:4 Illuc enim ascendérunt tribus, tribus Dómini: * testimónium Israël ad confiténdum nómini Dómini.")
+  Latin: text("121:5 Quia illic sedérunt sedes in judício, * sedes super domum David.")
+  Latin: text("121:6 Rogáte quæ ad pacem sunt Jerúsalem: * et abundántia diligéntibus te:")
+  Latin: text("121:7 Fiat pax in virtúte tua: * et abundántia in túrribus tuis.")
+  Latin: text("121:8 Propter fratres meos, et próximos meos, * loquébar pacem de te:")
+  Latin: text("121:9 Propter domum Dómini, Dei nostri, * quæsívi bona tibi.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("In odórem unguentórum tuórum cúrrimus: adolescéntulæ dilexérunt te nimis.")
+  Latin: [Ant.] text("Benedícta * fília tu a Dómino: quia per te fructum vitæ communicávimus.")
+  Latin: text("Psalmus 126 [4]")
+  Latin: text("126:1 Nisi Dóminus ædificáverit domum, * in vanum laboravérunt qui ædíficant eam.")
+  Latin: text("126:1 Nisi Dóminus custodíerit civitátem, * frustra vígilat qui custódit eam.")
+  Latin: text("126:2 Vanum est vobis ante lucem súrgere: * súrgite postquam sedéritis, qui manducátis panem dolóris.")
+  Latin: text("126:2 Cum déderit diléctis suis somnum: * ecce heréditas Dómini fílii: merces, fructus ventris.")
+  Latin: text("126:4 Sicut sagíttæ in manu poténtis: * ita fílii excussórum.")
+  Latin: text("126:5 Beátus vir, qui implévit desidérium suum ex ipsis: * non confundétur cum loquétur inimícis suis in porta.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Benedícta fília tu a Dómino: quia per te fructum vitæ communicávimus.")
+  Latin: [Ant.] text("Pulchra es * et decóra, fília Jerúsalem, terríbilis ut castrórum ácies ordináta.")
+  Latin: text("Psalmus 147 [5]")
+  Latin: text("147:1 Lauda, Jerúsalem, Dóminum: * lauda Deum tuum, Sion.")
+  Latin: text("147:2 Quóniam confortávit seras portárum tuárum: * benedíxit fíliis tuis in te.")
+  Latin: text("147:3 Qui pósuit fines tuos pacem: * et ádipe fruménti sátiat te.")
+  Latin: text("147:4 Qui emíttit elóquium suum terræ: * velóciter currit sermo ejus.")
+  Latin: text("147:5 Qui dat nivem sicut lanam: * nébulam sicut cínerem spargit.")
+  Latin: text("147:6 Mittit crystállum suam sicut buccéllas: * ante fáciem frígoris ejus quis sustinébit?")
+  Latin: text("147:7 Emíttet verbum suum, et liquefáciet ea: * flabit spíritus ejus, et fluent aquæ.")
+  Latin: text("147:8 Qui annúntiat verbum suum Jacob: * justítias, et judícia sua Israël.")
+  Latin: text("147:9 Non fecit táliter omni natióni: * et judícia sua non manifestávit eis.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Pulchra es et decóra, fília Jerúsalem, terríbilis ut castrórum ácies ordináta.")
+
+[section #2 type=chapter slot=chapter reference=horas/Latin/Sancti/08-15#Capitulum Laudes languages=Latin]
+  Latin: text(" ") · citation("Judith 13:22-23")
+  Latin: [v.] text("Benedíxit te Dóminus in virtúte sua, quia per te ad níhilum redégit inimícos nostros. Benedícta es tu, fília, a Dómino Deo excélso, præ ómnibus muliéribus super terram.")
+  Latin: [R.] text("Deo grátias.")
+
+[section #3 type=hymn slot=hymn reference=horas/Latin/Sancti/08-15#Hymnus Vespera languages=Latin]
+  Latin: text("_")
+  Latin: text("Hymnus")
+  Latin: [v.] text("O prima, Virgo, pródita")
+  Latin: text("E Conditóris spíritu,")
+  Latin: text("Prædestináta Altíssimi")
+  Latin: text("Gestáre in alvo Fílium;")
+  Latin: text("_")
+  Latin: text("Tu perpes hostis fémina")
+  Latin: text("Prænuntiáta dǽmonis,")
+  Latin: text("Oppléris una grátia")
+  Latin: text("Intamináta orígine.")
+  Latin: text("_")
+  Latin: text("Tu ventre Vitam cóncipis,")
+  Latin: text("Vitámque ab Adam pérditam,")
+  Latin: text("Diæ litándæ Víctimæ")
+  Latin: text("Carnem minístrans, íntegras.")
+  Latin: text("_")
+  Latin: text("Merces piáclo débita")
+  Latin: text("Devícta mors te déserit,")
+  Latin: text("Almíque consors Fílii")
+  Latin: text("Ad astra ferris córpore.")
+  Latin: text("_")
+  Latin: text("Tanta corúscans glória,")
+  Latin: text("Natúra cuncta extóllitur,")
+  Latin: text("In te vocáta vérticem")
+  Latin: text("Decóris omnis tángere.")
+  Latin: text("_")
+  Latin: text("Ad nos, triúmphans, éxsules,")
+  Latin: text("Regína, verte lúmina,")
+  Latin: text("Cæli ut beátam pátriam,")
+  Latin: text("Te, consequámur áuspice.")
+  Latin: text("_")
+  Latin: text("Jesu, tibi sit glória,")
+  Latin: text("Qui natus es de Vírgine,")
+  Latin: text("Cum Patre et almo Spíritu,")
+  Latin: text("In sempitérna sǽcula.")
+  Latin: text("Amen.")
+  Latin: text("_")
+
+[section #4 type=versicle slot=versicle reference=horas/Latin/Sancti/08-15#Versum 3 languages=Latin]
+  Latin: [V.] text("Exaltáta est sancta Dei Génetrix.")
+  Latin: [R.] text("Super choros Angelórum ad cæléstia regna.")
+
+[section #5 type=antiphon slot=antiphon-ad-magnificat reference=horas/Latin/Sancti/08-15#Ant 3 languages=Latin]
+  Latin: [Ant.] text("Hódie * María Virgo cælos ascéndit: gaudéte, quia cum Christo regnat in ætérnum.")
+
+[section #6 type=canticle slot=canticle-ad-magnificat reference=horas/Latin/Psalterium/Psalmorum/Psalm232#__preamble languages=Latin]
+  Latin: text("Canticum B. Mariæ Virginis")
+  Latin: text("Luc. 1:46-55")
+  Latin: text("1:46 Magníficat + * ánima mea Dóminum.")
+  Latin: text("1:47 Et exsultávit spíritus meus: * in Deo, salutári meo.")
+  Latin: text("1:48 Quia respéxit humilitátem ancíllæ suæ: * ecce enim ex hoc beátam me dicent omnes generatiónes.")
+  Latin: text("1:49 Quia fecit mihi magna qui potens est: * et sanctum nomen ejus.")
+  Latin: text("1:50 Et misericórdia ejus, a progénie in progénies: * timéntibus eum.")
+  Latin: text("1:51 Fecit poténtiam in brácchio suo: * dispérsit supérbos mente cordis sui.")
+  Latin: text("1:52 Depósuit poténtes de sede: * et exaltávit húmiles.")
+  Latin: text("1:53 Esuriéntes implévit bonis: * et dívites dimísit inánes.")
+  Latin: text("1:54 Suscépit Israël púerum suum: * recordátus misericórdiæ suæ.")
+  Latin: text("1:55 Sicut locútus est ad patres nostros: * Ábraham, et sémini ejus in sǽcula.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Hódie María Virgo cælos ascéndit: gaudéte, quia cum Christo regnat in ætérnum.")
+
+[section #7 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [v.] text("Orémus.")
+  Latin: text("Omnípotens sempitérne Deus, qui Immaculátam Vírginem Maríam, Fílii tui Genetrícem, córpore et ánima ad cæléstem glóriam assumpsísti: concéde, quǽsumus; ut ad supérna semper inténti, ipsíus glóriæ mereámur esse consórtes.")
+  Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #8 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
+  Latin: [R.] text("Et clamor meus ad te véniat.")
+  Latin: [V.] text("Benedicámus Dómino.")
+  Latin: [R.] text("Deo grátias.")
+  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+  Latin: [R.] text("Amen.")
+
+[section #9 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Sancti/08-16#Ant 3 languages=Latin]
+  Latin: [Ant.] text("Laudémus * virum gloriósum in generatióne sua, quia benedictiónem ómnium géntium dedit illi Dóminus, et testaméntum suum confirmávit super caput ejus.")
+
+[section #10 type=commemoration slot=commemoration-versicles reference=horas/Latin/Sancti/08-16#Versum 3 languages=Latin]
+  Latin: [V.] text("Potens in terra erit semen ejus.")
+  Latin: [R.] text("Generátio rectórum benedicétur.")
+
+[section #11 type=commemoration slot=commemoration-orations reference=horas/Latin/Sancti/08-16#Oratio languages=Latin]
+  Latin: text("Deus, qui præ ómnibus Sanctis tuis beátum Jóachim Genetrícis Fílii tui patrem esse voluísti: concéde, quǽsumus; ut, cujus festa venerámur, ejus quoque perpétuo patrocínia sentiámus.")
+  Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")

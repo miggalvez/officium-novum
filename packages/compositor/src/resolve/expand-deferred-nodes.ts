@@ -102,6 +102,11 @@ export function expandDeferredNodes(
           out.push(...(expanded ?? [node]));
           break;
         }
+        if (node.name === 'Dominus_vobiscum1' || node.name === 'Dominus_vobiscum2') {
+          const expanded = expandDominusVobiscumVariant(context);
+          out.push(...(expanded ?? [node]));
+          break;
+        }
         const expanded = expandNamedSection(
           macroSectionCandidates(node.name),
           [COMMON_PRAYERS_PATH, REVTRANS_PATH],
@@ -206,6 +211,19 @@ function expandAlleluiaMacro(
     context.season === 'lent' ||
     context.season === 'passiontide';
   return Object.freeze([useLausTibi ? verseLines[1]! : verseLines[0]!]);
+}
+
+function expandDominusVobiscumVariant(
+  context: DeferredNodeContext
+): readonly TextContent[] | undefined {
+  return expandReference(
+    {
+      path: COMMON_PRAYERS_PATH,
+      section: 'Dominus',
+      selector: '5'
+    },
+    context
+  );
 }
 
 function macroSectionCandidates(name: string): readonly string[] {
