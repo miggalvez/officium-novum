@@ -80,6 +80,10 @@ export interface OfficeDayResponse {
 export interface CalendarMonthResponse {
   readonly kind: 'calendar-month';
   readonly apiVersion: 'v1';
+  readonly request: {
+    readonly year: string;
+    readonly version: VersionHandle;
+  };
   readonly year: number;
   readonly month: number;
   readonly version: VersionDescriptor;
@@ -332,6 +336,7 @@ export function toOfficeDayResponse(input: {
 }
 
 export function toCalendarMonthResponse(input: {
+  readonly yearText: string;
   readonly year: number;
   readonly month: number;
   readonly version: VersionDescriptor;
@@ -342,6 +347,10 @@ export function toCalendarMonthResponse(input: {
   return {
     kind: 'calendar-month',
     apiVersion: 'v1',
+    request: {
+      year: input.yearText,
+      version: input.version.handle
+    },
     year: input.year,
     month: input.month,
     version: input.version,

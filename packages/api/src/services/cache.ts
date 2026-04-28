@@ -44,7 +44,7 @@ export interface CanonicalDayKey {
 export interface CanonicalCalendarKey {
   readonly route: 'calendar';
   readonly apiVersion: 'v1';
-  readonly year: number;
+  readonly year: string;
   readonly month: number;
   readonly version: VersionHandle;
   readonly contentVersion: string;
@@ -133,7 +133,7 @@ export function dayResponseCacheKey(response: OfficeDayResponse): CanonicalDayKe
 }
 
 export function buildCanonicalCalendarKey(input: {
-  readonly year: number;
+  readonly year: string;
   readonly month: number;
   readonly version: VersionHandle;
   readonly contentVersion: string;
@@ -152,7 +152,7 @@ export function calendarResponseCacheKey(
   response: CalendarMonthResponse
 ): CanonicalCalendarKey {
   return buildCanonicalCalendarKey({
-    year: response.year,
+    year: response.request.year,
     month: response.month,
     version: response.version.handle,
     contentVersion: response.meta.contentVersion

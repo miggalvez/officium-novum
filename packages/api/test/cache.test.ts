@@ -59,7 +59,7 @@ describe('cache service', () => {
 
   it('builds a deterministic canonical calendar path', () => {
     const key = buildCanonicalCalendarKey({
-      year: 2024,
+      year: '2024',
       month: 2,
       version: 'Rubrics 1960 - 1960',
       contentVersion: 'test-content'

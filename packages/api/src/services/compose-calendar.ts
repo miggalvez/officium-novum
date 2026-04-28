@@ -23,6 +23,7 @@ export interface CalendarQuery {
 }
 
 export interface ResolvedCalendarMonthRequest {
+  readonly yearText: string;
   readonly year: number;
   readonly month: number;
   readonly versionEntry: ApiVersionEntry & {
@@ -41,11 +42,12 @@ export function composeCalendarMonth(input: {
 }): CalendarMonthResponse {
   const resolved = input.resolved ?? resolveCalendarMonthRequest(input);
   const summaries: DayOfficeSummary[] = [];
-  for (const date of datesInMonth(resolved.year, resolved.month)) {
+  for (const date of datesInMonth(resolved.yearText, resolved.month)) {
     summaries.push(resolved.versionEntry.engine.resolveDayOfficeSummary(date));
   }
 
   return toCalendarMonthResponse({
+    yearText: resolved.yearText,
     year: resolved.year,
     month: resolved.month,
     version: resolved.versionEntry.descriptor,
@@ -62,6 +64,7 @@ export function resolveCalendarMonthRequest(input: {
   readonly query: CalendarQuery;
 }): ResolvedCalendarMonthRequest {
   const year = parseCalendarYear(input.yearParam);
+  const yearText = input.yearParam;
   const month = parseCalendarMonth(input.monthParam);
   const versionEntry = resolveApiVersion({
     version: input.query.version,
@@ -71,13 +74,14 @@ export function resolveCalendarMonthRequest(input: {
   assertVersionServable(versionEntry);
 
   const cacheKey = buildCanonicalCalendarKey({
-    year,
+    year: yearText,
     month,
     version: versionEntry.descriptor.handle,
     contentVersion: input.context.contentVersion
   });
 
   return {
+    yearText,
     year,
     month,
     versionEntry,
@@ -103,11 +107,23 @@ function parseCalendarMonth(value: string): number {
   return month;
 }
 
-function datesInMonth(year: number, month: number): readonly string[] {
-  const days = new Date(Date.UTC(year, month, 0)).getUTCDate();
+function datesInMonth(year: string, month: number): readonly string[] {
+  const days = daysInCalendarMonth(Number(year), month);
+  const monthText = padMonth(month);
   return Array.from({ length: days }, (_, index) =>
-    `${year}-${padMonth(month)}-${String(index + 1).padStart(2, '0')}`
+    `${year}-${monthText}-${String(index + 1).padStart(2, '0')}`
   );
+}
+
+function daysInCalendarMonth(year: number, month: number): number {
+  if (month === 2) {
+    return isLeapYear(year) ? 29 : 28;
+  }
+  return [4, 6, 9, 11].includes(month) ? 30 : 31;
+}
+
+function isLeapYear(year: number): boolean {
+  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 }
 
 function padMonth(month: number): string {
