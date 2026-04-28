@@ -643,7 +643,7 @@ function isThreeLessonPrivilegedTemporal(temporal: TemporalContext): boolean {
 }
 
 function isPaschalOctaveDay(temporal: TemporalContext): boolean {
-  return /^Pasc0-[0-6]$/u.test(temporal.dayName);
+  return /^Pasc0-[0-6]$/u.test(temporal.dayName) || temporal.dayName === 'Pasc1-0';
 }
 
 function forbidsTransferInto1960(impeded: Candidate, temporal: TemporalContext): boolean {

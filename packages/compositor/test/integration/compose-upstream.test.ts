@@ -229,6 +229,32 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders DA Holy Saturday Vespers from the Special Vespera 1 block', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Divino Afflatu - 1954');
+    const summary = engine.resolveDayOfficeSummary('2024-03-30');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'vespers',
+      options: { languages: ['Latin'] }
+    });
+
+    const lines = canonicalLatinLines(composed);
+    expect(lines).toHaveLength(41);
+    expect(lines.slice(0, 5)).toEqual([
+      '_',
+      normalizeLatin('Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.'),
+      normalizeLatin('Ave María, grátia plena; Dóminus tecum: benedícta tu in muliéribus, et benedíctus fructus ventris tui Jesus. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen.'),
+      '_',
+      normalizeLatin('Allelúja, Allelúja, Allelúja.')
+    ]);
+    expect(lines).toContain(normalizeLatin('Canticum B. Mariæ Virginis'));
+    expect(lines).toContain(normalizeLatin('Luc. 1:46-55'));
+    expect(lines).not.toContain('secreto');
+    expect(lines).not.toContain(normalizeLatin('# Sabbato Sancto special Paschal Vespera'));
+  }, 240_000);
+
   it('renders Gloria omittitur immediately before the closing Triduum Matins antiphon on Holy Thursday and Good Friday', async () => {
     const expectedClosings = {
       '2024-03-28': 'Zelus domus tuæ comédit me, et oppróbria exprobrántium tibi cecidérunt super me.',

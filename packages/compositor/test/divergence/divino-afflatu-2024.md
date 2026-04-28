@@ -11,8 +11,8 @@ This file tracks the current **legacy Perl rendered Hour vs compositor** compari
   - hours: `Matins, Lauds, Prime, Terce, Sext, None, Vespers, Compline`
   - language: `Latin`
 - Compared hours: `496`
-- Exact-match hours: `0`
-- Divergent hours: `496`
+- Exact-match hours: `1`
+- Divergent hours: `495`
 - Divergent dates: `62`
 - Best matching prefix before divergence: `136` lines
 - Average matching prefix before divergence: `5.0` lines
@@ -23,10 +23,10 @@ This file tracks the current **legacy Perl rendered Hour vs compositor** compari
   - `Terce`: `62/62`
   - `Sext`: `62/62`
   - `None`: `62/62`
-  - `Vespers`: `62/62`
+  - `Vespers`: `61/62`
   - `Compline`: `62/62`
 - Adjudication breakdown (see `adjudications.json` and ADR-011):
-  - `unadjudicated`: `1`
+  - `unadjudicated`: `0`
   - `perl-bug`: `421`
   - `rendering-difference`: `74`
 
@@ -208,7 +208,6 @@ This file tracks the current **legacy Perl rendered Hour vs compositor** compari
 | 2024-03-30 | Terce | 88 | 86 | 61 | 62 | _ | 50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam. | rendering-difference | upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers. |
 | 2024-03-30 | Sext | 88 | 86 | 61 | 62 | _ | 50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam. | rendering-difference | upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers. |
 | 2024-03-30 | None | 88 | 86 | 61 | 62 | _ | 50:3a Miserére mei, Deus, * secúndum magnam misericórdiam tuam. | rendering-difference | upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm50.txt:1 — the Psalm 50 corpus encodes verse 3a as `Miserére mei, Deus, * secúndum magnam misericórdiam tuam.` The compositor preserves that source-backed first-verse rendering with the inline 50:3a numeric marker; the Perl comparison surface omits that line entirely (renders blank `_`) on DA Triduum Lauds and minor hours after the source-backed silent prayers. |
-| 2024-03-30 | Vespers | 41 | 114 | 0 | 1 | _ | secreto | unadjudicated |  |
 | 2024-03-30 | Compline | 99 | 89 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | rendering-difference | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:168 — the corpus rubric carries guillemets around `Jube, Dómine, benedícere;`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement. |
 | 2024-03-31 | Matins | 174 | 131 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
 | 2024-03-31 | Lauds | 137 | 135 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
@@ -266,7 +265,7 @@ This file tracks the current **legacy Perl rendered Hour vs compositor** compari
 | 2024-04-06 | None | 82 | 79 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
 | 2024-04-06 | Vespers | 145 | 116 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
 | 2024-04-06 | Compline | 140 | 120 | 0 | 1 | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: Jube, Dómine, benedícere; et subjungitur congruens Benedictio. | Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio. | rendering-difference | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:168 — the corpus rubric carries guillemets around `Jube, Dómine, benedícere;`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement. |
-| 2024-04-07 | Matins | 415 | 342 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
+| 2024-04-07 | Matins | 415 | 330 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
 | 2024-04-07 | Lauds | 166 | 137 | 3 | 4 | _ | Secus absolute incipiuntur, ut sequitur: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
 | 2024-04-07 | Prime | 183 | 164 | 4 | 5 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |
 | 2024-04-07 | Terce | 111 | 106 | 3 | 4 | _ | Deinde, clara voce, dicitur Versus: | perl-bug | upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:50-65 — the Divinum Officium corpus contains these rubric sentences verbatim under `Secus absolute Parvum` / `Secus absolute` / `Clara voce`. The compositor preserves that source-backed rubric prose; the legacy Perl compare surface drops it. |

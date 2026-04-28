@@ -1,6 +1,7 @@
-import type { TextContent, TextIndex } from '@officium-novum/parser';
+import { ensureTxtSuffix, type TextContent, type TextIndex } from '@officium-novum/parser';
 import type {
   ConditionEvalContext,
+  ConcurrenceResult,
   DayOfficeSummary,
   HourName,
   HourStructure,
@@ -15,6 +16,7 @@ import { resolveReference } from '../resolve/reference-resolver.js';
 import type { ComposeOptions, ComposeWarning, Section } from '../types/composed-hour.js';
 import { appendContentWithBoundary } from './content-boundary.js';
 import { resolveGloriaOmittiturReplacement } from './gloria-omittitur.js';
+import { withPsalmGloriaPatri } from './psalmody.js';
 import { MAX_DEFERRED_DEPTH, referenceKey } from './shared.js';
 
 interface ComposeTriduumSuppressedVespersArgs {
@@ -235,6 +237,32 @@ interface ComposeTriduumSpecialComplineArgs {
   readonly onWarning?: (warning: ComposeWarning) => void;
 }
 
+export function composeSpecialVespersSection(
+  args: ComposeTriduumSpecialComplineArgs
+): Section | undefined {
+  if (args.hour !== 'vespers') {
+    return undefined;
+  }
+
+  const concurrence = args.summary.concurrence as Partial<ConcurrenceResult>;
+  const source = concurrence.source ?? args.summary.celebration;
+  if (!source?.feastRef?.path) {
+    return undefined;
+  }
+
+  const vespersNumber = concurrence.winner === 'tomorrow' ? 1 : 2;
+  const ref: TextReference = {
+    path: `horas/Latin/${source.feastRef.path}`,
+    section: `Special Vespera ${vespersNumber}`
+  };
+
+  if (!args.corpus.getSection(ensureTxtSuffix(ref.path), ref.section)) {
+    return undefined;
+  }
+
+  return composeSpecialWholeHourSection(args, ref, 'special-vespers');
+}
+
 export function composeTriduumSpecialComplineSection(
   args: ComposeTriduumSpecialComplineArgs
 ): Section | undefined {
@@ -246,6 +274,15 @@ export function composeTriduumSpecialComplineSection(
     path: `horas/Latin/${args.summary.celebration.feastRef.path}`,
     section: 'Special Completorium'
   };
+
+  return composeSpecialWholeHourSection(args, ref, 'special-compline');
+}
+
+function composeSpecialWholeHourSection(
+  args: ComposeTriduumSpecialComplineArgs,
+  ref: TextReference,
+  sectionSlot: 'special-compline' | 'special-vespers'
+): Section | undefined {
   const resolved = resolveReference(args.corpus, ref, {
     languages: args.options.languages,
     langfb: args.options.langfb,
@@ -276,6 +313,7 @@ export function composeTriduumSpecialComplineSection(
       continue;
     }
     const bucket: TextContent[] = [];
+    let specialVespersPsalmIndex = 2;
     const gloriaOmittiturReplacement = resolveGloriaOmittiturReplacement({
       directives: args.structure.directives,
       corpus: args.corpus,
@@ -287,6 +325,9 @@ export function composeTriduumSpecialComplineSection(
     });
     const sourceNodes = flattenConditionals(section.content, args.context);
     for (const node of sourceNodes) {
+      if (node.type === 'heading') {
+        continue;
+      }
       if (node.type === 'separator') {
         bucket.push({
           type: 'gabcNotation',
@@ -300,19 +341,27 @@ export function composeTriduumSpecialComplineSection(
       }
 
       if (node.type === 'psalmInclude') {
-        appendContentWithBoundary(bucket, [
-          {
-            type: 'gabcNotation',
-            notation: {
-              kind: 'header',
-              notation: '',
-              text: `Psalmus ${node.psalmNumber} [${node.psalmNumber}]`
+        if (!(sectionSlot === 'special-vespers' && node.psalmNumber === 232)) {
+          const psalmIndex =
+            sectionSlot === 'special-vespers' ? specialVespersPsalmIndex++ : node.psalmNumber;
+          appendContentWithBoundary(bucket, [
+            {
+              type: 'gabcNotation',
+              notation: {
+                kind: 'header',
+                notation: '',
+                text: `Psalmus ${node.psalmNumber} [${psalmIndex}]`
+              }
             }
-          }
-        ]);
+          ]);
+        }
       }
 
-      const expanded = expandDeferredNodes([node], {
+      const sourceForExpansion =
+        sectionSlot === 'special-vespers' && node.type === 'psalmInclude'
+          ? withPsalmGloriaPatri([node])
+          : [node];
+      const expanded = expandDeferredNodes(sourceForExpansion, {
         index: args.corpus,
         language: lang,
         langfb: args.options.langfb,
@@ -321,16 +370,22 @@ export function composeTriduumSpecialComplineSection(
         maxDepth: MAX_DEFERRED_DEPTH,
         ...(args.onWarning ? { onWarning: args.onWarning } : {})
       });
-      const flattened = flattenConditionals(expanded, args.context);
+      const flattened = normalizeSpecialVespersPrivateDominus(
+        normalizeSpecialVespersCanticleHeading(flattenConditionals(expanded, args.context), sectionSlot),
+        sectionSlot
+      );
       // The Triduum uses a single `Special Completorium` source block rather
       // than the ordinary slot lattice. We still run the psalmody-style
       // normalizer/directive pass so inline psalm text canonicalizes the same
       // way as ordinary Compline while bypassing the ordinary short reading.
-      const transformed = applyDirectives('psalmody', flattened, {
-        hour: args.hour,
-        directives: args.structure.directives,
-        gloriaOmittiturReplacement
-      });
+      const transformed =
+        sectionSlot === 'special-vespers'
+          ? flattened
+          : applyDirectives('psalmody', flattened, {
+              hour: args.hour,
+              directives: args.structure.directives,
+              gloriaOmittiturReplacement
+            });
       appendContentWithBoundary(bucket, transformed);
     }
     if (bucket.length > 0) {
@@ -345,7 +400,7 @@ export function composeTriduumSpecialComplineSection(
   return emitConfiguredSection(
     {
       slot: 'psalmody',
-      sectionSlot: 'special-compline',
+      sectionSlot,
       sectionType: 'other'
     },
     perLanguage,
@@ -413,4 +468,54 @@ function resolveFlatSection(
   }
 
   return perLanguage;
+}
+
+function normalizeSpecialVespersCanticleHeading(
+  content: readonly TextContent[],
+  sectionSlot: 'special-compline' | 'special-vespers'
+): readonly TextContent[] {
+  if (sectionSlot !== 'special-vespers') {
+    return content;
+  }
+
+  const out: TextContent[] = [];
+  let changed = false;
+  for (const node of content) {
+    if (node.type === 'text') {
+      const match = /^\((.+?)\s+\*\s+(.+?)\)$/u.exec(node.value.trim());
+      if (match) {
+        changed = true;
+        out.push(
+          { type: 'text', value: match[1]! },
+          { type: 'separator' },
+          { type: 'text', value: match[2]! }
+        );
+        continue;
+      }
+    }
+    out.push(node);
+  }
+
+  return changed ? Object.freeze(out) : content;
+}
+
+function normalizeSpecialVespersPrivateDominus(
+  content: readonly TextContent[],
+  sectionSlot: 'special-compline' | 'special-vespers'
+): readonly TextContent[] {
+  if (sectionSlot !== 'special-vespers') {
+    return content;
+  }
+
+  const filtered = content.filter((node) => {
+    if (node.type === 'verseMarker') {
+      return !(
+        /dóminus vobíscum/iu.test(node.text) ||
+        /et cum spíritu tuo/iu.test(node.text)
+      );
+    }
+    return !(node.type === 'rubric' && /Domine,\s*exaudi.*omittitur/iu.test(node.value));
+  });
+
+  return filtered.length === content.length ? content : Object.freeze(filtered);
 }

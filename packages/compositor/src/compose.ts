@@ -14,6 +14,7 @@ import { stripLaudsSecretoPrayers } from './compose/incipit.js';
 import { appendContentWithBoundary } from './compose/content-boundary.js';
 import { directiveDrivenSlotContent } from './compose/directive-slot-content.js';
 import { resolveGloriaOmittiturReplacement } from './compose/gloria-omittitur.js';
+import { composeEarlySpecialSections } from './compose/early-specials.js';
 import { composeLucanCanticleSection } from './compose/lucan-canticle.js';
 import {
   prependMajorHourHymnWrapper,
@@ -35,12 +36,6 @@ import {
   withPsalmGloriaPatri
 } from './compose/psalmody.js';
 import { MAX_DEFERRED_DEPTH, referenceKey } from './compose/shared.js';
-import {
-  composeDATriduumSecretoSection,
-  composeEasterSundayPreludeSection,
-  composeTriduumSpecialComplineSection,
-  composeTriduumSuppressedVespersSection
-} from './compose/triduum-special.js';
 import { applyDirectives } from './directives/index.js';
 import { isWholeAntiphonSlot, markAntiphonFirstText } from './emit/antiphon-marker.js';
 import { emitSection } from './emit/index.js';
@@ -100,43 +95,7 @@ export function composeHour(input: ComposeInput): ComposedHour {
     warnings.push(warning);
   };
 
-  const suppressedVespers = composeTriduumSuppressedVespersSection({
-    hour: input.hour,
-    summary: input.summary,
-    corpus: input.corpus,
-    options: input.options,
-    context,
-    onWarning
-  });
-  if (suppressedVespers) {
-    sections.push(suppressedVespers);
-  }
-
-  const easterSundayPrelude = composeEasterSundayPreludeSection({
-    hour: input.hour,
-    summary: input.summary,
-    corpus: input.corpus,
-    options: input.options,
-    context,
-    onWarning
-  });
-  if (easterSundayPrelude) {
-    sections.push(easterSundayPrelude);
-  }
-
-  const daTriduumSecreto = composeDATriduumSecretoSection({
-    hour: input.hour,
-    summary: input.summary,
-    corpus: input.corpus,
-    options: input.options,
-    context,
-    onWarning
-  });
-  if (daTriduumSecreto) {
-    sections.push(daTriduumSecreto);
-  }
-
-  const specialCompline = composeTriduumSpecialComplineSection({
+  const earlySpecials = composeEarlySpecialSections({
     hour: input.hour,
     structure: hour,
     summary: input.summary,
@@ -145,8 +104,8 @@ export function composeHour(input: ComposeInput): ComposedHour {
     context,
     onWarning
   });
-  if (specialCompline) {
-    sections.push(specialCompline);
+  sections.push(...earlySpecials.sections);
+  if (earlySpecials.terminal) {
     return Object.freeze({
       date: input.summary.date,
       hour: input.hour,

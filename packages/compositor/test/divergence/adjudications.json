@@ -8535,15 +8535,15 @@
     "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Mobile.txt Low Sunday rollover advanced Easter Saturday Prime to the inherited `[Pater secreto]` rubric.",
     "resolvedAt": "2026-04-27"
   },
-  "Reduced - 1955/2024-04-07/Matins/093db822": {
+  "Reduced - 1955/2024-04-07/Matins/29ec2a3d": {
     "policy": "Reduced - 1955",
     "date": "2024-04-07",
     "hour": "Matins",
-    "firstExpected": "Ant. Allelúja, * lapis revolútus est, allelúja: ab óstio monuménti, allelúja, allelúja.",
-    "firstActual": "Ant. Beátus vir. ‡",
-    "class": "engine-bug",
-    "citation": "upstream/web/cgi-bin/horas/specmatins.pl:276-278 fires `ant_matutinum_paschal` for Pasc1-6 Sundays under non-Praedicatorum versions; line 1580-1593 of `ant_matutinum_paschal` then loads `Psalterium/Psalmi/Psalmi matutinum.txt:[Pasch0]` and substitutes the paschal Sunday Matins antiphons (`Allelúja, * lapis revolútus est, allelúja: ab óstio monuménti, allelúja, allelúja.` for the first nocturn, `Allelúja, * quem quæris múlier...` for the second, and `Allelúja, * noli flere María...` for the third). The corpus encodes these as the source-backed paschaltide Sunday Matins override (`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:429-444`). The compositor currently uses the regular `[Day0 Matutinum]` antiphons (`Beátus vir`, `Servíte Dómino`, etc.) under Reduced 1955 because Phase 2's matins-plan does not substitute `[Pasch0]` on paschaltide Sundays. Per ADR-011 the source corpus is the highest authority, and Pasch0's `[Pasch0]` section is specifically encoded as the paschaltide Sunday override for `[Day0 Matutinum]`. Phase 2 should mirror Perl's `ant_matutinum_paschal` substitution on paschaltide-week-1-through-5 Sundays.",
-    "notes": "Engine-bug deferred: paschaltide Sunday Matins antiphon substitution from `Psalmi matutinum.txt:[Pasch0]` is not yet wired into Phase 2 matins-plan. Affects all three Roman policies (DA, R55, R60) on Pasc1-0, Pasc2-0, Pasc3-0, Pasc4-0, Pasc5-0 (in 2024 only Pasc1-0 surfaces as the first divergence under R55 because the other Sundays diverge earlier on other families). Related to the Rubrics 1960 Pasc1-0 1-nocturn shape engine-bug at the parallel ledger row.",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Low Sunday Pasch0 Matins antiphon substitution fix advanced the first visible divergence.",
     "resolvedAt": "2026-04-27",
     "commitSha": "pending"
   },
@@ -13943,15 +13943,15 @@
     "notes": "Fanout of the Prime post-Martyrologium Easter-Octave guillemet seam after the Mobile.txt Low Sunday rollover advanced Easter Saturday Prime to the inherited `[Pater secreto]` rubric.",
     "resolvedAt": "2026-04-27"
   },
-  "Rubrics 1960 - 1960/2024-04-07/Matins/49cd6755": {
+  "Rubrics 1960 - 1960/2024-04-07/Matins/29ec2a3d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2024-04-07",
     "hour": "Matins",
-    "firstExpected": "Ad Nocturnum",
-    "firstActual": "Nocturnus I",
-    "class": "engine-bug",
-    "citation": "upstream/web/cgi-bin/horas/specmatins.pl:1444-1478 — `gettype1960()` returns `LT1960_SUNDAY` (non-zero) for Pasc1-0 because `winner =~ /Pasc1\\-0/i` matches the Octave Day of Easter; line 317 then SKIPS the 9-lessons branch under 1960 (`!gettype1960()` is false), causing Matins to fall through to the 1-nocturn paschal shape with `Ad Nocturnum` heading. The compositor's `resolveMatinsShape` in `packages/rubrical-engine/src/policy/rubrics-1960.ts:412-447` excludes I-classis Sundays from the 1-nocturn Sunday simplification (correct for Trinity Sunday) but does not apply Codex Rubricarum (1960) §175a's separate Easter-Octave-Day simplification: Pasc1-0 closes the privileged Easter Octave and shares the 1-nocturn paschal Matins shape with the rest of the Octave (Pasc0-0 through Pasc0-6). The fix is to extend the private `isPaschalOctaveDay` in `rubrics-1960.ts:645` to also match `temporal.dayName === 'Pasc1-0'` (or add an equivalent helper). The same extension also corrects the Te Deum disposition at `:490` for Low Sunday Matins.",
-    "notes": "Engine-bug deferred: 1960 Codex Rubricarum §175a Pasc1-0 (Octave Day of Easter) Matins simplification is not yet applied. Compositor produces 3-nocturn shape; Perl correctly produces 1-nocturn paschal shape. Sister to the parallel Reduced 1955 paschaltide Sunday Matins antiphon substitution engine-bug at `Reduced - 1955/2024-04-07/Matins/093db822` — fixing the 1960 shape will also expose the same `[Pasch0]` antiphon-substitution gap on Rubrics 1960 Low Sunday Matins.",
+    "firstExpected": "Pater Noster dicitur secreto usque ad Et ne nos indúcas in tentatiónem:",
+    "firstActual": "« Pater Noster » dicitur secreto usque ad « Et ne nos indúcas in tentatiónem: »",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:1-2 — the corpus rubric carries guillemets around both `Pater Noster` and `Et ne nos indúcas in tentatiónem:`. Perl strips them while the compositor preserves them; both are surface renderings of the same rubric sentence, not a liturgical-content disagreement.",
+    "notes": "Fanout of the Roman Matins pre-lesson Pater Noster guillemet rendering family after the Low Sunday 1960 one-nocturn shape and Pasch0 antiphon substitution fixes advanced the first visible divergence.",
     "resolvedAt": "2026-04-27",
     "commitSha": "pending"
   },

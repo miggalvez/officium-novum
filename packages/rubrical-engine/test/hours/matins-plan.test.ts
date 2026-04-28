@@ -11,6 +11,7 @@ import {
 } from '../../src/index.js';
 import { TestOfficeTextIndex } from '../helpers.js';
 import { rubrics1960Policy } from '../../src/policy/rubrics-1960.js';
+import { reduced1955Policy } from '../../src/policy/reduced-1955.js';
 
 const HOUR_RULES: HourRuleSet = {
   hour: 'matins',
@@ -135,6 +136,112 @@ describe('buildMatinsPlan', () => {
         path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
         section: 'Adv 0 Ant Matutinum',
         selector: '14'
+      }
+    ]);
+  });
+
+  it('substitutes Pasch0 antiphons over Sunday Matins psalms in Paschaltide', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Pasc1-0.txt', adventSundayMatinsSections());
+    corpus.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt',
+      paschaltideSundayPsalterSections()
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Pasc1-0', 'I', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-04-07', 'Pasc1-0', 'eastertide', 'I'),
+      policy: reduced1955Policy,
+      corpus,
+      version: version1955()
+    });
+
+    expect(result.plan.nocturns).toBe(1);
+    const psalmody = result.plan.nocturnPlan[0]?.psalmody ?? [];
+    expect(psalmody).toHaveLength(9);
+    expect(psalmody.map((assignment) => assignment.psalmRef.selector)).toEqual([
+      '1',
+      '2',
+      '3',
+      '8',
+      '9(2-11)',
+      '9(12-21)',
+      '9(22-32)',
+      '9(33-39)',
+      '10'
+    ]);
+    expect(
+      psalmody.flatMap((assignment, index) =>
+        assignment.antiphonRef ? [{ index: index + 1, ...assignment.antiphonRef }] : []
+      )
+    ).toEqual([
+      {
+        index: 1,
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '1'
+      },
+      {
+        index: 4,
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '6'
+      },
+      {
+        index: 7,
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '11'
+      }
+    ]);
+    expect(result.plan.nocturnPlan[0]?.antiphons.map((antiphon) => antiphon.reference)).toEqual([
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '1'
+      },
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '6'
+      },
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '11'
+      }
+    ]);
+  });
+
+  it('keeps only the first Pasch0 antiphon for the 1960 one-nocturn Sunday shape', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Tempora/Pasc1-0.txt', adventSundayMatinsSections());
+    corpus.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt',
+      paschaltideSundayPsalterSections()
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Tempora/Pasc1-0', 'I', 'temporal'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2024-04-07', 'Pasc1-0', 'eastertide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturns).toBe(1);
+    expect(result.plan.nocturnPlan[0]?.psalmody).toHaveLength(9);
+    expect(result.plan.nocturnPlan[0]?.antiphons.map((antiphon) => antiphon.reference)).toEqual([
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Pasch0',
+        selector: '1'
       }
     ]);
   });
@@ -745,6 +852,16 @@ function version1960(): ResolvedVersion {
   };
 }
 
+function version1955(): ResolvedVersion {
+  return {
+    handle: asVersionHandle('Reduced - 1955'),
+    kalendar: 'Reduced',
+    transfer: 'Reduced',
+    stransfer: 'Reduced',
+    policy: reduced1955Policy
+  };
+}
+
 function version1954(): ResolvedVersion {
   return {
     handle: asVersionHandle('Divino Afflatu - 1954'),
@@ -930,6 +1047,56 @@ function easterSundayMatinsSections(): string {
     'Ego dormívi, * et somnum cepi: et exsurréxi, quóniam Dóminus suscépit me, allelúja, allelúja.;;3',
     'V. Surréxit Dóminus de sepúlcro, allelúja.',
     'R. Qui pro nobis pepéndit in ligno, allelúja.'
+  ].join('\n');
+}
+
+function paschaltideSundayPsalterSections(): string {
+  return [
+    '[Day0]',
+    'Beátus vir * qui in lege Dómini meditátur.;;1',
+    'Servíte Dómino * in timóre, et exsultáte ei cum tremóre.;;2',
+    'Exsúrge, * Dómine, salvum me fac, Deus meus.;;3',
+    'V. Memor fui nocte nóminis tui, Dómine.',
+    'R. Et custodívi legem tuam.',
+    'Quam admirábile * est nomen tuum, Dómine, in univérsa terra!;;8',
+    'Sedísti super thronum * qui júdicas justítiam.;;9(2-11)',
+    'Exsúrge, Dómine, * non præváleat homo.;;9(12-21)',
+    'V. Média nocte surgébam ad confiténdum tibi.',
+    'R. Super judícia justificatiónis tuæ.',
+    'Ut quid, Dómine, * recessísti longe?;;9(22-32)',
+    'Exsúrge, * Dómine Deus, exaltétur manus tua.;;9(33-39)',
+    'Justus Dóminus * et justítiam diléxit.;;10',
+    'V. Prævenérunt óculi mei ad te dilúculo.',
+    'R. Ut meditárer elóquia tua, Dómine.',
+    '',
+    '[Pasch0]',
+    'Allelúja, * lapis revolútus est, allelúja: ab óstio monuménti, allelúja, allelúja.;;',
+    ';;',
+    ';;',
+    'V. Surréxit Dóminus de sepúlcro, allelúja.',
+    'R. Qui pro nobis pepéndit in ligno, allelúja.',
+    'Allelúja, * quem quæris, múlier? allelúja: vivéntem cum mórtuis? Allelúja, allelúja.;;',
+    ';;',
+    ';;',
+    'V. Surréxit Dóminus vere, allelúja.',
+    'R. Et appáruit Simóni, allelúja.',
+    'Allelúja, * noli flere María, allelúja: resurréxit Dóminus, allelúja, allelúja.;;',
+    ';;',
+    ';;',
+    'V. Gavísi sunt discípuli, allelúja.',
+    'R. Viso Dómino, allelúja.',
+    '',
+    '[Pasch 1 Versum]',
+    'V. Surréxit Dóminus de sepúlcro, allelúja.',
+    'R. Qui pro nobis pepéndit in ligno, allelúja.',
+    '',
+    '[Pasch 2 Versum]',
+    'V. Surréxit Dóminus vere, allelúja.',
+    'R. Et appáruit Simóni, allelúja.',
+    '',
+    '[Pasch 3 Versum]',
+    'V. Gavísi sunt discípuli, allelúja.',
+    'R. Viso Dómino, allelúja.'
   ].join('\n');
 }
 

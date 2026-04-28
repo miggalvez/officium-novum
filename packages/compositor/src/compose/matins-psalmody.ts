@@ -464,7 +464,11 @@ function determineOpeningAntiphonMode(
   language: string,
   args: MatinsPsalmodyContext
 ): OpeningAntiphonMode {
-  if (args.context.version.handle.includes('1960') || !isPsalterMatinsAntiphonRef(antiphonRef)) {
+  if (
+    args.context.version.handle.includes('1960') ||
+    antiphonRef.section === 'Pasch0' ||
+    !isPsalterMatinsAntiphonRef(antiphonRef)
+  ) {
     return { kind: 'full' };
   }
 

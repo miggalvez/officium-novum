@@ -237,6 +237,21 @@ describe('rubrics1960Policy.resolveMatinsShape', () => {
     });
   });
 
+  it('keeps Low Sunday in the privileged Paschal one-nocturn shape', () => {
+    const shape = rubrics1960Policy.resolveMatinsShape({
+      celebration: matinsCelebration('Tempora/Pasc1-0', 'I', 'temporal'),
+      celebrationRules: matinsRules(),
+      temporal: temporal('2024-04-07', 'Pasc1-0', 'eastertide', 'I'),
+      commemorations: []
+    });
+
+    expect(shape).toEqual({
+      nocturns: 1,
+      totalLessons: 3,
+      lessonsPerNocturn: [3]
+    });
+  });
+
   it('collapses Ash Wednesday and Holy Week feriae to 1 nocturn x 3 lessons', () => {
     const ashWednesday = rubrics1960Policy.resolveMatinsShape({
       celebration: matinsCelebration(
@@ -381,6 +396,14 @@ describe('rubrics1960Policy.resolveTeDeum', () => {
         plan: { nocturns: 1, totalLessons: 3 },
         celebrationRules: matinsRules(),
         temporal: temporal('2024-04-02', 'Pasc0-2', 'eastertide', 'I')
+      })
+    ).toBe('say');
+
+    expect(
+      rubrics1960Policy.resolveTeDeum({
+        plan: { nocturns: 1, totalLessons: 3 },
+        celebrationRules: matinsRules(),
+        temporal: temporal('2024-04-07', 'Pasc1-0', 'eastertide', 'I')
       })
     ).toBe('say');
 

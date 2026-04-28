@@ -397,8 +397,12 @@ function composePsalmody(
 ): readonly Section[] {
   const out: Section[] = [];
   const refs: MatinsSlotRef[] = [];
+  let groupedAntiphonRef: TextReference | undefined;
   for (const [index, assignment] of nocturn.psalmody.entries()) {
     if (assignment.antiphonRef) {
+      groupedAntiphonRef ??= usesGroupedMatinsAntiphon(assignment.antiphonRef)
+        ? assignment.antiphonRef
+        : undefined;
       refs.push({
         ref: assignment.antiphonRef,
         isAntiphon: true,
@@ -413,7 +417,7 @@ function composePsalmody(
       psalmIndex: index + 1,
       hasExplicitAntiphon: Boolean(assignment.antiphonRef)
     });
-    if (assignment.antiphonRef) {
+    if (assignment.antiphonRef && !usesGroupedMatinsAntiphon(assignment.antiphonRef)) {
       refs.push({
         ref: assignment.antiphonRef,
         isAntiphon: true,
@@ -421,6 +425,15 @@ function composePsalmody(
         pairedPsalmRef: assignment.psalmRef
       });
     }
+  }
+  const closingPsalmRef = nocturn.psalmody.at(-1)?.psalmRef;
+  if (groupedAntiphonRef && closingPsalmRef) {
+    refs.push({
+      ref: groupedAntiphonRef,
+      isAntiphon: true,
+      repeatAntiphon: true,
+      pairedPsalmRef: closingPsalmRef
+    });
   }
   const psalmodySection = composeMergedSlot('psalmody', refs, args);
   if (psalmodySection) out.push(psalmodySection);
@@ -438,6 +451,10 @@ function composePsalmody(
     if (section) out.push(section);
   }
   return out;
+}
+
+function usesGroupedMatinsAntiphon(ref: TextReference): boolean {
+  return ref.section === 'Pasch0';
 }
 
 function composeLesson(lesson: LessonPlan, args: MatinsComposeContext): Section | undefined {
