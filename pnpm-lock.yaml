@@ -16,6 +16,9 @@ importers:
       '@fastify/swagger-ui':
         specifier: ^5.2.3
         version: 5.2.6
+      '@officium-novum/compositor':
+        specifier: workspace:*
+        version: link:../compositor
       '@officium-novum/parser':
         specifier: workspace:*
         version: link:../parser

@@ -24,6 +24,7 @@
   "dependencies": {
     "@fastify/swagger": "^9.5.1",
     "@fastify/swagger-ui": "^5.2.3",
+    "@officium-novum/compositor": "workspace:*",
     "@officium-novum/parser": "workspace:*",
     "@officium-novum/rubrical-engine": "workspace:*",
     "@sinclair/typebox": "^0.34.41",

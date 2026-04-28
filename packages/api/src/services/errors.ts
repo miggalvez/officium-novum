@@ -72,6 +72,32 @@ export function invalidQueryValue(field: string, message: string): ApiError {
   });
 }
 
+export function invalidDate(value: string): ApiError {
+  return new ApiError({
+    statusCode: 400,
+    code: 'invalid-date',
+    message: `Invalid date: ${value}`,
+    details: { date: value }
+  });
+}
+
+export function invalidHour(value: string): ApiError {
+  return new ApiError({
+    statusCode: 400,
+    code: 'invalid-hour',
+    message: `Invalid hour: ${value}`,
+    details: { hour: value }
+  });
+}
+
+export function compositionError(message: string): ApiError {
+  return new ApiError({
+    statusCode: 422,
+    code: 'composition-error',
+    message
+  });
+}
+
 export function registerErrorHandler(app: FastifyInstance): void {
   app.setErrorHandler((error: Error, _request, reply: FastifyReply) => {
     if (error instanceof ApiError) {

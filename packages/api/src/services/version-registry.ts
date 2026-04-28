@@ -3,11 +3,20 @@ import {
   MISSA_ONLY_HANDLES,
   VERSION_POLICY,
   asVersionHandle,
+  createRubricalEngine,
+  describeVersion,
+  type KalendariumTable,
+  type OfficeTextIndex,
   type PolicyName,
+  type RubricalEngine,
+  type ScriptureTransferTable,
   type VersionDescriptor,
   type VersionHandle,
-  type VersionRegistry
+  type VersionRegistry,
+  type YearTransferTable
 } from '@officium-novum/rubrical-engine';
+
+import { ApiError } from './errors.js';
 
 export type VersionSupportStatus = 'supported' | 'deferred' | 'missa-only';
 
@@ -18,6 +27,14 @@ export interface ApiVersionEntry {
   readonly policyName?: PolicyName;
   readonly aliases: readonly string[];
   readonly hint?: VersionHandle;
+  readonly engine?: RubricalEngine;
+}
+
+export interface ApiVersionEngineResources {
+  readonly corpus: OfficeTextIndex;
+  readonly kalendarium: KalendariumTable;
+  readonly yearTransfers: YearTransferTable;
+  readonly scriptureTransfers: ScriptureTransferTable;
 }
 
 export interface VersionInfoDto {
@@ -64,9 +81,10 @@ const DEFERRED_OFFICE_HANDLES = new Set<VersionHandle>([
 
 export function buildApiVersionRegistry(input: {
   readonly versionRegistry: VersionRegistry;
+  readonly engineResources?: ApiVersionEngineResources;
 }): ReadonlyMap<string, ApiVersionEntry> {
   const entries = new Map<string, ApiVersionEntry>();
-  addSupportedVersions(entries, input.versionRegistry);
+  addSupportedVersions(entries, input.versionRegistry, input.engineResources);
   addDeferredVersions(entries, input.versionRegistry);
   addMissaOnlyVersions(entries);
   return entries;
@@ -101,7 +119,8 @@ function aliasesFor(handle: VersionHandle): readonly string[] {
 
 function addSupportedVersions(
   entries: Map<string, ApiVersionEntry>,
-  versionRegistry: VersionRegistry
+  versionRegistry: VersionRegistry,
+  engineResources: ApiVersionEngineResources | undefined
 ): void {
   for (const handle of SUPPORTED_OFFICE_HANDLES) {
     const row = versionRegistry.get(handle);
@@ -109,20 +128,34 @@ function addSupportedVersions(
     if (!row || !policy) {
       continue;
     }
+    const engine = engineResources
+      ? createRubricalEngine({
+          corpus: engineResources.corpus,
+          kalendarium: engineResources.kalendarium,
+          yearTransfers: engineResources.yearTransfers,
+          scriptureTransfers: engineResources.scriptureTransfers,
+          versionRegistry,
+          version: handle,
+          policyMap: VERSION_POLICY
+        })
+      : undefined;
     entries.set(handle, {
       handle,
       status: 'supported',
-      policyName: policy.name,
-      descriptor: {
-        handle,
-        kalendar: row.kalendar,
-        transfer: row.transfer,
-        stransfer: row.stransfer,
-        ...(row.base ? { base: row.base } : {}),
-        ...(row.transferBase ? { transferBase: row.transferBase } : {}),
-        policyName: policy.name
-      },
-      aliases: aliasesFor(handle)
+      policyName: engine?.version.policy.name ?? policy.name,
+      descriptor: engine
+        ? describeVersion(engine.version)
+        : {
+            handle,
+            kalendar: row.kalendar,
+            transfer: row.transfer,
+            stransfer: row.stransfer,
+            ...(row.base ? { base: row.base } : {}),
+            ...(row.transferBase ? { transferBase: row.transferBase } : {}),
+            policyName: policy.name
+          },
+      aliases: aliasesFor(handle),
+      ...(engine ? { engine } : {})
     });
   }
 }
@@ -171,6 +204,85 @@ function addMissaOnlyVersions(entries: Map<string, ApiVersionEntry>): void {
       handle,
       status: 'missa-only',
       aliases: []
+    });
+  }
+}
+
+export function resolveApiVersion(input: {
+  readonly version?: string;
+  readonly rubrics?: string;
+  readonly versions: ReadonlyMap<string, ApiVersionEntry>;
+}): ApiVersionEntry {
+  if (input.version) {
+    const entry = input.versions.get(input.version);
+    if (entry) {
+      return entry;
+    }
+    throw new ApiError({
+      statusCode: 400,
+      code: 'unknown-version',
+      message: `Unknown version: ${input.version}`,
+      details: { version: input.version }
+    });
+  }
+
+  if (input.rubrics) {
+    const handle = RUBRICS_ALIASES[input.rubrics];
+    if (!handle) {
+      throw new ApiError({
+        statusCode: 400,
+        code: 'unknown-version',
+        message: `Unknown rubrics alias: ${input.rubrics}`,
+        details: { rubrics: input.rubrics }
+      });
+    }
+    const entry = input.versions.get(handle);
+    if (entry) {
+      return entry;
+    }
+    throw new ApiError({
+      statusCode: 400,
+      code: 'unknown-version',
+      message: `Unknown version: ${handle}`,
+      details: { version: handle }
+    });
+  }
+
+  throw new ApiError({
+    statusCode: 400,
+    code: 'missing-version',
+    message: 'A version query parameter is required.'
+  });
+}
+
+export function assertVersionServable(entry: ApiVersionEntry): asserts entry is ApiVersionEntry & {
+  readonly descriptor: VersionDescriptor;
+  readonly engine: RubricalEngine;
+} {
+  if (entry.status === 'deferred') {
+    throw new ApiError({
+      statusCode: 501,
+      code: 'unsupported-version',
+      message: 'This Breviary version is known but its rubrical policy is deferred in the current API.',
+      details: { version: entry.handle }
+    });
+  }
+
+  if (entry.status === 'missa-only') {
+    throw new ApiError({
+      statusCode: 422,
+      code: 'missa-only-version',
+      message: 'This version identifier belongs to the Mass-side table, not the Breviary Office API.',
+      details: { version: entry.handle },
+      ...(entry.hint ? { hints: [`Use "${entry.hint}" for the Breviary.`] } : {})
+    });
+  }
+
+  if (!entry.descriptor || !entry.engine) {
+    throw new ApiError({
+      statusCode: 500,
+      code: 'internal-error',
+      message: `Version is supported but has no initialized engine: ${entry.handle}`
     });
   }
 }
