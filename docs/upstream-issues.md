@@ -24,6 +24,48 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-04-27 — Trinity Sunday Prime keeps weekday `1 Tim. 1:17` instead of the proper `1 Joann. 5:7` chapter
+
+**Classification.** `perl-bug`
+
+**Summary.** Under both Reduced 1955 and Rubrics 1960, the
+Festum Sanctissimæ Trinitatis explicitly supplies a proper Prime
+capitulum via `[Lectio Prima]`. The compositor honours that override
+and emits `1 Joann. 5:7` (`Tres sunt, qui testimónium dant in cælo:
+Pater, Verbum et Spíritus Sanctus, et hi tres unum sunt.`), the
+Trinitarian text traditionally read at Trinity Prime. The Perl
+comparison surface keeps the weekday `1 Tim. 1:17` (`Regi sæculorum
+immortáli`) chapter, dropping the source-backed proper Prime lesson.
+Codex Rubricarum (1960) §191 keeps the proper feast Prime capitulum
+when the office supplies one (and the parallel pre-1960 rubric is
+identical), so the proper Trinity reading is the rubrically correct
+output. Divino Afflatu shows the same compositor output but its
+ledger first-divergence is absorbed by the unrelated Triduum-style
+opening-rubric prose family at row 4, so DA does not surface this row
+as the first divergence.
+
+**Primary source.**
+`upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:332-333`
+(`[Lectio Prima] @Psalterium/Special/Minor Special:Dominica NonaOP:1-2`)
+and
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:61-64`
+(`[Dominica NonaOP] !1 Joann. 5:7 / v. Tres sunt, qui testimónium
+dant in cælo...`).
+
+**Reproduction.**
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2024-05-26 --hour Prime --debug-window 8
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Reduced - 1955" --date 2024-05-26 --hour Prime --debug-window 8
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Reduced - 1955 | 2024-05-26 | Prime | `c068d9d9` |
+| Rubrics 1960 - 1960 | 2024-05-26 | Prime | `c068d9d9` |
+
 ### 2026-04-27 — DA All Saints Compline applies anticipated Office of the Dead modifications without a Compline section
 
 **Classification.** `perl-bug`

@@ -22,6 +22,50 @@ anchor.
 
 ## Entries
 
+### 2026-04-27 — Pattern: Trinity Sunday proper Prime capitulum override (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Trinity Sunday (`2024-05-26`) Prime under Reduced
+1955 and Rubrics 1960 diverged at line `124`/`125` with the
+compositor emitting `1 Joann. 5:7` while the Perl comparison surface
+emitted the weekday `1 Tim. 1:17`. The previous tranche
+(`Symbolum Athanasium` rule directive + direct psalm-file interleave)
+advanced the matching prefix from `80` to `125` and called this
+chapter override out as the next family.
+
+**Source seam.**
+`upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:332-333` supplies
+`[Lectio Prima] @Psalterium/Special/Minor Special:Dominica NonaOP:1-2`,
+and `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:61-64`
+defines `[Dominica NonaOP]` as `!1 Joann. 5:7 / v. Tres sunt, qui
+testimónium dant in cælo: Pater, Verbum et Spíritus Sanctus, et hi
+tres unum sunt.`. The Festum Sanctissimæ Trinitatis therefore
+explicitly carries `1 Joann. 5:7` as its proper Prime capitulum.
+
+**Resolution.** Codex Rubricarum (1960) §191 retains the proper Prime
+capitulum on a feast-day office when the office supplies one (the
+parallel pre-1960 rubric is identical). The compositor's
+`1 Joann. 5:7` matches the source-backed proper Prime capitulum;
+Perl's `1 Tim. 1:17` retains the weekday `Regi sæculorum` chapter and
+drops the proper Trinity reading. Two new representative entries land
+at `Reduced - 1955/2024-05-26/Prime/c068d9d9` and
+`Rubrics 1960 - 1960/2024-05-26/Prime/c068d9d9` with class
+`perl-bug`. Divino Afflatu carries the same compositor output but the
+DA ledger first-divergence is absorbed by the unrelated DA Triduum-
+style opening-rubric prose family at row 4, so DA does not surface
+this row as the first divergence and no DA entry is needed.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:332-333`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:61-64`
+- Codex Rubricarum (1960) §191 (proper Prime capitulum is retained on
+  a feast when the office supplies one)
+
+**Impact.** Net unadjudicated drop: Reduced 1955 from `3` → `2`,
+Rubrics 1960 from `4` → `3`, total `8` → `6`.
+
 ### 2026-04-27 — Pattern: 1960 I-classis Sunday three-nocturn Matins shape (engine-bug, fixed)
 
 **Commit.** Current tranche commit.
