@@ -2,9 +2,13 @@
 
 Phase-by-phase implementation log for Officium Novum. The README's [Status](README.md#status) section summarizes the current phase state; this file records stable shipped changes by phase and sub-phase rather than live compare metrics.
 
-## Phase 4 — Read-only JSON API (in progress)
+## Phase 4 — Read-only JSON API (complete for core Breviary scope)
 
-Phase 4 is now open on the Fastify/TypeScript path described in [`docs/phase-4-API-design.md`](docs/phase-4-API-design.md). The API layer is a thin, deterministic HTTP boundary over the Parser → Rubrical Engine → Composition Engine pipeline: it owns request validation, version/language normalization, public DTO adaptation, OpenAPI route schemas, and caching concerns, while the earlier phases continue to own liturgical data, rubrical decisions, and composed Office structure.
+Phase 4 shipped on the Fastify/TypeScript path described in [`docs/phase-4-API-design.md`](docs/phase-4-API-design.md). The API layer is a thin, deterministic HTTP boundary over the Parser → Rubrical Engine → Composition Engine pipeline: it owns request validation, version/language normalization, public DTO adaptation, OpenAPI route schemas, and caching concerns, while the earlier phases continue to own liturgical data, rubrical decisions, and composed Office structure.
+
+### 4g — Contract tests and release gate (complete)
+
+- **2026-04-28.** Added the Phase 4 contract gate in `packages/api/test/contract-gate.test.ts`, covering the 13 canonical dates × 3 supported Roman policies × 8 Hours against `GET /api/v1/office/{date}/{hour}` with Latin output. The gate asserts successful responses, deterministic cache headers and ETags, public `la` language keys, no raw `Latin` / `English` object keys on public Office/day/calendar payloads, no serialized `ResolvedVersion.policy`, no invented `celebration.color` on calendar days, and valid OpenAPI JSON for all shipped v1 routes. Added `packages/api/test/strict-mode.test.ts` with a mocked compositor warning path to lock `strict=true` conversion of error-level composition warnings into API `composition-error` responses for both Office and day-bundle services. Validation: `pnpm -C packages/api typecheck` and `pnpm -C packages/api test` are green with 48 API tests.
 
 ### 4f — Calendar month endpoint (complete)
 
