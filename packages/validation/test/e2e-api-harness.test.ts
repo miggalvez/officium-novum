@@ -1,16 +1,12 @@
 import { existsSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { afterAll, describe, expect, it } from 'vitest';
 
 import { createApp } from '../../api/src/app.js';
 import { loadApiConfig } from '../../api/src/config.js';
 import { buildApiContext } from '../../api/src/context.js';
 
-const TEST_DIR = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = resolve(TEST_DIR, '../../..');
-const UPSTREAM_ROOT = resolve(REPO_ROOT, 'upstream/web/www');
-const HAS_UPSTREAM = existsSync(UPSTREAM_ROOT);
+const baseConfig = loadApiConfig();
+const HAS_UPSTREAM = existsSync(baseConfig.corpusPath);
 const describeIfUpstream = HAS_UPSTREAM ? describe : describe.skip;
 
 const E2E_CASES = [
@@ -47,6 +43,7 @@ async function fullApp() {
 async function createFullApp() {
   const context = await buildApiContext(
     loadApiConfig({
+      ...process.env,
       OFFICIUM_CONTENT_VERSION: 'phase-5e-test-content',
       OFFICIUM_API_LOGGER: 'false'
     })
