@@ -122,6 +122,57 @@ describeIfUpstream('office route integration', () => {
     expect(firstTextLine?.texts).not.toHaveProperty('English');
   }, 120_000);
 
+  it('emits stable cache headers and honors If-None-Match', async () => {
+    const app = await fullApp();
+    const first = await app.inject(
+      '/api/v1/office/2024-01-01/lauds?orthography=source&lang=la,en&version=Rubrics%201960%20-%201960'
+    );
+    const equivalent = await app.inject(
+      '/api/v1/office/2024-01-01/lauds?version=Rubrics%201960%20-%201960&lang=la,en&orthography=source'
+    );
+
+    expect(first.statusCode).toBe(200);
+    expect(first.headers['cache-control']).toBe(
+      'public, max-age=86400, stale-while-revalidate=604800'
+    );
+    expect(first.headers.etag).toMatch(/^"v1:test-content:[^:]+:[^:]+"$/u);
+    expect(equivalent.headers.etag).toBe(first.headers.etag);
+    expect(first.json().meta.canonicalPath).toBe(
+      '/api/v1/office/2024-01-01/lauds?version=Rubrics+1960+-+1960&lang=la%2Cen&orthography=source&joinLaudsToMatins=false&strict=false'
+    );
+
+    const cached = await app.inject({
+      method: 'GET',
+      url: '/api/v1/office/2024-01-01/lauds?version=Rubrics%201960%20-%201960&lang=la,en&orthography=source',
+      headers: {
+        'if-none-match': String(first.headers.etag)
+      }
+    });
+
+    expect(cached.statusCode).toBe(304);
+    expect(cached.body).toBe('');
+    expect(cached.headers.etag).toBe(first.headers.etag);
+  }, 120_000);
+
+  it('varies office ETags for display-distinct request options', async () => {
+    const app = await fullApp();
+    const latinThenEnglish = await app.inject(
+      '/api/v1/office/2024-04-01/lauds?version=Rubrics%201960%20-%201960&lang=la,en&orthography=source'
+    );
+    const englishThenLatin = await app.inject(
+      '/api/v1/office/2024-04-01/lauds?version=Rubrics%201960%20-%201960&lang=en,la&orthography=source'
+    );
+    const versionOrthography = await app.inject(
+      '/api/v1/office/2024-04-01/lauds?version=Rubrics%201960%20-%201960&lang=la,en&orthography=version'
+    );
+
+    expect(latinThenEnglish.statusCode).toBe(200);
+    expect(englishThenLatin.statusCode).toBe(200);
+    expect(versionOrthography.statusCode).toBe(200);
+    expect(englishThenLatin.headers.etag).not.toBe(latinThenEnglish.headers.etag);
+    expect(versionOrthography.headers.etag).not.toBe(latinThenEnglish.headers.etag);
+  }, 120_000);
+
   it('normalizes rubrics aliases to canonical version handles', async () => {
     const app = await fullApp();
     const response = await app.inject('/api/v1/office/2024-01-01/lauds?rubrics=1960&lang=la');

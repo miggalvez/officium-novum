@@ -9,7 +9,8 @@ Phase 3 is complete, so the API contract should target the shipped `ComposedHour
 - **4a design record:** This design document plus [ADR-014](adr/014-http-api-version-language-contract.md) now record the API's canonical version, language, DTO, and orthography boundary.
 - **4b scaffold and metadata endpoints:** Complete in `packages/api/`. Implemented Fastify app/server setup, context/config loading, OpenAPI registration, error serializer, `/api/v1/status`, `/api/v1/versions`, and `/api/v1/languages`, with package and workspace validation green.
 - **4c office endpoint:** Complete in `packages/api/`. Implemented `/api/v1/office/{date}/{hour}`, live context startup resources, version/language/query validation, public `ComposedHour` DTO adaptation, strict composition-error handling, and 1960 Latin `orthography=source|version` text/rubric adaptation.
-- **4d cache canonicalization and later:** Not implemented yet.
+- **4d cache canonicalization and ETags:** Complete in `packages/api/`. Implemented canonical office cache keys, stable JSON hashing, deterministic ETags, `Cache-Control`, `If-None-Match` / `304` support, and canonical path metadata for the Office route.
+- **4e day bundle endpoint and later:** Not implemented yet.
 
 ## 0. Core Architectural Decisions
 

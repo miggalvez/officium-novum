@@ -3,12 +3,21 @@ import type { HourName } from '@officium-novum/rubrical-engine';
 
 import type { ApiContext } from '../context.js';
 import { compositionError, invalidDate, invalidHour, invalidQueryValue } from './errors.js';
-import { resolveLanguages } from './language-map.js';
-import { resolveOrthographyProfile } from './orthography-profile.js';
+import { resolveLanguages, type LanguageSelection } from './language-map.js';
+import {
+  resolveOrthographyProfile,
+  type TextOrthographyProfile
+} from './orthography-profile.js';
 import { toOfficeHourResponse, type OfficeHourResponse } from './dto.js';
 import {
+  buildCanonicalOfficeKey,
+  canonicalOfficePath,
+  type CanonicalOfficeKey
+} from './cache.js';
+import {
   assertVersionServable,
-  resolveApiVersion
+  resolveApiVersion,
+  type ApiVersionEntry
 } from './version-registry.js';
 
 export interface OfficeQuery {
@@ -21,12 +30,73 @@ export interface OfficeQuery {
   readonly strict?: string | boolean;
 }
 
+export interface ResolvedOfficeRequest {
+  readonly date: string;
+  readonly hour: HourName;
+  readonly versionEntry: ApiVersionEntry & {
+    readonly descriptor: NonNullable<ApiVersionEntry['descriptor']>;
+    readonly engine: NonNullable<ApiVersionEntry['engine']>;
+  };
+  readonly languageSelection: LanguageSelection;
+  readonly orthography: TextOrthographyProfile;
+  readonly joinLaudsToMatins: boolean;
+  readonly strict: boolean;
+  readonly cacheKey: CanonicalOfficeKey;
+}
+
 export function composeOfficeHour(input: {
   readonly context: ApiContext;
   readonly dateParam: string;
   readonly hourParam: string;
   readonly query: OfficeQuery;
+  readonly resolved?: ResolvedOfficeRequest;
 }): OfficeHourResponse {
+  const resolved = input.resolved ?? resolveOfficeRequest(input);
+
+  if (!input.context.corpus) {
+    throw new Error('API context has no resolved corpus loaded.');
+  }
+
+  const summary = resolved.versionEntry.engine.resolveDayOfficeSummary(resolved.date);
+  const composed = composeHour({
+    corpus: input.context.corpus,
+    summary,
+    version: resolved.versionEntry.engine.version,
+    hour: resolved.hour,
+    options: {
+      languages: resolved.languageSelection.corpusNames,
+      ...(resolved.languageSelection.corpusFallback
+        ? { langfb: resolved.languageSelection.corpusFallback }
+        : {}),
+      joinLaudsToMatins: resolved.joinLaudsToMatins
+    }
+  });
+
+  if (resolved.strict && composed.warnings.some((warning) => warning.severity === 'error')) {
+    throw compositionError('Composition produced error-level warnings under strict mode.');
+  }
+
+  return toOfficeHourResponse({
+    date: resolved.date,
+    hour: resolved.hour,
+    version: resolved.versionEntry.descriptor,
+    summary,
+    composed,
+    languageSelection: resolved.languageSelection,
+    orthography: resolved.orthography,
+    joinLaudsToMatins: resolved.joinLaudsToMatins,
+    strict: resolved.strict,
+    contentVersion: input.context.contentVersion,
+    canonicalPath: canonicalOfficePath(resolved.cacheKey)
+  });
+}
+
+export function resolveOfficeRequest(input: {
+  readonly context: ApiContext;
+  readonly dateParam: string;
+  readonly hourParam: string;
+  readonly query: OfficeQuery;
+}): ResolvedOfficeRequest {
   const date = parseIsoDate(input.dateParam);
   const hour = parseHourName(input.hourParam, input.context.supportedHours);
   const versionEntry = resolveApiVersion({
@@ -35,10 +105,6 @@ export function composeOfficeHour(input: {
     versions: input.context.versions
   });
   assertVersionServable(versionEntry);
-
-  if (!input.context.corpus) {
-    throw new Error('API context has no resolved corpus loaded.');
-  }
 
   const languageSelection = resolveLanguages({
     lang: input.query.lang ?? 'la',
@@ -53,47 +119,28 @@ export function composeOfficeHour(input: {
   );
   const strict = parseBooleanQuery(input.query.strict, 'strict', false);
 
-  const summary = versionEntry.engine.resolveDayOfficeSummary(date);
-  const composed = composeHour({
-    corpus: input.context.corpus,
-    summary,
-    version: versionEntry.engine.version,
-    hour,
-    options: {
-      languages: languageSelection.corpusNames,
-      ...(languageSelection.corpusFallback
-        ? { langfb: languageSelection.corpusFallback }
-        : {}),
-      joinLaudsToMatins
-    }
-  });
-
-  if (strict && composed.warnings.some((warning) => warning.severity === 'error')) {
-    throw compositionError('Composition produced error-level warnings under strict mode.');
-  }
-
-  return toOfficeHourResponse({
+  const cacheKey = buildCanonicalOfficeKey({
     date,
     hour,
-    version: versionEntry.descriptor,
-    summary,
-    composed,
+    version: versionEntry.descriptor.handle,
+    languages: languageSelection.publicTags,
+    langfb: languageSelection.publicFallback,
+    orthography,
+    joinLaudsToMatins,
+    strict,
+    contentVersion: input.context.contentVersion
+  });
+
+  return {
+    date,
+    hour,
+    versionEntry,
     languageSelection,
     orthography,
     joinLaudsToMatins,
     strict,
-    contentVersion: input.context.contentVersion,
-    canonicalPath: canonicalOfficePath({
-      date,
-      hour,
-      version: versionEntry.descriptor.handle,
-      lang: languageSelection.publicTags.join(','),
-      langfb: languageSelection.publicFallback,
-      orthography,
-      joinLaudsToMatins,
-      strict
-    })
-  });
+    cacheKey
+  };
 }
 
 function parseIsoDate(value: string): string {
@@ -139,26 +186,4 @@ function parseBooleanQuery(
     return false;
   }
   throw invalidQueryValue(field, 'Expected "true" or "false".');
-}
-
-function canonicalOfficePath(input: {
-  readonly date: string;
-  readonly hour: HourName;
-  readonly version: string;
-  readonly lang: string;
-  readonly langfb?: string;
-  readonly orthography: string;
-  readonly joinLaudsToMatins: boolean;
-  readonly strict: boolean;
-}): string {
-  const params = new URLSearchParams();
-  params.set('version', input.version);
-  params.set('lang', input.lang);
-  if (input.langfb) {
-    params.set('langfb', input.langfb);
-  }
-  params.set('orthography', input.orthography);
-  params.set('joinLaudsToMatins', String(input.joinLaudsToMatins));
-  params.set('strict', String(input.strict));
-  return `/api/v1/office/${input.date}/${input.hour}?${params.toString()}`;
 }

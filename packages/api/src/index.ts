@@ -2,6 +2,7 @@ export * from './app.js';
 export * from './config.js';
 export * from './context.js';
 export * from './services/errors.js';
+export * from './services/cache.js';
 export * from './services/dto.js';
 export * from './services/compose-office.js';
 export * from './services/language-map.js';

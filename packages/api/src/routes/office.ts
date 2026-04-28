@@ -1,7 +1,20 @@
 import { Type } from '@sinclair/typebox';
 import type { FastifyInstance } from 'fastify';
 
-import { composeOfficeHour, type OfficeQuery } from '../services/compose-office.js';
+import {
+  composeOfficeHour,
+  resolveOfficeRequest,
+  type OfficeQuery
+} from '../services/compose-office.js';
+import {
+  applyCacheHeaders,
+  buildDeterministicEtag,
+  createEtagMemoryCache,
+  officeResponseCacheKey,
+  requestMatchesEtag
+} from '../services/cache.js';
+
+const officeEtags = createEtagMemoryCache();
 
 const ApiErrorSchema = Type.Object({
   kind: Type.Literal('error'),
@@ -212,18 +225,44 @@ export async function registerOfficeRoutes(app: FastifyInstance): Promise<void> 
       }),
       response: {
         200: OfficeHourResponseSchema,
+        304: Type.Null(),
         400: ApiErrorSchema,
         422: ApiErrorSchema,
         501: ApiErrorSchema,
         500: ApiErrorSchema
       }
     }
-  }, async function officeHandler(request) {
-    return composeOfficeHour({
+  }, async function officeHandler(request, reply) {
+    const resolved = resolveOfficeRequest({
       context: app.apiContext,
       dateParam: request.params.date,
       hourParam: request.params.hour,
       query: request.query
     });
+    const cachedEtag = officeEtags.get(resolved.cacheKey);
+    if (cachedEtag) {
+      applyCacheHeaders(reply, cachedEtag);
+      if (requestMatchesEtag(request, cachedEtag)) {
+        return reply.code(304).send();
+      }
+    }
+
+    const body = composeOfficeHour({
+      context: app.apiContext,
+      dateParam: request.params.date,
+      hourParam: request.params.hour,
+      query: request.query,
+      resolved
+    });
+    const etag = buildDeterministicEtag({
+      key: officeResponseCacheKey(body),
+      body
+    });
+    officeEtags.set(resolved.cacheKey, etag);
+    applyCacheHeaders(reply, etag);
+    if (requestMatchesEtag(request, etag)) {
+      return reply.code(304).send();
+    }
+    return body;
   });
 }
