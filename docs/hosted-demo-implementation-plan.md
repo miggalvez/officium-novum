@@ -417,10 +417,11 @@ OFFICIUM_ALLOWED_ORIGINS=https://demo.example.org,http://localhost:5173
 If frontend and API are served from the same origin, prefer relative API URLs:
 
 ```text
-VITE_OFFICIUM_API_BASE_URL=/api
+VITE_OFFICIUM_API_BASE_URL=
 ```
 
-Same-origin hosting avoids CORS pain. The devil has many aliases; CORS is one of them.
+Same-origin hosting avoids CORS pain. In that shape the frontend uses root-relative
+`/api/v1/...` URLs, so leave `VITE_OFFICIUM_API_BASE_URL` empty.
 
 ---
 
@@ -1212,7 +1213,7 @@ Before beta:
 - Use keyboard only.
 - Submit a fake report through GitHub issue handoff.
 - Submit a fake report through email handoff.
-- Verify no private contact information is included in public report payload unless explicitly opted in.
+- Verify no private contact information is included in public report payloads.
 
 ---
 
@@ -1516,7 +1517,7 @@ Do not make the banner alarming. The goal is confidence with humility, not “ab
 ### 25.2 Report dialog privacy note
 
 ```text
-Reports submitted through GitHub are public. Do not include private contact information there unless you want it published. Email reports are private by default and will be referenced publicly only by report ID unless you opt into attribution.
+Reports submitted through GitHub are public. Your name is published only when you opt in; contact details are never included in public report payloads. Email reports are private by default and will be referenced publicly only by report ID unless you opt into attribution.
 ```
 
 ### 25.3 Warning banner

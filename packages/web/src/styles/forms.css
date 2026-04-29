@@ -1,0 +1,101 @@
+label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+}
+
+input[type='date'],
+input[type='text'],
+input[type='email'],
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  min-height: 32px;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+button,
+.button {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  min-height: 32px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.button--primary,
+button[type='submit'] {
+  background: var(--color-link);
+  color: #fff;
+  border-color: var(--color-link);
+}
+
+.button--ghost {
+  background: transparent;
+}
+
+button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  margin: 0 0 var(--space-3);
+}
+
+legend {
+  padding: 0 var(--space-2);
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+dialog {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: var(--space-4);
+  max-width: 640px;
+  width: calc(100vw - 2rem);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}

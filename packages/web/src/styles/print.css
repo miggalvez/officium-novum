@@ -1,0 +1,43 @@
+@media print {
+  .app-header,
+  .app-footer,
+  .beta-banner,
+  .toolbar,
+  .skip-link,
+  .reviewer-meta,
+  button,
+  .button,
+  nav {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .app-main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .office__line[data-mode='parallel'] {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .run-rubric {
+    color: #000;
+    font-style: italic;
+  }
+
+  .run-rubric::before {
+    content: '\2014 ';
+  }
+  .run-rubric::after {
+    content: '';
+  }
+
+  a[href]::after {
+    content: '';
+  }
+}

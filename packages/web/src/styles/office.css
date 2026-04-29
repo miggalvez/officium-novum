@@ -1,0 +1,132 @@
+.office {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-base);
+  line-height: 1.55;
+}
+
+.office__header {
+  margin-bottom: var(--space-6);
+}
+
+.office__section {
+  margin: 0 0 var(--space-6);
+  padding: 0 0 var(--space-3);
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.office__section:last-child {
+  border-bottom: none;
+}
+
+.office__section-heading {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  margin-bottom: var(--space-3);
+}
+
+.office__line {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-2) 0;
+  padding: var(--space-1) 0;
+}
+
+.office__line[data-mode='parallel'] {
+  grid-template-columns: 1fr 1fr;
+}
+
+.office__line[data-mode='single'] {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 720px) {
+  .office__line[data-mode='parallel'] {
+    grid-template-columns: 1fr;
+  }
+}
+
+.office__lang-cell {
+  display: block;
+}
+
+.office__lang-cell[data-lang='la'] {
+  font-style: normal;
+}
+
+.office__lang-cell[data-lang='en'] {
+  color: var(--color-muted);
+}
+
+.office__lang-label {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .office__lang-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+}
+
+.office__marker {
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-right: var(--space-2);
+  font-variant: small-caps;
+}
+
+.run-rubric {
+  color: var(--color-rubric);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.run-rubric::before {
+  content: '\201C';
+}
+
+.run-rubric::after {
+  content: '\201D';
+}
+
+.run-citation {
+  color: var(--color-muted);
+  font-size: 0.85em;
+  margin-left: var(--space-1);
+}
+
+.run-unresolved {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.reviewer-meta {
+  margin-top: var(--space-6);
+  padding: var(--space-3);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.reviewer-meta dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+}
+
+.reviewer-meta dt {
+  font-weight: 600;
+}

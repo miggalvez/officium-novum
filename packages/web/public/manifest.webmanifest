@@ -1,0 +1,18 @@
+{
+  "name": "Officium Novum (beta)",
+  "short_name": "Officium",
+  "description": "Hosted demo of the Officium Novum API — traditional Roman Breviary Office.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fdfcf7",
+  "theme_color": "#7c0a02",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
