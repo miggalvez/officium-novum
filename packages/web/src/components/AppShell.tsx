@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { getEnvironment } from '../app/env';
 import { useLink, useRouter } from '../app/router';
 import { todayIso } from '../routes/parse-route-state';
-import { buildOfficeRoute, buildCalendarRoute } from '../routes/build-route';
+import { buildOfficeRoute, buildCalendarRoute, buildDayRoute } from '../routes/build-route';
 import { DEFAULT_HOUR } from '../routes/paths';
 import { useSettings } from '../features/settings/settings-store';
 
@@ -27,7 +27,15 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
     fontSize: settings.fontSize,
     strict: settings.strict
   });
-  const dayHref = `/day/${today}?version=${encodeURIComponent(settings.defaultVersion)}&lang=${settings.defaultLanguages.join(',')}`;
+  const dayHref = buildDayRoute({
+    date: today,
+    version: settings.defaultVersion,
+    languages: settings.defaultLanguages,
+    orthography: settings.orthography,
+    displayMode: settings.displayMode,
+    fontSize: settings.fontSize,
+    strict: settings.strict
+  });
   const month = new Date();
   const calendarHref = buildCalendarRoute({
     year: month.getFullYear(),

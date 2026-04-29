@@ -98,11 +98,23 @@ describe('build helpers round-trip', () => {
   });
 
   it('buildDayRoute and buildCalendarRoute produce parseable URLs', () => {
-    const day = buildDayRoute({ date: '2026-04-28' });
+    const day = buildDayRoute({
+      date: '2026-04-28',
+      version: 'Rubrics 1960 - 1960',
+      languages: ['la'],
+      orthography: 'source',
+      displayMode: 'sequential',
+      fontSize: 'large',
+      strict: false
+    });
     const cal = buildCalendarRoute({ year: 2026, month: 4 });
     const dayParsed = parseRoute(splitUrl(day));
     const calParsed = parseRoute(splitUrl(cal));
     expect(dayParsed.name).toBe('day');
+    expect(dayParsed.name === 'day' ? dayParsed.orthography : undefined).toBe('source');
+    expect(dayParsed.name === 'day' ? dayParsed.displayMode : undefined).toBe('sequential');
+    expect(dayParsed.name === 'day' ? dayParsed.fontSize : undefined).toBe('large');
+    expect(dayParsed.name === 'day' ? dayParsed.strict : undefined).toBe(false);
     expect(calParsed.name).toBe('calendar');
   });
 });

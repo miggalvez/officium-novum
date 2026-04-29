@@ -13,10 +13,15 @@ async function fetchVersions(): Promise<readonly VersionInfo[]> {
     return versionsCache;
   }
   if (!versionsPromise) {
-    versionsPromise = getVersions().then((response) => {
-      versionsCache = response.versions;
-      return versionsCache;
-    });
+    versionsPromise = getVersions()
+      .then((response) => {
+        versionsCache = response.versions;
+        return versionsCache;
+      })
+      .catch((err) => {
+        versionsPromise = undefined;
+        throw err;
+      });
   }
   return versionsPromise;
 }
@@ -26,10 +31,15 @@ async function fetchLanguages(): Promise<readonly LanguageInfo[]> {
     return languagesCache;
   }
   if (!languagesPromise) {
-    languagesPromise = getLanguages().then((response) => {
-      languagesCache = response.languages;
-      return languagesCache;
-    });
+    languagesPromise = getLanguages()
+      .then((response) => {
+        languagesCache = response.languages;
+        return languagesCache;
+      })
+      .catch((err) => {
+        languagesPromise = undefined;
+        throw err;
+      });
   }
   return languagesPromise;
 }
