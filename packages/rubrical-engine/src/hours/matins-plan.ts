@@ -1192,8 +1192,10 @@ function suppressFinalResponsoryBeforeTeDeum(plan: MatinsPlan): MatinsPlan {
 
   const updatedLastNocturn: NocturnPlan = {
     ...lastNocturn,
-    responsories: lastNocturn.responsories.filter(
-      (responsory) => responsory.index !== lastLesson.index
+    responsories: markLastResponsoryWithGloria(
+      lastNocturn.responsories.filter(
+        (responsory) => responsory.index !== lastLesson.index
+      )
     )
   };
 
@@ -1204,6 +1206,24 @@ function suppressFinalResponsoryBeforeTeDeum(plan: MatinsPlan): MatinsPlan {
     ...plan,
     nocturnPlan
   };
+}
+
+function markLastResponsoryWithGloria(
+  responsories: readonly ResponsorySource[]
+): readonly ResponsorySource[] {
+  if (responsories.length === 0) {
+    return responsories;
+  }
+
+  const lastIndex = responsories.length - 1;
+  return responsories.map((responsory, index) =>
+    index === lastIndex
+      ? {
+          ...responsory,
+          appendGloria: true
+        }
+      : responsory
+  );
 }
 
 interface SectionMatch {

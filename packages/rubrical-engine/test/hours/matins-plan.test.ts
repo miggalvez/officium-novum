@@ -372,6 +372,7 @@ describe('buildMatinsPlan', () => {
         reference: { path: 'horas/Latin/Tempora/Pasc3-3', section: 'Responsory1' }
       },
       {
+        appendGloria: true,
         index: 2,
         reference: { path: 'horas/Latin/Tempora/Pasc3-3', section: 'Responsory2' }
       }

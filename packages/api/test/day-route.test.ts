@@ -225,6 +225,16 @@ describeIfUpstream('day route integration', () => {
     expect(firstLineText(body, 'matins', 'responsory', 'en')).toBe(
       'Thy streets, O Jerusalem, shall bel paved with pure gold, Alleluia, and the song of joy shall be sung in thee. Alleluia.'
     );
+    expect(slotLineTexts(body, 'matins', 'responsory', 'la', 1).slice(-3)).toEqual([
+      'Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.',
+      'Et David cum cantóribus cítharam percutiébat in domo Dómini, et laudes Deo canébat, allelúia, allelúia.'
+    ]);
+    expect(slotLineTexts(body, 'matins', 'responsory', 'en', 1).slice(-3)).toEqual([
+      'Glory be to the Father, and to the Son, * and to the Holy Ghost.',
+      'As it was in the beginning, is now, * and ever shall be, world without end. Amen.',
+      'And David was with the singers, (and) played upon an harp in the house of the Lord, and sung praises unto God. Alleluia, Alleluia.'
+    ]);
     expect(firstLineText(body, 'matins', 'lectio-brevis', 'en')).toContain(
       'Lesson from the book of Revelation'
     );
@@ -396,6 +406,25 @@ function firstLineText(
   const section = body.hours[hour]?.sections.find((candidate) => candidate.slot === slot);
   const line = section?.lines.find((candidate) => candidate.texts[language]?.length);
   return line?.texts[language]?.map((run) => run.value).join('');
+}
+
+function slotLineTexts(
+  body: {
+    readonly hours: Record<string, { readonly sections: readonly ApiSection[] }>;
+  },
+  hour: string,
+  slot: string,
+  language: 'la' | 'en',
+  sectionIndex = 0
+): readonly string[] {
+  const section = body.hours[hour]?.sections.filter((candidate) => candidate.slot === slot)[
+    sectionIndex
+  ];
+  return (
+    section?.lines
+      .map((line) => line.texts[language]?.map((run) => run.value).join('') ?? '')
+      .filter(Boolean) ?? []
+  );
 }
 
 interface ApiSection {

@@ -107,6 +107,7 @@ export interface ResponsorySource {
   readonly index: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   readonly reference: TextReference;
   readonly replacesTeDeum?: boolean;
+  readonly appendGloria?: boolean;
 }
 
 export interface AntiphonReference {

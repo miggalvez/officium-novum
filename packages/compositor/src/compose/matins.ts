@@ -359,7 +359,9 @@ function composeNocturn(
     const responsorySection = responsory
       ? responsory.replacesTeDeum
         ? undefined
-        : composeReferenceSlot('responsory', responsory.reference, args)
+        : composeReferenceSlot('responsory', responsory.reference, args, undefined, {
+            appendGloria: responsory.appendGloria === true
+          })
       : undefined;
     const benediction = nocturn.benedictions.find((b) => b.index === lesson.index);
     const benedictioSection = benediction
@@ -501,6 +503,7 @@ interface MatinsSlotRef {
   readonly isAntiphon: boolean;
   readonly openingAntiphon?: boolean;
   readonly repeatAntiphon?: boolean;
+  readonly appendGloria?: boolean;
   readonly hasExplicitAntiphon?: boolean;
   readonly pairedAntiphonRef?: TextReference;
   readonly pairedPsalmRef?: TextReference;
@@ -511,14 +514,64 @@ function composeReferenceSlot(
   slot: Parameters<typeof emitSection>[0],
   ref: TextReference,
   args: MatinsComposeContext,
-  hymnDoxology?: ReadonlyMap<string, readonly TextContent[]>
+  hymnDoxology?: ReadonlyMap<string, readonly TextContent[]>,
+  options: { readonly appendGloria?: boolean } = {}
 ): Section | undefined {
   return composeMergedSlot(
     slot,
-    [{ ref, isAntiphon: isWholeAntiphonSlot(slot) }],
+    [{ ref, isAntiphon: isWholeAntiphonSlot(slot), ...options }],
     args,
     hymnDoxology
   );
+}
+
+function withResponsoryGloria(
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (containsGloriaMacro(content)) {
+    return content;
+  }
+
+  const repeatedResponse = findLastResponsoryResponse(content);
+  return Object.freeze([
+    ...content,
+    { type: 'macroRef', name: 'Gloria' } satisfies TextContent,
+    ...(repeatedResponse ? [repeatedResponse] : [])
+  ]);
+}
+
+function containsGloriaMacro(content: readonly TextContent[]): boolean {
+  return content.some((node) => {
+    if (node.type === 'macroRef') {
+      return node.name.toLowerCase() === 'gloria';
+    }
+    if (node.type === 'conditional') {
+      return containsGloriaMacro(node.content);
+    }
+    return false;
+  });
+}
+
+function findLastResponsoryResponse(
+  content: readonly TextContent[]
+): Extract<TextContent, { type: 'verseMarker' }> | undefined {
+  for (let index = content.length - 1; index >= 0; index -= 1) {
+    const node = content[index]!;
+    if (node.type === 'verseMarker' && /^r\.?$/iu.test(node.marker.trim())) {
+      return {
+        type: 'verseMarker',
+        marker: node.marker,
+        text: node.text
+      };
+    }
+    if (node.type === 'conditional') {
+      const nested = findLastResponsoryResponse(node.content);
+      if (nested) {
+        return nested;
+      }
+    }
+  }
+  return undefined;
 }
 
 function composeMergedSlot(
@@ -533,7 +586,7 @@ function composeMergedSlot(
     perLanguage.set(lang, []);
   }
 
-  for (const { ref, isAntiphon, openingAntiphon, psalmIndex, hasExplicitAntiphon, repeatAntiphon, pairedAntiphonRef, pairedPsalmRef } of refs) {
+  for (const { ref, isAntiphon, openingAntiphon, psalmIndex, hasExplicitAntiphon, repeatAntiphon, appendGloria, pairedAntiphonRef, pairedPsalmRef } of refs) {
     const resolved = resolveReference(args.corpus, ref, {
       languages: args.options.languages,
       langfb: args.options.langfb,
@@ -571,7 +624,9 @@ function composeMergedSlot(
       const sourceContent =
         slot === 'versicle'
           ? extendPsalterMatinsVersicleContent(section.content, ref, lang, args)
-          : section.content;
+          : appendGloria === true && slot === 'responsory'
+            ? withResponsoryGloria(section.content)
+            : section.content;
       if (slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(sourceContent)) {
         const antiphonOnly = extractInlinePsalmAntiphons(sourceContent);
         const flattened = flattenConditionals(antiphonOnly, args.context);
