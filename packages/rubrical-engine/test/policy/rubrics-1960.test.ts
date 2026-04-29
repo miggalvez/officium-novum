@@ -6,6 +6,7 @@ import {
   type Celebration,
   type CelebrationRuleSet,
   type ClassSymbol1960,
+  type HourRuleSet,
   type TemporalContext
 } from '../../src/index.js';
 
@@ -130,6 +131,57 @@ describe('rubrics1960Policy.isPrivilegedFeria', () => {
     expect(rubrics1960Policy.isPrivilegedFeria(temporal(date, dayName, season(dayName)))).toBe(
       expected
     );
+  });
+});
+
+describe('rubrics1960Policy.selectPsalmody', () => {
+  it('models Eastertide III-class sanctoral weekday Lauds as ferial psalms with a whole-slot Paschal Alleluia antiphon', () => {
+    const psalms = rubrics1960Policy.selectPsalmody({
+      hour: 'lauds',
+      celebration: matinsCelebration('Sancti/04-28', 'III', 'sanctoral'),
+      celebrationRules: matinsRules(),
+      hourRules: hourRules({ psalterScheme: 'dominica' }),
+      temporal: temporal('2026-04-28', 'Pasc3-2', 'eastertide', 'IV'),
+      corpus: {} as never
+    });
+
+    expect(psalms[0]?.psalmRef).toEqual({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+      section: 'Day2 Laudes1',
+      selector: '1'
+    });
+    expect(psalms.every((assignment) => assignment.antiphonRef === psalms[0]?.antiphonRef)).toBe(
+      true
+    );
+    expect(psalms[0]?.antiphonRef).toEqual({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+      section: 'Pasch',
+      selector: '1'
+    });
+  });
+
+  it('does not attach the Paschal Lauds antiphon outside Eastertide', () => {
+    const psalms = rubrics1960Policy.selectPsalmody({
+      hour: 'lauds',
+      celebration: matinsCelebration('Sancti/08-19', 'III', 'sanctoral'),
+      celebrationRules: matinsRules(),
+      hourRules: hourRules({ psalterScheme: 'dominica' }),
+      temporal: temporal('2024-08-19', 'Pent13-1', 'time-after-pentecost', 'IV'),
+      corpus: {} as never
+    });
+
+    expect(psalms[0]?.psalmRef).toMatchObject({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+      section: 'Day1 Laudes1',
+      selector: '1'
+    });
+    expect(psalms.map((assignment) => assignment.antiphonRef)).toEqual([
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined
+    ]);
   });
 });
 
@@ -542,6 +594,19 @@ function matinsRules(overrides: Partial<CelebrationRuleSet> = {}): CelebrationRu
     unaAntiphona: false,
     unmapped: [],
     hourScopedDirectives: [],
+    ...overrides
+  };
+}
+
+function hourRules(overrides: Partial<HourRuleSet> = {}): HourRuleSet {
+  return {
+    hour: 'lauds',
+    omit: [],
+    psalterScheme: 'ferial',
+    psalmOverrides: [],
+    matinsLessonIntroduction: 'ordinary',
+    minorHoursSineAntiphona: false,
+    minorHoursFerialPsalter: false,
     ...overrides
   };
 }

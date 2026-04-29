@@ -246,6 +246,50 @@ describe('buildMatinsPlan', () => {
     ]);
   });
 
+  it('uses ferial Matins psalms with one Paschal Alleluia antiphon for 1960 III-class sanctoral weekdays', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Sancti/04-29.txt', festalMatinsSections());
+    corpus.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt',
+      thirdClassSanctoralWeekdayPaschalMatinsPsalterSections()
+    );
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/04-29', 'III', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2026-04-29', 'Pasc3-3', 'eastertide', 'IV'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    const psalmody = result.plan.nocturnPlan[0]?.psalmody ?? [];
+    expect(result.plan.nocturns).toBe(1);
+    expect(psalmody.map((assignment) => assignment.psalmRef.selector)).toEqual([
+      "44('2a'-'10b')",
+      "44(11-'18b')",
+      '45'
+    ]);
+    expect(psalmody.map((assignment) => assignment.antiphonRef)).toEqual([
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Paschm0',
+        selector: '17'
+      },
+      undefined,
+      undefined
+    ]);
+    expect(result.plan.nocturnPlan[0]?.antiphons.map((antiphon) => antiphon.reference)).toEqual([
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Paschm0',
+        selector: '17'
+      }
+    ]);
+  });
+
   it('falls through to inherited Easter Octave Matins antiphons when the local section only overlays a reference and versicle', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add('horas/Latin/Tempora/Pasc0-0.txt', easterSundayMatinsSections());
@@ -1097,6 +1141,36 @@ function paschaltideSundayPsalterSections(): string {
     '[Pasch 3 Versum]',
     'V. Gavísi sunt discípuli, allelúja.',
     'R. Viso Dómino, allelúja.'
+  ].join('\n');
+}
+
+function thirdClassSanctoralWeekdayPaschalMatinsPsalterSections(): string {
+  return [
+    '[Day3]',
+    "Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.;;44('2a'-'10b')",
+    "Confitebúntur tibi * pópuli Deus in ætérnum.;;44(11-'18b')",
+    'Adjútor in tribulatiónibus * Deus noster.;;45',
+    'V. Dóminus virtútum nobíscum.',
+    'R. Suscéptor noster, Deus Jacob.',
+    '',
+    '[Paschm0]',
+    'Allelúja, * lapis revolútus est, allelúja: ab óstio monuménti, allelúja, allelúja.;;20',
+    ';;21',
+    ';;22',
+    ';;23',
+    ';;24',
+    ';;25',
+    'V. Surréxit Dóminus de sepúlcro, allelúja.',
+    'R. Qui pro nobis pepéndit in ligno, allelúja.',
+    'Allelúja, * quem quæris múlier? allelúja: vivéntem cum mórtuis? allelúja, allelúja.;;26',
+    ';;27',
+    ';;28',
+    ';;29',
+    ';;30',
+    ';;31',
+    'V. Surréxit Dóminus vere, allelúja.',
+    'R. Et appáruit Simóni, allelúja.',
+    'Allelúja, * allelúja, allelúja.;;243;244;245'
   ].join('\n');
 }
 

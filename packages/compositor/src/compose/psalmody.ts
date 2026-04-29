@@ -229,7 +229,9 @@ export function normalizeOpeningPsalmodyAntiphonContent(
   version: ResolvedVersion,
   ref: TextReference
 ): readonly TextContent[] {
-  if (!shouldNormalizeOpeningPsalmodyAntiphon(hour, version, ref)) {
+  const shorten = shouldNormalizeOpeningPsalmodyAntiphon(hour, version, ref);
+  const ensurePeriod = shouldEnsureTerminalPsalmodyAntiphonPeriod(hour, version, ref);
+  if (!shorten && !ensurePeriod) {
     return content;
   }
 
@@ -240,7 +242,7 @@ export function normalizeOpeningPsalmodyAntiphonContent(
     if (node.type === 'text') {
       out[index] = {
         type: 'text',
-        value: normalizeOpeningPsalmodyAntiphonText(node.value)
+        value: finalizeOpeningPsalmodyAntiphonText(node.value, { shorten, ensurePeriod })
       };
       break;
     }
@@ -248,7 +250,7 @@ export function normalizeOpeningPsalmodyAntiphonContent(
       out[index] = {
         type: 'verseMarker',
         marker: node.marker,
-        text: normalizeOpeningPsalmodyAntiphonText(node.text)
+        text: finalizeOpeningPsalmodyAntiphonText(node.text, { shorten, ensurePeriod })
       };
       break;
     }
@@ -373,6 +375,35 @@ function shouldNormalizeOpeningPsalmodyAntiphon(
   }
 
   return hour === 'prime' || isWeekdayMinorPsalmiMinorRef(ref);
+}
+
+function shouldEnsureTerminalPsalmodyAntiphonPeriod(
+  hour: HourName,
+  version: ResolvedVersion,
+  ref: TextReference
+): boolean {
+  return (
+    hour === 'lauds' &&
+    version.handle.includes('1960') &&
+    ref.path.endsWith(PSALMI_MINOR_SUFFIX) &&
+    ref.section === 'Tridentinum' &&
+    ref.selector === 'Prima Festis#antiphon'
+  );
+}
+
+function finalizeOpeningPsalmodyAntiphonText(
+  text: string,
+  options: { readonly shorten: boolean; readonly ensurePeriod: boolean }
+): string {
+  const normalized = options.shorten ? normalizeOpeningPsalmodyAntiphonText(text) : text.trim();
+  return options.ensurePeriod ? ensureTerminalPeriod(normalized) : normalized;
+}
+
+function ensureTerminalPeriod(text: string): string {
+  if (!text || /[.!?]$/u.test(text)) {
+    return text;
+  }
+  return `${text}.`;
 }
 
 function normalizeOpeningPsalmodyAntiphonText(text: string): string {

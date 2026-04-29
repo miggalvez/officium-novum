@@ -1,6 +1,7 @@
 import type { Condition, ParsedFile, RuleDirective } from '@officium-novum/parser';
 
 import type { RubricalWarning } from './directorium.js';
+import type { TextReference } from './hour-structure.js';
 import type { Celebration, Commemoration, HourName } from './ordo.js';
 import type { ResolvedVersion } from './version.js';
 
@@ -73,6 +74,7 @@ export interface HourRuleSet {
   readonly hour: HourName;
   readonly omit: readonly OmittableSlot[];
   readonly psalterScheme: PsalterScheme;
+  readonly psalmodyAntiphonOverride?: PsalmodyAntiphonOverride;
   readonly psalmOverrides: readonly PsalmOverride[];
   readonly matinsLessonIntroduction: MatinsLessonIntroduction;
   readonly minorHoursSineAntiphona: boolean;
@@ -109,6 +111,12 @@ export interface PapalNameBindings {
 export interface PsalmOverride {
   readonly key: string;
   readonly value: string;
+}
+
+export interface PsalmodyAntiphonOverride {
+  readonly source: 'paschal-alleluia';
+  readonly application: 'whole-slot';
+  readonly ref: TextReference;
 }
 
 export type OmittableSlot =

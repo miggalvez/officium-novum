@@ -75,7 +75,29 @@ export function selectPsalmodyRoman1960(
     }
   }
 
-  return appendQuicumqueAtPrime(applyPsalmOverrides(assignments, params), params);
+  return applyPsalmodyAntiphonOverride(
+    appendQuicumqueAtPrime(applyPsalmOverrides(assignments, params), params),
+    hourRules.psalmodyAntiphonOverride
+  );
+}
+
+function applyPsalmodyAntiphonOverride(
+  assignments: readonly PsalmAssignment[],
+  override: SelectPsalmodyInput['hourRules']['psalmodyAntiphonOverride']
+): readonly PsalmAssignment[] {
+  if (!override || assignments.length === 0) {
+    return assignments;
+  }
+
+  switch (override.application) {
+    case 'whole-slot':
+      return Object.freeze(
+        assignments.map((assignment) => ({
+          ...assignment,
+          antiphonRef: override.ref
+        }))
+      );
+  }
 }
 
 function appendQuicumqueAtPrime(

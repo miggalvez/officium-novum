@@ -1286,6 +1286,62 @@ describe('composeHour', () => {
     );
   });
 
+  it('punctuates the 1960 Paschaltide Lauds alleluia antiphon sourced from Psalmi minor', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi minor', 'Tridentinum', [
+        {
+          type: 'text',
+          value: 'Prima Festis=Allelúja, * allelúja, allelúja;;53,118(1-16),118(17-32)'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmorum/Psalm95', '__preamble', [
+        { type: 'text', value: '95:1 Cantáte Dómino cánticum novum.' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri.' },
+        { type: 'verseMarker', marker: 'R.', text: 'Sicut erat.' }
+      ])
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary({
+        hour: 'lauds',
+        slots: {
+          psalmody: {
+            kind: 'psalmody',
+            psalms: [
+              {
+                antiphonRef: {
+                  path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+                  section: 'Tridentinum',
+                  selector: 'Prima Festis#antiphon'
+                },
+                psalmRef: {
+                  path: 'horas/Latin/Psalterium/Psalmorum/Psalm95',
+                  section: '__preamble'
+                }
+              }
+            ]
+          }
+        },
+        directives: []
+      }),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(slotLines(composed, 'psalmody', 'Latin')[0]).toBe(
+      'Allelúja, * allelúja, allelúja.'
+    );
+  });
+
   it('shortens Saturday weekday Psalmi minor antiphon openings in pre-1960 minor hours', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(

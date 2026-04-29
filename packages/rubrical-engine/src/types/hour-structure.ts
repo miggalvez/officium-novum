@@ -69,7 +69,7 @@ export type SlotContent =
 /**
  * Hour-scoped directives emitted by the structurer for Phase 3 to apply to
  * the resolved text. Psalter-selection outcomes are NOT encoded here — they
- * live on `HourRuleSet.psalterScheme`.
+ * live on `HourRuleSet` psalmody fields.
  */
 export type HourDirective =
   | 'omit-gloria-patri'

@@ -455,7 +455,12 @@ function composePsalmody(
 }
 
 function usesGroupedMatinsAntiphon(ref: TextReference): boolean {
-  return ref.section === 'Pasch0';
+  return (
+    ref.section === 'Pasch0' ||
+    (ref.path.endsWith('/Psalterium/Psalmi/Psalmi matutinum') &&
+      ref.section === 'Paschm0' &&
+      ref.selector === '17')
+  );
 }
 
 function composeLesson(lesson: LessonPlan, args: MatinsComposeContext): Section | undefined {

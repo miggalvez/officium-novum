@@ -150,6 +150,68 @@ describeIfUpstream('day route integration', () => {
     expect(body.warnings.rubrical).toEqual([]);
     expect(body.warnings.composition.lauds).toEqual([]);
     expect(body.hours.lauds.warnings).toEqual([]);
+
+    const psalmody = body.hours.lauds.sections
+      .find((section: { slot: string }) => section.slot === 'psalmody');
+    const firstAntiphon = psalmody?.lines.find(
+      (line: { marker?: string; texts: { la?: Array<{ type: string; value: string }> } }) =>
+        line.marker === 'Ant.'
+    );
+    const antiphons = psalmody?.lines.filter((line: { marker?: string }) => line.marker === 'Ant.');
+    const firstPsalmHeading = psalmody?.lines.find(
+      (line: { texts: { la?: Array<{ type: string; value: string }> } }) =>
+        line.texts.la?.some((node) => node.type === 'text' && /^Psalmus \d+/u.test(node.value))
+    );
+    expect(firstAntiphon?.texts.la?.[0]?.value).toMatch(
+      /^Allelú[ij]a, \* allelú[ij]a, allelú[ij]a\.$/u
+    );
+    expect(antiphons).toHaveLength(2);
+    expect(firstPsalmHeading?.texts.la?.[0]?.value).toBe('Psalmus 95 [1]');
+  }, 120_000);
+
+  it('uses ferial psalmody with Paschal Alleluia for St Peter Martyr on 2026-04-29', async () => {
+    const app = await fullApp();
+    const response = await app.inject(
+      '/api/v1/days/2026-04-29?rubrics=1960&hours=all&lang=la,en'
+    );
+
+    expect(response.statusCode).toBe(200);
+    const body = response.json();
+    expect(body.summary.celebration).toMatchObject({
+      feast: {
+        path: 'Sancti/04-29',
+        title: 'S. Petri Martyris'
+      },
+      rank: {
+        classSymbol: 'III'
+      }
+    });
+    expect(body.summary.temporal.feast).toMatchObject({
+      path: 'Tempora/Pasc3-3Feria',
+      title: 'Feria Quarta infra Hebdomadam III post Octavam Paschæ'
+    });
+    expect(body.summary.warnings).toEqual([]);
+    expect(body.warnings.rubrical).toEqual([]);
+
+    for (const hour of ['lauds', 'prime', 'terce', 'sext', 'none', 'vespers'] as const) {
+      expect(firstAntiphonText(body, hour)).toMatch(
+        /^Allelú[ij]a, \* allelú[ij]a, allelú[ij]a\.$/u
+      );
+      expect(body.warnings.composition[hour]).toEqual([]);
+      expect(body.hours[hour].warnings).toEqual([]);
+    }
+
+    expect(firstAntiphonText(body, 'matins')).toMatch(
+      /^Allelú[ij]a, \* allelú[ij]a, allelú[ij]a\.$/u
+    );
+    expect(firstPsalmHeading(body, 'matins')).toMatch(/^Psalmus 44/u);
+    expect(firstPsalmHeading(body, 'lauds')).toBe('Psalmus 96 [1]');
+    expect(firstPsalmHeading(body, 'prime')).toBe('Psalmus 25 [1]');
+    expect(firstPsalmHeading(body, 'terce')).toBe('Psalmus 53 [1]');
+    expect(firstPsalmHeading(body, 'sext')).toBe('Psalmus 55 [1]');
+    expect(firstPsalmHeading(body, 'none')).toBe('Psalmus 58(2-11) [1]');
+    expect(firstPsalmHeading(body, 'vespers')).toBe('Psalmus 127 [1]');
+    expect(firstAntiphonText(body, 'compline')).not.toMatch(/^Allelú[ij]a,/u);
   }, 120_000);
 
   it('resolves the day summary once for multiple selected hours', async () => {
@@ -264,3 +326,48 @@ describeIfUpstream('day route integration', () => {
     expect(response.json()).toMatchObject({ code: 'invalid-query-value' });
   }, 120_000);
 });
+
+function firstAntiphonText(
+  body: {
+    readonly hours: Record<string, { readonly sections: readonly ApiSection[] }>;
+  },
+  hour: string
+): string | undefined {
+  const psalmody = psalmodySection(body, hour);
+  return psalmody?.lines.find((line) => line.marker === 'Ant.')?.texts.la?.[0]?.value;
+}
+
+function firstPsalmHeading(
+  body: {
+    readonly hours: Record<string, { readonly sections: readonly ApiSection[] }>;
+  },
+  hour: string
+): string | undefined {
+  const psalmody = psalmodySection(body, hour);
+  return psalmody?.lines
+    .flatMap((line) => line.texts.la ?? [])
+    .find((node) => node.type === 'text' && /^Psalmus \d+/u.test(node.value))
+    ?.value;
+}
+
+function psalmodySection(
+  body: {
+    readonly hours: Record<string, { readonly sections: readonly ApiSection[] }>;
+  },
+  hour: string
+): ApiSection | undefined {
+  return body.hours[hour]?.sections.find((section) => section.slot === 'psalmody');
+}
+
+interface ApiSection {
+  readonly slot: string;
+  readonly lines: readonly Array<{
+    readonly marker?: string;
+    readonly texts: {
+      readonly la?: readonly Array<{
+        readonly type: string;
+        readonly value: string;
+      }>;
+    };
+  }>;
+}

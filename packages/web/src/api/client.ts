@@ -59,6 +59,7 @@ async function getJson<T>(url: string, options: FetchOptions = {}): Promise<T> {
   try {
     response = await fetchImpl(url, {
       method: 'GET',
+      cache: 'no-cache',
       headers: { Accept: 'application/json' },
       ...(options.signal ? { signal: options.signal } : {})
     });

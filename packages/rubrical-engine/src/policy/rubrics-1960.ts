@@ -70,6 +70,12 @@ const FEASTS_OF_THE_LORD = new Set<string>([
   'Tempora/Pent02-5'
 ]);
 
+const PASCHAL_ALLELUIA_PSALMODY_ANTIPHON_REF = {
+  path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+  section: 'Pasch',
+  selector: '1'
+} as const;
+
 const HOLY_WEEK_KEYS = new Set([
   'Quad6-0',
   'Quad6-1',
@@ -298,7 +304,7 @@ export const rubrics1960Policy: RubricalPolicy = {
       hour: params.hour,
       celebration: params.celebration,
       celebrationRules: params.celebrationRules,
-      hourRules: params.hourRules,
+      hourRules: thirdClassSanctoralWeekdayPsalmody1960(params),
       temporal: params.temporal,
       corpus: params.corpus,
       vespersSide: params.vespersSide,
@@ -524,6 +530,55 @@ export const rubrics1960Policy: RubricalPolicy = {
     return null;
   }
 };
+
+function thirdClassSanctoralWeekdayPsalmody1960(
+  params: SelectPsalmodyParams
+): SelectPsalmodyParams['hourRules'] {
+  if (
+    params.celebration.source !== 'sanctoral' ||
+    params.celebration.rank.classSymbol !== 'III' ||
+    params.temporal.dayOfWeek === 0
+  ) {
+    return params.hourRules;
+  }
+
+  const hourRules: SelectPsalmodyParams['hourRules'] =
+    params.hourRules.psalterScheme === 'dominica'
+      ? {
+          ...params.hourRules,
+          psalterScheme: 'ferial'
+        }
+      : params.hourRules;
+
+  if (
+    params.temporal.season !== 'eastertide' ||
+    !usesThirdClassSanctoralPaschalAlleluiaPsalmodyAntiphon(params.hour)
+  ) {
+    return hourRules;
+  }
+
+  return {
+    ...hourRules,
+    psalmodyAntiphonOverride: {
+      source: 'paschal-alleluia',
+      application: 'whole-slot',
+      ref: PASCHAL_ALLELUIA_PSALMODY_ANTIPHON_REF
+    }
+  };
+}
+
+function usesThirdClassSanctoralPaschalAlleluiaPsalmodyAntiphon(
+  hour: HourName
+): boolean {
+  return (
+    hour === 'lauds' ||
+    hour === 'prime' ||
+    hour === 'terce' ||
+    hour === 'sext' ||
+    hour === 'none' ||
+    hour === 'vespers'
+  );
+}
 
 function compareCandidates1960(a: Candidate, b: Candidate): number {
     const privilegedOverride = comparePrivilegedTemporal(a, b);

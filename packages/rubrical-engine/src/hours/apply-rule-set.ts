@@ -443,7 +443,7 @@ function decoratePsalmodyAssignments(
       antiphons[index]
         ? {
             ...assignment,
-            antiphonRef: antiphons[index],
+            antiphonRef: assignment.antiphonRef ?? antiphons[index],
             // When the office file itself supplies a major-hour psalm row,
             // that source-backed psalm assignment owns the slot even if the
             // psalter fallback already chose a concrete psalm number.
@@ -471,11 +471,17 @@ function decoratePsalmodyAssignments(
     if (!antiphon) {
       return assignments;
     }
+    const psalmodyAntiphonOverride = input.hourRules.psalmodyAntiphonOverride?.ref;
     return assignments.map((assignment, index) =>
       index === 0
         ? {
             ...assignment,
-            antiphonRef: antiphon
+            antiphonRef:
+              assignment.antiphonRef &&
+              psalmodyAntiphonOverride &&
+              sameReference(assignment.antiphonRef, psalmodyAntiphonOverride)
+                ? assignment.antiphonRef
+                : antiphon
           }
         : assignment
     );

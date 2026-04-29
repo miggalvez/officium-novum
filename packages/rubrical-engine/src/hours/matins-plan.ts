@@ -50,6 +50,11 @@ const PSALTERIUM_INVITATORIUM_PATH = 'horas/Latin/Psalterium/Invitatorium';
 const PSALTERIUM_MATINS_PATH = 'Psalterium/Psalmi/Psalmi matutinum';
 const PSALTERIUM_MATINS_CONTENT_PATH = 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum';
 const PSALTERIUM_MATINS_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Matutinum Special';
+const PASCHAL_ALLELUIA_MATINS_ANTIPHON_REF: TextReference = {
+  path: PSALTERIUM_MATINS_CONTENT_PATH,
+  section: 'Paschm0',
+  selector: '17'
+};
 
 interface MatinsPsalmodyEntry {
   readonly antiphonRef?: TextReference;
@@ -603,6 +608,12 @@ function collectMatinsAntiphons(
   feastFiles: readonly ParsedFile[],
   psalteriumDaySection: ParsedFile['sections'][number] | undefined
 ): readonly MatinsPsalmodyEntry[] {
+  const thirdClassPaschalWeekdayEntries =
+    collectThirdClassSanctoralWeekdayPaschalMatinsAntiphons(input, psalteriumDaySection);
+  if (thirdClassPaschalWeekdayEntries) {
+    return thirdClassPaschalWeekdayEntries;
+  }
+
   const feastMatches = findSections(feastFiles, 'Ant Matutinum', input);
   for (const match of feastMatches) {
     const sourcePath = match.file.path.replace(/\.txt$/u, '');
@@ -630,6 +641,65 @@ function collectMatinsAntiphons(
     psalteriumDaySection,
     PSALTERIUM_MATINS_CONTENT_PATH,
     input
+  );
+}
+
+function collectThirdClassSanctoralWeekdayPaschalMatinsAntiphons(
+  input: BuildMatinsPlanInput,
+  psalteriumDaySection: ParsedFile['sections'][number] | undefined
+): readonly MatinsPsalmodyEntry[] | undefined {
+  if (!usesThirdClassSanctoralWeekdayPaschalMatinsAntiphon(input)) {
+    return undefined;
+  }
+
+  if (!psalteriumDaySection) {
+    return undefined;
+  }
+
+  const ferialEntries = collectMatinsAntiphonEntriesFromSection(
+    psalteriumDaySection,
+    PSALTERIUM_MATINS_CONTENT_PATH,
+    input
+  );
+  if (ferialEntries.length === 0) {
+    return undefined;
+  }
+
+  return ferialEntries.map((entry, index) => {
+    if (index === 0) {
+      return {
+        ...entry,
+        antiphonRef: PASCHAL_ALLELUIA_MATINS_ANTIPHON_REF,
+        ...(entry.psalmRef
+          ? {
+              psalmRef: {
+                ...entry.psalmRef,
+                antiphonRef: PASCHAL_ALLELUIA_MATINS_ANTIPHON_REF
+              }
+            }
+          : {})
+      };
+    }
+
+    return entry.psalmRef
+      ? {
+          psalmRef: {
+            psalmRef: entry.psalmRef.psalmRef
+          }
+        }
+      : {};
+  });
+}
+
+function usesThirdClassSanctoralWeekdayPaschalMatinsAntiphon(
+  input: Pick<BuildMatinsPlanInput, 'celebration' | 'temporal' | 'version'>
+): boolean {
+  return (
+    input.version?.handle.includes('1960') === true &&
+    input.celebration.source === 'sanctoral' &&
+    input.celebration.rank.classSymbol === 'III' &&
+    input.temporal.season === 'eastertide' &&
+    input.temporal.dayOfWeek !== 0
   );
 }
 

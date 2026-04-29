@@ -583,7 +583,7 @@ function taggedReferencesFrom(
       return content.refs.map((ref) => ({ ref, isAntiphon: wholeAntiphon }));
     case 'psalmody': {
       const refs: TaggedRef[] = [];
-      const slotWideAntiphonRef = isMinorHour(hour) ? content.psalms[0]?.antiphonRef : undefined;
+      const slotWideAntiphonRef = slotWidePsalmodyAntiphonRef(hour, content.psalms);
       if (slotWideAntiphonRef) {
         refs.push({
           ref: slotWideAntiphonRef,
@@ -603,7 +603,7 @@ function taggedReferencesFrom(
           isAntiphon: false,
           psalmIndex: index + 1,
           hasExplicitAntiphon: slotWideAntiphonRef
-            ? index === 0
+            ? true
             : Boolean(assignment.antiphonRef)
         });
         if (!slotWideAntiphonRef && assignment.antiphonRef) {
@@ -631,6 +631,23 @@ function taggedReferencesFrom(
   }
 
   return [];
+}
+
+function slotWidePsalmodyAntiphonRef(
+  hour: HourName,
+  psalms: readonly { readonly antiphonRef?: TextReference }[]
+): TextReference | undefined {
+  if (isMinorHour(hour)) {
+    return psalms[0]?.antiphonRef;
+  }
+
+  const first = psalms[0]?.antiphonRef;
+  if (!first) {
+    return undefined;
+  }
+  return psalms.every((entry) => entry.antiphonRef && referenceKey(entry.antiphonRef) === referenceKey(first))
+    ? first
+    : undefined;
 }
 
 function prependSimplifiedTriduumOrationPrelude(
