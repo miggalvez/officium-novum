@@ -309,6 +309,69 @@ describe('resolveReference', () => {
     ]);
   });
 
+  it('preserves localized source slices when a fallback alias selected part of a section', () => {
+    const source = {
+      path: 'horas/Latin/Psalterium/Common/Prayers.txt',
+      section: 'Dominus'
+    };
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Common/Prayers.txt',
+      sections: [
+        {
+          header: 'Dominus',
+          content: [
+            { type: 'text', value: 'V. Dóminus vobíscum.' },
+            { type: 'text', value: 'R. Et cum spíritu tuo.' },
+            { type: 'text', value: 'V. Dómine, exáudi oratiónem meam.' },
+            { type: 'text', value: 'R. Et clamor meus ad te véniat.' }
+          ],
+          startLine: 1,
+          endLine: 4
+        },
+        {
+          header: 'Domine exaudi',
+          content: [
+            sourcedText('V. Dómine, exáudi oratiónem meam.', source),
+            sourcedText('R. Et clamor meus ad te véniat.', source)
+          ],
+          startLine: 5,
+          endLine: 5
+        }
+      ]
+    });
+    index.addFile({
+      path: 'horas/English/Psalterium/Common/Prayers.txt',
+      sections: [
+        {
+          header: 'Dominus',
+          content: [
+            { type: 'text', value: 'V. The Lord be with you.' },
+            { type: 'text', value: 'R. And with thy spirit.' },
+            { type: 'text', value: 'V. O Lord, hear my prayer.' },
+            { type: 'text', value: 'R. And let my cry come unto thee.' }
+          ],
+          startLine: 1,
+          endLine: 4
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Common/Prayers',
+        section: 'Domine exaudi'
+      },
+      { languages: ['English'], langfb: 'Latin' }
+    );
+
+    expect(resolved.English?.content).toEqual([
+      { type: 'text', value: 'V. O Lord, hear my prayer.' },
+      { type: 'text', value: 'R. And let my cry come unto thee.' }
+    ]);
+  });
+
   it('returns nothing when the section is missing everywhere', () => {
     const index = new InMemoryTextIndex();
     index.addFile(fakeFile('horas/Latin/Commune/C4', 'Hymnus', 'Te lucis'));

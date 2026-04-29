@@ -243,6 +243,22 @@ describeIfUpstream('day route integration', () => {
     expect(firstLineText(body, 'lauds', 'antiphon-ad-benedictus', 'en')).toBe(
       'Daughters of Jerusalem, * come and see the crowned martyrs, the Lord crowned them in his solemnity and delight, alleluia, alleluia.'
     );
+    expect(slotLineTexts(body, 'lauds', 'oration', 'en').slice(0, 3)).toEqual([
+      'O Lord, hear my prayer.',
+      'And let my cry come unto thee.',
+      'Let us pray.'
+    ]);
+    expect(slotLineTexts(body, 'lauds', 'oration', 'en')).not.toContain(
+      'The Lord be with you.'
+    );
+    expect(slotLineTexts(body, 'lauds', 'conclusion', 'en')).toEqual([
+      'O Lord, hear my prayer.',
+      'And let my cry come unto thee.',
+      'Let us bless the Lord.',
+      'Thanks be to God.',
+      'May the souls of the faithful, through the mercy of God, rest in peace.',
+      'Amen.'
+    ]);
 
     expect(firstLineText(body, 'matins', 'hymn', 'en')).toBe(
       'O God, of those that fought thy fight,'
