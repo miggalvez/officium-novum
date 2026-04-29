@@ -44,8 +44,7 @@ const PRIVILEGED_TEMPORAL_CLASSES = new Set<ClassSymbol1960>([
   'I-privilegiata-sundays',
   'I-privilegiata-ash-wednesday',
   'I-privilegiata-holy-week-feria',
-  'I-privilegiata-christmas-vigil',
-  'I-privilegiata-rogation-monday'
+  'I-privilegiata-christmas-vigil'
 ]);
 
 const FEASTS_OF_THE_LORD = new Set<string>([
@@ -251,7 +250,6 @@ export const rubrics1960Policy: RubricalPolicy = {
     return (
       temporal.dayName === 'Quadp3-3' ||
       HOLY_WEEK_MON_WED_KEYS.has(temporal.dayName) ||
-      temporal.dayName === 'Pasc5-1' ||
       temporal.date.endsWith('-12-24')
     );
   },
@@ -325,7 +323,7 @@ export const rubrics1960Policy: RubricalPolicy = {
     commemorations: readonly Commemoration[],
     params
   ): readonly Commemoration[] {
-    const admissible = commemorations.filter((entry) =>
+    let admissible = commemorations.filter((entry) =>
       isAdmissibleCommemoration1960(entry)
     );
 
@@ -336,8 +334,12 @@ export const rubrics1960Policy: RubricalPolicy = {
       return [];
     }
 
-    if (params.celebration.kind === 'vigil' && params.celebration.rank.classSymbol === 'I') {
+    if (isFirstClassVigil1960(params.celebration)) {
       return [];
+    }
+
+    if (isFeastOfTheLordReplacingSecondClassSunday(params.celebration, params.temporal)) {
+      admissible = admissible.filter((entry) => !isSundayCommemoration(entry));
     }
 
     if (isFirstClassDay1960(params.celebration, params.temporal)) {
@@ -348,7 +350,10 @@ export const rubrics1960Policy: RubricalPolicy = {
       return admissible.filter((entry) => entry.rank.classSymbol === 'II').slice(0, 1);
     }
 
-    if (params.celebration.rank.classSymbol === 'II' || params.celebration.rank.classSymbol === 'II-ember-day') {
+    if (
+      params.celebration.rank.classSymbol === 'II' ||
+      params.celebration.rank.classSymbol === 'II-ember-day'
+    ) {
       const privileged = admissible.filter((entry) => isPrivilegedCommemoration1960(entry));
       return (privileged.length > 0 ? privileged : admissible).slice(0, 1);
     }
@@ -581,26 +586,31 @@ function usesThirdClassSanctoralPaschalAlleluiaPsalmodyAntiphon(
 }
 
 function compareCandidates1960(a: Candidate, b: Candidate): number {
-    const privilegedOverride = comparePrivilegedTemporal(a, b);
-    if (privilegedOverride !== null) {
-      return privilegedOverride;
-    }
+  const privilegedOverride = comparePrivilegedTemporal(a, b);
+  if (privilegedOverride !== null) {
+    return privilegedOverride;
+  }
 
-    const christmasOctaveOverride = compareChristmasOctaveDays(a, b);
-    if (christmasOctaveOverride !== null) {
-      return christmasOctaveOverride;
-    }
+  const secondClassSundayOverride = compareFeastOfTheLordWithSecondClassSunday(a, b);
+  if (secondClassSundayOverride !== null) {
+    return secondClassSundayOverride;
+  }
 
-    if (a.rank.weight !== b.rank.weight) {
-      return b.rank.weight - a.rank.weight;
-    }
+  const christmasOctaveOverride = compareChristmasOctaveDays(a, b);
+  if (christmasOctaveOverride !== null) {
+    return christmasOctaveOverride;
+  }
 
-    const sourceOrder = sourceTieBreakOrder(a.source) - sourceTieBreakOrder(b.source);
-    if (sourceOrder !== 0) {
-      return sourceOrder;
-    }
+  if (a.rank.weight !== b.rank.weight) {
+    return b.rank.weight - a.rank.weight;
+  }
 
-    return a.feastRef.path.localeCompare(b.feastRef.path);
+  const sourceOrder = sourceTieBreakOrder(a.source) - sourceTieBreakOrder(b.source);
+  if (sourceOrder !== 0) {
+    return sourceOrder;
+  }
+
+  return a.feastRef.path.localeCompare(b.feastRef.path);
 }
 
 function comparePrivilegedTemporal(a: Candidate, b: Candidate): number | null {
@@ -615,12 +625,6 @@ function comparePrivilegedTemporal(a: Candidate, b: Candidate): number | null {
   }
 
   if (temporal.rank.classSymbol === 'I-privilegiata-triduum') {
-    return temporal === a ? -1 : 1;
-  }
-
-  if (temporal.rank.classSymbol === 'II-ember-day') {
-    // RI (1960) §95 treats Quattuor Tempora ferias as retaining their Office in occurrence.
-    // Phase 2c models that by forcing ember ferias ahead of sanctoral competitors.
     return temporal === a ? -1 : 1;
   }
 
@@ -650,6 +654,35 @@ function canDisplacePrivilegedTemporal(candidate: Candidate): boolean {
   }
 
   return candidate.rank.classSymbol === 'I' && FEASTS_OF_THE_LORD.has(candidate.feastRef.path);
+}
+
+function compareFeastOfTheLordWithSecondClassSunday(a: Candidate, b: Candidate): number | null {
+  const sunday = isSecondClassSundayCandidate(a) ? a : isSecondClassSundayCandidate(b) ? b : null;
+  if (!sunday) {
+    return null;
+  }
+
+  const other = sunday === a ? b : a;
+  if (!isFirstOrSecondClassFeastOfTheLord(other)) {
+    return null;
+  }
+
+  return sunday === a ? 1 : -1;
+}
+
+function isSecondClassSundayCandidate(candidate: Candidate): boolean {
+  return (
+    candidate.source === 'temporal' &&
+    candidate.rank.classSymbol === 'II' &&
+    isTemporalSundayPath(candidate.feastRef.path)
+  );
+}
+
+function isFirstOrSecondClassFeastOfTheLord(candidate: Candidate | Celebration): boolean {
+  return (
+    (candidate.rank.classSymbol === 'I' || candidate.rank.classSymbol === 'II') &&
+    FEASTS_OF_THE_LORD.has(candidate.feastRef.path)
+  );
 }
 
 function isTriduum(temporal: TemporalContext): boolean {
@@ -800,7 +833,7 @@ function computeOfficeBoundaries1960(
   if (celebration.kind === 'vigil') {
     return {
       hasFirstVespers: false,
-      hasSecondVespers: celebration.rank.classSymbol !== 'I'
+      hasSecondVespers: !isFirstClassVigil1960(celebration)
     };
   }
 
@@ -821,8 +854,7 @@ function computeOfficeBoundaries1960(
   if (celebration.rank.classSymbol === 'II') {
     return {
       hasFirstVespers:
-        celebrationRules.festumDomini &&
-        celebration.source === 'temporal' &&
+        (celebrationRules.festumDomini || FEASTS_OF_THE_LORD.has(celebration.feastRef.path)) &&
         dayOfWeek === 0,
       hasSecondVespers: true
     };
@@ -875,6 +907,25 @@ function isSecondClassSundayOffice(
   );
 }
 
+function isFeastOfTheLordReplacingSecondClassSunday(
+  celebration: Celebration,
+  temporal: TemporalContext
+): boolean {
+  return (
+    temporal.dayOfWeek === 0 &&
+    temporal.rank.classSymbol === 'II' &&
+    isFirstOrSecondClassFeastOfTheLord(celebration)
+  );
+}
+
+function isFirstClassVigil1960(celebration: Celebration): boolean {
+  return (
+    celebration.kind === 'vigil' &&
+    (celebration.rank.classSymbol === 'I' ||
+      celebration.rank.classSymbol === 'I-privilegiata-christmas-vigil')
+  );
+}
+
 function isPrivilegedCommemoration1960(entry: Commemoration): boolean {
   if (entry.reason === 'sunday') {
     return true;
@@ -898,6 +949,10 @@ function isPrivilegedCommemoration1960(entry: Commemoration): boolean {
   }
 
   return false;
+}
+
+function isSundayCommemoration(entry: Commemoration): boolean {
+  return entry.reason === 'sunday' || isTemporalSundayPath(entry.feastRef.path);
 }
 
 function isAdmissibleCommemoration1960(entry: Commemoration): boolean {

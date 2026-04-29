@@ -111,7 +111,7 @@ describeIfReady('Phase 2g-β Matins structuring against upstream 1960 corpus', (
         )
       };
 
-      expect(derivedShape).toEqual(row.matins);
+      expect(derivedShape, row.date).toEqual(row.matins);
       for (const nocturn of psalmody.nocturns) {
         expect(nocturn.antiphons.length).toBe(nocturn.psalmody.length);
         if (psalmody.nocturns.length > 1) {

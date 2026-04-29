@@ -177,21 +177,31 @@
     {
       "date": "2024-09-21",
       "matins": {
-        "nocturns": 1,
-        "totalLessons": 3,
-        "teDeum": "replace-with-responsory",
-        "hymnKind": "ordinary",
-        "invitatoriumKind": "season",
+        "nocturns": 3,
+        "totalLessons": 9,
+        "teDeum": "say",
+        "hymnKind": "feast",
+        "invitatoriumKind": "feast",
         "nocturnLessonSourceKinds": [
           [
             "scripture",
             "scripture",
             "scripture"
+          ],
+          [
+            "hagiographic",
+            "hagiographic",
+            "hagiographic"
+          ],
+          [
+            "homily-on-gospel",
+            "homily-on-gospel",
+            "commemorated"
           ]
         ]
       },
       "expectMatinsRuleLessonCount": 9,
-      "firstAntiphonPath": "horas/Latin/Psalterium/Psalmi/Psalmi matutinum"
+      "firstAntiphonPath": "horas/Latin/Commune/C1a"
     },
     {
       "date": "2030-01-12",

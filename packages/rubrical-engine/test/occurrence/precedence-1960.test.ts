@@ -14,7 +14,6 @@ const EXPECTED_FATE: Readonly<Record<ClassSymbol1960, 'commemorate' | 'omit' | '
   'I-privilegiata-ash-wednesday': 'commemorate',
   'I-privilegiata-holy-week-feria': 'commemorate',
   'I-privilegiata-christmas-vigil': 'commemorate',
-  'I-privilegiata-rogation-monday': 'commemorate',
   'II-ember-day': 'commemorate',
   I: 'transfer',
   II: 'commemorate',
@@ -64,6 +63,13 @@ describe('PRECEDENCE_1960', () => {
         expect(fate).toBe(EXPECTED_FATE[row.classSymbol as ClassSymbol1960]);
       }
     }
+  });
+
+  it('keeps second-class ember ferias below the generic second-class bucket', () => {
+    const ember = PRECEDENCE_1960.find((entry) => entry.classSymbol === 'II-ember-day');
+    const secondClass = PRECEDENCE_1960.find((entry) => entry.classSymbol === 'II');
+
+    expect(ember?.weight).toBeLessThan(secondClass?.weight ?? 0);
   });
 });
 

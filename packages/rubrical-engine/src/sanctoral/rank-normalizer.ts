@@ -24,10 +24,7 @@ const EMBER_DAY_KEYS = new Set([
   'Adv3-6',
   'Quad1-3',
   'Quad1-5',
-  'Quad1-6',
-  'Pent01-3',
-  'Pent01-5',
-  'Pent01-6'
+  'Quad1-6'
 ]);
 
 export function normalizeRank(
@@ -137,10 +134,7 @@ function classify1960ClassSymbol(
     if (isChristmasVigil(context.date)) {
       return 'I-privilegiata-christmas-vigil';
     }
-    if (temporalKey === 'Pasc5-1') {
-      return 'I-privilegiata-rogation-monday';
-    }
-    if (isPrivilegedSunday(temporalKey)) {
+    if (isPrivilegedSunday1960(temporalKey)) {
       return 'I-privilegiata-sundays';
     }
     if (isEmberDay(temporalKey, context.date)) {
@@ -280,6 +274,10 @@ function extractTemporalKey(feastPath: string): string | undefined {
 
 function isPrivilegedSunday(temporalKey: string): boolean {
   return /^(Adv[1-4]|Quadp[1-3]|Quad[1-6])-0$/u.test(temporalKey);
+}
+
+function isPrivilegedSunday1960(temporalKey: string): boolean {
+  return /^(Adv[1-4]|Quad[1-6]|Pasc[017])-0$/u.test(temporalKey);
 }
 
 function isLentenWeekdayFeria(temporalKey: string): boolean {

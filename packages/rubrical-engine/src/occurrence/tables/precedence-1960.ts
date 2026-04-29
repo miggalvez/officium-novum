@@ -7,7 +7,6 @@ export const CLASS_SYMBOLS_1960 = [
   'I-privilegiata-ash-wednesday',
   'I-privilegiata-holy-week-feria',
   'I-privilegiata-christmas-vigil',
-  'I-privilegiata-rogation-monday',
   'II-ember-day',
   'I',
   'II',
@@ -51,15 +50,9 @@ export const PRECEDENCE_1960: readonly PrecedenceRow[] = [
     'commemorate'
   ),
   row(
-    'I-privilegiata-rogation-monday',
-    1210,
-    'Rubricarum Instructum (1960) §95; Tabella Dierum Liturgicorum, classis I',
-    'commemorate'
-  ),
-  row(
     'II-ember-day',
-    850,
-    'Rubricarum Instructum (1960) §95; Tabella Dierum Liturgicorum, classis II',
+    790,
+    'Rubricarum Instructum (1960) §91; Tabella Dierum Liturgicorum, classis II',
     'commemorate'
   ),
   row(

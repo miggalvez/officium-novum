@@ -32,12 +32,22 @@ describe('rubrics1960Policy.resolveRank', () => {
       { name: 'Feria', classWeight: 1 },
       context('2024-09-18', 'Tempora/Pent17-3', 'temporal', 'time-after-pentecost')
     );
+    const postPentecostFeria = rubrics1960Policy.resolveRank(
+      { name: 'Feria', classWeight: 1 },
+      context('2024-05-29', 'Tempora/Pent01-3', 'temporal', 'time-after-pentecost')
+    );
+    const pentecostEmber = rubrics1960Policy.resolveRank(
+      { name: 'Semiduplex I classis', classWeight: 6 },
+      context('2024-05-22', 'Tempora/Pasc7-3', 'temporal', 'pentecost-octave')
+    );
 
     expect(firstClass.classSymbol).toBe('I');
     expect(secondClass.classSymbol).toBe('II');
     expect(thirdClass.classSymbol).toBe('III');
     expect(fourthClass.classSymbol).toBe('IV');
     expect(septemberEmber.classSymbol).toBe('II-ember-day');
+    expect(postPentecostFeria.classSymbol).toBe('IV');
+    expect(pentecostEmber.classSymbol).toBe('I');
   });
 
   it('assigns privileged temporal classes for Triduum and privileged feriae', () => {
@@ -53,10 +63,15 @@ describe('rubrics1960Policy.resolveRank', () => {
       { name: 'Semiduplex I classis', classWeight: 6.9 },
       context('2024-03-24', 'Tempora/Quad6-0', 'temporal', 'passiontide')
     );
+    const septuagesimaSunday = rubrics1960Policy.resolveRank(
+      { name: 'Semiduplex', classWeight: 5 },
+      context('2024-01-28', 'Tempora/Quadp1-0', 'temporal', 'septuagesima')
+    );
 
     expect(triduum.classSymbol).toBe('I-privilegiata-triduum');
     expect(ashWednesday.classSymbol).toBe('I-privilegiata-ash-wednesday');
     expect(privilegedSunday.classSymbol).toBe('I-privilegiata-sundays');
+    expect(septuagesimaSunday.classSymbol).toBe('II');
   });
 });
 
@@ -116,6 +131,22 @@ describe('rubrics1960Policy.compareCandidates', () => {
     expect(rubrics1960Policy.compareCandidates(privilegedSunday, immaculate)).toBeGreaterThan(0);
     expect(rubrics1960Policy.compareCandidates(privilegedSunday, stJoseph)).toBeLessThan(0);
   });
+
+  it('lets first- and second-class feasts of the Lord replace second-class Sundays', () => {
+    const secondClassSunday = candidate('Tempora/Quadp1-0', 'temporal', 'II');
+    const secondClassLordFeast = candidate('Sancti/08-06', 'sanctoral', 'II');
+    const secondClassSaint = candidate('Sancti/09-08', 'sanctoral', 'II');
+
+    expect(
+      rubrics1960Policy.compareCandidates(secondClassSunday, secondClassLordFeast)
+    ).toBeGreaterThan(0);
+    expect(
+      rubrics1960Policy.compareCandidates(secondClassLordFeast, secondClassSunday)
+    ).toBeLessThan(0);
+    expect(
+      rubrics1960Policy.compareCandidates(secondClassSunday, secondClassSaint)
+    ).toBeLessThan(0);
+  });
 });
 
 describe('rubrics1960Policy.isPrivilegedFeria', () => {
@@ -125,7 +156,7 @@ describe('rubrics1960Policy.isPrivilegedFeria', () => {
     ['2024-03-26', 'Quad6-2', true],
     ['2024-03-27', 'Quad6-3', true],
     ['2024-12-24', 'Adv4-2', true],
-    ['2024-05-06', 'Pasc5-1', true],
+    ['2024-05-06', 'Pasc5-1', false],
     ['2024-04-14', 'Pasc2-0', false]
   ] as const)('%s (%s) -> %s', (date, dayName, expected) => {
     expect(rubrics1960Policy.isPrivilegedFeria(temporal(date, dayName, season(dayName)))).toBe(
@@ -518,6 +549,44 @@ describe('rubrics1960Policy.limitCommemorations', () => {
     );
 
     expect(limited.map((entry) => entry.feastRef.path)).toEqual(['Sancti/09-08']);
+  });
+
+  it('suppresses the Sunday commemoration when a feast of the Lord replaces a second-class Sunday', () => {
+    const limited = rubrics1960Policy.limitCommemorations(
+      [commemoration('Tempora/Quadp1-0', 'II'), commemoration('Sancti/09-08', 'II')],
+      {
+        hour: 'lauds',
+        temporal: temporal('2024-01-28', 'Quadp1-0', 'septuagesima', 'II'),
+        celebration: matinsCelebration('Sancti/08-06', 'II', 'sanctoral'),
+        celebrationRules: matinsRules(),
+        winnerSource: 'occurrence'
+      }
+    );
+
+    expect(limited.map((entry) => entry.feastRef.path)).toEqual(['Sancti/09-08']);
+  });
+
+  it('admits no commemorations on the first-class Vigil of Christmas', () => {
+    const limited = rubrics1960Policy.limitCommemorations(
+      [commemoration('Tempora/Adv4-2', 'II')],
+      {
+        hour: 'lauds',
+        temporal: temporal(
+          '2024-12-24',
+          'Adv4-2',
+          'advent',
+          'I-privilegiata-christmas-vigil'
+        ),
+        celebration: {
+          ...matinsCelebration('Sancti/12-24', 'I-privilegiata-christmas-vigil', 'sanctoral'),
+          kind: 'vigil'
+        },
+        celebrationRules: matinsRules(),
+        winnerSource: 'occurrence'
+      }
+    );
+
+    expect(limited).toEqual([]);
   });
 });
 
