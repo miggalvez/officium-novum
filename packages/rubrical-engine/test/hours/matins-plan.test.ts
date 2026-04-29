@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   asVersionHandle,
   buildMatinsPlanWithWarnings,
+  deriveHourRuleSet,
   type Celebration,
   type CelebrationRuleSet,
   type HourRuleSet,
@@ -288,6 +289,50 @@ describe('buildMatinsPlan', () => {
         selector: '17'
       }
     ]);
+  });
+
+  it('uses Paschaltide common variants for inherited Matins invitatories', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add(
+      'horas/Latin/Sancti/04-29.txt',
+      ['[Rule]', 'vide C2a-1;', '', '[Oratio]', 'Oratio propria'].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Commune/C2a-1.txt',
+      ['[Invit]', 'Regem Mártyrum Dóminum, * Veníte, adorémus.'].join('\n')
+    );
+    corpus.add('horas/Latin/Commune/C2a-1p.txt', ['@Commune/C2p'].join('\n'));
+    corpus.add(
+      'horas/Latin/Commune/C2p.txt',
+      ['[Invit]', 'Exsúltent in Dómino sancti, * Allelúja.'].join('\n')
+    );
+
+    const celebrationContext = celebration('Sancti/04-29', 'III', 'sanctoral');
+    const temporalContext = temporal('2026-04-29', 'Pasc3-3', 'eastertide', 'IV');
+    const hourRules = deriveHourRuleSet(celebrationContext, baseRules(), 'matins', [], {
+      temporal: temporalContext
+    });
+
+    expect(hourRules.commonSourceVariant).toBe('paschaltide');
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebrationContext,
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules,
+      temporal: temporalContext,
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.invitatorium).toEqual({
+      kind: 'feast',
+      reference: {
+        path: 'horas/Latin/Commune/C2a-1p',
+        section: 'Invit'
+      }
+    });
   });
 
   it('falls through to inherited Easter Octave Matins antiphons when the local section only overlays a reference and versicle', () => {

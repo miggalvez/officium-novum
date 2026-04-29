@@ -7,6 +7,7 @@ import {
 import { conditionMatches } from '../internal/conditions.js';
 import type { RubricalWarning } from '../types/directorium.js';
 import type { RuleEvaluationContext } from '../types/rule-set.js';
+import { commonContentPathVariants } from './common-source.js';
 
 export interface ResolveReferenceResult {
   readonly directives: readonly RuleDirective[];
@@ -26,7 +27,10 @@ interface ActiveReference {
 }
 
 interface CollectState {
-  readonly context: Pick<RuleEvaluationContext, 'date' | 'dayOfWeek' | 'season' | 'version' | 'corpus'>;
+  readonly context: Pick<
+    RuleEvaluationContext,
+    'date' | 'dayOfWeek' | 'season' | 'commonSourceVariant' | 'version' | 'corpus'
+  >;
   readonly maxDepth: number;
   readonly rootPath: string;
 }
@@ -35,7 +39,10 @@ const DEFAULT_MAX_DEPTH = 10;
 
 export function resolveEx(
   feastFile: ParsedFile,
-  context: Pick<RuleEvaluationContext, 'date' | 'dayOfWeek' | 'season' | 'version' | 'corpus'>,
+  context: Pick<
+    RuleEvaluationContext,
+    'date' | 'dayOfWeek' | 'season' | 'commonSourceVariant' | 'version' | 'corpus'
+  >,
   maxDepth = DEFAULT_MAX_DEPTH
 ): ResolveReferenceResult {
   return collectReferences('ex', feastFile, {
@@ -48,7 +55,10 @@ export function resolveEx(
 export function resolveVide(
   feastFile: ParsedFile,
   existingDirectives: readonly RuleDirective[],
-  context: Pick<RuleEvaluationContext, 'date' | 'dayOfWeek' | 'season' | 'version' | 'corpus'>,
+  context: Pick<
+    RuleEvaluationContext,
+    'date' | 'dayOfWeek' | 'season' | 'commonSourceVariant' | 'version' | 'corpus'
+  >,
   maxDepth = DEFAULT_MAX_DEPTH
 ): ResolveReferenceResult {
   const base = collectReferences('vide', feastFile, {
@@ -78,7 +88,10 @@ export function resolveVide(
 
 export function resolveRuleReferenceFiles(
   feastFile: ParsedFile,
-  context: Pick<RuleEvaluationContext, 'date' | 'dayOfWeek' | 'season' | 'version' | 'corpus'>,
+  context: Pick<
+    RuleEvaluationContext,
+    'date' | 'dayOfWeek' | 'season' | 'commonSourceVariant' | 'version' | 'corpus'
+  >,
   maxDepth = DEFAULT_MAX_DEPTH
 ): ResolveRuleFilesResult {
   const files: ParsedFile[] = [];
@@ -132,7 +145,12 @@ function collectReferences(
   const references = extractActiveReferences(file, mode, state.context);
 
   for (const reference of references) {
-    const target = resolveRuleTargetFile(state.context.corpus, file.path, reference.path);
+    const target = resolveRuleTargetFile(
+      state.context.corpus,
+      file.path,
+      reference.path,
+      state.context.commonSourceVariant
+    );
     if (!target) {
       warnings.push(
         makeMissingTargetWarning(mode, {
@@ -188,7 +206,12 @@ function collectReferenceFiles(
   const references = extractActiveReferencesInOrder(file, state.context);
 
   for (const reference of references) {
-    const target = resolveRuleTargetFile(state.context.corpus, file.path, reference.path);
+    const target = resolveRuleTargetFile(
+      state.context.corpus,
+      file.path,
+      reference.path,
+      state.context.commonSourceVariant
+    );
     if (!target) {
       warnings.push(
         makeMissingTargetWarning(reference.mode, {
@@ -326,9 +349,10 @@ function parseActiveReference(directive: RuleDirective): ActiveReference | null 
 function resolveRuleTargetFile(
   corpus: Pick<RuleEvaluationContext, 'corpus'>['corpus'],
   sourceFilePath: string,
-  targetPath: string
+  targetPath: string,
+  commonSourceVariant: Pick<RuleEvaluationContext, 'commonSourceVariant'>['commonSourceVariant'] = undefined
 ): ParsedFile | undefined {
-  const contentPaths = candidateContentPaths(targetPath, sourceFilePath);
+  const contentPaths = candidateContentPaths(targetPath, sourceFilePath, commonSourceVariant);
 
   for (const contentPath of contentPaths) {
     const direct = corpus.getFile(toCorpusPath(contentPath));
@@ -358,15 +382,23 @@ function resolveRuleTargetFile(
   return undefined;
 }
 
-function candidateContentPaths(targetPath: string, sourceFilePath: string): readonly string[] {
+function candidateContentPaths(
+  targetPath: string,
+  sourceFilePath: string,
+  commonSourceVariant: Pick<RuleEvaluationContext, 'commonSourceVariant'>['commonSourceVariant']
+): readonly string[] {
   const normalized = normalizeContentPath(targetPath);
   const paths = new Set<string>();
 
-  paths.add(normalized);
+  for (const variant of commonContentPathVariants(normalized, commonSourceVariant)) {
+    paths.add(variant);
+  }
 
   if (!normalized.includes('/')) {
     if (/^c\d/iu.test(normalized)) {
-      paths.add(`Commune/${normalized}`);
+      for (const variant of commonContentPathVariants(`Commune/${normalized}`, commonSourceVariant)) {
+        paths.add(variant);
+      }
     }
 
     if (/^(adv|nat|epi|quad|quadp|pasc|pent)/iu.test(normalized)) {

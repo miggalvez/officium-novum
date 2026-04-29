@@ -204,6 +204,9 @@ describeIfUpstream('day route integration', () => {
     expect(firstAntiphonText(body, 'matins')).toMatch(
       /^Allelú[ij]a, \* allelú[ij]a, allelú[ij]a\.$/u
     );
+    expect(firstInvitatoryAntiphonText(body, 'matins')).toMatch(
+      /^Exsúltent in Dómino sancti, \* Allelú[ij]a\.$/u
+    );
     expect(firstPsalmHeading(body, 'matins')).toMatch(/^Psalmus 44/u);
     expect(firstPsalmHeading(body, 'lauds')).toBe('Psalmus 96 [1]');
     expect(firstPsalmHeading(body, 'prime')).toBe('Psalmus 25 [1]');
@@ -348,6 +351,16 @@ function firstPsalmHeading(
     .flatMap((line) => line.texts.la ?? [])
     .find((node) => node.type === 'text' && /^Psalmus \d+/u.test(node.value))
     ?.value;
+}
+
+function firstInvitatoryAntiphonText(
+  body: {
+    readonly hours: Record<string, { readonly sections: readonly ApiSection[] }>;
+  },
+  hour: string
+): string | undefined {
+  const invitatory = body.hours[hour]?.sections.find((section) => section.slot === 'invitatory');
+  return invitatory?.lines.find((line) => line.marker === 'Ant.')?.texts.la?.[0]?.value;
 }
 
 function psalmodySection(

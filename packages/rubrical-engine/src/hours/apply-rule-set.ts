@@ -32,6 +32,7 @@ import type { DirectoriumOverlay } from '../types/directorium.js';
 import type { OrdinariumSkeleton, SkeletonSlot } from './skeleton.js';
 import { seasonalFallbackDoxologyVariant } from './doxology.js';
 import { resolveRuleReferenceFiles } from '../rules/resolve-vide-ex.js';
+import { commonKeyVariants } from '../rules/common-source.js';
 
 const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
@@ -350,6 +351,9 @@ function resolveProperTextFiles(
       date: normalizeDateInput(input.temporal.date),
       dayOfWeek: input.temporal.dayOfWeek,
       season: input.temporal.season,
+      ...(input.hourRules.commonSourceVariant
+        ? { commonSourceVariant: input.hourRules.commonSourceVariant }
+        : {}),
       version: input.version,
       corpus: input.corpus
     }
@@ -411,17 +415,24 @@ function findCommuneReference(
     return undefined;
   }
 
-  const communePath = `horas/Latin/Commune/${comkey}.txt`;
-  const file = input.corpus.getFile(communePath);
-  if (!file) {
-    return undefined;
+  for (const key of commonKeyVariants(comkey, input.hourRules.commonSourceVariant)) {
+    const communePath = `horas/Latin/Commune/${key}.txt`;
+    const file = input.corpus.getFile(communePath);
+    if (!file) {
+      continue;
+    }
+
+    const ref = findReferenceInFile(
+      file,
+      `horas/Latin/Commune/${key}`,
+      properHeadersForSlot(slot.name, input.hour, input)
+    );
+    if (ref) {
+      return ref;
+    }
   }
 
-  return findReferenceInFile(
-    file,
-    `horas/Latin/Commune/${comkey}`,
-    properHeadersForSlot(slot.name, input.hour, input)
-  );
+  return undefined;
 }
 
 function decoratePsalmodyAssignments(
@@ -993,7 +1004,15 @@ function resolveCommuneFile(input: ApplyRuleSetInput): ParsedFile | undefined {
   if (!comkey) {
     return undefined;
   }
-  return input.corpus.getFile(`horas/Latin/Commune/${comkey}.txt`);
+
+  for (const key of commonKeyVariants(comkey, input.hourRules.commonSourceVariant)) {
+    const file = input.corpus.getFile(`horas/Latin/Commune/${key}.txt`);
+    if (file) {
+      return file;
+    }
+  }
+
+  return undefined;
 }
 
 function attachDoxologyVariantSlot(
@@ -1640,13 +1659,20 @@ function findCommuneReferenceByHeaders(
     return undefined;
   }
 
-  const path = `horas/Latin/Commune/${comkey}.txt`;
-  const file = input.corpus.getFile(path);
-  if (!file) {
-    return undefined;
+  for (const key of commonKeyVariants(comkey, input.hourRules.commonSourceVariant)) {
+    const path = `horas/Latin/Commune/${key}.txt`;
+    const file = input.corpus.getFile(path);
+    if (!file) {
+      continue;
+    }
+
+    const ref = findReferenceInFile(file, `horas/Latin/Commune/${key}`, headers);
+    if (ref) {
+      return ref;
+    }
   }
 
-  return findReferenceInFile(file, `horas/Latin/Commune/${comkey}`, headers);
+  return undefined;
 }
 
 function findReferenceInFiles(

@@ -1,8 +1,10 @@
 import type { RuleDirective } from '@officium-novum/parser';
 
 import { classifyDirective, type HourEffect } from './classify.js';
+import { commonSourceVariantForTemporal } from './common-source.js';
 
 import type { Celebration, Commemoration, HourName } from '../types/ordo.js';
+import type { TemporalContext } from '../types/model.js';
 import type {
   CelebrationRuleSet,
   HourRuleSet,
@@ -87,10 +89,14 @@ export function deriveHourRuleSet(
   _celebration: Celebration,
   celebrationRules: CelebrationRuleSet,
   hour: HourName,
-  ordinariumRules: readonly HourScopedDirective[] = []
+  ordinariumRules: readonly HourScopedDirective[] = [],
+  options: { readonly temporal?: TemporalContext } = {}
 ): HourRuleSet {
   const omit: OmittableSlot[] = [];
   let psalterScheme: PsalterScheme = 'ferial';
+  const commonSourceVariant = options.temporal
+    ? commonSourceVariantForTemporal(options.temporal)
+    : undefined;
   const psalmOverrides: PsalmOverride[] = [];
   let matinsLessonIntroduction: HourRuleSet['matinsLessonIntroduction'] = 'ordinary';
   let minorHoursSineAntiphona = false;
@@ -169,6 +175,7 @@ export function deriveHourRuleSet(
     hour,
     omit: freezeArray(omit),
     psalterScheme,
+    ...(commonSourceVariant ? { commonSourceVariant } : {}),
     psalmOverrides: freezeArray(psalmOverrides),
     matinsLessonIntroduction,
     minorHoursSineAntiphona,

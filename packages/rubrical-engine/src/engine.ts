@@ -16,6 +16,7 @@ import {
   structureVespers
 } from './hours/index.js';
 import { deriveHourRuleSet } from './rules/merge.js';
+import { commonSourceVariantForTemporal } from './rules/common-source.js';
 import { resolveOfficeDefinition, resolveOfficeFile } from './internal/content.js';
 import { addDays, formatIsoDate, normalizeDateInput, type CalendarDate } from './internal/date.js';
 import { resolveOccurrence } from './occurrence/resolver.js';
@@ -145,7 +146,9 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     if (missing) {
       warnings.push(missingOrdinariumWarning(hour, summary.date));
     }
-    const hourRules = deriveHourRuleSet(summary.celebration, summary.celebrationRules, hour);
+    const hourRules = deriveHourRuleSet(summary.celebration, summary.celebrationRules, hour, [], {
+      temporal: summary.temporal
+    });
     const overlay = summary.overlay;
     const input = {
       skeleton,
@@ -208,7 +211,9 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     const winner = concurrence.winner === 'tomorrow' ? tomorrow : today;
     const celebration = concurrence.source;
     const celebrationRules = winner.celebrationRules;
-    const hourRules = deriveHourRuleSet(celebration, celebrationRules, 'vespers');
+    const hourRules = deriveHourRuleSet(celebration, celebrationRules, 'vespers', [], {
+      temporal: today.temporal
+    });
     const overlay = summary.overlay;
     const vespersSide = concurrence.winner === 'tomorrow' ? 'first' : 'second';
     // First Vespers happens on the *current* evening (today). The Roman 1960
@@ -277,7 +282,11 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     const hourRules = deriveHourRuleSet(
       params.summary.celebration,
       params.summary.celebrationRules,
-      'compline'
+      'compline',
+      [],
+      {
+        temporal: params.today.temporal
+      }
     );
     const overlay = params.summary.overlay;
     const built = buildComplineWithWarnings({
@@ -518,6 +527,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       : undefined;
     const occurrence = resolveOccurrence(assembled.candidates, temporal, version.policy);
     const celebrationFile = resolveOfficeFile(config.corpus, occurrence.celebration.feastRef.path);
+    const commonSourceVariant = commonSourceVariantForTemporal(temporal);
     const celebrationRuleEvaluation = version.policy.buildCelebrationRuleSet(
       celebrationFile,
       occurrence.commemorations,
@@ -527,6 +537,7 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
         season: temporal.season,
         version,
         dayName: temporal.dayName,
+        ...(commonSourceVariant ? { commonSourceVariant } : {}),
         celebration: occurrence.celebration,
         commemorations: occurrence.commemorations,
         corpus: config.corpus

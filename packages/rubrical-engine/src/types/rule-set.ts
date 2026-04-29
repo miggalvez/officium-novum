@@ -33,6 +33,7 @@ export interface RuleEvaluationContext {
   readonly date: RuleDate;
   readonly dayOfWeek: number;
   readonly season?: RuleSeason;
+  readonly commonSourceVariant?: CommonSourceVariant;
   readonly version: ResolvedVersion;
   readonly dayName: string;
   readonly celebration: Celebration;
@@ -74,6 +75,7 @@ export interface HourRuleSet {
   readonly hour: HourName;
   readonly omit: readonly OmittableSlot[];
   readonly psalterScheme: PsalterScheme;
+  readonly commonSourceVariant?: CommonSourceVariant;
   readonly psalmodyAntiphonOverride?: PsalmodyAntiphonOverride;
   readonly psalmOverrides: readonly PsalmOverride[];
   readonly matinsLessonIntroduction: MatinsLessonIntroduction;
@@ -138,6 +140,7 @@ export type OmittableSlot =
 
 export type AntiphonScheme = 'default' | 'proper-minor-hours';
 export type PsalterScheme = 'ferial' | 'dominica' | 'festal' | 'proper';
+export type CommonSourceVariant = 'paschaltide';
 
 export type CapitulumVariant = {
   readonly scheme: 2;

@@ -1239,6 +1239,9 @@ function resolveProperMatinsFiles(
     date: normalizeDateInput(input.temporal.date),
     dayOfWeek: input.temporal.dayOfWeek,
     season: input.temporal.season,
+    ...(input.hourRules.commonSourceVariant
+      ? { commonSourceVariant: input.hourRules.commonSourceVariant }
+      : {}),
     version: input.version,
     corpus: input.corpus
   });
