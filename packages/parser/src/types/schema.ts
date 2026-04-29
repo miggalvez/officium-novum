@@ -1,6 +1,11 @@
 import type { Condition, ConditionalScope } from './conditions.js';
 import type { CrossReference, GabcNotation, RuleDirective } from './directives.js';
 
+export interface TextSource {
+  readonly path: string;
+  readonly section: string;
+}
+
 export interface Feast {
   id: string;
   title: string;
@@ -33,16 +38,18 @@ export interface TextBlock {
   sourceFile: string;
 }
 
+type WithTextSource<T> = T & { readonly source?: TextSource };
+
 export type TextContent =
-  | { type: 'text'; value: string }
-  | { type: 'reference'; ref: CrossReference }
-  | { type: 'psalmRef'; psalmNumber: number; selector?: string; antiphon?: string; tone?: string }
-  | { type: 'macroRef'; name: string }
-  | { type: 'formulaRef'; name: string }
-  | { type: 'psalmInclude'; psalmNumber: number }
-  | { type: 'citation'; value: string }
-  | { type: 'rubric'; value: string }
-  | {
+  | WithTextSource<{ type: 'text'; value: string }>
+  | WithTextSource<{ type: 'reference'; ref: CrossReference }>
+  | WithTextSource<{ type: 'psalmRef'; psalmNumber: number; selector?: string; antiphon?: string; tone?: string }>
+  | WithTextSource<{ type: 'macroRef'; name: string }>
+  | WithTextSource<{ type: 'formulaRef'; name: string }>
+  | WithTextSource<{ type: 'psalmInclude'; psalmNumber: number }>
+  | WithTextSource<{ type: 'citation'; value: string }>
+  | WithTextSource<{ type: 'rubric'; value: string }>
+  | WithTextSource<{
       type: 'verseMarker';
       marker:
         | 'v.'
@@ -57,13 +64,13 @@ export type TextContent =
         | 'M.'
         | 'S.';
       text: string;
-    }
-  | { type: 'separator' }
-  | { type: 'heading'; value: string }
-  | {
+    }>
+  | WithTextSource<{ type: 'separator' }>
+  | WithTextSource<{ type: 'heading'; value: string }>
+  | WithTextSource<{
       type: 'conditional';
       condition: Condition;
       content: TextContent[];
       scope: ConditionalScope;
-    }
-  | { type: 'gabcNotation'; notation: GabcNotation };
+    }>
+  | WithTextSource<{ type: 'gabcNotation'; notation: GabcNotation }>;

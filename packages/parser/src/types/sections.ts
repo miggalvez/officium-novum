@@ -1,7 +1,7 @@
 import type { Condition } from './conditions.js';
 import type { RuleDirective } from './directives.js';
 import type { ParsedRankLine } from './rank.js';
-import type { TextContent } from './schema.js';
+import type { TextContent, TextSource } from './schema.js';
 
 export interface SectionLine {
   lineNumber: number;
@@ -25,6 +25,7 @@ export interface ParsedSection {
   header: string;
   condition?: Condition;
   content: TextContent[];
+  source?: TextSource;
   rank?: ParsedRankLine[];
   rules?: RuleDirective[];
   startLine: number;

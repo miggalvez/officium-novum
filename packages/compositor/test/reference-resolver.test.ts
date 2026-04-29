@@ -28,6 +28,21 @@ function fakeFile(path: string, header: string, value: string): ParsedFile {
   };
 }
 
+function sourcedText(
+  value: string,
+  source: { readonly path: string; readonly section: string }
+): { type: 'text'; value: string } {
+  const node: { type: 'text'; value: string; source?: typeof source } = {
+    type: 'text',
+    value
+  };
+  Object.defineProperty(node, 'source', {
+    value: source,
+    enumerable: false
+  });
+  return node;
+}
+
 describe('swapLanguageSegment', () => {
   it('swaps the Latin segment for horas/ paths', () => {
     expect(swapLanguageSegment('horas/Latin/Commune/C4', 'English')).toBe(
@@ -255,6 +270,43 @@ describe('resolveReference', () => {
 
     expect(resolved.Deutsch?.language).toBe('Latin');
     expect(resolved.Deutsch?.path).toBe('horas/Latin/Commune/C4');
+  });
+
+  it('retries localized source provenance before returning Latin fallback text', () => {
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Commune/C2a-1p.txt',
+      sections: [
+        {
+          header: 'Hymnus Matutinum',
+          content: [
+            sourcedText('Deus tuórum mílitum', {
+              path: 'horas/Latin/Commune/C2',
+              section: 'Hymnus Vespera'
+            })
+          ],
+          startLine: 1,
+          endLine: 1
+        }
+      ]
+    });
+    index.addFile(fakeFile(
+      'horas/English/Commune/C2',
+      'Hymnus Vespera',
+      'O God, of those that fought thy fight'
+    ));
+
+    const resolved = resolveReference(
+      index,
+      { path: 'horas/Latin/Commune/C2a-1p', section: 'Hymnus Matutinum' },
+      { languages: ['English'], langfb: 'Latin' }
+    );
+
+    expect(resolved.English?.language).toBe('English');
+    expect(resolved.English?.path).toBe('horas/English/Commune/C2');
+    expect(resolved.English?.content).toEqual([
+      { type: 'text', value: 'O God, of those that fought thy fight' }
+    ]);
   });
 
   it('returns nothing when the section is missing everywhere', () => {

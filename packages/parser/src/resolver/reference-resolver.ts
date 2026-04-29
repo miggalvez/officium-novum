@@ -3,7 +3,7 @@ import { parseCondition } from '../parser/condition-parser.js';
 import { buildSectionContentFromLines } from '../parser/directive-parser.js';
 import type { Condition } from '../types/conditions.js';
 import type { CrossReference, LineSelector, Substitution } from '../types/directives.js';
-import type { TextContent } from '../types/schema.js';
+import type { TextContent, TextSource } from '../types/schema.js';
 import type { ParsedFile, ParsedSection, RawSection } from '../types/sections.js';
 import { ensureTxtSuffix, normalizeRelativePath } from '../utils/path.js';
 import { FileCache } from './file-cache.js';
@@ -119,11 +119,16 @@ export class CrossReferenceResolver {
     const nextVisited = new Set(context.visited);
     nextVisited.add(cycleKey);
 
-    return this.resolveContent(parsed, {
+    const resolvedContent = await this.resolveContent(parsed, {
       sourceFile: target.path,
       currentSection: sectionName,
       visited: nextVisited,
       depth: context.depth + 1
+    });
+
+    return annotateContentSource(resolvedContent, {
+      path: target.path,
+      section: sectionName
     });
   }
 
@@ -263,30 +268,37 @@ export class CrossReferenceResolver {
         depth: 0
       });
 
-      resolvedSections.push({
+      resolvedSections.push(withSectionSource({
         ...section,
-        content: resolvedContent
-      });
+        content: annotateContentSource(resolvedContent, {
+          path: normalizedPath,
+          section: section.header
+        })
+      }, { path: normalizedPath, section: section.header }));
       sectionSource.set('__preamble', normalizedPath);
     }
 
     for (const section of mergedSections) {
+      const sourceFile = sectionSource.get(section.header) ?? normalizedPath;
       if (section.content.length === 0) {
-        resolvedSections.push(section);
+        resolvedSections.push(withSectionSource(section, { path: sourceFile, section: section.header }));
         continue;
       }
 
       const resolvedContent = await this.resolveContent(section.content, {
-        sourceFile: sectionSource.get(section.header) ?? normalizedPath,
+        sourceFile,
         currentSection: section.header,
         visited: new Set(),
         depth: 0
       });
 
-      resolvedSections.push({
+      resolvedSections.push(withSectionSource({
         ...section,
-        content: resolvedContent
-      });
+        content: annotateContentSource(resolvedContent, {
+          path: sourceFile,
+          section: section.header
+        })
+      }, { path: sourceFile, section: section.header }));
     }
 
     return {
@@ -430,12 +442,49 @@ function applySubstitutions(lines: readonly string[], substitutions: readonly Su
 }
 
 function cloneSection(section: ParsedSection): ParsedSection {
-  return {
+  const clone = {
     ...section,
     content: [...section.content],
     rank: section.rank ? [...section.rank] : undefined,
     rules: section.rules ? [...section.rules] : undefined
   };
+  return section.source ? withSectionSource(clone, section.source) : clone;
+}
+
+function annotateContentSource(
+  content: readonly TextContent[],
+  source: TextSource
+): TextContent[] {
+  return content.map((node) => annotateNodeSource(node, source));
+}
+
+function annotateNodeSource(node: TextContent, source: TextSource): TextContent {
+  const effectiveSource = node.source ?? source;
+  const clone =
+    node.type === 'conditional'
+      ? {
+          ...node,
+          content: node.content.map((child) => annotateNodeSource(child, effectiveSource))
+        }
+      : { ...node };
+  if (clone.source) {
+    return clone;
+  }
+  Object.defineProperty(clone, 'source', {
+    value: effectiveSource,
+    enumerable: false,
+    configurable: true
+  });
+  return clone;
+}
+
+function withSectionSource(section: ParsedSection, source: TextSource): ParsedSection {
+  Object.defineProperty(section, 'source', {
+    value: source,
+    enumerable: false,
+    configurable: true
+  });
+  return section;
 }
 
 function buildReferencedSection(

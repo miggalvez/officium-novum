@@ -4,6 +4,7 @@ import {
   languageFallbackChain,
   type ParsedSection,
   type TextContent,
+  type TextSource,
   type TextIndex
 } from '@officium-novum/parser';
 import { conditionMatches, type ConditionEvalContext, type TextReference } from '@officium-novum/rubrical-engine';
@@ -149,7 +150,8 @@ function resolveForLanguage(
   options: Pick<
     ResolveOptions,
     'langfb' | 'dayOfWeek' | 'date' | 'season' | 'version' | 'modernStyleMonthday' | 'onWarning'
-  >
+  >,
+  sourceFallbackDepth = 0
 ): ResolvedSection | undefined {
   const { langfb, dayOfWeek, date, season, version, modernStyleMonthday, onWarning } = options;
   const chain = languageFallbackChain(language, { langfb });
@@ -157,7 +159,7 @@ function resolveForLanguage(
     const candidatePath = swapLanguageSegment(reference.path, candidate);
     const section = resolveSectionByName(index, candidatePath, reference.section);
     if (section) {
-      return applySelector(index, {
+      const selected = applySelector(index, {
         language: candidate,
         path: candidatePath,
         section,
@@ -170,9 +172,119 @@ function resolveForLanguage(
         modernStyleMonthday,
         onWarning
       });
+      if (candidate !== language) {
+        const sourceLocalized = resolveLocalizedSourceFallback(
+          index,
+          selected,
+          language,
+          candidate,
+          options,
+          sourceFallbackDepth
+        );
+        if (sourceLocalized) {
+          return sourceLocalized;
+        }
+      }
+      return selected;
     }
   }
   return undefined;
+}
+
+function resolveLocalizedSourceFallback(
+  index: TextIndex,
+  fallback: ResolvedSection,
+  requestedLanguage: string,
+  fallbackLanguage: string,
+  options: Pick<
+    ResolveOptions,
+    'langfb' | 'dayOfWeek' | 'date' | 'season' | 'version' | 'modernStyleMonthday' | 'onWarning'
+  >,
+  sourceFallbackDepth: number
+): ResolvedSection | undefined {
+  if (sourceFallbackDepth >= 4) {
+    return undefined;
+  }
+
+  const sources = collectContentSources(fallback.content);
+  if (sources.length === 0) {
+    return undefined;
+  }
+
+  const content: TextContent[] = [];
+  let localizedPath: string | undefined;
+  let localizedSection: ParsedSection | undefined;
+  for (const source of sources) {
+    if (sameSource(source, { path: fallback.path, section: fallback.section.header })) {
+      return undefined;
+    }
+
+    const localized = resolveForLanguage(
+      index,
+      { path: source.path, section: source.section },
+      requestedLanguage,
+      options,
+      sourceFallbackDepth + 1
+    );
+    if (!localized || localized.language === fallbackLanguage) {
+      return undefined;
+    }
+
+    localizedPath ??= localized.path;
+    localizedSection ??= localized.section;
+    content.push(...localized.content);
+  }
+
+  if (!localizedPath || !localizedSection || content.length === 0) {
+    return undefined;
+  }
+
+  return Object.freeze({
+    language: requestedLanguage,
+    path: localizedPath,
+    section: localizedSection,
+    content: Object.freeze(content),
+    selectorUnhandled: false,
+    selectorMissing: false
+  });
+}
+
+function collectContentSources(content: readonly TextContent[]): readonly TextSource[] {
+  const sources: TextSource[] = [];
+  const seen = new Set<string>();
+  for (const node of content) {
+    collectNodeSources(node, sources, seen);
+  }
+  return sources;
+}
+
+function collectNodeSources(
+  node: TextContent,
+  sources: TextSource[],
+  seen: Set<string>
+): void {
+  const source = node.source;
+  if (source) {
+    const key = sourceKey(source);
+    if (!seen.has(key)) {
+      seen.add(key);
+      sources.push(source);
+    }
+  }
+
+  if (node.type === 'conditional') {
+    for (const child of node.content) {
+      collectNodeSources(child, sources, seen);
+    }
+  }
+}
+
+function sameSource(left: TextSource, right: TextSource): boolean {
+  return sourceKey(left) === sourceKey(right);
+}
+
+function sourceKey(source: TextSource): string {
+  return `${ensureTxtSuffix(source.path)}#${source.section}`.toLowerCase();
 }
 
 function resolveSectionByName(

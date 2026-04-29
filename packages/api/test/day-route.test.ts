@@ -215,6 +215,19 @@ describeIfUpstream('day route integration', () => {
     expect(firstPsalmHeading(body, 'none')).toBe('Psalmus 58(2-11) [1]');
     expect(firstPsalmHeading(body, 'vespers')).toBe('Psalmus 127 [1]');
     expect(firstAntiphonText(body, 'compline')).not.toMatch(/^Allelú[ij]a,/u);
+
+    expect(firstLineText(body, 'matins', 'hymn', 'en')).toBe(
+      'O God, of those that fought thy fight,'
+    );
+    expect(firstLineText(body, 'matins', 'hymn', 'en')).not.toBe(
+      firstLineText(body, 'matins', 'hymn', 'la')
+    );
+    expect(firstLineText(body, 'matins', 'responsory', 'en')).toBe(
+      'Blessed is the man that feareth the Lord, alleluia.'
+    );
+    expect(firstLineText(body, 'matins', 'lectio-brevis', 'en')).toContain(
+      'Lesson from the book of Revelation'
+    );
   }, 120_000);
 
   it('resolves the day summary once for multiple selected hours', async () => {
@@ -372,12 +385,29 @@ function psalmodySection(
   return body.hours[hour]?.sections.find((section) => section.slot === 'psalmody');
 }
 
+function firstLineText(
+  body: {
+    readonly hours: Record<string, { readonly sections: readonly ApiSection[] }>;
+  },
+  hour: string,
+  slot: string,
+  language: 'la' | 'en'
+): string | undefined {
+  const section = body.hours[hour]?.sections.find((candidate) => candidate.slot === slot);
+  const line = section?.lines.find((candidate) => candidate.texts[language]?.length);
+  return line?.texts[language]?.map((run) => run.value).join('');
+}
+
 interface ApiSection {
   readonly slot: string;
   readonly lines: readonly Array<{
     readonly marker?: string;
     readonly texts: {
       readonly la?: readonly Array<{
+        readonly type: string;
+        readonly value: string;
+      }>;
+      readonly en?: readonly Array<{
         readonly type: string;
         readonly value: string;
       }>;
