@@ -125,7 +125,7 @@ const adjudications = loadAdjudications();
 
 for (const handle of selectedHandles) {
   const config = HANDLE_CONFIG[handle];
-  const dates = loadDates(config.dateFixture, args.date, args.year);
+  const dates = loadDates(config.dateFixture, args.date, args.year, args.yearProvided);
   const engine = createRubricalEngine({
     corpus: rawCorpus.index,
     kalendarium,
@@ -284,6 +284,7 @@ function parseArgs(argv) {
     hour: undefined,
     date: undefined,
     year: 2024,
+    yearProvided: false,
     language: 'Latin',
     otherLanguage: 'English',
     langfb: 'English',
@@ -320,6 +321,7 @@ function parseArgs(argv) {
         if (!Number.isInteger(out.year) || out.year < 1583 || out.year > 9999) {
           throw new Error(`--year must be a valid Gregorian year, received ${JSON.stringify(next)}`);
         }
+        out.yearProvided = true;
         index += 1;
         break;
       case '--language':
@@ -363,16 +365,15 @@ function parseArgs(argv) {
   return out;
 }
 
-function loadDates(fixturePath, selectedDate, year) {
-  // Phase 3 §3g: `--date __full-year__` synthesises every date in 2024 so
-  // the harness can run against the full year rather than only the 61-date
-  // Phase 2h fixture matrix. Used by `compare:phase-3-perl:full` for the
-  // broader adjudication baseline during 3h.
+function loadDates(fixturePath, selectedDate, year, yearProvided) {
+  // Phase 3 §3g: `--date __full-year__` stays backward-compatible with the
+  // original 2024 full-year runner. Explicit `--year` means the caller wants
+  // the whole civil year, including `--year 2024`.
   if (selectedDate === '__full-year__') {
     return enumerateYear(year ?? 2024);
   }
 
-  if (!selectedDate && year !== 2024) {
+  if (!selectedDate && yearProvided) {
     return enumerateYear(year);
   }
 

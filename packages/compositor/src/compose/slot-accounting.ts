@@ -33,9 +33,7 @@ export function buildSlotAccounting(
         }
       }
       if (content.kind === 'matins-nocturns') {
-        return renderedSlots.has('psalmody')
-          ? slotAccounting(slot, 'rendered', 'Matins nocturn sections emitted')
-          : slotAccounting(slot, 'unresolved-error', 'Matins nocturn plan emitted no sections');
+        return slotAccounting(slot, 'unresolved-error', 'Matins nocturn plan emitted no sections');
       }
       return slotAccounting(
         slot,
