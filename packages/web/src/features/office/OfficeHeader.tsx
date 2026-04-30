@@ -9,7 +9,6 @@ import type {
 } from '../../api/types';
 import { DatePicker } from '../../components/DatePicker';
 import { DisplayModePicker } from '../../components/DisplayModePicker';
-import { HourPicker } from '../../components/HourPicker';
 import { LanguagePicker } from '../../components/LanguagePicker';
 import { VersionPicker } from '../../components/VersionPicker';
 import { buildOfficeRoute } from '../../routes/build-route';
@@ -49,34 +48,37 @@ export function OfficeHeader({ route, versions }: OfficeHeaderProps): JSX.Elemen
   );
 
   return (
-    <div className="toolbar">
-      <DatePicker value={route.date} onChange={(date) => navigateWith({ date })} />
-      <HourPicker value={route.hour} onChange={(hour) => navigateWith({ hour })} />
-      <VersionPicker
-        value={route.version}
-        versions={versions}
-        onChange={(version) => navigateWith({ version })}
-      />
-      <LanguagePicker
-        value={route.languages}
-        onChange={(languages) => navigateWith({ languages })}
-      />
-      <DisplayModePicker
-        value={route.displayMode}
-        onChange={(displayMode) => navigateWith({ displayMode })}
-      />
-      <label>
-        <span>Orthography</span>
-        <select
-          value={route.orthography}
-          onChange={(e) =>
-            navigateWith({ orthography: e.target.value as TextOrthographyProfile })
-          }
-        >
-          <option value="version">Version</option>
-          <option value="source">Source</option>
-        </select>
-      </label>
+    <div className="office-controls__row">
+      <div className="toolbar__group">
+        <DatePicker value={route.date} onChange={(date) => navigateWith({ date })} />
+        <VersionPicker
+          value={route.version}
+          versions={versions}
+          onChange={(version) => navigateWith({ version })}
+        />
+      </div>
+      <div className="toolbar__group">
+        <LanguagePicker
+          value={route.languages}
+          onChange={(languages) => navigateWith({ languages })}
+        />
+        <DisplayModePicker
+          value={route.displayMode}
+          onChange={(displayMode) => navigateWith({ displayMode })}
+        />
+        <label>
+          <span>Orthography</span>
+          <select
+            value={route.orthography}
+            onChange={(e) =>
+              navigateWith({ orthography: e.target.value as TextOrthographyProfile })
+            }
+          >
+            <option value="version">Version</option>
+            <option value="source">Source</option>
+          </select>
+        </label>
+      </div>
     </div>
   );
 }

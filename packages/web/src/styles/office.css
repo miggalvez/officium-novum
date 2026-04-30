@@ -1,63 +1,190 @@
+/* ----------------------------------------------------------------------
+   Officium Novum — office reading surface
+   The page is styled to evoke a printed breviary (Baronius Press) while
+   tuned for on-screen readability: wider columns, generous leading,
+   restrained justification, warm cream paper, deep brick rubrics.
+---------------------------------------------------------------------- */
+
 .office {
-  font-family: var(--font-serif);
+  font-family: var(--font-text);
   font-size: var(--font-size-base);
-  line-height: 1.55;
+  line-height: var(--leading-text);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  max-width: var(--measure-page);
+  margin: var(--space-6) auto var(--space-10);
+  padding: clamp(var(--space-6), 4vw, var(--space-12)) clamp(var(--space-5), 4vw, var(--space-10));
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 var(--color-rule-soft),
+    0 12px 32px -18px var(--color-paper-shadow);
+  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+  hyphens: manual;
 }
+
+.office p {
+  margin: 0 0 var(--space-3);
+}
+
+/* ---- Office header (title block) ---------------------------------- */
 
 .office__header {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-5);
+  text-align: center;
+  border-bottom: 1px solid var(--color-rule);
 }
+
+.office__header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.4rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+.office__header h1::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 1px;
+  margin: var(--space-3) auto 0;
+  background: var(--color-rubric);
+  opacity: 0.6;
+}
+
+.office__header .muted {
+  font-family: var(--font-text);
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* ---- Sections ----------------------------------------------------- */
 
 .office__section {
-  margin: 0 0 var(--space-6);
-  padding: 0 0 var(--space-3);
-  border-bottom: 1px dotted var(--color-border);
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  border: none;
+  position: relative;
 }
 
-.office__section:last-child {
-  border-bottom: none;
+.office__section + .office__section {
+  margin-top: var(--space-6);
 }
 
 .office__section-heading {
-  font-family: var(--font-serif);
-  font-size: var(--font-size-base);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-muted);
-  margin-bottom: var(--space-3);
+  letter-spacing: 0.18em;
+  text-align: center;
+  color: var(--color-ink);
+  margin: var(--space-6) 0 var(--space-4);
+  padding: 0 var(--space-4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
 }
+
+.office__section-heading::before,
+.office__section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-rule);
+  max-width: 4rem;
+}
+
+.office__section[data-kind='subheading'] .office__section-heading,
+.office__section-heading[data-style='italic'] {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+}
+
+.office__section-heading[data-style='italic']::before,
+.office__section-heading[data-style='italic']::after {
+  display: none;
+}
+
+/* Reviewer-mode metadata that follows a heading */
+.office__section .muted code {
+  background: transparent;
+  padding: 0;
+}
+
+/* ---- Lines and parallel layout ----------------------------------- */
 
 .office__line {
   display: grid;
-  gap: var(--space-3);
-  margin: var(--space-2) 0;
-  padding: var(--space-1) 0;
-}
-
-.office__line[data-mode='parallel'] {
-  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3) var(--space-8);
+  margin: 0 0 var(--space-2);
+  padding: 0;
 }
 
 .office__line[data-mode='single'] {
   grid-template-columns: 1fr;
 }
 
+.office__line[data-mode='parallel'] {
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+/* Continuous-feeling vertical center rule between Latin and English */
+.office__line[data-mode='parallel']::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 1px;
+  background: var(--color-rule-soft);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
 @media (max-width: 720px) {
   .office__line[data-mode='parallel'] {
     grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  .office__line[data-mode='parallel']::before {
+    display: none;
   }
 }
 
+/* Language cells */
+
 .office__lang-cell {
   display: block;
+  text-align: left;
+  hyphens: manual;
+  text-wrap: pretty;
 }
 
+.office__lang-cell[lang='la'],
 .office__lang-cell[data-lang='la'] {
   font-style: normal;
 }
 
+.office__lang-cell[lang='en'],
 .office__lang-cell[data-lang='en'] {
-  color: var(--color-muted);
+  color: var(--color-ink);
+  hyphens: auto;
 }
 
 .office__lang-label {
@@ -68,18 +195,26 @@
   .office__lang-label {
     display: block;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
     color: var(--color-muted);
+    margin-top: var(--space-2);
   }
 }
 
+/* ---- Versicle / response markers --------------------------------- */
+
 .office__marker {
-  font-weight: 600;
-  color: var(--color-muted);
+  font-family: var(--font-liturgical);
+  font-weight: 700;
+  color: var(--color-rubric);
   margin-right: var(--space-2);
-  font-variant: small-caps;
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
+
+/* ---- Inline runs -------------------------------------------------- */
 
 .run-rubric {
   color: var(--color-rubric);
@@ -87,10 +222,17 @@
   font-weight: 500;
 }
 
+.run-rubric strong,
+.run-rubric b {
+  font-weight: 700;
+}
+
 .run-citation {
   color: var(--color-muted);
+  font-style: italic;
   font-size: 0.85em;
   margin-left: var(--space-1);
+  white-space: nowrap;
 }
 
 .run-unresolved {
@@ -99,16 +241,36 @@
   padding: 0 var(--space-1);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.85em;
+  font-size: 0.78em;
+  border: 1px dashed var(--color-warning);
 }
 
+/* Numbered rubrical paragraphs (1., 2., 3.) — Baronius style */
+.office__rubric-number {
+  font-family: var(--font-text);
+  font-weight: 700;
+  color: var(--color-rubric);
+  margin-right: var(--space-2);
+}
+
+/* ---- Pilcrow / paragraph ornaments ------------------------------- */
+
+.office__pilcrow {
+  color: var(--color-rubric);
+  font-weight: 700;
+  margin-right: var(--space-2);
+}
+
+/* ---- Reviewer metadata block (kept separate, not breviary-styled)  */
+
 .reviewer-meta {
-  margin-top: var(--space-6);
-  padding: var(--space-3);
+  margin-top: var(--space-8);
+  padding: var(--space-3) var(--space-4);
   background: var(--color-bg-alt);
-  border-radius: var(--radius-sm);
+  border-top: 1px solid var(--color-rule);
+  border-radius: 0;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-muted);
 }
 
@@ -121,4 +283,11 @@
 
 .reviewer-meta dt {
   font-weight: 600;
+}
+
+/* ---- Toolbar above the page --------------------------------------- */
+
+.office-toolbar {
+  max-width: var(--measure-page);
+  margin: 0 auto;
 }

@@ -73,10 +73,42 @@ function LangCell({
       {showLabel ? (
         <span className="office__lang-label">{lang === 'la' ? 'Latin' : 'English'}</span>
       ) : null}
-      {marker ? <span className="office__marker">{marker}</span> : null}
+      {marker ? (
+        <span className="office__marker" aria-label={markerLabel(marker)}>
+          {liturgicalMarker(marker)}
+        </span>
+      ) : null}
       {runs.map((run, index) => (
         <RunRenderer key={index} run={run} reviewerMode={reviewerMode} />
       ))}
     </div>
   );
+}
+
+/**
+ * Render the printed-breviary glyphs for versicle (℣) and response (℟)
+ * markers. Falls back to whatever the upstream emitted if it's already
+ * something else (e.g. a numeral, an antiphon label).
+ */
+function liturgicalMarker(marker: string): string {
+  const trimmed = marker.trim().replace(/[.\s]+$/, '');
+  switch (trimmed) {
+    case 'V':
+    case 'v':
+    case '℣':
+      return '℣.';
+    case 'R':
+    case 'r':
+    case '℟':
+      return '℟.';
+    default:
+      return marker;
+  }
+}
+
+function markerLabel(marker: string): string {
+  const m = marker.trim().replace(/[.\s]+$/, '');
+  if (m === 'V' || m === '℣') return 'Versicle';
+  if (m === 'R' || m === '℟') return 'Response';
+  return marker;
 }

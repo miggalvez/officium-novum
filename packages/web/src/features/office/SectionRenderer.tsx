@@ -14,11 +14,16 @@ export function SectionRenderer({
   displayMode,
   reviewerMode
 }: SectionRendererProps): JSX.Element {
+  const heading = sectionTitle(section);
+  const headingStyle = sectionHeadingStyle(section);
+
   return (
     <section className="office__section" aria-label={sectionLabel(section)}>
-      <h3 className="office__section-heading">
-        {sectionTitle(section)}
-      </h3>
+      {heading ? (
+        <h3 className="office__section-heading" data-style={headingStyle}>
+          <span>{heading}</span>
+        </h3>
+      ) : null}
       {reviewerMode ? (
         <p className="muted">
           <code>{section.type}</code>
@@ -39,7 +44,7 @@ export function SectionRenderer({
   );
 }
 
-function sectionTitle(section: PublicSectionDto): string {
+function sectionTitle(section: PublicSectionDto): string | null {
   if (section.heading?.kind === 'nocturn') {
     return `Nocturn ${ordinal(section.heading.ordinal)}`;
   }
@@ -47,6 +52,13 @@ function sectionTitle(section: PublicSectionDto): string {
     return `Lesson ${section.heading.ordinal}`;
   }
   return prettifySlot(section.slot);
+}
+
+function sectionHeadingStyle(section: PublicSectionDto): 'caps' | 'italic' {
+  if (section.heading?.kind === 'lesson' || section.heading?.kind === 'nocturn') {
+    return 'caps';
+  }
+  return 'caps';
 }
 
 function sectionLabel(section: PublicSectionDto): string {

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { AppShell } from '../components/AppShell';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { OfficePage } from '../features/office/OfficePage';
+import { PreviewPage } from '../features/preview/PreviewPage';
 import { DayPage } from '../features/day/DayPage';
 import { CalendarPage } from '../features/calendar/CalendarPage';
 import { SettingsPage } from '../features/settings/SettingsPage';
@@ -64,6 +65,8 @@ function RouteSwitch(): JSX.Element {
       return <AboutPage />;
     case 'api':
       return <ApiPage />;
+    case 'preview':
+      return <PreviewPage />;
     case 'home':
       return <p className="loading">Redirecting to today’s Office…</p>;
     case 'unknown':

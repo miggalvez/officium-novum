@@ -1,10 +1,17 @@
 label {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--space-1);
-  font-size: 0.9rem;
+  gap: 2px;
+  font-size: 0.72rem;
   color: var(--color-muted);
   font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+label > span {
+  padding-left: 2px;
 }
 
 input[type='date'],
@@ -12,14 +19,39 @@ input[type='text'],
 input[type='email'],
 select,
 textarea {
-  font-family: inherit;
-  font-size: inherit;
-  background: var(--color-bg);
-  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  background: var(--color-paper);
+  color: var(--color-ink);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-2);
+  border-radius: 3px;
+  padding: 6px var(--space-2);
   min-height: 32px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-muted) 50%),
+    linear-gradient(135deg, var(--color-muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 9px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: var(--space-6);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-rubric);
+  box-shadow: 0 0 0 2px rgba(138, 28, 20, 0.15);
 }
 
 textarea {
@@ -29,33 +61,70 @@ textarea {
 
 button,
 .button {
-  background: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  background: var(--color-paper);
   border: 1px solid var(--color-border);
-  color: var(--color-text);
-  border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-3);
+  color: var(--color-ink);
+  border-radius: 3px;
+  padding: 6px var(--space-3);
   min-height: 32px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+button:hover,
+.button:hover {
+  border-color: var(--color-rubric-soft);
+  color: var(--color-rubric);
 }
 
 .button--primary,
 button[type='submit'] {
-  background: var(--color-link);
-  color: #fff;
-  border-color: var(--color-link);
+  background: var(--color-rubric);
+  color: #fdf3e3;
+  border-color: var(--color-rubric);
+}
+
+.button--primary:hover,
+button[type='submit']:hover {
+  background: var(--color-rubric-soft);
+  border-color: var(--color-rubric-soft);
+  color: #fdf3e3;
 }
 
 .button--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-muted);
+  padding: 4px var(--space-2);
+  min-height: 28px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.button--ghost:hover {
+  color: var(--color-rubric);
+  border-color: transparent;
   background: transparent;
 }
 
 button:disabled,
 .button[aria-disabled='true'] {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+}
+
+button:disabled:hover,
+.button[aria-disabled='true']:hover {
+  border-color: var(--color-border);
+  color: var(--color-ink);
 }
 
 fieldset {
@@ -69,13 +138,17 @@ legend {
   padding: 0 var(--space-2);
   font-weight: 600;
   color: var(--color-muted);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
 }
 
 dialog {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--color-paper);
+  color: var(--color-ink);
   padding: var(--space-4);
   max-width: 640px;
   width: calc(100vw - 2rem);

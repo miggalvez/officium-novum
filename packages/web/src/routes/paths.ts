@@ -9,6 +9,7 @@ export type RouteName =
   | 'status'
   | 'about'
   | 'api'
+  | 'preview'
   | 'unknown';
 
 export interface CommonState {

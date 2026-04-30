@@ -22,7 +22,7 @@ export interface HourNavProps {
 
 export function HourNav({ date, current, state }: HourNavProps): JSX.Element {
   return (
-    <nav className="toolbar" aria-label="Hours">
+    <nav className="hours-nav" aria-label="Hours">
       {ALL_HOURS.map((hour) => (
         <HourLink key={hour} hour={hour} date={date} current={current} state={state} />
       ))}
@@ -54,7 +54,7 @@ function HourLink({
   });
   const link = useLink(href);
   return (
-    <a {...link} className="button" aria-current={hour === current ? 'page' : undefined}>
+    <a {...link} className="hours-nav__link" aria-current={hour === current ? 'page' : undefined}>
       {HOUR_LABELS[hour]}
     </a>
   );

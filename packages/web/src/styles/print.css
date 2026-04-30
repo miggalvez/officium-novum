@@ -3,6 +3,9 @@
   .app-footer,
   .beta-banner,
   .toolbar,
+  .office-toolbar,
+  .office-controls,
+  .hours-nav,
   .skip-link,
   .reviewer-meta,
   button,
@@ -19,15 +22,34 @@
   .app-main {
     max-width: none;
     padding: 0;
+    background: none;
+  }
+
+  .office {
+    max-width: none;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+    padding: 0.5in 0.75in;
   }
 
   .office__line[data-mode='parallel'] {
     grid-template-columns: 1fr 1fr;
   }
 
+  .office__line[data-mode='parallel']::before {
+    background: #000;
+    opacity: 0.3;
+  }
+
   .run-rubric {
-    color: #000;
+    color: #6a0a0a;
     font-style: italic;
+  }
+
+  .office__marker {
+    color: #6a0a0a;
   }
 
   a[href]::after {

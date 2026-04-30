@@ -60,6 +60,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
             <NavLink href={officeHref} activePrefix="/office">Office</NavLink>
             <NavLink href={dayHref} activePrefix="/day">Day</NavLink>
             <NavLink href={calendarHref} activePrefix="/calendar">Calendar</NavLink>
+            <NavLink href="/preview" activePrefix="/preview">Preview</NavLink>
             <NavLink href="/settings" activePrefix="/settings">Settings</NavLink>
             <NavLink href="/status" activePrefix="/status">Status</NavLink>
             <NavLink href="/about" activePrefix="/about">About</NavLink>

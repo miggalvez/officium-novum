@@ -97,6 +97,9 @@ export function parseRoute(input: ParseInput): Route {
   if (head === 'api' && segments.length === 1) {
     return { name: 'api' };
   }
+  if (head === 'preview' && segments.length === 1) {
+    return { name: 'preview' };
+  }
 
   return { name: 'unknown' };
 }

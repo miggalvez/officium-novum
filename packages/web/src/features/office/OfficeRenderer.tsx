@@ -27,7 +27,7 @@ export function OfficeRenderer({
   const fallbackLanguages = visibleLanguages.length > 0 ? visibleLanguages : office.languages;
 
   return (
-    <div className="office">
+    <>
       {office.sections.map((section, index) => (
         <SectionRenderer
           key={`${section.slot}-${index}`}
@@ -40,7 +40,7 @@ export function OfficeRenderer({
       {reviewerMode ? (
         <ReviewerMeta office={office} orthography={office.orthography} meta={meta} />
       ) : null}
-    </div>
+    </>
   );
 }
 

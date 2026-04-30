@@ -2,30 +2,35 @@ html {
   font-size: var(--font-size-base);
 }
 
+body {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+}
+
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: var(--leading-display);
   margin: 0 0 var(--space-3);
   color: var(--color-text);
+  letter-spacing: 0.01em;
 }
 
 h1 {
   font-size: var(--font-size-larger);
+  font-weight: 600;
 }
 
 h2 {
   font-size: var(--font-size-lg);
+  font-weight: 600;
 }
 
 h3 {
   font-size: var(--font-size-base);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
+  font-weight: 600;
 }
 
 p {
@@ -42,7 +47,7 @@ pre {
   padding: var(--space-3);
   border-radius: var(--radius-sm);
   overflow-x: auto;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .muted {

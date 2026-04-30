@@ -155,7 +155,7 @@ describe('LineRenderer', () => {
 	        reviewerMode={false}
 	      />
     );
-    const markers = screen.getAllByText('V.');
+    const markers = screen.getAllByText('℣.');
     expect(markers.length).toBeGreaterThan(0);
   });
 });

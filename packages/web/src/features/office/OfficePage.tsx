@@ -120,23 +120,21 @@ export function OfficePage({ route, currentRoutePath }: OfficePageProps): JSX.El
         }
   };
 
+  const title = data?.summary.celebration.feast.title ?? prettyHour(route.hour);
+
   return (
     <article aria-busy={loading}>
-      <header className="office__header">
-        <h1>Office of {data?.summary.celebration.feast.title ?? route.hour}</h1>
-        <p className="muted">
-          {route.date} · {route.hour} · {route.version}
-        </p>
+      <div className="office-controls">
         <OfficeHeader route={route} versions={versions} />
         <HourNav date={route.date} current={route.hour} state={route} />
-        <div className="toolbar">
+        <div className="office-controls__row office-controls__row--actions">
           <RawJsonLink href={apiUrl} />
           <a className="button button--ghost" href={openApiUrl()} target="_blank" rel="noreferrer noopener">
             OpenAPI
           </a>
           <button
             type="button"
-            className="button"
+            className="button button--ghost"
             disabled={caching}
             onClick={async () => {
               setCaching(true);
@@ -157,7 +155,7 @@ export function OfficePage({ route, currentRoutePath }: OfficePageProps): JSX.El
               }
             }}
           >
-            {caching ? 'Caching…' : cached ? 'Cached week' : 'Cache this week'}
+            {caching ? 'Caching…' : cached ? 'Cached for week' : 'Cache this week'}
           </button>
           {cacheError ? (
             <span className="muted" role="status">{cacheError}</span>
@@ -165,7 +163,7 @@ export function OfficePage({ route, currentRoutePath }: OfficePageProps): JSX.El
           <div className="toolbar__spacer" />
           <ReportButton context={reportContext} />
         </div>
-      </header>
+      </div>
 
       {loading ? <LoadingState label={`Loading ${route.hour}…`} /> : null}
       {error ? <ErrorState error={error} apiUrl={apiUrl} /> : null}
@@ -173,17 +171,55 @@ export function OfficePage({ route, currentRoutePath }: OfficePageProps): JSX.El
         <>
           <WarningBanner warnings={data.warnings.rubrical} title="Rubrical warnings" />
           <WarningBanner warnings={data.warnings.composition} title="Composition warnings" />
-          <OfficeRenderer
-            office={data.office}
-            languages={route.languages}
-            displayMode={route.displayMode}
-            reviewerMode={settings.reviewerMode}
-            meta={data.meta}
-          />
+          <div className="office">
+            <header className="office__header">
+              <h1>{title}</h1>
+              <p className="muted">
+                {formatHumanDate(route.date)} · {prettyHour(route.hour)} · {route.version}
+              </p>
+            </header>
+            <OfficeRenderer
+              office={data.office}
+              languages={route.languages}
+              displayMode={route.displayMode}
+              reviewerMode={settings.reviewerMode}
+              meta={data.meta}
+            />
+          </div>
         </>
       ) : null}
     </article>
   );
+}
+
+function prettyHour(hour: string): string {
+  const map: Record<string, string> = {
+    matins: 'Matins',
+    lauds: 'Lauds',
+    prime: 'Prime',
+    terce: 'Terce',
+    sext: 'Sext',
+    none: 'None',
+    vespers: 'Vespers',
+    compline: 'Compline'
+  };
+  return map[hour.toLowerCase()] ?? hour;
+}
+
+function formatHumanDate(iso: string): string {
+  const parts = iso.split('-').map((n) => Number.parseInt(n, 10));
+  if (parts.length !== 3 || parts.some((n) => Number.isNaN(n))) {
+    return iso;
+  }
+  const [y, m, d] = parts as [number, number, number];
+  const date = new Date(Date.UTC(y, m - 1, d));
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC'
+  });
 }
 
 function ErrorState({
