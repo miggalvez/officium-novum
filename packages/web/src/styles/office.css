@@ -125,43 +125,6 @@
 
 /* ---- Office header (title block) ---------------------------------- */
 
-.office__engraving {
-  height: clamp(84px, 12vw, 126px);
-  margin: 0 0 var(--space-6);
-  border: 1px solid color-mix(in srgb, var(--color-ink) 52%, var(--color-border));
-  background:
-    radial-gradient(circle at 50% 45%, var(--color-paper-bright) 0 6%, transparent 7%),
-    radial-gradient(circle at 50% 45%, transparent 0 18%, var(--color-engraving-ink) 19% 20%, transparent 21%),
-    repeating-radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--color-engraving-ink) 72%, transparent) 0 1px, transparent 1px 4px),
-    linear-gradient(135deg, var(--color-engraving-ink), var(--color-engraving-paper) 46%, var(--color-engraving-ink));
-  filter: grayscale(1);
-  opacity: 0.84;
-  overflow: hidden;
-  position: relative;
-}
-
-.office__engraving::before,
-.office__engraving::after {
-  content: '';
-  position: absolute;
-  top: 20%;
-  bottom: 14%;
-  width: 22%;
-  border: solid var(--color-engraving-ink);
-  border-width: 0 2px;
-  opacity: 0.42;
-}
-
-.office__engraving::before {
-  left: 9%;
-  transform: skewY(-12deg);
-}
-
-.office__engraving::after {
-  right: 9%;
-  transform: skewY(12deg);
-}
-
 .office__header {
   margin-bottom: var(--space-8);
   padding-bottom: var(--space-5);

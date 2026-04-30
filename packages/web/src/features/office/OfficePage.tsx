@@ -242,7 +242,6 @@ export function OfficePage({ route, currentRoutePath }: OfficePageProps): JSX.El
               <WarningBanner warnings={data.warnings.rubrical} title="Rubrical warnings" />
               <WarningBanner warnings={data.warnings.composition} title="Composition warnings" />
               <div className="office">
-                <div className="office__engraving" aria-hidden="true" />
                 <header className="office__header">
                   <p className="office__kicker">Office of the Day</p>
                   <h1>{title}</h1>

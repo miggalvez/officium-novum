@@ -19,7 +19,6 @@ export function PreviewPage(): JSX.Element {
       </div>
 
       <div className="office">
-        <div className="office__engraving" aria-hidden="true" />
         <header className="office__header">
           <p className="office__kicker">Office of the Day</p>
           <h1>Ordinary of the Divine Office</h1>
