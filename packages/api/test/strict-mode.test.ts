@@ -16,6 +16,7 @@ vi.mock('@officium-novum/compositor', async (importOriginal) => {
       celebration: 'Strict mode fixture',
       languages: ['Latin'],
       sections: [],
+      slotAccounting: [],
       warnings: [
         {
           code: 'contract-fixture-error',

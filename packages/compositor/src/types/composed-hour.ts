@@ -1,5 +1,5 @@
 import type { CrossReference } from '@officium-novum/parser';
-import type { HourName } from '@officium-novum/rubrical-engine';
+import type { HourName, SlotName } from '@officium-novum/rubrical-engine';
 
 export type SectionType =
   | 'psalm'
@@ -88,6 +88,21 @@ export interface ComposedHour {
    * walker. Always present (possibly empty). See {@link ComposeWarning}.
    */
   readonly warnings: readonly ComposeWarning[];
+  /**
+   * Internal validation trace from the Phase 2 slot plan to the Phase 3
+   * composed sections. API DTO conversion intentionally does not expose this
+   * field; it exists to catch slots that disappear without an explicit
+   * rubrical omission or error.
+   */
+  readonly slotAccounting: readonly SlotAccountingEntry[];
+}
+
+export type SlotAccountingStatus = 'rendered' | 'rubrically-omitted' | 'unresolved-error';
+
+export interface SlotAccountingEntry {
+  readonly slot: SlotName;
+  readonly status: SlotAccountingStatus;
+  readonly reason: string;
 }
 
 export interface ComposeOptions {

@@ -39,10 +39,10 @@
     },
     {
       "year": 2025,
-      "status": "candidate",
-      "owner": "validation",
-      "promotionWindow": "Phase 5g candidate window",
-      "followUp": "Generate full 2025 package ledgers and promote to gated once each supported Roman policy reaches 0 unadjudicated rows.",
+      "status": "exploratory",
+      "owner": "compositor",
+      "promotionWindow": "Roman 1960 multi-year ledger expansion",
+      "followUp": "Burn down the real Rubrics 1960 2025 compositor ledger, then regenerate full ledgers for the remaining Roman policies before promotion.",
       "policies": [
         {
           "policy": "Divino Afflatu - 1954",
@@ -65,9 +65,27 @@
         {
           "policy": "Rubrics 1960 - 1960",
           "slug": "rubrics-1960",
-          "ledger": "packages/validation/fixtures/multi-year/2025-candidate-ledger.json",
-          "sidecar": "packages/validation/fixtures/multi-year/2025-candidate-adjudications.json",
-          "unadjudicated": 0,
+          "ledger": "packages/compositor/test/divergence/rubrics-1960-2025.md",
+          "sidecar": "packages/compositor/test/divergence/adjudications.json",
+          "unadjudicated": 2573,
+          "noThrowFailures": 0,
+          "schemaFailures": 0
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "status": "exploratory",
+      "owner": "compositor",
+      "promotionWindow": "Roman 1960 current-year bug triage",
+      "followUp": "Classify and burn down the real Rubrics 1960 2026 compositor ledger, starting with known reviewer reports.",
+      "policies": [
+        {
+          "policy": "Rubrics 1960 - 1960",
+          "slug": "rubrics-1960",
+          "ledger": "packages/compositor/test/divergence/rubrics-1960-2026.md",
+          "sidecar": "packages/compositor/test/divergence/adjudications.json",
+          "unadjudicated": 2542,
           "noThrowFailures": 0,
           "schemaFailures": 0
         }

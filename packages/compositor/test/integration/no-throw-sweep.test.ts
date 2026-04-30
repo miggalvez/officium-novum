@@ -23,7 +23,7 @@ import {
 import { describe, expect, it } from 'vitest';
 
 import { composeHour } from '../../src/compose.js';
-import type { ComposeWarning, ComposedRun } from '../../src/types/composed-hour.js';
+import type { ComposeWarning, ComposedRun, SlotAccountingEntry } from '../../src/types/composed-hour.js';
 
 const TEST_DIR = dirname(fileURLToPath(import.meta.url));
 const PACKAGE_ROOT = resolve(TEST_DIR, '../..');
@@ -38,9 +38,9 @@ const describeIfUpstream = HAS_UPSTREAM ? describe : describe.skip;
  *
  * Matrix:
  *   - 3 policies:  Divino Afflatu - 1954, Reduced - 1955, Rubrics 1960 - 1960
- *   - 366 days:    every date in 2024
+ *   - 366 days:    every date in the configured sweep year
  *   - 8 Hours:     Matins, Lauds, Prime, Terce, Sext, None, Vespers, Compline
- *   - Total:       8,784 compositions per run
+ *   - Total:       8,784 compositions for a leap-year single-year run
  *
  * The sweep asserts:
  *   1. No exception thrown.
@@ -84,8 +84,10 @@ const UNRESOLVED_RUN_TYPES: ReadonlySet<ComposedRun['type']> = new Set([
   'unresolved-reference'
 ]);
 
-describeIfUpstream('Phase 3 no-throw sweep (2024 × 3 policies × 8 hours)', () => {
-  it('composes every Hour for every date in 2024 under each Roman policy without throwing', async () => {
+const SWEEP_YEARS = parseSweepYears(process.env.OFFICIUM_NO_THROW_YEARS);
+
+describeIfUpstream('Phase 3 no-throw sweep (configured years × 3 policies × 8 hours)', () => {
+  it('composes every Hour for every configured date under each Roman policy without throwing', async () => {
     const rawCorpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
     const resolvedCorpus = await loadCorpus(UPSTREAM_ROOT);
     const versionRegistry = buildVersionRegistry(
@@ -95,7 +97,7 @@ describeIfUpstream('Phase 3 no-throw sweep (2024 × 3 policies × 8 hours)', () 
     const yearTransfers = buildYearTransferTable(loadTransferTables());
     const scriptureTransfers = buildScriptureTransferTable(loadScriptureTransferTables());
 
-    const dates = enumerateYear(2024);
+    const dates = SWEEP_YEARS.flatMap((year) => enumerateYear(year));
 
     const errorWarnings: Array<{
       readonly policy: string;
@@ -108,6 +110,12 @@ describeIfUpstream('Phase 3 no-throw sweep (2024 × 3 policies × 8 hours)', () 
       readonly date: string;
       readonly hour: HourName;
       readonly runType: ComposedRun['type'];
+    }> = [];
+    const unresolvedSlots: Array<{
+      readonly policy: string;
+      readonly date: string;
+      readonly hour: HourName;
+      readonly accounting: SlotAccountingEntry;
     }> = [];
 
     let totalCompositions = 0;
@@ -159,23 +167,44 @@ describeIfUpstream('Phase 3 no-throw sweep (2024 × 3 policies × 8 hours)', () 
               }
             }
           }
+
+          for (const accounting of composed.slotAccounting) {
+            if (accounting.status === 'unresolved-error') {
+              unresolvedSlots.push({ policy: versionHandle, date, hour, accounting });
+            }
+          }
         }
       }
     }
 
     // Guard against silent scope creep: if this number drops, the sweep is
     // skipping something; if it rises, something was added to the matrix.
-    expect(totalCompositions).toBeGreaterThanOrEqual(8000);
+    expect(totalCompositions).toBeGreaterThanOrEqual(SWEEP_YEARS.length * 8000);
 
     // No `severity: 'error'` warnings allowed — that is the gate.
     expect(errorWarnings, summariseFindings('error warnings', errorWarnings)).toEqual([]);
 
-    // Unresolved runs indicate an engine gap that needs 3h adjudication;
-    // keep tracking them in the full-year sweep, while Appendix-A goldens
-    // enforce zero unresolved runs on the frozen stabilization surface.
+    // Unresolved runs indicate an engine/compositor gap; keep tracking them
+    // in the full-year sweep while the dedicated slot-accounting gate below
+    // prevents silent disappearance.
     expect(unresolvedRuns.length).toBeLessThan(100_000);
+
+    // The slot accounting trace is the no-silent-omission gate: a slot may
+    // render or be explicitly omitted by rubric, but it may not disappear.
+    expect(unresolvedSlots, summariseFindings('unresolved slots', unresolvedSlots)).toEqual([]);
   }, 600_000);
 });
+
+function parseSweepYears(value: string | undefined): readonly number[] {
+  if (!value || value.trim() === '') {
+    return [2024];
+  }
+  const years = value.split(',').map((entry) => Number(entry.trim()));
+  if (years.some((year) => !Number.isInteger(year) || year < 1583 || year > 9999)) {
+    throw new Error(`Invalid OFFICIUM_NO_THROW_YEARS=${JSON.stringify(value)}`);
+  }
+  return Object.freeze(Array.from(new Set(years)).sort((left, right) => left - right));
+}
 
 function enumerateYear(year: number): readonly string[] {
   const out: string[] = [];

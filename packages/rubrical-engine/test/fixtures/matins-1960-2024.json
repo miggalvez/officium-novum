@@ -16,7 +16,20 @@
             "scripture",
             "scripture"
           ]
-        ]
+        ],
+        "structuralSignature": {
+          "invitatoryRef": "horas/Latin/Psalterium/Invitatorium:__preamble:PostPentecosten",
+          "hymnRef": "horas/Latin/Psalterium/Special/Matutinum Special:Day2 Hymnus",
+          "nocturnVersicleRefs": [
+            "horas/Latin/Psalterium/Psalmi/Psalmi matutinum:Day2:14"
+          ],
+          "nocturnResponsoryCounts": [
+            3
+          ],
+          "teDeumReplacementResponsory": [
+            true
+          ]
+        }
       },
       "firstLessonPath": "horas/Latin/Tempora/Pent07-2",
       "firstAntiphonPath": "horas/Latin/Psalterium/Psalmi/Psalmi matutinum"
@@ -63,7 +76,26 @@
             "homily-on-gospel",
             "homily-on-gospel"
           ]
-        ]
+        ],
+        "structuralSignature": {
+          "invitatoryRef": "horas/Latin/Sancti/08-15:Invit",
+          "hymnRef": "horas/Latin/Sancti/08-15:Hymnus Matutinum",
+          "nocturnVersicleRefs": [
+            "horas/Latin/Sancti/08-15:Nocturn 1 Versum",
+            "horas/Latin/Sancti/08-15:Nocturn 2 Versum",
+            "horas/Latin/Sancti/08-15:Nocturn 3 Versum"
+          ],
+          "nocturnResponsoryCounts": [
+            3,
+            3,
+            2
+          ],
+          "teDeumReplacementResponsory": [
+            false,
+            false,
+            false
+          ]
+        }
       }
     },
     {
@@ -117,7 +149,26 @@
             "homily-on-gospel",
             "homily-on-gospel"
           ]
-        ]
+        ],
+        "structuralSignature": {
+          "invitatoryRef": "suppressed",
+          "hymnRef": null,
+          "nocturnVersicleRefs": [
+            "horas/Latin/Tempora/Quad6-4r:Nocturn 1 Versum",
+            "horas/Latin/Tempora/Quad6-4r:Nocturn 2 Versum",
+            "horas/Latin/Tempora/Quad6-4r:Nocturn 3 Versum"
+          ],
+          "nocturnResponsoryCounts": [
+            3,
+            3,
+            3
+          ],
+          "teDeumReplacementResponsory": [
+            false,
+            false,
+            false
+          ]
+        }
       }
     },
     {

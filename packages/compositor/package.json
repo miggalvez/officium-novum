@@ -21,7 +21,7 @@
     "compare:phase-3-perl:full": "pnpm compare:phase-3-perl -- --date __full-year__",
     "report:phase-3-progress": "node ./scripts/report-phase-3-progress.mjs",
     "test": "vitest run",
-    "test:no-throw": "vitest run -- test/integration/no-throw-sweep.test.ts",
+    "test:no-throw": "node ./scripts/no-throw-sweep.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "verify:phase-3-signoff": "node ./scripts/verify-phase-3-signoff.mjs"
   },

@@ -37,6 +37,7 @@ import {
   withPsalmGloriaPatri
 } from './compose/psalmody.js';
 import { MAX_DEFERRED_DEPTH, referenceKey } from './compose/shared.js';
+import { buildSlotAccounting } from './compose/slot-accounting.js';
 import { applyDirectives } from './directives/index.js';
 import { isWholeAntiphonSlot, markAntiphonFirstText } from './emit/antiphon-marker.js';
 import { emitSection } from './emit/index.js';
@@ -113,7 +114,8 @@ export function composeHour(input: ComposeInput): ComposedHour {
       celebration: input.summary.celebration.feastRef.title,
       languages: Object.freeze(Array.from(input.options.languages)),
       sections: Object.freeze(sections),
-      warnings: Object.freeze(warnings)
+      warnings: Object.freeze(warnings),
+      slotAccounting: Object.freeze(buildSlotAccounting(hour, sections))
     });
   }
 
@@ -190,7 +192,8 @@ export function composeHour(input: ComposeInput): ComposedHour {
     celebration: input.summary.celebration.feastRef.title,
     languages: Object.freeze(Array.from(input.options.languages)),
     sections: Object.freeze(sections),
-    warnings: Object.freeze(warnings)
+    warnings: Object.freeze(warnings),
+    slotAccounting: Object.freeze(buildSlotAccounting(hour, sections))
   });
 }
 

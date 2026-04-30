@@ -30,6 +30,13 @@ interface MatinsFixtureShape {
   readonly hymnKind: 'feast' | 'ordinary' | 'suppressed';
   readonly invitatoriumKind: 'feast' | 'season' | 'suppressed';
   readonly nocturnLessonSourceKinds: readonly (readonly string[])[];
+  readonly structuralSignature?: {
+    readonly invitatoryRef: string;
+    readonly hymnRef: string | null;
+    readonly nocturnVersicleRefs: readonly string[];
+    readonly nocturnResponsoryCounts: readonly number[];
+    readonly teDeumReplacementResponsory: readonly boolean[];
+  };
 }
 
 interface FixtureDate {
@@ -108,7 +115,10 @@ describeIfReady('Phase 2g-β Matins structuring against upstream 1960 corpus', (
         invitatoriumKind: invitatory.source.kind,
         nocturnLessonSourceKinds: psalmody.nocturns.map((nocturn) =>
           nocturn.lessons.map((lesson) => lesson.source.kind)
-        )
+        ),
+        ...(row.matins.structuralSignature
+          ? { structuralSignature: deriveStructuralSignature(invitatory.source, matins.slots.hymn, psalmody.nocturns) }
+          : {})
       };
 
       expect(derivedShape, row.date).toEqual(row.matins);
@@ -173,6 +183,38 @@ function deriveHymnKind(slot: SlotContent | undefined): MatinsFixtureShape['hymn
   }
 
   return 'suppressed';
+}
+
+function deriveStructuralSignature(
+  invitatory: { readonly kind: string; readonly reference?: { readonly path: string; readonly section: string; readonly selector?: string } },
+  hymn: SlotContent | undefined,
+  nocturns: readonly {
+    readonly versicle: { readonly reference: { readonly path: string; readonly section: string; readonly selector?: string } };
+    readonly responsories: readonly {
+      readonly reference: { readonly path: string; readonly section: string; readonly selector?: string };
+      readonly replacesTeDeum?: boolean;
+    }[];
+  }[]
+): NonNullable<MatinsFixtureShape['structuralSignature']> {
+  return {
+    invitatoryRef:
+      invitatory.kind === 'suppressed' || !invitatory.reference
+        ? 'suppressed'
+        : referenceKey(invitatory.reference),
+    hymnRef:
+      hymn?.kind === 'single-ref'
+        ? referenceKey(hymn.ref)
+        : null,
+    nocturnVersicleRefs: nocturns.map((nocturn) => referenceKey(nocturn.versicle.reference)),
+    nocturnResponsoryCounts: nocturns.map((nocturn) => nocturn.responsories.length),
+    teDeumReplacementResponsory: nocturns.map((nocturn) =>
+      nocturn.responsories.some((responsory) => responsory.replacesTeDeum === true)
+    )
+  };
+}
+
+function referenceKey(ref: { readonly path: string; readonly section: string; readonly selector?: string }): string {
+  return `${ref.path}:${ref.section}${ref.selector ? `:${ref.selector}` : ''}`;
 }
 
 function sourcePrimaryPath(source: LessonSource): string {

@@ -7,21 +7,29 @@ import {
 } from '../src/report-multi-year.js';
 
 describe('multi-year status report', () => {
-  it('promotes 2025 as a candidate year with enforced thresholds', async () => {
+  it('tracks real 2025/2026 Roman 1960 exploratory ledgers before promotion', async () => {
     const report = await loadMultiYearReport();
 
     expect(report.errors).toEqual([]);
     expect(report.table).toContainEqual({
       year: 2025,
-      status: 'candidate',
+      status: 'exploratory',
       policy: 'Rubrics 1960 - 1960',
-      unadjudicated: 0,
+      unadjudicated: 2573,
+      noThrowFailures: 0,
+      schemaFailures: 0
+    });
+    expect(report.table).toContainEqual({
+      year: 2026,
+      status: 'exploratory',
+      policy: 'Rubrics 1960 - 1960',
+      unadjudicated: 2542,
       noThrowFailures: 0,
       schemaFailures: 0
     });
     expect(
       report.table
-        .filter((row) => row.year === 2025)
+        .filter((row) => row.status === 'candidate')
         .every((row) => row.unadjudicated < CANDIDATE_UNADJUDICATED_LIMIT)
     ).toBe(true);
   });
@@ -35,9 +43,10 @@ describe('multi-year status report', () => {
       2024 | gated | Divino Afflatu - 1954 | 0 | 0 | 0
       2024 | gated | Reduced - 1955 | 0 | 0 | 0
       2024 | gated | Rubrics 1960 - 1960 | 0 | 0 | 0
-      2025 | candidate | Divino Afflatu - 1954 | 0 | 0 | 0
-      2025 | candidate | Reduced - 1955 | 0 | 0 | 0
-      2025 | candidate | Rubrics 1960 - 1960 | 0 | 0 | 0"
+      2025 | exploratory | Divino Afflatu - 1954 | 0 | 0 | 0
+      2025 | exploratory | Reduced - 1955 | 0 | 0 | 0
+      2025 | exploratory | Rubrics 1960 - 1960 | 2573 | 0 | 0
+      2026 | exploratory | Rubrics 1960 - 1960 | 2542 | 0 | 0"
     `);
   });
 });

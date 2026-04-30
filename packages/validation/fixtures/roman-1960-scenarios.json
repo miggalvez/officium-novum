@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "policy": "Rubrics 1960 - 1960",
+  "scenarios": [
+    {
+      "id": "roman-1960-transfer-annunciation-holy-week",
+      "area": "transfers",
+      "ownerPackage": "rubrical-engine",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-03-25",
+          "hours": ["matins", "lauds", "vespers"],
+          "notes": "Annunciation impeded by Holy Week in the 2024 baseline."
+        },
+        {
+          "date": "2062-03-19",
+          "hours": ["matins", "lauds", "vespers"],
+          "notes": "St. Joseph impeded by Palm Sunday and transferred in the existing edge-case matrix."
+        }
+      ],
+      "assertions": [
+        "winning celebration path and transferredFrom are source-backed",
+        "commemorations and transfer destinations do not silently create missing hour slots"
+      ],
+      "authorityRefs": [
+        "docs/phase-5-validation-strategy-reviewer-feedback-loop.md#authority-hierarchy",
+        "upstream/web/www/Tabulae/Transfer"
+      ]
+    },
+    {
+      "id": "roman-1960-concurrence-first-second-vespers",
+      "area": "concurrence",
+      "ownerPackage": "rubrical-engine",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-01-05",
+          "hours": ["vespers", "compline"],
+          "notes": "Second Vespers pressure before Epiphany."
+        },
+        {
+          "date": "2025-01-05",
+          "hours": ["vespers", "compline"],
+          "notes": "Non-2024 Epiphany pressure witness."
+        }
+      ],
+      "assertions": [
+        "Vespers winner and Compline source agree with the concurrence decision",
+        "first/second Vespers routing remains policy-owned"
+      ],
+      "authorityRefs": [
+        "docs/phase-2-rubrical-engine-design.md#14-concurrence-and-vespers",
+        "packages/rubrical-engine/test/fixtures/vespers-1960-2024.json"
+      ]
+    },
+    {
+      "id": "roman-1960-commemorations-limited-days",
+      "area": "commemorations",
+      "ownerPackage": "rubrical-engine",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-04-07",
+          "hours": ["lauds", "vespers"],
+          "notes": "Low Sunday with Annunciation commemoration."
+        },
+        {
+          "date": "2024-01-06",
+          "hours": ["lauds", "vespers"],
+          "notes": "Epiphany and Sunday commemoration handling."
+        }
+      ],
+      "assertions": [
+        "commemoration set is explicit on DayOfficeSummary",
+        "compositor renders or rubrically omits every commemoration slot"
+      ],
+      "authorityRefs": [
+        "docs/phase-2-rubrical-engine-design.md#13-commemorations",
+        "packages/compositor/test/divergence/ADJUDICATION_LOG.md"
+      ]
+    },
+    {
+      "id": "roman-1960-privileged-ferias-and-triduum",
+      "area": "privileged-ferias",
+      "ownerPackage": "compositor",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-02-14",
+          "hours": ["matins", "lauds", "prime", "vespers"],
+          "notes": "Ash Wednesday ferial structure."
+        },
+        {
+          "date": "2024-03-28",
+          "hours": ["matins", "lauds", "vespers", "compline"],
+          "notes": "Holy Thursday special omissions."
+        }
+      ],
+      "assertions": [
+        "major-hour and Matins omissions are explicit",
+        "special Triduum conclusions and omitted slots cannot disappear silently"
+      ],
+      "authorityRefs": [
+        "docs/phase-2-rubrical-engine-design.md#16-hour-structuring",
+        "docs/phase-3-composition-engine-design.md"
+      ]
+    },
+    {
+      "id": "roman-1960-octaves-current-year-repro",
+      "area": "octaves",
+      "ownerPackage": "rubrical-engine",
+      "status": "exploratory",
+      "witnesses": [
+        {
+          "date": "2026-04-28",
+          "hours": ["matins", "lauds", "vespers"],
+          "notes": "Known 2026 hosted-demo report around the St. Joseph octave."
+        }
+      ],
+      "assertions": [
+        "resolved celebration does not point at missing Tempora or Sancti sections",
+        "known 2026 report remains classified and fixture-backed"
+      ],
+      "authorityRefs": [
+        "packages/validation/test/reviewer-reports/accepted/rr-2026-0001.json",
+        "upstream/web/www/Tabulae/Kalendaria/1960.txt"
+      ]
+    },
+    {
+      "id": "roman-1960-proper-common-fallback-sanctoral",
+      "area": "proper-common-fallback",
+      "ownerPackage": "compositor",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2026-04-29",
+          "hours": ["matins", "lauds", "terce", "sext", "none", "vespers"],
+          "notes": "Sanctoral common fallback witness already covered by focused composition tests."
+        },
+        {
+          "date": "2026-04-30",
+          "hours": ["matins", "lauds", "vespers"],
+          "notes": "St. Catherine source-selection witness."
+        }
+      ],
+      "assertions": [
+        "proper references are preferred when present",
+        "Common fallback does not erase chapter, responsory, versicle, or oration slots"
+      ],
+      "authorityRefs": [
+        "packages/compositor/test/integration/compose-upstream.test.ts",
+        "docs/phase-3-composition-engine-design.md#source-boundary"
+      ]
+    },
+    {
+      "id": "roman-1960-matins-structural-signature",
+      "area": "matins-lesson-plans",
+      "ownerPackage": "rubrical-engine",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-08-15",
+          "hours": ["matins"],
+          "notes": "Three-nocturn feast with Te Deum."
+        },
+        {
+          "date": "2024-07-09",
+          "hours": ["matins"],
+          "notes": "One-nocturn ferial Matins with Te Deum replacement."
+        },
+        {
+          "date": "2024-03-29",
+          "hours": ["matins"],
+          "notes": "Triduum Matins with suppressed hymn/invitatory and omitted Te Deum."
+        }
+      ],
+      "assertions": [
+        "Matins structural signature records nocturn count, lesson kinds, responsories, versicles, hymn, invitatory, and Te Deum",
+        "matinsTotalLessons alone is never treated as sufficient proof"
+      ],
+      "authorityRefs": [
+        "packages/rubrical-engine/test/fixtures/matins-1960-2024.json",
+        "docs/phase-2-rubrical-engine-design.md#162-matins-specialization"
+      ]
+    },
+    {
+      "id": "roman-1960-vespers-lucan-canticle",
+      "area": "vespers",
+      "ownerPackage": "compositor",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-08-15",
+          "hours": ["vespers"],
+          "notes": "Festal Magnificat antiphon and canticle slot witness."
+        },
+        {
+          "date": "2026-04-30",
+          "hours": ["vespers"],
+          "notes": "Current-year Vespers source-selection witness."
+        }
+      ],
+      "assertions": [
+        "Vespers antiphon and Lucan canticle slots are separately accounted",
+        "first/second Vespers source is visible in structural or composition fixtures"
+      ],
+      "authorityRefs": [
+        "docs/adr/013-phase-3-lucan-canticle-slots.md",
+        "packages/rubrical-engine/test/fixtures/vespers-1960-2024.json"
+      ]
+    },
+    {
+      "id": "roman-1960-seasonal-omissions",
+      "area": "seasonal-omissions",
+      "ownerPackage": "compositor",
+      "status": "candidate",
+      "witnesses": [
+        {
+          "date": "2024-03-17",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none"],
+          "notes": "Passiontide Gloria and responsory omission witness."
+        },
+        {
+          "date": "2024-03-28",
+          "hours": ["matins", "lauds", "vespers"],
+          "notes": "Triduum omission witness."
+        }
+      ],
+      "assertions": [
+        "omitted Gloria, alleluia, responsory, and conclusion paths are directive-backed",
+        "omitted slots appear as rubrically omitted in slot accounting"
+      ],
+      "authorityRefs": [
+        "packages/rubrical-engine/src/hours/transforms.ts",
+        "packages/compositor/test/integration/compose-upstream.test.ts"
+      ]
+    },
+    {
+      "id": "roman-1960-known-2026-bug-fixtures",
+      "area": "known-2026-bugs",
+      "ownerPackage": "validation",
+      "status": "exploratory",
+      "witnesses": [
+        {
+          "date": "2026-04-28",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+          "notes": "Known current-year missing-section report."
+        },
+        {
+          "date": "2026-04-30",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+          "notes": "Known current-year full-hour comparison witness."
+        }
+      ],
+      "assertions": [
+        "each reported 2026 defect is either fixed or classified with an owning package",
+        "reviewer fixtures and package regressions are linked by date/version/hour"
+      ],
+      "authorityRefs": [
+        "docs/phase-5-validation-strategy-reviewer-feedback-loop.md#15-reviewer-feedback-fixture-lifecycle",
+        "packages/validation/test/reviewer-reports/accepted/rr-2026-0001.json"
+      ]
+    }
+  ]
+}

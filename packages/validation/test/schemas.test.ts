@@ -3,8 +3,11 @@ import { describe, expect, it } from 'vitest';
 import {
   validateAdjudicationEntry,
   validateCitation,
+  validateRoman1960ScenarioManifest,
   validateReviewerReport
 } from '../src/index.js';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const corpusCitation = {
   sourceType: 'corpus',
@@ -66,6 +69,17 @@ describe('Phase 5 schemas', () => {
     const report = publicReviewerReport();
 
     expect(validateReviewerReport(report)).toEqual({
+      ok: true,
+      errors: []
+    });
+  });
+
+  it('accepts the Roman 1960 scenario coverage manifest', () => {
+    const manifest = JSON.parse(
+      readFileSync(resolve(process.cwd(), 'fixtures/roman-1960-scenarios.json'), 'utf8')
+    ) as unknown;
+
+    expect(validateRoman1960ScenarioManifest(manifest)).toEqual({
       ok: true,
       errors: []
     });

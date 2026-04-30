@@ -19,17 +19,17 @@ const COMPOSITOR_DIST = resolve(REPO_ROOT, 'packages/compositor/dist/index.js');
 const HANDLE_CONFIG = {
   'Divino Afflatu - 1954': {
     title: 'Divino Afflatu',
-    docPath: resolve(DIVERGENCE_DIR, 'divino-afflatu-2024.md'),
+    slug: 'divino-afflatu',
     dateFixture: resolve(REPO_ROOT, 'packages/rubrical-engine/test/fixtures/divino-afflatu-2024.json')
   },
   'Reduced - 1955': {
     title: 'Reduced 1955',
-    docPath: resolve(DIVERGENCE_DIR, 'reduced-1955-2024.md'),
+    slug: 'reduced-1955',
     dateFixture: resolve(REPO_ROOT, 'packages/rubrical-engine/test/fixtures/reduced-1955-2024.json')
   },
   'Rubrics 1960 - 1960': {
     title: 'Rubrics 1960',
-    docPath: resolve(DIVERGENCE_DIR, 'rubrics-1960-2024.md'),
+    slug: 'rubrics-1960',
     // Phase 2h used the same shared 61-date Roman matrix for 1955 and 1960.
     dateFixture: resolve(REPO_ROOT, 'packages/rubrical-engine/test/fixtures/reduced-1955-2024.json')
   }
@@ -125,7 +125,7 @@ const adjudications = loadAdjudications();
 
 for (const handle of selectedHandles) {
   const config = HANDLE_CONFIG[handle];
-  const dates = loadDates(config.dateFixture, args.date);
+  const dates = loadDates(config.dateFixture, args.date, args.year);
   const engine = createRubricalEngine({
     corpus: rawCorpus.index,
     kalendarium,
@@ -257,10 +257,11 @@ for (const handle of selectedHandles) {
 
   if (args.writeDocs) {
     writeFileSync(
-      config.docPath,
+      divergenceDocPath(config, args.year),
       renderDivergenceDoc({
         handle,
         title: config.title,
+        year: args.year,
         comparedHours,
         dates,
         mismatches: classifiedMismatches,
@@ -282,6 +283,7 @@ function parseArgs(argv) {
     version: undefined,
     hour: undefined,
     date: undefined,
+    year: 2024,
     language: 'Latin',
     otherLanguage: 'English',
     langfb: 'English',
@@ -310,6 +312,14 @@ function parseArgs(argv) {
       case '--date':
         if (!next) throw new Error('--date requires a value');
         out.date = next;
+        index += 1;
+        break;
+      case '--year':
+        if (!next) throw new Error('--year requires a value');
+        out.year = Number(next);
+        if (!Number.isInteger(out.year) || out.year < 1583 || out.year > 9999) {
+          throw new Error(`--year must be a valid Gregorian year, received ${JSON.stringify(next)}`);
+        }
         index += 1;
         break;
       case '--language':
@@ -353,13 +363,17 @@ function parseArgs(argv) {
   return out;
 }
 
-function loadDates(fixturePath, selectedDate) {
+function loadDates(fixturePath, selectedDate, year) {
   // Phase 3 §3g: `--date __full-year__` synthesises every date in 2024 so
   // the harness can run against the full year rather than only the 61-date
   // Phase 2h fixture matrix. Used by `compare:phase-3-perl:full` for the
   // broader adjudication baseline during 3h.
   if (selectedDate === '__full-year__') {
-    return enumerate2024Dates();
+    return enumerateYear(year ?? 2024);
+  }
+
+  if (!selectedDate && year !== 2024) {
+    return enumerateYear(year);
   }
 
   if (!existsSync(fixturePath)) {
@@ -377,16 +391,20 @@ function loadDates(fixturePath, selectedDate) {
   return [selectedDate];
 }
 
-function enumerate2024Dates() {
+function enumerateYear(year) {
   const out = [];
-  const start = new Date(Date.UTC(2024, 0, 1));
-  const end = new Date(Date.UTC(2025, 0, 1));
+  const start = new Date(Date.UTC(year, 0, 1));
+  const end = new Date(Date.UTC(year + 1, 0, 1));
   for (let day = start; day < end; day = new Date(day.getTime() + 24 * 60 * 60 * 1000)) {
     const month = String(day.getUTCMonth() + 1).padStart(2, '0');
     const dayOfMonth = String(day.getUTCDate()).padStart(2, '0');
     out.push(`${day.getUTCFullYear()}-${month}-${dayOfMonth}`);
   }
   return out;
+}
+
+function divergenceDocPath(config, year) {
+  return resolve(DIVERGENCE_DIR, `${config.slug}-${year}.md`);
 }
 
 function loadKalendaria() {
@@ -680,6 +698,7 @@ function compareLineArrays(expected, actual, options = {}) {
 function renderDivergenceDoc({
   handle,
   title,
+  year,
   comparedHours,
   dates,
   mismatches,
@@ -690,7 +709,7 @@ function renderDivergenceDoc({
 }) {
   const exactMatches = comparedHours - mismatches.length;
   const divergentDates = new Set(mismatches.map((entry) => entry.date));
-  const heading = `${title} 2024 Compositor Divergences`;
+  const heading = `${title} ${year} Compositor Divergences`;
   const hourTotals = new Map(hours.map((entry) => [entry.label, dates.length]));
   const matchingPrefixes = mismatches.map((entry) => entry.firstMismatchIndex);
   const longestMatchingPrefix =
@@ -715,8 +734,8 @@ function renderDivergenceDoc({
     '',
     '- Comparison surface:',
     `  - live Perl helper: \`packages/compositor/test/fixtures/officium-content-snapshot.pl\``,
-    `  - live harness: \`pnpm -C packages/compositor compare:phase-3-perl -- --version "${handle}"\``,
-    `  - dates: \`${dates.length}\` snapshot dates from the existing Roman Phase 2h matrix`,
+    `  - live harness: \`pnpm -C packages/compositor compare:phase-3-perl -- --version "${handle}" --year ${year}\``,
+    `  - dates: \`${dates.length}\` dates in \`${year}\`${dates.length < 300 ? ' from the existing Roman Phase 2h matrix' : ''}`,
     `  - hours: \`${hours.map((entry) => entry.label).join(', ')}\``,
     `  - language: \`${language}\``,
     `- Compared hours: \`${comparedHours}\``,
