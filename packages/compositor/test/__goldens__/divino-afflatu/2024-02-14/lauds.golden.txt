@@ -100,6 +100,8 @@ warning count: 2
   Latin: text("2:14 Pedes sanctórum suórum servábit, et ímpii in ténebris conticéscent: * quia non in fortitúdine sua roborábitur vir.")
   Latin: text("2:15 Dóminum formidábunt adversárii ejus: * et super ipsos in cælis tonábit:")
   Latin: text("2:16 Dóminus judicábit fines terræ, et dabit impérium regi suo, * et sublimábit cornu Christi sui.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [Ant.] text("Exsultávit cor meum in Dómino, qui humíliat et súblevat.")
   Latin: [Ant.] text("Lauda * ánima mea Dóminum, qui érigit elísos et díligit justos.")
   Latin: text("Psalmus 145 [5]")

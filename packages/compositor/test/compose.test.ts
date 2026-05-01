@@ -954,7 +954,7 @@ describe('composeHour', () => {
     );
   });
 
-  it('does not append a psalmic Gloria Patri after Old Testament Lauds canticles', () => {
+  it('does not append a psalmic Gloria Patri after the Benedicite canticle', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
       makeFile('horas/Latin/Psalterium/Psalmi/Psalmi major', 'Day0 Laudes1', [
@@ -1010,6 +1010,62 @@ describe('composeHour', () => {
     expect(psalmodyLines).toContain('3:57 Benedícite, ómnia ópera Dómini, Dómino.');
     expect(psalmodyLines).not.toContain('Glória Patri.');
     expect(psalmodyLines).not.toContain('Sicut erat.');
+  });
+
+  it('does append a psalmic Gloria Patri after other Old Testament Lauds canticles', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi major', 'Day6 Laudes1', [
+        {
+          type: 'psalmRef',
+          psalmNumber: 216,
+          antiphon: 'Osténde nobis, Dómine, * lucem miseratiónum tuárum.'
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmorum/Psalm216', '__preamble', [
+        { type: 'text', value: '(Canticum Ecclesiastici * Sir 36:1-16)' },
+        { type: 'text', value: '36:1 Miserére nostri, Deus ómnium, et réspice nos.' }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri.' },
+        { type: 'verseMarker', marker: 'R.', text: 'Sicut erat.' }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        psalmody: {
+          kind: 'psalmody',
+          psalms: [
+            {
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+                section: 'Day6 Laudes1'
+              }
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmodyLines = slotLines(composed, 'psalmody', 'Latin');
+    expect(psalmodyLines).toContain('Canticum Ecclesiastici [1]');
+    expect(psalmodyLines).toContain('Glória Patri.');
+    expect(psalmodyLines).toContain('Sicut erat.');
   });
 
   it('preserves wrapper reopening antiphons and source-backed heading numbers across inline psalm overrides', () => {

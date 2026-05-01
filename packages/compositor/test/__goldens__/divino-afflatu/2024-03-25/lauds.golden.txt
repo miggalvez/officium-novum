@@ -88,6 +88,8 @@ warning count: 0
   Latin: text("12:5 Notas fácite in pópulis adinventiónes ejus: * mementóte quóniam excélsum est nomen ejus.")
   Latin: text("12:6 Cantáte Dómino quóniam magnífice fecit: * annuntiáte hoc in univérsa terra.")
   Latin: text("12:7 Exsúlta, et lauda, habitátio Sion: * quia magnus in médio tui Sanctus Israël.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [Ant.] text("Inundavérunt aquæ super caput meum: dixi, Périi: invocábo nomen tuum, Dómine Deus.")
   Latin: [Ant.] text("Lábia insurgéntium, * et cogitatiónes eórum vide, Dómine.")
   Latin: text("Psalmus 116 [5]")

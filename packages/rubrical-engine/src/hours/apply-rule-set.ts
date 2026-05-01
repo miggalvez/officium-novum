@@ -33,6 +33,7 @@ import type { OrdinariumSkeleton, SkeletonSlot } from './skeleton.js';
 import { seasonalFallbackDoxologyVariant } from './doxology.js';
 import { resolveRuleReferenceFiles } from '../rules/resolve-vide-ex.js';
 import { commonKeyVariants } from '../rules/common-source.js';
+import { thirdClassSanctoralWeekdayInPaschaltide1960 } from './paschaltide-sanctoral.js';
 
 const COMMON_PRAYERS_PATH = 'horas/Latin/Psalterium/Common/Prayers';
 const MARIAANT_PATH = 'horas/Latin/Psalterium/Mariaant';
@@ -40,6 +41,11 @@ const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
 const PSALMORUM_ROOT = 'horas/Latin/Psalterium/Psalmorum';
 const MAJOR_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Major Special';
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
+const PASCHAL_MINOR_HOUR_ANTIPHON_REF = {
+  path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+  section: 'Pasch',
+  selector: '1'
+} as const;
 
 export interface ApplyRuleSetInput {
   readonly hour: HourName;
@@ -540,11 +546,11 @@ function decoratePsalmodyAssignments(
         ? {
             ...assignment,
             antiphonRef:
-              assignment.antiphonRef &&
-              psalmodyAntiphonOverride &&
-              sameReference(assignment.antiphonRef, psalmodyAntiphonOverride)
-                ? assignment.antiphonRef
-                : antiphon
+              protectedMinorHourPsalmodyAntiphonRef(
+                assignment,
+                input,
+                psalmodyAntiphonOverride
+              ) ?? antiphon
           }
         : assignment
     );
@@ -1026,6 +1032,33 @@ function resolveMinorHourAntiphonRef(
     section: 'Ant Laudes',
     selector
   };
+}
+
+function isPaschalAlleluiaAntiphonRef(ref: TextReference): boolean {
+  return ref.path === 'horas/Latin/Psalterium/Psalmi/Psalmi minor' && ref.section === 'Pasch';
+}
+
+function protectedMinorHourPsalmodyAntiphonRef(
+  assignment: PsalmAssignment,
+  input: ApplyRuleSetInput,
+  psalmodyAntiphonOverride: TextReference | undefined
+): TextReference | undefined {
+  if (
+    assignment.antiphonRef &&
+    (isPaschalAlleluiaAntiphonRef(assignment.antiphonRef) ||
+      (psalmodyAntiphonOverride && sameReference(assignment.antiphonRef, psalmodyAntiphonOverride)))
+  ) {
+    return assignment.antiphonRef;
+  }
+
+  if (
+    input.policy.name === 'rubrics-1960' &&
+    thirdClassSanctoralWeekdayInPaschaltide1960(input)
+  ) {
+    return PASCHAL_MINOR_HOUR_ANTIPHON_REF;
+  }
+
+  return undefined;
 }
 
 function explicitMinorHourAntiphonHeader(

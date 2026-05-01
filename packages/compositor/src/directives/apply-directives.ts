@@ -423,9 +423,11 @@ function normalizeStarredShortResponsoryBase(value: string): string {
     return withoutAlleluia.replace(/\.?$/u, '');
   }
 
-  const left = (match.groups.left ?? '').trim().replace(/\.?$/u, '');
+  const rawLeft = (match.groups.left ?? '').trim();
+  const hasSourceComma = /\s*,\s*\*/u.test(withoutAlleluia) || rawLeft.endsWith(',');
+  const left = rawLeft.replace(/[,.]?$/u, '');
   const right = lowerInitial((match.groups.right ?? '').trim().replace(/\.?$/u, ''));
-  const separator = match.groups.comma ? ', ' : /^et\b/iu.test(right) ? ' ' : ', ';
+  const separator = hasSourceComma ? ', ' : ' ';
   return `${left}${separator}${right}`;
 }
 

@@ -191,6 +191,168 @@ describe('psalmInclude expansion (Bug 3)', () => {
   });
 });
 
+describe('office name placeholder substitution', () => {
+  it('fills N. in proper/common orations from the feast Name section', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Sancti/05-02', [
+        { header: 'Name', content: [{ type: 'text', value: '; ignored\nAthanásii\nAnt=Athanási' }] },
+        {
+          header: 'Oratio',
+          content: [
+            {
+              type: 'text',
+              value:
+                'Exáudi, quǽsumus, Dómine, preces nostras, quas in beáti N. Confessóris tui atque Pontíficis solemnitáte deférimus, intercedénte beáto N.'
+            }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        oration: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Sancti/05-02', section: 'Oratio' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: {
+        ...buildSummary(hour),
+        celebration: {
+          feastRef: {
+            path: 'Sancti/05-02',
+            id: 'Sancti/05-02',
+            title: 'S. Athanasii Episcopi Confessoris et Ecclesiæ Doctoris'
+          }
+        } as never
+      },
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(renderRuns(composed.sections[0]!.lines[0]!, 'Latin')).toContain('beáti Athanásii');
+    expect(renderRuns(composed.sections[0]!.lines[0]!, 'Latin')).toContain(
+      'Pontíficis solemnitáte deférimus, intercedénte beáto Athanásii'
+    );
+  });
+
+  it('uses Ant= from the feast Name section for inherited common antiphons', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Sancti/05-02', [
+        { header: 'Name', content: [{ type: 'text', value: 'Athanásii\nAnt = Athanási' }] }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/Latin/Commune/C4a', [
+        {
+          header: 'Ant Laudes',
+          content: [
+            {
+              type: 'text',
+              value:
+                'O Doctor óptime, * Ecclésiæ sanctæ lumen, beáte N., divínæ legis amátor.'
+            }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        'antiphon-ad-benedictus': {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Commune/C4a', section: 'Ant Laudes' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: {
+        ...buildSummary(hour),
+        celebration: {
+          feastRef: {
+            path: 'Sancti/05-02',
+            id: 'Sancti/05-02',
+            title: 'S. Athanasii Episcopi Confessoris et Ecclesiæ Doctoris'
+          }
+        } as never
+      },
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(renderRuns(composed.sections[0]!.lines[0]!, 'Latin')).toContain('beáte Athanási');
+  });
+
+  it('uses the active language Name section for multilingual substitution', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Sancti/05-02', [
+        { header: 'Name', content: [{ type: 'text', value: 'Athanásii' }] },
+        {
+          header: 'Oratio',
+          content: [{ type: 'text', value: 'Oratio de beáto N.' }]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFile('horas/English/Sancti/05-02', [
+        { header: 'Name', content: [{ type: 'text', value: 'Athanasius' }] },
+        {
+          header: 'Oratio',
+          content: [{ type: 'text', value: 'Prayer about blessed N.' }]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        oration: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Sancti/05-02', section: 'Oratio' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: {
+        ...buildSummary(hour),
+        celebration: {
+          feastRef: {
+            path: 'Sancti/05-02',
+            id: 'Sancti/05-02',
+            title: 'S. Athanasii Episcopi Confessoris et Ecclesiæ Doctoris'
+          }
+        } as never
+      },
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin', 'English'] }
+    });
+
+    expect(renderRuns(composed.sections[0]!.lines[0]!, 'Latin')).toBe('Oratio de beáto Athanásii');
+    expect(renderRuns(composed.sections[0]!.lines[0]!, 'English')).toBe(
+      'Prayer about blessed Athanasius'
+    );
+  });
+});
+
 // --- Bug 2: commemorated Matins lessons are composed, not dropped --------
 
 describe('commemorated Matins lesson composition (Bug 2)', () => {

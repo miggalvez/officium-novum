@@ -22,6 +22,7 @@ import {
   resolveHymnDoxologyByLanguage
 } from './compose/major-hour-hymn.js';
 import { composeMatinsSections } from './compose/matins.js';
+import { applyOfficeNameSubstitution } from './compose/office-name-substitution.js';
 import { composePrimeMartyrologySection } from './compose/prime-martyrology.js';
 import { normalizeResponsoryGloria } from './compose/responsory-gloria.js';
 import {
@@ -372,8 +373,17 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         args.slot === 'psalmody' && isDirectPsalmFileRef(ref)
           ? interleaveSeparators(baseSourceContent)
           : baseSourceContent;
-      if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(sourceContent)) {
-        const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(sourceContent));
+      const namedSourceContent = applyOfficeNameSubstitution(sourceContent, {
+        corpus: args.corpus,
+        ref,
+        summary: args.summary,
+        slot: args.slot,
+        language: lang,
+        ...(args.options.langfb ? { langfb: args.options.langfb } : {}),
+        isAntiphon
+      });
+      if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(namedSourceContent)) {
+        const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(namedSourceContent));
         const flattened = flattenConditionals(antiphonOnly, args.context);
         const transformed = applyDirectives(args.slot, flattened, {
           hour: args.hour,
@@ -420,7 +430,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, sourceContent)
+        prependSimplifiedTriduumOrationPrelude(args, ref, namedSourceContent)
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined

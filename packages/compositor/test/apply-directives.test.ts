@@ -275,12 +275,12 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
       {
         type: 'verseMarker',
         marker: 'R.br.',
-        text: 'Ascéndit Christus, in cælum, * Allelúia, allelúia.'
+        text: 'Ascéndit Christus in cælum, * Allelúia, allelúia.'
       },
       {
         type: 'verseMarker',
         marker: 'R.',
-        text: 'Ascéndit Christus, in cælum, * Allelúia, allelúia.'
+        text: 'Ascéndit Christus in cælum, * Allelúia, allelúia.'
       },
       { type: 'verseMarker', marker: 'V.', text: 'Quis descéndit de cælo?' },
       { type: 'verseMarker', marker: 'R.', text: 'Allelúia, allelúia.' },
@@ -288,7 +288,7 @@ describe('applyDirectives — omit-alleluia / add-alleluia', () => {
       {
         type: 'verseMarker',
         marker: 'R.',
-        text: 'Ascéndit Christus, in cælum, * Allelúia, allelúia.'
+        text: 'Ascéndit Christus in cælum, * Allelúia, allelúia.'
       }
     ]);
   });

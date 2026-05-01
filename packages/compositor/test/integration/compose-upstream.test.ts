@@ -2617,7 +2617,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       'compline'
     ] as const;
 
-    for (const date of ['2026-04-29', '2026-04-30'] as const) {
+    for (const date of ['2026-04-29', '2026-04-30', '2026-05-02'] as const) {
       const summary = engine.resolveDayOfficeSummary(date);
 
       for (const hour of hours) {
@@ -2774,6 +2774,118 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       'Custódi nos, Dómine, ut pupíllam óculi, allelúia.',
       'Sub umbra alárum tuárum prótege nos, allelúia.'
     ]);
+
+    const athanasius = engine.resolveDayOfficeSummary('2026-05-02');
+    expect(athanasius.celebration.feastRef.path).toBe('Sancti/05-02');
+    expect(athanasius.concurrence.source.feastRef.path).toBe('Tempora/Pasc4-0');
+    expect(athanasius.concurrence.sourceSide).toBe('first');
+    expect(athanasius.concurrence.commemorations.map((commemoration) => commemoration.feastRef.path)).toEqual([
+      'Sancti/05-02'
+    ]);
+
+    const athanasiusMatinsPsalmody = athanasius.hours.matins?.slots.psalmody;
+    expect(athanasiusMatinsPsalmody?.kind).toBe('matins-nocturns');
+    if (athanasiusMatinsPsalmody?.kind === 'matins-nocturns') {
+      expect(athanasiusMatinsPsalmody.nocturns).toHaveLength(1);
+      const nocturn = athanasiusMatinsPsalmody.nocturns[0]!;
+      expect(nocturn.psalmody).toHaveLength(9);
+      expect(nocturn.lessons.map((lesson) => lesson.source.kind)).toEqual([
+        'scripture',
+        'scripture',
+        'hagiographic'
+      ]);
+      expect(
+        nocturn.lessons.map((lesson) =>
+          lesson.source.kind === 'hagiographic'
+            ? `${lesson.source.reference.path}:${lesson.source.reference.section}`
+            : undefined
+        )
+      ).toContain('horas/Latin/Sancti/05-02:Lectio94');
+      expect(nocturn.responsories.map((responsory) => responsory.reference)).toEqual([
+        { path: 'horas/Latin/Tempora/Pasc3-6', section: 'Responsory1' },
+        { path: 'horas/Latin/Tempora/Pasc3-6', section: 'Responsory3' }
+      ]);
+    }
+    expect(athanasius.hours.matins?.slots['te-deum']?.kind).toBe('te-deum');
+    expect(
+      athanasius.hours.matins?.slots['te-deum']?.kind === 'te-deum'
+        ? athanasius.hours.matins.slots['te-deum'].decision
+        : undefined
+    ).toBe('say');
+
+    const athanasiusMatins = composeHour({
+      corpus: resolvedCorpus.index,
+      summary: athanasius,
+      version: engine.version,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+    expect(firstPsalmodyAntiphon(athanasiusMatins)).toBe('Allelúja, * allelúja, allelúja.');
+    expect(sectionTexts(athanasiusMatins, 'oration').join(' ')).toContain('beáti Athanásii');
+    expect(sectionTexts(athanasiusMatins, 'oration').join(' ')).not.toContain('beáti N.');
+
+    const athanasiusLauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary: athanasius,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+    const laudsPsalmody = psalmodyTexts(athanasiusLauds);
+    const ecclesiasticusIndex = laudsPsalmody.indexOf('Canticum Ecclesiastici [4]');
+    const psalm150Index = laudsPsalmody.indexOf('Psalmus 150 [5]');
+    expect(ecclesiasticusIndex, 'Lauds should render the Sirach canticle').toBeGreaterThanOrEqual(0);
+    expect(psalm150Index, 'Lauds should render Psalm 150 after the Sirach canticle').toBeGreaterThan(
+      ecclesiasticusIndex
+    );
+    const ecclesiasticusBlock = laudsPsalmody.slice(ecclesiasticusIndex, psalm150Index);
+    expect(ecclesiasticusBlock.some((line) => line.startsWith('Glória Patri'))).toBe(true);
+    expect(ecclesiasticusBlock.some((line) => line.startsWith('Sicut erat'))).toBe(true);
+
+    const athanasiusResponsories = {
+      sext: 'Elégit eum Dóminus sacerdótem sibi, * Allelúia, allelúia.',
+      none: 'Tu es sacérdos in ætérnum, * Allelúia, allelúia.'
+    } as const;
+    for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary: athanasius,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+      expect(firstPsalmodyAntiphon(composed), `2026-05-02 ${hour} psalmody antiphon`).toBe(
+        'Allelúja, * allelúja, allelúja.'
+      );
+      if (hour === 'sext' || hour === 'none') {
+        expect(renderLatinText(firstMarkedSectionLine(composed, 'responsory', 'R.br.'))).toBe(
+          athanasiusResponsories[hour]
+        );
+      }
+    }
+
+    const athanasiusVespers = composeHour({
+      corpus: resolvedCorpus.index,
+      summary: athanasius,
+      version: engine.version,
+      hour: 'vespers',
+      options: { languages: ['Latin'] }
+    });
+    expect(firstPsalmodyAntiphon(athanasiusVespers)).toBe(
+      'Benedíctus Dóminus * suscéptor meus et liberátor meus, allelúja.'
+    );
+    expect(canonicalLatinLines(athanasiusVespers).join(' ')).toContain('beáti Athanásii');
+
+    const athanasiusCompline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary: athanasius,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+    expect(firstPsalmodyAntiphon(athanasiusCompline)).toBe('Allelúja, * allelúja, allelúja.');
+    expect(psalmodyTexts(athanasiusCompline)).toContain('Psalmus 4 [1]');
+    expect(psalmodyTexts(athanasiusCompline)).not.toContain('Psalmus 87 [1]');
   }, 240_000);
 
   it('keeps Reduced 1955 Jan 6/7 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {

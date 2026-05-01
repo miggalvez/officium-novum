@@ -142,11 +142,17 @@
           "date": "2026-04-30",
           "hours": ["matins", "lauds", "vespers"],
           "notes": "St. Catherine source-selection witness."
+        },
+        {
+          "date": "2026-05-02",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none"],
+          "notes": "St. Athanasius witness for common C4a/C4-1 fallback with feast Name substitution and 1960 Paschaltide minor-hour antiphon preservation."
         }
       ],
       "assertions": [
         "proper references are preferred when present",
-        "Common fallback does not erase chapter, responsory, versicle, or oration slots"
+        "Common fallback does not erase chapter, responsory, versicle, or oration slots",
+        "Common fallback substitutes feast-owned Name bindings instead of rendering N. placeholders"
       ],
       "authorityRefs": [
         "packages/compositor/test/integration/compose-upstream.test.ts",
@@ -173,6 +179,11 @@
           "date": "2024-03-29",
           "hours": ["matins"],
           "notes": "Triduum Matins with suppressed hymn/invitatory and omitted Te Deum."
+        },
+        {
+          "date": "2026-05-02",
+          "hours": ["matins"],
+          "notes": "Rubrics 1960 Paschaltide third-class sanctoral weekday: one nocturn, three lessons, temporal scripture lessons 1-2, sanctoral third lesson, and Te Deum."
         }
       ],
       "assertions": [
@@ -199,6 +210,11 @@
           "date": "2026-04-30",
           "hours": ["vespers"],
           "notes": "Current-year Vespers source-selection witness."
+        },
+        {
+          "date": "2026-05-02",
+          "hours": ["vespers", "compline"],
+          "notes": "Saturday first Vespers of the Fourth Sunday after Easter with Sunday Compline ownership and St. Athanasius commemoration."
         }
       ],
       "assertions": [
@@ -256,6 +272,11 @@
           "date": "2026-05-01",
           "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
           "notes": "St. Joseph the Worker full-day witness covering proper Matins psalm-only rows, Sunday Compline under Psalmi Dominica, 1960 sanctoral doxology fallback, and Old Testament canticle Gloria handling."
+        },
+        {
+          "date": "2026-05-02",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+          "notes": "Full-day St. Athanasius witness covering Name placeholder substitution, non-Benedicite Old Testament canticle Gloria, Paschaltide minor-hour antiphons, and first-Vespers/Compline source ownership."
         }
       ],
       "assertions": [

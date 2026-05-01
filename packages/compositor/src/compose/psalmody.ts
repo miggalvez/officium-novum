@@ -197,9 +197,10 @@ export function withPsalmGloriaPatri(content: readonly TextContent[]): readonly 
 }
 
 function shouldAppendGloriaPatri(node: Extract<TextContent, { type: 'psalmRef' }>): boolean {
-  // Lauds Old Testament canticles are stored as Psalm210-Psalm225 in the
-  // legacy corpus and are not followed by the psalmic Gloria Patri couplet.
-  return node.psalmNumber < 210 || node.psalmNumber > 225;
+  // The Benedicite (Psalm210 in the legacy layout) carries its own terminal
+  // doxology in-source. The other Lauds Old Testament canticles still receive
+  // the normal psalmic Gloria Patri couplet.
+  return node.psalmNumber !== 210;
 }
 
 export function normalizeRepeatedAntiphonContent(
