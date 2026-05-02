@@ -2821,6 +2821,12 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       options: { languages: ['Latin'] }
     });
     expect(firstPsalmodyAntiphon(athanasiusMatins)).toBe('Allelúja, * allelúja, allelúja.');
+    const athanasiusMatinsHymn = athanasiusMatins.sections.find((section) => section.slot === 'hymn');
+    expect(athanasiusMatinsHymn?.reference).toBe('horas/Latin/Commune/C4a#Hymnus1 Matutinum');
+    expect(athanasiusMatinsHymn?.lines[0]?.marker).toBeUndefined();
+    expect(renderLatinText(athanasiusMatinsHymn!.lines[0]!)).toBe(
+      'Iste Conféssor Dómini, coléntes'
+    );
     expect(sectionTexts(athanasiusMatins, 'oration').join(' ')).toContain('beáti Athanásii');
     expect(sectionTexts(athanasiusMatins, 'oration').join(' ')).not.toContain('beáti N.');
 
