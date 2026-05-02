@@ -18,7 +18,7 @@ warning count: 0
   Latin: [v.] text("Laus tibi, Dómine, Rex ætérnæ glóriæ.")
 
 [section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Tertia languages=Latin]
-  Latin: [v.] text("Nunc, Sancte, nobis, Spíritus,")
+  Latin: text("Nunc, Sancte, nobis, Spíritus,")
   Latin: text("Unum Patri cum Fílio,")
   Latin: text("Dignáre promptus íngeri")
   Latin: text("Nostro refúsus péctori.")

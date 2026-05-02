@@ -37,7 +37,7 @@ warning count: 1
   Latin: [Ant.] text("Christum Dei Fílium, qui putári dignátus est fílius Joseph, * Veníte adorémus.")
 
 [section #2 type=hymn slot=hymn reference=horas/Latin/Sancti/03-19#Hymnus Matutinum languages=Latin]
-  Latin: [v.] text("Cǽlitum Joseph, decus atque nostræ")
+  Latin: text("Cǽlitum Joseph, decus atque nostræ")
   Latin: text("Certa spes vitæ, columénque mundi,")
   Latin: text("Quas tibi læti cánimus, benígnus")
   Latin: text("Súscipe laudes.")

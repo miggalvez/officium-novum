@@ -18,7 +18,7 @@ warning count: 0
   Latin: [v.] text("Allelúja.")
 
 [section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Nona languages=Latin]
-  Latin: [v.] text("Rerum, Deus, tenax vigor,")
+  Latin: text("Rerum, Deus, tenax vigor,")
   Latin: text("Immótus in te pérmanens,")
   Latin: text("Lucis diúrnæ témpora")
   Latin: text("Succéssibus detérminans:")

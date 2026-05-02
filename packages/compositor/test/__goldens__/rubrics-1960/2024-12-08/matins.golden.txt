@@ -34,7 +34,7 @@ warning count: 0
   Latin: [Ant.] text("Immaculátam Conceptiónem Vírginis Maríæ celebrémus: * Christum ejus Fílium adorémus Dóminum.")
 
 [section #2 type=hymn slot=hymn reference=horas/Latin/Sancti/12-08#Hymnus Matutinum languages=Latin]
-  Latin: [v.] text("Præclára custos Vírginum,")
+  Latin: text("Præclára custos Vírginum,")
   Latin: text("Intácta mater Núminis,")
   Latin: text("Cæléstis aulæ jánua,")
   Latin: text("Spes nostra, cæli gáudium,")

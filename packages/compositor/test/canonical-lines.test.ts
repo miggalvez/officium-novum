@@ -879,6 +879,43 @@ describe('hymn stanza separator emission', () => {
 
     expect(lineTexts(composed, 'hymn', 'Latin')).toEqual(['Primo die, quo Trínitas']);
   });
+
+  it('renders parsed hymn verse-marker cues as unmarked hymn text', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Commune/C4a.txt',
+      sections: [
+        {
+          header: 'Hymnus1 Matutinum',
+          startLine: 1,
+          endLine: 1,
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Iste Conféssor Dómini, coléntes' },
+            { type: 'rubric', value: 'rubrica inline' }
+          ]
+        }
+      ]
+    });
+
+    const hour = buildHour(
+      'hymn',
+      { path: 'horas/Latin/Commune/C4a', section: 'Hymnus1 Matutinum' },
+      'matins'
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'hymn', 'Latin')).toEqual([
+      'Iste Conféssor Dómini, coléntes rubrica inline '
+    ]);
+    expect(lineMarkers(composed, 'hymn')).toEqual([undefined]);
+  });
 });
 
 describe('Psalmus N [index] heading emission', () => {

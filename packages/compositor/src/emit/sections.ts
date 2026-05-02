@@ -219,6 +219,12 @@ function linesFromContent(
         break;
       case 'verseMarker':
         flush();
+        if (slot === 'hymn' && /^v\.?$/iu.test(node.marker.trim())) {
+          current = {
+            parts: [{ type: 'text', value: normalizeHymnText(language, node.text) }]
+          };
+          break;
+        }
         if (
           slot === 'final-antiphon-bvm' &&
           /^v\.?$/iu.test(node.marker.trim()) &&

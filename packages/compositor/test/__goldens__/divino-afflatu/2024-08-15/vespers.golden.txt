@@ -92,7 +92,7 @@ warning count: 0
 [section #3 type=hymn slot=hymn reference=horas/Latin/Sancti/08-15#Hymnus Vespera languages=Latin]
   Latin: text("_")
   Latin: text("Hymnus")
-  Latin: [v.] text("O prima, Virgo, pródita")
+  Latin: text("O prima, Virgo, pródita")
   Latin: text("E Conditóris spíritu,")
   Latin: text("Prædestináta Altíssimi")
   Latin: text("Gestáre in alvo Fílium;")

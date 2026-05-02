@@ -107,7 +107,7 @@ warning count: 0
 [section #3 type=hymn slot=hymn reference=horas/Latin/Sancti/08-15#Hymnus Laudes languages=Latin]
   Latin: text("_")
   Latin: text("Hymnus")
-  Latin: [v.] text("Solis, o Virgo, rádiis amícta,")
+  Latin: text("Solis, o Virgo, rádiis amícta,")
   Latin: text("Bis caput senis redimíta stellis,")
   Latin: text("Luna cui præbet pédibus scabéllum")
   Latin: text("Inclita fulges.")

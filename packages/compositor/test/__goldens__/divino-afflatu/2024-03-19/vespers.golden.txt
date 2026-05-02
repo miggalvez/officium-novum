@@ -89,7 +89,7 @@ warning count: 0
 [section #3 type=hymn slot=hymn reference=horas/Latin/Sancti/03-19#Hymnus Vespera languages=Latin]
   Latin: text("_")
   Latin: text("Hymnus")
-  Latin: [v.] text("Te, Joseph, célebrent ágmina cǽlitum,")
+  Latin: text("Te, Joseph, célebrent ágmina cǽlitum,")
   Latin: text("Te cuncti résonent christíadum chori,")
   Latin: text("Qui clarus méritis, junctus est ínclitæ")
   Latin: text("Casto fœ́dere Vírgini.")

@@ -107,7 +107,7 @@ warning count: 2
 [section #3 type=hymn slot=hymn reference=horas/Latin/Sancti/03-19#Hymnus Laudes languages=Latin]
   Latin: text("_")
   Latin: text("Hymnus")
-  Latin: [v.] text("Iste, quem læti cólimus, fidéles,")
+  Latin: text("Iste, quem læti cólimus, fidéles,")
   Latin: text("Cujus excélsos cánimus triúmphos,")
   Latin: text("Hac die Joseph méruit perénnis")
   Latin: text("Gáudia vitæ.")

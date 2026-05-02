@@ -14,7 +14,7 @@ warning count: 0
   Latin: [v.] text("Allelúja.")
 
 [section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Sexta languages=Latin]
-  Latin: [v.] text("Rector potens, verax Deus,")
+  Latin: text("Rector potens, verax Deus,")
   Latin: text("Qui témperas rerum vices,")
   Latin: text("Splendóre mane illúminas,")
   Latin: text("Et ígnibus merídiem:")

@@ -73,7 +73,7 @@ warning count: 0
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
-  Latin: [v.] text("Te lucis ante términum,")
+  Latin: text("Te lucis ante términum,")
   Latin: text("Rerum Creátor, póscimus,")
   Latin: text("Ut pro tua cleméntia")
   Latin: text("Sis præsul et custódia.")

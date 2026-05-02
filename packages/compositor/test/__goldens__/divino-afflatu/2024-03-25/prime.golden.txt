@@ -19,7 +19,7 @@ warning count: 0
   Latin: [v.] text("Laus tibi, Dómine, Rex ætérnæ glóriæ.")
 
 [section #1 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Prima Special#Hymnus Prima languages=Latin]
-  Latin: [v.] text("Jam lucis orto sídere,")
+  Latin: text("Jam lucis orto sídere,")
   Latin: text("Deum precémur súpplices,")
   Latin: text("Ut in diúrnis áctibus")
   Latin: text("Nos servet a nocéntibus.")

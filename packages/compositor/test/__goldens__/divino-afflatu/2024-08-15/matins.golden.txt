@@ -39,7 +39,7 @@ warning count: 0
   Latin: [Ant.] text("Veníte, adorémus Regem regum, * Cujus hódie ad æthéreum Virgo Mater assúmpta est cælum.")
 
 [section #2 type=hymn slot=hymn reference=horas/Latin/Sancti/08-15#Hymnus Matutinum languages=Latin]
-  Latin: [v.] text("Surge! Jam terris fera bruma cessit,")
+  Latin: text("Surge! Jam terris fera bruma cessit,")
   Latin: text("Ridet in pratis decus omne florum,")
   Latin: text("Alma quæ Vitæ Génetrix fuísti,")
   Latin: text("Surge, María!")

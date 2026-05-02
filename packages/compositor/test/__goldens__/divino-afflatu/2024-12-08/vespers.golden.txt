@@ -93,7 +93,7 @@ warning count: 0
   Latin: text("_")
   Latin: text("Hymnus")
   Latin: rubric("Prima stropha sequentis hymni dicitur flexis genibus.")
-  Latin: [v.] text("Ave maris stella,")
+  Latin: text("Ave maris stella,")
   Latin: text("Dei Mater alma,")
   Latin: text("Atque semper Virgo,")
   Latin: text("Felix cæli porta.")
