@@ -818,6 +818,51 @@ describe('hymn stanza separator emission', () => {
     ]);
   });
 
+  it('keeps the gospel-to-homily separator in Matins lessons', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile({
+      path: 'horas/Latin/Tempora/Pasc4-0.txt',
+      sections: [
+        {
+          header: 'Lectio7',
+          startLine: 1,
+          endLine: 6,
+          content: [
+            { type: 'text', value: 'Léctio sancti Evangélii secúndum Joánnem' },
+            { type: 'citation', value: 'Joannes 16:5-14' },
+            {
+              type: 'text',
+              value:
+                'In illo témpore: Dixit Jesus discípulis suis: Vado ad eum qui misit me; et nemo ex vobis intérrogat me, Quo vadis? Et réliqua.'
+            },
+            { type: 'separator' },
+            { type: 'text', value: 'Homilía sancti Augustíni Epíscopi' }
+          ]
+        }
+      ]
+    });
+
+    const hour = buildHour(
+      'lectio-brevis',
+      { path: 'horas/Latin/Tempora/Pasc4-0.txt', section: 'Lectio7' },
+      'matins'
+    );
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(lineTexts(composed, 'lectio-brevis', 'Latin')).toEqual([
+      'Léctio sancti Evangélii secúndum Joánnem Joannes 16:5-14In illo témpore: Dixit Jesus discípulis suis: Vado ad eum qui misit me; et nemo ex vobis intérrogat me, Quo vadis? Et réliqua.',
+      '_',
+      'Homilía sancti Augustíni Epíscopi'
+    ]);
+  });
+
   it('only strips the leading inline gabc cue from hymn text nodes', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile({

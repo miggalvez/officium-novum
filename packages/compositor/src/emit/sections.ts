@@ -274,7 +274,8 @@ function linesFromContent(
         // lines in the legacy stream.
         if (
           slot === 'hymn' ||
-          (slot === 'lectio-brevis' && node.source !== undefined) ||
+          (slot === 'lectio-brevis' &&
+            (node.source !== undefined || isHomilyBoundarySeparator(content, index))) ||
           slot === 'martyrology' ||
           slot === 'responsory' ||
           slot === 'versicle'
@@ -482,6 +483,18 @@ function normalizeSlotText(slot: SlotName, text: string): string {
 function normalizeLessonVerseInitial(text: string): string {
   return text.replace(/^(\d+\s+)(\p{Ll})/u, (_, prefix: string, initial: string) =>
     `${prefix}${initial.toLocaleUpperCase()}`
+  );
+}
+
+function isHomilyBoundarySeparator(content: readonly TextContent[], index: number): boolean {
+  const previous = content[index - 1];
+  const next = content[index + 1];
+  if (previous?.type !== 'text' || next?.type !== 'text') {
+    return false;
+  }
+  return (
+    /\b(?:Et réliqua|And the rest)\.?$/u.test(previous.value.trim()) &&
+    /^(?:Homilía|Homily|Sermo|Tractatus)\b/u.test(next.value.trim())
   );
 }
 

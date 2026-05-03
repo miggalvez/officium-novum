@@ -613,7 +613,7 @@ function buildResponsory(
 ): ResponsorySource {
   const sectionName = `Responsory${index}`;
 
-  if (usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)) {
+  if (usesPaschalOneNocturnScriptureResponsory3(input)) {
     if (index === 2) {
       const thirdScriptureResponsory = findScriptureResponsory(3, input, lessonSource);
       if (thirdScriptureResponsory) {
@@ -774,6 +774,18 @@ export function usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(
   input: Pick<BuildMatinsPlanInput, 'celebration' | 'temporal' | 'version'>
 ): boolean {
   return thirdClassSanctoralWeekdayInPaschaltide(input);
+}
+
+function usesPaschalOneNocturnScriptureResponsory3(
+  input: Pick<BuildMatinsPlanInput, 'celebration' | 'temporal' | 'version'>
+): boolean {
+  return (
+    usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input) ||
+    (input.version?.handle.includes('1960') === true &&
+      input.celebration.source === 'temporal' &&
+      input.temporal.dayOfWeek === 0 &&
+      /^Pasc[1-5]-0$/u.test(input.temporal.dayName))
+  );
 }
 
 function usesThirdClassSanctoralWeekdayPaschalMatinsAntiphon(

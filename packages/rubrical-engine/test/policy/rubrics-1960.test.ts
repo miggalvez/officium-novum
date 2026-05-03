@@ -214,6 +214,29 @@ describe('rubrics1960Policy.selectPsalmody', () => {
       undefined
     ]);
   });
+
+  it('uses the whole-slot Paschal Alleluia antiphon for temporal Eastertide Sunday major hours', () => {
+    for (const hour of ['lauds', 'vespers'] as const) {
+      const psalms = rubrics1960Policy.selectPsalmody({
+        hour,
+        celebration: matinsCelebration('Tempora/Pasc4-0', 'II', 'temporal'),
+        celebrationRules: matinsRules(),
+        hourRules: hourRules({ hour, psalterScheme: 'ferial' }),
+        temporal: temporal('2026-05-03', 'Pasc4-0', 'eastertide', 'II'),
+        corpus: {} as never
+      });
+
+      expect(psalms).toHaveLength(5);
+      expect(psalms.every((assignment) => assignment.antiphonRef === psalms[0]?.antiphonRef)).toBe(
+        true
+      );
+      expect(psalms[0]?.antiphonRef).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+        section: 'Pasch',
+        selector: '1'
+      });
+    }
+  });
 });
 
 describe('rubrics1960Policy.transferTarget', () => {

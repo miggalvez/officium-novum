@@ -277,6 +277,11 @@
           "date": "2026-05-02",
           "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
           "notes": "Full-day St. Athanasius witness covering Name placeholder substitution, non-Benedicite Old Testament canticle Gloria, Paschaltide minor-hour antiphons, and first-Vespers/Compline source ownership."
+        },
+        {
+          "date": "2026-05-03",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+          "notes": "Fourth Sunday after Easter full-day witness covering 1960 Paschaltide Sunday Matins lesson merging, whole-slot Lauds/Vespers Alleluia antiphons, ordinary minor-hour doxology, and Compline preces suppression."
         }
       ],
       "assertions": [

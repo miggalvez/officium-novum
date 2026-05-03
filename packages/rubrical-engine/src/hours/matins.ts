@@ -126,10 +126,12 @@ export function structureMatins(input: StructureMatinsInput): StructureMatinsRes
       ...(input.overlay ? { overlay: input.overlay } : {}),
       ...(input.version ? { version: input.version } : {})
     }),
-    ...(usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
+    ...(usesPaschalOneNocturnScriptureMerge(input)
       ? [
           'matins-merge-second-third-scripture-lessons' as const,
-          'matins-invitatory-paschal-alleluia' as const
+          ...(usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
+            ? ['matins-invitatory-paschal-alleluia' as const]
+            : [])
         ]
       : [])
   ];
@@ -142,4 +144,16 @@ export function structureMatins(input: StructureMatinsInput): StructureMatinsRes
     },
     warnings
   };
+}
+
+function usesPaschalOneNocturnScriptureMerge(
+  input: Pick<StructureMatinsInput, 'celebration' | 'temporal' | 'version'>
+): boolean {
+  return (
+    usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input) ||
+    (input.version?.handle.includes('1960') === true &&
+      input.celebration.source === 'temporal' &&
+      input.temporal.dayOfWeek === 0 &&
+      /^Pasc[1-5]-0$/u.test(input.temporal.dayName))
+  );
 }

@@ -625,6 +625,7 @@ function renderRun(run) {
 function renderCanonicalText(text) {
   return canonicalizeAlleluiaOrthography(applyPublicSourceDisplayProfile(text))
     .replace(/\u00a0/gu, ' ')
+    .replace(/\{:[^}]*:\}\s*/gu, '')
     .replace(/\+{2,}/gu, '+')
     .replace(/℣\./gu, 'V.')
     .replace(/℟\./gu, 'R.')

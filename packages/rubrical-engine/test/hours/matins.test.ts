@@ -387,7 +387,36 @@ describe('structureMatins', () => {
     expect(result.hour.directives).toContain('matins-invitatory-paschal-alleluia');
   });
 
-  it('does not emit the lesson-merge directive outside the 1960 Paschal weekday III-class sanctoral case', () => {
+  it('emits the 1960 Paschal Sunday scripture-lesson merge directive while preserving Matins structure', () => {
+    const { corpus, skeleton, version } = setup();
+    const celeb = celebration('Tempora/Pent07-2', 'II', 'temporal');
+    const rules = baseRules();
+    const hourRules = deriveHourRuleSet(celeb, rules, 'matins');
+
+    const result = structureMatins({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules: rules,
+      hourRules,
+      temporal: temporal('2026-05-03', 'Pasc4-0', 'eastertide', 'II'),
+      policy: rubrics1960Policy,
+      corpus,
+      version
+    });
+
+    expect(result.hour.directives).toContain('matins-merge-second-third-scripture-lessons');
+    expect(result.hour.directives).not.toContain('matins-invitatory-paschal-alleluia');
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('matins-nocturns');
+    if (psalmody?.kind === 'matins-nocturns') {
+      expect(psalmody.nocturns).toHaveLength(1);
+      expect(psalmody.nocturns[0]?.lessons.map((lesson) => lesson.index)).toEqual([1, 2, 3]);
+    }
+  });
+
+  it('does not emit the lesson-merge directive outside Paschaltide 1960 merge cases', () => {
     const { corpus, skeleton, version } = setup();
     const celeb = celebration('Sancti/08-15', 'III', 'sanctoral');
     const rules = baseRules();

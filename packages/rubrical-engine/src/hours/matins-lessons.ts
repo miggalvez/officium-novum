@@ -190,6 +190,13 @@ function routePositionalDefault(
     }
   }
 
+  if (usesRubrics1960PaschaltideSundayPattern(context) && lessonIndex === 3) {
+    return {
+      kind: 'homily-on-gospel',
+      gospel: homilyGospelPericope(context)
+    };
+  }
+
   if (context.shape.nocturns === 1 || context.shape.totalLessons === 3) {
     return {
       kind: 'scripture',
@@ -277,6 +284,17 @@ function usesRubrics1960ThreeLessonSanctoralPattern(
     context.shape.totalLessons === 3 &&
     context.celebration.source === 'sanctoral' &&
     context.celebration.rank.classSymbol === 'III'
+  );
+}
+
+function usesRubrics1960PaschaltideSundayPattern(context: RouteLessonContext): boolean {
+  return (
+    context.policy.name === 'rubrics-1960' &&
+    context.shape.nocturns === 1 &&
+    context.shape.totalLessons === 3 &&
+    context.celebration.source === 'temporal' &&
+    context.temporal.dayOfWeek === 0 &&
+    /^Pasc[1-5]-0$/u.test(context.temporal.dayName)
   );
 }
 

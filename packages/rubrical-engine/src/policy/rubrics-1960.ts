@@ -310,17 +310,19 @@ export const rubrics1960Policy: RubricalPolicy = {
     });
   },
   selectPsalmody(params: SelectPsalmodyParams): readonly PsalmAssignment[] {
-    return selectPsalmodyRoman1960({
+    const psalmody = selectPsalmodyRoman1960({
       policyName: 'rubrics-1960',
       hour: params.hour,
       celebration: params.celebration,
       celebrationRules: params.celebrationRules,
-      hourRules: thirdClassSanctoralWeekdayPsalmody1960(params),
+      hourRules: paschaltidePsalmody1960(params),
       temporal: params.temporal,
       corpus: params.corpus,
       vespersSide: params.vespersSide,
       omitPrimeBracketPsalm: true
     });
+
+    return temporalSundayPaschaltideMinorPsalmody1960(params, psalmody);
   },
   hourDirectives(params: HourDirectivesParams): ReadonlySet<HourDirective> {
     return deriveSeasonalDirectives1960({
@@ -485,6 +487,31 @@ export const rubrics1960Policy: RubricalPolicy = {
     readonly temporal: TemporalContext;
     readonly totalLessons: MatinsPlan['totalLessons'];
   }): readonly BenedictioEntry[] {
+    if (
+      params.totalLessons === 3 &&
+      params.celebration.source === 'temporal' &&
+      params.temporal.dayOfWeek === 0 &&
+      /^Pasc[1-5]-0$/u.test(params.temporal.dayName)
+    ) {
+      return selectRomanBenedictions({
+        nocturnIndex: params.nocturnIndex,
+        lessons: params.lessons,
+        celebration: params.celebration,
+        temporal: params.temporal,
+        totalLessons: params.totalLessons
+      }).map((entry) =>
+        entry.index === 3
+          ? {
+              index: entry.index,
+              reference: {
+                path: 'horas/Latin/Psalterium/Benedictions.txt',
+                section: 'Evangelica9'
+              }
+            }
+          : entry
+      );
+    }
+
     return selectRomanBenedictions({
       nocturnIndex: params.nocturnIndex,
       lessons: params.lessons,
@@ -552,9 +579,20 @@ export const rubrics1960Policy: RubricalPolicy = {
   }
 };
 
-function thirdClassSanctoralWeekdayPsalmody1960(
+function paschaltidePsalmody1960(
   params: SelectPsalmodyParams
 ): SelectPsalmodyParams['hourRules'] {
+  if (usesTemporalSundayPaschalAlleluiaPsalmodyAntiphon(params)) {
+    return {
+      ...params.hourRules,
+      psalmodyAntiphonOverride: {
+        source: 'paschal-alleluia',
+        application: 'whole-slot',
+        ref: PASCHAL_ALLELUIA_PSALMODY_ANTIPHON_REF
+      }
+    };
+  }
+
   if (
     params.celebration.source !== 'sanctoral' ||
     params.celebration.rank.classSymbol !== 'III' ||
@@ -586,6 +624,43 @@ function thirdClassSanctoralWeekdayPsalmody1960(
       ref: PASCHAL_ALLELUIA_PSALMODY_ANTIPHON_REF
     }
   };
+}
+
+function usesTemporalSundayPaschalAlleluiaPsalmodyAntiphon(
+  params: SelectPsalmodyParams
+): boolean {
+  return (
+    params.celebration.source === 'temporal' &&
+    params.temporal.dayOfWeek === 0 &&
+    /^Pasc[1-5]-0$/u.test(params.temporal.dayName) &&
+    (params.hour === 'lauds' || params.hour === 'vespers')
+  );
+}
+
+function temporalSundayPaschaltideMinorPsalmody1960(
+  params: SelectPsalmodyParams,
+  psalmody: readonly PsalmAssignment[]
+): readonly PsalmAssignment[] {
+  if (
+    params.celebration.source !== 'temporal' ||
+    params.temporal.dayOfWeek !== 0 ||
+    !/^Pasc[1-5]-0$/u.test(params.temporal.dayName) ||
+    !usesThirdClassSanctoralPaschalAlleluiaPsalmodyAntiphon(params.hour)
+  ) {
+    return psalmody;
+  }
+
+  const filtered =
+    params.hour === 'prime'
+      ? psalmody.filter((assignment) => assignment.psalmRef.selector !== '53')
+      : psalmody;
+
+  return Object.freeze(
+    filtered.map((assignment) => ({
+      ...assignment,
+      antiphonRef: PASCHAL_ALLELUIA_PSALMODY_ANTIPHON_REF
+    }))
+  );
 }
 
 function requiresTeDeumInThreeLessonOffice1960(params: {

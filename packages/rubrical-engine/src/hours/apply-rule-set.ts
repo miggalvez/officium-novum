@@ -40,6 +40,7 @@ const MARIAANT_PATH = 'horas/Latin/Psalterium/Mariaant';
 const PSALMI_MAJOR = 'horas/Latin/Psalterium/Psalmi/Psalmi major';
 const PSALMORUM_ROOT = 'horas/Latin/Psalterium/Psalmorum';
 const MAJOR_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Major Special';
+const MINOR_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Minor Special';
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
 const PASCHAL_MINOR_HOUR_ANTIPHON_REF = {
   path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
@@ -274,10 +275,17 @@ function minorHourLaterBlockOverrideReference(
   }
 
   if (slot !== 'versicle') {
-    return undefined;
+    const paschalSundaySection = minorHourPaschaltideSundayLaterBlockSection(input, slot);
+    return paschalSundaySection
+      ? {
+          path: MINOR_SPECIAL_PATH,
+          section: paschalSundaySection
+        }
+      : undefined;
   }
 
   const section =
+    minorHourPaschaltideSundayLaterBlockSection(input, slot) ??
     minorHourAdventLaterBlockSection(input, slot) ??
     minorHourQuadragesimaLaterBlockSection(input, slot);
   if (!section) {
@@ -288,6 +296,32 @@ function minorHourLaterBlockOverrideReference(
     path: minorHourLaterBlockFallbackPath(input.hour, input.temporal.dayOfWeek),
     section
   };
+}
+
+function minorHourPaschaltideSundayLaterBlockSection(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): string | undefined {
+  if (!is1960TemporalPaschaltideSunday(input)) {
+    return undefined;
+  }
+
+  switch (input.hour) {
+    case 'terce':
+      return slot === 'responsory' ? 'Responsory breve Pasch Tertia'
+        : slot === 'versicle' ? 'Versum Pasch Tertia'
+        : undefined;
+    case 'sext':
+      return slot === 'responsory' ? 'Responsory breve Pasch Sexta'
+        : slot === 'versicle' ? 'Versum Pasch Sexta'
+        : undefined;
+    case 'none':
+      return slot === 'responsory' ? 'Responsory breve Pasch Nona'
+        : slot === 'versicle' ? 'Versum Pasch Nona'
+        : undefined;
+    default:
+      return undefined;
+  }
 }
 
 function primeOrdinaryLaterBlockReference(
@@ -1136,6 +1170,15 @@ function resolveFallbackDoxologyVariant(input: ApplyRuleSetInput): string | unde
     return undefined;
   }
 
+  if (
+    input.policy.name === 'rubrics-1960' &&
+    input.celebration.source === 'temporal' &&
+    input.temporal.dayOfWeek === 0 &&
+    /^Pasc[1-5]-0$/u.test(input.temporal.dayName)
+  ) {
+    return undefined;
+  }
+
   return seasonalFallbackDoxologyVariant(input.temporal);
 }
 
@@ -1583,6 +1626,14 @@ function majorHourLaterBlockFallbackReference(
   input: ApplyRuleSetInput,
   slot: SlotName
 ): TextReference | undefined {
+  const paschaltideSundaySection = majorHourPaschaltideSundayLaterBlockSection(input, slot);
+  if (paschaltideSundaySection) {
+    return {
+      path: MAJOR_SPECIAL_PATH,
+      section: paschaltideSundaySection
+    };
+  }
+
   // Weekday 1960 Lauds/Vespers still say `#Capitulum Hymnus Versus` in the
   // Ordinarium, but Perl expands that wrapper from the ferial sections in
   // `Psalterium/Special/Major Special` when the proper supplies no later block.
@@ -1611,6 +1662,45 @@ function majorHourLaterBlockFallbackReference(
     path: MAJOR_SPECIAL_PATH,
     section
   };
+}
+
+function majorHourPaschaltideSundayLaterBlockSection(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): string | undefined {
+  if (
+    input.policy.name !== 'rubrics-1960' ||
+    input.celebration.source !== 'temporal' ||
+    input.celebration.kind ||
+    input.temporal.dayOfWeek !== 0 ||
+    !/^Pasc[1-5]-0$/u.test(input.temporal.dayName)
+  ) {
+    return undefined;
+  }
+
+  if (input.hour === 'lauds') {
+    switch (slot) {
+      case 'hymn':
+        return 'Hymnus Pasch Laudes';
+      case 'versicle':
+        return 'Pasch Versum 2';
+      default:
+        return undefined;
+    }
+  }
+
+  if (input.hour === 'vespers') {
+    switch (slot) {
+      case 'hymn':
+        return 'Hymnus Pasch Vespera';
+      case 'versicle':
+        return 'Pasch Versum 3';
+      default:
+        return undefined;
+    }
+  }
+
+  return undefined;
 }
 
 function majorHourLentFerialLaterBlockSection(
@@ -1758,8 +1848,9 @@ function usesOrdinaryPrimeLaterBlock(
   }
   return (
     input.policy.name === 'rubrics-1960' &&
-    input.celebration.source === 'sanctoral' &&
-    is1960SanctoralFestiveClass(input.celebration.rank.classSymbol)
+    ((input.celebration.source === 'sanctoral' &&
+      is1960SanctoralFestiveClass(input.celebration.rank.classSymbol)) ||
+      is1960TemporalPaschaltideSunday(input))
   );
 }
 
@@ -1934,6 +2025,15 @@ function primeShortLessonSection(input: ApplyRuleSetInput): string {
   return 'Dominica';
 }
 
+function is1960TemporalPaschaltideSunday(input: ApplyRuleSetInput): boolean {
+  return (
+    input.policy.name === 'rubrics-1960' &&
+    input.celebration.source === 'temporal' &&
+    input.temporal.dayOfWeek === 0 &&
+    /^Pasc[1-5]-0$/u.test(input.temporal.dayName)
+  );
+}
+
 function resolveSpecialComplineOrationAndConclusion(
   slotName: SlotName,
   input: ApplyRuleSetInput
@@ -2080,6 +2180,13 @@ function properHeadersForSlot(
       // Upstream temporal files use `[Ant 2]` for the Benedictus antiphon
       // (after the two psalm nocturns of Lauds I/II), and sanctoral files
       // use `[Ant Laudes]` or `[Ant Benedictus]`.
+      if (
+        input?.policy.name === 'rubrics-1960' &&
+        input.celebration.source === 'temporal' &&
+        /^Pasc[1-5]-0$/u.test(input.temporal.dayName)
+      ) {
+        return ['Ant 1', 'Ant 2', 'Ant Laudes', 'Ant Benedictus'];
+      }
       return ['Ant 2', 'Ant Laudes', 'Ant Benedictus'];
     case 'antiphon-ad-magnificat': {
       // Temporal files use `[Ant 3]` for the Magnificat antiphon (after two

@@ -3,7 +3,7 @@ date: 2024-03-31
 hour: compline
 celebration: Dominica Resurrectionis
 languages: Latin
-section count: 12
+section count: 11
 warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
@@ -107,23 +107,7 @@ warning count: 0
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [Ant.] text("Salva nos, Dómine, vigilántes, custódi nos dormiéntes; ut vigilémus cum Christo, et requiescámus in pace, allelúja.")
 
-[section #8 type=preces slot=preces reference=horas/Latin/Psalterium/Special/Preces#Preces dominicales Completorium languages=Latin]
-  Latin: [V.] text("Benedíctus es, Dómine, Deus patrum nostrórum.")
-  Latin: [R.] text("Et laudábilis et gloriósus in sǽcula.")
-  Latin: [V.] text("Benedicámus Patrem et Fílium cum Sancto Spíritu.")
-  Latin: [R.] text("Laudémus, et superexaltémus eum in sǽcula.")
-  Latin: [V.] text("Benedíctus es, Dómine, in firmaménto cæli.")
-  Latin: [R.] text("Et laudábilis, et gloriósus, et superexaltátus in sǽcula.")
-  Latin: [V.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus.")
-  Latin: [R.] text("Amen.")
-  Latin: [V.] text("Dignáre, Dómine, nocte ista.")
-  Latin: [R.] text("Sine peccáto nos custodíre.")
-  Latin: [V.] text("Miserére nostri, Dómine.")
-  Latin: [R.] text("Miserére nostri.")
-  Latin: [V.] text("Fiat misericórdia tua, Dómine, super nos.")
-  Latin: [R.] text("Quemádmodum sperávimus in te.")
-
-[section #9 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+[section #8 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [v.] text("Orémus.")
@@ -131,7 +115,7 @@ warning count: 0
   Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #10 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+[section #9 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [V.] text("Benedicámus Dómino.")
@@ -139,7 +123,7 @@ warning count: 0
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
   Latin: [R.] text("Amen.")
 
-[section #11 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Paschalis languages=Latin]
+[section #10 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Paschalis languages=Latin]
   Latin: text("Regína cæli, lætáre, allelúja;")
   Latin: text("Quia quem meruísti portáre, allelúja,")
   Latin: text("Resurréxit, sicut dixit, allelúja:")

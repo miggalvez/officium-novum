@@ -37,6 +37,32 @@ describe('buildCompline', () => {
     expect(compline.directives).toEqual(['preces-dominicales']);
   });
 
+  it('suppresses dominical Compline preces on 1960 Paschaltide Sundays', () => {
+    const today = makePreview('2026-05-03', 'II', {
+      path: 'Tempora/Pasc4-0',
+      source: 'temporal',
+      dayName: 'Pasc4-0',
+      season: 'eastertide'
+    });
+    const tomorrow = makePreview('2026-05-04', 'IV', {
+      path: 'Tempora/Pasc4-1',
+      source: 'temporal',
+      dayName: 'Pasc4-1',
+      season: 'eastertide'
+    });
+    const concurrence = makeConcurrence('today', today.celebration, 'today-higher-rank');
+
+    const compline = buildCompline({
+      concurrence,
+      today,
+      tomorrow,
+      policy: rubrics1960Policy
+    });
+
+    expect(compline.source.kind).toBe('vespers-winner');
+    expect(compline.directives).toEqual([]);
+  });
+
   it('uses ordinary source for a ferial weekday with today as Vespers winner', () => {
     const today = makePreview('2024-11-05', 'IV', {
       path: 'Tempora/Pent24-2',
@@ -315,6 +341,7 @@ function makePreview(
     readonly path: string;
     readonly source: Celebration['source'];
     readonly dayName: string;
+    readonly season?: DayConcurrencePreview['temporal']['season'];
     readonly hasFirstVespers?: boolean;
     readonly hasSecondVespers?: boolean;
   }
@@ -341,7 +368,9 @@ function makePreview(
       dayOfWeek: new Date(`${isoDate}T00:00:00Z`).getUTCDay(),
       weekStem: options.dayName.split('-', 1)[0] ?? options.dayName,
       dayName: options.dayName,
-      season: options.dayName.startsWith('Quad') ? 'passiontide' : 'time-after-pentecost',
+      season:
+        options.season ??
+        (options.dayName.startsWith('Quad') ? 'passiontide' : 'time-after-pentecost'),
       feastRef: {
         path: options.path,
         id: options.path,

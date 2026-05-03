@@ -64,7 +64,12 @@ export function buildComplineWithWarnings(
     tomorrow: input.tomorrow
   });
 
-  const baseDirectives = deriveComplineBaseDirectives(source, input.today, input.tomorrow);
+  const baseDirectives = deriveComplineBaseDirectives(
+    source,
+    input.today,
+    input.tomorrow,
+    input.policy
+  );
 
   const slotsState = maybeApplyFullSlots(input, source);
   const directives = mergeDirectives(baseDirectives, slotsState.directives);
@@ -166,7 +171,8 @@ function canBuildFullStructure(input: BuildComplineInput): boolean {
 function deriveComplineBaseDirectives(
   source: ComplineSource,
   today: DayConcurrencePreview,
-  tomorrow: DayConcurrencePreview
+  tomorrow: DayConcurrencePreview,
+  policy: RubricalPolicy
 ): readonly HourDirective[] {
   if (source.kind === 'triduum-special') {
     return ['omit-gloria-patri', 'short-chapter-only'];
@@ -179,11 +185,22 @@ function deriveComplineBaseDirectives(
   const sourceDate = source.celebration.feastRef.path === tomorrow.celebration.feastRef.path
     ? tomorrow
     : today;
+  if (policy.name === 'rubrics-1960' && isPaschaltideSunday(sourceDate.temporal)) {
+    return [];
+  }
+
   if (sourceDate.temporal.dayOfWeek === 0) {
     return ['preces-dominicales'];
   }
 
   return [];
+}
+
+function isPaschaltideSunday(temporal: TemporalContext): boolean {
+  return (
+    temporal.dayOfWeek === 0 &&
+    (temporal.season === 'eastertide' || temporal.season === 'ascensiontide')
+  );
 }
 
 function mergeDirectives(
