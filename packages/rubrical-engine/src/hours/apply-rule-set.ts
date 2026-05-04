@@ -274,8 +274,8 @@ function minorHourLaterBlockOverrideReference(
     return undefined;
   }
 
+  const paschalSundaySection = minorHourPaschaltideSundayLaterBlockSection(input, slot);
   if (slot !== 'versicle') {
-    const paschalSundaySection = minorHourPaschaltideSundayLaterBlockSection(input, slot);
     return paschalSundaySection
       ? {
           path: MINOR_SPECIAL_PATH,
@@ -285,7 +285,7 @@ function minorHourLaterBlockOverrideReference(
   }
 
   const section =
-    minorHourPaschaltideSundayLaterBlockSection(input, slot) ??
+    paschalSundaySection ??
     minorHourAdventLaterBlockSection(input, slot) ??
     minorHourQuadragesimaLaterBlockSection(input, slot);
   if (!section) {

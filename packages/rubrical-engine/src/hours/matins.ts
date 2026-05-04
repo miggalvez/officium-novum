@@ -6,7 +6,7 @@ import {
 
 import type { RubricalWarning } from '../types/directorium.js';
 import type { DirectoriumOverlay } from '../types/directorium.js';
-import type { HourStructure, SlotContent, SlotName } from '../types/hour-structure.js';
+import type { HourDirective, HourStructure, SlotContent, SlotName } from '../types/hour-structure.js';
 import type { OfficeTextIndex, TemporalContext } from '../types/model.js';
 import type { Celebration, Commemoration } from '../types/ordo.js';
 import type { RubricalPolicy } from '../types/policy.js';
@@ -112,6 +112,14 @@ export function structureMatins(input: StructureMatinsInput): StructureMatinsRes
     };
   }
 
+  const oneNocturnScriptureDirectives: HourDirective[] = [];
+  if (usesPaschalOneNocturnScriptureMerge(input)) {
+    oneNocturnScriptureDirectives.push('matins-merge-second-third-scripture-lessons');
+    if (usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)) {
+      oneNocturnScriptureDirectives.push('matins-invitatory-paschal-alleluia');
+    }
+  }
+
   const directives = [
     ...directivesFromPolicy({
       hour: 'matins',
@@ -126,14 +134,7 @@ export function structureMatins(input: StructureMatinsInput): StructureMatinsRes
       ...(input.overlay ? { overlay: input.overlay } : {}),
       ...(input.version ? { version: input.version } : {})
     }),
-    ...(usesPaschalOneNocturnScriptureMerge(input)
-      ? [
-          'matins-merge-second-third-scripture-lessons' as const,
-          ...(usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
-            ? ['matins-invitatory-paschal-alleluia' as const]
-            : [])
-        ]
-      : [])
+    ...oneNocturnScriptureDirectives
   ];
 
   return {

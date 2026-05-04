@@ -272,10 +272,12 @@ function linesFromContent(
         flush();
         // These slots render corpus separator nodes as literal underscore-only
         // lines in the legacy stream.
+        const isShortLessonSeparator =
+          slot === 'lectio-brevis' &&
+          (node.source !== undefined || isHomilyBoundarySeparator(content, index));
         if (
           slot === 'hymn' ||
-          (slot === 'lectio-brevis' &&
-            (node.source !== undefined || isHomilyBoundarySeparator(content, index))) ||
+          isShortLessonSeparator ||
           slot === 'martyrology' ||
           slot === 'responsory' ||
           slot === 'versicle'
