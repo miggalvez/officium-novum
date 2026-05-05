@@ -17833,6 +17833,66 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-15/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-15",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-15/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-15",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-15/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-15",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-17/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-17",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-17/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-17",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-01-17/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-17",
@@ -17921,6 +17981,42 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-23/Lauds/30af99f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-23",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-23/Prime/ae30f785": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-23",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-23/Vespers/7d120c6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-23",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-01-24/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-24",
@@ -17987,6 +18083,54 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-01-28/Lauds/e9e7d01d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-28",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-28/Vespers/c9964aa7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-28",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-31/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-31",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-01-31/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-31",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-02-01/Lauds/7e4c9917": {
     "policy": "Rubrics 1960 - 1960",
@@ -18113,6 +18257,30 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-02-07/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-07",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-02-07/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-07",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-02-07/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-02-07",
@@ -18204,6 +18372,42 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-02-12/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-12",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-02-12/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-12",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-02-12/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-12",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-02-13/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
@@ -20984,6 +21188,30 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-06-13/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-13",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-13/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-13",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-06-13/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-13",
@@ -21093,6 +21321,42 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-06-18/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-18",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-18/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-18",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-18/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-18",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-06-20/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -21229,6 +21493,42 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:41 — the weekday Vespers psalter source carries the complete antiphon `Lætátus sum * in his, quæ dicta sunt mihi.` without a trailing `‡`. The compositor preserves the source text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-06-25/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-25",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-25/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-25",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-25/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-25",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-06-27/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -21843,6 +22143,42 @@
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-07-15/Lauds/e9e7d01d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-15",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-15/Prime/bba0bfc7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-15",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-15/Vespers/c9964aa7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-15",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-07-16/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-16",
@@ -21931,6 +22267,30 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-07-18/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-18",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-18/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-18",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-07-18/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-18",
@@ -21975,6 +22335,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-07-20/Lauds/1ac985ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-20",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-20/Prime/63c54bc5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-20",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ínnocens mánibus * et mundo corde ascéndet in montem Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-20/Vespers/b8382b61": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-20",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-07-21/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-21",
@@ -21985,6 +22381,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-21/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-21",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-07-21/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
@@ -22008,6 +22416,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-21/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-21",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-21/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-21",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-07-23/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -22196,6 +22628,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-07-31/Lauds/30af99f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-31",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-31/Prime/ae30f785": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-31",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-07-31/Vespers/7d120c6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-31",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-08-01/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-01",
@@ -22354,6 +22822,18 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-04/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-04",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-08-04/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-04",
@@ -22376,6 +22856,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-08-04/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-04",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-04/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-04",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-08-05/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -22506,6 +23010,66 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-08-07/Lauds/30af99f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-07",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-07/Prime/ae30f785": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-07",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-07/Vespers/7d120c6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-07",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-08/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-08",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-08/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-08",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-08-08/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -22731,6 +23295,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-17/Lauds/1ac985ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-17",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-17/Prime/63c54bc5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-17",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ínnocens mánibus * et mundo corde ascéndet in montem Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-17/Vespers/b8382b61": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-17",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-08-18/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-18",
@@ -22752,6 +23352,78 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-08-19/Lauds/e9e7d01d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-19",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-19/Prime/bba0bfc7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-19",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-19/Vespers/c9964aa7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-19",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-20/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-20",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-20/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-20",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-20/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-20",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-08-22/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -22867,6 +23539,18 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-25/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-25",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-08-25/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-25",
@@ -22889,6 +23573,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-08-25/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-25",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-25/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-25",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-08-26/Lauds/a8acbf46": {
     "policy": "Rubrics 1960 - 1960",
@@ -22934,6 +23642,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-27/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-27",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-27/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-27",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-27/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-27",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-08-29/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-29",
@@ -22978,6 +23722,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-31/Lauds/1ac985ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-31",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-31/Prime/63c54bc5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-31",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ínnocens mánibus * et mundo corde ascéndet in montem Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-08-31/Vespers/b8382b61": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-31",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-09-01/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-01",
@@ -22999,6 +23779,42 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-09-02/Lauds/e9e7d01d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-02",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-09-02/Prime/bba0bfc7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-02",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-09-02/Vespers/c9964aa7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-02",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-09-03/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -23246,6 +24062,18 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-09-10/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-09-10/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-10",
@@ -23256,6 +24084,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-09-10/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-10",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-09-11/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",
@@ -23507,6 +24347,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-09-18/Lauds/30af99f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-18",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-09-18/Prime/ae30f785": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-18",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-09-18/Vespers/7d120c6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-18",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-09-19/None/843b6667": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-19",
@@ -23751,6 +24627,42 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-09-30/Lauds/e9e7d01d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-30",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-09-30/Prime/bba0bfc7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-30",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-09-30/Vespers/c9964aa7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-30",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-10-01/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-01",
@@ -23905,6 +24817,18 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-10-06/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-06",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-10-06/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-06",
@@ -23927,6 +24851,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-06/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-06",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-06/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-06",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-10-07/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -23997,6 +24945,66 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-09/Lauds/30af99f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-09",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-09/Prime/ae30f785": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-09",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-09/Vespers/7d120c6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-09",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-10/Lauds/2be42b34": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-10/Prime/f01a4272": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-10",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-10-10/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -24097,6 +25105,18 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-10-13/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-13",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-10-13/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-13",
@@ -24119,6 +25139,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-13/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-13",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-13/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-13",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-10-15/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -24175,6 +25219,30 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-10-19/Lauds/1ac985ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-19",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-19/Vespers/b8382b61": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-19",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-10-20/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-20",
@@ -24185,6 +25253,18 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-20/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-20",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-10-20/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
@@ -24208,6 +25288,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-20/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-20",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-10-20/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-20",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-10-21/Lauds/a8acbf46": {
     "policy": "Rubrics 1960 - 1960",
@@ -24769,6 +25873,18 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-10/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-11-10/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-10",
@@ -24791,6 +25907,30 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-10/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-10",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-11-10/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-10",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-11-12/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -24914,6 +26054,30 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-20/Lauds/30af99f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-20",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-11-20/Vespers/7d120c6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-20",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-11-21/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-21",
@@ -25028,6 +26192,18 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-24/Lauds/7c1a968a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-24",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-11-24/Matins/7c44d977": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-24",
@@ -25050,6 +26226,66 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
     "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-24/Prime/b1d881f9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-24",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-11-24/Vespers/447da724": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-24",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-11-26/Lauds/11e2194d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-26",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-11-26/Prime/b5505956": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-26",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-11-26/Vespers/3a7987e9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-26",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12, upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8, upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12, and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 — representative 2026 Confessor non-pontiff offices route through `vide C5`; C5 declares `Antiphonas horas` and supplies `Dómine, quinque talénta...` as the common antiphon. The compositor follows that source-backed common while the Perl comparison surface keeps weekday psalter antiphons on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
+    "resolvedAt": "2026-05-05",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-11-27/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",

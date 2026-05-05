@@ -85,7 +85,7 @@
           "slug": "rubrics-1960",
           "ledger": "packages/compositor/test/divergence/rubrics-1960-2026.md",
           "sidecar": "packages/compositor/test/divergence/adjudications.json",
-          "unadjudicated": 1251,
+          "unadjudicated": 1148,
           "noThrowFailures": 0,
           "schemaFailures": 0
         }

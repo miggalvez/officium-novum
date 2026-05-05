@@ -6336,6 +6336,36 @@ average matching prefix improves from `49.4` to `50.3`, unadjudicated
 rows drop from `1262` to `1251`, and `perl-bug` rows rise from `764` to
 `775`.
 
+### 2026-05-05 — Pattern: 2026 Confessor C5 Lauds/Prime/Vespers common-antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 103
+Lauds, Prime, and Vespers rows where Perl kept weekday psalter
+antiphons, while the compositor emitted the Confessor non-pontiff common
+antiphon `Dómine, quinque talénta...`.
+
+**Root cause.** This is the Lauds/Prime/Vespers fanout of the simplified
+Roman Confessor common-antiphon family. Representative 2026 Confessor
+non-pontiff offices route through `vide C5`; `Commune/C5` inherits the
+Confessor non-pontiff common, declares `Antiphonas horas`, and supplies
+`Dómine, quinque talénta...` as the first common antiphon. The affected
+rows are therefore source-backed common-antiphon offices, not ordinary
+ferial psalter-antiphon rows.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+103 Rubrics 1960 2026 rows sharing the `Dómine, quinque talénta`
+Lauds/Prime/Vespers common-antiphon signature.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12`;
+`upstream/web/www/horas/Latin/Sancti/08-19.txt:4-8`;
+`upstream/web/www/horas/Latin/Sancti/10-04.txt:4-12`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:9-19`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2026`, while
+unadjudicated rows drop from `1251` to `1148` and `perl-bug` rows rise
+from `775` to `878`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
