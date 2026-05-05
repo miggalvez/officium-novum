@@ -87,7 +87,7 @@ describe('classifyDirective', () => {
     { line: 'Credo', target: 'missa' },
     { line: 'Gloria', target: 'missa' },
     { line: 'Prefatio=Nat', target: 'missa' },
-    { line: 'Oratio Dominica', target: 'missa' },
+    { line: 'Oratio Dominica', target: 'hour', effectKind: 'dominical-oration' },
     { line: 'Requiem gloria', target: 'missa' },
     { line: 'vide Sancti/01-01', target: 'unmapped' },
     { line: 'ex Sancti/12-25m3;', target: 'unmapped' },

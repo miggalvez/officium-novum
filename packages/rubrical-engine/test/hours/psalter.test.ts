@@ -67,6 +67,7 @@ function hourRules(
     matinsLessonIntroduction: 'ordinary',
     minorHoursSineAntiphona: false,
     minorHoursFerialPsalter: false,
+    dominicalOration: false,
     ...overrides
   };
 }

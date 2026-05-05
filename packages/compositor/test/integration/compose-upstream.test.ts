@@ -648,6 +648,41 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('resolves Rubrics 1960 Oratio Dominica weekday offices to the Sunday collect', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const expectedCollect = normalizeLatin(
+      'Deus, refúgium nostrum et virtus: adésto piis Ecclésiæ tuæ précibus, auctor ipse pietátis, et præsta; ut, quod fidéliter pétimus, efficáciter consequámur.'
+    );
+
+    const monday = engine.resolveDayOfficeSummary('2026-10-26');
+    expect(monday.temporal.dayName).toBe('Pent22-1');
+
+    for (const hour of ['terce', 'sext', 'none'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary: monday,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(sectionTexts(composed, 'oration').map(normalizeLatin)).toContain(expectedCollect);
+    }
+
+    const tuesday = engine.resolveDayOfficeSummary('2026-10-27');
+    for (const hour of ['lauds', 'vespers'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary: tuesday,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(sectionTexts(composed, 'oration').map(normalizeLatin)).toContain(expectedCollect);
+    }
+  }, 240_000);
+
   it('renders the Easter Octave Prime Martyrologium tail after the one-alone oration bridge', async () => {
     const expectedHeading = normalizeLatin(
       'Tértio Nonas Aprílis Luna vicésima tértia Anno Dómini 2024'

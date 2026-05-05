@@ -182,6 +182,11 @@ function resolveSlot(
     return specialOration;
   }
 
+  const dominicalOration = resolveDominicalOration(slot.name, input);
+  if (dominicalOration) {
+    return dominicalOration;
+  }
+
   const specialPrimeChapterOffice = resolveSpecialPrimeChapterOffice(slot.name, input, properFiles);
   if (specialPrimeChapterOffice) {
     return specialPrimeChapterOffice;
@@ -2041,6 +2046,23 @@ function resolveSpecialMinorHourOration(
           commonPrayerRef('Domine exaudi'),
           commonPrayerRef('Benedicamus Domino')
         ]
+  };
+}
+
+function resolveDominicalOration(
+  slotName: SlotName,
+  input: ApplyRuleSetInput
+): SlotContent | undefined {
+  if (slotName !== 'oration' || !input.hourRules.dominicalOration) {
+    return undefined;
+  }
+
+  return {
+    kind: 'single-ref',
+    ref: {
+      path: `horas/Latin/Tempora/${input.temporal.weekStem}-0`,
+      section: 'Oratio'
+    }
   };
 }
 

@@ -6241,6 +6241,34 @@ the ordinary Tuesday psalter antiphon on these rows.
 unadjudicated rows drop from `1397` to `1384` and `perl-bug` rows rise
 from `739` to `752`.
 
+### 2026-05-05 — Fix: 1960 weekday `Oratio Dominica` Sunday-collect routing (engine-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried
+weekday rows where Perl emitted the preceding Sunday collect after
+`Orémus.`, while the compositor skipped directly to the conclusion
+bridge. The first witness was `2026-10-26` Terce, where the missing
+collect was `Deus, refúgium nostrum et virtus...`.
+
+**Root cause.** The rule classifier treated `Oratio Dominica` as a
+Missa-only directive, so the office pipeline never marked weekday Hour
+rules that should route their oration slot to the Sunday temporal
+collect.
+
+**Resolution.** Fixed the rule path by classifying `Oratio Dominica` as
+an hour directive, deriving a `dominicalOration` hour flag, and resolving
+the oration slot to `Tempora/<weekStem>-0#Oratio`. Added upstream
+composition coverage for Rubrics 1960 Monday minor hours and Tuesday
+Lauds/Vespers.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Pent22-1.txt:7-8`;
+`upstream/web/www/horas/Latin/Tempora/Pent22-0.txt:13-15`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2136` to
+`2026`, and unadjudicated rows drop from `1384` to `1274`; `perl-bug`
+rows remain `752`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -101,6 +101,7 @@ export function deriveHourRuleSet(
   let matinsLessonIntroduction: HourRuleSet['matinsLessonIntroduction'] = 'ordinary';
   let minorHoursSineAntiphona = false;
   let minorHoursFerialPsalter = false;
+  let dominicalOration = false;
   let capitulumVariant: HourRuleSet['capitulumVariant'];
 
   const mergedScopes = [...ordinariumRules, ...celebrationRules.hourScopedDirectives];
@@ -156,6 +157,9 @@ export function deriveHourRuleSet(
       case 'minor-hours-ferial-psalter':
         minorHoursFerialPsalter = true;
         break;
+      case 'dominical-oration':
+        dominicalOration = true;
+        break;
       case 'capitulum-variant':
         capitulumVariant = effect.value;
         break;
@@ -180,6 +184,7 @@ export function deriveHourRuleSet(
     matinsLessonIntroduction,
     minorHoursSineAntiphona,
     minorHoursFerialPsalter,
+    dominicalOration,
     ...(capitulumVariant ? { capitulumVariant } : {})
   });
 }

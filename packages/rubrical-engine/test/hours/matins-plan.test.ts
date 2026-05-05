@@ -21,7 +21,8 @@ const HOUR_RULES: HourRuleSet = {
   psalmOverrides: [],
   matinsLessonIntroduction: 'ordinary',
   minorHoursSineAntiphona: false,
-  minorHoursFerialPsalter: false
+  minorHoursFerialPsalter: false,
+  dominicalOration: false
 };
 
 describe('buildMatinsPlan', () => {
