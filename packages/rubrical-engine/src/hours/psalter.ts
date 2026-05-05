@@ -168,7 +168,9 @@ function complineReferences(params: SelectPsalmodyInput): readonly PsalmAssignme
   // the shared `Completorium` section in `Psalmi minor.txt`.
   const { temporal, corpus, hourRules, policyName } = params;
   const weekday =
-    policyName === 'rubrics-1960' && hourRules.psalterScheme === 'dominica'
+    policyName === 'rubrics-1960' &&
+    hourRules.psalterScheme === 'dominica' &&
+    !usesActualSaturdayComplineForTemporalSunday(params)
       ? 0
       : temporal.dayOfWeek;
   const weekdayKey = WEEKDAY_KEYS[weekday] ?? WEEKDAY_KEYS[0] ?? 'Dominica';
@@ -201,6 +203,17 @@ function complineReferences(params: SelectPsalmodyInput): readonly PsalmAssignme
         selector: '1'
       }
     }))
+  );
+}
+
+function usesActualSaturdayComplineForTemporalSunday(params: SelectPsalmodyInput): boolean {
+  return (
+    params.policyName === 'rubrics-1960' &&
+    params.hour === 'compline' &&
+    params.temporal.dayOfWeek === 6 &&
+    params.celebration.source === 'temporal' &&
+    /-0$/u.test(params.temporal.dayName) &&
+    !params.temporal.dayName.startsWith('Nat')
   );
 }
 

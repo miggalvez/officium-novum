@@ -271,7 +271,9 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
     // Compline follows the Vespers winner under 1960.
     if (concurrence.winner === 'tomorrow') {
       const temporal =
-        concurrence.sourceSide === 'first' && tomorrow.celebration.source === 'sanctoral'
+        concurrence.sourceSide === 'first' && version.policy.name === 'rubrics-1960'
+          ? { ...tomorrow.temporal, dayOfWeek: today.temporal.dayOfWeek }
+          : concurrence.sourceSide === 'first' && tomorrow.celebration.source === 'sanctoral'
           ? { ...tomorrow.temporal, dayOfWeek: 0 }
           : tomorrow.temporal;
       return {

@@ -114,7 +114,7 @@ describe('buildCompline', () => {
     expect(compline.directives).toEqual([]);
   });
 
-  it('uses the winner temporal when First Vespers wins on a weekday (Codex P1 #3)', async () => {
+  it('keeps actual Saturday psalmody when temporal Sunday First Vespers wins under 1960', async () => {
     const { TestOfficeTextIndex } = await import('../helpers.js');
     const { loadOrdinariumSkeleton, deriveHourRuleSet } = await import('../../src/index.js');
     const { buildVersionRegistry, resolveVersion, asVersionHandle } = await import(
@@ -188,14 +188,14 @@ describe('buildCompline', () => {
       celebrationRules: tomorrow.celebrationRules,
       hourRules,
       corpus,
-      temporal: tomorrow.temporal
+      temporal: { ...tomorrow.temporal, dayOfWeek: today.temporal.dayOfWeek }
     });
 
     const psalmody = compline.slots.psalmody;
     expect(psalmody?.kind).toBe('psalmody');
     if (psalmody?.kind === 'psalmody') {
       expect(psalmody.psalms[0]?.psalmRef.section).toBe('Completorium');
-      expect(psalmody.psalms[0]?.psalmRef.selector).toBe('Dominica');
+      expect(psalmody.psalms[0]?.psalmRef.selector).toBe('Sabbato');
     }
   });
 

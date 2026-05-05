@@ -5947,6 +5947,38 @@ Appendix-A goldens.
 **Impact.** Rubrics 1960 2026 divergent hours drop from `2210` to
 `2172`, and unadjudicated rows drop from `1839` to `1801`.
 
+### 2026-05-05 — Pattern: Saturday Compline before temporal Sunday keeps Saturday psalmody (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+Saturday Compline rows, represented by 2026-01-17, where Perl selected
+`Psalmi minor:Completorium/Sabbato` (`Intret oratio mea`, Psalm 87)
+but the compositor selected `Completorium/Dominica` (`Miserere mihi`,
+Psalm 4).
+
+**Root cause.** The engine correctly followed the First Vespers winner
+for the Compline office, but it also let the winning temporal Sunday's
+`dayOfWeek` and `Psalmi Dominica` hour rule force Sunday Compline
+psalmody. The source psalter keeps Compline weekday-keyed, and the
+legacy Perl psalm selector explicitly rekeys Saturday evening before a
+temporal Sunday back to the `Sabbato` row outside the Nativity exception.
+
+**Resolution.** Class `engine-bug`, fixed. When 1960 Compline follows
+tomorrow's First Vespers, the engine now preserves the actual evening's
+weekday for psalter selection; the 1960 Compline psalter selector keeps
+Saturday psalmody for temporal Sunday First Vespers while retaining true
+`Psalmi Dominica` behavior for other high-ranking offices.
+
+**Citation.** `packages/rubrical-engine/src/engine.ts`,
+`packages/rubrical-engine/src/hours/psalter.ts`,
+`packages/compositor/test/integration/compose-upstream.test.ts`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:65-80`,
+and `upstream/web/cgi-bin/horas/specials/psalmi.pl:94-119`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2172` to
+`2141`, and unadjudicated rows drop from `1801` to `1770`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
