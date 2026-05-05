@@ -5834,6 +5834,34 @@ and Divinum Officium 1960 Breviary rubrics nos. 246-248.
 `2211`, and unadjudicated rows drop from `1964` to `1923`, removing the
 Sunday Compline dominical-preces family from the current-year frontier.
 
+### 2026-05-05 — Pattern: Rubrics 1960 Paschal minor-hour fallback hymn doxology (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the Sunday Compline preces fix, the refreshed
+Rubrics 1960 2026 frontier exposed a 41-row Terce/Sext/None family where
+Perl expected the ordinary fallback hymn close `Præsta, Pater
+piíssime,`, while the compositor emitted the Paschal doxology beginning
+`Deo Patri sit glória,`.
+
+**Root cause.** This is fanout from the already documented Paschaltide
+fallback-hymn doxology comparison drift. `Psalterium/Doxologies#Pasch`
+supplies the source-backed Paschal stanza, and the engine/compositor
+substitutes that variant into fallback minor-hour hymns. The Perl
+comparison surface keeps the ordinary minor-hour hymn ending.
+
+**Resolution.** Class `perl-bug`. Added 41 Rubrics 1960 2026 row keys
+for stable key-hash `dcdd92bf`, inheriting the existing 2024 Paschal
+doxology citation.
+
+**Citation.** `docs/upstream-issues.md:647-674`,
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:29-34`, and
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:664-672`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `1923` to
+`1882`; divergent hours remain `2211` because this tranche classifies
+known Perl drift without changing rendered output.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
