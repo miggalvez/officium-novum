@@ -6010,6 +6010,36 @@ and `docs/upstream-issues.md`.
 **Impact.** Rubrics 1960 2026 divergent hours remain at `2141`, and
 unadjudicated rows drop from `1770` to `1502`.
 
+### 2026-05-05 — Pattern: Rubrics 1960 Compline fallback hymn uses source-backed doxology (perl-bug, adjudicated)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+Compline rows, represented by 2026-01-01, where Perl retained the
+default `Te lucis` doxology close `Præsta, Pater piíssime,` while the
+compositor emitted the source-backed Nat/Epi/local replacement beginning
+`Jesu, tibi sit glória,`.
+
+**Root cause.** `Hymnus Completorium` carries a replaceable default
+doxology stanza, and the winning offices expose `Doxology=Nat`,
+`Doxology=Epi`, or local `[Doxology]` sections. The compositor applies
+the same doxology replacement rule already adjudicated for fallback
+hymns; the Perl comparison surface retains the default Compline hymn
+ending.
+
+**Resolution.** Class `perl-bug`, adjudicated. The 2026 sidecar now
+classifies the exact Compline `Præsta, Pater piíssime,` =>
+`Jesu, tibi sit glória,` row family with source citations.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730`,
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20`,
+`upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8`,
+`upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67`, and
+`docs/phase-2-rubrical-engine-design.md:1506`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain at `2141`, and
+unadjudicated rows drop from `1502` to `1472`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -17088,6 +17088,17 @@
     "resolvedAt": "2026-04-24",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-01-01/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-01",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-01-01/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-01",
@@ -17184,6 +17195,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-03/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-03",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-01-03/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-03",
@@ -17231,6 +17253,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-04/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-04",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-01-04/Matins/7d5dfe80": {
     "policy": "Rubrics 1960 - 1960",
@@ -17291,6 +17324,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-05/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-05",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-01-05/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-05",
@@ -17338,6 +17382,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-06/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-06",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-01-06/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -17697,6 +17752,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-13/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-13",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-01-13/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-13",
@@ -17897,6 +17963,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Day0 `Vespera` source carries the full opening antiphon `Dixit Dóminus * Dómino meo: Sede a dextris meis.` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-02-02/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-02",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-02-02/None/318cf47a": {
@@ -19066,6 +19143,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-03-24/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-03-24",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-03-24/Lauds/76582910": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-03-24",
@@ -19086,6 +19174,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-03-25/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-03-25",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-03-25/None/318cf47a": {
@@ -20167,6 +20266,17 @@
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-06-03/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-03",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-06-03/Lauds/a8acbf46": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-03",
@@ -20198,6 +20308,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-06-04/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-04",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-06-04/Matins/c262774b": {
@@ -20259,6 +20380,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-06-06/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-06",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-06-06/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-06",
@@ -20268,6 +20400,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries the full Saturday closing antiphon `Fidélis Dóminus * in ómnibus verbis suis: et sanctus in ómnibus opéribus suis.` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-06-07/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-07",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-06-07/None/318cf47a": {
@@ -20435,6 +20578,28 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-06-12/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-12",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-06-12/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -20754,6 +20919,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15 — the Day0 third-nocturn antiphon is `Ut quid, Dómine, * recessísti longe?` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-02/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-02",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-07-02/None/318cf47a": {
@@ -21612,6 +21788,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-08-06/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-06",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-08-06/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-06",
@@ -21770,6 +21957,28 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-14/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-14",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-08-15/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-15",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-08-15/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-15",
@@ -21860,6 +22069,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-08-22/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-22",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-08-22/None/318cf47a": {
@@ -22152,6 +22372,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-09-08/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-08",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-09-08/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-08",
@@ -22367,6 +22598,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Day0 `Vespera` source carries the full opening antiphon `Dixit Dóminus * Dómino meo: Sede a dextris meis.` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-09-15/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-15",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-09-15/None/318cf47a": {
@@ -22789,6 +23031,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-07/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-07",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-10-07/None/318cf47a": {
@@ -23878,6 +24131,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-07/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-07",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-12-07/Lauds/fbd9d530": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-07",
@@ -23898,6 +24162,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-08/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-08",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-12-08/None/318cf47a": {
@@ -24113,6 +24388,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-24/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-24",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-12-24/Matins/02b507e6": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-24",
@@ -24122,6 +24408,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92 — the psalter-matins row carries `Exsúrgat Deus, * et dissipéntur inimíci ejus.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-25/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-25",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-12-25/None/318cf47a": {
@@ -24171,6 +24468,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-12-27/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-27",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-12-27/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -24268,6 +24576,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-12-30/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-30",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-12-30/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-30",
@@ -24315,6 +24634,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-12-31/Compline/318cf47a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-31",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
+    "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-12-31/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
