@@ -463,7 +463,52 @@ function findProperReference(
     return undefined;
   }
 
-  return findReferenceInFiles(files, properHeadersForSlot(slot.name, input.hour, input));
+  return findReferenceInFiles(
+    files,
+    properHeadersForSlotFromFiles(files, slot.name, input.hour, input)
+  );
+}
+
+function properHeadersForSlotFromFiles(
+  files: readonly ParsedFile[],
+  slot: SlotName,
+  hour: HourName,
+  input: ApplyRuleSetInput
+): readonly string[] {
+  const headers = properHeadersForSlot(slot, hour, input);
+  if (
+    slot !== 'hymn' ||
+    hour !== 'vespers' ||
+    !usesPostCumNostraConfessorHymnVariant(files, input)
+  ) {
+    return headers;
+  }
+
+  const side = (input as InternalVespersAwareInput).__vespersSide;
+  const variantHeaders =
+    side === 'second' ? ['Hymnus1 Vespera 3', 'Hymnus1 Vespera'] : ['Hymnus1 Vespera'];
+  return [...variantHeaders, ...headers];
+}
+
+function usesPostCumNostraConfessorHymnVariant(
+  files: readonly ParsedFile[],
+  input: ApplyRuleSetInput
+): boolean {
+  const ruleText = ruleTextForFile(files[0]);
+  const referencesConfessorCommon = /\b(?:vide|ex)\s+C[45]\b/iu.test(ruleText);
+  const postCumNostra =
+    /1955|196/iu.test(input.version?.handle ?? '') || /(?:^|;)\s*mtv\b/iu.test(ruleText);
+  return referencesConfessorCommon && postCumNostra;
+}
+
+function ruleTextForFile(file: ParsedFile | undefined): string {
+  return (
+    file?.sections
+      .filter((section) => section.header === 'Rule')
+      .flatMap((section) => section.rules ?? [])
+      .map((rule) => rule.raw)
+      .join('\n') ?? ''
+  );
 }
 
 function findInheritedSecondVespersReference(

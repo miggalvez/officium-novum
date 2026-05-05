@@ -292,6 +292,11 @@
           "date": "2026-05-04",
           "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
           "notes": "Full-day St. Monica witness covering proper invitatory antiphon Paschal Alleluia insertion, ferial Vespers psalter routing, and final Marian antiphon source-cue normalization."
+        },
+        {
+          "date": "2026-05-05",
+          "hours": ["matins", "lauds", "prime", "terce", "sext", "none", "vespers", "compline"],
+          "notes": "Full-day St. Pius V witness covering III-class sanctoral weekday Vespers ferial psalter routing when the inherited Common carries a Psalm5 override, plus source-backed Compline half-verse marker adjudication."
         }
       ],
       "assertions": [

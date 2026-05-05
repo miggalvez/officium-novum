@@ -605,7 +605,8 @@ function paschaltidePsalmody1960(
     usesThirdClassSanctoralWeekdayFerialPsalmody(params.hour)
       ? {
           ...params.hourRules,
-          psalterScheme: 'ferial'
+          psalterScheme: 'ferial',
+          psalmOverrides: []
         }
       : params.hourRules;
 

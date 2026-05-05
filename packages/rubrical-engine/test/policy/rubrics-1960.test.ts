@@ -216,6 +216,37 @@ describe('rubrics1960Policy.selectPsalmody', () => {
     });
   });
 
+  it('drops inherited Common Psalm5 overrides when III-class sanctoral weekday Vespers uses the ferial psalter', () => {
+    const psalms = rubrics1960Policy.selectPsalmody({
+      hour: 'vespers',
+      celebration: matinsCelebration('Sancti/05-05', 'III', 'sanctoral'),
+      celebrationRules: matinsRules(),
+      hourRules: hourRules({
+        hour: 'vespers',
+        psalterScheme: 'dominica',
+        psalmOverrides: [{ key: 'Psalm5 Vespera', value: '116' }]
+      }),
+      temporal: temporal('2026-05-05', 'Pasc4-2', 'eastertide', 'IV'),
+      corpus: {} as never
+    });
+
+    expect(psalms.map((assignment) => assignment.psalmRef)).toEqual(
+      ['1', '2', '3', '4', '5'].map((selector) => ({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day2 Vespera',
+        selector
+      }))
+    );
+    expect(psalms.at(-1)?.psalmRef).not.toEqual({
+      path: 'horas/Latin/Psalterium/Psalmorum/Psalm116',
+      section: '__preamble',
+      selector: '116'
+    });
+    expect(psalms.every((assignment) => assignment.antiphonRef === psalms[0]?.antiphonRef)).toBe(
+      true
+    );
+  });
+
   it('does not attach the Paschal Lauds antiphon outside Eastertide', () => {
     const psalms = rubrics1960Policy.selectPsalmody({
       hour: 'lauds',
