@@ -17966,6 +17966,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
   },
+  "Rubrics 1960 - 1960/2026-01-27/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-27",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-02-01/Lauds/7e4c9917": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-02-01",
@@ -21766,6 +21777,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
   },
+  "Rubrics 1960 - 1960/2026-07-14/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-14",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-07-16/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-16",
@@ -21920,6 +21942,17 @@
     "notes": "2026 Rubrics 1960 Tuesday Matins Confessor-common antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family to the exact `Expugna, Domine` psalter fallback rows.",
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
+  },
+  "Rubrics 1960 - 1960/2026-07-21/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-21",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-07-23/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -22255,6 +22288,17 @@
     "notes": "2026 Rubrics 1960 Tuesday Matins Confessor-common antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family to the exact `Expugna, Domine` psalter fallback rows.",
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
+  },
+  "Rubrics 1960 - 1960/2026-08-04/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-04",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-08-05/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -22757,6 +22801,17 @@
     "notes": "2026 Rubrics 1960 Tuesday Matins Confessor-common antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family to the exact `Expugna, Domine` psalter fallback rows.",
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
+  },
+  "Rubrics 1960 - 1960/2026-08-25/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-25",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-08-26/Lauds/a8acbf46": {
     "policy": "Rubrics 1960 - 1960",
@@ -23443,6 +23498,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
   },
+  "Rubrics 1960 - 1960/2026-09-22/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-22",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-09-23/Prime/b7853e49": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-23",
@@ -23752,6 +23818,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
   },
+  "Rubrics 1960 - 1960/2026-10-06/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-06",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-10-07/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-07",
@@ -23922,6 +23999,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
   },
+  "Rubrics 1960 - 1960/2026-10-13/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-13",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-10-15/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-15",
@@ -23999,6 +24087,17 @@
     "notes": "2026 Rubrics 1960 Tuesday Matins Confessor-common antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family to the exact `Expugna, Domine` psalter fallback rows.",
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
+  },
+  "Rubrics 1960 - 1960/2026-10-20/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-20",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-10-21/Lauds/a8acbf46": {
     "policy": "Rubrics 1960 - 1960",
@@ -24561,6 +24660,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
   },
+  "Rubrics 1960 - 1960/2026-11-10/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-10",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-11-12/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-12",
@@ -24660,6 +24770,17 @@
     "notes": "2026 Rubrics 1960 Tuesday Matins Confessor-common antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family to the exact `Expugna, Domine` psalter fallback rows.",
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
+  },
+  "Rubrics 1960 - 1960/2026-11-17/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-17",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-11-19/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -24797,6 +24918,17 @@
     "notes": "2026 Rubrics 1960 Tuesday Matins Confessor-common antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family to the exact `Expugna, Domine` psalter fallback rows.",
     "resolvedAt": "2026-05-05",
     "commitSha": "94bdfc9"
+  },
+  "Rubrics 1960 - 1960/2026-11-24/None/1fd451fd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-24",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-27.txt:7-10 and upstream/web/www/horas/Latin/Sancti/08-04.txt:7-13 and upstream/web/www/horas/Latin/Sancti/11-24.txt:7-17 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19 and upstream/web/www/horas/Latin/Commune/C5a.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55 — the affected 2026 Confessor offices route through C4/C4a/C5/C5a common rules, which declare `Antiphonas horas`; C4/C5 supply the fifth common antiphon `Serve bone...`, while the Tuesday psalter table supplies `Salvasti nos...` only for ordinary ferial None. The compositor follows the source-backed common antiphon; the Perl comparison surface keeps the ordinary Tuesday psalter antiphon on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Confessor common None antiphon fanout. Same source-backed common-antiphon family as the existing 2024 C5 `Serve bone` rows, extended to C4/C4a/C5/C5a Tuesday None witnesses.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-11-27/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",

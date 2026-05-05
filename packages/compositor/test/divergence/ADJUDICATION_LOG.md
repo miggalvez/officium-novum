@@ -6269,6 +6269,37 @@ Lauds/Vespers.
 `2026`, and unadjudicated rows drop from `1384` to `1274`; `perl-bug`
 rows remain `752`.
 
+### 2026-05-05 — Pattern: 2026 Tuesday None Confessor-common antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 12
+None rows with Perl keeping the Tuesday psalter antiphon `Salvásti nos,
+Dómine...`, while the compositor emitted the Confessor common antiphon
+`Serve bone...`.
+
+**Root cause.** This is fanout from the already documented simplified
+Roman Confessor common-antiphon family. The affected offices route
+through Confessor common variants (`C4`, `C4a`, `C5`, or `C5a`); those
+commons declare `Antiphonas horas`, and `Commune/C4` / `Commune/C5`
+supply the fifth common antiphon used for None. The Tuesday psalter
+`Nona` row supplies `Salvásti nos...` for the ordinary ferial psalter,
+but these offices are source-backed common-antiphon offices.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+12 Rubrics 1960 2026 None rows sharing the `Salvásti nos...` =>
+`Serve bone...` signature.
+
+**Citation.** `upstream/web/www/horas/Latin/Commune/C4.txt:7-18`;
+`upstream/web/www/horas/Latin/Commune/C4a.txt:1-14`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:9-19`;
+`upstream/web/www/horas/Latin/Commune/C5a.txt:1-13`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2026`, while
+unadjudicated rows drop from `1274` to `1262` and `perl-bug` rows rise
+from `752` to `764`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
