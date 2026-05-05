@@ -185,7 +185,7 @@ function deriveComplineBaseDirectives(
   const sourceDate = source.celebration.feastRef.path === tomorrow.celebration.feastRef.path
     ? tomorrow
     : today;
-  if (policy.name === 'rubrics-1960' && isPaschaltideSunday(sourceDate.temporal)) {
+  if (policy.name === 'rubrics-1960') {
     return [];
   }
 
@@ -194,13 +194,6 @@ function deriveComplineBaseDirectives(
   }
 
   return [];
-}
-
-function isPaschaltideSunday(temporal: TemporalContext): boolean {
-  return (
-    temporal.dayOfWeek === 0 &&
-    (temporal.season === 'eastertide' || temporal.season === 'ascensiontide')
-  );
 }
 
 function mergeDirectives(

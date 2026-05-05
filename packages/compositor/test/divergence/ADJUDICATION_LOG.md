@@ -5802,6 +5802,38 @@ and `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59`.
 `1964`; divergent hours remain `2252` because this tranche classifies
 known Perl drift without changing rendered output.
 
+### 2026-05-05 — Pattern: Rubrics 1960 Sunday Compline omits dominical preces (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed a
+41-row Compline family where the Perl comparison surface went directly
+from the repeated `Salva nos` canticle antiphon to
+`V. Dómine, exáudi oratiónem meam.`, while the compositor inserted the
+`Preces dominicales Completorium` block beginning
+`V. Benedíctus es, Dómine, Deus patrum nostrórum.`
+
+**Root cause.** The Compline builder treated Sunday dominical preces as
+universal and only suppressed them for 1960 Paschaltide Sundays. Under
+Rubrics 1960, the Sunday Compline collect follows the ordinary pre-collect
+versicle directly; the Perl helper reaches the same result by omitting
+preces once the 1960 Sunday rank resolves above the old duplex threshold.
+
+**Resolution.** Class `engine-bug`, fixed. Rubrics 1960 Compline no
+longer emits `preces-dominicales`; pre-1960 policies still retain the
+directive. Unit coverage now locks both the 1960 suppression and Divino
+Afflatu retention paths.
+
+**Citation.** `packages/rubrical-engine/src/hours/compline.ts`,
+`packages/rubrical-engine/test/hours/compline.test.ts`,
+`upstream/web/cgi-bin/horas/specials/preces.pl:13-19`,
+`upstream/web/www/horas/Latin/Psalterium/Special/Preces.txt:248-266`,
+and Divinum Officium 1960 Breviary rubrics nos. 246-248.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2252` to
+`2211`, and unadjudicated rows drop from `1964` to `1923`, removing the
+Sunday Compline dominical-preces family from the current-year frontier.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -220,7 +220,7 @@ the slot's flattened `TextContent[]` before emission.
 | `omit-alleluia`               | Remove Alleluia verses (Septuagesima/Lent)           | Rubricae §III|
 | `add-alleluia`                | Append Alleluia (Paschaltide)                         | Rubricarum §144|
 | `add-versicle-alleluia`       | Append to the versicle block                          | Rubricarum §144|
-| `preces-dominicales`          | Insert Sunday preces + source the right block         | Rubricae §VIII|
+| `preces-dominicales`          | Insert Sunday preces when retained by the policy       | Rubricae §VIII|
 | `preces-feriales`             | Insert ferial preces                                   | Rubricae §VIII|
 | `suffragium-of-the-saints`    | Insert the Suffragium block                            | Rubricae §IX|
 | `omit-suffragium`             | Suppress Suffragium regardless of rank                 | Rubricarum §110|
