@@ -6108,6 +6108,32 @@ headings and office-name substitutions.
 **Impact.** Rubrics 1960 2026 divergent hours drop from `2141` to
 `2136`, and unadjudicated rows drop from `1472` to `1467`.
 
+### 2026-05-05 — Pattern: 2026 Matins Nativity doxology punctuation fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier still carried
+20 Matins rows with the stable key-hash `9d86e50c`: Perl expected
+`Cum Patre, et almo Spíritu`, while the compositor emitted
+`Cum Patre et almo Spíritu,`.
+
+**Root cause.** This is fanout from the already documented Rubrics 1960
+Marian Matins Nativity-doxology punctuation family. The selected
+`Psalterium/Doxologies#Nat` source has no comma after `Patre` and keeps
+the comma at the end of the line. The compositor preserves that source
+line; the Perl comparison surface inserts the unsupported internal comma
+and drops the source line-final comma.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+20 Rubrics 1960 2026 Matins rows sharing stable key-hash `9d86e50c`.
+The upstream issue already exists for this family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2136`, while
+unadjudicated rows drop from `1467` to `1447` and `perl-bug` rows rise
+from `669` to `689`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -17206,6 +17206,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-03/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-03",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-01-03/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-03",
@@ -17585,6 +17596,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-10/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-10",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-01-10/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -17976,6 +17998,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-02-02/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-02",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-02-02/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-02-02",
@@ -18158,6 +18191,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-02-14/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-14",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-02-14/None/318cf47a": {
@@ -19187,6 +19231,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-03-25/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-03-25",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-03-25/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-03-25",
@@ -19540,6 +19595,17 @@
     "notes": "Phase 2/3 fix plus adjudication: seasonal Paschal fallback-hymn doxology now reaches minor-hour fallback hymns; residual Perl rows keep the non-seasonal stanza.",
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
+  },
+  "Rubrics 1960 - 1960/2026-04-18/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-04-18",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-04-18/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -20737,6 +20803,17 @@
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-06-20/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-20",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-06-20/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-20",
@@ -20851,6 +20928,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-06-27/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-27",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-06-27/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-27",
@@ -20932,6 +21020,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-07-02/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-02",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-07-02/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-02",
@@ -21011,6 +21110,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-04/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-04",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-07-04/None/318cf47a": {
@@ -21191,6 +21301,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100 — the psalter-major row carries `Ecce quam bonum * et quam jucúndum habitáre fratres in unum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-11/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-11",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-07-11/None/318cf47a": {
@@ -21615,6 +21736,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-01/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-01",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-08-01/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-01",
@@ -21738,6 +21870,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-08-05/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-05",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-08-05/None/318cf47a": {
@@ -22082,6 +22225,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-22/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-22",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-08-22/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-22",
@@ -22383,6 +22537,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-09-08/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-08",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-09-08/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-08",
@@ -22517,6 +22682,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-09-12/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-12",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-09-12/None/318cf47a": {
@@ -23477,6 +23653,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-10-31/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-31",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-10-31/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-31",
@@ -23633,6 +23820,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-07/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-07",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-11-07/None/318cf47a": {
@@ -23837,6 +24035,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-21/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-21",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
+    "resolvedAt": "2026-05-05"
+  },
   "Rubrics 1960 - 1960/2026-11-21/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-21",
@@ -23960,6 +24169,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-28/Matins/9d86e50c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-28",
+    "hour": "Matins",
+    "firstExpected": "Cum Patre, et almo Spíritu",
+    "firstActual": "Cum Patre et almo Spíritu,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 — the selected Nativity doxology stanza carries Cum Patre et almo Spíritu, without a comma after Patre. The compositor preserves that source-backed line; the Perl comparison surface inserts an unsupported comma after Patre and drops the source comma at the line end.",
+    "notes": "Rubrics 1960 2026 Matins Nativity-doxology punctuation fanout for stable key-hash 9d86e50c, extending the existing 2024 source-backed adjudication.",
     "resolvedAt": "2026-05-05"
   },
   "Rubrics 1960 - 1960/2026-11-28/None/318cf47a": {
