@@ -87,7 +87,7 @@ export interface AppliedHourStructure {
  *   4. Fall back to commune (via `celebrationRules.comkey`).
  *   5. For psalmody, defer to `policy.selectPsalmody`.
  *   6. Otherwise reference the Ordinarium slot itself.
- * Finally, append commemoration slots for Lauds/Vespers when applicable.
+ * Finally, insert commemoration slots before the conclusion when applicable.
  */
 export function applyRuleSet(input: ApplyRuleSetInput): AppliedHourStructure {
   const warnings: RubricalWarning[] = [];
@@ -2371,8 +2371,7 @@ function attachCommemorationSlots(
   // temporal form first so that temporal commemorations (the majority)
   // dereference without an extra lookup. Matins commemorations (1911/1955
   // per §3e) reuse the first-nocturn antiphon conventionally.
-  const { antiphonHeader, versicleHeader } = commemorationHeaders(input.hour);
-  const orationHeader = 'Oratio';
+  const { antiphonHeader, versicleHeader, orationHeaders } = commemorationHeaders(input.hour);
 
   const antiphons: TextReference[] = [];
   const versicles: TextReference[] = [];
@@ -2381,18 +2380,32 @@ function attachCommemorationSlots(
   for (const commem of applicable) {
     const basePath = `horas/Latin/${commem.feastRef.path}`;
     antiphons.push({ path: basePath, section: antiphonHeader });
-    versicles.push({ path: basePath, section: versicleHeader });
-    orations.push({ path: basePath, section: orationHeader });
+    versicles.push(resolveCommemorationVersicleReference(input, basePath, commem.feastRef.path, versicleHeader));
+    orations.push({
+      path: basePath,
+      section: firstExistingSection(input, basePath, orationHeaders) ?? 'Oratio'
+    });
+  }
+
+  const conclusion = slots.conclusion;
+  const hadConclusion = Object.hasOwn(slots, 'conclusion');
+  if (hadConclusion) {
+    delete slots.conclusion;
   }
 
   slots['commemoration-antiphons'] = { kind: 'ordered-refs', refs: antiphons };
   slots['commemoration-versicles'] = { kind: 'ordered-refs', refs: versicles };
   slots['commemoration-orations'] = { kind: 'ordered-refs', refs: orations };
+
+  if (hadConclusion) {
+    slots.conclusion = conclusion;
+  }
 }
 
 function commemorationHeaders(hour: HourName): {
   readonly antiphonHeader: string;
   readonly versicleHeader: string;
+  readonly orationHeaders: readonly string[];
 } {
   switch (hour) {
     case 'matins':
@@ -2400,17 +2413,50 @@ function commemorationHeaders(hour: HourName): {
       // versicle as their default commemoration header per Rubricae
       // Generales §IX. More specific per-lesson substitutions are 3h
       // adjudication territory.
-      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1' };
+      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1', orationHeaders: ['Oratio'] };
     case 'lauds':
-      return { antiphonHeader: 'Ant 2', versicleHeader: 'Versum 2' };
+      return { antiphonHeader: 'Ant 2', versicleHeader: 'Versum 2', orationHeaders: ['Oratio 2', 'Oratio'] };
     case 'vespers':
-      return { antiphonHeader: 'Ant 3', versicleHeader: 'Versum 3' };
+      return { antiphonHeader: 'Ant 3', versicleHeader: 'Versum 3', orationHeaders: ['Oratio 3', 'Oratio'] };
     default:
       // Minor hours and Compline are not commemoration-bearing in any of
       // the Roman policies; `commemoratesAtHour` should have short-
       // circuited before we get here.
-      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1' };
+      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1', orationHeaders: ['Oratio'] };
   }
+}
+
+function resolveCommemorationVersicleReference(
+  input: ApplyRuleSetInput,
+  basePath: string,
+  feastPath: string,
+  section: string
+): TextReference {
+  if (sectionExists(input, basePath, section)) {
+    return { path: basePath, section };
+  }
+
+  if (feastPath.startsWith('Tempora/')) {
+    const temporalWeekPath = basePath.replace(/-\d$/u, '-0');
+    if (temporalWeekPath !== basePath && sectionExists(input, temporalWeekPath, section)) {
+      return { path: temporalWeekPath, section };
+    }
+  }
+
+  return { path: basePath, section };
+}
+
+function firstExistingSection(
+  input: ApplyRuleSetInput,
+  path: string,
+  sections: readonly string[]
+): string | undefined {
+  return sections.find((section) => sectionExists(input, path, section));
+}
+
+function sectionExists(input: ApplyRuleSetInput, path: string, section: string): boolean {
+  const file = input.corpus.getFile(path) ?? input.corpus.getFile(`${path}.txt`);
+  return file?.sections.some((candidate) => candidate.header === section) === true;
 }
 
 const HOUR_SECTION_SUFFIX: Readonly<Record<HourName, string>> = {

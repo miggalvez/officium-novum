@@ -183,7 +183,8 @@ export function composeHour(input: ComposeInput): ComposedHour {
       onWarning
     });
     if (section) {
-      sections.push(withMinorHourLaterBlockSeparator(input.hour, slotName, hour, section));
+      const commemorationSection = withCommemorationSeparator(slotName, section);
+      sections.push(withMinorHourLaterBlockSeparator(input.hour, slotName, hour, commemorationSection));
     }
   }
 
@@ -222,6 +223,32 @@ function withMinorHourLaterBlockSeparator(
     ...section,
     lines: Object.freeze([minorHourSeparatorLine(section.languages), ...section.lines])
   });
+}
+
+function withCommemorationSeparator(slot: SlotName, section: Section): Section {
+  if (
+    slot !== 'commemoration-antiphons' &&
+    slot !== 'commemoration-versicles' &&
+    slot !== 'commemoration-orations'
+  ) {
+    return section;
+  }
+  if (section.lines[0] && isSeparatorLine(section.lines[0])) {
+    return section;
+  }
+
+  return Object.freeze({
+    ...section,
+    lines: Object.freeze([minorHourSeparatorLine(section.languages), ...section.lines])
+  });
+}
+
+function isSeparatorLine(line: ComposedLine): boolean {
+  const entries = Object.values(line.texts);
+  return (
+    entries.length > 0 &&
+    entries.every((runs) => runs.length === 1 && runs[0]?.type === 'text' && runs[0].value === '_')
+  );
 }
 
 function isRenderableLaterBlockSlot(content: SlotContent | undefined): boolean {
@@ -382,6 +409,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         ...(args.options.langfb ? { langfb: args.options.langfb } : {}),
         isAntiphon
       });
+      const sourceWithCommemorationPrelude = prependCommemorationPrelude(args, lang, namedSourceContent);
       if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(namedSourceContent)) {
         const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(namedSourceContent));
         const flattened = flattenConditionals(antiphonOnly, args.context);
@@ -430,7 +458,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, namedSourceContent)
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithCommemorationPrelude)
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -487,8 +515,14 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
                 args.context.version,
                 ref
               )
+            : args.slot === 'commemoration-antiphons'
+              ? normalizeRepeatedAntiphonContent(withTriduumOrationFilter)
             : withTriduumOrationFilter
         : withTriduumOrationFilter;
+      const withCommemorationHeading =
+        args.slot === 'commemoration-antiphons'
+          ? prependCommemorationAntiphonHeading(args.corpus, ref, markered)
+          : markered;
       // Phase 3 §3h — emit a `Psalmus N [index]` heading before each psalm
       // of the psalmody slot (and only for the psalmody slot — Matins
       // psalmody runs through its own composer and gets its headings from
@@ -526,8 +560,8 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       appendContentWithBoundary(
         bucket,
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? replaceLeadingCanticleTitleWithCitation(markered, ref.selector)
-          : markered
+          ? replaceLeadingCanticleTitleWithCitation(withCommemorationHeading, ref.selector)
+          : withCommemorationHeading
       );
     }
   }
@@ -539,6 +573,40 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
   if (frozen.size === 0) return undefined;
 
   return emitSection(args.slot, frozen, primary ? referenceKey(primary) : undefined);
+}
+
+function prependCommemorationPrelude(
+  args: ComposeSlotArgs,
+  language: string,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (args.slot === 'commemoration-orations') {
+    return [
+      { type: 'text', value: language === 'Latin' ? 'Orémus.' : 'Let us pray.' },
+      { type: 'separator' },
+      ...content
+    ];
+  }
+
+  return content;
+}
+
+function prependCommemorationAntiphonHeading(
+  corpus: TextIndex,
+  ref: TextReference,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  const title = commemorationTitle(corpus, ref.path);
+  return title
+    ? [{ type: 'text', value: `Commemoratio ${title}` }, { type: 'separator' }, ...content]
+    : content;
+}
+
+function commemorationTitle(corpus: TextIndex, path: string): string | undefined {
+  const file = corpus.getFile(path) ?? corpus.getFile(`${path}.txt`);
+  const officium = file?.sections.find((section) => section.header === 'Officium');
+  const firstText = officium?.content.find((node) => node.type === 'text');
+  return firstText?.value.split(/\r?\n/u).find((line) => line.trim().length > 0)?.trim();
 }
 
 function taggedReferencesFrom(

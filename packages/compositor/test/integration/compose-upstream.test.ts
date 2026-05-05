@@ -1649,6 +1649,50 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
   }, 240_000);
 
+  it('places Rubrics 1960 Lauds commemorations before the final conclusion', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-02-24');
+    const lauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const slotOrder = lauds.sections.map((section) => section.slot);
+    const orationIndex = slotOrder.indexOf('oration');
+    const commemorationIndex = slotOrder.indexOf('commemoration-antiphons');
+    const conclusionIndex = slotOrder.indexOf('conclusion');
+    expect(orationIndex, 'Lauds should include the main oration').toBeGreaterThan(0);
+    expect(commemorationIndex, 'Lauds should include the feria commemoration').toBeGreaterThan(orationIndex);
+    expect(conclusionIndex, 'Lauds should include the final conclusion').toBeGreaterThan(commemorationIndex);
+
+    const commemorationAntiphons = lauds.sections
+      .find((section) => section.slot === 'commemoration-antiphons')
+      ?.lines.map(renderLatinText)
+      .map(normalizeLatin) ?? [];
+    expect(commemorationAntiphons).toContain(normalizeLatin('_'));
+    expect(commemorationAntiphons).toContain(
+      normalizeLatin('Commemoratio Feria Tertia infra Hebdomadam I in Quadragesima')
+    );
+    expect(commemorationAntiphons).toContain(
+      normalizeLatin(
+        'Intrávit Jesus in templum Dei, et eiciébat omnes vendéntes et eméntes: et mensas nummulariórum, et cáthedras vendéntium colúmbas evértit.'
+      )
+    );
+    const lines = canonicalLatinLines(lauds);
+    const commemorationCollectIndex = lines.indexOf(
+      normalizeLatin(
+        'Réspice, Dómine, famíliam tuam, et præsta: ut apud te mens nostra tuo desidério fúlgeat, quæ se carnis maceratióne castígat.'
+      )
+    );
+    expect(lines[commemorationCollectIndex - 1]).toBe(normalizeLatin('Orémus.'));
+    expect(sectionTexts(lauds, 'conclusion').map(normalizeLatin)[0]).toBe(
+      normalizeLatin('Dómine, exáudi oratiónem meam.')
+    );
+  }, 240_000);
+
   it('renders Ash Wednesday Roman minor-hour seasonal antiphons before the psalm heading', async () => {
     for (const [version, expectations] of [
       [

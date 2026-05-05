@@ -3,12 +3,11 @@ date: 2024-03-19
 hour: lauds
 celebration: S. Joseph Sponsi B.M.V. Confessoris
 languages: Latin
-section count: 10
-warning count: 2
+section count: 11
+warning count: 1
 
 # warnings
 #0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Tempora/Quad5-2, section=Versum 2}
-#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Tempora/Quad5-2, section=Oratio}
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Laudes#Incipit languages=Latin]
   Latin: [V.] text("Deus + in adjutórium meum inténde.")
@@ -168,13 +167,22 @@ warning count: 2
   Latin: [r.] text("Qui vivis et regnas cum Deo Patre, in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #8 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+[section #8 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Tempora/Quad5-2#Ant 2 languages=Latin]
+  Latin: text("_")
+  Latin: text("Commemoratio Feria Tertia infra Hebdomadam Passionis")
+  Latin: [Ant.] text("Tempus meum nondum advénit, tempus autem vestrum semper est parátum.")
+
+[section #9 type=commemoration slot=commemoration-orations reference=horas/Latin/Tempora/Quad5-2#Oratio 2 languages=Latin]
+  Latin: text("_")
+  Latin: text("Orémus.")
+  Latin: text("Nostra tibi, Dómine, quǽsumus, sint accépta jejúnia: quæ nos et expiándo, grátia tua dignos effíciant, et ad remédia perdúcant ætérna.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #10 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [V.] text("Benedicámus Dómino.")
   Latin: [R.] text("Deo grátias.")
   Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
   Latin: [R.] text("Amen.")
-
-[section #9 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Tempora/Quad5-2#Ant 2 languages=Latin]
-  Latin: [Ant.] text("Tempus meum * nondum advénit, tempus autem vestrum semper est parátum.")

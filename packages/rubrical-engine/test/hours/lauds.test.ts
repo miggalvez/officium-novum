@@ -179,6 +179,60 @@ describe('structureLauds', () => {
     expect(result.hour.slots['commemoration-antiphons']?.kind).toBe('ordered-refs');
     expect(result.hour.slots['commemoration-versicles']?.kind).toBe('ordered-refs');
     expect(result.hour.slots['commemoration-orations']?.kind).toBe('ordered-refs');
+
+    const slotOrder = Object.keys(result.hour.slots);
+    const conclusionIndex = slotOrder.indexOf('conclusion');
+    expect(conclusionIndex).toBeGreaterThan(0);
+    expect(slotOrder.indexOf('commemoration-antiphons')).toBeLessThan(conclusionIndex);
+    expect(slotOrder.indexOf('commemoration-versicles')).toBeLessThan(conclusionIndex);
+    expect(slotOrder.indexOf('commemoration-orations')).toBeLessThan(conclusionIndex);
+  });
+
+  it('uses temporal numbered collects and week-root versicles for ferial Lauds commemorations', () => {
+    const { corpus, skeleton } = setup();
+    corpus.add(
+      'horas/Latin/Tempora/Quad1-0',
+      ['[Versum 2]', 'V. Ángelis suis Deus mandávit de te.', 'R. Ut custódiant te in ómnibus viis tuis.'].join('\n')
+    );
+    corpus.add(
+      'horas/Latin/Tempora/Quad1-2',
+      [
+        '[Ant 2]',
+        'Intrávit Jesus * in templum Dei.',
+        '',
+        '[Oratio 2]',
+        'Réspice, Dómine, famíliam tuam.'
+      ].join('\n')
+    );
+    const celeb = celebration('Sancti/08-15');
+    const rules = baseRules();
+    const hourRules = deriveHourRuleSet(celeb, rules, 'lauds');
+    const commemoration: Commemoration = {
+      feastRef: { path: 'Tempora/Quad1-2', id: 'Tempora/Quad1-2', title: 'Feria Tertia' },
+      rank: { name: 'Feria major', classSymbol: 'Feria major', weight: 400 },
+      reason: 'occurrence-impeded',
+      hours: ['lauds']
+    };
+
+    const result = structureLauds({
+      skeleton,
+      celebration: celeb,
+      commemorations: [commemoration],
+      celebrationRules: rules,
+      hourRules,
+      temporal: temporal('2026-02-24', 'Quad1-2', 'lent', 2),
+      policy: rubrics1960Policy,
+      corpus
+    });
+
+    expect(result.hour.slots['commemoration-versicles']).toEqual({
+      kind: 'ordered-refs',
+      refs: [{ path: 'horas/Latin/Tempora/Quad1-0', section: 'Versum 2' }]
+    });
+    expect(result.hour.slots['commemoration-orations']).toEqual({
+      kind: 'ordered-refs',
+      refs: [{ path: 'horas/Latin/Tempora/Quad1-2', section: 'Oratio 2' }]
+    });
   });
 
   it('suppresses slots listed in hourRules.omit as kind empty', () => {

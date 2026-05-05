@@ -5890,6 +5890,36 @@ and `docs/upstream-issues.md`.
 `1840`; divergent hours remain `2211` because this tranche classifies
 known Perl drift without changing rendered output.
 
+### 2026-05-05 — Pattern: Major-hour commemorations render before the final conclusion (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+2026-02-24 Lauds, where Perl placed the Lenten feria commemoration
+between the main collect and the final conclusion, while the compositor
+emitted the final conclusion before the commemoration bundle.
+
+**Root cause.** `applyRuleSet` appended commemoration slots after the
+skeleton-derived `conclusion` slot. The compositor then faithfully
+rendered the wrong slot order. Once reordered, the same witness also
+showed the missing commemoration presentation layer: separator lines,
+the `Commemoratio ...` heading, normalized whole-antiphon text, `Orémus.`
+before the collect, and temporal ferial numbered collect / week-root
+versicle references.
+
+**Resolution.** Class `engine-bug`, fixed. Commemoration slots are now
+inserted before conclusion, temporal ferial commemorations resolve their
+numbered major-hour collects and week-root versicles, and the compositor
+renders the commemoration heading/separators/collect prelude.
+
+**Citation.** `packages/rubrical-engine/src/hours/apply-rule-set.ts`,
+`packages/compositor/src/compose.ts`,
+`upstream/web/www/horas/Latin/Tempora/Quad1-2.txt:35-41`, and
+`upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:154-155`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2211` to
+`2210`, and unadjudicated rows drop from `1840` to `1839`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

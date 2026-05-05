@@ -148,7 +148,14 @@ warning count: 2
   Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #5 type=conclusion slot=conclusion reference=horas/Ordinarium/Laudes#Conclusio languages=Latin]
+[section #5 type=commemoration slot=commemoration-orations reference=horas/Latin/Sancti/02-14#Oratio languages=Latin]
+  Latin: text("_")
+  Latin: text("Orémus.")
+  Latin: text("Præsta, quǽsumus, omnípotens Deus: ut, qui beáti Valentíni, Mártyris tui, natalítia cólimus, a cunctis malis imminéntibus, ejus intercessióne, liberémur.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #6 type=conclusion slot=conclusion reference=horas/Ordinarium/Laudes#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
@@ -168,8 +175,3 @@ warning count: 2
   Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
   Latin: [V.] text("Dóminus det nobis suam pacem.")
   Latin: [R.] text("Et vitam ætérnam. Amen.")
-
-[section #6 type=commemoration slot=commemoration-orations reference=horas/Latin/Sancti/02-14#Oratio languages=Latin]
-  Latin: text("Præsta, quǽsumus, omnípotens Deus: ut, qui beáti Valentíni, Mártyris tui, natalítia cólimus, a cunctis malis imminéntibus, ejus intercessióne, liberémur.")
-  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
-  Latin: [R.] text("Amen.")

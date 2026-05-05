@@ -448,6 +448,13 @@ Variant suffixed Confessor hymn
     if (antiphons?.kind === 'ordered-refs') {
       expect(antiphons.refs[0]?.path).toBe('horas/Latin/Tempora/Adv2-0');
     }
+
+    const slotOrder = Object.keys(result.hour.slots);
+    const conclusionIndex = slotOrder.indexOf('conclusion');
+    expect(conclusionIndex).toBeGreaterThan(0);
+    expect(slotOrder.indexOf('commemoration-antiphons')).toBeLessThan(conclusionIndex);
+    expect(slotOrder.indexOf('commemoration-versicles')).toBeLessThan(conclusionIndex);
+    expect(slotOrder.indexOf('commemoration-orations')).toBeLessThan(conclusionIndex);
   });
 
   it('emits dirge-vespers directive from overlay', () => {
