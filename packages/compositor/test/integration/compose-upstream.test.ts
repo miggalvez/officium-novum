@@ -1649,6 +1649,26 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
   }, 240_000);
 
+  it('uses the Per Annum Prime short lesson for Rubrics 1960 sanctoral fallback offices', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-01-16');
+    const prime = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'prime',
+      options: { languages: ['Latin'] }
+    });
+
+    const shortLessonLines = sectionTexts(prime, 'lectio-brevis').map(normalizeLatin);
+    expect(shortLessonLines).toContain(
+      normalizeLatin('Dóminus autem dírigat corda et córpora nostra in caritáte Dei et patiéntia Christi.')
+    );
+    expect(shortLessonLines).not.toContain(
+      normalizeLatin('Regi sæculórum immortáli et invisíbili, soli Deo honor et glória in sǽcula sæculórum. Amen.')
+    );
+  }, 240_000);
+
   it('places Rubrics 1960 Lauds commemorations before the final conclusion', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2026-02-24');
@@ -3127,6 +3147,7 @@ function sectionTexts(
     | 'invitatory'
     | 'chapter'
     | 'hymn'
+    | 'lectio-brevis'
     | 'responsory'
     | 'versicle'
     | 'preces'

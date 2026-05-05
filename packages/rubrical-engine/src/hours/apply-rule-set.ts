@@ -2096,7 +2096,7 @@ function primeShortLessonSection(input: ApplyRuleSetInput): string {
       ? 'Quad5'
       : 'Quad';
   }
-  return 'Dominica';
+  return input.celebration.source === 'sanctoral' ? 'Per Annum' : 'Dominica';
 }
 
 function is1960TemporalPaschaltideSunday(input: ApplyRuleSetInput): boolean {

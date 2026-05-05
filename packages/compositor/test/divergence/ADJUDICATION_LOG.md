@@ -5920,6 +5920,33 @@ renders the commemoration heading/separators/collect prelude.
 **Impact.** Rubrics 1960 2026 divergent hours drop from `2211` to
 `2210`, and unadjudicated rows drop from `1840` to `1839`.
 
+### 2026-05-05 — Pattern: Rubrics 1960 sanctoral fallback Prime uses Per Annum chapter (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+2026-01-16 Prime, where Perl selected `2 Thess 3:5` from `Prima
+Special:Per Annum` but the compositor selected the Sunday fallback
+`1 Tim. 1:17`.
+
+**Root cause.** `primeShortLessonSection` treated every non-seasonal
+Rubrics 1960 festive fallback as `Dominica`. Sanctoral fallback offices
+outside Lent, Passiontide, Paschaltide, and the Pentecost octave should
+use the source's `Per Annum` Prime chapter, while temporal Sunday and
+ferial paths keep their existing section selection.
+
+**Resolution.** Class `engine-bug`, fixed. Rubrics 1960 sanctoral
+fallback Prime now resolves `Prima Special:Per Annum`, with compositor
+coverage on the 2026-01-16 witness and refreshed Rubrics 1960 Prime
+Appendix-A goldens.
+
+**Citation.** `packages/rubrical-engine/src/hours/apply-rule-set.ts`,
+`packages/compositor/test/integration/compose-upstream.test.ts`, and
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-11`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2210` to
+`2172`, and unadjudicated rows drop from `1839` to `1801`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
