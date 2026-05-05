@@ -2918,6 +2918,26 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(psalmodyTexts(athanasiusCompline)).not.toContain('Psalmus 87 [1]');
   }, 240_000);
 
+  it('wraps ordinary Rubrics 1960 Compline psalmody with one antiphon repeat in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary(new Date(Date.UTC(2026, 0, 1)));
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(psalmodyAntiphons(compline)).toEqual([
+      'Miserére * mihi, Dómine, et exáudi oratiónem meam.',
+      'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+    ]);
+    expect(psalmodyTexts(compline).at(-1)).toBe(
+      'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+    );
+  }, 240_000);
+
   it('keeps Reduced 1955 Jan 6/7 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
     const { engine, resolvedCorpus } = await createHarness('Reduced - 1955');
 

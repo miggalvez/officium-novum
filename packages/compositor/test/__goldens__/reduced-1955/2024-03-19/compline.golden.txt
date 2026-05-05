@@ -44,7 +44,6 @@ warning count: 0
   Latin: text("11:9 In circúitu ímpii ámbulant: * secúndum altitúdinem tuam multiplicásti fílios hóminum.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Tu, Dómine, servábis nos: et custódies nos in ætérnum.")
   Latin: text("Psalmus 12 [2]")
   Latin: text("12:1 Úsquequo, Dómine, obliviscéris me in finem? * Úsquequo avértis fáciem tuam a me?")
   Latin: text("12:2 Quámdiu ponam consília in ánima mea, * dolórem in corde meo per diem?")
@@ -68,6 +67,7 @@ warning count: 0
   Latin: text("15:11 Notas mihi fecísti vias vitæ, adimplébis me lætítia cum vultu tuo: * delectatiónes in déxtera tua usque in finem.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Tu, Dómine, servábis nos: et custódies nos in ætérnum.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")

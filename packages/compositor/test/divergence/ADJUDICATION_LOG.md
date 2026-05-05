@@ -5612,7 +5612,7 @@ typecheck/test green, every compositor source file < 800 lines.
 
 ### 2026-05-05 — Pattern: Rubrics 1960 2026 fallback-hymn doxology fanout (perl-bug)
 
-**Commit.** Pending in tranche commit.
+**Commit.** `3eb7743`.
 
 **Ledger signal.** The refreshed Rubrics 1960 2026 ledger exposes the
 same stable fallback-hymn doxology hashes already seen in the 2024
@@ -5651,6 +5651,47 @@ and `docs/phase-2-rubrical-engine-design.md:1506`.
 **Impact.** 206 Rubrics 1960 2026 rows move from `unadjudicated` to
 `perl-bug`, narrowing the current-year frontier without date-specific
 logic.
+
+### 2026-05-05 — Pattern: Ordinary Compline psalmody antiphon wraps the full psalm set (compositor-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 ledger exposed a
+Compline family where the compositor repeated the ordinary psalmody
+antiphon immediately after the first psalm, so the next first-divergence
+line was often `Psalmus 90 [2]`, `Psalmus 76(14-21) [2]`,
+`Psalmus 33(12-23) [2]`, or `Psalmus 70(1-12) [2]` against a duplicated
+`Ant.` line.
+
+**Root cause.** Phase 2 emits the ordinary Compline antiphon only on the
+first psalm assignment, mirroring the source table in
+`Psalterium/Psalmi/Psalmi minor.txt#Completorium`: one weekday-keyed
+antiphon followed by a psalm list. The generic compositor treated
+Compline like a major hour, so that first explicit antiphon opened and
+closed only the first assignment. Prime, Terce, Sext, and None already
+had the slot-wide behavior needed by this source shape.
+
+**Resolution.** Class `compositor-bug`, fixed. The psalmody dispatcher
+now treats Compline like the minor hours for slot-wide antiphon purposes:
+the first antiphon opens the full psalm set and repeats once after the
+final psalm. This is a family-level compositor correction, not a
+date-specific patch.
+
+Regression coverage was added in `packages/compositor/test/compose.test.ts`
+for the dispatcher seam and in
+`packages/compositor/test/integration/compose-upstream.test.ts` for the
+2026 Rubrics 1960 Jan. 1 witness. The Appendix-A Compline goldens were
+refreshed across all three Roman policies because the same source shape
+is shared.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:65-80`,
+`packages/rubrical-engine/src/hours/psalter.ts:168-184`, and
+`packages/compositor/src/compose.ts:608-619`.
+
+**Impact.** The specific Compline repeated-antiphon hashes are removed
+from the 2026 ledger. The total divergent-hour count remains `2407`
+because those same Compline hours still contain later unresolved
+differences, now led primarily by later-block and half-verse surfaces.
 
 ## See also
 

@@ -608,7 +608,7 @@ function slotWidePsalmodyAntiphonRef(
   hour: HourName,
   psalms: readonly { readonly antiphonRef?: TextReference }[]
 ): TextReference | undefined {
-  if (isMinorHour(hour)) {
+  if (isMinorHour(hour) || hour === 'compline') {
     return psalms[0]?.antiphonRef;
   }
 

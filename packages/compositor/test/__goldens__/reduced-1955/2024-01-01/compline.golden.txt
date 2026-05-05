@@ -45,7 +45,6 @@ warning count: 0
   Latin: text("6:11 Erubéscant, et conturbéntur veheménter omnes inimíci mei: * convertántur et erubéscant valde velóciter.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Salvum me fac, Dómine, propter misericórdiam tuam.")
   Latin: text("Psalmus 7(2-10) [2]")
   Latin: text("7:2 Dómine, Deus meus, in te sperávi: * salvum me fac ex ómnibus persequéntibus me, et líbera me.")
   Latin: text("7:3 Nequándo rápiat ut leo ánimam meam, * dum non est qui rédimat, neque qui salvum fáciat.")
@@ -70,6 +69,7 @@ warning count: 0
   Latin: text("7:18 Confitébor Dómino secúndum justítiam ejus: * et psallam nómini Dómini altíssimi.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Salvum me fac, Dómine, propter misericórdiam tuam.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")

@@ -43,7 +43,6 @@ warning count: 0
   Latin: text("69:6 Adjútor meus, et liberátor meus es tu: * Dómine, ne moréris.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Adjútor meus et liberátor meus esto, Dómine.")
   Latin: text("Psalmus 70(1-12) [2]")
   Latin: text("70:1 In te, Dómine, sperávi, non confúndar in ætérnum: * in justítia tua líbera me, et éripe me.")
   Latin: text("70:2 Inclína ad me aurem tuam, * et salva me.")
@@ -76,6 +75,7 @@ warning count: 0
   Latin: text("70:24 Sed et lingua mea tota die meditábitur justítiam tuam: * cum confúsi et revériti fúerint, qui quærunt mala mihi.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Adjútor meus et liberátor meus esto, Dómine.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")

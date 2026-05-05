@@ -46,7 +46,6 @@ warning count: 0
   Latin: text("4:10 Quóniam tu, Dómine, singuláriter in spe * constituísti me.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Miserére mihi, Dómine, et exáudi oratiónem meam.")
   Latin: text("Psalmus 90 [2]")
   Latin: text("90:1 Qui hábitat in adjutório Altíssimi, * in protectióne Dei cæli commorábitur.")
   Latin: text("90:2 Dicet Dómino: Suscéptor meus es tu, et refúgium meum: * Deus meus sperábo in eum.")
@@ -73,6 +72,7 @@ warning count: 0
   Latin: text("133:3 Benedícat te Dóminus ex Sion, * qui fecit cælum et terram.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Miserére mihi, Dómine, et exáudi oratiónem meam.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")

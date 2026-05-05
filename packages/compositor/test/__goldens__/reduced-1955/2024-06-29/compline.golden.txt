@@ -54,7 +54,6 @@ warning count: 0
   Latin: text("87:19 Elongásti a me amícum et próximum: * et notos meos a miséria.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Intret orátio mea in conspéctu tuo, Dómine.")
   Latin: text("Psalmus 102(1-12) [2]")
   Latin: text("102:1 Bénedic, ánima mea, Dómino: * et ómnia, quæ intra me sunt, nómini sancto ejus.")
   Latin: text("102:2 Bénedic, ánima mea, Dómino: * et noli oblivísci omnes retributiónes ejus.")
@@ -83,6 +82,7 @@ warning count: 0
   Latin: text("102:22 Benedícite Dómino, ómnia ópera ejus: * in omni loco dominatiónis ejus, bénedic, ánima mea, Dómino.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Intret orátio mea in conspéctu tuo, Dómine.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")

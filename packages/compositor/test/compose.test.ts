@@ -954,6 +954,79 @@ describe('composeHour', () => {
     );
   });
 
+  it('treats ordinary Compline antiphons as slot-wide across the full psalm set', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi minor', 'Completorium', [
+        { type: 'text', value: 'Dominica = Miserére * mihi, Dómine, et exáudi oratiónem meam.' }
+      ])
+    );
+    for (const psalm of [4, 90, 133]) {
+      corpus.addFile(
+        makeFile(`horas/Latin/Psalterium/Psalmorum/Psalm${psalm}`, '__preamble', [
+          { type: 'text', value: `${psalm}:1 Psalm ${psalm} body.` }
+        ])
+      );
+    }
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri.' },
+        { type: 'verseMarker', marker: 'R.', text: 'Sicut erat.' }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'compline',
+      slots: {
+        psalmody: {
+          kind: 'psalmody',
+          psalms: [
+            {
+              antiphonRef: {
+                path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+                section: 'Completorium',
+                selector: 'Dominica#antiphon'
+              },
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm4',
+                section: '__preamble'
+              }
+            },
+            {
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm90',
+                section: '__preamble'
+              }
+            },
+            {
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm133',
+                section: '__preamble'
+              }
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmodyLines = slotLines(composed, 'psalmody', 'Latin');
+    expect(psalmodyLines.filter((line) => line.startsWith('Miserére'))).toEqual([
+      'Miserére * mihi, Dómine, et exáudi oratiónem meam.',
+      'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+    ]);
+    expect(psalmodyLines.at(-1)).toBe('Miserére mihi, Dómine, et exáudi oratiónem meam.');
+    expect(psalmodyLines[psalmodyLines.indexOf('Psalmus 90 [2]') - 1]).toBe('Sicut erat.');
+  });
+
   it('does not append a psalmic Gloria Patri after the Benedicite canticle', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(
