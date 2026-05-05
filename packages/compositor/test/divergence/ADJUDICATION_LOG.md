@@ -5773,6 +5773,35 @@ continues to cover the Paschal final-antiphon marker cleanup path.
 `2252`, and unadjudicated rows drop from `2201` to `2046`, removing the
 final-BVM Compline family from the current-year frontier.
 
+### 2026-05-05 — Pattern: Rubrics 1960 ferial Prime keeps source-backed `Prima Special:Feria` (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed an
+82-row Prime family where the Perl comparison surface expected the
+Sunday Prime chapter citation `1 Tim. 1:17`, while the compositor
+emitted the ferial `Zach 8:19` citation.
+
+**Root cause.** This is a previously documented comparison-surface
+drift, not an engine regression. The source-backed ferial Prime fallback
+uses `Psalterium/Special/Prima Special#Feria`, whose chapter is
+`Zach 8:19`; the same source file defines `#Dominica` separately as
+`1 Tim. 1:17`. The compositor follows the ferial source. The Perl
+Rubrics 1960 render surface keeps the Sunday citation on these ferial
+rows.
+
+**Resolution.** Class `perl-bug`. Added 82 Rubrics 1960 2026 row keys
+for the stable `1 Tim. 1:17` → `Zach 8:19` first-divergence hash.
+This is a sidecar-only classification: no engine or compositor code was
+changed.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7`
+and `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `2046` to
+`1964`; divergent hours remain `2252` because this tranche classifies
+known Perl drift without changing rendered output.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
