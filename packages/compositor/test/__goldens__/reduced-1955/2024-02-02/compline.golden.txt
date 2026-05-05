@@ -47,7 +47,6 @@ warning count: 0
   Latin: text("76:13 Et meditábor in ómnibus opéribus tuis: * et in adinventiónibus tuis exercébor.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Voce mea ad Dóminum clamávi: neque obliviscétur miseréri Deus.")
   Latin: text("Psalmus 76(14-21) [2]")
   Latin: text("76:14 Deus, in sancto via tua: quis Deus magnus sicut Deus noster? * tu es Deus qui facis mirabília.")
   Latin: text("76:15 Notam fecísti in pópulis virtútem tuam: * redemísti in brácchio tuo pópulum tuum, fílios Jacob et Joseph.")
@@ -78,6 +77,7 @@ warning count: 0
   Latin: text("85:17 Fac mecum signum in bonum, ut vídeant qui odérunt me, et confundántur: * quóniam tu, Dómine, adjuvísti me, et consolátus es me.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Voce mea ad Dóminum clamávi: neque obliviscétur miseréri Deus.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")
@@ -102,12 +102,14 @@ warning count: 0
   Latin: [R.] text("Deo grátias.")
 
 [section #5 type=responsory slot=responsory reference=horas/Latin/Psalterium/Special/Minor Special#Responsory Completorium languages=Latin]
+  Latin: text("_")
   Latin: [R.br.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [V.] text("Redemísti nos, Dómine, Deus veritátis.")
   Latin: [R.] text("Comméndo spíritum meum.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
+  Latin: text("_")
 
 [section #6 type=versicle slot=versicle reference=horas/Latin/Psalterium/Special/Minor Special#Versum 4 languages=Latin]
   Latin: [V.] text("Custódi nos, Dómine, ut pupíllam óculi.")

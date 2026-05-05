@@ -5610,6 +5610,732 @@ typecheck/test green, every compositor source file < 800 lines.
 
 **Citation.** [Phase 3 design §18 / §19.8](../../../../docs/phase-3-composition-engine-design.md).
 
+### 2026-05-05 — Pattern: Rubrics 1960 2026 fallback-hymn doxology fanout (perl-bug)
+
+**Commit.** `3eb7743`.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 ledger exposes the
+same stable fallback-hymn doxology hashes already seen in the 2024
+baseline: Perl keeps the default fallback hymn closes (`Deo Patri sit
+glória,` or `Præsta, Pater piíssime,`) while the compositor emits the
+source-backed doxology stanza required by the winning office.
+
+**Root cause.** This is not a new compositor or engine defect. The
+rubrical engine supplies a `doxology-variant` slot for the relevant
+fallback hymns, and the compositor substitutes that slot into the
+fallback hymn stanza. The 2026 witnesses cover Nativity, Epiphany, Holy
+Family, Ascension, Corpus Christi, Sacred Heart, Transfiguration, and
+Seven Sorrows variants. The legacy Perl comparison surface retains the
+unsubstituted fallback close.
+
+**Resolution.** Class `perl-bug`. Added 206 Rubrics 1960 2026 row keys
+for the four stable first-divergence hashes:
+
+- `c52cc2ef` — `Deo Patri sit glória,` to `Jesu, tibi sit glória,`
+- `318cf47a` — `Præsta, Pater piíssime,` to `Jesu, tibi sit glória,`
+- `6b019b6f` — `Deo Patri sit glória,` to `Jesu, tuis obédiens`
+- `274511e7` — `Præsta, Pater piíssime,` to `Jesu, tuis obédiens`
+
+Regression coverage was widened in
+`packages/rubrical-engine/test/integration/january-hymn-routing.test.ts`
+with representative 2026 Rubrics 1960 witnesses for each source family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-96`,
+`upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:56-67`,
+`upstream/web/www/horas/Latin/Sancti/08-06.txt:50-61`,
+`upstream/web/www/horas/Latin/Sancti/09-15.txt:52-54`,
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:100-109`,
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:664-730`,
+and `docs/phase-2-rubrical-engine-design.md:1506`.
+
+**Impact.** 206 Rubrics 1960 2026 rows move from `unadjudicated` to
+`perl-bug`, narrowing the current-year frontier without date-specific
+logic.
+
+### 2026-05-05 — Pattern: Ordinary Compline psalmody antiphon wraps the full psalm set (compositor-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 ledger exposed a
+Compline family where the compositor repeated the ordinary psalmody
+antiphon immediately after the first psalm, so the next first-divergence
+line was often `Psalmus 90 [2]`, `Psalmus 76(14-21) [2]`,
+`Psalmus 33(12-23) [2]`, or `Psalmus 70(1-12) [2]` against a duplicated
+`Ant.` line.
+
+**Root cause.** Phase 2 emits the ordinary Compline antiphon only on the
+first psalm assignment, mirroring the source table in
+`Psalterium/Psalmi/Psalmi minor.txt#Completorium`: one weekday-keyed
+antiphon followed by a psalm list. The generic compositor treated
+Compline like a major hour, so that first explicit antiphon opened and
+closed only the first assignment. Prime, Terce, Sext, and None already
+had the slot-wide behavior needed by this source shape.
+
+**Resolution.** Class `compositor-bug`, fixed. The psalmody dispatcher
+now treats Compline like the minor hours for slot-wide antiphon purposes:
+the first antiphon opens the full psalm set and repeats once after the
+final psalm. This is a family-level compositor correction, not a
+date-specific patch.
+
+Regression coverage was added in `packages/compositor/test/compose.test.ts`
+for the dispatcher seam and in
+`packages/compositor/test/integration/compose-upstream.test.ts` for the
+2026 Rubrics 1960 Jan. 1 witness. The Appendix-A Compline goldens were
+refreshed across all three Roman policies because the same source shape
+is shared.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:65-80`,
+`packages/rubrical-engine/src/hours/psalter.ts:168-184`, and
+`packages/compositor/src/compose.ts:608-619`.
+
+**Impact.** The specific Compline repeated-antiphon hashes are removed
+from the 2026 ledger. The total divergent-hour count remains `2407`
+because those same Compline hours still contain later unresolved
+differences, now led primarily by later-block and half-verse surfaces.
+
+### 2026-05-05 — Pattern: Ordinary Compline short-responsory boundary separators (compositor-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the ordinary Compline psalmody antiphon wrapper
+was fixed, 205 Rubrics 1960 2026 Compline rows advanced to the next
+stable family: Perl expected an underscore separator before
+`R.br. In manus tuas, Dómine, * Comméndo spíritum meum.`, while the
+compositor moved directly from the short lesson response to the
+responsory body.
+
+**Root cause.** The legacy renderer surfaces the blank boundaries around
+`[Responsory Completorium]` as underscore separator lines. The
+Paschaltide synthetic Compline responsory already inserted those
+boundary separators, but the ordinary resolved section path returned the
+source body without them.
+
+**Resolution.** Class `compositor-bug`, fixed. The reference resolver
+now wraps the ordinary `Minor Special#Responsory Completorium` section
+with leading and trailing separator nodes before emission. This keeps the
+ordinary path aligned with the existing paschal synthetic path and lets
+the normal responsory emitter render those separators as `_`.
+
+Regression coverage was added in `packages/compositor/test/compose.test.ts`
+for the exact resolver/emitter seam and in
+`packages/compositor/test/integration/compose-upstream.test.ts` for the
+2026 Rubrics 1960 Jan. 2 witness. The Appendix-A Compline goldens were
+refreshed for the shared Roman ordinary-responsory shape.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:807-815`,
+`packages/compositor/src/resolve/synthetic-sections.ts:446-454`, and
+`packages/compositor/src/emit/sections.ts:273-284`.
+
+**Impact.** The `_` versus `R.br.` Compline family is removed from the
+2026 ledger. The total divergent-hour count remains `2407` because those
+hours still contain later unresolved Compline differences, now led by
+final BVM antiphon handling, preces routing, and half-verse rendering.
+
+### 2026-05-05 — Pattern: Rubrics 1960 Compline final Marian antiphon routing (engine/compositor-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the ordinary Compline responsory separators were
+fixed, the Rubrics 1960 2026 ledger exposed a 155-hour Compline family:
+Perl rendered the seasonal final Marian antiphon (`Alma Redemptóris
+Mater`, `Ave Regina cælórum`, `Regína cæli`, or `Salve Regína`) while
+the compositor ended the hour after the final `Amen`.
+
+**Root cause.** The 1960 engine only materialized
+`final-antiphon-bvm` for Paschaltide Compline, leaving non-Paschal dates
+on the heading-only `Ordinarium/Completorium#Antiphona finalis` slot.
+The upstream Perl special expands that heading through the seasonal
+`Psalterium/Mariaant` sections and then appends `Divinum auxilium`.
+Once the engine supplied those real sources, the compositor also needed
+to preserve final-antiphon separator nodes and trim source trailing
+whitespace.
+
+**Resolution.** Class `engine-bug` plus `compositor-bug`, fixed. Rubrics
+1960 Compline now routes the final Marian antiphon to the seasonal
+`Mariaant` section (`Advent`, `Nativiti`, `Quadragesimae`,
+`Paschalis`, or `Postpentecost`) and appends `Divinum auxilium`/`Amen`.
+The final-antiphon emitter now keeps source `_` separator lines and
+normalizes trailing spaces.
+
+Regression coverage was added in
+`packages/rubrical-engine/test/integration/phase-2g-upstream.test.ts`
+for all seasonal source sections and in
+`packages/compositor/test/integration/compose-upstream.test.ts` for 2026
+Alma and Salve witnesses. `packages/compositor/test/canonical-lines.test.ts`
+continues to cover the Paschal final-antiphon marker cleanup path.
+
+**Citation.** `upstream/web/cgi-bin/horas/specials.pl:313-340`,
+`upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:468-479`,
+`upstream/web/www/horas/Latin/Psalterium/Mariaant.txt:1-74`, and
+`upstream/web/www/horas/Ordinarium/Completorium.txt:68-76`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2407` to
+`2252`, and unadjudicated rows drop from `2201` to `2046`, removing the
+final-BVM Compline family from the current-year frontier.
+
+### 2026-05-05 — Pattern: Rubrics 1960 ferial Prime keeps source-backed `Prima Special:Feria` (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed an
+82-row Prime family where the Perl comparison surface expected the
+Sunday Prime chapter citation `1 Tim. 1:17`, while the compositor
+emitted the ferial `Zach 8:19` citation.
+
+**Root cause.** This is a previously documented comparison-surface
+drift, not an engine regression. The source-backed ferial Prime fallback
+uses `Psalterium/Special/Prima Special#Feria`, whose chapter is
+`Zach 8:19`; the same source file defines `#Dominica` separately as
+`1 Tim. 1:17`. The compositor follows the ferial source. The Perl
+Rubrics 1960 render surface keeps the Sunday citation on these ferial
+rows.
+
+**Resolution.** Class `perl-bug`. Added 82 Rubrics 1960 2026 row keys
+for the stable `1 Tim. 1:17` → `Zach 8:19` first-divergence hash.
+This is a sidecar-only classification: no engine or compositor code was
+changed.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7`
+and `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `2046` to
+`1964`; divergent hours remain `2252` because this tranche classifies
+known Perl drift without changing rendered output.
+
+### 2026-05-05 — Pattern: Rubrics 1960 Sunday Compline omits dominical preces (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed a
+41-row Compline family where the Perl comparison surface went directly
+from the repeated `Salva nos` canticle antiphon to
+`V. Dómine, exáudi oratiónem meam.`, while the compositor inserted the
+`Preces dominicales Completorium` block beginning
+`V. Benedíctus es, Dómine, Deus patrum nostrórum.`
+
+**Root cause.** The Compline builder treated Sunday dominical preces as
+universal and only suppressed them for 1960 Paschaltide Sundays. Under
+Rubrics 1960, the Sunday Compline collect follows the ordinary pre-collect
+versicle directly; the Perl helper reaches the same result by omitting
+preces once the 1960 Sunday rank resolves above the old duplex threshold.
+
+**Resolution.** Class `engine-bug`, fixed. Rubrics 1960 Compline no
+longer emits `preces-dominicales`; pre-1960 policies still retain the
+directive. Unit coverage now locks both the 1960 suppression and Divino
+Afflatu retention paths.
+
+**Citation.** `packages/rubrical-engine/src/hours/compline.ts`,
+`packages/rubrical-engine/test/hours/compline.test.ts`,
+`upstream/web/cgi-bin/horas/specials/preces.pl:13-19`,
+`upstream/web/www/horas/Latin/Psalterium/Special/Preces.txt:248-266`,
+and Divinum Officium 1960 Breviary rubrics nos. 246-248.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2252` to
+`2211`, and unadjudicated rows drop from `1964` to `1923`, removing the
+Sunday Compline dominical-preces family from the current-year frontier.
+
+### 2026-05-05 — Pattern: Rubrics 1960 Paschal minor-hour fallback hymn doxology (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the Sunday Compline preces fix, the refreshed
+Rubrics 1960 2026 frontier exposed a 41-row Terce/Sext/None family where
+Perl expected the ordinary fallback hymn close `Præsta, Pater
+piíssime,`, while the compositor emitted the Paschal doxology beginning
+`Deo Patri sit glória,`.
+
+**Root cause.** This is fanout from the already documented Paschaltide
+fallback-hymn doxology comparison drift. `Psalterium/Doxologies#Pasch`
+supplies the source-backed Paschal stanza, and the engine/compositor
+substitutes that variant into fallback minor-hour hymns. The Perl
+comparison surface keeps the ordinary minor-hour hymn ending.
+
+**Resolution.** Class `perl-bug`. Added 41 Rubrics 1960 2026 row keys
+for stable key-hash `dcdd92bf`, inheriting the existing 2024 Paschal
+doxology citation.
+
+**Citation.** `docs/upstream-issues.md:647-674`,
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:29-34`, and
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:664-672`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `1923` to
+`1882`; divergent hours remain `2211` because this tranche classifies
+known Perl drift without changing rendered output.
+
+### 2026-05-05 — Pattern: Psalm 15:1 half-verse pointing is flattened by Perl render surface (perl-bug, classified)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed a
+Psalm 15:1 pointing family, mostly in Tuesday Compline with three Matins
+witnesses. Perl expected the visible mediant before `Dixi Dómino`,
+while the compositor preserved the source flex marker before
+`Dixi Dómino` and the source mediant before `quóniam`.
+
+**Root cause.** This is source-backed psalm pointing, not a compositor
+rendering defect. `Psalterium/Psalmorum/Psalm15.txt` places `‡ (2)`
+before `Dixi Dómino` and `*` before `quóniam`. The compositor already
+normalizes the parenthetical verse helper while retaining the liturgical
+pointing marks. The Perl comparison surface flattens that display to a
+single asterisk before `Dixi Dómino`.
+
+**Resolution.** Class `perl-bug`. Added 42 Rubrics 1960 2026 row keys
+for stable key-hash `c262774b`, and documented the family in
+`docs/upstream-issues.md`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1`
+and `docs/upstream-issues.md`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `1882` to
+`1840`; divergent hours remain `2211` because this tranche classifies
+known Perl drift without changing rendered output.
+
+### 2026-05-05 — Pattern: Major-hour commemorations render before the final conclusion (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+2026-02-24 Lauds, where Perl placed the Lenten feria commemoration
+between the main collect and the final conclusion, while the compositor
+emitted the final conclusion before the commemoration bundle.
+
+**Root cause.** `applyRuleSet` appended commemoration slots after the
+skeleton-derived `conclusion` slot. The compositor then faithfully
+rendered the wrong slot order. Once reordered, the same witness also
+showed the missing commemoration presentation layer: separator lines,
+the `Commemoratio ...` heading, normalized whole-antiphon text, `Orémus.`
+before the collect, and temporal ferial numbered collect / week-root
+versicle references.
+
+**Resolution.** Class `engine-bug`, fixed. Commemoration slots are now
+inserted before conclusion, temporal ferial commemorations resolve their
+numbered major-hour collects and week-root versicles, and the compositor
+renders the commemoration heading/separators/collect prelude.
+
+**Citation.** `packages/rubrical-engine/src/hours/apply-rule-set.ts`,
+`packages/compositor/src/compose.ts`,
+`upstream/web/www/horas/Latin/Tempora/Quad1-2.txt:35-41`, and
+`upstream/web/www/horas/Latin/Tempora/Quad1-0.txt:154-155`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2211` to
+`2210`, and unadjudicated rows drop from `1840` to `1839`.
+
+### 2026-05-05 — Pattern: Rubrics 1960 sanctoral fallback Prime uses Per Annum chapter (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+2026-01-16 Prime, where Perl selected `2 Thess 3:5` from `Prima
+Special:Per Annum` but the compositor selected the Sunday fallback
+`1 Tim. 1:17`.
+
+**Root cause.** `primeShortLessonSection` treated every non-seasonal
+Rubrics 1960 festive fallback as `Dominica`. Sanctoral fallback offices
+outside Lent, Passiontide, Paschaltide, and the Pentecost octave should
+use the source's `Per Annum` Prime chapter, while temporal Sunday and
+ferial paths keep their existing section selection.
+
+**Resolution.** Class `engine-bug`, fixed. Rubrics 1960 sanctoral
+fallback Prime now resolves `Prima Special:Per Annum`, with compositor
+coverage on the 2026-01-16 witness and refreshed Rubrics 1960 Prime
+Appendix-A goldens.
+
+**Citation.** `packages/rubrical-engine/src/hours/apply-rule-set.ts`,
+`packages/compositor/test/integration/compose-upstream.test.ts`, and
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-11`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2210` to
+`2172`, and unadjudicated rows drop from `1839` to `1801`.
+
+### 2026-05-05 — Pattern: Saturday Compline before temporal Sunday keeps Saturday psalmody (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+Saturday Compline rows, represented by 2026-01-17, where Perl selected
+`Psalmi minor:Completorium/Sabbato` (`Intret oratio mea`, Psalm 87)
+but the compositor selected `Completorium/Dominica` (`Miserere mihi`,
+Psalm 4).
+
+**Root cause.** The engine correctly followed the First Vespers winner
+for the Compline office, but it also let the winning temporal Sunday's
+`dayOfWeek` and `Psalmi Dominica` hour rule force Sunday Compline
+psalmody. The source psalter keeps Compline weekday-keyed, and the
+legacy Perl psalm selector explicitly rekeys Saturday evening before a
+temporal Sunday back to the `Sabbato` row outside the Nativity exception.
+
+**Resolution.** Class `engine-bug`, fixed. When 1960 Compline follows
+tomorrow's First Vespers, the engine now preserves the actual evening's
+weekday for psalter selection; the 1960 Compline psalter selector keeps
+Saturday psalmody for temporal Sunday First Vespers while retaining true
+`Psalmi Dominica` behavior for other high-ranking offices.
+
+**Citation.** `packages/rubrical-engine/src/engine.ts`,
+`packages/rubrical-engine/src/hours/psalter.ts`,
+`packages/compositor/test/integration/compose-upstream.test.ts`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:65-80`,
+and `upstream/web/cgi-bin/horas/specials/psalmi.pl:94-119`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2172` to
+`2141`, and unadjudicated rows drop from `1801` to `1770`.
+
+### 2026-05-05 — Pattern: Rubrics 1960 complete psalter antiphons gain unsupported trailing markers (perl-bug, adjudicated)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed a
+repeated punctuation-only family where Perl appends a trailing `‡` to
+complete psalter antiphons. Representative witnesses are 2026-01-18
+Matins (`Ut quid, Domine`), 2026-01-18 Vespers (`Dixit Dominus`), and
+2026-01-17 Vespers (`Fidelis Dominus`).
+
+**Root cause.** The cited psalter rows carry complete antiphon text and
+do not include a final continuation marker. The compositor preserves the
+source antiphon text; the legacy Perl comparison surface appends an
+unsupported trailing `‡` to those completed antiphon lines.
+
+**Resolution.** Class `perl-bug`, adjudicated. The 2026 sidecar now
+fans out the existing source-backed trailing-marker adjudications to
+the current-year exact-row keys for this family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:12-15`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:27-65`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:183`,
+`upstream/web/www/horas/Latin/Tempora/Nat2-0.txt:93`,
+`upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm90.txt:1`,
+and `docs/upstream-issues.md`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain at `2141`, and
+unadjudicated rows drop from `1770` to `1502`.
+
+### 2026-05-05 — Pattern: Rubrics 1960 Compline fallback hymn uses source-backed doxology (perl-bug, adjudicated)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+Compline rows, represented by 2026-01-01, where Perl retained the
+default `Te lucis` doxology close `Præsta, Pater piíssime,` while the
+compositor emitted the source-backed Nat/Epi/local replacement beginning
+`Jesu, tibi sit glória,`.
+
+**Root cause.** `Hymnus Completorium` carries a replaceable default
+doxology stanza, and the winning offices expose `Doxology=Nat`,
+`Doxology=Epi`, or local `[Doxology]` sections. The compositor applies
+the same doxology replacement rule already adjudicated for fallback
+hymns; the Perl comparison surface retains the default Compline hymn
+ending.
+
+**Resolution.** Class `perl-bug`, adjudicated. The 2026 sidecar now
+classifies the exact Compline `Præsta, Pater piíssime,` =>
+`Jesu, tibi sit glória,` row family with source citations.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730`,
+`upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20`,
+`upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8`,
+`upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67`, and
+`docs/phase-2-rubrical-engine-design.md:1506`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain at `2141`, and
+unadjudicated rows drop from `1502` to `1472`.
+
+### 2026-05-05 — Pattern: 3-lesson Gospel-homily Matins starts with Evangelica benediction (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed a
+29-row Matins family, represented by 2026-02-21, where Perl selected
+`Benedictio. Evangélica léctio sit nobis salus et protéctio.` before a
+3-lesson Gospel homily while the compositor selected the ordinary
+`Nocturn 3:1` benediction `Ille nos benedícat, qui sine fine vivit et
+regnat.`
+
+**Root cause.** The shared Roman Benedictio selector treated all
+non-ordinary 3-lesson offices as plain `Nocturn 3` starts. Perl's
+3-lesson path first loads `Nocturn 3` and then replaces the first
+benediction with `[Evangelica]:1` for Gospel-homily days (post-Cineres,
+Lent ferias, Paschal/Pentecost octave days, ember days, and vigils).
+The upstream temporal witness `Quadp3-6` starts `Lectio1` with a Gospel
+pericope and homily.
+
+**Resolution.** Class `engine-bug`, fixed. The Roman shared selector now
+keeps ordinary temporal weekday rotation, but maps those Gospel-homily
+3-lesson families to `[Evangelica]:1` for the opening benediction while
+leaving the remaining entries on their existing Nocturn 3 / sanctoral
+selector paths.
+
+**Citation.** `upstream/web/cgi-bin/horas/specmatins.pl:595-638`,
+`upstream/web/www/horas/Latin/Psalterium/Benedictions.txt:18-35`,
+`upstream/web/www/horas/Latin/Tempora/Quadp3-6.txt:14-21`,
+and `packages/rubrical-engine/src/policy/_shared/roman.ts`.
+
+**Impact.** The exact Rubrics 1960 2026 benediction signature drops from
+`29` to `0`. Divergent hours remain at `2141`, and unadjudicated rows
+remain at `1472`, because the same Matins hours now expose later
+first-divergence families.
+
+### 2026-05-05 — Pattern: Common-backed sanctoral commemorations keep proper names (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier exposed
+major-hour rows represented by 2026-03-06 Lauds, where Perl rendered the
+commemoration of Ss. Perpetua and Felicity before the final conclusion
+while the compositor fell through to the conclusion.
+
+**Root cause.** The engine knew the sanctoral commemoration, but
+`attachCommemorationSlots` emitted references only to sections on the
+proper file. Proper sanctoral offices such as `Sancti/03-06` can carry
+`vide C7b` and leave their commemoration antiphon, versicle, and oration
+in the inherited commune. Once the slot refs were pointed at the common
+sections, the compositor also needed to keep the commemorated proper as
+the name source so the heading and `N. et N.` substitutions did not use
+the commune's generic name.
+
+**Resolution.** Class `engine-bug`, fixed. Commemoration slot
+construction now resolves the commemorated office's inherited rule
+reference files and annotates common-backed text refs with
+`nameSourcePath`; the compositor uses that owner for commemoration
+headings and office-name substitutions.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/03-06.txt:9-13`,
+`upstream/web/www/horas/Latin/Commune/C7b.txt:22-26`,
+`upstream/web/www/horas/Latin/Commune/C7b.txt:13-14`,
+`packages/rubrical-engine/src/hours/apply-rule-set.ts`, and
+`packages/compositor/src/compose/office-name-substitution.ts`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2141` to
+`2136`, and unadjudicated rows drop from `1472` to `1467`.
+
+### 2026-05-05 — Pattern: 2026 Matins Nativity doxology punctuation fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier still carried
+20 Matins rows with the stable key-hash `9d86e50c`: Perl expected
+`Cum Patre, et almo Spíritu`, while the compositor emitted
+`Cum Patre et almo Spíritu,`.
+
+**Root cause.** This is fanout from the already documented Rubrics 1960
+Marian Matins Nativity-doxology punctuation family. The selected
+`Psalterium/Doxologies#Nat` source has no comma after `Patre` and keeps
+the comma at the end of the line. The compositor preserves that source
+line; the Perl comparison surface inserts the unsupported internal comma
+and drops the source line-final comma.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+20 Rubrics 1960 2026 Matins rows sharing stable key-hash `9d86e50c`.
+The upstream issue already exists for this family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2136`, while
+unadjudicated rows drop from `1467` to `1447` and `perl-bug` rows rise
+from `669` to `689`.
+
+### 2026-05-05 — Pattern: 2026 Tridentinum Sunday Prime antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 20
+Sunday Prime rows with the stable key-hash `e3d07cc1`: Perl used the
+older full `Dominica` antiphon `Allelúja, * confitémini Dómino...`,
+while the compositor emitted the shorter `Tridentinum` antiphon
+`Allelúja, * allelúja, allelúja`.
+
+**Root cause.** This is fanout from the already documented 1960
+Tridentinum Sunday Prime psalm-table family. The Rubrics 1960 source row
+is `Psalterium/Psalmi/Psalmi minor#Tridentinum`, whose `Prima Dominica`
+entry explicitly begins with the shorter alleluia antiphon and supplies
+Psalms `53,117,118(1-16),118(17-32)`. The compositor preserves that
+keyed source row; the Perl comparison surface uses the older full
+`Dominica` antiphon text.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+20 Rubrics 1960 2026 Sunday Prime rows sharing stable key-hash
+`e3d07cc1`. The upstream issue already exists for this family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2136`, while
+unadjudicated rows drop from `1447` to `1427` and `perl-bug` rows rise
+from `689` to `709`.
+
+### 2026-05-05 — Pattern: 2026 Prime Paschal fallback-hymn doxology fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 16
+Prime rows with stable key-hash `7859a9fb`: Perl retained the ordinary
+fallback hymn line `Ejúsque soli Fílio,`, while the compositor emitted
+the Paschal doxology line `Et Fílio, qui a mórtuis`.
+
+**Root cause.** This is fanout from the already documented Paschal
+fallback-hymn doxology family. `Psalterium/Doxologies#Pasch` begins
+`Deo Patri sit glória,` and continues `Et Fílio, qui a mórtuis`; the
+engine/compositor now attaches that seasonal variant to fallback Prime
+hymns in Paschaltide. The Perl comparison surface retains the ordinary
+fallback stanza.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+16 Rubrics 1960 2026 Prime rows sharing stable key-hash `7859a9fb`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:29-34`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2136`, while
+unadjudicated rows drop from `1427` to `1411` and `perl-bug` rows rise
+from `709` to `725`.
+
+### 2026-05-05 — Pattern: 2026 `Dómine, exáudi` conclusion-bridge fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 14
+rows with stable key-hash `843b6667`: Perl stopped at `_`, while the
+compositor continued with `V. Dómine, exáudi oratiónem meam.` after the
+collect conclusion boundary.
+
+**Root cause.** This is fanout from the already documented conclusion
+bridge family. `Psalterium/Common/Prayers#Dominus` supplies the
+source-backed `Domine exaudi` versicle and response used in the
+post-collect conclusion bridge; existing Vespers and one-alone
+minor-hour compositor integration coverage verifies this reusable block.
+The Perl comparison surface stops at the separator on these rows.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+14 Rubrics 1960 2026 rows sharing stable key-hash `843b6667`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:82-86`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2136`, while
+unadjudicated rows drop from `1411` to `1397` and `perl-bug` rows rise
+from `725` to `739`.
+
+### 2026-05-05 — Pattern: 2026 Tuesday Matins Confessor-common antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 13
+Matins rows with stable key-hash `7c44d977`: Perl kept the Tuesday
+psalter antiphon `Expúgna, Dómine...`, while the compositor emitted the
+Confessor common Matins antiphon `Beátus vir...`.
+
+**Root cause.** This is fanout from the already documented simplified
+Roman Confessor common-antiphon family. The affected offices route
+through Confessor common variants (`C4`, `C4-1`, `C4a`, `C5`, or
+`C5a`); those commons declare `Antiphonas horas`, and `Commune/C4`
+supplies the inherited Matins antiphon set. The compositor follows that
+source-backed inherited common, while the Perl comparison surface keeps
+the ordinary Tuesday psalter antiphon on these rows.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+13 Rubrics 1960 2026 Matins rows sharing stable key-hash `7c44d977`.
+
+**Citation.** `upstream/web/www/horas/Latin/Commune/C4.txt:7-12`;
+`upstream/web/www/horas/Latin/Commune/C4.txt:106-115`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:1-12`;
+`upstream/web/www/horas/Latin/Commune/C5a.txt:1-12`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2136`, while
+unadjudicated rows drop from `1397` to `1384` and `perl-bug` rows rise
+from `739` to `752`.
+
+### 2026-05-05 — Fix: 1960 weekday `Oratio Dominica` Sunday-collect routing (engine-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried
+weekday rows where Perl emitted the preceding Sunday collect after
+`Orémus.`, while the compositor skipped directly to the conclusion
+bridge. The first witness was `2026-10-26` Terce, where the missing
+collect was `Deus, refúgium nostrum et virtus...`.
+
+**Root cause.** The rule classifier treated `Oratio Dominica` as a
+Missa-only directive, so the office pipeline never marked weekday Hour
+rules that should route their oration slot to the Sunday temporal
+collect.
+
+**Resolution.** Fixed the rule path by classifying `Oratio Dominica` as
+an hour directive, deriving a `dominicalOration` hour flag, and resolving
+the oration slot to `Tempora/<weekStem>-0#Oratio`. Added upstream
+composition coverage for Rubrics 1960 Monday minor hours and Tuesday
+Lauds/Vespers.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Pent22-1.txt:7-8`;
+`upstream/web/www/horas/Latin/Tempora/Pent22-0.txt:13-15`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2136` to
+`2026`, and unadjudicated rows drop from `1384` to `1274`; `perl-bug`
+rows remain `752`.
+
+### 2026-05-05 — Pattern: 2026 Tuesday None Confessor-common antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 12
+None rows with Perl keeping the Tuesday psalter antiphon `Salvásti nos,
+Dómine...`, while the compositor emitted the Confessor common antiphon
+`Serve bone...`.
+
+**Root cause.** This is fanout from the already documented simplified
+Roman Confessor common-antiphon family. The affected offices route
+through Confessor common variants (`C4`, `C4a`, `C5`, or `C5a`); those
+commons declare `Antiphonas horas`, and `Commune/C4` / `Commune/C5`
+supply the fifth common antiphon used for None. The Tuesday psalter
+`Nona` row supplies `Salvásti nos...` for the ordinary ferial psalter,
+but these offices are source-backed common-antiphon offices.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+12 Rubrics 1960 2026 None rows sharing the `Salvásti nos...` =>
+`Serve bone...` signature.
+
+**Citation.** `upstream/web/www/horas/Latin/Commune/C4.txt:7-18`;
+`upstream/web/www/horas/Latin/Commune/C4a.txt:1-14`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:9-19`;
+`upstream/web/www/horas/Latin/Commune/C5a.txt:1-13`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-55`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2026`, while
+unadjudicated rows drop from `1274` to `1262` and `perl-bug` rows rise
+from `752` to `764`.
+
+### 2026-05-05 — Fix: 2026 Monday seasonal Invit4 Matins materialization (compositor-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 11
+Monday Matins rows where Perl continued the invitatory psalm at
+`Jubilémus Deo...`, while the compositor repeated the full Psalm 94
+incipit `Veníte, exsultémus Dómino...` after the antiphon.
+
+**Root cause.** This was a Phase 3 composition bug. Perl
+`specmatins.pl` applies the old `Invitatorium4` materialization for
+Monday seasonal invitatories in Epiphanytide, pre-Lent, and after
+Pentecost, trimming the first Psalm 94 skeleton verse at the `+` marker
+before inserting the weekday antiphon. The compositor supported the
+related `Invit2` and Passiontide `Invit3` modes, but not this Monday
+seasonal `Invit4` split.
+
+**Resolution.** Class `compositor-bug` for the materialization seam.
+Added `Invit4` support in the invitatory resolver and selected it for
+Monday seasonal `Epiphania`, `Septuagesima`, and `PostPentecosten`
+sources. Added resolver coverage plus an upstream Rubrics 1960
+`2026-01-19` Matins witness. After the fix, the same 11 rows advance to
+the already documented Psalm 19 trailing-continuation-marker
+`perl-bug` family, so row-level adjudications classify that exposed
+surface.
+
+**Citation.** `upstream/web/cgi-bin/horas/specmatins.pl:101-120`;
+`upstream/web/www/horas/Latin/Psalterium/Invitatorium.txt:1-15`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:1-8`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:29`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `2026`, the
+average matching prefix improves from `49.4` to `50.3`, unadjudicated
+rows drop from `1262` to `1251`, and `perl-bug` rows rise from `764` to
+`775`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

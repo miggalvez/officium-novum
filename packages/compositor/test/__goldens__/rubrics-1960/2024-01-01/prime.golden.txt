@@ -166,8 +166,8 @@ warning count: 0
   Latin: [V.] text("Jube, Dómine, benedícere.")
   Latin: [Benedictio.] text("Dies et actus nostros in sua pace dispónat Dóminus omnípotens.")
   Latin: [R.] text("Amen.")
-  Latin: text(" ") · citation("1 Tim. 1:17")
-  Latin: [v.] text("Regi sæculórum immortáli et invisíbili, soli Deo honor et glória in sǽcula sæculórum. Amen.")
+  Latin: text(" ") · citation("2 Thess 3:5")
+  Latin: [v.] text("Dóminus autem dírigat corda et córpora nostra in caritáte Dei et patiéntia Christi.")
   Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
   Latin: [R.] text("Deo grátias.")
 

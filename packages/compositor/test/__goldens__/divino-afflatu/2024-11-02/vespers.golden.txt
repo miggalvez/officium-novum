@@ -3,13 +3,11 @@ date: 2024-11-02
 hour: vespers
 celebration: In Commemoratione Omnium Fidelium Defunctorum
 languages: Latin
-section count: 7
-warning count: 3
+section count: 9
+warning count: 1
 
 # warnings
 #0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/11-02, section=Ant 3}
-#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/11-02, section=Versum 3}
-#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/11-02, section=Oratio}
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Vespera#Incipit languages=Latin]
   Latin: rubric("secreto")
@@ -128,7 +126,16 @@ warning count: 3
   Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #6 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
+[section #6 type=commemoration slot=commemoration-versicles reference=horas/Latin/Commune/C9#Versum 3 languages=Latin]
+  Latin: text("_")
+  Latin: [V.] text("Audívi vocem de cælo dicéntem mihi.")
+  Latin: [R.] text("Beáti mórtui qui in Dómino moriúntur.")
+
+[section #7 type=commemoration slot=commemoration-orations reference=horas/Latin/Commune/C9#Oratio languages=Latin]
+  Latin: text("_")
+  Latin: text("Orémus.")
+
+[section #8 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")

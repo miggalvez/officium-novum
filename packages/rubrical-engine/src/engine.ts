@@ -268,12 +268,8 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       };
     }
 
-    // Compline follows the Vespers winner under 1960.
     if (concurrence.winner === 'tomorrow') {
-      const temporal =
-        concurrence.sourceSide === 'first' && tomorrow.celebration.source === 'sanctoral'
-          ? { ...tomorrow.temporal, dayOfWeek: 0 }
-          : tomorrow.temporal;
+      const temporal = complineTemporalForTomorrowWinner(concurrence, today, tomorrow);
       return {
         celebration: tomorrow.celebration,
         celebrationRules: tomorrow.celebrationRules,
@@ -289,6 +285,23 @@ export function createRubricalEngine(config: RubricalEngineConfig): RubricalEngi
       temporal: today.temporal,
       overlay: summary.overlay
     };
+  }
+
+  function complineTemporalForTomorrowWinner(
+    concurrence: ConcurrenceResult,
+    today: DayConcurrencePreview,
+    tomorrow: DayConcurrencePreview
+  ): TemporalContext {
+    if (concurrence.sourceSide !== 'first') {
+      return tomorrow.temporal;
+    }
+    if (version.policy.name === 'rubrics-1960') {
+      return { ...tomorrow.temporal, dayOfWeek: today.temporal.dayOfWeek };
+    }
+    if (tomorrow.celebration.source === 'sanctoral') {
+      return { ...tomorrow.temporal, dayOfWeek: 0 };
+    }
+    return tomorrow.temporal;
   }
 
   function structureComplineHour(params: {

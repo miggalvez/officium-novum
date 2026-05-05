@@ -45,7 +45,6 @@ warning count: 0
   Latin: text("33:11 Dívites eguérunt et esuriérunt: * inquiréntes autem Dóminum non minuéntur omni bono.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Immíttet Ángelus Dómini in circúitu timéntium eum: et erípiet eos.")
   Latin: text("Psalmus 33(12-23) [2]")
   Latin: text("33:12 Veníte, fílii, audíte me: * timórem Dómini docébo vos.")
   Latin: text("33:13 Quis est homo qui vult vitam: * díligit dies vidére bonos?")
@@ -72,6 +71,7 @@ warning count: 0
   Latin: text("60:9 Sic psalmum dicam nómini tuo in sǽculum sǽculi: * ut reddam vota mea de die in diem.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Immíttet Ángelus Dómini in circúitu timéntium eum: et erípiet eos.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")
@@ -96,12 +96,14 @@ warning count: 0
   Latin: [R.] text("Deo grátias.")
 
 [section #5 type=responsory slot=responsory reference=horas/Latin/Psalterium/Special/Minor Special#Responsory Completorium languages=Latin]
+  Latin: text("_")
   Latin: [R.br.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [V.] text("Redemísti nos, Dómine, Deus veritátis.")
   Latin: [R.] text("Comméndo spíritum meum.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
+  Latin: text("_")
 
 [section #6 type=versicle slot=versicle reference=horas/Latin/Psalterium/Special/Minor Special#Versum 4 languages=Latin]
   Latin: [V.] text("Custódi nos, Dómine, ut pupíllam óculi.")

@@ -154,6 +154,10 @@ function officeNameSourcePath(context: OfficeNameSubstitutionContext): string | 
     return undefined;
   }
 
+  if (context.ref.nameSourcePath) {
+    return context.ref.nameSourcePath;
+  }
+
   if (context.ref.path.includes('/Sancti/') || context.ref.path.includes('/Tempora/')) {
     return context.ref.path;
   }

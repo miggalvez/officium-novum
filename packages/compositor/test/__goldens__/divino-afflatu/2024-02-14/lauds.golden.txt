@@ -3,12 +3,8 @@ date: 2024-02-14
 hour: lauds
 celebration: Feria IV Cinerum
 languages: Latin
-section count: 7
-warning count: 2
-
-# warnings
-#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/02-14, section=Ant 2}
-#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/02-14, section=Versum 2}
+section count: 9
+warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Laudes#Incipit languages=Latin]
   Latin: rubric("Si Matutinum a Laudibus separatur, tunc dicitur secreto:")
@@ -148,7 +144,23 @@ warning count: 2
   Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #5 type=conclusion slot=conclusion reference=horas/Ordinarium/Laudes#Conclusio languages=Latin]
+[section #5 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Commune/C2a#Ant 2 languages=Latin]
+  Latin: text("_")
+  Latin: [Ant.] text("Qui odit ánimam suam in hoc mundo, in vitam ætérnam custódit eam.")
+
+[section #6 type=commemoration slot=commemoration-versicles reference=horas/Latin/Commune/C2a#Versum 2 languages=Latin]
+  Latin: text("_")
+  Latin: [V.] text("Justus ut palma florébit.")
+  Latin: [R.] text("Sicut cedrus Líbani multiplicábitur.")
+
+[section #7 type=commemoration slot=commemoration-orations reference=horas/Latin/Sancti/02-14#Oratio languages=Latin]
+  Latin: text("_")
+  Latin: text("Orémus.")
+  Latin: text("Præsta, quǽsumus, omnípotens Deus: ut, qui beáti Valentíni, Mártyris tui, natalítia cólimus, a cunctis malis imminéntibus, ejus intercessióne, liberémur.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #8 type=conclusion slot=conclusion reference=horas/Ordinarium/Laudes#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
@@ -168,8 +180,3 @@ warning count: 2
   Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
   Latin: [V.] text("Dóminus det nobis suam pacem.")
   Latin: [R.] text("Et vitam ætérnam. Amen.")
-
-[section #6 type=commemoration slot=commemoration-orations reference=horas/Latin/Sancti/02-14#Oratio languages=Latin]
-  Latin: text("Præsta, quǽsumus, omnípotens Deus: ut, qui beáti Valentíni, Mártyris tui, natalítia cólimus, a cunctis malis imminéntibus, ejus intercessióne, liberémur.")
-  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
-  Latin: [R.] text("Amen.")

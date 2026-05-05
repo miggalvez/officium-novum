@@ -9,6 +9,8 @@ import { resolveAuxiliarySection } from './path.js';
 
 const MATINS_SPECIAL_PATH = 'horas/Latin/Psalterium/Special/Matutinum Special';
 
+export type InvitatoryMaterializationMode = 'Invit2' | 'Invit3' | 'Invit4';
+
 export interface InvitatorySelectorDate {
   readonly year: number;
   readonly month: number;
@@ -43,7 +45,7 @@ export function resolveSeasonalInvitatorium(
 export function materializeInvitatoryContent(
   skeleton: readonly TextContent[],
   antiphon: readonly TextContent[],
-  mode?: 'Invit2' | 'Invit3'
+  mode?: InvitatoryMaterializationMode
 ): readonly TextContent[] {
   const adjustedSkeleton = applyInvitatoryMaterializationMode(skeleton, mode);
   const fullAntiphon = invitatoryAntiphonVariant(antiphon, 'full');
@@ -105,7 +107,7 @@ export function resolveInvitatoryAntiphonContent(
 
 function applyInvitatoryMaterializationMode(
   content: readonly TextContent[],
-  mode?: 'Invit2' | 'Invit3'
+  mode?: InvitatoryMaterializationMode
 ): readonly TextContent[] {
   switch (mode) {
     case 'Invit2': {
@@ -114,6 +116,10 @@ function applyInvitatoryMaterializationMode(
     }
     case 'Invit3':
       return applyInvit3Materialization(content);
+    case 'Invit4': {
+      const [adjusted] = stripInvitatoryTailAtPlus(content);
+      return adjusted;
+    }
     default:
       return content;
   }
@@ -205,6 +211,40 @@ function stripInvitatoryTailAtCaret(
     if (!stripped && node.type === 'verseMarker' && /\s\^\s/u.test(node.text)) {
       const caretIndex = node.text.indexOf('^');
       const tail = node.text.slice(caretIndex + 1).trimStart();
+      out.push({
+        ...node,
+        text: uppercaseLeadingText(tail)
+      });
+      stripped = true;
+      continue;
+    }
+
+    out.push(node);
+  }
+
+  return [Object.freeze(out), stripped];
+}
+
+function stripInvitatoryTailAtPlus(
+  content: readonly TextContent[]
+): readonly [readonly TextContent[], boolean] {
+  let stripped = false;
+  const out: TextContent[] = [];
+
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      const [nested, nestedStripped] = stripInvitatoryTailAtPlus(node.content);
+      out.push({
+        ...node,
+        content: [...nested]
+      });
+      stripped ||= nestedStripped;
+      continue;
+    }
+
+    if (!stripped && node.type === 'verseMarker' && /\s\+\s/u.test(node.text)) {
+      const plusIndex = node.text.indexOf('+');
+      const tail = node.text.slice(plusIndex + 1).trimStart();
       out.push({
         ...node,
         text: uppercaseLeadingText(tail)

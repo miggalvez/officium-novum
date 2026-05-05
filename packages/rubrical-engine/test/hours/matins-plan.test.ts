@@ -21,7 +21,8 @@ const HOUR_RULES: HourRuleSet = {
   psalmOverrides: [],
   matinsLessonIntroduction: 'ordinary',
   minorHoursSineAntiphona: false,
-  minorHoursFerialPsalter: false
+  minorHoursFerialPsalter: false,
+  dominicalOration: false
 };
 
 describe('buildMatinsPlan', () => {
@@ -70,6 +71,101 @@ describe('buildMatinsPlan', () => {
         }
       }
     ]);
+  });
+
+  it('uses Evangelica as the first 3-lesson benediction for temporal Gospel-homily days', () => {
+    const witnesses = [
+      {
+        date: '2026-02-21',
+        dayName: 'Quadp3-6',
+        season: 'septuagesima' as const,
+        path: 'Tempora/Quadp3-6'
+      },
+      {
+        date: '2026-03-03',
+        dayName: 'Quad2-2',
+        season: 'lent' as const,
+        path: 'Tempora/Quad2-2'
+      },
+      {
+        date: '2026-04-06',
+        dayName: 'Pasc0-1',
+        season: 'eastertide' as const,
+        path: 'Tempora/Pasc0-1'
+      },
+      {
+        date: '2026-05-25',
+        dayName: 'Pasc7-1',
+        season: 'pentecost-octave' as const,
+        path: 'Tempora/Pasc7-1'
+      },
+      {
+        date: '2026-08-14',
+        dayName: 'Pent12-5',
+        season: 'time-after-pentecost' as const,
+        path: 'Sancti/08-15',
+        source: 'sanctoral' as const,
+        kind: 'vigil' as const
+      },
+      {
+        date: '2026-09-26',
+        dayName: 'Epi4-6',
+        season: 'time-after-pentecost' as const,
+        path: 'Tempora/Epi4-6'
+      }
+    ];
+
+    for (const witness of witnesses) {
+      const corpus = new TestOfficeTextIndex();
+      corpus.add(`${witness.path}.txt`, ferialMatinsSections());
+
+      const result = buildMatinsPlanWithWarnings({
+        celebration: celebration(
+          witness.path,
+          'IV',
+          witness.source ?? 'temporal',
+          witness.kind
+        ),
+        celebrationRules: baseRules(),
+        commemorations: [],
+        hourRules: HOUR_RULES,
+        temporal: temporal(witness.date, witness.dayName, witness.season, 'IV'),
+        policy: rubrics1960Policy,
+        corpus,
+        version: version1960()
+      });
+
+      expect(result.plan.totalLessons, witness.date).toBe(3);
+      const benedictions = result.plan.nocturnPlan[0]?.benedictions ?? [];
+      expect(benedictions[0], witness.date).toEqual({
+        index: 1,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Evangelica',
+          selector: '1'
+        }
+      });
+      if ((witness.source ?? 'temporal') === 'temporal') {
+        expect(benedictions.slice(1), witness.date).toEqual([
+          {
+            index: 2,
+            reference: {
+              path: 'horas/Latin/Psalterium/Benedictions.txt',
+              section: 'Nocturn 3',
+              selector: '2'
+            }
+          },
+          {
+            index: 3,
+            reference: {
+              path: 'horas/Latin/Psalterium/Benedictions.txt',
+              section: 'Nocturn 3',
+              selector: '3'
+            }
+          }
+        ]);
+      }
+    }
   });
 
   it('builds Advent Sunday as 1 nocturn with Te Deum replaced by the third responsory', () => {
@@ -1200,7 +1296,8 @@ function version1954(): ResolvedVersion {
 function celebration(
   path: string,
   classSymbol: string,
-  source: 'temporal' | 'sanctoral'
+  source: 'temporal' | 'sanctoral',
+  kind?: Celebration['kind']
 ): Celebration {
   return {
     feastRef: {
@@ -1213,7 +1310,8 @@ function celebration(
       classSymbol,
       weight: classSymbol === 'IV' ? 100 : 900
     },
-    source
+    source,
+    ...(kind ? { kind } : {})
   };
 }
 

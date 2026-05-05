@@ -1968,8 +1968,10 @@ describe('composeHour(matins)', () => {
     expect(commemVersicle).toBeDefined();
     expect(commemOration).toBeDefined();
     expect(commemAntiphon!.type).toBe('commemoration');
-    expect(renderRuns(commemAntiphon!.lines[0]!, 'Latin')).toBe('Ant. commemoratio.');
-    expect(renderRuns(commemOration!.lines[0]!, 'Latin')).toBe('Oremus pro commemoratione.');
+    expect(renderRuns(commemAntiphon!.lines[0]!, 'Latin')).toBe('_');
+    expect(renderRuns(commemAntiphon!.lines[1]!, 'Latin')).toBe('Ant. commemoratio.');
+    expect(renderRuns(commemOration!.lines[0]!, 'Latin')).toBe('_');
+    expect(renderRuns(commemOration!.lines[1]!, 'Latin')).toBe('Orémus.');
   });
 
   it('emits nothing for te-deum when decision is omit', () => {

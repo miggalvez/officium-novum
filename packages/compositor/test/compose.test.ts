@@ -111,7 +111,7 @@ function renderRuns(
 
 function slotLines(
   composed: ReturnType<typeof composeHour>,
-  slot: 'psalmody' | 'hymn',
+  slot: 'psalmody' | 'hymn' | 'commemoration-orations',
   language: string
 ): readonly string[] {
   const section = composed.sections.find((candidate) => candidate.slot === slot);
@@ -414,6 +414,51 @@ describe('composeHour', () => {
       '_',
       'Ipse liberávit me',
       'Ipse liberávit me'
+    ]);
+  });
+
+  it('emits ordinary Compline responsory boundary separators', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Special/Minor Special', [
+        {
+          header: 'Responsory Completorium',
+          content: [
+            { type: 'verseMarker', marker: 'R.br.', text: 'In manus tuas, Dómine' },
+            { type: 'verseMarker', marker: 'R.', text: 'In manus tuas, Dómine' }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'compline',
+      slots: {
+        responsory: {
+          kind: 'single-ref',
+          ref: {
+            path: 'horas/Latin/Psalterium/Special/Minor Special',
+            section: 'Responsory Completorium'
+          }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour, { season: 'ordinary' }),
+      version: stubVersion,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = composed.sections.find((section) => section.slot === 'responsory');
+    expect(responsory?.lines.map((line) => renderRuns(line, 'Latin'))).toEqual([
+      '_',
+      'In manus tuas, Dómine',
+      'In manus tuas, Dómine',
+      '_'
     ]);
   });
 
@@ -952,6 +997,79 @@ describe('composeHour', () => {
     expect(psalmodyLines).not.toContain(
       'Ant. Allelúja, Dóminus regnávit, decórem índuit, allelúja, allelúja.'
     );
+  });
+
+  it('treats ordinary Compline antiphons as slot-wide across the full psalm set', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Psalmi/Psalmi minor', 'Completorium', [
+        { type: 'text', value: 'Dominica = Miserére * mihi, Dómine, et exáudi oratiónem meam.' }
+      ])
+    );
+    for (const psalm of [4, 90, 133]) {
+      corpus.addFile(
+        makeFile(`horas/Latin/Psalterium/Psalmorum/Psalm${psalm}`, '__preamble', [
+          { type: 'text', value: `${psalm}:1 Psalm ${psalm} body.` }
+        ])
+      );
+    }
+    corpus.addFile(
+      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Gloria', [
+        { type: 'verseMarker', marker: 'V.', text: 'Glória Patri.' },
+        { type: 'verseMarker', marker: 'R.', text: 'Sicut erat.' }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'compline',
+      slots: {
+        psalmody: {
+          kind: 'psalmody',
+          psalms: [
+            {
+              antiphonRef: {
+                path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+                section: 'Completorium',
+                selector: 'Dominica#antiphon'
+              },
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm4',
+                section: '__preamble'
+              }
+            },
+            {
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm90',
+                section: '__preamble'
+              }
+            },
+            {
+              psalmRef: {
+                path: 'horas/Latin/Psalterium/Psalmorum/Psalm133',
+                section: '__preamble'
+              }
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const psalmodyLines = slotLines(composed, 'psalmody', 'Latin');
+    expect(psalmodyLines.filter((line) => line.startsWith('Miserére'))).toEqual([
+      'Miserére * mihi, Dómine, et exáudi oratiónem meam.',
+      'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+    ]);
+    expect(psalmodyLines.at(-1)).toBe('Miserére mihi, Dómine, et exáudi oratiónem meam.');
+    expect(psalmodyLines[psalmodyLines.indexOf('Psalmus 90 [2]') - 1]).toBe('Sicut erat.');
   });
 
   it('does not append a psalmic Gloria Patri after the Benedicite canticle', () => {
@@ -1558,6 +1676,49 @@ describe('composeHour', () => {
       'Before the ending of the day'
     );
     expect(renderRuns(composed.sections[0]!.lines[1]!, 'English-UK')).toBe('Thanks be to God.');
+  });
+
+  it('uses a language-aware commemoration oration prelude', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Tempora/Pasc1-1', 'Oratio', [
+        { type: 'text', value: 'Deus, qui hodiérna die.' }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        'commemoration-orations': {
+          kind: 'ordered-refs',
+          refs: [{ path: 'horas/Latin/Tempora/Pasc1-1', section: 'Oratio' }]
+        }
+      },
+      directives: []
+    };
+
+    const composedEnglish = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['English-UK'], langfb: 'Latin' }
+    });
+    const composedGerman = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Deutsch'], langfb: 'Latin' }
+    });
+
+    expect(slotLines(composedEnglish, 'commemoration-orations', 'English-UK')).toContain(
+      'Let us pray.'
+    );
+    expect(slotLines(composedGerman, 'commemoration-orations', 'Deutsch')).toContain('Orémus.');
+    expect(slotLines(composedGerman, 'commemoration-orations', 'Deutsch')).not.toContain(
+      'Let us pray.'
+    );
   });
 
   it('surfaces residual reference nodes instead of dropping them', () => {

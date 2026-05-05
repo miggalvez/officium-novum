@@ -46,7 +46,6 @@ warning count: 0
   Latin: text("4:10 Quóniam tu, Dómine, singuláriter in spe * constituísti me.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Miserére mihi, Dómine, et exáudi oratiónem meam.")
   Latin: text("Psalmus 90 [2]")
   Latin: text("90:1 Qui hábitat in adjutório Altíssimi, * in protectióne Dei cæli commorábitur.")
   Latin: text("90:2 Dicet Dómino: Suscéptor meus es tu, et refúgium meum: * Deus meus sperábo in eum.")
@@ -73,6 +72,7 @@ warning count: 0
   Latin: text("133:3 Benedícat te Dóminus ex Sion, * qui fecit cælum et terram.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
+  Latin: [Ant.] text("Miserére mihi, Dómine, et exáudi oratiónem meam.")
 
 [section #3 type=hymn slot=hymn reference=horas/Latin/Psalterium/Special/Minor Special#Hymnus Completorium languages=Latin]
   Latin: text("Te lucis ante términum,")
@@ -97,12 +97,14 @@ warning count: 0
   Latin: [R.] text("Deo grátias.")
 
 [section #5 type=responsory slot=responsory reference=horas/Latin/Psalterium/Special/Minor Special#Responsory Completorium languages=Latin]
+  Latin: text("_")
   Latin: [R.br.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [V.] text("Redemísti nos, Dómine, Deus veritátis.")
   Latin: [R.] text("Comméndo spíritum meum.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
+  Latin: text("_")
 
 [section #6 type=versicle slot=versicle reference=horas/Latin/Psalterium/Special/Minor Special#Versum 4 languages=Latin]
   Latin: [V.] text("Custódi nos, Dómine, ut pupíllam óculi.")
@@ -122,23 +124,7 @@ warning count: 0
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [Ant.] text("Salva nos, Dómine, vigilántes, custódi nos dormiéntes; ut vigilémus cum Christo, et requiescámus in pace.")
 
-[section #9 type=preces slot=preces reference=horas/Latin/Psalterium/Special/Preces#Preces dominicales Completorium languages=Latin]
-  Latin: [V.] text("Benedíctus es, Dómine, Deus patrum nostrórum.")
-  Latin: [R.] text("Et laudábilis et gloriósus in sǽcula.")
-  Latin: [V.] text("Benedicámus Patrem et Fílium cum Sancto Spíritu.")
-  Latin: [R.] text("Laudémus, et superexaltémus eum in sǽcula.")
-  Latin: [V.] text("Benedíctus es, Dómine, in firmaménto cæli.")
-  Latin: [R.] text("Et laudábilis, et gloriósus, et superexaltátus in sǽcula.")
-  Latin: [V.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus.")
-  Latin: [R.] text("Amen.")
-  Latin: [V.] text("Dignáre, Dómine, nocte ista.")
-  Latin: [R.] text("Sine peccáto nos custodíre.")
-  Latin: [V.] text("Miserére nostri, Dómine.")
-  Latin: [R.] text("Miserére nostri.")
-  Latin: [V.] text("Fiat misericórdia tua, Dómine, super nos.")
-  Latin: [R.] text("Quemádmodum sperávimus in te.")
-
-[section #10 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+[section #9 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [v.] text("Orémus.")
@@ -146,10 +132,26 @@ warning count: 0
   Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #11 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+[section #10 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [V.] text("Benedicámus Dómino.")
   Latin: [R.] text("Deo grátias.")
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
+  Latin: [R.] text("Amen.")
+
+[section #11 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Advent languages=Latin]
+  Latin: text("Alma Redemptóris Mater, quæ pérvia cæli porta manes,")
+  Latin: text("et stella maris, succúrre cadénti,")
+  Latin: text("Súrgere qui curat, pópulo: tu quæ genuísti,")
+  Latin: text("Natúra miránte, tuum sanctum Genitórem,")
+  Latin: text("Virgo prius ac postérius, Gabriélis ab ore")
+  Latin: text("Sumens illud Ave, peccatórum miserére.")
+  Latin: text("_")
+  Latin: [V.] text("Ángelus Dómini nuntiávit Maríæ.")
+  Latin: [R.] text("Et concépit de Spíritu Sancto.")
+  Latin: text("_")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Grátiam tuam, quǽsumus, Dómine, méntibus nostris infúnde: ut, qui, Ángelo nuntiánte, Christi Fílii tui incarnatiónem cognóvimus; per passiónem ejus et crucem, ad resurrectiónis glóriam perducámur. Per eúmdem Christum Dóminum nostrum. Amen.")
+  Latin: [V.] text("Divínum auxílium + máneat semper nobíscum.")
   Latin: [R.] text("Amen.")

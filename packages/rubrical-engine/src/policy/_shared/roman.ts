@@ -471,8 +471,9 @@ function thirdSundayOfSeptember(year: number): number {
  * `horas/Latin/Psalterium/Benedictions.txt` — lesson k (relative to the
  * nocturn, 1-based) resolves to line `k` of that section.
  *
- * For a 3-lesson office, ordinary temporal ferias rotate by the Perl
- * `dayofweek2i()` grouping (Sunday/Monday/Thursday -> Nocturn 1,
+ * For a 3-lesson office, Gospel-homily days replace the first `[Nocturn 3]`
+ * benediction with `[Evangelica]:1`, while ordinary temporal ferias rotate by
+ * the Perl `dayofweek2i()` grouping (Sunday/Monday/Thursday -> Nocturn 1,
  * Tuesday/Friday -> Nocturn 2, Wednesday/Saturday -> Nocturn 3). Other
  * 3-lesson offices continue to start from `[Nocturn 3]`.
  *
@@ -504,7 +505,8 @@ export function selectRomanBenedictions(params: {
         nocturnIndex,
         offset,
         totalLessons,
-        celebration: params.celebration
+        celebration: params.celebration,
+        temporal: params.temporal
       })
     ) {
       entries.push({
@@ -532,12 +534,44 @@ function usesEvangelicaOpeningBenediction(params: {
   readonly offset: number;
   readonly totalLessons: MatinsPlan['totalLessons'];
   readonly celebration: FeastReferenceCarrier;
+  readonly temporal: TemporalContext;
 }): boolean {
+  if (
+    params.totalLessons === 3 &&
+    params.offset === 0 &&
+    usesThreeLessonGospelOpeningBenediction(params)
+  ) {
+    return true;
+  }
+
   return (
     params.nocturnIndex === 3 &&
     params.offset === 0 &&
     params.totalLessons !== 3 &&
     !params.celebration.feastRef.path.endsWith('/12-25')
+  );
+}
+
+function usesThreeLessonGospelOpeningBenediction(params: {
+  readonly celebration: FeastReferenceCarrier;
+  readonly temporal: TemporalContext;
+}): boolean {
+  if (params.celebration.kind === 'vigil') {
+    return true;
+  }
+  if (params.celebration.source !== 'temporal') {
+    return false;
+  }
+
+  const { dayName } = params.temporal;
+  return (
+    /^Quadp3-[3-6]$/u.test(dayName) ||
+    /^Quad[1-5]-[1-6]$/u.test(dayName) ||
+    dayName === 'Quad6-1' ||
+    dayName === 'Pasc5-1' ||
+    dayName.startsWith('Pasc0-') ||
+    dayName.startsWith('Pasc7-') ||
+    isEmberDay(params.temporal)
   );
 }
 

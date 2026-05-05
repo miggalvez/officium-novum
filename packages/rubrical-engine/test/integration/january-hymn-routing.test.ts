@@ -53,19 +53,19 @@ describeIfUpstream('January hymn routing regressions', () => {
         ['2024-01-13', 'horas/Latin/Psalterium/Doxologies:Epi']
       ] as const) {
         expectMinorHourHymn(reduced, date, 'prime', 'horas/Latin/Psalterium/Special/Prima Special:Hymnus Prima');
-        expectMinorHourDoxology(reduced, date, 'prime', variant);
+        expectHourDoxology(reduced, date, 'prime', variant);
         expectMinorHourHymn(reduced, date, 'terce', 'horas/Latin/Psalterium/Special/Minor Special:Hymnus Tertia');
-        expectMinorHourDoxology(reduced, date, 'terce', variant);
+        expectHourDoxology(reduced, date, 'terce', variant);
         expectMinorHourHymn(reduced, date, 'sext', 'horas/Latin/Psalterium/Special/Minor Special:Hymnus Sexta');
-        expectMinorHourDoxology(reduced, date, 'sext', variant);
+        expectHourDoxology(reduced, date, 'sext', variant);
         expectMinorHourHymn(reduced, date, 'none', 'horas/Latin/Psalterium/Special/Minor Special:Hymnus Nona');
-        expectMinorHourDoxology(reduced, date, 'none', variant);
+        expectHourDoxology(reduced, date, 'none', variant);
       }
 
       // Holy Family keeps the fallback minor-hour hymns, but supplies its own
       // office-specific doxology stanza instead of the generic Epiphany block.
       for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
-        expectMinorHourDoxology(reduced, '2024-01-07', hour, 'horas/Latin/Tempora/Epi1-0:Doxology');
+        expectHourDoxology(reduced, '2024-01-07', hour, 'horas/Latin/Tempora/Epi1-0:Doxology');
       }
 
       // 1960 keeps the same January doxology selectors on fallback minor-hour
@@ -77,17 +77,17 @@ describeIfUpstream('January hymn routing regressions', () => {
         ['2024-01-13', 'horas/Latin/Psalterium/Doxologies:Epi']
       ] as const) {
         expectMinorHourHymn(roman1960, date, 'prime', 'horas/Latin/Psalterium/Special/Prima Special:Hymnus Prima');
-        expectMinorHourDoxology(roman1960, date, 'prime', variant);
+        expectHourDoxology(roman1960, date, 'prime', variant);
         expectMinorHourHymn(roman1960, date, 'terce', 'horas/Latin/Psalterium/Special/Minor Special:Hymnus Tertia');
-        expectMinorHourDoxology(roman1960, date, 'terce', variant);
+        expectHourDoxology(roman1960, date, 'terce', variant);
         expectMinorHourHymn(roman1960, date, 'sext', 'horas/Latin/Psalterium/Special/Minor Special:Hymnus Sexta');
-        expectMinorHourDoxology(roman1960, date, 'sext', variant);
+        expectHourDoxology(roman1960, date, 'sext', variant);
         expectMinorHourHymn(roman1960, date, 'none', 'horas/Latin/Psalterium/Special/Minor Special:Hymnus Nona');
-        expectMinorHourDoxology(roman1960, date, 'none', variant);
+        expectHourDoxology(roman1960, date, 'none', variant);
       }
 
       for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
-        expectMinorHourDoxology(roman1960, '2024-01-07', hour, 'horas/Latin/Tempora/Epi1-0:Doxology');
+        expectHourDoxology(roman1960, '2024-01-07', hour, 'horas/Latin/Tempora/Epi1-0:Doxology');
       }
 
       // Non-January controls: ordinary dates should not sprout a doxology
@@ -114,17 +114,52 @@ describeIfUpstream('January hymn routing regressions', () => {
         'terce',
         'horas/Latin/Psalterium/Special/Minor Special:Hymnus Pasc7 Tertia'
       );
-      expectMinorHourDoxology(
+      expectHourDoxology(
         reduced,
         '2024-05-19',
         'terce',
         'horas/Latin/Psalterium/Doxologies:Pent'
       );
-      expectMinorHourDoxology(
+      expectHourDoxology(
         roman1960,
         '2024-05-19',
         'terce',
         'horas/Latin/Psalterium/Doxologies:Pent'
+      );
+    },
+    240_000
+  );
+
+  it(
+    'keeps source-backed 2026 doxology variants on Rubrics 1960 fallback hymns',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const roman1960 = engines.get('Rubrics 1960 - 1960');
+      expect(roman1960).toBeDefined();
+      if (!roman1960) {
+        return;
+      }
+
+      for (const [date, expected] of [
+        ['2026-01-01', 'horas/Latin/Psalterium/Doxologies:Nat'],
+        ['2026-01-06', 'horas/Latin/Psalterium/Doxologies:Epi'],
+        ['2026-01-11', 'horas/Latin/Tempora/Epi1-0:Doxology'],
+        ['2026-05-14', 'horas/Latin/Psalterium/Doxologies:Asc'],
+        ['2026-06-04', 'horas/Latin/Psalterium/Doxologies:Corp'],
+        ['2026-06-12', 'horas/Latin/Psalterium/Doxologies:Heart'],
+        ['2026-08-06', 'horas/Latin/Sancti/08-06:Doxology'],
+        ['2026-09-15', 'horas/Latin/Sancti/09-15:Doxology']
+      ] as const) {
+        for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+          expectHourDoxology(roman1960, date, hour, expected);
+        }
+      }
+
+      expectHourDoxology(
+        roman1960,
+        '2026-05-13',
+        'compline',
+        'horas/Latin/Psalterium/Doxologies:Asc'
       );
     },
     240_000
@@ -214,10 +249,10 @@ function expectMinorHourHymn(
   expect(formatSingleRef(slotAt(engine, date, hour, 'hymn'))).toBe(expected);
 }
 
-function expectMinorHourDoxology(
+function expectHourDoxology(
   engine: RubricalEngine,
   date: string,
-  hour: 'prime' | 'terce' | 'sext' | 'none',
+  hour: HourName,
   expected: string
 ) {
   expect(formatSingleRef(slotAt(engine, date, hour, 'doxology-variant'))).toBe(expected);

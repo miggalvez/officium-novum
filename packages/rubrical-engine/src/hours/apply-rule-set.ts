@@ -87,7 +87,7 @@ export interface AppliedHourStructure {
  *   4. Fall back to commune (via `celebrationRules.comkey`).
  *   5. For psalmody, defer to `policy.selectPsalmody`.
  *   6. Otherwise reference the Ordinarium slot itself.
- * Finally, append commemoration slots for Lauds/Vespers when applicable.
+ * Finally, insert commemoration slots before the conclusion when applicable.
  */
 export function applyRuleSet(input: ApplyRuleSetInput): AppliedHourStructure {
   const warnings: RubricalWarning[] = [];
@@ -180,6 +180,11 @@ function resolveSlot(
   const specialOration = resolveSpecialMinorHourOration(slot.name, input, properFiles);
   if (specialOration) {
     return specialOration;
+  }
+
+  const dominicalOration = resolveDominicalOration(slot.name, input);
+  if (dominicalOration) {
+    return dominicalOration;
   }
 
   const specialPrimeChapterOffice = resolveSpecialPrimeChapterOffice(slot.name, input, properFiles);
@@ -2044,6 +2049,23 @@ function resolveSpecialMinorHourOration(
   };
 }
 
+function resolveDominicalOration(
+  slotName: SlotName,
+  input: ApplyRuleSetInput
+): SlotContent | undefined {
+  if (slotName !== 'oration' || !input.hourRules.dominicalOration) {
+    return undefined;
+  }
+
+  return {
+    kind: 'single-ref',
+    ref: {
+      path: `horas/Latin/Tempora/${input.temporal.weekStem}-0`,
+      section: 'Oratio'
+    }
+  };
+}
+
 function resolveSpecialPrimeChapterOffice(
   slotName: SlotName,
   input: ApplyRuleSetInput,
@@ -2096,7 +2118,7 @@ function primeShortLessonSection(input: ApplyRuleSetInput): string {
       ? 'Quad5'
       : 'Quad';
   }
-  return 'Dominica';
+  return input.celebration.source === 'sanctoral' ? 'Per Annum' : 'Dominica';
 }
 
 function is1960TemporalPaschaltideSunday(input: ApplyRuleSetInput): boolean {
@@ -2150,8 +2172,7 @@ function resolveComplineFinalAntiphon(
   if (
     slotName !== 'final-antiphon-bvm' ||
     input.hour !== 'compline' ||
-    input.policy.name !== 'rubrics-1960' ||
-    (input.temporal.season !== 'eastertide' && input.temporal.season !== 'ascensiontide')
+    input.policy.name !== 'rubrics-1960'
   ) {
     return undefined;
   }
@@ -2161,7 +2182,7 @@ function resolveComplineFinalAntiphon(
     refs: [
       {
         path: MARIAANT_PATH,
-        section: 'Paschalis'
+        section: complineFinalAntiphonSection(input)
       },
       {
         path: COMMON_PRAYERS_PATH,
@@ -2171,6 +2192,32 @@ function resolveComplineFinalAntiphon(
       commonPrayerRef('Amen')
     ]
   };
+}
+
+function complineFinalAntiphonSection(input: ApplyRuleSetInput): string {
+  const date = normalizeDateInput(input.temporal.date);
+  const dayName = input.temporal.dayName;
+
+  if (dayName.startsWith('Adv')) {
+    return 'Advent';
+  }
+
+  if (dayName.startsWith('Nat') || date.month === 1 || (date.month === 2 && date.day < 2)) {
+    return 'Nativiti';
+  }
+
+  if (
+    (date.month === 2 || date.month === 3 || dayName.startsWith('Quad')) &&
+    !dayName.startsWith('Pasc')
+  ) {
+    return 'Quadragesimae';
+  }
+
+  if (dayName.startsWith('Pasc')) {
+    return 'Paschalis';
+  }
+
+  return 'Postpentecost';
 }
 
 function commonPrayerRef(section: string): TextReference {
@@ -2346,8 +2393,7 @@ function attachCommemorationSlots(
   // temporal form first so that temporal commemorations (the majority)
   // dereference without an extra lookup. Matins commemorations (1911/1955
   // per §3e) reuse the first-nocturn antiphon conventionally.
-  const { antiphonHeader, versicleHeader } = commemorationHeaders(input.hour);
-  const orationHeader = 'Oratio';
+  const { antiphonHeader, versicleHeader, orationHeaders } = commemorationHeaders(input.hour);
 
   const antiphons: TextReference[] = [];
   const versicles: TextReference[] = [];
@@ -2355,19 +2401,55 @@ function attachCommemorationSlots(
 
   for (const commem of applicable) {
     const basePath = `horas/Latin/${commem.feastRef.path}`;
-    antiphons.push({ path: basePath, section: antiphonHeader });
-    versicles.push({ path: basePath, section: versicleHeader });
-    orations.push({ path: basePath, section: orationHeader });
+    const commemorationFiles = resolveCommemorationTextFiles(input, commem, warnings);
+    antiphons.push(
+      resolveCommemorationReference(
+        input,
+        commemorationFiles,
+        basePath,
+        commem.feastRef.path,
+        [antiphonHeader]
+      ) ?? { path: basePath, section: antiphonHeader }
+    );
+    versicles.push(
+      resolveCommemorationReference(
+        input,
+        commemorationFiles,
+        basePath,
+        commem.feastRef.path,
+        [versicleHeader]
+      ) ?? { path: basePath, section: versicleHeader }
+    );
+    orations.push(
+      resolveCommemorationReference(
+        input,
+        commemorationFiles,
+        basePath,
+        commem.feastRef.path,
+        orationHeaders
+      ) ?? { path: basePath, section: orationHeaders[0] ?? 'Oratio' }
+    );
+  }
+
+  const conclusion = slots.conclusion;
+  const hadConclusion = Object.hasOwn(slots, 'conclusion');
+  if (hadConclusion) {
+    delete slots.conclusion;
   }
 
   slots['commemoration-antiphons'] = { kind: 'ordered-refs', refs: antiphons };
   slots['commemoration-versicles'] = { kind: 'ordered-refs', refs: versicles };
   slots['commemoration-orations'] = { kind: 'ordered-refs', refs: orations };
+
+  if (hadConclusion) {
+    slots.conclusion = conclusion;
+  }
 }
 
 function commemorationHeaders(hour: HourName): {
   readonly antiphonHeader: string;
   readonly versicleHeader: string;
+  readonly orationHeaders: readonly string[];
 } {
   switch (hour) {
     case 'matins':
@@ -2375,17 +2457,63 @@ function commemorationHeaders(hour: HourName): {
       // versicle as their default commemoration header per Rubricae
       // Generales §IX. More specific per-lesson substitutions are 3h
       // adjudication territory.
-      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1' };
+      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1', orationHeaders: ['Oratio'] };
     case 'lauds':
-      return { antiphonHeader: 'Ant 2', versicleHeader: 'Versum 2' };
+      return { antiphonHeader: 'Ant 2', versicleHeader: 'Versum 2', orationHeaders: ['Oratio 2', 'Oratio'] };
     case 'vespers':
-      return { antiphonHeader: 'Ant 3', versicleHeader: 'Versum 3' };
+      return { antiphonHeader: 'Ant 3', versicleHeader: 'Versum 3', orationHeaders: ['Oratio 3', 'Oratio'] };
     default:
       // Minor hours and Compline are not commemoration-bearing in any of
       // the Roman policies; `commemoratesAtHour` should have short-
       // circuited before we get here.
-      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1' };
+      return { antiphonHeader: 'Ant 1', versicleHeader: 'Versum 1', orationHeaders: ['Oratio'] };
   }
+}
+
+function resolveCommemorationTextFiles(
+  input: ApplyRuleSetInput,
+  commemoration: Commemoration,
+  warnings: RubricalWarning[]
+): readonly ParsedFile[] {
+  const feastFile = resolveFeastFile(input.corpus, {
+    feastRef: commemoration.feastRef,
+    rank: commemoration.rank,
+    source: commemoration.feastRef.path.startsWith('Tempora/') ? 'temporal' : 'sanctoral',
+    ...(commemoration.kind ? { kind: commemoration.kind } : {}),
+    ...(commemoration.octaveDay ? { octaveDay: commemoration.octaveDay } : {})
+  });
+  return resolveProperTextFiles(feastFile, input, warnings);
+}
+
+function resolveCommemorationReference(
+  input: ApplyRuleSetInput,
+  files: readonly ParsedFile[],
+  basePath: string,
+  feastPath: string,
+  sections: readonly string[]
+): TextReference | undefined {
+  const properOrCommon = findReferenceInFiles(files, sections);
+  if (properOrCommon) {
+    return properOrCommon.path === basePath
+      ? properOrCommon
+      : { ...properOrCommon, nameSourcePath: basePath };
+  }
+
+  if (feastPath.startsWith('Tempora/')) {
+    const temporalWeekPath = basePath.replace(/-\d$/u, '-0');
+    if (temporalWeekPath !== basePath) {
+      const temporalWeekFile =
+        input.corpus.getFile(temporalWeekPath) ?? input.corpus.getFile(`${temporalWeekPath}.txt`);
+      if (temporalWeekFile) {
+        const temporalWeek = findReferenceInFile(temporalWeekFile, temporalWeekPath, sections);
+        if (temporalWeek) {
+          return temporalWeek;
+        }
+      }
+    }
+  }
+
+  return undefined;
 }
 
 const HOUR_SECTION_SUFFIX: Readonly<Record<HourName, string>> = {

@@ -770,6 +770,7 @@ function hourRules(overrides: Partial<HourRuleSet> = {}): HourRuleSet {
     matinsLessonIntroduction: 'ordinary',
     minorHoursSineAntiphona: false,
     minorHoursFerialPsalter: false,
+    dominicalOration: false,
     ...overrides
   };
 }

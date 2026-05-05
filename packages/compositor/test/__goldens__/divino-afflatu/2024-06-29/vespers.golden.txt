@@ -164,7 +164,19 @@ warning count: 1
   Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #8 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
+[section #8 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Tempora/Pent06-0#Ant 3 languages=Latin]
+  Latin: text("_")
+  Latin: text("Commemoratio Dominica VI Post Pentecosten")
+  Latin: [Ant.] text("Miséreor super turbam, quia ecce jam tríduo sústinent me nec habent quod mandúcent, et, si dimísero eos jejúnos, defícient in via, allelúja.")
+
+[section #9 type=commemoration slot=commemoration-orations reference=horas/Latin/Tempora/Pent06-0#Oratio languages=Latin]
+  Latin: text("_")
+  Latin: text("Orémus.")
+  Latin: text("Deus virtútum, cujus est totum quod est óptimum: ínsere pectóribus nostris amórem tui nóminis, et præsta in nobis religiónis augméntum; ut, quæ sunt bona, nútrias, ac pietátis stúdio, quæ sunt nutríta, custódias.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #10 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
@@ -182,11 +194,3 @@ warning count: 1
   Latin: [R.] text("Amen.")
   Latin: rubric("Et si tunc terminetur Officium, dicitur tantum « Pater Noster » secreto.")
   Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
-
-[section #9 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Tempora/Pent06-0#Ant 3 languages=Latin]
-  Latin: [Ant.] text("Miséreor * super turbam, quia ecce jam tríduo sústinent me nec habent quod mandúcent, et, si dimísero eos jejúnos, defícient in via, allelúja.")
-
-[section #10 type=commemoration slot=commemoration-orations reference=horas/Latin/Tempora/Pent06-0#Oratio languages=Latin]
-  Latin: text("Deus virtútum, cujus est totum quod est óptimum: ínsere pectóribus nostris amórem tui nóminis, et præsta in nobis religiónis augméntum; ut, quæ sunt bona, nútrias, ac pietátis stúdio, quæ sunt nutríta, custódias.")
-  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
-  Latin: [R.] text("Amen.")

@@ -17,6 +17,7 @@ import { flattenConditionals } from '../flatten/evaluate-conditionals.js';
 import { expandDeferredNodes } from '../resolve/expand-deferred-nodes.js';
 import {
   materializeInvitatoryContent,
+  type InvitatoryMaterializationMode,
   resolveInvitatoryAntiphonContent,
   resolveReference
 } from '../resolve/reference-resolver.js';
@@ -296,7 +297,7 @@ function resolveInvitatoriumAntiphon(
 function detectInvitatoryMaterializationMode(
   args: MatinsComposeContext,
   source: Exclude<InvitatoriumSource, { readonly kind: 'suppressed' }>
-): 'Invit2' | 'Invit3' | undefined {
+): InvitatoryMaterializationMode | undefined {
   if (
     source.kind === 'season' &&
     source.reference.selector === 'Passio' &&
@@ -304,6 +305,15 @@ function detectInvitatoryMaterializationMode(
     args.summary.celebration.source === 'temporal'
   ) {
     return 'Invit3';
+  }
+
+  if (
+    source.kind === 'season' &&
+    args.context.dayOfWeek === 1 &&
+    source.reference.selector &&
+    ['Epiphania', 'Septuagesima', 'PostPentecosten'].includes(source.reference.selector)
+  ) {
+    return 'Invit4';
   }
 
   if (source.kind !== 'feast') {

@@ -24,6 +24,37 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-05 — Psalm 15:1 half-verse pointing flattened by Perl render surface
+
+**Classification.** `perl-bug`
+
+**Summary.** Psalm 15:1 in the source corpus carries both the flex
+marker before `Dixi Dómino` and the mediant before `quóniam`.
+The compositor preserves that source-backed pointing. The Perl render
+surface collapses the line to a single asterisk before `Dixi Dómino`,
+dropping the displayed flex marker and shifting the visible mediant.
+
+**Primary source.**
+
+`upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1`
+
+The source line reads with `‡ (2)` before `Dixi Dómino` and `*` before
+`quóniam`, which establishes the compositor's displayed pointing.
+
+**Reproduction.**
+
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-20 --hour Compline
+```
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hour | Row key suffix |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-01-20 and fanout | Compline/Matins | `c262774b` |
+
 ### 2026-04-27 — Paschaltide Sunday Vespers psalmody — `alleluia_ant` substitution overrides source-backed Day-N Vespera psalter
 
 **Classification.** `perl-bug`

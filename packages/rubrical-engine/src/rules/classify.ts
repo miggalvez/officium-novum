@@ -79,6 +79,11 @@ export type HourEffect =
       readonly hours?: readonly HourName[];
     }
   | {
+      readonly kind: 'dominical-oration';
+      readonly value: true;
+      readonly hours?: readonly HourName[];
+    }
+  | {
       readonly kind: 'capitulum-variant';
       readonly value: CapitulumVariant;
       readonly hours?: readonly HourName[];
@@ -551,10 +556,19 @@ function classifyAction(directive: RuleActionDirective): ClassifiedDirective {
   }
 
   // file-format-spec §6 lines 651-654 + corpus variants.
+  if (normalized === 'oratio dominica') {
+    return {
+      target: 'hour',
+      effect: {
+        kind: 'dominical-oration',
+        value: true
+      }
+    };
+  }
+
   if (
     normalized === 'credo' ||
     normalized === 'gloria' ||
-    normalized === 'oratio dominica' ||
     normalized === 'requiem gloria' ||
     normalized === 'no gloria'
   ) {

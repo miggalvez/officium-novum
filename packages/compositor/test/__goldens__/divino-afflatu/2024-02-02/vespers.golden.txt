@@ -3,13 +3,8 @@ date: 2024-02-02
 hour: vespers
 celebration: In Purificatione Beatæ Mariæ Virginis
 languages: Latin
-section count: 9
-warning count: 3
-
-# warnings
-#0 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/02-03, section=Ant 3}
-#1 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/02-03, section=Versum 3}
-#2 [warn] resolve-missing-section — Reference did not resolve in language 'Latin' after fallback chain exhausted. {language=Latin, path=horas/Latin/Sancti/02-03, section=Oratio}
+section count: 12
+warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Vespera#Incipit languages=Latin]
   Latin: rubric("secreto")
@@ -167,7 +162,23 @@ warning count: 3
   Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #8 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
+[section #8 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Commune/C2-1#Ant 3 languages=Latin]
+  Latin: text("_")
+  Latin: [Ant.] text("Qui vult veníre post me, ábneget semetípsum, et tollat crucem suam, et sequátur me.")
+
+[section #9 type=commemoration slot=commemoration-versicles reference=horas/Latin/Commune/C2-1#Versum 3 languages=Latin]
+  Latin: text("_")
+  Latin: [V.] text("Justus ut palma florébit.")
+  Latin: [R.] text("Sicut cedrus Líbani multiplicábitur.")
+
+[section #10 type=commemoration slot=commemoration-orations reference=horas/Latin/Commune/C2-1#Oratio languages=Latin]
+  Latin: text("_")
+  Latin: text("Orémus.")
+  Latin: text("Deus, qui nos beáti Blásii Mártyris tui atque Pontíficis ánnua solemnitáte lætíficas: concéde propítius; ut, cujus natalítia cólimus, de ejúsdem étiam protectióne gaudeámus.")
+  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
+
+[section #11 type=conclusion slot=conclusion reference=horas/Ordinarium/Vespera#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")

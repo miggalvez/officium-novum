@@ -432,6 +432,9 @@ export interface TextReference {
   /** Optional line selector — already resolved by Phase 1's reference
    *  resolver where possible, otherwise passed through verbatim. */
   readonly selector?: string;
+  /** Optional owning office used for name substitution when inherited
+   *  common text renders on behalf of a proper office. */
+  readonly nameSourcePath?: string;
 }
 
 export interface HymnOverrideMeta {
@@ -446,7 +449,7 @@ export type HourDirective =
   | 'add-alleluia'                   // Paschal Time
   | 'add-versicle-alleluia'
   | 'preces-feriales'                // ferial preces at Lauds/Vespers
-  | 'preces-dominicales'             // Sunday preces at Prime/Compline
+  | 'preces-dominicales'             // Sunday preces at Prime/Compline where the policy retains them
   | 'suffragium-of-the-saints'       // outside privileged seasons
   | 'omit-suffragium'                // within privileged seasons or on feasts
   | 'genuflection-at-oration'        // Ember Wednesdays etc.

@@ -648,6 +648,41 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('resolves Rubrics 1960 Oratio Dominica weekday offices to the Sunday collect', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const expectedCollect = normalizeLatin(
+      'Deus, refúgium nostrum et virtus: adésto piis Ecclésiæ tuæ précibus, auctor ipse pietátis, et præsta; ut, quod fidéliter pétimus, efficáciter consequámur.'
+    );
+
+    const monday = engine.resolveDayOfficeSummary('2026-10-26');
+    expect(monday.temporal.dayName).toBe('Pent22-1');
+
+    for (const hour of ['terce', 'sext', 'none'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary: monday,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(sectionTexts(composed, 'oration').map(normalizeLatin)).toContain(expectedCollect);
+    }
+
+    const tuesday = engine.resolveDayOfficeSummary('2026-10-27');
+    for (const hour of ['lauds', 'vespers'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary: tuesday,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(sectionTexts(composed, 'oration').map(normalizeLatin)).toContain(expectedCollect);
+    }
+  }, 240_000);
+
   it('renders the Easter Octave Prime Martyrologium tail after the one-alone oration bridge', async () => {
     const expectedHeading = normalizeLatin(
       'Tértio Nonas Aprílis Luna vicésima tértia Anno Dómini 2024'
@@ -1361,6 +1396,36 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('applies Monday seasonal Invit4 Psalm 94 materialization for Rubrics 1960 2026 Matins', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-01-19');
+    const matins = summary.hours.matins;
+    expect(matins).toBeDefined();
+    if (!matins) return;
+
+    expect(matins.slots.invitatory?.kind).toBe('matins-invitatorium');
+    if (matins.slots.invitatory?.kind === 'matins-invitatorium') {
+      expect(matins.slots.invitatory.source.kind).toBe('season');
+      expect(matins.slots.invitatory.source.reference.selector).toBe('Epiphania');
+    }
+
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const invitatory = composed.sections.find((section) => section.slot === 'invitatory');
+    const invitatoryLines = invitatory?.lines.map(renderLatinText) ?? [];
+    expect(invitatoryLines[0]).toBe('Veníte, * Exsultémus Dómino.');
+    expect(invitatoryLines[1]).toBe('Veníte, * Exsultémus Dómino.');
+    expect(invitatoryLines[2]).toBe(
+      'Jubilémus Deo, salutári nostro: præoccupémus fáciem ejus in confessióne, et in psalmis jubilémus ei.'
+    );
+  }, 240_000);
+
   it('keeps the Passiontide Psalm 94 responsorial split and Gloria omission before the hymn across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES.filter((handle) => handle !== 'Divino Afflatu - 1954')) {
       const { engine, resolvedCorpus } = await createHarness(version);
@@ -1647,6 +1712,112 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     const benedictusAntiphonIndex = lines.findIndex((line) => line.includes('Cum jejunátis'));
     expect(chapterIndex).toBeGreaterThan(0);
     expect(benedictusAntiphonIndex).toBeGreaterThan(chapterIndex);
+  }, 240_000);
+
+  it('uses the Per Annum Prime short lesson for Rubrics 1960 sanctoral fallback offices', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-01-16');
+    const prime = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'prime',
+      options: { languages: ['Latin'] }
+    });
+
+    const shortLessonLines = sectionTexts(prime, 'lectio-brevis').map(normalizeLatin);
+    expect(shortLessonLines).toContain(
+      normalizeLatin('Dóminus autem dírigat corda et córpora nostra in caritáte Dei et patiéntia Christi.')
+    );
+    expect(shortLessonLines).not.toContain(
+      normalizeLatin('Regi sæculórum immortáli et invisíbili, soli Deo honor et glória in sǽcula sæculórum. Amen.')
+    );
+  }, 240_000);
+
+  it('places Rubrics 1960 Lauds commemorations before the final conclusion', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-02-24');
+    const lauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const slotOrder = lauds.sections.map((section) => section.slot);
+    const orationIndex = slotOrder.indexOf('oration');
+    const commemorationIndex = slotOrder.indexOf('commemoration-antiphons');
+    const conclusionIndex = slotOrder.indexOf('conclusion');
+    expect(orationIndex, 'Lauds should include the main oration').toBeGreaterThan(0);
+    expect(commemorationIndex, 'Lauds should include the feria commemoration').toBeGreaterThan(orationIndex);
+    expect(conclusionIndex, 'Lauds should include the final conclusion').toBeGreaterThan(commemorationIndex);
+
+    const commemorationAntiphons = lauds.sections
+      .find((section) => section.slot === 'commemoration-antiphons')
+      ?.lines.map(renderLatinText)
+      .map(normalizeLatin) ?? [];
+    expect(commemorationAntiphons).toContain(normalizeLatin('_'));
+    expect(commemorationAntiphons).toContain(
+      normalizeLatin('Commemoratio Feria Tertia infra Hebdomadam I in Quadragesima')
+    );
+    expect(commemorationAntiphons).toContain(
+      normalizeLatin(
+        'Intrávit Jesus in templum Dei, et eiciébat omnes vendéntes et eméntes: et mensas nummulariórum, et cáthedras vendéntium colúmbas evértit.'
+      )
+    );
+    const lines = canonicalLatinLines(lauds);
+    const commemorationCollectIndex = lines.indexOf(
+      normalizeLatin(
+        'Réspice, Dómine, famíliam tuam, et præsta: ut apud te mens nostra tuo desidério fúlgeat, quæ se carnis maceratióne castígat.'
+      )
+    );
+    expect(lines[commemorationCollectIndex - 1]).toBe(normalizeLatin('Orémus.'));
+    expect(sectionTexts(lauds, 'conclusion').map(normalizeLatin)[0]).toBe(
+      normalizeLatin('Dómine, exáudi oratiónem meam.')
+    );
+  }, 240_000);
+
+  it('renders common-backed Rubrics 1960 sanctoral commemorations with proper names', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-03-06');
+    expect(summary.commemorations.map((commemoration) => commemoration.feastRef.path)).toContain(
+      'Sancti/03-06'
+    );
+
+    const lauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const slotOrder = lauds.sections.map((section) => section.slot);
+    const commemorationIndex = slotOrder.indexOf('commemoration-antiphons');
+    expect(commemorationIndex, 'Lauds should include the sanctoral commemoration').toBeGreaterThan(
+      slotOrder.indexOf('oration')
+    );
+    expect(slotOrder.indexOf('conclusion'), 'Lauds conclusion should follow the commemoration').toBeGreaterThan(
+      commemorationIndex
+    );
+    expect(lauds.sections.find((section) => section.slot === 'commemoration-antiphons')?.reference).toBe(
+      'horas/Latin/Commune/C7b#Ant 2'
+    );
+
+    const lines = canonicalLatinLines(lauds);
+    expect(lines).toContain(normalizeLatin('Commemoratio Ss. Perpetuæ et Felicitatis Martyrum'));
+    expect(lines).toContain(
+      normalizeLatin(
+        'Istárum est enim regnum cælórum, quæ contempsérunt vitam mundi, et pervenérunt ad prǽmia regni, et lavérunt stolas suas in sánguine Agni.'
+      )
+    );
+    expect(lines).toContain(
+      normalizeLatin(
+        'Da nobis, quǽsumus, Dómine Deus noster, sanctárum Mártyrum tuárum Perpétuæ et Felicitátis palmas incessábili devotióne venerári: ut quas digna mente non póssumus celebráre, humílibus saltem frequentémus obséquiis.'
+      )
+    );
+    expect(lines).not.toContain(normalizeLatin('Commemoratio Commune plurimarum non Virginum Martyrum'));
   }, 240_000);
 
   it('renders Ash Wednesday Roman minor-hour seasonal antiphons before the psalm heading', async () => {
@@ -2914,8 +3085,101 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       options: { languages: ['Latin'] }
     });
     expect(firstPsalmodyAntiphon(athanasiusCompline)).toBe('Allelúja, * allelúja, allelúja.');
-    expect(psalmodyTexts(athanasiusCompline)).toContain('Psalmus 4 [1]');
-    expect(psalmodyTexts(athanasiusCompline)).not.toContain('Psalmus 87 [1]');
+    expect(psalmodyTexts(athanasiusCompline)).toContain('Psalmus 87 [1]');
+    expect(psalmodyTexts(athanasiusCompline)).not.toContain('Psalmus 4 [1]');
+  }, 240_000);
+
+  it('wraps ordinary Rubrics 1960 Compline psalmody with one antiphon repeat in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary(new Date(Date.UTC(2026, 0, 1)));
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(psalmodyAntiphons(compline)).toEqual([
+      'Miserére * mihi, Dómine, et exáudi oratiónem meam.',
+      'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+    ]);
+    expect(psalmodyTexts(compline).at(-1)).toBe(
+      'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+    );
+  }, 240_000);
+
+  it('uses actual Saturday Compline psalmody before temporal Sunday First Vespers in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-01-17');
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(psalmodyAntiphons(compline)).toEqual([
+      'Intret orátio mea * in conspéctu tuo, Dómine.',
+      'Intret orátio mea in conspéctu tuo, Dómine.'
+    ]);
+    expect(psalmodyTexts(compline)).toContain('Psalmus 87 [1]');
+    expect(psalmodyTexts(compline)).not.toContain('Psalmus 4 [1]');
+  }, 240_000);
+
+  it('keeps ordinary Rubrics 1960 Compline responsory separators in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary(new Date(Date.UTC(2026, 0, 2)));
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = compline.sections.find((section) => section.slot === 'responsory');
+    expect(responsory, '2026-01-02 Compline should include the ordinary responsory').toBeDefined();
+    expect(responsory?.lines.map(renderLatinText)).toEqual([
+      '_',
+      'In manus tuas, Dómine, * Comméndo spíritum meum.',
+      'In manus tuas, Dómine, * Comméndo spíritum meum.',
+      'Redemísti nos, Dómine, Deus veritátis.',
+      'Comméndo spíritum meum.',
+      'Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'In manus tuas, Dómine, * Comméndo spíritum meum.',
+      '_'
+    ]);
+  }, 240_000);
+
+  it('renders ordinary Rubrics 1960 Compline seasonal final Marian antiphons in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, opening] of [
+      ['2026-01-02', 'Alma Redemptóris Mater, quæ pérvia cæli'],
+      ['2026-06-01', 'Salve, Regína, mater misericórdiæ;']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+
+      const finalAntiphon = sectionTexts(compline, 'final-antiphon-bvm').map(normalizeLatin);
+      expect(finalAntiphon[0], `${date} Compline final Marian antiphon opening`).toBe(
+        normalizeLatin(opening)
+      );
+      expect(finalAntiphon.at(-2), `${date} Compline should append Divinum auxilium`).toBe(
+        normalizeLatin('Divínum auxílium + máneat semper nobíscum.')
+      );
+      expect(finalAntiphon.at(-1), `${date} Compline should end the final antiphon with Amen`).toBe(
+        normalizeLatin('Amen.')
+      );
+    }
   }, 240_000);
 
   it('keeps Reduced 1955 Jan 6/7 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
@@ -3009,11 +3273,13 @@ function sectionTexts(
     | 'invitatory'
     | 'chapter'
     | 'hymn'
+    | 'lectio-brevis'
     | 'responsory'
     | 'versicle'
     | 'preces'
     | 'oration'
     | 'conclusion'
+    | 'final-antiphon-bvm'
     | 'martyrology'
     | 'canticle-ad-magnificat'
 ): readonly string[] {

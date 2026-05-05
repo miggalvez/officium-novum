@@ -26,6 +26,10 @@ import { applyOfficeNameSubstitution } from './compose/office-name-substitution.
 import { composePrimeMartyrologySection } from './compose/prime-martyrology.js';
 import { normalizeResponsoryGloria } from './compose/responsory-gloria.js';
 import {
+  withCommemorationSeparator,
+  withMinorHourLaterBlockSeparator
+} from './compose/separators.js';
+import {
   appendExpandedPsalmWrapper,
   buildPsalmHeading,
   containsInlinePsalmRefs,
@@ -47,8 +51,6 @@ import { expandDeferredNodes, interleaveSeparators } from './resolve/expand-defe
 import { resolveReference } from './resolve/reference-resolver.js';
 import type {
   ComposedHour,
-  ComposedLine,
-  ComposedRun,
   ComposeOptions,
   ComposeWarning,
   Section
@@ -183,7 +185,8 @@ export function composeHour(input: ComposeInput): ComposedHour {
       onWarning
     });
     if (section) {
-      sections.push(withMinorHourLaterBlockSeparator(input.hour, slotName, hour, section));
+      const commemorationSection = withCommemorationSeparator(slotName, section);
+      sections.push(withMinorHourLaterBlockSeparator(input.hour, slotName, hour, commemorationSection));
     }
   }
 
@@ -195,46 +198,6 @@ export function composeHour(input: ComposeInput): ComposedHour {
     sections: Object.freeze(sections),
     warnings: Object.freeze(warnings),
     slotAccounting: Object.freeze(buildSlotAccounting(hour, sections))
-  });
-}
-
-function withMinorHourLaterBlockSeparator(
-  hour: HourName,
-  slot: SlotName,
-  structure: HourStructure,
-  section: Section
-): Section {
-  if (!isMinorHour(hour) || (slot !== 'responsory' && slot !== 'versicle')) {
-    return section;
-  }
-  if (slot === 'responsory' && !isRenderableLaterBlockSlot(structure.slots.chapter)) {
-    return section;
-  }
-  if (
-    slot === 'versicle' &&
-    !isRenderableLaterBlockSlot(structure.slots.chapter) &&
-    !isRenderableLaterBlockSlot(structure.slots.responsory)
-  ) {
-    return section;
-  }
-
-  return Object.freeze({
-    ...section,
-    lines: Object.freeze([minorHourSeparatorLine(section.languages), ...section.lines])
-  });
-}
-
-function isRenderableLaterBlockSlot(content: SlotContent | undefined): boolean {
-  return content !== undefined && content.kind !== 'empty';
-}
-
-function minorHourSeparatorLine(languages: readonly string[]): ComposedLine {
-  const texts: Record<string, readonly ComposedRun[]> = {};
-  for (const language of languages) {
-    texts[language] = Object.freeze([{ type: 'text', value: '_' }]);
-  }
-  return Object.freeze({
-    texts: Object.freeze(texts)
   });
 }
 
@@ -382,6 +345,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         ...(args.options.langfb ? { langfb: args.options.langfb } : {}),
         isAntiphon
       });
+      const sourceWithCommemorationPrelude = prependCommemorationPrelude(args, lang, namedSourceContent);
       if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(namedSourceContent)) {
         const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(namedSourceContent));
         const flattened = flattenConditionals(antiphonOnly, args.context);
@@ -430,7 +394,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, namedSourceContent)
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithCommemorationPrelude)
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -487,8 +451,14 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
                 args.context.version,
                 ref
               )
+            : args.slot === 'commemoration-antiphons'
+              ? normalizeRepeatedAntiphonContent(withTriduumOrationFilter)
             : withTriduumOrationFilter
         : withTriduumOrationFilter;
+      const withCommemorationHeading =
+        args.slot === 'commemoration-antiphons'
+          ? prependCommemorationAntiphonHeading(args.corpus, ref, markered)
+          : markered;
       // Phase 3 §3h — emit a `Psalmus N [index]` heading before each psalm
       // of the psalmody slot (and only for the psalmody slot — Matins
       // psalmody runs through its own composer and gets its headings from
@@ -526,8 +496,8 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       appendContentWithBoundary(
         bucket,
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? replaceLeadingCanticleTitleWithCitation(markered, ref.selector)
-          : markered
+          ? replaceLeadingCanticleTitleWithCitation(withCommemorationHeading, ref.selector)
+          : withCommemorationHeading
       );
     }
   }
@@ -539,6 +509,53 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
   if (frozen.size === 0) return undefined;
 
   return emitSection(args.slot, frozen, primary ? referenceKey(primary) : undefined);
+}
+
+function prependCommemorationPrelude(
+  args: ComposeSlotArgs,
+  language: string,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (args.slot === 'commemoration-orations') {
+    return [
+      { type: 'text', value: commemorationOrationPrelude(language) },
+      { type: 'separator' },
+      ...content
+    ];
+  }
+
+  return content;
+}
+
+const COMMEMORATION_ORATION_PRELUDES: Readonly<Record<string, string>> = Object.freeze({
+  Latin: 'Orémus.',
+  English: 'Let us pray.'
+});
+
+function commemorationOrationPrelude(language: string): string {
+  return (
+    COMMEMORATION_ORATION_PRELUDES[language] ??
+    COMMEMORATION_ORATION_PRELUDES[language.split('-', 1)[0] ?? ''] ??
+    COMMEMORATION_ORATION_PRELUDES.Latin!
+  );
+}
+
+function prependCommemorationAntiphonHeading(
+  corpus: TextIndex,
+  ref: TextReference,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  const title = commemorationTitle(corpus, ref.nameSourcePath ?? ref.path);
+  return title
+    ? [{ type: 'text', value: `Commemoratio ${title}` }, { type: 'separator' }, ...content]
+    : content;
+}
+
+function commemorationTitle(corpus: TextIndex, path: string): string | undefined {
+  const file = corpus.getFile(path) ?? corpus.getFile(`${path}.txt`);
+  const officium = file?.sections.find((section) => section.header === 'Officium');
+  const firstText = officium?.content.find((node) => node.type === 'text');
+  return firstText?.value.split(/\r?\n/u).find((line) => line.trim().length > 0)?.trim();
 }
 
 function taggedReferencesFrom(
@@ -608,7 +625,7 @@ function slotWidePsalmodyAntiphonRef(
   hour: HourName,
   psalms: readonly { readonly antiphonRef?: TextReference }[]
 ): TextReference | undefined {
-  if (isMinorHour(hour)) {
+  if (isMinorHour(hour) || hour === 'compline') {
     return psalms[0]?.antiphonRef;
   }
 

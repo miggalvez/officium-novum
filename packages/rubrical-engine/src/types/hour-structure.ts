@@ -38,6 +38,11 @@ export interface TextReference {
   readonly path: string;
   readonly section: string;
   readonly selector?: string;
+  /**
+   * Optional owning office for name substitution when a slot renders inherited
+   * common text on behalf of a proper office.
+   */
+  readonly nameSourcePath?: string;
 }
 
 export interface PsalmAssignment {

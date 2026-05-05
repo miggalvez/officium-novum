@@ -32,6 +32,14 @@ describe('deriveHourRuleSet', () => {
     expect(hourRules.minorHoursSineAntiphona).toBe(true);
   });
 
+  it('derives dominical oration routing', () => {
+    const rules = makeCelebrationRuleSet(['Oratio Dominica']);
+
+    const hourRules = deriveHourRuleSet(makeCelebration(), rules, 'terce');
+
+    expect(hourRules.dominicalOration).toBe(true);
+  });
+
   it('applies Matins omit directives', () => {
     const rules = makeCelebrationRuleSet(['Omit ad Matutinum Incipit Invitatorium Hymnus']);
 
@@ -108,6 +116,7 @@ function makeCelebrationRuleSet(lines: readonly string[]): CelebrationRuleSet {
     quorumFestum: false,
     commemoratio3: false,
     unaAntiphona: false,
+    symbolumAthanasium: false,
     unmapped: [],
     hourScopedDirectives: directives.map((directive) => ({ directive }))
   };

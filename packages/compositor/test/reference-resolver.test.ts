@@ -178,6 +178,40 @@ describe('swapLanguageSegment', () => {
     ]);
   });
 
+  it('trims the first Psalm 94 incipit for Invit4 Monday materialization before antiphon insertion', () => {
+    const materialized = materializeInvitatoryContent(
+      [
+        { type: 'formulaRef', name: 'ant' },
+        {
+          type: 'verseMarker',
+          marker: 'v.',
+          text: 'Veníte, exsultémus Dómino, + jubilémus Deo, salutári nostro: * præoccupémus fáciem ejus in confessióne, et in psalmis jubilémus ei.'
+        },
+        { type: 'formulaRef', name: 'ant2' }
+      ],
+      [{ type: 'text', value: 'Veníte, * Exsultémus Dómino.' }],
+      'Invit4'
+    );
+
+    expect(materialized).toEqual([
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Veníte, * Exsultémus Dómino.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'v.',
+        text: 'Jubilémus Deo, salutári nostro: * præoccupémus fáciem ejus in confessióne, et in psalmis jubilémus ei.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Exsultémus Dómino.'
+      }
+    ]);
+  });
+
   it('materializes the Passiontide invitatory tail and Gloria omission before antiphon insertion', () => {
     const materialized = materializeInvitatoryContent(
       [
@@ -369,6 +403,72 @@ describe('resolveReference', () => {
     expect(resolved.English?.content).toEqual([
       { type: 'text', value: 'V. O Lord, hear my prayer.' },
       { type: 'text', value: 'R. And let my cry come unto thee.' }
+    ]);
+  });
+
+  it('wraps localized source fallback Compline responsories with boundary separators', () => {
+    const source = {
+      path: 'horas/Latin/Psalterium/Common/Responsories.txt',
+      section: 'Completorium'
+    };
+    const index = new InMemoryTextIndex();
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Special/Minor Special.txt',
+      sections: [
+        {
+          header: 'Responsory Completorium',
+          content: [
+            sourcedText('R.br. In manus tuas, Domine.', source),
+            sourcedText('R. In manus tuas, Domine.', source)
+          ],
+          startLine: 1,
+          endLine: 2
+        }
+      ]
+    });
+    index.addFile({
+      path: 'horas/Latin/Psalterium/Common/Responsories.txt',
+      sections: [
+        {
+          header: 'Completorium',
+          content: [
+            { type: 'text', value: 'R.br. In manus tuas, Domine.' },
+            { type: 'text', value: 'R. In manus tuas, Domine.' }
+          ],
+          startLine: 1,
+          endLine: 2
+        }
+      ]
+    });
+    index.addFile({
+      path: 'horas/English/Psalterium/Common/Responsories.txt',
+      sections: [
+        {
+          header: 'Completorium',
+          content: [
+            { type: 'text', value: 'R.br. Into thy hands, O Lord.' },
+            { type: 'text', value: 'R. Into thy hands, O Lord.' }
+          ],
+          startLine: 1,
+          endLine: 2
+        }
+      ]
+    });
+
+    const resolved = resolveReference(
+      index,
+      {
+        path: 'horas/Latin/Psalterium/Special/Minor Special',
+        section: 'Responsory Completorium'
+      },
+      { languages: ['English'], langfb: 'Latin' }
+    );
+
+    expect(resolved.English?.content).toEqual([
+      { type: 'separator' },
+      { type: 'text', value: 'R.br. Into thy hands, O Lord.' },
+      { type: 'text', value: 'R. Into thy hands, O Lord.' },
+      { type: 'separator' }
     ]);
   });
 

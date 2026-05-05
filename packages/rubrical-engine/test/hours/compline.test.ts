@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   buildCompline,
+  divinoAfflatuPolicy,
   rubrics1960Policy,
   type Celebration,
   type CelebrationRuleSet,
@@ -12,7 +13,7 @@ import {
 } from '../../src/index.js';
 
 describe('buildCompline', () => {
-  it('uses vespers-winner source for ordinary Sunday concurrence', () => {
+  it('suppresses dominical Compline preces under Rubrics 1960', () => {
     const today = makePreview('2024-06-09', 'I-privilegiata-sundays', {
       path: 'Tempora/Pent03-0',
       source: 'temporal',
@@ -30,6 +31,31 @@ describe('buildCompline', () => {
       today,
       tomorrow,
       policy: rubrics1960Policy
+    });
+
+    expect(compline.hour).toBe('compline');
+    expect(compline.source.kind).toBe('vespers-winner');
+    expect(compline.directives).toEqual([]);
+  });
+
+  it('retains dominical Compline preces for Divino Afflatu Sundays', () => {
+    const today = makePreview('2024-06-09', 'dupl-ii', {
+      path: 'Tempora/Pent03-0',
+      source: 'temporal',
+      dayName: 'Pent03-0'
+    });
+    const tomorrow = makePreview('2024-06-10', 'IV', {
+      path: 'Tempora/Pent03-1',
+      source: 'temporal',
+      dayName: 'Pent03-1'
+    });
+    const concurrence = makeConcurrence('today', today.celebration, 'today-higher-rank');
+
+    const compline = buildCompline({
+      concurrence,
+      today,
+      tomorrow,
+      policy: divinoAfflatuPolicy
     });
 
     expect(compline.hour).toBe('compline');
@@ -88,7 +114,7 @@ describe('buildCompline', () => {
     expect(compline.directives).toEqual([]);
   });
 
-  it('uses the winner temporal when First Vespers wins on a weekday (Codex P1 #3)', async () => {
+  it('keeps actual Saturday psalmody when temporal Sunday First Vespers wins under 1960', async () => {
     const { TestOfficeTextIndex } = await import('../helpers.js');
     const { loadOrdinariumSkeleton, deriveHourRuleSet } = await import('../../src/index.js');
     const { buildVersionRegistry, resolveVersion, asVersionHandle } = await import(
@@ -162,14 +188,14 @@ describe('buildCompline', () => {
       celebrationRules: tomorrow.celebrationRules,
       hourRules,
       corpus,
-      temporal: tomorrow.temporal
+      temporal: { ...tomorrow.temporal, dayOfWeek: today.temporal.dayOfWeek }
     });
 
     const psalmody = compline.slots.psalmody;
     expect(psalmody?.kind).toBe('psalmody');
     if (psalmody?.kind === 'psalmody') {
       expect(psalmody.psalms[0]?.psalmRef.section).toBe('Completorium');
-      expect(psalmody.psalms[0]?.psalmRef.selector).toBe('Dominica');
+      expect(psalmody.psalms[0]?.psalmRef.selector).toBe('Sabbato');
     }
   });
 

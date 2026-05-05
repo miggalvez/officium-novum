@@ -81,6 +81,7 @@ export interface HourRuleSet {
   readonly matinsLessonIntroduction: MatinsLessonIntroduction;
   readonly minorHoursSineAntiphona: boolean;
   readonly minorHoursFerialPsalter: boolean;
+  readonly dominicalOration: boolean;
   readonly capitulumVariant?: CapitulumVariant;
 }
 

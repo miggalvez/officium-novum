@@ -220,7 +220,7 @@ the slot's flattened `TextContent[]` before emission.
 | `omit-alleluia`               | Remove Alleluia verses (Septuagesima/Lent)           | Rubricae §III|
 | `add-alleluia`                | Append Alleluia (Paschaltide)                         | Rubricarum §144|
 | `add-versicle-alleluia`       | Append to the versicle block                          | Rubricarum §144|
-| `preces-dominicales`          | Insert Sunday preces + source the right block         | Rubricae §VIII|
+| `preces-dominicales`          | Insert Sunday preces when retained by the policy       | Rubricae §VIII|
 | `preces-feriales`             | Insert ferial preces                                   | Rubricae §VIII|
 | `suffragium-of-the-saints`    | Insert the Suffragium block                            | Rubricae §IX|
 | `omit-suffragium`             | Suppress Suffragium regardless of rank                 | Rubricarum §110|
@@ -528,6 +528,11 @@ Rubrics 1960 ledger:
 - **Compline guillemets** — confirmed in corpus at
   `upstream/.../Common/Rubricae.txt:129`. Classified as
   `rendering-difference`; no compositor fix.
+- **Common-backed commemoration names** — commemoration antiphon,
+  versicle, and oration refs may render from an inherited commune while
+  still carrying `TextReference.nameSourcePath` for the commemorated
+  proper. The compositor uses that owner for `Commemoratio ...` headings
+  and `N.` / `N. et N.` substitution.
 - 12 new tests in `packages/compositor/test/canonical-lines.test.ts`.
 - Harness impact: every first-divergent-line on Rubrics 1960 Jan 1
   advanced into a later, different pattern. No regression on 52
@@ -550,7 +555,9 @@ precedes each Matins lesson and implemented the Te Deum
   `selectRomanBenedictions` helper in
   `packages/rubrical-engine/src/policy/_shared/roman.ts` feeds all
   three Roman policies: 9/12-lesson office → `[Nocturn N]:<offset>`,
-  3-lesson office → `[Nocturn 3]:<offset>` in
+  3-lesson Gospel-homily offices → `[Evangelica]:1` for the first
+  lesson and then `[Nocturn 3]:<offset>`, ordinary temporal ferias →
+  weekday rotation, other 3-lesson offices → `[Nocturn 3]:<offset>` in
   `horas/Latin/Psalterium/Benedictions.txt`. Mirrors Perl's
   `specmatins.pl:get_absolutio_et_benedictiones` simple path.
 - **Matins composition**:
