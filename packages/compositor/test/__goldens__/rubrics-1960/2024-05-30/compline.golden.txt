@@ -3,7 +3,7 @@ date: 2024-05-30
 hour: compline
 celebration: Festum Sanctissimi Corporis Christi
 languages: Latin
-section count: 11
+section count: 12
 warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
@@ -138,4 +138,24 @@ warning count: 0
   Latin: [V.] text("Benedicámus Dómino.")
   Latin: [R.] text("Deo grátias.")
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
+  Latin: [R.] text("Amen.")
+
+[section #11 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Postpentecost languages=Latin]
+  Latin: text("Salve, Regína, mater misericórdiæ;")
+  Latin: text("vita, dulcédo et spes nóstra, salve.")
+  Latin: text("Ad te clamámus éxsules fílii Hevæ.")
+  Latin: text("Ad te suspirámus geméntes et flentes")
+  Latin: text("In hac lacrimárum valle.")
+  Latin: text("Eja ergo, advocáta nostra,")
+  Latin: text("illos tuos misericórdes óculos ad nos convérte.")
+  Latin: text("Et Jesum, benedíctum fructum ventris tui,")
+  Latin: text("nobis post hoc exsílium osténde.")
+  Latin: text("O clemens, o pia, o dulcis Virgo María.")
+  Latin: text("_")
+  Latin: [V.] text("Ora pro nobis, sancta Dei Génetrix.")
+  Latin: [R.] text("Ut digni efficiámur promissiónibus Christi.")
+  Latin: text("_")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Omnípotens sempitérne Deus, qui gloriósæ Vírginis Matris Maríæ corpus et ánimam, ut dignum Fílii tui habitáculum éffici mererétur, Spíritu Sancto cooperánte, præparásti: da, ut, cujus commemoratióne lætámur, ejus pia intercessióne, ab instántibus malis et a morte perpétua liberémur. Per eúmdem Christum Dóminum nostrum. Amen.")
+  Latin: [V.] text("Divínum auxílium + máneat semper nobíscum.")
   Latin: [R.] text("Amen.")

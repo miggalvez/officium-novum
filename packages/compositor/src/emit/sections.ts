@@ -185,6 +185,10 @@ function linesFromContent(
     line.parts.push({ type: 'rubric', value: normalized });
     line.parts.push({ type: 'text', value: ' ' });
   };
+  const lastLineText = () =>
+    (lines.at(-1)?.texts[language] ?? [])
+      .map((run) => ('value' in run && run.value ? run.value : ''))
+      .join('');
 
   for (let index = 0; index < content.length; index += 1) {
     const node = content[index]!;
@@ -228,14 +232,16 @@ function linesFromContent(
         if (
           slot === 'final-antiphon-bvm' &&
           /^v\.?$/iu.test(node.marker.trim()) &&
-          /^(?:Gaude|Rejoice)\b/u.test(stripLeadingGabcInlineCue(node.text).trim())
+          /^(?:Gaude|Rejoice)\b/u.test(stripLeadingGabcInlineCue(node.text).trim()) &&
+          lastLineText() !== '_'
         ) {
           lines.push(singleRunLine(language, undefined, { type: 'text', value: '_' }));
         }
         if (
           slot === 'final-antiphon-bvm' &&
           /^v\.?$/iu.test(node.marker.trim()) &&
-          /^(?:Orémus|Let us pray)\.?$/u.test(stripLeadingGabcInlineCue(node.text).trim())
+          /^(?:Orémus|Let us pray)\.?$/u.test(stripLeadingGabcInlineCue(node.text).trim()) &&
+          lastLineText() !== '_'
         ) {
           lines.push(singleRunLine(language, undefined, { type: 'text', value: '_' }));
         }
@@ -277,6 +283,7 @@ function linesFromContent(
           (node.source !== undefined || isHomilyBoundarySeparator(content, index));
         if (
           slot === 'hymn' ||
+          slot === 'final-antiphon-bvm' ||
           isShortLessonSeparator ||
           slot === 'martyrology' ||
           slot === 'responsory' ||
@@ -532,7 +539,8 @@ function normalizeFinalAntiphonText(text: string): string {
   return text
     .replace(/^\{:[^}]*:\}\s*/u, '')
     .replace(/^v\.\s+/u, '')
-    .replace(/eúndem/gu, 'eúmdem');
+    .replace(/eúndem/gu, 'eúmdem')
+    .trimEnd();
 }
 
 function isFinalAntiphonDivineAssistance(text: string): boolean {

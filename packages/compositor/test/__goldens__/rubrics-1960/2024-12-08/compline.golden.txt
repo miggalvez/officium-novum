@@ -3,7 +3,7 @@ date: 2024-12-08
 hour: compline
 celebration: In Conceptione Immaculata Beatæ Mariæ Virginis
 languages: Latin
-section count: 12
+section count: 13
 warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
@@ -154,4 +154,20 @@ warning count: 0
   Latin: [V.] text("Benedicámus Dómino.")
   Latin: [R.] text("Deo grátias.")
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
+  Latin: [R.] text("Amen.")
+
+[section #12 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Advent languages=Latin]
+  Latin: text("Alma Redemptóris Mater, quæ pérvia cæli porta manes,")
+  Latin: text("et stella maris, succúrre cadénti,")
+  Latin: text("Súrgere qui curat, pópulo: tu quæ genuísti,")
+  Latin: text("Natúra miránte, tuum sanctum Genitórem,")
+  Latin: text("Virgo prius ac postérius, Gabriélis ab ore")
+  Latin: text("Sumens illud Ave, peccatórum miserére.")
+  Latin: text("_")
+  Latin: [V.] text("Ángelus Dómini nuntiávit Maríæ.")
+  Latin: [R.] text("Et concépit de Spíritu Sancto.")
+  Latin: text("_")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Grátiam tuam, quǽsumus, Dómine, méntibus nostris infúnde: ut, qui, Ángelo nuntiánte, Christi Fílii tui incarnatiónem cognóvimus; per passiónem ejus et crucem, ad resurrectiónis glóriam perducámur. Per eúmdem Christum Dóminum nostrum. Amen.")
+  Latin: [V.] text("Divínum auxílium + máneat semper nobíscum.")
   Latin: [R.] text("Amen.")

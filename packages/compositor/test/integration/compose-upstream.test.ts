@@ -2963,6 +2963,35 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     ]);
   }, 240_000);
 
+  it('renders ordinary Rubrics 1960 Compline seasonal final Marian antiphons in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, opening] of [
+      ['2026-01-02', 'Alma Redemptóris Mater, quæ pérvia cæli'],
+      ['2026-06-01', 'Salve, Regína, mater misericórdiæ;']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+
+      const finalAntiphon = sectionTexts(compline, 'final-antiphon-bvm').map(normalizeLatin);
+      expect(finalAntiphon[0], `${date} Compline final Marian antiphon opening`).toBe(
+        normalizeLatin(opening)
+      );
+      expect(finalAntiphon.at(-2), `${date} Compline should append Divinum auxilium`).toBe(
+        normalizeLatin('Divínum auxílium + máneat semper nobíscum.')
+      );
+      expect(finalAntiphon.at(-1), `${date} Compline should end the final antiphon with Amen`).toBe(
+        normalizeLatin('Amen.')
+      );
+    }
+  }, 240_000);
+
   it('keeps Reduced 1955 Jan 6/7 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
     const { engine, resolvedCorpus } = await createHarness('Reduced - 1955');
 
@@ -3059,6 +3088,7 @@ function sectionTexts(
     | 'preces'
     | 'oration'
     | 'conclusion'
+    | 'final-antiphon-bvm'
     | 'martyrology'
     | 'canticle-ad-magnificat'
 ): readonly string[] {

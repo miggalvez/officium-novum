@@ -3,7 +3,7 @@ date: 2024-01-01
 hour: compline
 celebration: Die Octavæ Nativitatis Domini
 languages: Latin
-section count: 11
+section count: 12
 warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
@@ -138,4 +138,20 @@ warning count: 0
   Latin: [V.] text("Benedicámus Dómino.")
   Latin: [R.] text("Deo grátias.")
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
+  Latin: [R.] text("Amen.")
+
+[section #11 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Nativiti languages=Latin]
+  Latin: text("Alma Redemptóris Mater, quæ pérvia cæli")
+  Latin: text("Porta manes, et stella maris, succúrre cadénti,")
+  Latin: text("Súrgere qui curat, pópulo: tu quæ genuísti,")
+  Latin: text("Natúra miránte, tuum sanctum Genitórem,")
+  Latin: text("Virgo prius ac postérius, Gabriélis ab ore")
+  Latin: text("Sumens illud Ave, peccatórum miserére.")
+  Latin: text("_")
+  Latin: [V.] text("Post partum, Virgo, invioláta permansísti.")
+  Latin: [R.] text("Dei Génetrix, intercéde pro nobis.")
+  Latin: text("_")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Deus, qui salútis ætérnæ, beátæ Maríæ virginitáte fecúnda, humáno géneri prǽmia præstitísti: tríbue, quǽsumus; ut ipsam pro nobis intercédere sentiámus, per quam merúimus auctórem vitæ suscípere, Dóminum nostrum Jesum Christum Fílium tuum. Amen.")
+  Latin: [V.] text("Divínum auxílium + máneat semper nobíscum.")
   Latin: [R.] text("Amen.")

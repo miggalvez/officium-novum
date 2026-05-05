@@ -2150,8 +2150,7 @@ function resolveComplineFinalAntiphon(
   if (
     slotName !== 'final-antiphon-bvm' ||
     input.hour !== 'compline' ||
-    input.policy.name !== 'rubrics-1960' ||
-    (input.temporal.season !== 'eastertide' && input.temporal.season !== 'ascensiontide')
+    input.policy.name !== 'rubrics-1960'
   ) {
     return undefined;
   }
@@ -2161,7 +2160,7 @@ function resolveComplineFinalAntiphon(
     refs: [
       {
         path: MARIAANT_PATH,
-        section: 'Paschalis'
+        section: complineFinalAntiphonSection(input)
       },
       {
         path: COMMON_PRAYERS_PATH,
@@ -2171,6 +2170,32 @@ function resolveComplineFinalAntiphon(
       commonPrayerRef('Amen')
     ]
   };
+}
+
+function complineFinalAntiphonSection(input: ApplyRuleSetInput): string {
+  const date = normalizeDateInput(input.temporal.date);
+  const dayName = input.temporal.dayName;
+
+  if (dayName.startsWith('Adv')) {
+    return 'Advent';
+  }
+
+  if (dayName.startsWith('Nat') || date.month === 1 || (date.month === 2 && date.day < 2)) {
+    return 'Nativiti';
+  }
+
+  if (
+    (date.month === 2 || date.month === 3 || dayName.startsWith('Quad')) &&
+    !dayName.startsWith('Pasc')
+  ) {
+    return 'Quadragesimae';
+  }
+
+  if (dayName.startsWith('Pasc')) {
+    return 'Paschalis';
+  }
+
+  return 'Postpentecost';
 }
 
 function commonPrayerRef(section: string): TextReference {

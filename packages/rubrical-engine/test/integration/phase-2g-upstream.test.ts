@@ -163,9 +163,33 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
 
     // Completorium.txt:68 — `#Antiphona finalis` is only omitted under
     // cisterciensis, so 1960 Compline DOES say the final Marian antiphon.
-    // Assert the slot is still present (not empty) for 1960.
+    // In the 1960 ordinary Compline shape it expands to the seasonal
+    // Mariaant section rather than the heading-only Ordinarium block.
     const complineFinal = summary.hours.compline?.slots['final-antiphon-bvm'];
     expect(complineFinal?.kind).not.toBe('empty');
+    expect(complineFinal?.kind).toBe('ordered-refs');
+    if (complineFinal?.kind === 'ordered-refs') {
+      expect(complineFinal.refs[0]).toEqual({
+        path: 'horas/Latin/Psalterium/Mariaant',
+        section: 'Postpentecost'
+      });
+    }
+
+    for (const [date, expectedSection] of [
+      ['2026-01-02', 'Nativiti'],
+      ['2026-02-02', 'Quadragesimae'],
+      ['2026-04-05', 'Paschalis'],
+      ['2026-06-01', 'Postpentecost']
+    ] as const) {
+      const daySummary = engine.resolveDayOfficeSummary(date);
+      const finalAntiphon = daySummary.hours.compline?.slots['final-antiphon-bvm'];
+      expect(finalAntiphon?.kind, `${date} Compline final Marian antiphon`).toBe('ordered-refs');
+      if (finalAntiphon?.kind === 'ordered-refs') {
+        expect(finalAntiphon.refs[0]?.section, `${date} Compline final Marian antiphon`).toBe(
+          expectedSection
+        );
+      }
+    }
   }, 240_000);
 
   it(

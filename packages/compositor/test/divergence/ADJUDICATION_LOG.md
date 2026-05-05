@@ -5731,6 +5731,48 @@ refreshed for the shared Roman ordinary-responsory shape.
 hours still contain later unresolved Compline differences, now led by
 final BVM antiphon handling, preces routing, and half-verse rendering.
 
+### 2026-05-05 — Pattern: Rubrics 1960 Compline final Marian antiphon routing (engine/compositor-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the ordinary Compline responsory separators were
+fixed, the Rubrics 1960 2026 ledger exposed a 155-hour Compline family:
+Perl rendered the seasonal final Marian antiphon (`Alma Redemptóris
+Mater`, `Ave Regina cælórum`, `Regína cæli`, or `Salve Regína`) while
+the compositor ended the hour after the final `Amen`.
+
+**Root cause.** The 1960 engine only materialized
+`final-antiphon-bvm` for Paschaltide Compline, leaving non-Paschal dates
+on the heading-only `Ordinarium/Completorium#Antiphona finalis` slot.
+The upstream Perl special expands that heading through the seasonal
+`Psalterium/Mariaant` sections and then appends `Divinum auxilium`.
+Once the engine supplied those real sources, the compositor also needed
+to preserve final-antiphon separator nodes and trim source trailing
+whitespace.
+
+**Resolution.** Class `engine-bug` plus `compositor-bug`, fixed. Rubrics
+1960 Compline now routes the final Marian antiphon to the seasonal
+`Mariaant` section (`Advent`, `Nativiti`, `Quadragesimae`,
+`Paschalis`, or `Postpentecost`) and appends `Divinum auxilium`/`Amen`.
+The final-antiphon emitter now keeps source `_` separator lines and
+normalizes trailing spaces.
+
+Regression coverage was added in
+`packages/rubrical-engine/test/integration/phase-2g-upstream.test.ts`
+for all seasonal source sections and in
+`packages/compositor/test/integration/compose-upstream.test.ts` for 2026
+Alma and Salve witnesses. `packages/compositor/test/canonical-lines.test.ts`
+continues to cover the Paschal final-antiphon marker cleanup path.
+
+**Citation.** `upstream/web/cgi-bin/horas/specials.pl:313-340`,
+`upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:468-479`,
+`upstream/web/www/horas/Latin/Psalterium/Mariaant.txt:1-74`, and
+`upstream/web/www/horas/Ordinarium/Completorium.txt:68-76`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2407` to
+`2252`, and unadjudicated rows drop from `2201` to `2046`, removing the
+final-BVM Compline family from the current-year frontier.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

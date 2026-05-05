@@ -3,7 +3,7 @@ date: 2024-03-25
 hour: compline
 celebration: Feria Secunda Majoris Hebdomadæ
 languages: Latin
-section count: 11
+section count: 12
 warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
@@ -136,4 +136,23 @@ warning count: 0
   Latin: [V.] text("Benedicámus Dómino.")
   Latin: [R.] text("Deo grátias.")
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
+  Latin: [R.] text("Amen.")
+
+[section #11 type=antiphon slot=final-antiphon-bvm reference=horas/Latin/Psalterium/Mariaant#Quadragesimae languages=Latin]
+  Latin: text("Ave, Regína cælórum,")
+  Latin: text("Ave, Dómina Angelórum:")
+  Latin: text("Salve radix, salve porta,")
+  Latin: text("Ex qua mundo lux est orta:")
+  Latin: text("_")
+  Latin: text("Gaude, Virgo gloriósa,")
+  Latin: text("Super omnes speciósa,")
+  Latin: text("Vale, o valde decóra,")
+  Latin: text("Et pro nobis Christum exóra.")
+  Latin: text("_")
+  Latin: [V.] text("Dignáre me laudáre te, Virgo sacráta.")
+  Latin: [R.] text("Da mihi virtútem contra hostes tuos.")
+  Latin: text("_")
+  Latin: [v.] text("Orémus.")
+  Latin: [v.] text("Concéde, miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen.")
+  Latin: [V.] text("Divínum auxílium + máneat semper nobíscum.")
   Latin: [R.] text("Amen.")
