@@ -5610,6 +5610,48 @@ typecheck/test green, every compositor source file < 800 lines.
 
 **Citation.** [Phase 3 design §18 / §19.8](../../../../docs/phase-3-composition-engine-design.md).
 
+### 2026-05-05 — Pattern: Rubrics 1960 2026 fallback-hymn doxology fanout (perl-bug)
+
+**Commit.** Pending in tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 ledger exposes the
+same stable fallback-hymn doxology hashes already seen in the 2024
+baseline: Perl keeps the default fallback hymn closes (`Deo Patri sit
+glória,` or `Præsta, Pater piíssime,`) while the compositor emits the
+source-backed doxology stanza required by the winning office.
+
+**Root cause.** This is not a new compositor or engine defect. The
+rubrical engine supplies a `doxology-variant` slot for the relevant
+fallback hymns, and the compositor substitutes that slot into the
+fallback hymn stanza. The 2026 witnesses cover Nativity, Epiphany, Holy
+Family, Ascension, Corpus Christi, Sacred Heart, Transfiguration, and
+Seven Sorrows variants. The legacy Perl comparison surface retains the
+unsubstituted fallback close.
+
+**Resolution.** Class `perl-bug`. Added 206 Rubrics 1960 2026 row keys
+for the four stable first-divergence hashes:
+
+- `c52cc2ef` — `Deo Patri sit glória,` to `Jesu, tibi sit glória,`
+- `318cf47a` — `Præsta, Pater piíssime,` to `Jesu, tibi sit glória,`
+- `6b019b6f` — `Deo Patri sit glória,` to `Jesu, tuis obédiens`
+- `274511e7` — `Præsta, Pater piíssime,` to `Jesu, tuis obédiens`
+
+Regression coverage was widened in
+`packages/rubrical-engine/test/integration/january-hymn-routing.test.ts`
+with representative 2026 Rubrics 1960 witnesses for each source family.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-96`,
+`upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:56-67`,
+`upstream/web/www/horas/Latin/Sancti/08-06.txt:50-61`,
+`upstream/web/www/horas/Latin/Sancti/09-15.txt:52-54`,
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:100-109`,
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:664-730`,
+and `docs/phase-2-rubrical-engine-design.md:1506`.
+
+**Impact.** 206 Rubrics 1960 2026 rows move from `unadjudicated` to
+`perl-bug`, narrowing the current-year frontier without date-specific
+logic.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

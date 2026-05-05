@@ -129,6 +129,41 @@ describeIfUpstream('January hymn routing regressions', () => {
     },
     240_000
   );
+
+  it(
+    'keeps source-backed 2026 doxology variants on Rubrics 1960 fallback hymns',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const roman1960 = engines.get('Rubrics 1960 - 1960');
+      expect(roman1960).toBeDefined();
+      if (!roman1960) {
+        return;
+      }
+
+      for (const [date, expected] of [
+        ['2026-01-01', 'horas/Latin/Psalterium/Doxologies:Nat'],
+        ['2026-01-06', 'horas/Latin/Psalterium/Doxologies:Epi'],
+        ['2026-01-11', 'horas/Latin/Tempora/Epi1-0:Doxology'],
+        ['2026-05-14', 'horas/Latin/Psalterium/Doxologies:Asc'],
+        ['2026-06-04', 'horas/Latin/Psalterium/Doxologies:Corp'],
+        ['2026-06-12', 'horas/Latin/Psalterium/Doxologies:Heart'],
+        ['2026-08-06', 'horas/Latin/Sancti/08-06:Doxology'],
+        ['2026-09-15', 'horas/Latin/Sancti/09-15:Doxology']
+      ] as const) {
+        for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+          expectHourDoxology(roman1960, date, hour, expected);
+        }
+      }
+
+      expectHourDoxology(
+        roman1960,
+        '2026-05-13',
+        'compline',
+        'horas/Latin/Psalterium/Doxologies:Asc'
+      );
+    },
+    240_000
+  );
 });
 
 let enginesPromise: Promise<ReadonlyMap<string, RubricalEngine>> | undefined;
@@ -218,6 +253,15 @@ function expectMinorHourDoxology(
   engine: RubricalEngine,
   date: string,
   hour: 'prime' | 'terce' | 'sext' | 'none',
+  expected: string
+) {
+  expectHourDoxology(engine, date, hour, expected);
+}
+
+function expectHourDoxology(
+  engine: RubricalEngine,
+  date: string,
+  hour: HourName,
   expected: string
 ) {
   expect(formatSingleRef(slotAt(engine, date, hour, 'doxology-variant'))).toBe(expected);
