@@ -6709,6 +6709,36 @@ directly at Psalm 117 and drops the first psalm unit.
 exact-match hours remain `1008`; unadjudicated rows drop from `810` to
 `803`, and `perl-bug` rows rise from `1102` to `1109`.
 
+### 2026-05-06 — Pattern: 2026 Vespers fifth-psalm override remains Psalm 116 (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 6
+Vespers rows with the stable key-hash `39846534`: Perl expected the
+fifth psalm heading as `Psalmus 113 [5]`, while the compositor emitted
+`Psalmus 116 [5]`.
+
+**Root cause.** This is the 2026 fanout of the already documented Roman
+Vespers fifth-psalm override family. The Epiphany, Pentecost, and Trinity
+source rows explicitly set `Psalm5 Vespera=116`; the corresponding
+source rows either inherit that rule or also name `Psalm5 Vespera3=113`
+for the alternate third-Vespers surface. The compositor preserves the
+source-backed first-Vespers fifth slot as Psalm 116, while the Perl
+comparison surface retains the Day0 Psalm 113 heading.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+6 Rubrics 1960 2026 Vespers rows sharing stable key-hash `39846534`.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11`;
+`upstream/web/www/horas/Latin/Sancti/01-13.txt:1-15`;
+`upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13`;
+`upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:12-20`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `1912` and
+exact-match hours remain `1008`; unadjudicated rows drop from `803` to
+`797`, and `perl-bug` rows rise from `1109` to `1115`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

@@ -23,7 +23,7 @@ describe('multi-year status report', () => {
       year: 2026,
       status: 'exploratory',
       policy: 'Rubrics 1960 - 1960',
-      unadjudicated: 803,
+      unadjudicated: 797,
       noThrowFailures: 0,
       schemaFailures: 0
     });
@@ -46,7 +46,7 @@ describe('multi-year status report', () => {
       2025 | exploratory | Divino Afflatu - 1954 | 0 | 0 | 0
       2025 | exploratory | Reduced - 1955 | 0 | 0 | 0
       2025 | exploratory | Rubrics 1960 - 1960 | 2573 | 0 | 0
-      2026 | exploratory | Rubrics 1960 - 1960 | 803 | 0 | 0"
+      2026 | exploratory | Rubrics 1960 - 1960 | 797 | 0 | 0"
     `);
   });
 });

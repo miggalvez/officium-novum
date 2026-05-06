@@ -17453,6 +17453,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-06/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-06",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Epiphany rule set explicitly overrides the fifth Vespers psalm with `Psalm5 Vespera=116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-07/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-07",
@@ -17832,6 +17843,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-13/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-13",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-13.txt:1-15 and upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — Jan 13 inherits Epiphany by `ex Sancti/01-06`, and the inherited rule set explicitly overrides the fifth Vespers psalm with `Psalm5 Vespera=116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-14/Lauds/7c9c46cc": {
     "policy": "Rubrics 1960 - 1960",
@@ -21504,6 +21526,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-05-24/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-24",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-05-25/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-05-25",
@@ -21539,6 +21572,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-05-25/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-25",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-05-26/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-05-26",
@@ -21573,6 +21617,17 @@
     "notes": "Phase 2/3 fix plus adjudication: seasonal Paschal fallback-hymn doxology now reaches minor-hour fallback hymns; residual Perl rows keep the non-seasonal stanza.",
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
+  },
+  "Rubrics 1960 - 1960/2026-05-26/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-26",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-05-27/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -21713,6 +21768,17 @@
     "notes": "Phase 2/3 fix plus adjudication: seasonal Paschal fallback-hymn doxology now reaches minor-hour fallback hymns; residual Perl rows keep the non-seasonal stanza.",
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
+  },
+  "Rubrics 1960 - 1960/2026-05-31/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-31",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:12-20 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — Trinity Sunday explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-06-02/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
