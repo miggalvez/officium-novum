@@ -488,7 +488,13 @@ describe('composeHour(matins)', () => {
     );
     corpus.addFile(
       makeFileMulti('horas/Latin/Tempora/Pasc1-0', [
-        { header: 'Lectio1', content: [{ type: 'text', value: 'Lectio prima paschalis' }] },
+        {
+          header: 'Lectio1',
+          content: [
+            { type: 'text', value: 'Lectio prima paschalis' },
+            { type: 'macroRef', name: 'teDeum' }
+          ]
+        },
         {
           header: 'Responsory1',
           content: [{ type: 'verseMarker', marker: 'R.', text: 'Surréxit Dóminus.' }]
@@ -496,8 +502,18 @@ describe('composeHour(matins)', () => {
       ])
     );
     corpus.addFile(
-      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Te Deum', [
-        { type: 'text', value: 'Te Deum laudámus.' }
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Te Deum',
+          content: [{ type: 'text', value: 'Te Deum laudámus.' }]
+        },
+        {
+          header: 'Tu autem',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Tu autem, Dómine, miserére nobis.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Deo grátias.' }
+          ]
+        }
       ])
     );
 
@@ -584,6 +600,7 @@ describe('composeHour(matins)', () => {
       'versicle',
       'heading',
       'lectio-brevis',
+      'other',
       'responsory',
       'te-deum'
     ]);
@@ -597,6 +614,8 @@ describe('composeHour(matins)', () => {
     expect(composed.sections[1]!.heading).toEqual({ kind: 'nocturn', ordinal: 1 });
     expect(renderRuns(composed.sections[1]!.lines[0]!, 'Latin')).toBe('Ad Nocturnum');
     expect(composed.sections[4]!.heading).toEqual({ kind: 'lesson', ordinal: 1 });
+    expect(composed.sections.filter((section) => section.slot === 'te-deum')).toHaveLength(1);
+    expect(renderRuns(composed.sections[6]!.lines[0]!, 'Latin')).toBe('Tu autem, Dómine, miserére nobis.');
     expect(renderRuns(composed.sections.at(-1)!.lines[0]!, 'Latin')).toBe('_');
     expect(renderRuns(composed.sections.at(-1)!.lines[1]!, 'Latin')).toBe('Te Deum');
     expect(renderRuns(composed.sections.at(-1)!.lines[2]!, 'Latin')).toBe('Te Deum laudámus.');

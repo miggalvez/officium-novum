@@ -6366,6 +6366,36 @@ Lauds/Prime/Vespers common-antiphon signature.
 unadjudicated rows drop from `1251` to `1148` and `perl-bug` rows rise
 from `775` to `878`.
 
+### 2026-05-05 — Fix: embedded Te Deum macro in final Matins lesson (compositor-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 11
+Matins rows where Perl emitted the final lesson conclusion
+`V. Tu autem, Dómine, miserére nobis.` and the `Te Deum` heading, while
+the compositor entered the Te Deum hymn text directly at the end of the
+lesson body.
+
+**Root cause.** This was a Phase 3 composition bug. Some temporal Matins
+lesson sections embed `&teDeum` after the final lesson text. The
+compositor already owns Te Deum as a structured Matins slot, so expanding
+that embedded macro inside `lectio-brevis` duplicated the Te Deum source
+inside the lesson and placed it before the generated `Tu autem` boundary.
+
+**Resolution.** Class `compositor-bug`. Strip embedded `teDeum` macros
+from Matins lesson content before deferred macro expansion, leaving the
+dedicated `te-deum` slot to render the separator, heading, and hymn.
+Added unit coverage for a lesson ending in `teDeum`, updated Easter
+Appendix-A snapshots, and verified the representative Rubrics 1960
+`2026-04-05` Matins witness.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:94-97`;
+`upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:59-61`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2026` to
+`2015`, exact-match hours rise from `894` to `905`, and unadjudicated
+rows drop from `1148` to `1137`; `perl-bug` rows remain `878`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

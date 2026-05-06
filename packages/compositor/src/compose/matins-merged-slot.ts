@@ -157,10 +157,12 @@ export function composeMergedSlot(
         });
         continue;
       }
+      const lessonSourceContent =
+        slot === 'lectio-brevis' ? stripEmbeddedTeDeumMacro(sourceContent) : sourceContent;
       const expandedContent = expandDeferredNodes(
         slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
-          ? withPsalmGloriaPatri(sourceContent)
-          : sourceContent,
+          ? withPsalmGloriaPatri(lessonSourceContent)
+          : lessonSourceContent,
         {
           index: args.corpus,
           language: lang,
@@ -269,6 +271,13 @@ function containsGloriaMacro(content: readonly TextContent[]): boolean {
     }
     return false;
   });
+}
+
+function stripEmbeddedTeDeumMacro(content: readonly TextContent[]): readonly TextContent[] {
+  const filtered = content.filter(
+    (node) => node.type !== 'macroRef' || !/^te\s*deum$/iu.test(node.name)
+  );
+  return filtered.length === content.length ? content : Object.freeze(filtered);
 }
 
 function findLastResponsoryResponse(
