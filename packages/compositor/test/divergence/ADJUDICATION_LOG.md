@@ -6858,6 +6858,37 @@ comparison surface retains the Day0 Psalm 113 heading.
 exact-match hours remain `1008`; unadjudicated rows drop from `803` to
 `797`, and `perl-bug` rows rise from `1109` to `1115`.
 
+### 2026-05-06 — Pattern: Jan 3 Saturday BVM Lauds and Holy Name first-Vespers psalmody (engine-bug fixed, perl-bug adjudicated)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried two
+Jan 3 major-hour rows after the Nativity feria fanout: Lauds diverged at
+the Benedictus antiphon, and Vespers diverged at the first psalm heading.
+
+**Root cause.** Jan 3, 2026 is a free Saturday under a fourth-class
+Nativity temporal feria, so the engine correctly synthesizes the Saturday
+Office of the BVM for the day's office. C10 supplies its own Lauds
+`[Versum 2]` and `[Ant 2]`; Perl instead substitutes the Nativity-octave
+Benedictus antiphon. At the evening boundary, however, Saturday BVM has
+no second Vespers and Holy Name first Vespers wins. The Holy Name source
+explicitly carries `Psalmi Dominica`, `Psalm5 Vespera=115`, and
+`Festum Domini`; the psalter selector was suppressing `Psalmi Dominica`
+too broadly for all temporal first Vespers.
+
+**Resolution.** Fixed the engine to preserve the actual-evening psalter
+for ordinary temporal Sunday first Vespers while still honoring
+`Psalmi Dominica` for temporal feasts of the Lord. Added source-backed
+coverage for the 2026-01-03 Holy Name first-Vespers witness. Classified
+the remaining 2026-01-03 Lauds Benedictus-antiphon row as `perl-bug`.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Nat03.txt:6-15`;
+`upstream/web/www/horas/Latin/Commune/C10.txt:7-15`;
+`upstream/web/www/horas/Latin/Commune/C10.txt:81-90`;
+`upstream/web/www/horas/Latin/Tempora/Nat2-0.txt:9-18`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`;
+`docs/file-format-specification.md:132-140`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

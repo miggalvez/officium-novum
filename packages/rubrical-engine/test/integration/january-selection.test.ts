@@ -210,6 +210,25 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Psalterium/Psalmorum/Psalm129:__preamble:129',
         'horas/Latin/Psalterium/Psalmorum/Psalm131:__preamble:131'
       ]);
+
+      // 2026-01-03: the Saturday BVM office has no second Vespers, so Holy
+      // Name first Vespers wins. Its source-backed `Psalmi Dominica` and
+      // `Psalm5 Vespera=115` directives keep festal Sunday psalmody even
+      // though the office begins on Saturday evening.
+      expectAntiphonRefs(psalmodyAt(roman1960, '2026-01-03', 'vespers')).toEqual([
+        'horas/Latin/Tempora/Nat2-0:Ant Vespera:1',
+        'horas/Latin/Tempora/Nat2-0:Ant Vespera:2',
+        'horas/Latin/Tempora/Nat2-0:Ant Vespera:3',
+        'horas/Latin/Tempora/Nat2-0:Ant Vespera:4',
+        'horas/Latin/Tempora/Nat2-0:Ant Vespera:5'
+      ]);
+      expectPsalmRefs(psalmodyAt(roman1960, '2026-01-03', 'vespers')).toEqual([
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:1',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:2',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:3',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Vespera:4',
+        'horas/Latin/Psalterium/Psalmorum/Psalm115:__preamble:115'
+      ]);
       expectMinorHour(
         psalmodyAt(roman1960, '2024-01-06', 'prime'),
         'horas/Latin/Sancti/01-06:Ant Laudes:1',

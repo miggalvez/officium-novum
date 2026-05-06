@@ -17239,6 +17239,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-03/Lauds/060ea0f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-03",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Mirábile mystérium * declarátur hódie: innovántur natúræ, Deus homo factus est: id quod fuit permánsit, et quod non erat assúmpsit; non commixtiónem passus, neque divisiónem.",
+    "firstActual": "Ant. Beáta Dei Génetrix, María, * Virgo perpétua, templum Dómini, sacrárium Spíritus Sancti, sola sine exémplo placuísti Dómino nostro Jesu Christo: ora pro pópulo, intérveni pro clero, intercéde pro devóto femíneo sexu.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat03.txt:6-15 and upstream/web/www/horas/Latin/Commune/C10.txt:7-15 and upstream/web/www/horas/Latin/Commune/C10.txt:81-90 and docs/file-format-specification.md:132-140 — the Jan 3 temporal row is a fourth-class feria under Rubrics 1960, so the free Saturday supplement selects C10, the Office of the Blessed Virgin for Saturday. C10 supplies its own Lauds versicle and Benedictus antiphon under `[Versum 2]` / `[Ant 2]`; the compositor preserves that selected-office text while the Perl comparison surface substitutes the Nativity-octave Benedictus antiphon.",
+    "notes": "2026 Rubrics 1960 Jan 3 Saturday BVM Lauds Benedictus-antiphon surface exposed after Holy Name first-Vespers psalmody was fixed.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-03/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-03",
