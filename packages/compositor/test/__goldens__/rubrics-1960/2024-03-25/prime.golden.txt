@@ -98,26 +98,10 @@ warning count: 0
   Latin: [V.] text("Exsúrge, Christe, ádjuva nos.")
   Latin: [R.] text("Et líbera nos propter nomen tuum.")
 
-[section #6 type=oration slot=oration reference=horas/Ordinarium/Prima#Oratio languages=Latin]
-  Latin: [V.] text("Dóminus vobíscum.")
-  Latin: [R.] text("Et cum spíritu tuo.")
-  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
-  Latin: [R.] text("Et clamor meus ad te véniat.")
-  Latin: rubric("secunda Domine, exaudi omittitur")
-  Latin: [v.] text("Orémus.")
-  Latin: [v.] text("Dómine Deus omnípotens, qui ad princípium hujus diéi nos perveníre fecísti: tua nos hódie salva virtúte; ut in hac die ad nullum declinémus peccátum, sed semper ad tuam justítiam faciéndam nostra procédant elóquia, dirigántur cogitatiónes et ópera.")
-  Latin: [r.] text("Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+[section #6 type=oration slot=oration reference=horas/Latin/Tempora/Quad6-1#Oratio 2 languages=Latin]
+  Latin: text("Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:")
+  Latin: [r.] text("Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
-  Latin: [V.] text("Dóminus vobíscum.")
-  Latin: [R.] text("Et cum spíritu tuo.")
-  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
-  Latin: [R.] text("Et clamor meus ad te véniat.")
-  Latin: rubric("secunda Domine, exaudi omittitur")
-  Latin: [V.] text("Benedicámus Dómino.")
-  Latin: [R.] text("Deo grátias.")
-  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
-  Latin: [R.] text("Amen.")
-  Latin: text("(numquam omittitur)")
 
 [section #7 type=martyrology slot=martyrology reference=prime-martyrology:03-26 languages=Latin]
   Latin: [v.] text("Séptimo Kaléndas Aprílis Luna quinta décima Anno Dómini 2024")

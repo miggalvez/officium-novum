@@ -2337,7 +2337,9 @@ function properHeadersForSlot(
         hour === 'sext' ||
         hour === 'none'
       ) {
-        return input?.temporal.dayName === 'Quad6-6' ? ['Oratio 2', 'Oratio'] : ['Oratio'];
+        return input?.temporal.dayName === 'Quad6-6' || input?.policy.name === 'rubrics-1960'
+          ? ['Oratio 2', 'Oratio']
+          : ['Oratio'];
       }
       return ['Oratio'];
     case 'invitatory':

@@ -6396,6 +6396,38 @@ Appendix-A snapshots, and verified the representative Rubrics 1960
 `2015`, exact-match hours rise from `894` to `905`, and unadjudicated
 rows drop from `1148` to `1137`; `perl-bug` rows remain `878`.
 
+### 2026-05-05 — Fix: Lenten feria minor-hour Oratio 2 selection (engine-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried a
+large minor-hour family where Perl emitted the Lenten feria collect after
+`Dómine, exáudi... / Orémus.`, while the compositor skipped from the
+ordinary minor-hour prelude directly into the conclusion. Representative
+witness: `2026-02-23` Terce, where Perl expected the `Quad1-1`
+`[Oratio 2]` collect `Convérte nos, Deus, salutáris noster...` and the
+compositor repeated `V. Dómine, exáudi oratiónem meam.`
+
+**Root cause.** This was a rubrical-engine slot-selection bug. Temporal
+Lenten feria files use `[Oratio 2]` for the collect that minor hours
+pray under the ordinary one-alone wrapper, but `properHeadersForSlot`
+only considered `[Oratio 2]` for Holy Saturday (`Quad6-6`) at minor
+hours. The engine therefore fell back to the Ordinarium minor-hour
+`[Oratio]` shell instead of the proper temporal collect.
+
+**Resolution.** Class `engine-bug`. Minor-hour oration lookup now tries
+`[Oratio 2]` before `[Oratio]` for Prime, Terce, Sext, and None. Added
+engine coverage for the `2026-02-23` `Quad1-1` slot refs and compositor
+coverage proving Terce/Sext/None keep the ordinary prelude while
+including the temporal `Oratio 2` collect.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Quad1-1.txt:38-40`;
+`upstream/web/www/horas/Ordinarium/Minor.txt:28-34`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `2015` to
+`1928`, exact-match hours rise from `905` to `992`, and unadjudicated
+rows drop from `1137` to `1050`; `perl-bug` rows remain `878`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

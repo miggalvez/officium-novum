@@ -683,6 +683,39 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Lenten feria minor-hour Oratio 2 under the ordinary one-alone wrapper', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const expectedPrelude = [
+      normalizeLatin('Dómine, exáudi oratiónem meam.'),
+      normalizeLatin('Et clamor meus ad te véniat.'),
+      normalizeLatin('Orémus.')
+    ] as const;
+    const expectedCollect = normalizeLatin(
+      'Convérte nos, Deus, salutáris noster: et, ut nobis jejúnium quadragesimále profíciat, mentes nostras cæléstibus ínstrue disciplínis.'
+    );
+
+    const summary = engine.resolveDayOfficeSummary('2026-02-23');
+    expect(summary.temporal.dayName).toBe('Quad1-1');
+
+    for (const hour of ['terce', 'sext', 'none'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+      const oration = sectionTexts(composed, 'oration').map(normalizeLatin);
+
+      expect(oration.slice(0, expectedPrelude.length), `${hour} should keep the ordinary wrapper`).toEqual(
+        expectedPrelude
+      );
+      expect(oration, `${hour} should include the temporal Oratio 2 collect`).toContain(
+        expectedCollect
+      );
+    }
+  }, 240_000);
+
   it('renders the Easter Octave Prime Martyrologium tail after the one-alone oration bridge', async () => {
     const expectedHeading = normalizeLatin(
       'Tértio Nonas Aprílis Luna vicésima tértia Anno Dómini 2024'

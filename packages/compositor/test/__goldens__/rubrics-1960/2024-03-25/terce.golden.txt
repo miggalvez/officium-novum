@@ -98,6 +98,9 @@ warning count: 0
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [v.] text("Orémus.")
+  Latin: text("Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:")
+  Latin: [r.] text("Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
 
 [section #7 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")

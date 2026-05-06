@@ -731,6 +731,29 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'uses the Lenten feria Oratio 2 collect for minor hours when the temporal file has no Oratio section',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine).toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      const summary = engine.resolveDayOfficeSummary('2026-02-23');
+      expect(summary.temporal.dayName).toBe('Quad1-1');
+
+      for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+        expectSingleRef(
+          summary.hours[hour]?.slots.oration,
+          'horas/Latin/Tempora/Quad1-1:Oratio 2'
+        );
+      }
+    },
+    240_000
+  );
+
+  it(
     'adds the Prime Martyrologium structural slot on Easter Octave weekdays while Triduum Prime still omits it',
     async () => {
       const engines = await loadEngines([
