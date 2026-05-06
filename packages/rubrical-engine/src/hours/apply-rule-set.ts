@@ -484,7 +484,10 @@ function findProperReference(
     ]);
   }
 
-  const ref = findReferenceInFiles(files, headers);
+  const ref =
+    slot.name === 'chapter' && input.hour === 'vespers'
+      ? findReferenceInFilesPreservingFileOrder(files, headers)
+      : findReferenceInFiles(files, headers);
   return splitComplineNuncAntiphonOpeningRef(ref, slot.name, input);
 }
 
@@ -722,8 +725,8 @@ function resolveMajorHourPsalmRefs(
       ['Ant Vespera 3', 'Ant Vespera']
     : ['Ant Vespera'];
 
-  for (const header of headers) {
-    for (const file of files) {
+  for (const file of files) {
+    for (const header of headers) {
       const section = findMajorHourPsalmSection(file, header, conditionContext);
       if (!section) {
         continue;
@@ -2314,7 +2317,7 @@ function properHeadersForSlot(
         if (side === 'first') {
           return ['Versum 1', `Versum ${hourSuffix}`, 'Versum 3', 'Versum 2'];
         }
-        return ['Versum 3', `Versum ${hourSuffix}`, 'Versum 1'];
+        return ['Versum 3', `Versum ${hourSuffix}`, 'Versum 2', 'Versum 1'];
       }
       if (hour === 'prime') {
         return [`Versum ${hourSuffix}`];

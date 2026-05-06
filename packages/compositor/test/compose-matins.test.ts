@@ -650,6 +650,104 @@ describe('composeHour(matins)', () => {
     expect(teDeum).toBeUndefined();
   });
 
+  it('suppresses embedded Gloria when a non-final Matins responsory carries source-position Gloria', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Sancti/01-01', [
+        {
+          header: 'Nocturn 3 Versum',
+          content: [{ type: 'verseMarker', marker: 'V.', text: 'Notum fecit Dóminus.' }]
+        },
+        { header: 'Lectio7', content: [{ type: 'text', value: 'Lectio septima.' }] },
+        {
+          header: 'Responsory7',
+          content: [
+            { type: 'verseMarker', marker: 'R.', text: 'Sancta et immaculáta virgínitas.' },
+            { type: 'text', value: '* Quia quem cæli cápere non póterant.' },
+            { type: 'verseMarker', marker: 'V.', text: 'Benedícta tu in muliéribus.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Quia quem cæli cápere non póterant.' },
+            { type: 'macroRef', name: 'Gloria' },
+            { type: 'verseMarker', marker: 'R.', text: 'Quia quem cæli cápere non póterant.' }
+          ]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Gloria',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+            {
+              type: 'verseMarker',
+              marker: 'R.',
+              text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+            }
+          ]
+        },
+        {
+          header: 'Tu autem',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Tu autem, Dómine, miserére nobis.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Deo grátias.' }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 3,
+              psalmody: [],
+              antiphons: [],
+              versicle: {
+                reference: { path: 'horas/Latin/Sancti/01-01', section: 'Nocturn 3 Versum' }
+              },
+              lessonIntroduction: 'ordinary',
+              lessons: [
+                {
+                  index: 7,
+                  source: {
+                    kind: 'patristic',
+                    reference: { path: 'horas/Latin/Sancti/01-01', section: 'Lectio7' }
+                  }
+                }
+              ],
+              responsories: [
+                {
+                  index: 7,
+                  reference: { path: 'horas/Latin/Sancti/01-01', section: 'Responsory7' },
+                  suppressEmbeddedGloria: true
+                }
+              ],
+              benedictions: []
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+    const rendered = composed.sections.flatMap((section) =>
+      section.lines.map((line) => renderRuns(line, 'Latin'))
+    );
+
+    expect(rendered).toContain('Quia quem cæli cápere non póterant.');
+    expect(rendered).not.toContain('Glória Patri, et Fílio, * et Spirítui Sancto.');
+  });
+
   it('strips invitatory division markers from Psalm 94 verses while preserving antiphon stars', () => {
     const corpus = new InMemoryTextIndex();
     corpus.addFile(

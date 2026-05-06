@@ -37,6 +37,7 @@ export interface MatinsSlotRef {
   readonly openingAntiphon?: boolean;
   readonly repeatAntiphon?: boolean;
   readonly appendGloria?: boolean;
+  readonly suppressEmbeddedGloria?: boolean;
   readonly hasExplicitAntiphon?: boolean;
   readonly pairedAntiphonRef?: TextReference;
   readonly pairedPsalmRef?: TextReference;
@@ -79,6 +80,7 @@ export function composeMergedSlot(
       hasExplicitAntiphon,
       repeatAntiphon,
       appendGloria,
+      suppressEmbeddedGloria,
       pairedAntiphonRef,
       pairedPsalmRef
     } = refState;
@@ -175,7 +177,14 @@ export function composeMergedSlot(
           ...(args.onWarning ? { onWarning: args.onWarning } : {})
         }
       );
-      const expanded = slot === 'responsory' ? normalizeResponsoryGloria(expandedContent) : expandedContent;
+      const expanded =
+        slot === 'responsory'
+          ? suppressEmbeddedResponsoryGloria(
+              normalizeResponsoryGloria(expandedContent),
+              appendGloria === true,
+              suppressEmbeddedGloria === true
+            )
+          : expandedContent;
       const flattened = flattenConditionals(expanded, args.context);
       const transformed = applyDirectives(slot, flattened, {
         hour: 'matins',
@@ -269,6 +278,69 @@ function withResponsoryGloria(content: readonly TextContent[]): readonly TextCon
     { type: 'macroRef', name: 'Gloria1' } satisfies TextContent,
     ...(repeatedResponse ? [repeatedResponse] : [])
   ]);
+}
+
+function suppressEmbeddedResponsoryGloria(
+  content: readonly TextContent[],
+  appendGloria: boolean,
+  suppressEmbeddedGloria: boolean
+): readonly TextContent[] {
+  if (appendGloria || !suppressEmbeddedGloria) {
+    return content;
+  }
+
+  let changed = false;
+  const out: TextContent[] = [];
+  for (let index = 0; index < content.length; index += 1) {
+    const node = content[index]!;
+    if (node.type === 'conditional') {
+      const stripped = suppressEmbeddedResponsoryGloria(
+        node.content,
+        appendGloria,
+        suppressEmbeddedGloria
+      );
+      if (stripped !== node.content) {
+        changed = true;
+        out.push({ ...node, content: [...stripped] });
+      } else {
+        out.push(node);
+      }
+      continue;
+    }
+
+    if (isResponsoryGloriaVersicle(node)) {
+      changed = true;
+      const next = content[index + 1];
+      if (next && isResponsoryRepeatAfterGloria(next)) {
+        index += 1;
+      }
+      continue;
+    }
+
+    out.push(node);
+  }
+
+  return changed ? Object.freeze(out) : content;
+}
+
+function isResponsoryGloriaVersicle(node: TextContent): boolean {
+  if (node.type === 'verseMarker') {
+    return /^v\.?$/iu.test(node.marker.trim()) && /^gl[oó]ria patri\b/iu.test(node.text.trim());
+  }
+  if (node.type === 'text') {
+    return /^v\.\s*gl[oó]ria patri\b/iu.test(node.value.trim());
+  }
+  return false;
+}
+
+function isResponsoryRepeatAfterGloria(node: TextContent): boolean {
+  if (node.type === 'verseMarker') {
+    return /^r\.?$/iu.test(node.marker.trim());
+  }
+  if (node.type === 'text') {
+    return /^r\.\s*/iu.test(node.value.trim());
+  }
+  return false;
 }
 
 function containsGloriaMacro(content: readonly TextContent[]): boolean {

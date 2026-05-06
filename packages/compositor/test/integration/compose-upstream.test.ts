@@ -2674,7 +2674,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           [
             'O admirábile commércium: Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.',
             'Quando natus es * ineffabíliter ex Vírgine, tunc implétæ sunt Scriptúræ: sicut plúvia in vellus descendísti, ut salvum fáceres genus humánum: te laudámus, Deus noster.',
-            'Psalmus 110 [2]'
+            'Psalmus 112 [2]'
           ]
         ],
         [

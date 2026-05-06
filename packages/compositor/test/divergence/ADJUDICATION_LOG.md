@@ -6925,6 +6925,43 @@ rubrical-engine, compositor, and Jan 6 integration coverage.
 `1902`; exact-match hours rise from `1016` to `1018`; unadjudicated rows
 drop from `783` to `781`.
 
+### 2026-05-06 — Pattern: Jan 1 Nativity octave second-Vespers source ownership and Matins responsory Gloria (engine/compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried Jan
+1 Matins and Vespers rows. Matins diverged where `Responsory7`
+referenced Christmas `Responsory6` and inherited that source section's
+nocturn-final Gloria. Vespers diverged at the second psalm heading:
+the antiphon came from Jan 1, but the psalm number still came from the
+inherited Christmas second-Vespers row.
+
+**Root cause.** The Matins compositor treated embedded responsory Gloria
+as absolute source text even when the current responsory position was
+not nocturn-final. Separately, major-hour psalm tie extraction checked
+all second-Vespers headers across inherited files before falling back to
+the current file's own `[Ant Vespera]`, so Jan 1 mixed Jan 1 antiphons
+with Christmas `Ant Vespera 3` psalms. The Vespers chapter seam needed
+the same file-owned fallback for Jan 1's own `[Capitulum Laudes]`, while
+the second-Vespers versicle remained owned by Christmas `Versum 3`.
+
+**Resolution.** Suppressed embedded responsory Gloria for non-final
+Matins responsory positions, aligned major-hour psalm tie extraction with
+the selected antiphon file/header, and narrowed Vespers chapter fallback
+to preserve Jan 1's own chapter without disturbing inherited second-
+Vespers versicles. Added focused Matins compositor coverage and January
+1955/1960 source-ref coverage for the Jan 1 Vespers psalm/chapter/
+versicle seam.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/01-01.txt:15-20`;
+`upstream/web/www/horas/Latin/Sancti/01-01.txt:112-124`;
+`upstream/web/www/horas/Latin/Sancti/12-25.txt:230-236`;
+`upstream/web/www/horas/Latin/Sancti/12-25.txt:449-453`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1902` to
+`1899`; exact-match hours rise from `1018` to `1021`; unadjudicated rows
+drop from `781` to `780`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

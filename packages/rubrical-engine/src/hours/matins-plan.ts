@@ -636,7 +636,10 @@ function buildResponsory(
   if (match) {
     return {
       index,
-      reference: officeReference(match.file.path, match.section.header)
+      reference: officeReference(match.file.path, match.section.header),
+      ...(referencesDifferentNocturnFinalResponsory(index, match.section.content)
+        ? { suppressEmbeddedGloria: true }
+        : {})
     };
   }
 
@@ -658,6 +661,36 @@ function buildResponsory(
       selector: 'missing'
     }
   };
+}
+
+function referencesDifferentNocturnFinalResponsory(
+  index: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
+  content: readonly TextContent[]
+): boolean {
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      if (referencesDifferentNocturnFinalResponsory(index, node.content)) {
+        return true;
+      }
+      continue;
+    }
+
+    if (node.type !== 'reference') {
+      continue;
+    }
+
+    const target = node.ref.section?.match(/^Responsory([1-9])$/u)?.[1];
+    if (!target) {
+      continue;
+    }
+
+    const targetIndex = Number(target);
+    if (targetIndex !== index && targetIndex % 3 === 0) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function findScriptureResponsory(

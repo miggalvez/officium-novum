@@ -361,7 +361,8 @@ function composeNocturn(
         ? undefined
         : prependSeparatorLine(
             composeReferenceSlot('responsory', responsory.reference, args, undefined, {
-              appendGloria: responsory.appendGloria === true
+              appendGloria: responsory.appendGloria === true,
+              suppressEmbeddedGloria: responsory.suppressEmbeddedGloria === true
             }),
             args.options.languages
           )
