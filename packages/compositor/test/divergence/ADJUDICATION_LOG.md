@@ -6682,6 +6682,33 @@ Appendix-A golden update.
 `1912`, exact-match hours rise from `999` to `1008`, and unadjudicated
 rows drop from `819` to `810`; `perl-bug` rows remain `1102`.
 
+### 2026-05-06 — Pattern: 2026 Tridentinum Sunday Prime psalm fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 7
+Sunday Prime rows with the stable key-hash `5531f29c`: Perl began the
+Prime psalmody at `Psalmus 117 [1]`, while the compositor began with
+`Psalmus 53 [1]`.
+
+**Root cause.** This is the psalm-unit counterpart to the already
+documented 1960 Tridentinum Sunday Prime antiphon family. The Rubrics
+1960 source row is `Psalterium/Psalmi/Psalmi minor#Tridentinum`, whose
+`Prima Dominica` entry explicitly orders the psalms as
+`53,117,118(1-16),118(17-32)`. The compositor preserves that
+source-backed opening Psalm 53; the Perl comparison surface starts
+directly at Psalm 117 and drops the first psalm unit.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for the
+7 Rubrics 1960 2026 Sunday Prime rows sharing stable key-hash
+`5531f29c`.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `1912` and
+exact-match hours remain `1008`; unadjudicated rows drop from `810` to
+`803`, and `perl-bug` rows rise from `1102` to `1109`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
