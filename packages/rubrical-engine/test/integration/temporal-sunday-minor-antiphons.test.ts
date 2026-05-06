@@ -699,6 +699,30 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'suppresses Easter Octave Compline psalmody antiphons and chapter block while using the inherited Nunc antiphon',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine, 'Rubrics 1960 - 1960 engine').toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      for (const date of ['2024-03-31', '2024-04-05'] as const) {
+        expectMinorHourWithoutAntiphon(psalmodyAt(engine, date, 'compline'), ['4', '90', '133']);
+        expectEmptySlot(slotAt(engine, date, 'compline', 'chapter'));
+        expectEmptySlot(slotAt(engine, date, 'compline', 'responsory'));
+        expectEmptySlot(slotAt(engine, date, 'compline', 'versicle'));
+        expectSingleRef(
+          slotAt(engine, date, 'compline', 'antiphon-ad-nunc-dimittis'),
+          'horas/Latin/Tempora/Pasc0-0:Ant 43:1'
+        );
+      }
+    },
+    240_000
+  );
+
+  it(
     'keeps Easter Octave Prime on the ordinary Prima oration while the other minor hours keep the temporal collect',
     async () => {
       const engines = await loadEngines([
@@ -898,7 +922,7 @@ function loadScriptureTransferTables() {
 function psalmodyAt(
   engine: RubricalEngine,
   date: string,
-  hour: 'lauds' | 'vespers' | 'prime' | 'terce' | 'sext' | 'none'
+  hour: 'lauds' | 'vespers' | 'prime' | 'terce' | 'sext' | 'none' | 'compline'
 ): readonly PsalmAssignment[] {
   const slot = engine.resolveDayOfficeSummary(date).hours[hour]?.slots.psalmody;
   expect(slot?.kind).toBe('psalmody');
@@ -993,8 +1017,14 @@ function expectVersum2LaterBlock(
 function slotAt(
   engine: RubricalEngine,
   date: string,
-  hour: 'prime' | 'terce' | 'sext' | 'none',
-  slotName: 'chapter' | 'responsory' | 'versicle' | 'oration' | 'martyrology'
+  hour: 'prime' | 'terce' | 'sext' | 'none' | 'compline',
+  slotName:
+    | 'chapter'
+    | 'responsory'
+    | 'versicle'
+    | 'oration'
+    | 'martyrology'
+    | 'antiphon-ad-nunc-dimittis'
 ) {
   return engine.resolveDayOfficeSummary(date).hours[hour]?.slots[slotName];
 }
@@ -1004,7 +1034,16 @@ function expectEmptySlot(slot: ReturnType<typeof slotAt>) {
 }
 
 function expectSingleRef(
-  slot: { readonly kind: string; readonly ref?: { readonly path: string; readonly section: string } } | undefined,
+  slot:
+    | {
+        readonly kind: string;
+        readonly ref?: {
+          readonly path: string;
+          readonly section: string;
+          readonly selector?: string;
+        };
+      }
+    | undefined,
   expected: string
 ) {
   expect(slot?.kind).toBe('single-ref');
@@ -1012,7 +1051,8 @@ function expectSingleRef(
     return;
   }
 
-  expect(`${slot.ref.path}:${slot.ref.section}`).toBe(expected);
+  const selector = slot.ref.selector ? `:${slot.ref.selector}` : '';
+  expect(`${slot.ref.path}:${slot.ref.section}${selector}`).toBe(expected);
 }
 
 function expectOrderedRefs(

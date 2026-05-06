@@ -153,6 +153,10 @@ function resolveSlot(
     return { kind: 'psalmody', psalms };
   }
 
+  if (usesComplineCapitulumVersum2Suppression(input, slot.name)) {
+    return { kind: 'empty' };
+  }
+
   if (usesVersum2InPlaceOfLaterBlock(input)) {
     if (slot.name === 'chapter') {
       const ref = findCapitulumVersum2Reference(properFiles, input);
@@ -480,7 +484,29 @@ function findProperReference(
     ]);
   }
 
-  return findReferenceInFiles(files, headers);
+  const ref = findReferenceInFiles(files, headers);
+  return splitComplineNuncAntiphonOpeningRef(ref, slot.name, input);
+}
+
+function splitComplineNuncAntiphonOpeningRef(
+  ref: TextReference | undefined,
+  slot: SlotName,
+  input: ApplyRuleSetInput
+): TextReference | undefined {
+  if (
+    !ref ||
+    input.hour !== 'compline' ||
+    slot !== 'antiphon-ad-nunc-dimittis' ||
+    ref.section !== 'Ant 43' ||
+    ref.selector
+  ) {
+    return ref;
+  }
+
+  return {
+    ...ref,
+    selector: '1'
+  };
 }
 
 function postCumNostraConfessorVespersHymnHeaders(input: ApplyRuleSetInput): readonly string[] {
@@ -1901,6 +1927,17 @@ function usesVersum2InPlaceOfLaterBlock(input: ApplyRuleSetInput): boolean {
   return input.hour !== 'compline' && input.hourRules.capitulumVariant?.scheme === 2;
 }
 
+function usesComplineCapitulumVersum2Suppression(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): boolean {
+  return (
+    input.hour === 'compline' &&
+    input.hourRules.capitulumVariant?.scheme === 2 &&
+    (slot === 'chapter' || slot === 'responsory' || slot === 'versicle')
+  );
+}
+
 function usesOrdinaryPrimeLaterBlock(
   input: ApplyRuleSetInput,
   _properFiles: readonly ParsedFile[]
@@ -2323,7 +2360,9 @@ function properHeadersForSlot(
       return ['Ant 3', 'Ant Vespera 3', 'Ant Vespera', 'Ant Magnificat'];
     }
     case 'antiphon-ad-nunc-dimittis':
-      return ['Ant Completorium', 'Ant Nunc dimittis', 'Ant 4'];
+      return hour === 'compline' && input?.hourRules.capitulumVariant?.scheme === 2
+        ? ['Ant 43', 'Ant Completorium', 'Ant Nunc dimittis', 'Ant 4']
+        : ['Ant Completorium', 'Ant Nunc dimittis', 'Ant 4'];
     case 'oration':
       if (hour === 'lauds') {
         return ['Oratio 2', 'Oratio'];

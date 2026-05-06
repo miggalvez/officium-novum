@@ -3162,6 +3162,33 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     );
   }, 240_000);
 
+  it('renders Easter Octave Rubrics 1960 Compline without psalmody antiphons and with the proper Nunc antiphon in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const date of ['2026-04-05', '2026-04-10'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(psalmodyAntiphons(compline), `${date} Compline psalmody antiphons`).toEqual([]);
+      expect(psalmodyTexts(compline)[0], `${date} Compline opening psalm heading`).toBe('Psalmus 4 [1]');
+      expect(compline.sections.some((section) => section.slot === 'chapter'), `${date} Compline chapter`).toBe(false);
+      expect(compline.sections.some((section) => section.slot === 'responsory'), `${date} Compline responsory`).toBe(false);
+      expect(compline.sections.some((section) => section.slot === 'versicle'), `${date} Compline versicle`).toBe(false);
+      expect(sectionTexts(compline, 'antiphon-ad-nunc-dimittis'), `${date} Compline Nunc antiphon`).toEqual([
+        'Allelúja, allelúja, allelúja, allelúja.'
+      ]);
+      expect(sectionTexts(compline, 'canticle-ad-nunc-dimittis').at(-1), `${date} Compline Nunc antiphon repeat`).toBe(
+        'Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea.'
+      );
+    }
+  }, 240_000);
+
   it('uses actual Saturday Compline psalmody before temporal Sunday First Vespers in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2026-01-17');
@@ -3366,6 +3393,8 @@ function sectionTexts(
     | 'conclusion'
     | 'final-antiphon-bvm'
     | 'martyrology'
+    | 'antiphon-ad-nunc-dimittis'
+    | 'canticle-ad-nunc-dimittis'
     | 'canticle-ad-magnificat'
 ): readonly string[] {
   const section = composed.sections.find((candidate) => candidate.slot === slot);

@@ -22,6 +22,57 @@ anchor.
 
 ## Entries
 
+### 2026-05-06 — Pattern: Easter Octave Compline `Minores sine Antiphona` and split Nunc antiphon (engine-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** `Rubrics 1960 - 1960` / 2026 Easter Octave
+Compline (`2026-04-05` through `2026-04-10`) diverged at the
+psalmody boundary. Perl moved directly from the Compline incipit
+`Allelúja.` to `Psalmus 4 [1]`, while the compositor emitted an
+opening `Ant. Allelúja, * allelúja, allelúja.` psalmody antiphon.
+After that first boundary, Perl also skipped the ordinary
+chapter/responsory/versicle block and used the inherited
+`Pasc0-0:[Ant 43]` pair around the Nunc dimittis.
+
+**Root cause.** Phase 2 over-applied ordinary Compline structure in
+the Easter Octave. Perl's `psalmi.pl` treats `Minores sine
+Antiphona` as clearing Roman Compline psalmody antiphons as well as
+Prime/Terce/Sext/None, and `specials.pl` treats `Capitulum Versum
+2` at Compline as a suppression of the chapter/responsory/versicle
+block because the verse/antiphon surface is handled later. Phase 2
+still attached the keyed `Completorium` psalm-table antiphon, then
+added the seasonal `Pasch` psalmody antiphon, and it retained the
+ordinary later block. The remaining Phase 3 surface was that
+`Pasc0-0:[Ant 43]` is a split two-line Compline Nunc antiphon:
+Perl uses line 1 before the canticle and line 2 after it, preserving
+the source asterisk and not adding another Paschaltide `allelúja`.
+
+**Resolution.** Class `engine-bug` with a narrow compositor surface
+follow-up. Phase 2 now suppresses both keyed and seasonal Compline
+psalmody antiphons when `minorHoursSineAntiphona` is set, suppresses
+the Compline chapter/responsory/versicle slots for `Capitulum
+Versum 2`, and resolves proper Compline Nunc antiphons through
+`Ant 43` selector `1`. Phase 3 repeats selector `2` for that split
+Compline Nunc antiphon without the ordinary repeated-antiphon
+normalizer or generic `add-alleluia` transform.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:7-13`
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-0.txt:120-122`
+- `upstream/web/www/horas/Latin/Tempora/Pasc0-1.txt:7-14`
+- `upstream/web/cgi-bin/horas/specials.pl:57-79`
+- `upstream/web/cgi-bin/horas/specials/psalmi.pl:127-144`
+- `upstream/web/cgi-bin/horas/specials/psalmi.pl:253-258`
+- `upstream/web/cgi-bin/horas/horas.pl:523-530`
+
+**Impact.** The six 2026 Easter-Octave Compline rows now compare
+exactly. Full-year `Rubrics 1960 - 1960` / 2026 regeneration moved
+from `1008` exact / `1912` divergent / `797` unadjudicated to
+`1014` exact / `1906` divergent / `791` unadjudicated, with
+Compline divergences dropping from `106/365` to `100/365`.
+
 ### 2026-04-27 — Pattern: DA Holy Saturday Vespers `[Special Vespera 1]` truncation (engine-bug, fixed)
 
 **Commit.** Current tranche commit.
