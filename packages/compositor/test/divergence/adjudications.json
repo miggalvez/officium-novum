@@ -17147,6 +17147,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-02/Lauds/fd115d25": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-02",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-02/Matins/e0552677": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-02",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. Dóminus dixit * ad me: Fílius meus es tu, ego hódie génui te.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-02/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-02",
@@ -17194,6 +17216,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-02/Vespers/ac969a14": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-02",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-03/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -17345,6 +17378,28 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-01-05/Lauds/9b178f68": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-05",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-05/Matins/a6637b6d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-05",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. Dóminus dixit * ad me: Fílius meus es tu, ego hódie génui te.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-05/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",

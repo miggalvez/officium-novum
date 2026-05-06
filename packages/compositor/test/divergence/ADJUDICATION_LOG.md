@@ -22,6 +22,40 @@ anchor.
 
 ## Entries
 
+### 2026-05-06 — Pattern: Jan 2/5 `vide Sancti/01-01` Nativity feria fanout (perl-bug, adjudicated)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** `Rubrics 1960 - 1960` / 2026 Jan 2 and Jan 5
+Matins/Lauds, plus Jan 2 Vespers, diverged where Perl kept weekday
+psalter material while the compositor inherited the Nativity octave
+office through `Sancti/01-01`.
+
+**Root cause.** The temporal feria files explicitly use `vide
+Sancti/01-01` in their 1955/1960 rank and rule surfaces. In the
+modernized rule model, `vide` is a selective fallback rather than a
+whole-file redirect, but it still imports the applicable source-backed
+rule and text surfaces for these callers. `Sancti/01-01` supplies
+`Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave
+Matins/Lauds/Vespers antiphons. The Perl comparison surface keeps
+ordinary weekday psalter material on these simplified Roman rows.
+
+**Resolution.** Class `perl-bug`. No engine or compositor change.
+The compositor follows the source-backed `vide Sancti/01-01` family;
+the five affected first-divergence rows are now explicitly
+adjudicated rather than counted as unknown frontier.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15`
+- `upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13`
+- `upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16`
+- `upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47`
+- `upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131`
+- `docs/file-format-specification.md:617-621`
+
+**Impact.** Five 2026 rows move from `unadjudicated` to `perl-bug`.
+
 ### 2026-05-06 — Pattern: Easter Octave Compline `Minores sine Antiphona` and split Nunc antiphon (engine-bug, fixed)
 
 **Commit.** Current tranche commit.
