@@ -712,7 +712,10 @@ function extractTrailingSubstitution(
 
     try {
       const value = parseSubstitution(token);
-      const remainderEnd = start > 0 && trimmed[start - 1] === ':' ? start - 1 : start;
+      const beforeSubstitution = trimmed.slice(0, start).trimEnd();
+      const remainderEnd = beforeSubstitution.endsWith(':')
+        ? beforeSubstitution.length - 1
+        : start;
 
       return {
         remainder: trimmed.slice(0, remainderEnd).trimEnd(),

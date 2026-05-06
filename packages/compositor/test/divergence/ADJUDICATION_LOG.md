@@ -22,6 +22,40 @@ anchor.
 
 ## Entries
 
+### 2026-05-06 — Pattern: spaced-colon reference substitutions (parser-bug, fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** `Rubrics 1960 - 1960` / 2026 Jan 4 Lauds
+diverged because the Holy Name office should render the Lauds
+`[Versum 2]` pair before the Benedictus antiphon. The compositor
+skipped that versicle, moving directly from the hymn to `Ant. Dedit
+se...`.
+
+**Root cause.** `Tempora/Nat2-0:[Versum 2]` is a current-file
+cross-reference with a regex substitution written as `@:Versum
+Nona: s/[\,\.] al.*/./ig`. The parser extracted the substitution but
+left the delimiter colon attached to the section name when whitespace
+appeared before `s/...`, so it tried to resolve `Versum Nona:`
+instead of `Versum Nona`. That produced empty resolved content for a
+source-backed versicle.
+
+**Resolution.** Class `parser-bug`. The parser now trims a trailing
+colon before a substitution even when whitespace separates the colon
+from `s/...`. Focused parser and resolver tests cover the spaced
+delimiter, and the corpus spot-check snapshot now records the newly
+resolved references.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Nat2-0.txt:283-285`
+- `upstream/web/www/horas/Latin/Tempora/Nat2-0.txt:343-345`
+- `docs/file-format-specification.md:260-267`
+- `docs/file-format-specification.md:285-291`
+- `docs/file-format-specification.md:781-787`
+
+**Impact.** One 2026 row moves from `unadjudicated` to exact.
+
 ### 2026-05-06 — Pattern: Jan 2/5 `vide Sancti/01-01` Nativity feria fanout (perl-bug, adjudicated)
 
 **Commit.** Current tranche commit.
