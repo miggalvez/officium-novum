@@ -6617,9 +6617,11 @@ variant's orthography.
 9 current Rubrics 1960 2026 unadjudicated C4a Doctor-orations rows with
 the `40c56f3d` and `57580852` key suffixes.
 
-**Citation.** `upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13`;
-`upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13`;
-`upstream/web/www/horas/Latin/Commune/C4a.txt:19-22`.
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13`
+- `upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:19-22`
 
 **Impact.** Rubrics 1960 2026 divergent hours remain `1928`, exact-match
 hours remain `992`, and unadjudicated rows drop from `844` to `835`;
