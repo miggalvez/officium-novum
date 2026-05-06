@@ -20701,7 +20701,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-04-21/None/40c56f3d": {
@@ -20713,7 +20713,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-04-21/Sext/40c56f3d": {
@@ -20725,7 +20725,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-04-21/Terce/40c56f3d": {
@@ -20737,7 +20737,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-04-23/None/dcdd92bf": {
@@ -20912,7 +20912,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-05-09/Matins/57580852": {
@@ -20924,7 +20924,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-05-09/None/57580852": {
@@ -20936,7 +20936,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-05-09/Sext/57580852": {
@@ -20948,7 +20948,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-05-09/Terce/57580852": {
@@ -20960,7 +20960,7 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13, upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13, and upstream/web/www/horas/Latin/Commune/C4a.txt:19-22 — both 2026 Doctor witnesses route through `vide C4a`; the default C4a Doctor oration has `intercessórem habére mereámur in cœlis`, while the `cælis` variant is guarded by `(sed communi Summorum Pontificum)` and does not apply to these rows. The compositor follows the unguarded C4a source; the Perl comparison surface emits the guarded orthography.",
     "resolvedAt": "2026-05-06",
-    "commitSha": "pending",
+    "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
   },
   "Rubrics 1960 - 1960/2026-05-11/None/dcdd92bf": {
