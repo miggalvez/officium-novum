@@ -6889,6 +6889,42 @@ the remaining 2026-01-03 Lauds Benedictus-antiphon row as `perl-bug`.
 `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`;
 `docs/file-format-specification.md:132-140`.
 
+### 2026-05-06 — Pattern: Epiphany named-day Matins antiphon and Lord-feast benediction seam (parser/engine/compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried a
+Jan 6 Matins row where Perl selected the Epiphany named-day third-nocturn
+antiphon (`Veníte adorémus eum...`) with Psalm 94, while the compositor
+skipped that conditional line and opened the third nocturn with the next
+Epiphany antiphon.
+
+**Root cause.** `Sancti/01-06 [Ant Matutinum]` uses the bare condition
+`(sed die Epiphaniæ dicitur)` as a named-day addition/replacement at the
+source seam. The parser treated bare `sed ... dicitur` as a backward
+replacement, the condition evaluator only matched numeric `die`
+predicates, and the Matins planner did not mirror the compositor's
+visible-content `sed` replacement semantics. Once Psalm 94 surfaced, the
+compositor also needed to materialize Psalm94's `$ant` placeholders from
+the paired Matins antiphon, and the Roman benediction selector needed to
+avoid the sanctoral `Cujus festum...` intercession form for Epiphany as a
+feast of the Lord.
+
+**Resolution.** Fixed named-day `die Epiphaniæ` condition matching,
+preserved the Epiphany antiphon list while replacing the preceding
+monastic inline reference at visible-selector time, materialized paired
+Matins `$ant` psalm placeholders, and suppressed sanctoral intercession
+benedictions for feasts of the Lord. Added focused parser,
+rubrical-engine, compositor, and Jan 6 integration coverage.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/01-06.txt:85-96`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm94.txt:1-14`;
+`upstream/web/www/horas/Latin/Psalterium/Benedictions.txt:18-27`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1904` to
+`1902`; exact-match hours rise from `1016` to `1018`; unadjudicated rows
+drop from `783` to `781`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

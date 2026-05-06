@@ -1023,10 +1023,14 @@ function flattenVisibleMatinsAntiphonContent(
 
   const date = normalizeDateInput(input.temporal.date);
   const out: TextContent[] = [];
+  let lastProducedRange: { readonly start: number; readonly end: number } | undefined;
 
   for (const node of content) {
+    const start = out.length;
+
     if (node.type !== 'conditional') {
       out.push(node);
+      lastProducedRange = { start, end: out.length };
       continue;
     }
 
@@ -1038,10 +1042,24 @@ function flattenVisibleMatinsAntiphonContent(
         version: input.version
       })
     ) {
+      lastProducedRange = undefined;
       continue;
     }
 
-    out.push(...flattenVisibleMatinsAntiphonContent(node.content, input));
+    const visibleChildren = flattenVisibleMatinsAntiphonContent(node.content, input);
+    if (node.condition.stopword === 'sed' && visibleChildren.length > 0) {
+      if (lastProducedRange) {
+        out.splice(lastProducedRange.start, lastProducedRange.end - lastProducedRange.start);
+      }
+      const sedStart = out.length;
+      out.push(...visibleChildren);
+      lastProducedRange = { start: sedStart, end: out.length };
+      continue;
+    }
+
+    out.push(...visibleChildren);
+    lastProducedRange =
+      visibleChildren.length > 0 ? { start, end: out.length } : undefined;
   }
 
   return Object.freeze(out);

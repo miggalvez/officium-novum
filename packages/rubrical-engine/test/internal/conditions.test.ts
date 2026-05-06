@@ -58,6 +58,24 @@ describe('conditionMatches', () => {
     expect(conditionMatches(parseCondition('mense 3 et nisi die 7'), context)).toBe(true);
   });
 
+  it('matches named day predicates used by source conditionals', () => {
+    const version = makeVersion('Rubrics 1960 - 1960', makeTestPolicy('rubrics-1960'));
+    const context = {
+      date: { year: 2026, month: 1, day: 6 },
+      dayOfWeek: 2,
+      season: 'epiphanytide' as const,
+      version
+    };
+
+    expect(conditionMatches(parseCondition('die Epiphaniæ'), context)).toBe(true);
+    expect(
+      conditionMatches(parseCondition('die Epiphaniæ'), {
+        ...context,
+        date: { year: 2026, month: 1, day: 7 }
+      })
+    ).toBe(false);
+  });
+
   it('fans out rubric tags for monastic, cistercian, dominican, and Newcal handles', () => {
     const monastic = makeVersion(
       'Monastic - 1963 - Barroux',

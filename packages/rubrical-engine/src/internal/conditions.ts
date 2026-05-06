@@ -61,9 +61,18 @@ function matchPredicate(
     case 'mense':
       return Number(normalized) === context.date.month;
     case 'die':
-      return Number(normalized) === context.date.day;
+      return Number(normalized) === context.date.day || matchesNamedDayPredicate(normalized, context.date);
     case 'feria':
       return feriaToDayOfWeek(normalized) === context.dayOfWeek;
+    default:
+      return false;
+  }
+}
+
+function matchesNamedDayPredicate(predicate: string, date: CalendarDate): boolean {
+  switch (predicate) {
+    case 'epiphaniae':
+      return date.month === 1 && date.day === 6;
     default:
       return false;
   }
@@ -231,6 +240,8 @@ function normalizeToken(value: string): string {
   return value
     .trim()
     .toLowerCase()
+    .replace(/æ/gu, 'ae')
+    .replace(/œ/gu, 'oe')
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .replace(/[^a-z0-9]+/gu, '');

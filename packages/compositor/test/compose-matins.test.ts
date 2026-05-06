@@ -9,7 +9,10 @@ import type {
 } from '@officium-novum/rubrical-engine';
 
 import { composeHour } from '../src/compose.js';
-import { slicePsalmContentByVerseRange } from '../src/compose/matins-psalmody.js';
+import {
+  materializePairedAntiphonPlaceholders,
+  slicePsalmContentByVerseRange
+} from '../src/compose/matins-psalmody.js';
 
 function makeFile(path: string, header: string, nodes: ParsedFile['sections'][number]['content']): ParsedFile {
   return {
@@ -700,6 +703,51 @@ describe('composeHour(matins)', () => {
       'Ant. Surréxit Dóminus vere, * Allelúja.',
       'v. Veníte, exsultémus Dómino, jubilémus Deo, salutári nostro: præoccupémus fáciem ejus in confessióne.',
       'Ant. Allelúja.'
+    ]);
+  });
+
+  it('materializes paired Matins psalm `$ant` placeholders from the antiphon source', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Sancti/01-06', 'Ant Matutinum', [
+        {
+          type: 'text',
+          value: 'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.;;94'
+        }
+      ])
+    );
+
+    const materialized = materializePairedAntiphonPlaceholders(
+      [
+        { type: 'text', value: '94:1 Veníte, exsultémus Dómino:' },
+        { type: 'formulaRef', name: 'ant' }
+      ],
+      {
+        path: 'horas/Latin/Sancti/01-06',
+        section: 'Ant Matutinum',
+        selector: '1'
+      },
+      'Latin',
+      {
+        corpus,
+        options: { languages: ['Latin'] },
+        directives: [],
+        context: {
+          date: { year: 2026, month: 1, day: 6 },
+          dayOfWeek: 2,
+          season: 'epiphanytide',
+          version: stubVersion
+        }
+      }
+    );
+
+    expect(materialized).toEqual([
+      { type: 'text', value: '94:1 Veníte, exsultémus Dómino:' },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.'
+      }
     ]);
   });
 

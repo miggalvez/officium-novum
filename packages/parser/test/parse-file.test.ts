@@ -156,6 +156,48 @@ describe('parseFile section content', () => {
     ]);
   });
 
+  it('treats named-day `sed ... dicitur` as an additive following-line condition', () => {
+    const content = [
+      '[Ant Matutinum]',
+      'Afférte Dómino, fílii Dei, * adoráte Dóminum in aula sancta ejus.;;28',
+      '(sed die Epiphaniæ dicitur)',
+      'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.;;94',
+      'Adoráte Dóminum, * allelúja: in aula sancta ejus, allelúja.;;95'
+    ].join('\n');
+
+    const file = parseFile(content, 'horas/Latin/test.txt');
+    const section = file.sections[0]!;
+
+    expect(section.content).toEqual([
+      {
+        type: 'psalmRef',
+        psalmNumber: 28,
+        antiphon: 'Afférte Dómino, fílii Dei, * adoráte Dóminum in aula sancta ejus.'
+      },
+      {
+        type: 'conditional',
+        condition: {
+          expression: { type: 'match', subject: 'die', predicate: 'Epiphaniæ' },
+          stopword: 'sed',
+          instruction: 'dicitur'
+        },
+        content: [
+          {
+            type: 'psalmRef',
+            psalmNumber: 94,
+            antiphon: 'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.'
+          }
+        ],
+        scope: { backwardLines: 0, forwardMode: 'line' }
+      },
+      {
+        type: 'psalmRef',
+        psalmNumber: 95,
+        antiphon: 'Adoráte Dóminum, * allelúja: in aula sancta ejus, allelúja.'
+      }
+    ]);
+  });
+
   it('keeps a following-line condition active across an intervening `_` separator', () => {
     const content = [
       '[Section]',

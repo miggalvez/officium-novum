@@ -474,6 +474,16 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble:45',
         'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble:46'
       ]);
+      expectAntiphonRefs(jan6Nocturns[2]?.psalmody ?? []).toEqual([
+        'horas/Latin/Sancti/01-06:Ant Matutinum:7',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:8',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:9'
+      ]);
+      expectPsalmRefs(jan6Nocturns[2]?.psalmody ?? []).toEqual([
+        'horas/Latin/Psalterium/Psalmorum/Psalm94:__preamble:94',
+        'horas/Latin/Psalterium/Psalmorum/Psalm95:__preamble:95',
+        'horas/Latin/Psalterium/Psalmorum/Psalm96:__preamble:96'
+      ]);
 
       const jan13Matins = engine.resolveDayOfficeSummary('2024-01-13').hours.matins;
       expect(jan13Matins?.slots.incipit?.kind).toBe('empty');

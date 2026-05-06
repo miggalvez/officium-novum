@@ -20,6 +20,7 @@ import {
   containsInlinePsalmRefs,
   extendPsalterMatinsVersicleContent,
   extractInlinePsalmAntiphons,
+  materializePairedAntiphonPlaceholders,
   normalizeOpeningAntiphonContent,
   normalizeOpeningPsalmBodyContent,
   normalizeRepeatedAntiphonContent,
@@ -182,10 +183,19 @@ export function composeMergedSlot(
         directives: args.directives,
         gloriaOmittiturReplacement
       });
+      const withPairedAntiphonPlaceholders =
+        slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
+          ? materializePairedAntiphonPlaceholders(
+              transformed,
+              pairedAntiphonRef,
+              lang,
+              args
+            )
+          : transformed;
       const withDoxology =
         slot === 'hymn'
-          ? replaceFinalHymnDoxology(transformed, hymnDoxology?.get(lang))
-          : transformed;
+          ? replaceFinalHymnDoxology(withPairedAntiphonPlaceholders, hymnDoxology?.get(lang))
+          : withPairedAntiphonPlaceholders;
       const withLiturgicalLineBreaks =
         slot === 'lectio-brevis' || slot === 'te-deum'
           ? interleaveSeparators(withDoxology)
