@@ -6531,6 +6531,42 @@ line is the Confessor common `Serve bone...` antiphon.
 hours remain `992`, and unadjudicated rows drop from `958` to `922`;
 `perl-bug` rows rise from `970` to `1006`.
 
+### 2026-05-06 — Pattern: 2026 Confessor Terce/Sext common-antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed Rubrics 1960 2026 frontier carried 68
+Terce and Sext rows where Perl kept ordinary weekday `Tertia`/`Sexta`
+psalter antiphons such as `Quam bonus...`, `Clamor meus...`,
+`Memor esto...`, or `Dómine, Deus meus...`, while the compositor emitted
+the Confessor common antiphons `Euge, serve bone...` at Terce and
+`Fidélis servus...` at Sext.
+
+**Root cause.** This extends the already documented simplified Roman
+Confessor common-antiphon comparison-surface family. Representative
+offices such as `2026-01-15` route through `vide C5`; C5 inherits C4,
+declares `Antiphonas horas`, and supplies `Euge, serve bone...` and
+`Fidélis servus...` as the second and third common antiphons used at
+Terce and Sext. Related rows route through the same C5/C5b common
+family. The compositor follows the source-backed common, while the Perl
+comparison surface keeps the ordinary weekday `Tertia`/`Sexta`
+antiphons from the psalter table.
+
+**Resolution.** Class `perl-bug`. Added row-level adjudications for all
+68 current Rubrics 1960 2026 unadjudicated Terce/Sext rows whose first
+actual lines are the Confessor common `Euge, serve bone...` or
+`Fidélis servus...` antiphons.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12`;
+`upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10`;
+`upstream/web/www/horas/Latin/Commune/C5.txt:1-19`;
+`upstream/web/www/horas/Latin/Commune/C5b.txt:1-13`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `1928`, exact-match
+hours remain `992`, and unadjudicated rows drop from `922` to `854`;
+`perl-bug` rows rise from `1006` to `1074`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

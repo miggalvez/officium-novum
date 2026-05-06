@@ -17934,6 +17934,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-01-15/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-15",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-15/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-15",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-15/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-15",
@@ -17991,6 +18013,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-01-17/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-17",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-17/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-17",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-17/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -18125,6 +18169,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-01-23/Sext/b40640d0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-23",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-23/Terce/f420db38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-23",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-23/Vespers/7d120c6f": {
     "policy": "Rubrics 1960 - 1960",
@@ -18373,6 +18439,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-01-31/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-31",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-31/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-31",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-02-01/Lauds/7e4c9917": {
     "policy": "Rubrics 1960 - 1960",
@@ -18655,6 +18743,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-02-07/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-07",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-07/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-07",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-02-07/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-02-07",
@@ -18847,6 +18957,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-02-12/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-12",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-12/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-12",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-02-12/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",
@@ -21773,6 +21905,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-06-13/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-13",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-06-13/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-13",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-06-13/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-13",
@@ -21984,6 +22138,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-06-18/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-18",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-06-18/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-18",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-06-18/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-18",
@@ -22177,6 +22353,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-06-25/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-25",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-06-25/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-25",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-06-25/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",
@@ -22904,6 +23102,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-07-15/Sext/90924de3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-15",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-15/Terce/d2cc44d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-15",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-07-15/Vespers/c9964aa7": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-15",
@@ -23050,6 +23270,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-07-18/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-18",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-18/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-18",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-07-18/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-18",
@@ -23140,6 +23382,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-07-20/Sext/5c9ad87e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-20",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-20/Terce/993822fb": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-20",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-07-20/Vespers/b8382b61": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-20",
@@ -23209,6 +23473,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-07-21/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-21",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-21/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-21",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-07-21/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
@@ -23455,6 +23741,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-07-31/Sext/b40640d0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-31",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-31/Terce/f420db38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-31",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-07-31/Vespers/7d120c6f": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-31",
@@ -23672,6 +23980,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-08-04/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-04",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-04/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-04",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-08-04/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-04",
@@ -23860,6 +24190,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-08-07/Sext/b40640d0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-07",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-07/Terce/f420db38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-07",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-08-07/Vespers/7d120c6f": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-07",
@@ -23917,6 +24269,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-08-08/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-08",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-08/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-08",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-08-08/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -24188,6 +24562,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-08-17/Sext/5c9ad87e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-17",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-17/Terce/993822fb": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-17",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-08-17/Vespers/b8382b61": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-17",
@@ -24268,6 +24664,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-08-19/Sext/90924de3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-19",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-19/Terce/d2cc44d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-19",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-08-19/Vespers/c9964aa7": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-19",
@@ -24325,6 +24743,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-08-20/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-20",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-20/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-20",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-08-20/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",
@@ -24499,6 +24939,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-08-25/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-25",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-25/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-25",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-08-25/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-25",
@@ -24600,6 +25062,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-08-27/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-27",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-27/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-27",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-08-27/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",
@@ -24758,6 +25242,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-08-31/Sext/5c9ad87e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-31",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-31/Terce/993822fb": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-31",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-08-31/Vespers/b8382b61": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-31",
@@ -24837,6 +25343,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-09-02/Sext/90924de3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-02",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-09-02/Terce/d2cc44d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-02",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-09-02/Vespers/c9964aa7": {
     "policy": "Rubrics 1960 - 1960",
@@ -25515,6 +26043,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-09-18/Sext/b40640d0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-18",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-09-18/Terce/f420db38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-18",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-09-18/Vespers/7d120c6f": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-18",
@@ -25850,6 +26400,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-09-30/Sext/90924de3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-30",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-09-30/Terce/d2cc44d2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-30",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-09-30/Vespers/c9964aa7": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-30",
@@ -26063,6 +26635,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-10-06/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-06",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-10-06/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-06",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-10-06/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-06",
@@ -26191,6 +26785,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-10-09/Sext/b40640d0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-09",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-10-09/Terce/f420db38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-09",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-10-09/Vespers/7d120c6f": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-09",
@@ -26248,6 +26864,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-10-10/Sext/37f5d694": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-10",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-10-10/Terce/ecd513d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-10",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-10-10/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -26394,6 +27032,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-10-13/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-13",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-10-13/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-13",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-10-13/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
@@ -26554,6 +27214,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-10-20/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-20",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-10-20/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-20",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-10-20/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
@@ -27262,6 +27944,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-11-10/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-10",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-10/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-10",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-11-10/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-10",
@@ -27625,6 +28329,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-11-24/Sext/ce9aeef8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-24",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-24/Terce/b9ad8853": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-24",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-11-24/Vespers/447da724": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-24",
@@ -27682,6 +28408,28 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-11-26/Sext/e6cf984d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-26",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Sext common-antiphon fanout. Representative probe: 2026-01-15 Sext.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-26/Terce/96770b6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-26",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12 and upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10 and upstream/web/www/horas/Latin/Commune/C5.txt:1-19 and upstream/web/www/horas/Latin/Commune/C5b.txt:1-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47 — representative 2026 Confessor offices route through C5/C5b common rules, which declare Antiphonas horas and supply Euge, serve bone for Terce and Fidelis servus for Sext. The Perl comparison surface keeps ordinary weekday Tertia/Sexta psalter antiphons.",
+    "notes": "2026 Rubrics 1960 Confessor C5/C5b Terce common-antiphon fanout. Representative probe: 2026-01-15 Terce.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-11-26/Vespers/3a7987e9": {
     "policy": "Rubrics 1960 - 1960",

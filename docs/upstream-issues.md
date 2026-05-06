@@ -24,6 +24,42 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-06 — Simplified Roman Confessor common Terce/Sext antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+Confessor offices keep ordinary weekday `Tertia` and `Sexta` psalter
+antiphons at Terce and Sext. Officium Novum emits the source-backed
+Confessor common antiphons `Euge, serve bone...` and `Fidélis
+servus...`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12`
+- `upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10`
+- `upstream/web/www/horas/Latin/Commune/C5.txt:1-19`
+- `upstream/web/www/horas/Latin/Commune/C5b.txt:1-13`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-15 --hour Terce --no-write-docs --debug-window 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-15 --hour Sext --no-write-docs --debug-window 20
+```
+
+Then inspect the first minor-hour antiphon. Perl keeps the weekday
+psalter antiphons; the compositor follows the inherited common where
+`Antiphonas horas` selects the second and third common antiphons.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026 current-year frontier | Terce, Sext | 68 row-specific keys in `packages/compositor/test/divergence/adjudications.json` with first actual `Euge, serve bone...` or `Fidélis servus...` |
+
 ### 2026-05-06 — Simplified Roman Confessor common None antiphons fall back to the psalter
 
 **Classification.** `perl-bug`
