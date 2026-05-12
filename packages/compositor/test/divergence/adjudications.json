@@ -23099,7 +23099,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9 routes St Juliana Falconieri to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 supplies `Antiphonas horas` with the virgin common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership addendum for the June 19 virgin office routed through `vide C6a`.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "ad8de7e"
   },
   "Rubrics 1960 - 1960/2026-06-19/Matins/4972b782": {
     "policy": "Rubrics 1960 - 1960",
@@ -23111,7 +23111,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9 routes St Juliana Falconieri to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 supplies `Antiphonas horas` with the virgin common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership addendum for the June 19 virgin office routed through `vide C6a`.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "ad8de7e"
   },
   "Rubrics 1960 - 1960/2026-06-19/Vespers/714255b4": {
     "policy": "Rubrics 1960 - 1960",
@@ -23123,7 +23123,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9 routes St Juliana Falconieri to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 supplies `Antiphonas horas` with the virgin common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership addendum for the June 19 virgin office routed through `vide C6a`.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "ad8de7e"
   },
   "Rubrics 1960 - 1960/2026-06-20/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
