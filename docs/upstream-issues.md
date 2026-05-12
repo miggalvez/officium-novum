@@ -24,6 +24,42 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-12 — Ss John and Paul martyr antiphons fall back to the weekday psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, the June 26
+office of Ss John and Paul keeps weekday psalter antiphons at Matins
+and the minor hours. Officium Novum emits the assigned C3/proper martyr
+antiphons. The same tranche fixed local Lauds and Vespers psalm
+ownership so those major-hour psalm rows now follow the assigned
+dominical/proper psalm scheme.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137,166`
+- `upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-107`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-26 --no-write-docs --max-report 20
+```
+
+Then inspect Matins, Prime, Terce, Sext, and None. Breviary 1960 nos.
+169 and 177 preserve assigned Proper/Common antiphons and psalmody for
+III-class offices; June 26 routes through C3 and supplies proper
+Lauds/minor-hour antiphons, while Perl keeps weekday psalter antiphons
+on the remaining divergent rows.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-26 | Matins, Prime, Terce, Sext, None | `eceae16a`, `beff47af`, `ff428d99`, `ca2ebc20`, `bac8c8bd` |
+
 ### 2026-05-12 — Simplified Roman martyr and apostle common antiphons fall back to the psalter
 
 **Classification.** `perl-bug`

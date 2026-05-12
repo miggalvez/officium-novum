@@ -22,6 +22,51 @@ anchor.
 
 ## Entries
 
+### 2026-05-12 — Pattern: Ss John and Paul assigned psalmody and martyr antiphons (engine fixed + perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 June scan exposed
+seven 2026-06-26 rows for Ss John and Paul. Lauds and Vespers first
+diverged at the psalm heading because the compositor kept Friday
+psalms even though the assigned office/common carried `Psalmi Dominica`
+or explicit second-Vespers psalm numbers. After that engine fix, the
+remaining Matins, Prime, Terce, Sext, and None rows show Perl keeping
+weekday psalter antiphons while the compositor emits the assigned
+martyr antiphons.
+
+**Root cause.** Breviary 1960 nos. 169 and 177 keep ordinary III-class
+weekday offices on the ferial psalter unless proper/common antiphons
+and psalmody are assigned. The engine's III-class weekday guard was too
+broad at major hours: it preserved ferial psalm refs even when a
+non-Paschaltide office inherited `Psalmi Dominica` and assigned
+major-hour antiphons. The remaining rows are a Perl comparison-surface
+fallback: June 26 routes through C3 and supplies proper Lauds/minor-hour
+antiphons, but Perl keeps weekday psalter antiphons at Matins and the
+minor hours.
+
+**Resolution.** Fixed the Rubrics 1960 major-hour decoration path to
+restore assigned dominical psalm refs for non-Paschaltide III-class
+major hours whose Proper/Common declares `Psalmi Dominica` and supplies
+major-hour antiphons. Added a June 26 integration regression. Classified
+the five remaining row keys as `perl-bug`:
+
+- `Rubrics 1960 - 1960/2026-06-26/Matins/eceae16a`
+- `Rubrics 1960 - 1960/2026-06-26/Prime/beff47af`
+- `Rubrics 1960 - 1960/2026-06-26/Terce/ff428d99`
+- `Rubrics 1960 - 1960/2026-06-26/Sext/ca2ebc20`
+- `Rubrics 1960 - 1960/2026-06-26/None/bac8c8bd`
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137,166`
+- `upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-107`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1874` to `1867`, exact-match hours rise from `1046` to `1053`, and
+unadjudicated rows drop from `694` to `682`.
+
 ### 2026-05-12 — Pattern: simplified Roman martyr/apostle common antiphons fall back to the psalter (perl-bug)
 
 **Commit.** Current tranche commit.
