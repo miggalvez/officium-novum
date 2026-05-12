@@ -22109,7 +22109,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "7df9b6b"
   },
   "Rubrics 1960 - 1960/2026-06-01/Matins/cd64c80b": {
     "policy": "Rubrics 1960 - 1960",
@@ -22121,7 +22121,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "7df9b6b"
   },
   "Rubrics 1960 - 1960/2026-06-01/Vespers/399c27ee": {
     "policy": "Rubrics 1960 - 1960",
@@ -22133,7 +22133,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "7df9b6b"
   },
   "Rubrics 1960 - 1960/2026-06-02/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
@@ -22524,7 +22524,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "7df9b6b"
   },
   "Rubrics 1960 - 1960/2026-06-10/Matins/d64ad472": {
     "policy": "Rubrics 1960 - 1960",
@@ -22536,7 +22536,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "7df9b6b"
   },
   "Rubrics 1960 - 1960/2026-06-10/Vespers/7054a963": {
     "policy": "Rubrics 1960 - 1960",
@@ -22548,7 +22548,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "7df9b6b"
   },
   "Rubrics 1960 - 1960/2026-06-11/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
