@@ -22,39 +22,6 @@ anchor.
 
 ## Entries
 
-### 2026-05-12 — Pattern: June 19 virgin common antiphons fall back to the psalter (perl-bug)
-
-**Commit.** Current tranche commit.
-
-**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 June scan exposed
-three 2026-06-19 Matins, Lauds, and Vespers rows where the Perl
-comparison surface kept ordinary weekday psalter antiphons. The
-compositor instead emitted the source-backed virgin common antiphons
-`O quam pulchra` and `Hæc est Virgo sápiens`.
-
-**Root cause.** The June 19 office for St Juliana Falconieri routes to
-`vide C6a`. C6a imports the C6 virgin common, and C6 declares
-`Antiphonas horas` with the Matins/Lauds/Vespers common antiphon
-sections. Perl's comparison surface falls back to weekday psalter
-antiphons instead of following the selected common.
-
-**Resolution.** Class `perl-bug`. Added three row-key adjudications for
-the June 19 witness:
-
-- `Rubrics 1960 - 1960/2026-06-19/Matins/4972b782`
-- `Rubrics 1960 - 1960/2026-06-19/Lauds/7f333516`
-- `Rubrics 1960 - 1960/2026-06-19/Vespers/714255b4`
-
-**Citation.**
-
-- `upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9`
-- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
-- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
-
-**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours remain
-`1874`, exact-match hours remain `1046`, and unadjudicated rows drop
-from `697` to `694`.
-
 ### 2026-05-12 — Pattern: simplified Roman martyr/apostle common antiphons fall back to the psalter (perl-bug)
 
 **Commit.** Current tranche commit.
@@ -104,24 +71,25 @@ from `710` to `697`.
 
 ### 2026-05-12 — Pattern: simplified Roman female common antiphons fall back to the psalter (perl-bug)
 
-**Commit.** Current tranche commit.
+**Commit.** `7df9b6b`; June 19 witness rows added in `ad8de7e`.
 
 **Ledger signal.** Targeted `Rubrics 1960 - 1960` / 2026 probes for
-2026-06-01 and 2026-06-10 exposed six Matins, Lauds, and Vespers rows
-where the Perl comparison surface kept ordinary weekday psalter
-antiphons. The compositor instead emitted source-backed common
-antiphons such as `O quam pulchra`, `Hæc est Virgo sápiens`, and
-`Dum esset Rex`.
+2026-06-01, 2026-06-10, and 2026-06-19 exposed nine Matins, Lauds, and
+Vespers rows where the Perl comparison surface kept ordinary weekday
+psalter antiphons. The compositor instead emitted source-backed common
+antiphons such as `O quam pulchra`, `Hæc est Virgo sápiens`, and `Dum
+esset Rex`.
 
 **Root cause.** These are not compositor ownership bugs. The June 1
 office routes to `vide C6a`, which imports the virgin common C6; the
 June 10 office routes to `vide C7a`, which imports the non-virgin
-female common C7. The inherited common sources supply `Antiphonas
-horas` and the Matins/Lauds/Vespers antiphon sections. Perl's
-comparison surface falls back to weekday psalter antiphons instead of
-following the selected common.
+female common C7; and the June 19 office routes again to `vide C6a`.
+The inherited common sources supply `Antiphonas horas` and the
+Matins/Lauds/Vespers antiphon sections. Perl's comparison surface falls
+back to weekday psalter antiphons instead of following the selected
+common.
 
-**Resolution.** Class `perl-bug`. Added six row-key adjudications for
+**Resolution.** Class `perl-bug`. Added nine row-key adjudications for
 the 2026 June witnesses:
 
 - `Rubrics 1960 - 1960/2026-06-01/Matins/cd64c80b`
@@ -130,19 +98,24 @@ the 2026 June witnesses:
 - `Rubrics 1960 - 1960/2026-06-10/Matins/d64ad472`
 - `Rubrics 1960 - 1960/2026-06-10/Lauds/23d6d778`
 - `Rubrics 1960 - 1960/2026-06-10/Vespers/7054a963`
+- `Rubrics 1960 - 1960/2026-06-19/Matins/4972b782`
+- `Rubrics 1960 - 1960/2026-06-19/Lauds/7f333516`
+- `Rubrics 1960 - 1960/2026-06-19/Vespers/714255b4`
 
 **Citation.**
 
 - `upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11`
 - `upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9`
+- `upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9`
 - `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
 - `upstream/web/www/horas/Latin/Commune/C7a.txt:1-10`
 - `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
 - `upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67`
 
-**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours remain
-`1874`, exact-match hours remain `1046`, and unadjudicated rows drop
-from `716` to `710`.
+**Impact.** The initial female-common tranche dropped `Rubrics 1960 -
+1960` / 2026 unadjudicated rows from `716` to `710`; the June 19
+follow-up keeps divergent hours at `1874`, exact-match hours at `1046`,
+and drops unadjudicated rows from `697` to `694`.
 
 ### 2026-05-12 — Pattern: standalone rule-condition binding for Pentecost octave psalmody (parser fixed)
 

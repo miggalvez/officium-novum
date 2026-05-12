@@ -24,38 +24,6 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
-### 2026-05-12 — St Juliana Falconieri common antiphons fall back to the psalter
-
-**Classification.** `perl-bug`
-
-**Summary.** In the Rubrics 1960 2026 comparison surface, the June 19
-virgin office keeps ordinary weekday psalter antiphons at Matins,
-Lauds, and Vespers. Officium Novum emits the source-backed C6 virgin
-common antiphons.
-
-**Primary source.**
-
-- `upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9`
-- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
-- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
-
-**Reproduction.**
-Run:
-
-```bash
-pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-19 --no-write-docs --max-report 20
-```
-
-Then inspect the first Matins, Lauds, and Vespers antiphon. The office
-routes through `vide C6a`; that common inherits C6 and provides the
-common antiphons, while Perl keeps ordinary weekday psalter antiphons.
-
-**Affected stable divergence-row keys.**
-
-| Policy | Dates | Hours | Row key suffixes |
-|---|---|---|---|
-| Rubrics 1960 - 1960 | 2026-06-19 | Matins, Lauds, Vespers | `4972b782`, `7f333516`, `714255b4` |
-
 ### 2026-05-12 — Simplified Roman martyr and apostle common antiphons fall back to the psalter
 
 **Classification.** `perl-bug`
@@ -105,6 +73,7 @@ female common antiphons from C6/C7.
 
 - `upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11`
 - `upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9`
+- `upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9`
 - `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
 - `upstream/web/www/horas/Latin/Commune/C7a.txt:1-10`
 - `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
@@ -116,6 +85,7 @@ Run:
 ```bash
 pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-01 --no-write-docs --max-report 20
 pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-10 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-19 --no-write-docs --max-report 20
 ```
 
 Then inspect the first Matins, Lauds, and Vespers antiphon. The
@@ -127,7 +97,7 @@ keeps the ordinary weekday psalter antiphons.
 
 | Policy | Dates | Hours | Row key suffixes |
 |---|---|---|---|
-| Rubrics 1960 - 1960 | 2026-06-01, 2026-06-10 | Matins, Lauds, Vespers | `cd64c80b`, `c038feb4`, `399c27ee`, `d64ad472`, `23d6d778`, `7054a963` |
+| Rubrics 1960 - 1960 | 2026-06-01, 2026-06-10, 2026-06-19 | Matins, Lauds, Vespers | `cd64c80b`, `c038feb4`, `399c27ee`, `d64ad472`, `23d6d778`, `7054a963`, `4972b782`, `7f333516`, `714255b4` |
 
 ### 2026-05-06 — C4a Doctor orations use guarded Summorum Pontificum orthography
 
