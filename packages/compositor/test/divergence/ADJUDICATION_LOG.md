@@ -22,6 +22,46 @@ anchor.
 
 ## Entries
 
+### 2026-05-12 — Pattern: standalone rule-condition binding for Pentecost octave psalmody (parser fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the Pentecost Terce hymn fallback fix, the
+`Rubrics 1960 - 1960` / 2026 frontier exposed Pentecost octave rows
+where the compositor rendered the correct proper antiphon but selected
+weekday psalms. Representative witnesses were 2026-05-27 through
+2026-05-30 at Terce: Perl and the source-backed rule expected the
+dominical Psalm 118 Terce distribution, while the compositor had fallen
+through to weekday minor-hour psalmody.
+
+**Root cause.** Pentecost octave weekday `[Rule]` sections say
+`Psalmi Dominica;` and then conditionally override to `Psalmi Feria`
+only for Cistercian rubrics via a standalone condition line:
+`(sed rubrica cisterciensis)` followed by `Psalmi Feria`. The parser's
+direct `parseRuleSection` API understood standalone condition lines
+after this tranche, but corpus-loaded files still parsed `[Rule]`
+sections line-by-line through `parseRuleLine`, so the Cistercian-only
+`Psalmi Feria` directive became unconditional and overwrote the Roman
+1960 dominical psalmody rule.
+
+**Resolution.** Class `parser-bug`. `parseFile` now routes `[Rule]`
+sections through `parseRuleSection`, and `parseRuleSection` carries
+standalone condition lines onto the following rule directive. Added
+parser coverage for both direct section parsing and `parseFile`, plus a
+Rubrics 1960 integration regression for Pentecost octave Terce psalmody.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-3.txt:11-17`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-4.txt:12-18`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-5.txt:7-13`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-6.txt:5-13`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:227-231`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1890` to `1874`, exact-match hours rise from `1030` to `1046`, and
+unadjudicated rows drop from `732` to `716`.
+
 ### 2026-05-11 — Pattern: Pentecost octave Terce hymn fallback (engine-bug fixed)
 
 **Commit.** Current tranche commit.

@@ -567,6 +567,27 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'keeps Pentecost octave Terce on the dominica psalm table under Rubrics 1960',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine).toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      for (const date of ['2026-05-27', '2026-05-28', '2026-05-29', '2026-05-30'] as const) {
+        expectMinorHour(
+          psalmodyAt(engine, date, 'terce'),
+          'horas/Latin/Tempora/Pasc7-0:Ant Laudes:2',
+          ['118(33-48)', '118(49-64)', '118(65-80)']
+        );
+      }
+    },
+    240_000
+  );
+
+  it(
     'keeps Easter Octave Lauds and Vespers on proper paschal antiphons even when minor hours omit theirs',
     async () => {
       const engines = await loadEngines([
