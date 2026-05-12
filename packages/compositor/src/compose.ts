@@ -12,6 +12,7 @@ import type {
 
 import { stripLaudsSecretoPrayers } from './compose/incipit.js';
 import { appendContentWithBoundary } from './compose/content-boundary.js';
+import { buildConditionContext } from './compose/condition-context.js';
 import { directiveDrivenSlotContent } from './compose/directive-slot-content.js';
 import { resolveGloriaOmittiturReplacement } from './compose/gloria-omittitur.js';
 import { composeEarlySpecialSections } from './compose/early-specials.js';
@@ -88,7 +89,7 @@ export function composeHour(input: ComposeInput): ComposedHour {
     throw new Error(`HourStructure for ${input.hour} is not present on DayOfficeSummary`);
   }
 
-  const context = buildConditionContext(input.summary, input.version);
+  const context = buildConditionContext(input.summary, input.version, input.corpus);
   const sections: Section[] = [];
   const hymnDoxology = hour.slots['doxology-variant'];
   // Phase 3 §3f: warnings surfaced from the reference resolver,
@@ -342,6 +343,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         summary: args.summary,
         slot: args.slot,
         language: lang,
+        conditionContext: args.context,
         ...(args.options.langfb ? { langfb: args.options.langfb } : {}),
         isAntiphon
       });
@@ -768,21 +770,4 @@ function isSimplifiedTriduumOration(args: ComposeSlotArgs, ref: TextReference): 
     (ref.section === 'Oratio' || ref.section === 'Oratio 2') &&
     /\/Tempora\/Quad6-[456]r?$/u.test(ref.path)
   );
-}
-
-function buildConditionContext(
-  summary: DayOfficeSummary,
-  version: ResolvedVersion
-): ConditionEvalContext {
-  const [yearStr, monthStr, dayStr] = summary.date.split('-');
-  return {
-    date: {
-      year: Number(yearStr),
-      month: Number(monthStr),
-      day: Number(dayStr)
-    },
-    dayOfWeek: summary.temporal.dayOfWeek,
-    season: summary.temporal.season,
-    version
-  };
 }

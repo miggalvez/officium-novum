@@ -22,6 +22,44 @@ anchor.
 
 ## Entries
 
+### 2026-05-11 — Pattern: martyr-pontiff Matins collect common guard (compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 frontier carried
+six Matins rows where Perl emitted the final collect for martyr-pontiff
+offices, but the compositor rendered the shared `Domine exaudi /
+Oremus` wrapper and then skipped directly to the conclusion. The
+representative witness was 2026-04-22, SS. Soter and Cajus.
+
+**Root cause.** `Sancti/04-22` routes through `vide C3b`; in
+Paschaltide the engine correctly resolves the collect slot to
+`Commune/C3bp [Oratio]`, whose resolved content is guarded by
+`(communi Summorum Pontificum)` and refers back to the C3b collect.
+The compositor's conditional context knew the date, season, feria, and
+rubric family, but not the active common predicate. It therefore
+flattened away the collect body and also selected the wrong visible
+`[Name]` branch for inherited common text.
+
+**Resolution.** Class `compositor-bug`. `composeHour` now derives
+active common predicates from the summary's active common source and
+passes them into conditional flattening. Office-name substitution also
+flattens `[Name]` conditionals under the same context, so `N. et N.`
+becomes the source-backed accusative `Sotérem et Cajum` for the
+martyr-pontiff collect while guarded Doctor-common variants remain
+inactive when the active common is not `Summorum Pontificum`.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/04-22.txt:7-14`
+- `upstream/web/www/horas/Latin/Commune/C3bp.txt:1-10`
+- `upstream/web/www/horas/Latin/Commune/C3b.txt:10-12`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:19-22`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1898` to `1892`, exact-match hours rise from `1022` to `1028`, and
+unadjudicated rows drop from `740` to `734`.
+
 ### 2026-05-06 — Pattern: Rubrics 1960 2026 existing-signature row-key fanout (mixed adjudication)
 
 **Commit.** Current tranche commit.
