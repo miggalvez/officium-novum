@@ -22,6 +22,39 @@ anchor.
 
 ## Entries
 
+### 2026-05-11 — Pattern: Pentecost octave Terce hymn fallback (engine-bug fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 frontier carried
+Pentecost-week Terce rows where Perl emitted the Pentecost Terce hymn
+with the kneeling rubric and `Veni Creator`, while the compositor fell
+through to the ordinary `Nunc, Sancte` Terce hymn. Representative
+witnesses were 2026-05-25 and 2026-05-30.
+
+**Root cause.** The source-backed Pentecost Terce hymn lives in
+`Psalterium/Special/Minor Special` as `[Hymnus Pasc7 Tertia]`, but the
+engine's minor-hour hymn fallback only selected that source for
+Pentecost Sunday (`Pasc7-0`). The rest of the Pentecost octave key
+family (`Pasc7-1` through `Pasc7-6`) therefore received the ordinary
+`[Hymnus Tertia]` slot even though the dispositive source supplies the
+Pentecost-specific hymn.
+
+**Resolution.** Class `engine-bug`. The minor-hour fallback now routes
+all `Pasc7-*` Terce offices to `[Hymnus Pasc7 Tertia]`, while leaving
+Prime, Sext, None, and non-Pentecost Terce fallbacks untouched. Added
+2026 Rubrics 1960 integration coverage for the weekday Pentecost
+octave witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:616-655`
+- `packages/rubrical-engine/src/temporal/day-name.ts:60-64`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1892` to `1890`, exact-match hours rise from `1028` to `1030`, and
+unadjudicated rows drop from `734` to `732`.
+
 ### 2026-05-11 — Pattern: martyr-pontiff Matins collect common guard (compositor fixed)
 
 **Commit.** Current tranche commit.

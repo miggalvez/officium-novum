@@ -1402,14 +1402,14 @@ function minorHourSpecialFallbackReference(
         section: 'Hymnus Prima'
       };
     case 'terce':
-      if (input.temporal.dayName === 'Pasc7-0') {
+      if (input.temporal.dayName.startsWith('Pasc7-')) {
         return {
-          path: 'horas/Latin/Psalterium/Special/Minor Special',
+          path: MINOR_SPECIAL_PATH,
           section: 'Hymnus Pasc7 Tertia'
         };
       }
       return {
-        path: 'horas/Latin/Psalterium/Special/Minor Special',
+        path: MINOR_SPECIAL_PATH,
         section: 'Hymnus Tertia'
       };
     case 'sext':
