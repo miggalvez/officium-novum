@@ -22281,7 +22281,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-05/Matins/71eed233": {
     "policy": "Rubrics 1960 - 1960",
@@ -22293,7 +22293,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-05/None/87d8ee6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -22305,7 +22305,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-05/Prime/0e4cd0e7": {
     "policy": "Rubrics 1960 - 1960",
@@ -22317,7 +22317,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-05/Sext/f51f5fea": {
     "policy": "Rubrics 1960 - 1960",
@@ -22329,7 +22329,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-05/Terce/020f35c8": {
     "policy": "Rubrics 1960 - 1960",
@@ -22341,7 +22341,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-05/Vespers/a11999a7": {
     "policy": "Rubrics 1960 - 1960",
@@ -22353,7 +22353,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-06/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -22655,7 +22655,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-11/Matins/79f6ac10": {
     "policy": "Rubrics 1960 - 1960",
@@ -22667,7 +22667,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-11/None/3318f60b": {
     "policy": "Rubrics 1960 - 1960",
@@ -22679,7 +22679,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-11/Prime/6c1c3345": {
     "policy": "Rubrics 1960 - 1960",
@@ -22691,7 +22691,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-11/Sext/1bee6505": {
     "policy": "Rubrics 1960 - 1960",
@@ -22703,7 +22703,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-11/Terce/f91fc9bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -22715,7 +22715,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
     "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-12/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
