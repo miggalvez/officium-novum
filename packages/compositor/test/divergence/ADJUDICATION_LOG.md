@@ -22,6 +22,48 @@ anchor.
 
 ## Entries
 
+### 2026-05-12 — Pattern: simplified Roman female common antiphons fall back to the psalter (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Targeted `Rubrics 1960 - 1960` / 2026 probes for
+2026-06-01 and 2026-06-10 exposed six Matins, Lauds, and Vespers rows
+where the Perl comparison surface kept ordinary weekday psalter
+antiphons. The compositor instead emitted source-backed common
+antiphons such as `O quam pulchra`, `Hæc est Virgo sápiens`, and
+`Dum esset Rex`.
+
+**Root cause.** These are not compositor ownership bugs. The June 1
+office routes to `vide C6a`, which imports the virgin common C6; the
+June 10 office routes to `vide C7a`, which imports the non-virgin
+female common C7. The inherited common sources supply `Antiphonas
+horas` and the Matins/Lauds/Vespers antiphon sections. Perl's
+comparison surface falls back to weekday psalter antiphons instead of
+following the selected common.
+
+**Resolution.** Class `perl-bug`. Added six row-key adjudications for
+the 2026 June witnesses:
+
+- `Rubrics 1960 - 1960/2026-06-01/Matins/cd64c80b`
+- `Rubrics 1960 - 1960/2026-06-01/Lauds/c038feb4`
+- `Rubrics 1960 - 1960/2026-06-01/Vespers/399c27ee`
+- `Rubrics 1960 - 1960/2026-06-10/Matins/d64ad472`
+- `Rubrics 1960 - 1960/2026-06-10/Lauds/23d6d778`
+- `Rubrics 1960 - 1960/2026-06-10/Vespers/7054a963`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11`
+- `upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9`
+- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
+- `upstream/web/www/horas/Latin/Commune/C7a.txt:1-10`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
+- `upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours remain
+`1874`, exact-match hours remain `1046`, and unadjudicated rows drop
+from `716` to `710`.
+
 ### 2026-05-12 — Pattern: standalone rule-condition binding for Pentecost octave psalmody (parser fixed)
 
 **Commit.** Current tranche commit.

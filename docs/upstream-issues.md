@@ -24,6 +24,43 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-12 — Simplified Roman female common antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+virgin and widow offices keep ordinary weekday psalter antiphons at
+Matins, Lauds, and Vespers. Officium Novum emits the source-backed
+female common antiphons from C6/C7.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11`
+- `upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9`
+- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
+- `upstream/web/www/horas/Latin/Commune/C7a.txt:1-10`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
+- `upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-01 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-10 --no-write-docs --max-report 20
+```
+
+Then inspect the first Matins, Lauds, and Vespers antiphon. The
+selected offices route through `vide C6a` or `vide C7a`; those commons
+inherit `Antiphonas horas` and provide the common antiphons, while Perl
+keeps the ordinary weekday psalter antiphons.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-01, 2026-06-10 | Matins, Lauds, Vespers | `cd64c80b`, `c038feb4`, `399c27ee`, `d64ad472`, `23d6d778`, `7054a963` |
+
 ### 2026-05-06 — C4a Doctor orations use guarded Summorum Pontificum orthography
 
 **Classification.** `perl-bug`

@@ -22099,6 +22099,42 @@
     "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-06-01/Lauds/c038feb4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-01",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-01/Matins/cd64c80b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-01",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-01/Vespers/399c27ee": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-01",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-06-02/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-02",
@@ -22477,6 +22513,42 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-06-10/Lauds/23d6d778": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-10/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-10",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-10/Vespers/7054a963": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-10",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "pending"
   },
   "Rubrics 1960 - 1960/2026-06-11/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
