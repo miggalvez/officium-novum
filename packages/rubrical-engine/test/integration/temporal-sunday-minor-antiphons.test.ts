@@ -788,7 +788,12 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
       const summary = engine.resolveDayOfficeSummary('2026-02-23');
       expect(summary.temporal.dayName).toBe('Quad1-1');
 
-      for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+      expectSingleRef(
+        summary.hours.prime?.slots.oration,
+        'horas/Ordinarium/Prima:Oratio'
+      );
+
+      for (const hour of ['terce', 'sext', 'none'] as const) {
         expectSingleRef(
           summary.hours[hour]?.slots.oration,
           'horas/Latin/Tempora/Quad1-1:Oratio 2'

@@ -2385,12 +2385,10 @@ function properHeadersForSlot(
       if (hour === 'vespers') {
         return ['Oratio 3', 'Oratio'];
       }
-      if (
-        hour === 'prime' ||
-        hour === 'terce' ||
-        hour === 'sext' ||
-        hour === 'none'
-      ) {
+      if (hour === 'prime') {
+        return input?.temporal.dayName === 'Quad6-6' ? ['Oratio 2', 'Oratio'] : ['Oratio'];
+      }
+      if (hour === 'terce' || hour === 'sext' || hour === 'none') {
         return input?.temporal.dayName === 'Quad6-6' || input?.policy.name === 'rubrics-1960'
           ? ['Oratio 2', 'Oratio']
           : ['Oratio'];
