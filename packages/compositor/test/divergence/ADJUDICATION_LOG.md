@@ -22,6 +22,53 @@ anchor.
 
 ## Entries
 
+### 2026-05-12 — Pattern: simplified Roman martyr/apostle common antiphons fall back to the psalter (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** Targeted `Rubrics 1960 - 1960` / 2026 probes for
+2026-06-05 and 2026-06-11 exposed thirteen Matins, Lauds, Prime, Terce,
+Sext, None, and Vespers rows where the Perl comparison surface kept
+ordinary weekday psalter antiphons. The compositor instead emitted
+source-backed common antiphons such as `In lege Dómini`, `Qui me
+conféssus fúerit`, `In omnem terram`, and `Hoc est præcéptum meum`.
+
+**Root cause.** These are source-backed common ownership rows, not
+engine or compositor defects. The June 5 office routes to `vide C2`,
+the martyr-pontiff common, and the June 11 office routes to `ex C1`
+with `Antiphonas horas`, the apostle common. Both commons declare
+dominical psalmody/common-antiphon ownership and supply the antiphon
+sections. Perl's comparison surface falls back to weekday psalter
+antiphons instead of following the selected common.
+
+**Resolution.** Class `perl-bug`. Added thirteen row-key adjudications
+for the 2026 June witnesses:
+
+- `Rubrics 1960 - 1960/2026-06-05/Matins/71eed233`
+- `Rubrics 1960 - 1960/2026-06-05/Lauds/56249f74`
+- `Rubrics 1960 - 1960/2026-06-05/Prime/0e4cd0e7`
+- `Rubrics 1960 - 1960/2026-06-05/Terce/020f35c8`
+- `Rubrics 1960 - 1960/2026-06-05/Sext/f51f5fea`
+- `Rubrics 1960 - 1960/2026-06-05/None/87d8ee6e`
+- `Rubrics 1960 - 1960/2026-06-05/Vespers/a11999a7`
+- `Rubrics 1960 - 1960/2026-06-11/Matins/79f6ac10`
+- `Rubrics 1960 - 1960/2026-06-11/Lauds/4a8d9b87`
+- `Rubrics 1960 - 1960/2026-06-11/Prime/6c1c3345`
+- `Rubrics 1960 - 1960/2026-06-11/Terce/f91fc9bf`
+- `Rubrics 1960 - 1960/2026-06-11/Sext/1bee6505`
+- `Rubrics 1960 - 1960/2026-06-11/None/3318f60b`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15`
+- `upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours remain
+`1874`, exact-match hours remain `1046`, and unadjudicated rows drop
+from `710` to `697`.
+
 ### 2026-05-12 — Pattern: simplified Roman female common antiphons fall back to the psalter (perl-bug)
 
 **Commit.** Current tranche commit.
