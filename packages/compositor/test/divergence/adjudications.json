@@ -23351,7 +23351,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
     "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "6316e3d"
   },
   "Rubrics 1960 - 1960/2026-06-26/None/bac8c8bd": {
     "policy": "Rubrics 1960 - 1960",
@@ -23363,7 +23363,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
     "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "6316e3d"
   },
   "Rubrics 1960 - 1960/2026-06-26/Prime/beff47af": {
     "policy": "Rubrics 1960 - 1960",
@@ -23375,7 +23375,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
     "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "6316e3d"
   },
   "Rubrics 1960 - 1960/2026-06-26/Sext/ca2ebc20": {
     "policy": "Rubrics 1960 - 1960",
@@ -23387,7 +23387,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
     "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "6316e3d"
   },
   "Rubrics 1960 - 1960/2026-06-26/Terce/ff428d99": {
     "policy": "Rubrics 1960 - 1960",
@@ -23399,7 +23399,7 @@
     "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
     "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
     "resolvedAt": "2026-05-12",
-    "commitSha": "pending"
+    "commitSha": "6316e3d"
   },
   "Rubrics 1960 - 1960/2026-06-27/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
