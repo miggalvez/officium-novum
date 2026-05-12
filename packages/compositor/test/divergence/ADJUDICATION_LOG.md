@@ -22,6 +22,39 @@ anchor.
 
 ## Entries
 
+### 2026-05-12 — Pattern: June 19 virgin common antiphons fall back to the psalter (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 June scan exposed
+three 2026-06-19 Matins, Lauds, and Vespers rows where the Perl
+comparison surface kept ordinary weekday psalter antiphons. The
+compositor instead emitted the source-backed virgin common antiphons
+`O quam pulchra` and `Hæc est Virgo sápiens`.
+
+**Root cause.** The June 19 office for St Juliana Falconieri routes to
+`vide C6a`. C6a imports the C6 virgin common, and C6 declares
+`Antiphonas horas` with the Matins/Lauds/Vespers common antiphon
+sections. Perl's comparison surface falls back to weekday psalter
+antiphons instead of following the selected common.
+
+**Resolution.** Class `perl-bug`. Added three row-key adjudications for
+the June 19 witness:
+
+- `Rubrics 1960 - 1960/2026-06-19/Matins/4972b782`
+- `Rubrics 1960 - 1960/2026-06-19/Lauds/7f333516`
+- `Rubrics 1960 - 1960/2026-06-19/Vespers/714255b4`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9`
+- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours remain
+`1874`, exact-match hours remain `1046`, and unadjudicated rows drop
+from `697` to `694`.
+
 ### 2026-05-12 — Pattern: simplified Roman martyr/apostle common antiphons fall back to the psalter (perl-bug)
 
 **Commit.** Current tranche commit.
