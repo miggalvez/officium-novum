@@ -91,6 +91,7 @@ function preserveSubUnicaCommemorationHeadings(
         out.push(heading);
         changed = true;
       }
+      continue;
     }
 
     const nestedContent = preserveSubUnicaCommemorationHeadings(context, node.content);
