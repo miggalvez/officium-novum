@@ -18635,7 +18635,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-30/Matins/4972b782": {
     "policy": "Rubrics 1960 - 1960",
@@ -18647,7 +18647,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-30/None/3776493a": {
     "policy": "Rubrics 1960 - 1960",
@@ -18659,7 +18659,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-30/Prime/8006fc85": {
     "policy": "Rubrics 1960 - 1960",
@@ -18671,7 +18671,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-30/Terce/80f7f000": {
     "policy": "Rubrics 1960 - 1960",
@@ -18683,7 +18683,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-30/Vespers/714255b4": {
     "policy": "Rubrics 1960 - 1960",
@@ -18695,7 +18695,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-31/Lauds/2be42b34": {
     "policy": "Rubrics 1960 - 1960",
@@ -19201,7 +19201,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/02-10.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-02-10/Matins/371390e3": {
     "policy": "Rubrics 1960 - 1960",
@@ -19213,7 +19213,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/02-10.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-02-10/Vespers/2d1df057": {
     "policy": "Rubrics 1960 - 1960",
@@ -19225,7 +19225,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/02-10.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-02-11/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -23999,7 +23999,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-08/Matins/d64ad472": {
     "policy": "Rubrics 1960 - 1960",
@@ -24011,7 +24011,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-08/Vespers/7054a963": {
     "policy": "Rubrics 1960 - 1960",
@@ -24023,7 +24023,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-09/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
@@ -24756,7 +24756,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-22.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-22/Matins/d64ad472": {
     "policy": "Rubrics 1960 - 1960",
@@ -24768,7 +24768,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-22.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-22/Vespers/7054a963": {
     "policy": "Rubrics 1960 - 1960",
@@ -24780,7 +24780,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-22.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-23/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -24924,7 +24924,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-29.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-29/Matins/d64ad472": {
     "policy": "Rubrics 1960 - 1960",
@@ -24936,7 +24936,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-29.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-29/Vespers/272d4071": {
     "policy": "Rubrics 1960 - 1960",
@@ -24948,7 +24948,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/07-29.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-30/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
@@ -25678,7 +25678,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-12.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-12/Matins/d64ad472": {
     "policy": "Rubrics 1960 - 1960",
@@ -25690,7 +25690,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-12.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-12/Vespers/272d4071": {
     "policy": "Rubrics 1960 - 1960",
@@ -25702,7 +25702,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-12.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-13/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
@@ -26145,7 +26145,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-21.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-21/Matins/4972b782": {
     "policy": "Rubrics 1960 - 1960",
@@ -26157,7 +26157,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-21.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-21/Vespers/1f6d0876": {
     "policy": "Rubrics 1960 - 1960",
@@ -26169,7 +26169,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/08-21.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-22/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -27903,7 +27903,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-03.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-03/Matins/bc1be195": {
     "policy": "Rubrics 1960 - 1960",
@@ -27915,7 +27915,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-03.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-03/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -28177,7 +28177,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-08/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -28539,7 +28539,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-15.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-15/Matins/bf66ec4e": {
     "policy": "Rubrics 1960 - 1960",
@@ -28551,7 +28551,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-15.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-15/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -28574,7 +28574,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-15.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-16/Lauds/95332f5f": {
     "policy": "Rubrics 1960 - 1960",
@@ -28586,7 +28586,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-16.txt:4-10 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-16/Matins/4972b782": {
     "policy": "Rubrics 1960 - 1960",
@@ -28598,7 +28598,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-16.txt:4-10 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-16/Vespers/1f6d0876": {
     "policy": "Rubrics 1960 - 1960",
@@ -28610,7 +28610,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-16.txt:4-10 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-17/Lauds/32c45744": {
     "policy": "Rubrics 1960 - 1960",
@@ -28622,7 +28622,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-17.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-17/Matins/bc1be195": {
     "policy": "Rubrics 1960 - 1960",
@@ -28634,7 +28634,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/10-17.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-17/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -29645,7 +29645,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-16.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-16/Matins/cd64c80b": {
     "policy": "Rubrics 1960 - 1960",
@@ -29657,7 +29657,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-16.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-16/Vespers/399c27ee": {
     "policy": "Rubrics 1960 - 1960",
@@ -29669,7 +29669,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-16.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-17/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
@@ -29759,7 +29759,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-19.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-19/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -30023,7 +30023,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-25/Matins/d64ad472": {
     "policy": "Rubrics 1960 - 1960",
@@ -30035,7 +30035,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-25/None/48081022": {
     "policy": "Rubrics 1960 - 1960",
@@ -30047,7 +30047,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-25/Prime/bad5c9b9": {
     "policy": "Rubrics 1960 - 1960",
@@ -30059,7 +30059,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-25/Terce/5641168d": {
     "policy": "Rubrics 1960 - 1960",
@@ -30071,7 +30071,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-25/Vespers/272d4071": {
     "policy": "Rubrics 1960 - 1960",
@@ -30083,7 +30083,7 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
-    "commitSha": "8fa25e3"
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-26/Lauds/11e2194d": {
     "policy": "Rubrics 1960 - 1960",
