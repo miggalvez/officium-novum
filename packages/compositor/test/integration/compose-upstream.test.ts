@@ -1873,6 +1873,39 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(lines).not.toContain(normalizeLatin('Commemoratio Commune plurimarum non Virginum Martyrum'));
   }, 240_000);
 
+  it('joins Rubrics 1960 sub-unica major-hour commemorations under one conclusion', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-06-30');
+    expect(summary.celebrationRules.conclusionMode).toBe('sub-unica');
+
+    const lauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'], joinLaudsToMatins: false }
+    });
+
+    const lines = canonicalLatinLines(lauds);
+    const principalCollectIndex = lines.indexOf(
+      normalizeLatin(
+        'Deus, qui multitúdinem géntium beáti Pauli Apóstoli prædicatióne docuísti: da nobis, quǽsumus; ut, cujus natalícia cólimus, ejus apud te patrocínia sentiámus.'
+      )
+    );
+    expect(principalCollectIndex).toBeGreaterThan(0);
+    expect(lines.slice(principalCollectIndex + 1, principalCollectIndex + 6)).toEqual([
+      normalizeLatin('_'),
+      normalizeLatin('Commemoratio S. Petri Apostoli'),
+      normalizeLatin(
+        'Deus, qui beáto Petro Apóstolo tuo, collátis clávibus regni cæléstis, ligándi atque solvéndi pontifícium tradidísti: concéde; ut, intercessiónis ejus auxílio, a peccatórum nostrórum néxibus liberémur:'
+      ),
+      normalizeLatin(
+        'Qui vivis et regnas cum Deo Patre, in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.'
+      ),
+      normalizeLatin('Amen.')
+    ]);
+  }, 240_000);
+
   it('renders Ash Wednesday Roman minor-hour seasonal antiphons before the psalm heading', async () => {
     for (const [version, expectations] of [
       [

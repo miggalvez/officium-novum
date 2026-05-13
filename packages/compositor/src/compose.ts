@@ -1,4 +1,5 @@
 import { type TextContent, type TextIndex } from '@officium-novum/parser';
+import { conditionMatches } from '@officium-novum/rubrical-engine';
 import type {
   ConditionEvalContext,
   DayOfficeSummary,
@@ -46,7 +47,7 @@ import { MAX_DEFERRED_DEPTH, referenceKey } from './compose/shared.js';
 import { buildSlotAccounting } from './compose/slot-accounting.js';
 import { applyDirectives } from './directives/index.js';
 import { isWholeAntiphonSlot, markAntiphonFirstText } from './emit/antiphon-marker.js';
-import { emitSection } from './emit/index.js';
+import { emitConfiguredSection } from './emit/index.js';
 import { flattenConditionals } from './flatten/index.js';
 import { expandDeferredNodes, interleaveSeparators } from './resolve/expand-deferred-nodes.js';
 import { resolveReference } from './resolve/reference-resolver.js';
@@ -348,6 +349,11 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         isAntiphon
       });
       const sourceWithCommemorationPrelude = prependCommemorationPrelude(args, lang, namedSourceContent);
+      const sourceWithSubUnicaConclusion = stripSubUnicaPrimaryConclusion(
+        args,
+        sourceWithCommemorationPrelude
+      );
+      const sourceWithSubUnicaHeading = preserveSubUnicaCommemorationHeadings(args, sourceWithSubUnicaConclusion);
       if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(namedSourceContent)) {
         const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(namedSourceContent));
         const flattened = flattenConditionals(antiphonOnly, args.context);
@@ -396,7 +402,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithCommemorationPrelude)
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithSubUnicaHeading)
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -510,7 +516,104 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
   }
   if (frozen.size === 0) return undefined;
 
-  return emitSection(args.slot, frozen, primary ? referenceKey(primary) : undefined);
+  return emitConfiguredSection(
+    {
+      slot: args.slot,
+      ...(rendersSubUnicaOrationSeparators(args) ? { renderSeparators: true } : {})
+    },
+    frozen,
+    primary ? referenceKey(primary) : undefined
+  );
+}
+
+function stripSubUnicaPrimaryConclusion(
+  args: ComposeSlotArgs,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (!rendersSubUnicaOrationSeparators(args)) {
+    return content;
+  }
+
+  const firstSeparatorIndex = content.findIndex((node) => node.type === 'separator');
+  if (firstSeparatorIndex < 0) {
+    return content;
+  }
+
+  let stripped = false;
+  const filtered = content.filter((node, index) => {
+    if (index > firstSeparatorIndex) {
+      return true;
+    }
+    if (node.type === 'formulaRef' && isConclusionFormula(node.name)) {
+      stripped = true;
+      return false;
+    }
+    return true;
+  });
+
+  return stripped ? filtered : content;
+}
+
+function rendersSubUnicaOrationSeparators(args: ComposeSlotArgs): boolean {
+  return (
+    args.slot === 'oration' &&
+    (args.hour === 'lauds' || args.hour === 'vespers') &&
+    args.context.version.policy.name === 'rubrics-1960' &&
+    args.summary.celebrationRules.conclusionMode === 'sub-unica'
+  );
+}
+
+function isConclusionFormula(name: string): boolean {
+  return /^(?:per dominum(?: eiusdem)?|per eundem|per eumdem|qui (?:vivis|tecum|cum patre))$/iu.test(
+    name.trim()
+  );
+}
+
+function preserveSubUnicaCommemorationHeadings(
+  args: ComposeSlotArgs,
+  content: readonly TextContent[]
+): readonly TextContent[] {
+  if (!rendersSubUnicaOrationSeparators(args)) {
+    return content;
+  }
+
+  const out: TextContent[] = [];
+  let changed = false;
+  for (const node of content) {
+    if (node.type !== 'conditional') {
+      out.push(node);
+      continue;
+    }
+
+    if (
+      isHaecVersusScope(node.condition.scopeDescriptor) &&
+      !conditionMatches(node.condition, args.context)
+    ) {
+      const heading = node.content.find(
+        (child) => child.type === 'rubric' && /^Commemoratio\b/iu.test(child.value.trim())
+      );
+      if (heading) {
+        out.push(heading);
+        changed = true;
+      }
+    }
+
+    const nestedContent = preserveSubUnicaCommemorationHeadings(args, node.content);
+    if (nestedContent !== node.content) {
+      changed = true;
+    }
+
+    out.push({
+      ...node,
+      content: [...nestedContent]
+    });
+  }
+
+  return changed ? out : content;
+}
+
+function isHaecVersusScope(scope: string | undefined): boolean {
+  return scope === 'hæc versus' || scope === 'haec versus';
 }
 
 function prependCommemorationPrelude(

@@ -23516,6 +23516,54 @@
     "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-06-30/None/11e8467c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Ter virgis cæsus sum, * semel lapidátus sum, ter naufrágium pértuli pro Christi nómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Prime/796ead47": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Ego plantávi, * Apollo rigávit, Deus autem increméntum dedit, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Sext/e633569c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Grátia Dei * in me vácua non fuit, sed grátia ejus semper in me manet.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "pending"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Terce/e93da8fa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Libénter gloriábor * in infirmitátibus meis, ut inhábitet in me virtus Christi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "pending"
+  },
   "Rubrics 1960 - 1960/2026-07-01/Matins/2b3f8937": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-01",

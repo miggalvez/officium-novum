@@ -22,6 +22,54 @@ anchor.
 
 ## Entries
 
+### 2026-05-13 — Pattern: St Paul sub-unica collect and assigned minor-hour antiphons (compositor fixed + perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 June 30 witness for
+the Commemoration of St Paul exposed six divergent hours. Lauds first
+diverged inside the joined collect block: the compositor emitted the
+principal collect conclusion before the embedded St Peter commemoration,
+while the source's `Sub unica concl` rule joins both collects under the
+commemoration conclusion. Prime, Terce, Sext, and None diverged at the
+opening psalter antiphon because Perl kept weekday psalter antiphons
+while the compositor emitted the St Paul assigned antiphons. Matins was
+already covered by the existing apostle-common versicle-slot
+adjudication.
+
+**Root cause.** The rule classifier and engine already preserve `Sub
+unica concl` as `conclusionMode: "sub-unica"`, but the compositor was
+not using that flag when expanding a major-hour `Oratio` section whose
+source embeds a commemoration after a separator. Separately, Breviary
+1960 nos. 169 and 177 keep ordinary III-class weekday offices on the
+ferial psalter unless proper/common antiphons and psalmody are assigned;
+June 30 is III class under rubrica 196 and explicitly declares `Psalmi
+Dominica` / `Antiphonas horas`.
+
+**Resolution.** Taught the compositor to honor `sub-unica` major-hour
+oration sections by preserving the source separator and embedded
+commemoration heading while suppressing the principal collect's own
+conclusion. Added a June 30 integration regression for the joined
+Lauds collect. Classified the four remaining minor-hour antiphon rows
+as `perl-bug`:
+
+- `Rubrics 1960 - 1960/2026-06-30/Prime/796ead47`
+- `Rubrics 1960 - 1960/2026-06-30/Terce/e93da8fa`
+- `Rubrics 1960 - 1960/2026-06-30/Sext/e633569c`
+- `Rubrics 1960 - 1960/2026-06-30/None/11e8467c`
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137,166`
+- `upstream/web/www/horas/Help/technical.html:323`
+- `upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24,33-37`
+- `upstream/web/www/horas/Latin/Sancti/01-25.txt:126-137`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1867` to `1866`, exact-match hours rise from `1053` to `1054`, and
+unadjudicated rows drop from `682` to `677`.
+
 ### 2026-05-12 — Pattern: Ss John and Paul assigned psalmody and martyr antiphons (engine fixed + perl-bug)
 
 **Commit.** Current tranche commit.
