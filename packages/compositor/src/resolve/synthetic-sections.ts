@@ -47,6 +47,7 @@ export function synthesizeSection(
       index,
       reference,
       language,
+      options.season,
       resolveSectionByName
     );
     if (special) {
@@ -200,13 +201,20 @@ function synthesizePaschalSpecialResponsory(
   index: TextIndex,
   reference: TextReference,
   language: string,
+  season: ResolveOptions['season'],
   resolveSectionByName: SectionResolver
 ): ResolvedSection | undefined {
   if (
     reference.section === 'Responsory' &&
     reference.path.endsWith('/Psalterium/Special/Prima Special')
   ) {
-    return synthesizePrimePaschalResponsory(index, reference, language, resolveSectionByName);
+    return synthesizePrimePaschalResponsory(
+      index,
+      reference,
+      language,
+      season,
+      resolveSectionByName
+    );
   }
 
   if (
@@ -223,11 +231,17 @@ function synthesizePrimePaschalResponsory(
   index: TextIndex,
   reference: TextReference,
   language: string,
+  season: ResolveOptions['season'],
   resolveSectionByName: SectionResolver
 ): ResolvedSection | undefined {
   const localizedPath = swapLanguageSegment(reference.path, language);
   const responsory = firstSection(index, [localizedPath], 'Responsory', resolveSectionByName);
-  const paschal = firstSection(index, [localizedPath], 'Responsory Pasch', resolveSectionByName);
+  const paschal = firstSection(
+    index,
+    [localizedPath],
+    primePaschalResponsorySection(season),
+    resolveSectionByName
+  );
   const firstResponse = firstResponsoryResponse(responsory?.section.content);
   const paschalVersicle = firstTextContent(paschal?.section.content);
   if (!responsory || !firstResponse || !paschalVersicle) {
@@ -241,6 +255,16 @@ function synthesizePrimePaschalResponsory(
     versicle: paschalVersicle,
     language
   });
+}
+
+function primePaschalResponsorySection(season: ResolveOptions['season']): string {
+  if (season === 'ascensiontide') {
+    return 'Responsory Asc';
+  }
+  if (season === 'pentecost-octave') {
+    return 'Responsory Pent';
+  }
+  return 'Responsory Pasch';
 }
 
 function synthesizeComplinePaschalResponsory(

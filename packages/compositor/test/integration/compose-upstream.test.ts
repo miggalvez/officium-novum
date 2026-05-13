@@ -3266,6 +3266,27 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     ]);
   }, 240_000);
 
+  it('renders Rubrics 1960 Prime Paschal responsory versicles from the active season', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-05-15');
+    const prime = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'prime',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(renderLatinText(firstMarkedSectionLine(prime, 'responsory', 'V.'))).toBe(
+      'Qui scandis super sídera.'
+    );
+    const shortLessonLines = sectionTexts(prime, 'lectio-brevis').map((line) => line.trim());
+    expect(shortLessonLines).toContain('Act. 1:11');
+    expect(shortLessonLines).toContain(
+      'Viri Galilǽi, quid statis aspiciéntes in cælum? Hic Jesus, qui assúmptus est a vobis in cælum, sic véniet, quemádmodum vidístis eum eúntem in cælum.'
+    );
+  }, 240_000);
+
   it('renders the Rubrics 1960 Pentecost-week Compline responsory in Paschal short form', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2026-05-24');

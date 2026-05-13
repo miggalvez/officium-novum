@@ -22,6 +22,43 @@ anchor.
 
 ## Entries
 
+### 2026-05-13 — Pattern: Ascensiontide Prime special responsory and short lesson (engine + compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 frontier exposed a
+five-row Prime family on May 15, 16, 18, 19, and 20. Perl rendered the
+Ascensiontide Prime short responsory with `V. Qui scandis super
+sídera.`, while the compositor rendered the Eastertide text `V. Qui
+surrexísti a mórtuis.`. After the responsory fix, the same witnesses
+advanced to the end-of-Prime short lesson, where Perl selected `Act.
+1:11` from the Ascension source while the engine still selected the
+generic Paschal `Col 3:1-2` lesson.
+
+**Root cause.** The compositor's synthetic `Prima Special`
+short-responsory resolver treated every Paschal season as
+`Responsory Pasch`. The same family existed in the engine's Prime short
+lesson selector, which mapped both Eastertide and Ascensiontide to the
+`Pasch` section. The source has distinct seasonal sections for both
+surfaces: `[Responsory Asc]` / `[Asc]` for Ascensiontide.
+
+**Resolution.** Threaded the active season into the synthetic Prime
+short-responsory resolver so Ascensiontide uses `Responsory Asc` and
+Pentecost week uses `Responsory Pent`; Eastertide keeps
+`Responsory Pasch`. Taught the Rubrics 1960 Prime short lesson selector
+to use `Asc` during Ascensiontide. Added a 2026-05-15 upstream
+composition regression that locks both the Ascensiontide responsory
+versicle and the `Act. 1:11` short lesson.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:25-27,70-77`
+- `upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:319-329`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1860` to `1855`, exact-match hours rise from `1060` to `1065`, and
+unadjudicated rows drop from `671` to `666`.
+
 ### 2026-05-13 — Pattern: Pentecost-week Compline Paschal short responsory (engine fixed)
 
 **Commit.** Current tranche commit.
