@@ -22,6 +22,42 @@ anchor.
 
 ## Entries
 
+### 2026-05-13 — Pattern: Pentecost-week Compline Paschal short responsory (engine fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 frontier exposed a
+six-row Compline family from May 24 through May 29. The Perl surface
+rendered the Paschal short responsory as `In manus tuas, Dómine,
+comméndo spíritum meum, * Allelúja, allelúja.`, while the compositor
+kept the ordinary starred responsory shape and appended alleluias after
+the existing star boundary.
+
+**Root cause.** The 1960 seasonal directive emitter already marked
+Paschal and Pentecost-octave hours for added alleluias, and the
+compositor already had a reusable `paschal-short-responsory` transform
+for minor-hour short responsories. Compline in Eastertide,
+Ascensiontide, and Pentecost week was not receiving that transform, so
+the ordinary `Hymnus Completorium` responsory from `Minor Special.txt`
+was seasoned in place instead of being flattened into the Paschal short
+responsory form.
+
+**Resolution.** Emitted `paschal-short-responsory` for Rubrics 1960
+Compline during Eastertide, Ascensiontide, and the Pentecost octave.
+The compositor transform now preserves the source slot's leading and
+trailing separators while replacing the short-responsory body. Added a
+Rubrics 1960 directive unit test and a 2026-05-24 upstream-composition
+regression.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:807-815`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:345-352`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1866` to `1860`, exact-match hours rise from `1054` to `1060`, and
+unadjudicated rows drop from `677` to `671`.
+
 ### 2026-05-13 — Pattern: St Paul sub-unica collect and assigned minor-hour antiphons (compositor fixed + perl-bug)
 
 **Commit.** Current tranche commit.

@@ -3266,6 +3266,34 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     ]);
   }, 240_000);
 
+  it('renders the Rubrics 1960 Pentecost-week Compline responsory in Paschal short form', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-05-24');
+    const complineStructure = summary.hours.compline;
+    expect(complineStructure?.directives).toContain('paschal-short-responsory');
+
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = compline.sections.find((section) => section.slot === 'responsory');
+    expect(responsory, '2026-05-24 Compline should include the Paschal responsory').toBeDefined();
+    expect(responsory?.lines.map(renderLatinText)).toEqual([
+      '_',
+      'In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.',
+      'In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.',
+      'Redemísti nos, Dómine, Deus veritátis.',
+      'Allelúia, allelúia.',
+      'Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.',
+      '_'
+    ]);
+  }, 240_000);
+
   it('omits the Rubrics 1960 Passiontide Compline short-responsory Gloria in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2026-03-29');
