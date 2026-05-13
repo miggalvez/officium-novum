@@ -709,7 +709,8 @@ function assignedThirdClassDominicaMajorHourPsalmRefs(
   if (
     input.policy.name !== 'rubrics-1960' ||
     (input.hour !== 'lauds' && input.hour !== 'vespers') ||
-    (input.hourRules.psalterScheme !== 'dominica' && !filesDeclarePsalmiDominica(files)) ||
+    (input.hourRules.psalterScheme !== 'dominica' &&
+      !filesDeclareActivePsalmiDominica(input, files)) ||
     !isRubrics1960ThirdClassSanctoralWeekday(input) ||
     thirdClassSanctoralWeekdayInPaschaltide1960(input) ||
     antiphons.length === 0
@@ -725,8 +726,22 @@ function assignedThirdClassDominicaMajorHourPsalmRefs(
   }));
 }
 
-function filesDeclarePsalmiDominica(files: readonly ParsedFile[]): boolean {
-  return files.some((file) => /\bPsalmi\s+Dominica\b/iu.test(ruleTextForFile(file)));
+function filesDeclareActivePsalmiDominica(
+  input: ApplyRuleSetInput,
+  files: readonly ParsedFile[]
+): boolean {
+  const conditionContext = majorHourPsalmConditionContext(input);
+  return files.some((file) =>
+    file.sections
+      .filter((section) => section.header === 'Rule')
+      .flatMap((section) => section.rules ?? [])
+      .some(
+        (rule) =>
+          /\bPsalmi\s+Dominica\b/iu.test(rule.raw) &&
+          (!rule.condition ||
+            (conditionContext !== undefined && conditionMatches(rule.condition, conditionContext)))
+      )
+  );
 }
 
 function usesPostEpiphanyFeriaFerialMajorHourPsalmody1960(input: ApplyRuleSetInput): boolean {
