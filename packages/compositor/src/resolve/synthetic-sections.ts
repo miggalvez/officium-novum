@@ -258,13 +258,14 @@ function synthesizePrimePaschalResponsory(
 }
 
 function primePaschalResponsorySection(season: ResolveOptions['season']): string {
-  if (season === 'ascensiontide') {
-    return 'Responsory Asc';
+  switch (season) {
+    case 'ascensiontide':
+      return 'Responsory Asc';
+    case 'pentecost-octave':
+      return 'Responsory Pent';
+    default:
+      return 'Responsory Pasch';
   }
-  if (season === 'pentecost-octave') {
-    return 'Responsory Pent';
-  }
-  return 'Responsory Pasch';
 }
 
 function synthesizeComplinePaschalResponsory(
@@ -383,7 +384,7 @@ function hasAlleluiaTail(value: string): boolean {
 }
 
 function isPaschalSeason(season: ResolveOptions['season']): boolean {
-  return season === 'eastertide' || season === 'ascensiontide';
+  return season === 'eastertide' || season === 'ascensiontide' || season === 'pentecost-octave';
 }
 
 function firstResponsoryResponse(
