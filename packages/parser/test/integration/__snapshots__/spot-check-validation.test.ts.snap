@@ -522,7 +522,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 49,
-      "warningCount": 4,
+      "warningCount": 1,
     },
     {
       "domain": "horas",
@@ -1031,7 +1031,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 59,
-      "warningCount": 48,
+      "warningCount": 25,
     },
     {
       "domain": "horas",
@@ -1062,7 +1062,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 59,
-      "warningCount": 49,
+      "warningCount": 26,
     },
     {
       "domain": "horas",
@@ -1093,7 +1093,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 59,
-      "warningCount": 49,
+      "warningCount": 26,
     },
     {
       "domain": "horas",
@@ -1367,7 +1367,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
           "|Simplex|1|ex C11",
         ],
         "Responsory1": [
-          "conditional[rubrica=cisterciensis]: _ $rubrica Matutinum parvum",
+          "conditional[rubrica=cisterciensis]: {:S-AveRegina:}v. Ave * Regína cælórum, Ave * Dómina Angelórum: Salve radix * salve porta, Ex qua mundo lux est orta: _ Gaude * R.brirgo gloriósa, Super omnes speciósa * R. brale * o valde decóra, Et pro nobis Christum exóra. _ R.br. {::}Dignáre me laudáre te * Virgo sacráta. R. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde * miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. {:S-AveRegina:}v. Ave * Regína cælórum, Ave * Dómina Angelórum: Salve radix * salve porta, Ex qua mundo lux est orta: _ Gaude * Rirgo gloriósa, Super omnes speciósa * Rale * o valde decóra, Et pro nobis Christum exóra. _ R. {::}Dignáre me laudáre te * Virgo sacráta. R. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde * miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. {:S-AveVegina:}v. Ave, Regína cælórum, Ave, Dómina Angelórum: Salve radix, salve porta, Ex qua mundo lux est orta: _ Gaude, Virgo gloriósa, Super omnes speciósa, Vale, o valde decóra, Et pro nobis Christum exóra. _ V. {::}Dignáre me laudáre te, Virgo sacráta. V. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde, miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. {:S-AveRegina:}v. Ave, Regína cælórum, Ave, Dómina Angelórum: Salve radix, salve porta, Ex qua mundo lux est orta: _ Gaude, R. Super omnes speciósa, R. o valde decóra, Et pro nobis Christum exóra. _ R. Virgo sacráta. R. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde, miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. _ $rubrica Matutinum parvum",
         ],
         "Rule": [
           "Omit Incipit mute",
@@ -1375,7 +1375,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 70,
-      "warningCount": 51,
+      "warningCount": 20,
     },
     {
       "domain": "horas",
@@ -1410,7 +1410,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 37,
-      "warningCount": 19,
+      "warningCount": 3,
     },
     {
       "domain": "horas",
@@ -1442,7 +1442,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 58,
-      "warningCount": 56,
+      "warningCount": 25,
     },
     {
       "domain": "horas",
@@ -1464,7 +1464,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
           "|Simplex|1|ex C11",
         ],
         "Responsory1": [
-          "conditional[rubrica=cisterciensis]: _ $rubrica Matutinum parvum",
+          "conditional[rubrica=cisterciensis]: {:S-AveRegina:}v. Ave * Regína cælórum, Ave * Dómina Angelórum: Salve radix * salve porta, Ex qua mundo lux est orta: _ Gaude * R.brirgo gloriósa, Super omnes speciósa * R. brale * o valde decóra, Et pro nobis Christum exóra. _ R.br. {::}Dignáre me laudáre te * Virgo sacráta. R. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde * miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. {:S-AveRegina:}v. Ave * Regína cælórum, Ave * Dómina Angelórum: Salve radix * salve porta, Ex qua mundo lux est orta: _ Gaude * Rirgo gloriósa, Super omnes speciósa * Rale * o valde decóra, Et pro nobis Christum exóra. _ R. {::}Dignáre me laudáre te * Virgo sacráta. R. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde * miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. {:S-AveVegina:}v. Ave, Regína cælórum, Ave, Dómina Angelórum: Salve radix, salve porta, Ex qua mundo lux est orta: _ Gaude, Virgo gloriósa, Super omnes speciósa, Vale, o valde decóra, Et pro nobis Christum exóra. _ V. {::}Dignáre me laudáre te, Virgo sacráta. V. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde, miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. {:S-AveRegina:}v. Ave, Regína cælórum, Ave, Dómina Angelórum: Salve radix, salve porta, Ex qua mundo lux est orta: _ Gaude, R. Super omnes speciósa, R. o valde decóra, Et pro nobis Christum exóra. _ R. Virgo sacráta. R. Da mihi virtútem contra hostes tuos. _ $Oremus v. Concéde, miséricors Deus, fragilitáti nostræ præsídium; ut, qui sanctæ Dei Genetrícis memóriam ágimus; intercessiónis ejus auxílio, a nostris iniquitátibus resurgámus. Per eúmdem Christum Dóminum nostrum. Amen. _ $rubrica Matutinum parvum",
         ],
         "Rule": [
           "Omit Incipit mute",
@@ -1472,7 +1472,7 @@ exports[`Phase 1 spot-check validation > spot-checks 50+ representative feast fi
         ],
       },
       "sectionCount": 70,
-      "warningCount": 52,
+      "warningCount": 21,
     },
   ],
   "skippedCount": 2,

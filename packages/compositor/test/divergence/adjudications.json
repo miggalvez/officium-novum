@@ -17147,6 +17147,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-02/Lauds/fd115d25": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-02",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-02/Matins/e0552677": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-02",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. Dóminus dixit * ad me: Fílius meus es tu, ego hódie génui te.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-02/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-02",
@@ -17195,6 +17217,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-02/Vespers/ac969a14": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-02",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-03/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-03",
@@ -17205,6 +17238,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-01-03/Lauds/060ea0f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-03",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Mirábile mystérium * declarátur hódie: innovántur natúræ, Deus homo factus est: id quod fuit permánsit, et quod non erat assúmpsit; non commixtiónem passus, neque divisiónem.",
+    "firstActual": "Ant. Beáta Dei Génetrix, María, * Virgo perpétua, templum Dómini, sacrárium Spíritus Sancti, sola sine exémplo placuísti Dómino nostro Jesu Christo: ora pro pópulo, intérveni pro clero, intercéde pro devóto femíneo sexu.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat03.txt:6-15 and upstream/web/www/horas/Latin/Commune/C10.txt:7-15 and upstream/web/www/horas/Latin/Commune/C10.txt:81-90 and docs/file-format-specification.md:132-140 — the Jan 3 temporal row is a fourth-class feria under Rubrics 1960, so the free Saturday supplement selects C10, the Office of the Blessed Virgin for Saturday. C10 supplies its own Lauds versicle and Benedictus antiphon under `[Versum 2]` / `[Ant 2]`; the compositor preserves that selected-office text while the Perl comparison surface substitutes the Nativity-octave Benedictus antiphon.",
+    "notes": "2026 Rubrics 1960 Jan 3 Saturday BVM Lauds Benedictus-antiphon surface exposed after Holy Name first-Vespers psalmody was fixed.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-03/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -17346,6 +17390,28 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-05/Lauds/9b178f68": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-05",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. O admirábile commércium: * Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-05/Matins/a6637b6d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-05",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. Dóminus dixit * ad me: Fílius meus es tu, ego hódie génui te.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat02.txt:6-15 and upstream/web/www/horas/Latin/Tempora/Nat05.txt:6-13 and upstream/web/www/horas/Latin/Sancti/01-01.txt:7-16 and upstream/web/www/horas/Latin/Sancti/01-01.txt:38-47 and upstream/web/www/horas/Latin/Sancti/01-01.txt:130-131 and docs/file-format-specification.md:617-621 — the Jan 2/5 temporal ferias explicitly use `vide Sancti/01-01`, and Sancti/01-01 supplies `Psalmi Dominica`, `Antiphonas Horas`, and the Nativity octave Matins/Lauds/Vespers antiphon sets. The compositor follows that source-backed selective fallback; the legacy Perl comparison surface keeps weekday psalter material on these simplified Roman rows.",
+    "notes": "2026 Rubrics 1960 Jan 2/5 Nativity-season feria `vide Sancti/01-01` fanout. Representative probes: 2026-01-02 Matins/Lauds/Vespers and 2026-01-05 Matins/Lauds.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-05/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-05",
@@ -17453,6 +17519,39 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-06/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-06",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Epiphany rule set explicitly overrides the fifth Vespers psalm with `Psalm5 Vespera=116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-07/Lauds/a8acbf46": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-07",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dóminus regnávit, * exsúltet terra.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:65 — the weekday Lauds psalter source carries the complete antiphon `Dóminus regnávit, * exsúltet terra.` without a trailing `‡`. The compositor preserves the source text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-07/Matins/1b8cb0d6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-07",
+    "hour": "Matins",
+    "firstExpected": "Ant. Magnus Dóminus * et laudábilis nimis in civitáte Dei nostri. ‡",
+    "firstActual": "Ant. Magnus Dóminus * et laudábilis nimis in civitáte Dei nostri.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:58 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:75 — the Matins psalter source carries the complete antiphon `Magnus Dóminus * et laudábilis nimis in civitáte Dei nostri.` without a trailing `‡`. The compositor preserves the source text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-07/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-07",
@@ -17500,6 +17599,39 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-07/Vespers/cc3c00d8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-07",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Beáti omnes * qui timent Dóminum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:79 — the weekday Vespers source row carries the full opening antiphon `Beáti omnes * qui timent Dóminum.` without an extra trailing continuation marker. The compositor preserves that corpus text; the Perl comparison surface abbreviates it to an incipit under Reduced 1955 and appends an unsupported trailing `‡` under Rubrics 1960.",
+    "notes": "Representative entry for the Roman Lenten ferial Vespers antiphon surface family where Perl abbreviates source-backed weekday Vespers openings or adds an unsupported trailing continuation marker.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-08/Lauds/52cc7e9c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-08",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dómine, * refúgium factus es nobis. ‡",
+    "firstActual": "Ant. Dómine, * refúgium factus es nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:87 — the psalter-major row carries `Dómine, * refúgium factus es nobis.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-08/Matins/02b507e6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-08",
+    "hour": "Matins",
+    "firstExpected": "Ant. Exsúrgat Deus, * et dissipéntur inimíci ejus. ‡",
+    "firstActual": "Ant. Exsúrgat Deus, * et dissipéntur inimíci ejus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:92 — the psalter-matins row carries `Exsúrgat Deus, * et dissipéntur inimíci ejus.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-08/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -17549,6 +17681,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-01-08/Vespers/2eac8bef": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-08",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100 — the psalter-major row carries `Ecce quam bonum * et quam jucúndum habitáre fratres in unum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-09/Lauds/d64d0218": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-09",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Lauda, * Jerúsalem, Dóminum. ‡",
+    "firstActual": "Ant. Lauda, * Jerúsalem, Dóminum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:111 — the psalter-major row carries `Lauda, * Jerúsalem, Dóminum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
+    "notes": "Representative entries for the Rubrics 1960 antiphon-surface family where Perl appends a trailing continuation marker that is not present in the psalter source.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-09/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-09",
@@ -17596,6 +17750,28 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-09/Vespers/c057106b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-09",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dómine, * probásti me et cognovísti me.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
+    "notes": "Fanout of the already-documented Rubrics 1960 unsupported trailing-continuation-marker antiphon family.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-10/Lauds/060ea0f1": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Mirábile mystérium * declarátur hódie: innovántur natúræ, Deus homo factus est: id quod fuit permánsit, et quod non erat assúmpsit; non commixtiónem passus, neque divisiónem.",
+    "firstActual": "Ant. Beáta Dei Génetrix, María, * Virgo perpétua, templum Dómini, sacrárium Spíritus Sancti, sola sine exémplo placuísti Dómino nostro Jesu Christo: ora pro pópulo, intérveni pro clero, intercéde pro devóto femíneo sexu.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Nat03.txt:6-15 and upstream/web/www/horas/Latin/Commune/C10.txt:7-15 and upstream/web/www/horas/Latin/Commune/C10.txt:81-90 and docs/file-format-specification.md:132-140 — the Jan 3 temporal row is a fourth-class feria under Rubrics 1960, so the free Saturday supplement selects C10, the Office of the Blessed Virgin for Saturday. C10 supplies its own Lauds versicle and Benedictus antiphon under `[Versum 2]` / `[Ant 2]`; the compositor preserves that selected-office text while the Perl comparison surface substitutes the Nativity-octave Benedictus antiphon.",
+    "notes": "2026 Rubrics 1960 Jan 3 Saturday BVM Lauds Benedictus-antiphon surface exposed after Holy Name first-Vespers psalmody was fixed.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-10/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
@@ -17655,6 +17831,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-11/Compline/274511e7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-11",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tuis obédiens",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:56-67 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:664-672 and docs/phase-2-rubrical-engine-design.md:1469 — Holy Family provides a local `[Doxology]` stanza (`Jesu, tuis obédiens ...`) for fallback hymns, so the compositor correctly substitutes it instead of the default `Præsta, Pater piíssime,` close. The Perl comparison surface retains the unsubstituted fallback stanza.",
+    "notes": "Representative entry for the Rubrics 1960 Holy Family Terce/Sext/None fallback-hymn doxology family where the local `[Doxology]` overrides the default `Præsta, Pater piíssime,` close.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-11/None/274511e7": {
     "policy": "Rubrics 1960 - 1960",
@@ -17785,6 +17972,17 @@
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-13/Matins/74e956ed": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-13",
+    "hour": "Matins",
+    "firstExpected": "V. Dómine, lábia + mea apéries.",
+    "firstActual": "Nocturnus I",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-13.txt:1-13 and upstream/web/www/horas/Latin/Sancti/01-06.txt:4-8 — Jan 13 inherits the Epiphany office by `ex Sancti/01-06;`, and the inherited Epiphany Rule explicitly says `Omit ad Matutinum Incipit Invitatorium Hymnus`. The compositor therefore opens Matins directly at `Nocturnus I`; the Perl comparison surface keeps the suppressed opener lines.",
+    "notes": "Representative entry for the Roman Jan 13 Matins inherited-omit family where the source-backed Epiphany Rule suppresses the incipit/invitatory/hymn wrapper and Perl still begins with `V. Dómine, lábia + mea apéries.`.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-13/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-13",
@@ -17832,6 +18030,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-01-13/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-13",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-13.txt:1-15 and upstream/web/www/horas/Latin/Sancti/01-06.txt:4-11 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — Jan 13 inherits Epiphany by `ex Sancti/01-06`, and the inherited rule set explicitly overrides the fifth Vespers psalm with `Psalm5 Vespera=116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-01-14/Lauds/7c9c46cc": {
     "policy": "Rubrics 1960 - 1960",
@@ -18058,6 +18267,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-18/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-18",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-18/Vespers/019555e4": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-18",
@@ -18226,6 +18446,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-01-25/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-25",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-01-25/Vespers/019555e4": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-25",
@@ -18393,6 +18624,78 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-01-30/Lauds/7f333516": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-30",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-01-30/Matins/4972b782": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-30",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-01-30/None/3776493a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-30",
+    "hour": "None",
+    "firstExpected": "Ant. Misericórdia et véritas * præcédent fáciem tuam, Dómine.",
+    "firstActual": "Ant. Ista est speciósa * inter fílias Jerúsalem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-01-30/Prime/8006fc85": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-30",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-01-30/Terce/80f7f000": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-30",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * quam Dóminus vigilántem invénit.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-01-30/Vespers/714255b4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-30",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/01-30.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-01-31/Lauds/2be42b34": {
     "policy": "Rubrics 1960 - 1960",
@@ -18888,6 +19191,42 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-02-10/Lauds/5607b18d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-10.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-02-10/Matins/371390e3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-10",
+    "hour": "Matins",
+    "firstExpected": "Ant. Expúgna, Dómine, * impugnántes me.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-10.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-02-10/Vespers/2d1df057": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-10",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-10.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-02-11/None/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-02-11",
@@ -19229,6 +19568,50 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:52-54 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:69-71 — the 2026 witnesses are Wednesdays, so Roman Matins uses the `Day3` psalter source. `Day3` gives `Confitebúntur tibi * pópuli Deus in ætérnum.` without the comma after `pópuli`; the comma-bearing variant is `Day31`, which does not apply. Perl surfaces the unsupported `pópuli, Deus,` punctuation.",
     "resolvedAt": "2026-05-06",
     "commitSha": "58323bf"
+  },
+  "Rubrics 1960 - 1960/2026-02-18/None/4ba829b4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-18",
+    "hour": "None",
+    "firstExpected": "Ant. Deus meus * misericórdia tua prævéniet me.",
+    "firstActual": "Ant. Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:56,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday None row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Per arma justítiæ * virtútis Dei...` for None. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-18/Prime/936f4c9a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-18",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Vivo ego * dicit Dóminus: nolo mortem peccatóris, sed ut magis convertátur et vivat.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:8,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Prime row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Vivo ego * dicit Dóminus...` for the first minor-hour antiphon. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-18/Sext/65ecf20b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-18",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:40,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Sext row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Commendémus nosmetípsos * in multa patiéntia...` for Sext. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-18/Terce/869834f0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-18",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:24,158-163 — Ash Wednesday 2024 is a Wednesday in Quadragesima. The ordinary Wednesday Terce row supplies the psalm distribution, but the seasonal `Quad` antiphon table supplies `Advenérunt nobis * dies pœniténtiæ...` for Terce. The compositor emits that source-backed seasonal antiphon; the Perl comparison surface keeps the ordinary Wednesday antiphon.",
+    "notes": "Ash Wednesday seasonal `Quad` minor-hour antiphon row exposed after source-backed seasonal antiphon routing moved the first divergence earlier.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-02-18/Vespers/cc3c00d8": {
     "policy": "Rubrics 1960 - 1960",
@@ -20520,6 +20903,28 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-04-02/Compline/fa4d64f6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-04-02",
+    "hour": "Compline",
+    "firstExpected": "Special Completorium",
+    "firstActual": "Vísita, quǽsumus, Dómine, habitatiónem istam, et omnes insídias inimíci ab ea longe repélle: Ángeli tui sancti hábitent in ea, qui nos in pace custódiant; et benedíctio tua sit super nos semper.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:210-233 and upstream/web/www/horas/Latin/Tempora/Quad6-4r.txt:1 — the Holy Thursday `Special Completorium` section explicitly says `(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)` before the shortened `Vísita, quǽsumus...` close, and the 1955/1960 `Quad6-4r` file inherits that source section by preamble. The compositor now follows that source-backed 1955/1960 collapse; Perl keeps the older full-block opening `Special Completorium`.",
+    "notes": "Shared Roman 1955/1960 Holy Thursday Special Completorium family. After the compositor started honoring `source.kind = triduum-special`, this row proved source-backed `perl-bug` rather than a remaining composition seam.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-04-03/Compline/fa4d64f6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-04-03",
+    "hour": "Compline",
+    "firstExpected": "Special Completorium",
+    "firstActual": "Vísita, quǽsumus, Dómine, habitatiónem istam, et omnes insídias inimíci ab ea longe repélle: Ángeli tui sancti hábitent in ea, qui nos in pace custódiant; et benedíctio tua sit super nos semper.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:210-233 and upstream/web/www/horas/Latin/Tempora/Quad6-4r.txt:1 — the Holy Thursday `Special Completorium` section explicitly says `(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)` before the shortened `Vísita, quǽsumus...` close, and the 1955/1960 `Quad6-4r` file inherits that source section by preamble. The compositor now follows that source-backed 1955/1960 collapse; Perl keeps the older full-block opening `Special Completorium`.",
+    "notes": "Shared Roman 1955/1960 Holy Thursday Special Completorium family. After the compositor started honoring `source.kind = triduum-special`, this row proved source-backed `perl-bug` rather than a remaining composition seam.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-04-04/Matins/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-04-04",
@@ -20530,6 +20935,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-04-11/Vespers/40a67109": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-04-11",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Benedíctus Dóminus * suscéptor meus et liberátor meus, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries `Benedíctus Dóminus * suscéptor meus et liberátor meus.;;143(1-8)` for the Saturday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Tempora/Pasc0-6 has `No secunda Vespera`, so 2024-04-06 Vespers is First Vespers of Pasc1-0 (Dominica in Albis); Pasc1-0 has no proper `[Ant Vespera]` and inherits the Day6 Vespera psalter row for the Saturday-evening psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
+    "notes": "Representative entry for the shared Roman paschaltide First Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-04-14/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
@@ -20742,6 +21158,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-04-18/Vespers/40a67109": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-04-18",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Benedíctus Dóminus * suscéptor meus et liberátor meus, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries `Benedíctus Dóminus * suscéptor meus et liberátor meus.;;143(1-8)` for the Saturday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Tempora/Pasc0-6 has `No secunda Vespera`, so 2024-04-06 Vespers is First Vespers of Pasc1-0 (Dominica in Albis); Pasc1-0 has no proper `[Ant Vespera]` and inherits the Day6 Vespera psalter row for the Saturday-evening psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
+    "notes": "Representative entry for the shared Roman paschaltide First Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-04-20/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-04-20",
@@ -20895,6 +21322,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-04-25/Vespers/22de27ef": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-04-25",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 112 [2]",
+    "firstActual": "Psalmus 110 [2]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Roman Sunday `Day0 Vespera` table explicitly runs `109,110,111,112,113`, so the second emitted heading is source-backed `Psalmus 110 [2]`. The Perl comparison surface skips ahead to `Psalmus 112 [2]`.",
+    "notes": "Representative entry for the Rubrics 1960 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1960 rows with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-04-28/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-04-28",
@@ -20905,6 +21343,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-05-02/Vespers/40a67109": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-02",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Benedíctus Dóminus * suscéptor meus et liberátor meus, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries `Benedíctus Dóminus * suscéptor meus et liberátor meus.;;143(1-8)` for the Saturday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Tempora/Pasc0-6 has `No secunda Vespera`, so 2024-04-06 Vespers is First Vespers of Pasc1-0 (Dominica in Albis); Pasc1-0 has no proper `[Ant Vespera]` and inherits the Day6 Vespera psalter row for the Saturday-evening psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
+    "notes": "Representative entry for the shared Roman paschaltide First Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-05-05/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
@@ -21070,6 +21519,17 @@
     "resolvedAt": "2026-05-06",
     "commitSha": "c6127c6",
     "notes": "2026 Rubrics 1960 C4a Doctor-oration guarded-variant fanout. Representative probes: 2026-04-21 Lauds and 2026-05-09 Lauds."
+  },
+  "Rubrics 1960 - 1960/2026-05-09/Vespers/40a67109": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-09",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Benedíctus Dóminus * suscéptor meus et liberátor meus, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:142-147 — the Day6 Vespera psalter source carries `Benedíctus Dóminus * suscéptor meus et liberátor meus.;;143(1-8)` for the Saturday Vespers first slot; the paschaltide add-alleluia HourDirective appends `, allelúja.` per the standard paschaltide decoration applied throughout the Hour. Tempora/Pasc0-6 has `No secunda Vespera`, so 2024-04-06 Vespers is First Vespers of Pasc1-0 (Dominica in Albis); Pasc1-0 has no proper `[Ant Vespera]` and inherits the Day6 Vespera psalter row for the Saturday-evening psalmody. The compositor emits that source-backed antiphon with paschaltide decoration; the Perl comparison surface fires `alleluia_ant` (`upstream/web/cgi-bin/horas/specials/psalmi.pl:604-622` checks `!exists($winner{Ant Vespera})` and substitutes a single triple-alleluia antiphon, stripping antiphons from positions 1, 2, 3, and -1).",
+    "notes": "Representative entry for the shared Roman paschaltide First Vespers psalmody-antiphon family (parallel to the 2024-04-07 Low Sunday Lauds Day0 Laudes1 paschal antiphon family). Fan out to matching Roman rows with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-05-11/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -21482,6 +21942,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-05-24/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-24",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-05-25/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-05-25",
@@ -21517,6 +21988,17 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-05-25/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-25",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-05-26/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-05-26",
@@ -21551,6 +22033,17 @@
     "notes": "Phase 2/3 fix plus adjudication: seasonal Paschal fallback-hymn doxology now reaches minor-hour fallback hymns; residual Perl rows keep the non-seasonal stanza.",
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
+  },
+  "Rubrics 1960 - 1960/2026-05-26/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-26",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-05-27/None/dcdd92bf": {
     "policy": "Rubrics 1960 - 1960",
@@ -21692,6 +22185,64 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "26e2fdd"
   },
+  "Rubrics 1960 - 1960/2026-05-31/Prime/c068d9d9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-31",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "1 Joann. 5:7",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:332-333 supplies `[Lectio Prima] @Psalterium/Special/Minor Special:Dominica NonaOP:1-2`; upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:61-64 defines `[Dominica NonaOP]` as `!1 Joann. 5:7 / v. Tres sunt, qui testimónium dant in cælo: Pater, Verbum et Spíritus Sanctus, et hi tres unum sunt.`. Codex Rubricarum (1960) §191 keeps the proper feast-day Prime capitulum when the office supplies one (and the parallel pre-1960 rubric is identical), so the Festum Sanctissimæ Trinitatis correctly carries `1 Joann. 5:7`. The Perl comparison surface keeps the weekday `1 Tim. 1:17` chapter, dropping the source-backed Trinity proper Prime lesson.",
+    "notes": "Representative entry for the shared Roman Trinity Sunday proper Prime capitulum family where the feast file's `[Lectio Prima]` overrides the weekday `Regi sæculorum` chapter. Fan out to matching Roman rows on Trinity Sunday with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-05-31/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-31",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pent01-0.txt:12-20 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — Trinity Sunday explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than the Day0 default Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; stable key-hash 39846534 extends the existing Roman Vespers fifth-psalm adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-06-01/Lauds/c038feb4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-01",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "7df9b6b"
+  },
+  "Rubrics 1960 - 1960/2026-06-01/Matins/cd64c80b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-01",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "7df9b6b"
+  },
+  "Rubrics 1960 - 1960/2026-06-01/Vespers/399c27ee": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-01",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "7df9b6b"
+  },
   "Rubrics 1960 - 1960/2026-06-02/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-02",
@@ -21827,6 +22378,90 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/Lauds/56249f74": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/Matins/71eed233": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/None/87d8ee6e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "None",
+    "firstExpected": "Ant. Misericórdia et véritas * præcédent fáciem tuam, Dómine.",
+    "firstActual": "Ant. Volo Pater, * ut ubi ego sum, illic sit et miníster meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/Prime/0e4cd0e7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/Sext/f51f5fea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Qui mihi minístrat, * me sequátur: et ubi ego sum, illic sit et miníster meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/Terce/020f35c8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Qui séquitur me, * non ámbulat in ténebris, sed habébit lumen vitæ, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-05/Vespers/a11999a7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-05",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-06/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -22071,6 +22706,42 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-06-10/Lauds/23d6d778": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "7df9b6b"
+  },
+  "Rubrics 1960 - 1960/2026-06-10/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-10",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "7df9b6b"
+  },
+  "Rubrics 1960 - 1960/2026-06-10/Vespers/7054a963": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-10",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11 routes St Angela Merici to `vide C6a`, and upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9 routes St Margaret to `vide C7a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 plus C7.txt:1-14,61-67 supply `Antiphonas horas` with the common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership family for virgin/widow offices routed through `vide C6a` or `vide C7a`. This tranche covers the visible Matins, Lauds, and Vespers first-divergence rows for the June witnesses.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "7df9b6b"
+  },
   "Rubrics 1960 - 1960/2026-06-11/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-11",
@@ -22081,6 +22752,78 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-20 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:716-730 and upstream/web/www/horas/Latin/Sancti/02-02.txt:4-8 and upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:62-67 and docs/phase-2-rubrical-engine-design.md:1506 — Compline Te lucis carries a default replaceable doxology stanza under `Hymnus Completorium`, and winning 2026 Nat/Epi/local offices expose source-backed doxology variants. The compositor substitutes the required stanza; the Perl comparison surface retains the default `Præsta, Pater piíssime,` close.",
     "notes": "2026 Rubrics 1960 Compline fallback-hymn doxology row. This extends the source-backed fallback-hymn doxology adjudication to `Hymnus Completorium` witnesses.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/Lauds/4a8d9b87": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/Matins/79f6ac10": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "Matins",
+    "firstExpected": "Ant. In Deo salutáre meum * et glória mea: et spes mea in Deo est.",
+    "firstActual": "Ant. In omnem terram * exívit sonus eórum, et in fines orbis terræ verba eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/None/3318f60b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "None",
+    "firstExpected": "Ant. Invocábimus * nomen tuum, Dómine: narrábimus mirabília tua.",
+    "firstActual": "Ant. In patiéntia vestra * possidébitis ánimas vestras.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/Prime/6c1c3345": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "Prime",
+    "firstExpected": "Ant. In loco páscuæ * ibi Dóminus me collocávit.",
+    "firstActual": "Ant. Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/Sext/1bee6505": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "Sext",
+    "firstExpected": "Ant. Memor esto * congregatiónis tuæ, Dómine, quam possedísti ab inítio.",
+    "firstActual": "Ant. Vos amíci mei estis, * si fecéritis quæ præcípio vobis, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
+  },
+  "Rubrics 1960 - 1960/2026-06-11/Terce/f91fc9bf": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-11",
+    "hour": "Terce",
+    "firstExpected": "Ant. Quam bonus * Israël Deus, his, qui recto sunt corde. ‡",
+    "firstActual": "Ant. Majórem caritátem * nemo habet, ut ánimam suam ponat quis pro amícis suis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15 routes St Boniface to `vide C2`, and upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13 routes St Barnabas to `ex C1` with `Antiphonas horas`; upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79 and upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142 supply the dominical psalmody/common antiphon ownership for Matins and the Hours. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared martyr/apostle common antiphon ownership family for C2 martyr-pontiff and C1 apostle offices. This tranche covers the visible Matins, Lauds, Prime, Terce, Sext, None, and Vespers first-divergence rows where applicable.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "c4a1c66"
   },
   "Rubrics 1960 - 1960/2026-06-12/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -22454,6 +23197,42 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-06-19/Lauds/7f333516": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-19",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9 routes St Juliana Falconieri to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 supplies `Antiphonas horas` with the virgin common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership addendum for the June 19 virgin office routed through `vide C6a`.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "ad8de7e"
+  },
+  "Rubrics 1960 - 1960/2026-06-19/Matins/4972b782": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-19",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9 routes St Juliana Falconieri to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 supplies `Antiphonas horas` with the virgin common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership addendum for the June 19 virgin office routed through `vide C6a`.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "ad8de7e"
+  },
+  "Rubrics 1960 - 1960/2026-06-19/Vespers/714255b4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-19",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9 routes St Juliana Falconieri to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125 supplies `Antiphonas horas` with the virgin common Matins/Lauds/Vespers antiphons. Perl keeps ordinary weekday psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared female common antiphon ownership addendum for the June 19 virgin office routed through `vide C6a`.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "ad8de7e"
+  },
   "Rubrics 1960 - 1960/2026-06-20/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-20",
@@ -22670,6 +23449,66 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-06-26/Matins/eceae16a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-26",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. Secus decúrsus aquárum * plantávit víneam justórum, et in lege Dómini fuit volúntas eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
+    "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "6316e3d"
+  },
+  "Rubrics 1960 - 1960/2026-06-26/None/bac8c8bd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-26",
+    "hour": "None",
+    "firstExpected": "Ant. Misericórdia et véritas * præcédent fáciem tuam, Dómine.",
+    "firstActual": "Ant. Joánnes et Paulus * dixérunt ad Gallicánum: Fac votum Deo cæli, et eris victor mélius quam fuísti.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
+    "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "6316e3d"
+  },
+  "Rubrics 1960 - 1960/2026-06-26/Prime/beff47af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-26",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Paulus et Joánnes * dixérunt Juliáno: Nos unum Deum cólimus, qui fecit cælum et terram.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
+    "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "6316e3d"
+  },
+  "Rubrics 1960 - 1960/2026-06-26/Sext/ca2ebc20": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-26",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Joánnes et Paulus, * agnoscéntes tyránnidem Juliáni, facultátes suas paupéribus erogáre cœpérunt.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
+    "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "6316e3d"
+  },
+  "Rubrics 1960 - 1960/2026-06-26/Terce/ff428d99": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-26",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Paulus et Joánnes * dixérunt Terentiáno: Si tuus dóminus est Juliánus, habéto pacem cum illo: nobis álius non est, nisi Dóminus Jesus Christus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-97; upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. Ss John and Paul route through C3 and carry proper Lauds/minor-hour antiphons; C3 supplies the Matins martyr antiphons and the dominical psalmody assignment. The compositor follows those source-backed assignments, while the Perl comparison surface keeps weekday psalter antiphons on these rows.",
+    "notes": "Rubrics 1960 2026 Ss John and Paul assigned-antiphon family. The same tranche fixes Lauds/Vespers major-hour psalm ownership; these row-level adjudications cover the remaining Matins and minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-12",
+    "commitSha": "6316e3d"
+  },
   "Rubrics 1960 - 1960/2026-06-27/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-27",
@@ -22773,6 +23612,87 @@
     "notes": "2026 Rubrics 1960 Domine exaudi conclusion-bridge fanout. Existing Vespers and one-alone minor-hour integration coverage verifies the source-backed conclusion block; this row records the Perl comparison surface stopping at the separator.",
     "resolvedAt": "2026-05-05",
     "commitSha": "d9c4204"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Matins/447aec80": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Matins",
+    "firstExpected": "V. Nimis honoráti sunt amíci tui, Deus.",
+    "firstActual": "V. In omnem terram exívit sonus eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-29.txt:5-12 and upstream/web/www/horas/Latin/Commune/C1.txt:81-83,286-324 — Ss Peter and Paul routes through ex C1 with Antiphonas horas; C1 supplies the generic [Versum 1] after the minor-hour later blocks while the proper hour-specific material is encoded in the Responsory Breve Tertia/Sexta/Nona sections. The compositor emits the source-backed [Versum 1]; Perl shifts later common versicles into the minor-hour versicle slot.",
+    "notes": "Representative row for the Ss Peter and Paul minor-hour versicle-slot family; fanout covers Terce, Sext, and None under both simplified Roman policies.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/None/11e8467c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Ter virgis cæsus sum, * semel lapidátus sum, ter naufrágium pértuli pro Christi nómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "760f770"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Prime/796ead47": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Ego plantávi, * Apollo rigávit, Deus autem increméntum dedit, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "760f770"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Sext/e633569c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Grátia Dei * in me vácua non fuit, sed grátia ejus semper in me manet.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "760f770"
+  },
+  "Rubrics 1960 - 1960/2026-06-30/Terce/e93da8fa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-30",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Libénter gloriábor * in infirmitátibus meis, ut inhábitet in me virtus Christi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137 and 166; upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24; upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324 — Breviary 1960 nos. 169 and 177 keep III-class ordinary offices on the weekday psalter unless proper/common antiphons and psalmody are assigned. The Commemoration of St Paul is III class under rubrica 196, declares `Psalmi Dominica` and `Antiphonas horas`, and supplies proper apostle antiphons through the St Paul office and C1. The compositor follows those source-backed assignments while the Perl comparison surface keeps weekday psalter antiphons on the minor-hour rows.",
+    "notes": "Rubrics 1960 2026 St Paul assigned-antiphon family. The same tranche fixes the Lauds sub-unica joined-collect compositor seam; these row-level adjudications cover the remaining minor-hour Perl fallback antiphon rows.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "760f770"
+  },
+  "Rubrics 1960 - 1960/2026-07-01/Matins/2b3f8937": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-01",
+    "hour": "Matins",
+    "firstExpected": "Imbre aquárum víndice,",
+    "firstActual": "Imbr[e] aquárum víndice,",
+    "class": "rendering-difference",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:78-80 carries the Matins hymn line as `Imbr[e] aquárum víndice,`. Perl expands the bracketed spelling to `Imbre`; the compositor preserves the corpus token. This is an orthographic rendering difference, not a source-selection disagreement.",
+    "notes": "Shared simplified Roman Precious Blood Matins hymn bracketed-letter rendering family.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-01/Vespers/bdb4bf6d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-01",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 147 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-01.txt:11-18 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Precious Blood office explicitly sets `Psalm5 Vespera=116`, so the source-backed first-Vespers fifth heading is `Psalmus 116 [5]` rather than the Vespera3 heading `Psalmus 147 [5]` retained by the Perl comparison surface.",
+    "notes": "Representative entry for the shared Roman proper first-Vespers fifth-psalm override family.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-07-02/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -23068,6 +23988,42 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-08/Lauds/23d6d778": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-08",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-07-08/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-08",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-07-08/Vespers/7054a963": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-08",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-09/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
@@ -23790,6 +24746,42 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-07-22/Lauds/23d6d778": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-22",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-22.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-07-22/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-22",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-22.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-07-22/Vespers/7054a963": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-22",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-22.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-07-23/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-23",
@@ -23921,6 +24913,42 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-29/Lauds/1d24f20a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-29",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-29.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-07-29/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-29",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-29.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-07-29/Vespers/272d4071": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-29",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-29.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-07-30/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
@@ -24640,6 +25668,42 @@
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-08-12/Lauds/1d24f20a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-12",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-12.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-08-12/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-12",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-12.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-08-12/Vespers/272d4071": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-12",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-12.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-08-13/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-13",
@@ -24764,6 +25828,17 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-08-15/Vespers/bb24a4f0": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-15",
+    "hour": "Vespers",
+    "firstExpected": "Prima stropha sequentis hymni dicitur flexis genibus.",
+    "firstActual": "O prima, Virgo, pródita",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-15.txt:6-17 and upstream/web/www/horas/Latin/Commune/C11.txt:26-28 — the Assumption office declares `ex C11` but supplies its own `[Hymnus Vespera]`, beginning `O prima, Virgo, pródita`. The compositor emits that source-backed proper hymn; the Perl comparison surface retains the Marian common's kneeling-rubric opening from C11.",
+    "notes": "Assumption Vespers hymn-inheritance surface: proper hymn text remains source-backed even though Perl exposes the common Marian opening rubric.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-08-16/Matins/57b37f6e": {
     "policy": "Rubrics 1960 - 1960",
@@ -25059,6 +26134,42 @@
     "notes": "2026 Rubrics 1960 Confessor C5 Lauds/Prime/Vespers `Dómine, quinque talénta` common-antiphon fanout. This extends the documented simplified Roman Confessor common-antiphon Perl comparison-surface family to all current 2026 first-divergence rows with this C5 antiphon.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
+  },
+  "Rubrics 1960 - 1960/2026-08-21/Lauds/95332f5f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-21",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-21.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-08-21/Matins/4972b782": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-21",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-21.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-08-21/Vespers/1f6d0876": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-21",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-21.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-08-22/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -26782,6 +27893,30 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-10-03/Lauds/32c45744": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-03",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-03.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-03/Matins/bc1be195": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-03",
+    "hour": "Matins",
+    "firstExpected": "Ant. Memor fuit in sǽculum * testaménti sui Dóminus Deus noster.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-03.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-10-03/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-03",
@@ -27021,6 +28156,29 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-10-08/Lauds/6d4720a5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-08",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-10-08/Matins/bf66ec4e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-08",
+    "hour": "Matins",
+    "firstExpected": "Ant. In Deo salutáre meum * et glória mea: et spes mea in Deo est.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-08.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-10-08/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-08",
@@ -27031,6 +28189,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-08/Vespers/a3dcd0af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-08",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-10-09/Lauds/30af99f1": {
     "policy": "Rubrics 1960 - 1960",
@@ -27360,6 +28529,30 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-10-15/Lauds/366bf533": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-15",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-15.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-15/Matins/bf66ec4e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-15",
+    "hour": "Matins",
+    "firstExpected": "Ant. In Deo salutáre meum * et glória mea: et spes mea in Deo est.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-15.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-10-15/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-15",
@@ -27370,6 +28563,78 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-10-15/Vespers/5b050f85": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-15",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-15.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-16/Lauds/95332f5f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-16",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-16.txt:4-10 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-16/Matins/4972b782": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-16",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-16.txt:4-10 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-16/Vespers/1f6d0876": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-16",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-16.txt:4-10 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-17/Lauds/32c45744": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-17",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-17.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-10-17/Matins/bc1be195": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-17",
+    "hour": "Matins",
+    "firstExpected": "Ant. Memor fuit in sǽculum * testaménti sui Dóminus Deus noster.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-17.txt:2-8 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-10-17/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -28157,6 +29422,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-08/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-08",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-11-08/Vespers/019555e4": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-08",
@@ -28337,6 +29613,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-15/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-15",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-11-15/Vespers/019555e4": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-15",
@@ -28347,6 +29634,42 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Day0 `Vespera` source carries the full opening antiphon `Dixit Dóminus * Dómino meo: Sede a dextris meis.` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-16/Lauds/c038feb4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-16",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-16.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-16/Matins/cd64c80b": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-16",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-16.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-16/Vespers/399c27ee": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-16",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Inclinávit Dóminus * aurem suam mihi.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-16.txt:4-10 routes this female saint office to `vide C6a`; upstream/web/www/horas/Latin/Commune/C6a.txt:1-21 imports C6, and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
   },
   "Rubrics 1960 - 1960/2026-11-17/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
@@ -28415,6 +29738,29 @@
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-11-19/Lauds/6d4720a5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-19",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-19/Matins/bf66ec4e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-19",
+    "hour": "Matins",
+    "firstExpected": "Ant. In Deo salutáre meum * et glória mea: et spes mea in Deo est.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-19.txt:2-8 routes this female saint office to `vide C7a`; upstream/web/www/horas/Latin/Commune/C7a.txt:1-10 imports C7, and upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129 supplies the non-virgin female-common Matins, Lauds, and Vespers antiphons while inheriting C6's `Antiphonas horas` structure. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-11-19/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-19",
@@ -28425,6 +29771,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-19/Vespers/a3dcd0af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-19",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Dum esset Rex * in accúbitu suo, nardus mea dedit odórem suavitátis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-22.txt:1-10 and upstream/web/www/horas/Latin/Sancti/09-12.txt:1-17 route the offices to the Marian common; upstream/web/www/horas/Latin/Commune/C11.txt:7-10 declares `Antiphonas horas`, C11.txt:15-24 and 251-256 supply the Marian Lauds/Vespers antiphons, and C6/C7 provide the referenced `Dum esset Rex`, `Læva ejus`, `Nigra sum`, and `Speciósa` lines. Perl keeps ordinary psalter antiphons on these simplified Roman rows instead.",
+    "notes": "Shared Marian common antiphon ownership family. This tranche covers only the visible Lauds/Vespers and minor-hour antiphon rows; Matins and versicle rows remain separate frontiers.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-11-20/Lauds/30af99f1": {
     "policy": "Rubrics 1960 - 1960",
@@ -28656,6 +30013,78 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-11-25/Lauds/1d24f20a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-25/Matins/d64ad472": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. O quam pulchra * est casta generátio cum claritáte!",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-25/None/48081022": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "None",
+    "firstExpected": "Ant. Deus meus * misericórdia tua prævéniet me.",
+    "firstActual": "Ant. Ista est speciósa * inter fílias Jerúsalem.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-25/Prime/bad5c9b9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-25/Terce/5641168d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * quam Dóminus vigilántem invénit.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-25/Vespers/272d4071": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Hæc est Virgo sápiens, * et una de número prudéntum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:2-8 routes this female saint office to `vide C6`; upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 declares `Psalmi Dominica` / `Antiphonas horas` and supplies the virgin-common Matins, Lauds, Vespers, and hour antiphons. Perl keeps ordinary weekday psalter antiphons on this simplified Roman row instead.",
+    "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
+    "resolvedAt": "2026-05-13",
+    "commitSha": "335dea3"
+  },
   "Rubrics 1960 - 1960/2026-11-26/Lauds/11e2194d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-26",
@@ -28828,6 +30257,61 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-11-29/Lauds/9bc43811": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-29",
+    "hour": "Lauds",
+    "firstExpected": "_",
+    "firstActual": "V. Roráte, cæli, désuper, et nubes pluant justum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016 — the source-backed Advent Vespers versicle is `V. Rorate, caeli...`; the compositor emits the encoded versicle while the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-29/Matins/4e580c99": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-29",
+    "hour": "Matins",
+    "firstExpected": "V. Ex Sion spécies decóris ejus.",
+    "firstActual": "V. Roráte, cæli, désuper, et nubes pluant justum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv1-0.txt:15-16 and upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016 — Advent I supplies `[Versum 1]` through `Adv Versum 3`, whose source-backed versicle is `V. Rorate, caeli...`; the compositor emits that office versicle while Perl keeps the prior psalter versicle.",
+    "notes": "Advent Sunday first-nocturn plain Versum 1 fallback surface after the structural Matins versicle fix.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-29/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-29",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-29/Vespers/9bc43811": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-29",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "V. Roráte, cæli, désuper, et nubes pluant justum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016 — the source-backed Advent Vespers versicle is `V. Rorate, caeli...`; the compositor emits the encoded versicle while the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-30/Vespers/22de27ef": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-30",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 112 [2]",
+    "firstActual": "Psalmus 110 [2]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Roman Sunday `Day0 Vespera` table explicitly runs `109,110,111,112,113`, so the second emitted heading is source-backed `Psalmus 110 [2]`. The Perl comparison surface skips ahead to `Psalmus 112 [2]`.",
+    "notes": "Representative entry for the Rubrics 1960 Roman January Vespers second-psalm heading family where the source-backed Day0 sequence keeps Psalm 110 in the second slot. Fan out to matching 1960 rows with the same first-divergence pair.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-11-30/Vespers/843b6667": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-30",
@@ -28960,6 +30444,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-06/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-06",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-12-07/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -29154,6 +30649,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-13/Vespers/7d7b6199": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-13",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "Ant. Beáta es, María, * quæ credidísti Dómino: perficiéntur in te, quæ dicta sunt tibi a Dómino, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv3-0.txt:162-166 — `[Ant Vespera 3]` delegates to `[Ant Laudes]`, whose third antiphon is the source-backed `Beata es, Maria...`; the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-05-06"
+  },
   "Rubrics 1960 - 1960/2026-12-14/Matins/86cb45c3": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-14",
@@ -29241,6 +30747,28 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-20/Prime/5531f29c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-20",
+    "hour": "Prime",
+    "firstExpected": "Psalmus 117 [1]",
+    "firstActual": "Psalmus 53 [1]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
+    "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-12-20/Vespers/940e44dc": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-20",
+    "hour": "Vespers",
+    "firstExpected": "_",
+    "firstActual": "Ant. Cánite tuba * in Sion, quia prope est dies Dómini: ecce véniet ad salvándum nos, allelúja, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Adv4-0.txt:135-136 — the fourth Sunday of Advent source carries `Canite tuba...` as the first `[Ant Laudes]` antiphon used by the Vespers antiphon reference; the Perl comparison surface leaves the row blank.",
+    "notes": "Rubrics 1960 Advent Vespers later-block frontier; source-backed Advent versicle/antiphon material remains in the corpus.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-12-21/Vespers/843b6667": {
     "policy": "Rubrics 1960 - 1960",
@@ -29367,6 +30895,28 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-12-26/Matins/4956efcc": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-26",
+    "hour": "Matins",
+    "firstExpected": "Laus et perénnis glória",
+    "firstActual": "Jesu, tibi sit glória,",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Doxologies.txt:1-5 and upstream/web/www/horas/Latin/Commune/C2.txt:20-45 — the Christmas-octave Matins hymn receives the seasonal Nativity doxology stanza from `Psalterium/Doxologies`; the compositor substitutes that source-backed stanza while Perl leaves the C2 default doxology line.",
+    "notes": "Rubrics 1960 Christmas-octave Matins seasonal-doxology surface exposed by the shared seasonal Matins doxology fix.",
+    "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-12-26/Vespers/c5793985": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-26",
+    "hour": "Vespers",
+    "firstExpected": "Ant. De fructu * ventris tui ponam super sedem tuam.",
+    "firstActual": "Act. 6:8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-26.txt:9-14 — the St Stephen feast carries an unconditional [Rule] line `no Psalm5` instructing the engine to omit the 5th Vespers psalm under any policy. The compositor honors that source-backed rule and emits 4 antiphons / 4 psalms before transitioning to the capitulum (`Act. 6:8`). The Perl comparison surface ignores the rule and renders the inherited 5th Christmas Day psalm antiphon `De fructu * ventris tui ponam super sedem tuam.`",
+    "notes": "Representative entry for the St Stephen Vespers `no Psalm5` family where Perl ignores the source-backed rule that limits the Vespers psalmody to 4 psalms.",
+    "resolvedAt": "2026-05-06"
   },
   "Rubrics 1960 - 1960/2026-12-27/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",

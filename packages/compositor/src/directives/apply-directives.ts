@@ -346,10 +346,14 @@ function paschalShortResponsory(
   const alleluia = alleluiaPair(context.language);
   const responseBase = normalizeStarredShortResponsoryBase(firstResponse.text);
   const response = `${responseBase}, * ${alleluia.capitalized}, ${alleluia.lowercase}.`;
-  const out: TextContent[] = [
+  const out: TextContent[] = [];
+  if (content[0]?.type === 'separator') {
+    out.push({ type: 'separator' });
+  }
+  out.push(
     { type: 'verseMarker', marker: 'R.br.', text: response },
     { type: 'verseMarker', marker: 'R.', text: response }
-  ];
+  );
   if (versicle) {
     out.push({
       type: 'verseMarker',
@@ -364,6 +368,9 @@ function paschalShortResponsory(
     out.push(defaultGloriaPatriVersicle(context.language));
   }
   out.push({ type: 'verseMarker', marker: 'R.', text: response });
+  if (content[content.length - 1]?.type === 'separator') {
+    out.push({ type: 'separator' });
+  }
   return Object.freeze(out);
 }
 

@@ -3,7 +3,7 @@ import type { ParsedFile, ParsedSection, RawSection } from '../types/sections.js
 import { parseCondition } from './condition-parser.js';
 import { buildSectionContentFromLines } from './directive-parser.js';
 import { parseRankSection } from './rank-parser.js';
-import { parseRuleLine } from './rule-parser.js';
+import { parseRuleSection } from './rule-parser.js';
 import { splitSections } from './section-splitter.js';
 
 export function parseFile(content: string, path: string): ParsedFile {
@@ -41,14 +41,12 @@ function parseSection(section: RawSection): ParsedSection {
   }
 
   if (section.header === 'Rule') {
-    const rules: RuleDirective[] = [];
-
-    for (const line of section.lines) {
-      const directive = parseRuleLine(line.text);
-      if (directive) {
-        rules.push(directive);
-      }
-    }
+    const rules: RuleDirective[] = parseRuleSection(
+      section.lines.map((line) => ({
+        text: line.text,
+        lineNumber: line.lineNumber
+      }))
+    );
 
     return {
       header: section.header,

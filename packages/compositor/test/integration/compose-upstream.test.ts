@@ -1873,6 +1873,39 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(lines).not.toContain(normalizeLatin('Commemoratio Commune plurimarum non Virginum Martyrum'));
   }, 240_000);
 
+  it('joins Rubrics 1960 sub-unica major-hour commemorations under one conclusion', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-06-30');
+    expect(summary.celebrationRules.conclusionMode).toBe('sub-unica');
+
+    const lauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'], joinLaudsToMatins: false }
+    });
+
+    const lines = canonicalLatinLines(lauds);
+    const principalCollectIndex = lines.indexOf(
+      normalizeLatin(
+        'Deus, qui multitúdinem géntium beáti Pauli Apóstoli prædicatióne docuísti: da nobis, quǽsumus; ut, cujus natalícia cólimus, ejus apud te patrocínia sentiámus.'
+      )
+    );
+    expect(principalCollectIndex).toBeGreaterThan(0);
+    expect(lines.slice(principalCollectIndex + 1, principalCollectIndex + 6)).toEqual([
+      normalizeLatin('_'),
+      normalizeLatin('Commemoratio S. Petri Apostoli'),
+      normalizeLatin(
+        'Deus, qui beáto Petro Apóstolo tuo, collátis clávibus regni cæléstis, ligándi atque solvéndi pontifícium tradidísti: concéde; ut, intercessiónis ejus auxílio, a peccatórum nostrórum néxibus liberémur:'
+      ),
+      normalizeLatin(
+        'Qui vivis et regnas cum Deo Patre, in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.'
+      ),
+      normalizeLatin('Amen.')
+    ]);
+  }, 240_000);
+
   it('renders Ash Wednesday Roman minor-hour seasonal antiphons before the psalm heading', async () => {
     for (const [version, expectations] of [
       [
@@ -2674,7 +2707,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           [
             'O admirábile commércium: Creátor géneris humáni, animátum corpus sumens, de Vírgine nasci dignátus est; et procédens homo sine sémine, largítus est nobis suam Deitátem.',
             'Quando natus es * ineffabíliter ex Vírgine, tunc implétæ sunt Scriptúræ: sicut plúvia in vellus descendísti, ut salvum fáceres genus humánum: te laudámus, Deus noster.',
-            'Psalmus 110 [2]'
+            'Psalmus 112 [2]'
           ]
         ],
         [
@@ -3162,6 +3195,33 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     );
   }, 240_000);
 
+  it('renders Easter Octave Rubrics 1960 Compline without psalmody antiphons and with the proper Nunc antiphon in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const date of ['2026-04-05', '2026-04-10'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(psalmodyAntiphons(compline), `${date} Compline psalmody antiphons`).toEqual([]);
+      expect(psalmodyTexts(compline)[0], `${date} Compline opening psalm heading`).toBe('Psalmus 4 [1]');
+      expect(compline.sections.some((section) => section.slot === 'chapter'), `${date} Compline chapter`).toBe(false);
+      expect(compline.sections.some((section) => section.slot === 'responsory'), `${date} Compline responsory`).toBe(false);
+      expect(compline.sections.some((section) => section.slot === 'versicle'), `${date} Compline versicle`).toBe(false);
+      expect(sectionTexts(compline, 'antiphon-ad-nunc-dimittis'), `${date} Compline Nunc antiphon`).toEqual([
+        'Allelúja, allelúja, allelúja, allelúja.'
+      ]);
+      expect(sectionTexts(compline, 'canticle-ad-nunc-dimittis').at(-1), `${date} Compline Nunc antiphon repeat`).toBe(
+        'Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea.'
+      );
+    }
+  }, 240_000);
+
   it('uses actual Saturday Compline psalmody before temporal Sunday First Vespers in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2026-01-17');
@@ -3204,6 +3264,87 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       'In manus tuas, Dómine, * Comméndo spíritum meum.',
       '_'
     ]);
+  }, 240_000);
+
+  it('renders Rubrics 1960 Prime Paschal responsory versicles from the active season', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-05-15');
+    const prime = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'prime',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(renderLatinText(firstMarkedSectionLine(prime, 'responsory', 'V.'))).toBe(
+      'Qui scandis super sídera.'
+    );
+    const shortLessonLines = sectionTexts(prime, 'lectio-brevis').map((line) => line.trim());
+    expect(shortLessonLines).toContain('Act. 1:11');
+    expect(shortLessonLines).toContain(
+      'Viri Galilǽi, quid statis aspiciéntes in cælum? Hic Jesus, qui assúmptus est a vobis in cælum, sic véniet, quemádmodum vidístis eum eúntem in cælum.'
+    );
+  }, 240_000);
+
+  it('renders the Rubrics 1960 Pentecost-week Compline responsory in Paschal short form', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-05-24');
+    const complineStructure = summary.hours.compline;
+    expect(complineStructure?.directives).toContain('paschal-short-responsory');
+
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = compline.sections.find((section) => section.slot === 'responsory');
+    expect(responsory, '2026-05-24 Compline should include the Paschal responsory').toBeDefined();
+    expect(responsory?.lines.map(renderLatinText)).toEqual([
+      '_',
+      'In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.',
+      'In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.',
+      'Redemísti nos, Dómine, Deus veritátis.',
+      'Allelúia, allelúia.',
+      'Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.',
+      '_'
+    ]);
+  }, 240_000);
+
+  it('omits the Rubrics 1960 Passiontide Compline short-responsory Gloria in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-03-29');
+    const complineStructure = summary.hours.compline;
+    expect(complineStructure?.directives).toContain('omit-responsory-gloria');
+    expect(complineStructure?.directives).not.toContain('omit-gloria-patri');
+
+    const compline = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'compline',
+      options: { languages: ['Latin'] }
+    });
+
+    const responsory = compline.sections.find((section) => section.slot === 'responsory');
+    expect(responsory, '2026-03-29 Compline should include the ordinary responsory').toBeDefined();
+    expect(responsory?.lines.map(renderLatinText)).toEqual([
+      '_',
+      'In manus tuas, Dómine, * Comméndo spíritum meum.',
+      'In manus tuas, Dómine, * Comméndo spíritum meum.',
+      'Redemísti nos, Dómine, Deus veritátis.',
+      'Comméndo spíritum meum.',
+      'Gloria omittitur',
+      'In manus tuas, Dómine, * Comméndo spíritum meum.',
+      '_'
+    ]);
+    expect(sectionTexts(compline, 'canticle-ad-nunc-dimittis')).toContain(
+      'Glória Patri, et Fílio, * et Spirítui Sancto.'
+    );
   }, 240_000);
 
   it('renders ordinary Rubrics 1960 Compline seasonal final Marian antiphons in 2026', async () => {
@@ -3334,6 +3475,8 @@ function sectionTexts(
     | 'conclusion'
     | 'final-antiphon-bvm'
     | 'martyrology'
+    | 'antiphon-ad-nunc-dimittis'
+    | 'canticle-ad-nunc-dimittis'
     | 'canticle-ad-magnificat'
 ): readonly string[] {
   const section = composed.sections.find((candidate) => candidate.slot === slot);

@@ -108,6 +108,7 @@ export interface ResponsorySource {
   readonly reference: TextReference;
   readonly replacesTeDeum?: boolean;
   readonly appendGloria?: boolean;
+  readonly suppressEmbeddedGloria?: boolean;
 }
 
 export interface AntiphonReference {
