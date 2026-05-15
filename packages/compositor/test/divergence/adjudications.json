@@ -32573,5 +32573,137 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/09-29.txt:11-16 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Dedication of St Michael office explicitly sets `Psalm5 Vespera=116`, so the source-backed first-Vespers fifth heading is `Psalmus 116 [5]` rather than the Vespera3 heading `Psalmus 137 [5]` retained by the Perl comparison surface.",
     "notes": "Rubrics 1960 2026 fanout for the shared Roman proper first-Vespers fifth-psalm override family; covered by the 2026-09-29 upstream-composition witness.",
     "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-08-24/Prime/fc9d2e3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-24",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ínnocens mánibus * et mundo corde ascéndet in montem Dómini.",
+    "firstActual": "Ant. Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-08-24 Prime witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-08-24/Terce/0b16b9af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-24",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Majórem caritátem * nemo habet, ut ánimam suam ponat quis pro amícis suis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-08-24 Terce witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-08-24/Sext/40f59f1c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-24",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Vos amíci mei estis, * si fecéritis quæ præcípio vobis, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-08-24 Sext witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-08-24/None/f2bc19da": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-24",
+    "hour": "None",
+    "firstExpected": "Ant. Exsultáte, justi, * et gloriámini, omnes recti corde.",
+    "firstActual": "Ant. In patiéntia vestra * possidébitis ánimas vestras.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-08-24 None witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-21/Prime/fc9d2e3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-21",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ínnocens mánibus * et mundo corde ascéndet in montem Dómini.",
+    "firstActual": "Ant. Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-09-21 Prime witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-21/Terce/0b16b9af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-21",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Majórem caritátem * nemo habet, ut ánimam suam ponat quis pro amícis suis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-09-21 Terce witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-21/Sext/40f59f1c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-21",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Vos amíci mei estis, * si fecéritis quæ præcípio vobis, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-09-21 Sext witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-21/None/f2bc19da": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-21",
+    "hour": "None",
+    "firstExpected": "Ant. Exsultáte, justi, * et gloriámini, omnes recti corde.",
+    "firstActual": "Ant. In patiéntia vestra * possidébitis ánimas vestras.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-09-21 None witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-21/Prime/fc9d2e3d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-21",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ínnocens mánibus * et mundo corde ascéndet in montem Dómini.",
+    "firstActual": "Ant. Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-12-21 Prime witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-21/Terce/0b16b9af": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-21",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Majórem caritátem * nemo habet, ut ánimam suam ponat quis pro amícis suis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-12-21 Terce witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-21/Sext/40f59f1c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-21",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Vos amíci mei estis, * si fecéritis quæ præcípio vobis, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-12-21 Sext witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-21/None/f2bc19da": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-21",
+    "hour": "None",
+    "firstExpected": "Ant. Exsultáte, justi, * et gloriámini, omnes recti corde.",
+    "firstActual": "Ant. In patiéntia vestra * possidébitis ánimas vestras.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
+    "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-12-21 None witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
   }
 }

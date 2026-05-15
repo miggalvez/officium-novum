@@ -22,6 +22,42 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Apostle proper minor-hour antiphons under `Antiphonas horas` (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained Prime, Terce, Sext, and None rows for the Apostle
+feasts on 2026-08-24, 2026-09-21, and 2026-12-21. Perl surfaced the
+ordinary psalter antiphons, while the compositor emitted the Apostle
+proper minor-hour antiphons inherited from the C1/C1a common.
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The three sanctoral offices carry `ex C1` or
+`ex C1a`, `Psalmi Dominica`, and `Antiphonas horas`; the Apostle common
+maps `[Ant Laudes]` to `[Ant Vespera]`, whose first, second, third, and
+fifth antiphons are the proper minor-hour antiphons for Prime, Terce,
+Sext, and None. The file-format contract records `Antiphonas horas` as
+the instruction to use proper antiphons for the Hours.
+
+**Resolution.** Class `perl-bug`. Added twelve 2026 row-key
+adjudications and upstream-composition coverage proving that these
+II-class Apostle offices keep the C1/C1a antiphon set at the minor
+Hours instead of falling back to ordinary psalter antiphons.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15`
+- `upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15`
+- `upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:10-15`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:261-262`
+- `docs/file-format-specification.md:638`
+
+**Impact.** Expected to keep divergent hours at `1844` and drop
+unadjudicated rows from `481` to `469` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: Advent Matins invitatory on commemorated Confessors (perl-bug)
 
 **Commit.** Current tranche commit.

@@ -3149,6 +3149,42 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Rubrics 1960 Apostle minor-hour antiphons from Antiphonas horas', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const expectedAntiphons = {
+      prime: 'Hoc est præcéptum meum, * ut diligátis ínvicem, sicut diléxi vos.',
+      terce: 'Majórem caritátem * nemo habet, ut ánimam suam ponat quis pro amícis suis.',
+      sext: 'Vos amíci mei estis, * si fecéritis quæ præcípio vobis, dicit Dóminus.',
+      none: 'In patiéntia vestra * possidébitis ánimas vestras.'
+    } as const;
+
+    for (const [date, celebrationPath] of [
+      ['2026-08-24', 'Sancti/08-24'],
+      ['2026-09-21', 'Sancti/09-21'],
+      ['2026-12-21', 'Sancti/12-21']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      expect(summary.celebration.feastRef.path, `${date} celebration`).toBe(celebrationPath);
+
+      for (const [hour, expected] of Object.entries(expectedAntiphons) as [
+        keyof typeof expectedAntiphons,
+        string
+      ][]) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+
+        expect(normalizeLatin(firstPsalmodyAntiphon(composed)), `${date} ${hour} antiphon`).toBe(
+          normalizeLatin(expected)
+        );
+      }
+    }
+  }, 240_000);
+
   it('composes the 2026 Paschaltide third-class sanctoral weekday witnesses through their family directives', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const hours = [
