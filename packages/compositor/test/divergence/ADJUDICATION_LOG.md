@@ -58,6 +58,54 @@ real Pentecost ferial Matins source.
 `1855` to `1851`, exact-match hours rise from `1065` to `1069`, and
 unadjudicated rows drop from `621` to `617`.
 
+### 2026-05-15 — Pattern: January C2/C3/C4/C4a/C6 common-antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The live `Rubrics 1960 - 1960` / 2026 January
+frontier still contained third-class sanctoral offices where the first
+divergence was the same source-backed common-antiphon ownership already
+adjudicated for later 2026 witnesses. Perl keeps weekday psalter
+antiphons at Matins, Lauds, Prime, Terce, Sext, None, or Vespers, while
+the compositor emits assigned common antiphons from C2, C3, C4/C4a, or
+C6.
+
+**Root cause.** This is not a new engine or compositor defect. The
+affected January offices route through common families such as `vide
+C2b`, `vide C3`, `vide C4a`, and `vide C6`. Those source commons either
+declare `Psalmi Dominica` / `Antiphonas horas` directly or inherit the
+assigned common antiphons. Breviary 1960 nos. 169 and 177 retain the
+weekday psalter for third-class offices only unless proper or common
+antiphons are assigned.
+
+**Resolution.** Class `perl-bug`. Added 33 row-key adjudications for
+the January C2/C3/C4/C4a/C6 common-antiphon witnesses, keeping distinct
+Compline, Sunday, and psalm-heading seams unclassified for separate
+review. Added an upstream integration regression for representative
+January 2026 C2, C3, and C6 witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177`
+- `upstream/web/www/horas/Latin/Sancti/01-14.txt:17-20`
+- `upstream/web/www/horas/Latin/Sancti/01-16.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-20.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-22.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-24.txt:11-12`
+- `upstream/web/www/horas/Latin/Sancti/01-26.txt:11-12`
+- `upstream/web/www/horas/Latin/Sancti/01-27.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-29.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-30.txt:9-10`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:9-14`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252`
+
+**Impact.** Expected to keep divergent hours at `1851` and drop
+unadjudicated rows from `617` to `584` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-13 — Pattern: later 2026 female common antiphon fanout (perl-bug)
 
 **Commit.** Current tranche commit.

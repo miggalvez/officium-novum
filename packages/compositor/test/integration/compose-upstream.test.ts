@@ -1420,6 +1420,46 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('uses assigned January common antiphons for 1960 third-class offices', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const cases: readonly {
+      readonly date: string;
+      readonly hour: HourName;
+      readonly firstAntiphon: string;
+    }[] = [
+      {
+        date: '2026-01-16',
+        hour: 'matins',
+        firstAntiphon: 'In lege Dómini * fuit volúntas ejus die ac nocte.'
+      },
+      {
+        date: '2026-01-20',
+        hour: 'lauds',
+        firstAntiphon: 'Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.'
+      },
+      {
+        date: '2026-01-30',
+        hour: 'sext',
+        firstAntiphon: 'Hæc est quæ nescívit * torum in delícto: habébit fructum in respectióne animárum sanctárum.'
+      }
+    ];
+
+    for (const { date, hour, firstAntiphon } of cases) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(normalizeLatin(firstPsalmodyAntiphon(composed)), `${date} ${hour} assigned antiphon`).toBe(
+        normalizeLatin(firstAntiphon)
+      );
+    }
+  }, 240_000);
+
   it('applies the January 28 Invit2 feast materialization before the hymn across the Roman families', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
