@@ -42,6 +42,7 @@ export interface MatinsSlotRef {
   readonly pairedAntiphonRef?: TextReference;
   readonly pairedPsalmRef?: TextReference;
   readonly psalmIndex?: number;
+  readonly responsoryLike?: boolean;
 }
 
 export function composeReferenceSlot(
@@ -82,8 +83,10 @@ export function composeMergedSlot(
       appendGloria,
       suppressEmbeddedGloria,
       pairedAntiphonRef,
-      pairedPsalmRef
+      pairedPsalmRef,
+      responsoryLike
     } = refState;
+    const rendersResponsoryText = slot === 'responsory' || responsoryLike === true;
     const resolved = resolveReference(args.corpus, ref, {
       languages: args.options.languages,
       langfb: args.options.langfb,
@@ -121,7 +124,7 @@ export function composeMergedSlot(
       const sourceContent =
         slot === 'versicle'
           ? extendPsalterMatinsVersicleContent(section.content, ref, lang, args)
-          : appendGloria === true && slot === 'responsory'
+          : appendGloria === true && rendersResponsoryText
             ? withResponsoryGloria(flattenConditionals(section.content, args.context))
             : section.content;
       if (slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(sourceContent)) {
@@ -178,7 +181,7 @@ export function composeMergedSlot(
         }
       );
       const expanded =
-        slot === 'responsory'
+        rendersResponsoryText
           ? suppressEmbeddedResponsoryGloria(
               normalizeResponsoryGloria(expandedContent),
               appendGloria === true,
@@ -206,7 +209,7 @@ export function composeMergedSlot(
           ? replaceFinalHymnDoxology(withPairedAntiphonPlaceholders, hymnDoxology?.get(lang))
           : withPairedAntiphonPlaceholders;
       const withLiturgicalLineBreaks =
-        slot === 'lectio-brevis' || slot === 'te-deum'
+        slot === 'lectio-brevis' || (slot === 'te-deum' && !rendersResponsoryText)
           ? interleaveSeparators(withDoxology)
           : withDoxology;
       const lineSeparated =

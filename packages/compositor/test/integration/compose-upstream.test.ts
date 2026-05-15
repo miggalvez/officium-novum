@@ -1164,6 +1164,35 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(composed.sections.filter((section) => section.slot === 'te-deum')).toHaveLength(1);
   }, 240_000);
 
+  it('renders Pentecost ferial Matins Te Deum replacement responsories with the responsory separator and Gloria repeat', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    const summary = engine.resolveDayOfficeSummary('2026-06-02');
+    const composed = composeHour({
+      corpus: resolvedCorpus.index,
+      summary,
+      version: engine.version,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+
+    const teDeumSections = composed.sections.filter((section) => section.slot === 'te-deum');
+    expect(teDeumSections).toHaveLength(1);
+    const teDeumLines = teDeumSections[0]!.lines;
+    const lines = teDeumLines.map((line) => normalizeLatin(renderLatinText(line).trim()));
+    const response = 'Et fui tecum in ómnibus ubicúmque ambulásti, firmans regnum tuum in ætérnum.';
+
+    expect(lines[0]).toBe('_');
+    expect(teDeumLines[1]?.marker).toBe('R.');
+    expect(lines[1]).toBe(
+      'Ego te tuli de domo patris tui, dicit Dóminus, et pósui te páscere gregem pópuli mei:'
+    );
+    expect(lines).toContain(`* ${response}`);
+    expect(lines).toContain('Glória Patri, et Fílio, * et Spirítui Sancto.');
+    expect(lines.filter((line) => line === response)).toHaveLength(2);
+    expect(lines).not.toContain('Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.');
+  }, 240_000);
+
   it('opens January 6 and January 13 Roman Matins directly at Nocturn I when the inherited Epiphany omit rules suppress the wrapper block', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
