@@ -37,9 +37,7 @@ export function deriveSeasonalDirectives1960(
       temporal.season === 'passiontide') {
     directives.add('omit-alleluia');
   }
-  if (temporal.season === 'eastertide' ||
-      temporal.season === 'ascensiontide' ||
-      temporal.season === 'pentecost-octave') {
+  if (hasPaschalAlleluia(temporal.season)) {
     directives.add('add-alleluia');
     directives.add('add-versicle-alleluia');
   }
@@ -47,6 +45,9 @@ export function deriveSeasonalDirectives1960(
     (hour === 'terce' || hour === 'sext' || hour === 'none') &&
     thirdClassSanctoralWeekdayInPaschaltide1960(params)
   ) {
+    directives.add('paschal-short-responsory');
+  }
+  if (hour === 'compline' && hasPaschalAlleluia(temporal.season)) {
     directives.add('paschal-short-responsory');
   }
 
@@ -119,6 +120,10 @@ function addExplicitRuleDirectives(
       directives.add('preces-feriales');
     }
   }
+}
+
+function hasPaschalAlleluia(season: TemporalContext['season']): boolean {
+  return season === 'eastertide' || season === 'ascensiontide' || season === 'pentecost-octave';
 }
 
 function isTriduum(temporal: TemporalContext): boolean {
