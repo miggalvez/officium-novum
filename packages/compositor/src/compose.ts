@@ -31,6 +31,10 @@ import {
   withMinorHourLaterBlockSeparator
 } from './compose/separators.js';
 import {
+  prepareSubUnicaOrationContent,
+  rendersSubUnicaOrationSeparators
+} from './compose/sub-unica-oration.js';
+import {
   appendExpandedPsalmWrapper,
   buildPsalmHeading,
   containsInlinePsalmRefs,
@@ -46,7 +50,7 @@ import { MAX_DEFERRED_DEPTH, referenceKey } from './compose/shared.js';
 import { buildSlotAccounting } from './compose/slot-accounting.js';
 import { applyDirectives } from './directives/index.js';
 import { isWholeAntiphonSlot, markAntiphonFirstText } from './emit/antiphon-marker.js';
-import { emitSection } from './emit/index.js';
+import { emitConfiguredSection } from './emit/index.js';
 import { flattenConditionals } from './flatten/index.js';
 import { expandDeferredNodes, interleaveSeparators } from './resolve/expand-deferred-nodes.js';
 import { resolveReference } from './resolve/reference-resolver.js';
@@ -348,6 +352,10 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         isAntiphon
       });
       const sourceWithCommemorationPrelude = prependCommemorationPrelude(args, lang, namedSourceContent);
+      const sourceWithSubUnicaHeading = prepareSubUnicaOrationContent(
+        subUnicaOrationContext(args),
+        sourceWithCommemorationPrelude
+      );
       if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(namedSourceContent)) {
         const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(namedSourceContent));
         const flattened = flattenConditionals(antiphonOnly, args.context);
@@ -396,7 +404,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithCommemorationPrelude)
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithSubUnicaHeading)
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -510,7 +518,25 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
   }
   if (frozen.size === 0) return undefined;
 
-  return emitSection(args.slot, frozen, primary ? referenceKey(primary) : undefined);
+  return emitConfiguredSection(
+    {
+      slot: args.slot,
+      ...(rendersSubUnicaOrationSeparators(subUnicaOrationContext(args))
+        ? { renderSeparators: true }
+        : {})
+    },
+    frozen,
+    primary ? referenceKey(primary) : undefined
+  );
+}
+
+function subUnicaOrationContext(args: ComposeSlotArgs) {
+  return {
+    slot: args.slot,
+    hour: args.hour,
+    conditionContext: args.context,
+    conclusionMode: args.summary.celebrationRules.conclusionMode
+  };
 }
 
 function prependCommemorationPrelude(
