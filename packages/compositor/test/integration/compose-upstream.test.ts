@@ -2915,6 +2915,30 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
           'Angeli, Archángeli, * Throni et Dominatiónes, Principátus et Potestátes, Virtútes cælórum, laudáte Dóminum de cælis, allelúja.',
           'Psalmus 116 [5]'
         ]
+      ],
+      [
+        '2026-08-10',
+        [
+          'Misit Dóminus Angelum suum, et liberávit me de médio ignis, et non sum æstuátus.',
+          'Beátus Lauréntius * orábat, dicens: Grátias tibi ago, Dómine, quia jánuas tuas íngredi mérui.',
+          'Psalmus 116 [5]'
+        ]
+      ],
+      [
+        '2026-11-01',
+        [
+          'Benedícite Dóminum omnes elécti ejus: ágite dies lætítiæ, et confitémini illi.',
+          'Hymnus * ómnibus Sanctis ejus: fíliis Israël, pópulo appropinquánti sibi: glória hæc est ómnibus sanctis ejus.',
+          'Psalmus 116 [5]'
+        ]
+      ],
+      [
+        '2026-11-23',
+        [
+          'De sub cujus pede fons vivus emánat: flúminis ímpetus lætíficat civitátem Dei.',
+          'Omnes gentes * per gyrum credidérunt Christo Dómino.',
+          'Psalmus 116 [5]'
+        ]
       ]
     ] as const) {
       const summary = engine.resolveDayOfficeSummary(date);

@@ -32574,6 +32574,39 @@
     "notes": "Rubrics 1960 2026 fanout for the shared Roman proper first-Vespers fifth-psalm override family; covered by the 2026-09-29 upstream-composition witness.",
     "resolvedAt": "2026-05-15"
   },
+  "Rubrics 1960 - 1960/2026-08-10/Vespers/116cc4cc": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-10",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 115 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-10.txt:11-17 and upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm116.txt:1-2 — the St Lawrence office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=115`, so the source-backed first-Vespers fifth heading is `Psalmus 116 [5]` rather than the second-Vespers Psalm 115 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the shared Roman proper first-Vespers fifth-psalm override family; covered by the 2026 upstream-composition Psalm 116 witnesses.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-01/Vespers/116cc4cc": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-01",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 115 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-01.txt:9-15 and upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm116.txt:1-2 — the All Saints office explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=115`, so the source-backed first-Vespers fifth heading is `Psalmus 116 [5]` rather than the second-Vespers Psalm 115 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the shared Roman proper first-Vespers fifth-psalm override family; covered by the 2026 upstream-composition Psalm 116 witnesses.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-23/Vespers/116cc4cc": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-23",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 115 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-23.txt:17-23 and upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm116.txt:1-2 — the St Clement office keys its fifth Vespers antiphon directly to Psalm 116 with `;;116`, so the source-backed fifth heading is `Psalmus 116 [5]` rather than Psalm 115 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the shared Roman proper first-Vespers fifth-psalm override family; covered by the 2026 upstream-composition Psalm 116 witnesses.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-08-24/Prime/fc9d2e3d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-24",

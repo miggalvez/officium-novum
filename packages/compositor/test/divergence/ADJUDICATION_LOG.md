@@ -22,6 +22,36 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Additional proper first-Vespers Psalm 116 witnesses (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained three more Vespers rows on 2026-08-10, 2026-11-01,
+and 2026-11-23 where Perl retained `Psalmus 115 [5]`; the compositor
+emitted `Psalmus 116 [5]`.
+
+**Root cause.** This is the same source-backed proper first-Vespers
+fifth-psalm override family as the earlier Psalm 116 tranche. St
+Lawrence and All Saints explicitly set `Psalm5 Vespera=116` and
+`Psalm5 Vespera3=115`; St Clement keys its fifth Vespers antiphon
+directly to Psalm 116 with `;;116`.
+
+**Resolution.** Class `perl-bug`. Added three 2026 row-key
+adjudications and extended the upstream-composition Psalm 116 regression
+with St Lawrence, All Saints, and St Clement witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/08-10.txt:11-17`
+- `upstream/web/www/horas/Latin/Sancti/11-01.txt:9-15`
+- `upstream/web/www/horas/Latin/Sancti/11-23.txt:17-23`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm116.txt:1-2`
+
+**Impact.** Expected to keep divergent hours at `1835` and drop
+unadjudicated rows from `460` to `457` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: Advent `Oratio Dominica` must not replace the fixed Compline collect (engine-bug fixed)
 
 **Commit.** Current tranche commit.
