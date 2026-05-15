@@ -140,7 +140,17 @@ describe('deriveSeasonalDirectives1960', () => {
     expect(directives.has('short-chapter-only')).toBe(true);
   });
 
-  it('emits omit-responsory-gloria for Passiontide minor hours', () => {
+  it('emits omit-responsory-gloria for Passiontide Matins and minor hours', () => {
+    const matinsDirectives = deriveSeasonalDirectives1960({
+      hour: 'matins',
+      celebration: celebration('Tempora/Quad5-0'),
+      celebrationRules: celebrationRules(),
+      hourRules: hourRules('matins'),
+      temporal: temporal('Quad5-0', 'passiontide', 0)
+    });
+    expect(matinsDirectives.has('omit-responsory-gloria')).toBe(true);
+    expect(matinsDirectives.has('omit-gloria-patri')).toBe(false);
+
     const directives = deriveSeasonalDirectives1960({
       hour: 'terce',
       celebration: celebration('Tempora/Quad5-0'),

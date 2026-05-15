@@ -334,6 +334,8 @@ warning count: 0
   Latin: text("* Ædificavítque ibi altáre Dómino.")
   Latin: [V.] text("Dixit autem Dóminus ad eum: Leva óculos tuos, et vide: omnem terram, quam cónspicis tibi dabo, et sémini tuo in sempitérnum.")
   Latin: [R.] text("Ædificavítque ibi altáre Dómino.")
+  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: [R.] text("Ædificavítque ibi altáre Dómino.")
 
 [section #31 type=other slot=de-officio-capituli reference=horas/Latin/Psalterium/Common/Rubricae#Matutinum languages=Latin]
   Latin: rubric("Reliqua omittuntur, nisi %Laudes% separandæ sint.")

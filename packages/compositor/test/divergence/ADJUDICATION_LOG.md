@@ -22,6 +22,47 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Matins Te Deum replacement responsory final Gloria/repeat (engine/compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained a fifteen-row Matins family where the compositor
+rendered the third or ninth responsory in place of the omitted Te Deum,
+then moved directly to the `Reliqua omittuntur...` Matins-Lauds
+separation rubric. Perl expected the replacement responsory to receive
+the last-responsory ending first: `Glória Patri` plus the final response
+outside Passiontide, and `Gloria omittitur` plus the whole responsory
+repeat in Passiontide. Representative witnesses include 2026-02-13 and
+2026-03-27.
+
+**Root cause.** This was a reusable Matins structure bug, not a
+date-specific overlay issue. The engine marked the final responsory as a
+Te Deum replacement but did not mark it for the last-responsory
+Gloria/repeat ending. The compositor also treated responsory-like
+`te-deum` replacement slots as `te-deum` for directive transforms, so
+Passiontide Matins did not route through the same responsory directive
+path as ordinary responsories.
+
+**Resolution.** Marked Te Deum replacement responsories with
+`appendGloria`, taught the merged Matins slot renderer to apply
+responsory directives to responsory-like `te-deum` slots, and emitted
+Rubrics 1960 Passiontide `omit-responsory-gloria` directives for Matins
+as well as the minor hours. Added engine unit coverage plus 2026
+upstream-composition witnesses for an ordinary Septuagesima responsory
+and a Passiontide responsory before the Matins-Lauds separation rubric.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:277-317`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:69-72`
+- `upstream/web/www/horas/Latin/Tempora/Quadp2-0.txt:99-103`
+- `upstream/web/www/horas/Latin/Tempora/Quad5-0.txt:96-101`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1851` to `1849`, exact-match hours rise from `1069` to `1071`, and
+unadjudicated rows drop from `508` to `506`.
+
 ### 2026-05-15 — Pattern: full-year C2/C3/C4/C4a/C5/C6 common-antiphon fanout (perl-bug)
 
 **Commit.** Current tranche commit.

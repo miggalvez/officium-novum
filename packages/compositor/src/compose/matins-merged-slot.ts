@@ -101,7 +101,7 @@ export function composeMergedSlot(
       const bucket = perLanguage.get(lang);
       if (!bucket) continue;
       const gloriaOmittiturReplacement =
-        slot === 'psalmody'
+        slot === 'psalmody' || rendersResponsoryText
           ? resolveGloriaOmittiturReplacement({
               directives: args.directives,
               corpus: args.corpus,
@@ -189,7 +189,8 @@ export function composeMergedSlot(
             )
           : expandedContent;
       const flattened = flattenConditionals(expanded, args.context);
-      const transformed = applyDirectives(slot, flattened, {
+      const directiveSlot = rendersResponsoryText ? 'responsory' : slot;
+      const transformed = applyDirectives(directiveSlot, flattened, {
         hour: 'matins',
         language: lang,
         directives: args.directives,

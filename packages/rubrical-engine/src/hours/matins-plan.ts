@@ -1274,6 +1274,7 @@ function markTeDeumReplacement(plan: MatinsPlan): MatinsPlan {
       responsory.index === lastResponsory.index
         ? {
             ...responsory,
+            appendGloria: true,
             replacesTeDeum: true
           }
         : responsory

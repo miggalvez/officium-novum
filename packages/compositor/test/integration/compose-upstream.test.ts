@@ -1193,6 +1193,56 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(lines).not.toContain('Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.');
   }, 240_000);
 
+  it('renders Te Deum replacement responsory Gloria/repeat before the Matins-Lauds separation rubric', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const cases: readonly {
+      readonly date: string;
+      readonly response: string;
+      readonly gloriaLine: string;
+      readonly repeatedLine: string;
+    }[] = [
+      {
+        date: '2026-02-13',
+        response: 'Ut non perdam aquis dilúvii omnem carnem.',
+        gloriaLine: 'Glória Patri, et Fílio, * et Spirítui Sancto.',
+        repeatedLine: 'Ut non perdam aquis dilúvii omnem carnem.'
+      },
+      {
+        date: '2026-03-27',
+        response: 'Ut enárrem nomen tuum frátribus meis.',
+        gloriaLine: 'Gloria omittitur',
+        repeatedLine:
+          'In próximo est tribulátio mea, Dómine, et non est qui ádjuvet; ut fódiant manus meas et pedes meos: líbera me de ore leónis, * Ut enárrem nomen tuum frátribus meis.'
+      }
+    ];
+
+    for (const { date, response, gloriaLine, repeatedLine } of cases) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const teDeumSections = composed.sections.filter((section) => section.slot === 'te-deum');
+      expect(teDeumSections, `${date} Te Deum replacement section`).toHaveLength(1);
+      const lines = teDeumSections[0]!.lines.map((line) => normalizeLatin(renderLatinText(line).trim()));
+
+      expect(lines[0], `${date} responsory separator`).toBe('_');
+      expect(lines, `${date} responsory response`).toContain(normalizeLatin(response));
+      expect(lines, `${date} replacement Gloria form`).toContain(normalizeLatin(gloriaLine));
+      expect(lines, `${date} replacement repeat`).toContain(normalizeLatin(repeatedLine));
+      const teDeumIndex = composed.sections.findIndex((section) => section.slot === 'te-deum');
+      const matinsRubric = composed.sections[teDeumIndex + 1];
+      expect(matinsRubric?.slot, `${date} Matins-Lauds separation slot`).toBe('de-officio-capituli');
+      expect(normalizeLatin(renderLatinText(matinsRubric!.lines[0]!).trim()), `${date} Matins-Lauds separation rubric`).toBe(
+        normalizeLatin('Reliqua omittuntur, nisi %Laudes% separandæ sint.')
+      );
+    }
+  }, 240_000);
+
   it('opens January 6 and January 13 Roman Matins directly at Nocturn I when the inherited Epiphany omit rules suppress the wrapper block', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);
