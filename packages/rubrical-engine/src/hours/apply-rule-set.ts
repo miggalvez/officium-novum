@@ -627,11 +627,26 @@ function decoratePsalmodyAssignments(
 
     const antiphons = resolveMajorHourAntiphonRefs(properFiles, input);
     const properPsalmRefs = resolveMajorHourPsalmRefs(properFiles, input, assignments.length);
-    const preservePsalterPsalmRefs = isRubrics1960ThirdClassSanctoralWeekday(input);
+    const assignedDominicaPsalmRefs = assignedThirdClassDominicaMajorHourPsalmRefs(
+      input,
+      properFiles,
+      antiphons,
+      assignments.length
+    );
+    const decoratedAssignments =
+      assignedDominicaPsalmRefs.length > 0
+        ? assignments.map((assignment, index) => ({
+            ...assignment,
+            psalmRef: assignedDominicaPsalmRefs[index] ?? assignment.psalmRef
+          }))
+        : assignments;
+    const preservePsalterPsalmRefs =
+      isRubrics1960ThirdClassSanctoralWeekday(input) &&
+      assignedDominicaPsalmRefs.length === 0;
     if (antiphons.length === 0) {
       return assignments;
     }
-    return assignments.map((assignment, index) =>
+    return decoratedAssignments.map((assignment, index) =>
       antiphons[index]
         ? {
             ...assignment,
@@ -680,6 +695,53 @@ function decoratePsalmodyAssignments(
   }
 
   return assignments;
+}
+
+function assignedThirdClassDominicaMajorHourPsalmRefs(
+  input: ApplyRuleSetInput,
+  files: readonly ParsedFile[],
+  antiphons: readonly TextReference[],
+  count: number
+): readonly TextReference[] {
+  // Breviary 1960 nos. 169 and 177 keep ordinary III-class weekdays on the
+  // ferial psalter unless the Proper/Common assigns major-hour antiphons and
+  // psalmody; legacy commons encode that assignment as `Psalmi Dominica`.
+  if (
+    input.policy.name !== 'rubrics-1960' ||
+    (input.hour !== 'lauds' && input.hour !== 'vespers') ||
+    (input.hourRules.psalterScheme !== 'dominica' &&
+      !filesDeclareActivePsalmiDominica(input, files)) ||
+    !isRubrics1960ThirdClassSanctoralWeekday(input) ||
+    thirdClassSanctoralWeekdayInPaschaltide1960(input) ||
+    antiphons.length === 0
+  ) {
+    return [];
+  }
+
+  const section = input.hour === 'lauds' ? 'Day0 Laudes1' : 'Day0 Vespera';
+  return Array.from({ length: count }, (_, index) => ({
+    path: PSALMI_MAJOR,
+    section,
+    selector: String(index + 1)
+  }));
+}
+
+function filesDeclareActivePsalmiDominica(
+  input: ApplyRuleSetInput,
+  files: readonly ParsedFile[]
+): boolean {
+  const conditionContext = majorHourPsalmConditionContext(input);
+  return files.some((file) =>
+    file.sections
+      .filter((section) => section.header === 'Rule')
+      .flatMap((section) => section.rules ?? [])
+      .some(
+        (rule) =>
+          /\bPsalmi\s+Dominica\b/iu.test(rule.raw) &&
+          (!rule.condition ||
+            (conditionContext !== undefined && conditionMatches(rule.condition, conditionContext)))
+      )
+  );
 }
 
 function usesPostEpiphanyFeriaFerialMajorHourPsalmody1960(input: ApplyRuleSetInput): boolean {
@@ -2159,7 +2221,10 @@ function resolveSpecialPrimeChapterOffice(
 }
 
 function primeShortLessonSection(input: ApplyRuleSetInput): string {
-  if (input.temporal.season === 'eastertide' || input.temporal.season === 'ascensiontide') {
+  if (input.temporal.season === 'ascensiontide') {
+    return 'Asc';
+  }
+  if (input.temporal.season === 'eastertide') {
     return 'Pasch';
   }
   if (input.temporal.season === 'pentecost-octave') {
