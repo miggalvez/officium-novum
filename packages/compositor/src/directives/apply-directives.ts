@@ -17,10 +17,10 @@ type SlotTransform = (
  * Per-slot text transformation driven by {@link HourDirective}s on the
  * {@link HourStructure}.
  *
- * Each directive is implemented as a standalone slot transform below. The
- * dispatcher applies them in a fixed, deterministic order so that pairs like
- * `omit-alleluia`/`add-alleluia` (which never co-occur in valid rubrics —
- * see §16.4 of the Phase 2 design) would still compose to a predictable
+ * Text-shaping directives are implemented as standalone slot transforms below.
+ * The dispatcher applies them in a fixed, deterministic order so that pairs
+ * like `omit-alleluia`/`add-alleluia` (which never co-occur in valid rubrics
+ * — see §16.4 of the Phase 2 design) would still compose to a predictable
  * result if a caller somehow emits both.
  *
  * The implementations deliberately operate on resolved {@link TextContent}
@@ -29,7 +29,8 @@ type SlotTransform = (
  * DO corpus (cf. `horas/Latin/Psalterium/Common/Prayers.txt` for Gloria
  * Patri, `horas/Latin/Psalterium/Special/Preces.txt` for the preces
  * blocks, and `horas/Latin/Psalterium/Doxologies.txt` for the seasonal
- * doxologies).
+ * doxologies). Some engine directives, such as Office genuflection posture,
+ * remain structural metadata and deliberately do not add spoken text.
  */
 export function applyDirectives(
   slot: SlotName,
@@ -85,8 +86,6 @@ function transformsFor(
   }
 
   if (flags.has('omit-suffragium')) pipeline.push(clearSlot('suffragium'));
-
-  if (flags.has('genuflection-at-oration')) pipeline.push(genuflectionAtOration);
 
   return pipeline;
 }
@@ -347,10 +346,14 @@ function paschalShortResponsory(
   const alleluia = alleluiaPair(context.language);
   const responseBase = normalizeStarredShortResponsoryBase(firstResponse.text);
   const response = `${responseBase}, * ${alleluia.capitalized}, ${alleluia.lowercase}.`;
-  const out: TextContent[] = [
+  const out: TextContent[] = [];
+  if (content[0]?.type === 'separator') {
+    out.push({ type: 'separator' });
+  }
+  out.push(
     { type: 'verseMarker', marker: 'R.br.', text: response },
     { type: 'verseMarker', marker: 'R.', text: response }
-  ];
+  );
   if (versicle) {
     out.push({
       type: 'verseMarker',
@@ -365,6 +368,9 @@ function paschalShortResponsory(
     out.push(defaultGloriaPatriVersicle(context.language));
   }
   out.push({ type: 'verseMarker', marker: 'R.', text: response });
+  if (content[content.length - 1]?.type === 'separator') {
+    out.push({ type: 'separator' });
+  }
   return Object.freeze(out);
 }
 
@@ -641,18 +647,4 @@ function shortChapterOnly(slot: SlotName, content: readonly TextContent[]): read
     out.push(node);
   }
   return Object.freeze(out);
-}
-
-// --------------------------------------------------------------------------
-// genuflection-at-oration
-// --------------------------------------------------------------------------
-
-function genuflectionAtOration(
-  slot: SlotName,
-  content: readonly TextContent[]
-): readonly TextContent[] {
-  if (slot !== 'oration') return content;
-  const open: TextContent = { type: 'rubric', value: 'Flectámus génua.' };
-  const close: TextContent = { type: 'rubric', value: 'Leváte.' };
-  return Object.freeze([open, ...content, close]);
 }

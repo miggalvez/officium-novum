@@ -24,6 +24,292 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-13 — St Paul minor-hour antiphons fall back to the weekday psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, the June 30
+Commemoration of St Paul keeps weekday psalter antiphons at Prime,
+Terce, Sext, and None. Officium Novum emits the assigned St Paul /
+apostle-common antiphons. The same tranche fixed a local compositor bug
+in the Lauds `Sub unica concl` joined-collect path, so the major-hour
+collect block now follows the source.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137,166`
+- `upstream/web/www/horas/Help/technical.html:323`
+- `upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24,33-37`
+- `upstream/web/www/horas/Latin/Sancti/01-25.txt:126-137`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-30 --no-write-docs --max-report 20
+```
+
+Then inspect Prime, Terce, Sext, and None. Breviary 1960 nos. 169 and
+177 preserve assigned Proper/Common antiphons and psalmody for III-class
+offices; June 30 is III class under rubrica 196 and declares `Psalmi
+Dominica` / `Antiphonas horas`, while Perl keeps weekday psalter
+antiphons on the remaining divergent minor-hour rows.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-30 | Prime, Terce, Sext, None | `796ead47`, `e93da8fa`, `e633569c`, `11e8467c` |
+
+### 2026-05-12 — Ss John and Paul martyr antiphons fall back to the weekday psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, the June 26
+office of Ss John and Paul keeps weekday psalter antiphons at Matins
+and the minor hours. Officium Novum emits the assigned C3/proper martyr
+antiphons. The same tranche fixed local Lauds and Vespers psalm
+ownership so those major-hour psalm rows now follow the assigned
+dominical/proper psalm scheme.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137,166`
+- `upstream/web/www/horas/Latin/Sancti/06-26.txt:4-16,92-107`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-10,128-137`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-26 --no-write-docs --max-report 20
+```
+
+Then inspect Matins, Prime, Terce, Sext, and None. Breviary 1960 nos.
+169 and 177 preserve assigned Proper/Common antiphons and psalmody for
+III-class offices; June 26 routes through C3 and supplies proper
+Lauds/minor-hour antiphons, while Perl keeps weekday psalter antiphons
+on the remaining divergent rows.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-26 | Matins, Prime, Terce, Sext, None | `eceae16a`, `beff47af`, `ff428d99`, `ca2ebc20`, `bac8c8bd` |
+
+### 2026-05-12 — Simplified Roman martyr and apostle common antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+martyr-pontiff and apostle offices keep ordinary weekday psalter
+antiphons at Matins and the Hours. Officium Novum emits the
+source-backed C2 martyr-pontiff and C1 apostle common antiphons.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/06-05.txt:8-15`
+- `upstream/web/www/horas/Latin/Sancti/06-11.txt:4-13`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:4-15,132-142`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-05 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-11 --no-write-docs --max-report 20
+```
+
+Then inspect the first antiphon at Matins and the Hours. The selected
+offices route through `vide C2` or `ex C1`; those commons declare
+`Antiphonas horas` and provide the common antiphons, while Perl keeps
+ordinary weekday psalter antiphons.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-05 | Matins, Lauds, Prime, Terce, Sext, None, Vespers | `71eed233`, `56249f74`, `0e4cd0e7`, `020f35c8`, `f51f5fea`, `87d8ee6e`, `a11999a7` |
+| Rubrics 1960 - 1960 | 2026-06-11 | Matins, Lauds, Prime, Terce, Sext, None | `79f6ac10`, `4a8d9b87`, `6c1c3345`, `f91fc9bf`, `1bee6505`, `3318f60b` |
+
+### 2026-05-12 — Simplified Roman female common antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+virgin and widow offices keep ordinary weekday psalter antiphons at
+Matins, Lauds, and Vespers. Officium Novum emits the source-backed
+female common antiphons from C6/C7.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/06-01.txt:4-11`
+- `upstream/web/www/horas/Latin/Sancti/06-10.txt:4-9`
+- `upstream/web/www/horas/Latin/Sancti/06-19.txt:4-9`
+- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
+- `upstream/web/www/horas/Latin/Commune/C7a.txt:1-10`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125`
+- `upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-01 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-10 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-19 --no-write-docs --max-report 20
+```
+
+Then inspect the first Matins, Lauds, and Vespers antiphon. The
+selected offices route through `vide C6a` or `vide C7a`; those commons
+inherit `Antiphonas horas` and provide the common antiphons, while Perl
+keeps the ordinary weekday psalter antiphons.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-01, 2026-06-10, 2026-06-19 | Matins, Lauds, Vespers | `cd64c80b`, `c038feb4`, `399c27ee`, `d64ad472`, `23d6d778`, `7054a963`, `4972b782`, `7f333516`, `714255b4` |
+
+### 2026-05-06 — C4a Doctor orations use guarded Summorum Pontificum orthography
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+Doctor offices routed through `C4a` emit the guarded `cælis` spelling
+from the `communis Summorum Pontificum` variant. Officium Novum emits
+the unguarded C4a Doctor oration spelling `cœlis`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/04-21.txt:6-13`
+- `upstream/web/www/horas/Latin/Sancti/05-09.txt:6-13`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:19-22`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-04-21 --hour Lauds --no-write-docs --debug-window 12
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-05-09 --hour Lauds --no-write-docs --debug-window 12
+```
+
+Then inspect the closing collect. The 2026 witnesses route through
+`vide C4a`; the unguarded `[Oratio]` line has `cœlis`, while `cælis`
+is guarded by `(sed communi Summorum Pontificum)` and does not apply.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-04-21, 2026-05-09 | Matins, Lauds, Terce, Sext, None | `40c56f3d`, `57580852` |
+
+### 2026-05-06 — Simplified Roman Confessor common Terce/Sext antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+Confessor offices keep ordinary weekday `Tertia` and `Sexta` psalter
+antiphons at Terce and Sext. Officium Novum emits the source-backed
+Confessor common antiphons `Euge, serve bone...` and `Fidélis
+servus...`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12`
+- `upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10`
+- `upstream/web/www/horas/Latin/Commune/C5.txt:1-19`
+- `upstream/web/www/horas/Latin/Commune/C5b.txt:1-13`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:21-47`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-15 --hour Terce --no-write-docs --debug-window 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-15 --hour Sext --no-write-docs --debug-window 20
+```
+
+Then inspect the first minor-hour antiphon. Perl keeps the weekday
+psalter antiphons; the compositor follows the inherited common where
+`Antiphonas horas` selects the second and third common antiphons.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026 current-year frontier | Terce, Sext | 68 row-specific keys in `packages/compositor/test/divergence/adjudications.json` with first actual `Euge, serve bone...` or `Fidélis servus...` |
+
+### 2026-05-06 — Simplified Roman Confessor common None antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+Confessor offices keep ordinary weekday `Nona` psalter antiphons at
+None. Officium Novum emits the source-backed Confessor common antiphon
+`Serve bone...`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-15.txt:4-12`
+- `upstream/web/www/horas/Latin/Sancti/01-17.txt:4-10`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18`
+- `upstream/web/www/horas/Latin/Commune/C5.txt:1-19`
+- `upstream/web/www/horas/Latin/Commune/C5b.txt:1-13`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:49-63`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-15 --hour None --no-write-docs --debug-window 25
+```
+
+Then inspect the first None antiphon. Perl keeps the weekday psalter
+`Nona` antiphon; the compositor follows the inherited common where
+`Antiphonas horas` selects the fifth common antiphon.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026 current-year frontier | None | 36 row-specific keys in `packages/compositor/test/divergence/adjudications.json` with first actual `Serve bone...` |
+
+### 2026-05-06 — Simplified Roman Confessor pontiff common antiphons fall back to the psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, selected
+Confessor pontiff offices keep ordinary weekday psalter antiphons at
+Lauds, Prime, and Vespers. Officium Novum emits the source-backed
+Confessor pontiff common antiphon `Ecce sacérdos magnus...`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:1-14`
+- `upstream/web/www/horas/Latin/Commune/C4b.txt:1-12`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-01-14 --hour Lauds --no-write-docs --debug-window 25
+```
+
+Then inspect the first antiphon. Perl keeps the weekday psalter
+antiphon; the compositor follows the inherited C4/C4a common where
+`Antiphonas horas` selects the common antiphon set.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026 current-year frontier | Lauds, Prime, Vespers | 46 row-specific keys in `packages/compositor/test/divergence/adjudications.json` with first actual `Ecce sacérdos magnus...` |
+
 ### 2026-05-05 — Psalm 15:1 half-verse pointing flattened by Perl render surface
 
 **Classification.** `perl-bug`
@@ -1163,6 +1449,16 @@ comma.
 |---|---|---|---|
 | Reduced - 1955 | 2024-02-14 | Matins | `d6ab45d4` |
 | Rubrics 1960 - 1960 | 2024-02-14 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-02-18 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-02-25 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-03-04 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-03-11 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-03-18 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-04-01 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-09-23 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-12-09 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-12-16 | Matins | `c12d0e8c` |
+| Rubrics 1960 - 1960 | 2026-12-23 | Matins | `c12d0e8c` |
 
 ### 2026-04-19 — Divino Afflatu opening rubric prose is dropped by the Perl render surface
 
