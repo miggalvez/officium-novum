@@ -10,6 +10,7 @@ export interface ConditionEvalContext {
   readonly dayOfWeek: number;
   readonly season?: LiturgicalSeason;
   readonly version: ResolvedVersion;
+  readonly commonPredicates?: readonly string[];
 }
 
 export function conditionMatches(
@@ -61,9 +62,29 @@ function matchPredicate(
     case 'mense':
       return Number(normalized) === context.date.month;
     case 'die':
-      return Number(normalized) === context.date.day;
+      return Number(normalized) === context.date.day || matchesNamedDayPredicate(normalized, context.date);
     case 'feria':
       return feriaToDayOfWeek(normalized) === context.dayOfWeek;
+    case 'communi':
+    case 'commune':
+      return commonPredicateTags(context.commonPredicates).has(normalized);
+    default:
+      return false;
+  }
+}
+
+function commonPredicateTags(predicates: readonly string[] | undefined): ReadonlySet<string> {
+  const tags = new Set<string>();
+  for (const predicate of predicates ?? []) {
+    tags.add(normalizeToken(predicate));
+  }
+  return tags;
+}
+
+function matchesNamedDayPredicate(predicate: string, date: CalendarDate): boolean {
+  switch (predicate) {
+    case 'epiphaniae':
+      return date.month === 1 && date.day === 6;
     default:
       return false;
   }
@@ -231,6 +252,8 @@ function normalizeToken(value: string): string {
   return value
     .trim()
     .toLowerCase()
+    .replace(/æ/gu, 'ae')
+    .replace(/œ/gu, 'oe')
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .replace(/[^a-z0-9]+/gu, '');

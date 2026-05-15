@@ -160,7 +160,8 @@ function resolveRepeatedCanticleAntiphon(
     return [];
   }
 
-  const resolved = resolveReference(args.corpus, ref, {
+  const repeatedRef = splitComplineNuncAntiphonRepeatRef(ref);
+  const resolved = resolveReference(args.corpus, repeatedRef, {
     languages: [language],
     langfb: args.options.langfb,
     dayOfWeek: args.context.dayOfWeek,
@@ -186,17 +187,31 @@ function resolveRepeatedCanticleAntiphon(
     ...(args.onWarning ? { onWarning: args.onWarning } : {})
   });
   const flattened = flattenConditionals(expanded, args.context);
-  const transformed = applyDirectives(
-    antiphonSlot,
-    markAntiphonFirstText(flattened),
-    {
-      hour: args.hour,
-      language,
-      directives: args.directives
-    }
-  );
+  const marked = markAntiphonFirstText(flattened);
+  const transformed = repeatedRef === ref
+    ? applyDirectives(
+        antiphonSlot,
+        marked,
+        {
+          hour: args.hour,
+          language,
+          directives: args.directives
+        }
+      )
+    : marked;
 
-  return normalizeRepeatedAntiphonContent(transformed);
+  return repeatedRef === ref ? normalizeRepeatedAntiphonContent(transformed) : transformed;
+}
+
+function splitComplineNuncAntiphonRepeatRef(ref: TextReference): TextReference {
+  if (ref.section !== 'Ant 43' || ref.selector !== '1') {
+    return ref;
+  }
+
+  return {
+    ...ref,
+    selector: '2'
+  };
 }
 
 function isLucanCanticleSlot(slot: SlotName): boolean {

@@ -30,7 +30,7 @@ const UPSTREAM_ROOT = resolve(PACKAGE_ROOT, '../../upstream/web/www');
 
 const describeIfUpstream = existsSync(UPSTREAM_ROOT) ? describe : describe.skip;
 
-describeIfUpstream('January hymn routing regressions', () => {
+describeIfUpstream('Minor-hour hymn routing regressions', () => {
   it(
     'attaches doxology variants only to the 1955 fallback hymns that need them',
     async () => {
@@ -114,6 +114,21 @@ describeIfUpstream('January hymn routing regressions', () => {
         'terce',
         'horas/Latin/Psalterium/Special/Minor Special:Hymnus Pasc7 Tertia'
       );
+      for (const date of [
+        '2026-05-25',
+        '2026-05-26',
+        '2026-05-27',
+        '2026-05-28',
+        '2026-05-29',
+        '2026-05-30'
+      ] as const) {
+        expectMinorHourHymn(
+          roman1960,
+          date,
+          'terce',
+          'horas/Latin/Psalterium/Special/Minor Special:Hymnus Pasc7 Tertia'
+        );
+      }
       expectHourDoxology(
         reduced,
         '2024-05-19',
