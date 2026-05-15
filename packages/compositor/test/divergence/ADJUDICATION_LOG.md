@@ -22,6 +22,39 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Advent `Oratio Dominica` must not replace the fixed Compline collect (engine-bug fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained Advent Compline rows where the compositor jumped from
+the Nunc dimittis antiphon directly into the Advent Sunday collect
+(`Excita...` / `Aurem tuam...`) instead of the ordinary Compline prayer
+sequence with `Vísita, quǽsumus, Dómine...`.
+
+**Root cause.** The previous `Oratio Dominica` engine fix correctly
+routed weekday Lauds, Vespers, and minor-hour orations to the Sunday
+collect, but the hour flag was still allowed to apply to Compline.
+Rubrics 1960 explicitly keeps the Prime and Compline collects fixed
+except for the named exceptions; the ordinary Compline skeleton and
+common-prayer corpus provide the `Dómine, exáudi` / `Orémus` prelude and
+`Vísita` collect.
+
+**Resolution.** Fixed the engine so `dominicalOration` does not override
+Compline's oration slot. Added upstream-composition coverage for the
+Advent 2026 witnesses that previously leaked Sunday/seasonal collects
+into Compline.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:328-332`
+- `upstream/web/www/horas/Ordinarium/Completorium.txt:47-60`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:364-368`
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1844` to
+`1835`; exact-match hours rise from `1076` to `1085`; unadjudicated rows
+drop from `469` to `460`.
+
 ### 2026-05-15 — Pattern: Apostle proper minor-hour antiphons under `Antiphonas horas` (perl-bug)
 
 **Commit.** Current tranche commit.

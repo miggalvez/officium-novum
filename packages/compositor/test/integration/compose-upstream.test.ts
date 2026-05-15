@@ -3149,6 +3149,48 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Rubrics 1960 Advent Compline on the fixed Visita collect', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const adventCollectOpenings = [
+      'Excita, quǽsumus, Dómine, poténtiam tuam, et veni:',
+      'Excita, Dómine, corda nostra ad præparándas Unigéniti tui vias:',
+      'Aurem tuam, quǽsumus, Dómine, précibus nostris accómmoda:'
+    ];
+
+    for (const date of [
+      '2026-12-02',
+      '2026-12-03',
+      '2026-12-04',
+      '2026-12-09',
+      '2026-12-10',
+      '2026-12-11',
+      '2026-12-14',
+      '2026-12-17'
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+      const oration = sectionTexts(compline, 'oration');
+
+      expect(oration[0], `${date} Compline oration prelude`).toBe('Dómine, exáudi oratiónem meam.');
+      expect(oration[1], `${date} Compline oration prelude`).toBe('Et clamor meus ad te véniat.');
+      expect(oration[2], `${date} Compline oration prelude`).toBe('Orémus.');
+      expect(oration[3], `${date} Compline fixed collect`).toBe(
+        'Vísita, quǽsumus, Dómine, habitatiónem istam, et omnes insídias inimíci ab ea longe repélle: Ángeli tui sancti hábitent in ea, qui nos in pace custódiant; et benedíctio tua sit super nos semper.'
+      );
+      for (const collectOpening of adventCollectOpenings) {
+        expect(oration.join(' '), `${date} Compline should not use the Advent day collect`).not.toContain(
+          collectOpening
+        );
+      }
+    }
+  }, 240_000);
+
   it('renders Rubrics 1960 Apostle minor-hour antiphons from Antiphonas horas', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const expectedAntiphons = {

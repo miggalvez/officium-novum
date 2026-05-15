@@ -2202,7 +2202,7 @@ function resolveDominicalOration(
   slotName: SlotName,
   input: ApplyRuleSetInput
 ): SlotContent | undefined {
-  if (slotName !== 'oration' || !input.hourRules.dominicalOration) {
+  if (slotName !== 'oration' || input.hour === 'compline' || !input.hourRules.dominicalOration) {
     return undefined;
   }
 
