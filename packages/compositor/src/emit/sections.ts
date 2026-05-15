@@ -7,6 +7,7 @@ export interface EmitSectionOptions {
   readonly slot: SlotName;
   readonly sectionSlot?: string;
   readonly sectionType?: SectionType;
+  readonly renderSeparators?: boolean;
 }
 
 /**
@@ -282,6 +283,7 @@ function linesFromContent(
           slot === 'lectio-brevis' &&
           (node.source !== undefined || isHomilyBoundarySeparator(content, index));
         if (
+          options.renderSeparators === true ||
           slot === 'hymn' ||
           slot === 'final-antiphon-bvm' ||
           isShortLessonSeparator ||
