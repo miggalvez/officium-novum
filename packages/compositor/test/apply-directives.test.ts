@@ -352,14 +352,10 @@ describe('applyDirectives — preces / suffragium handling', () => {
 });
 
 describe('applyDirectives — oration-scoped rubrics', () => {
-  it('wraps the oration with Flectámus génua / Leváte for genuflection', () => {
+  it('does not emit spoken Flectámus génua / Leváte text for office genuflection posture', () => {
     const content: TextContent[] = [{ type: 'text', value: 'Deus, qui…' }];
     const out = run('oration', content, ['genuflection-at-oration']);
-    expect(out).toEqual([
-      { type: 'rubric', value: 'Flectámus génua.' },
-      { type: 'text', value: 'Deus, qui…' },
-      { type: 'rubric', value: 'Leváte.' }
-    ]);
+    expect(out).toEqual(content);
   });
 
   it('dirge-vespers adds a Pro defunctis banner to the oration', () => {
