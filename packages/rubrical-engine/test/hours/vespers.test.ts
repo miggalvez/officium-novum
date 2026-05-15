@@ -156,6 +156,22 @@ First-Vespers five;;113
 @:Ant Vespera:s/;;.*//g
 `.trim();
 
+const INACTIVE_PSALMI_DOMINICA_FILE = `
+[Rank]
+Inactive Psalmi Dominica;;III classis;;3;;
+
+[Rule]
+(sed feria 2)
+Psalmi Dominica
+
+[Ant Vespera]
+Inactive-rule one;;109
+Inactive-rule two;;110
+Inactive-rule three;;111
+Inactive-rule four;;112
+Inactive-rule five;;113
+`.trim();
+
 const INHERITED_CHAPTER_FILTER_ROOT_FILE = `
 [Rank]
 Inherited chapter filter root;;Duplex;;5;;
@@ -824,6 +840,47 @@ Variant suffixed Confessor hymn
         path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
         section: 'Day0 Vespera',
         selector: '5'
+      });
+    }
+  });
+
+  it('does not force Sunday psalms from an inactive Psalmi Dominica rule', () => {
+    const { corpus, skeleton, version } = setup();
+    corpus.add('horas/Latin/Sancti/08-06.txt', INACTIVE_PSALMI_DOMINICA_FILE);
+    const celeb: Celebration = {
+      ...celebration('Sancti/08-06'),
+      rank: { name: 'III', classSymbol: 'III', weight: 300 }
+    };
+    const celebrationRules = rules();
+    const hourRules = deriveHourRuleSet(celeb, celebrationRules, 'vespers');
+
+    const result = structureVespers({
+      skeleton,
+      celebration: celeb,
+      commemorations: [],
+      celebrationRules,
+      hourRules,
+      temporal: {
+        ...temporal('2024-08-06', 'Pent01-2', 2),
+        season: 'time-after-pentecost'
+      },
+      policy: rubrics1960Policy,
+      corpus,
+      version
+    });
+
+    const psalmody = result.hour.slots.psalmody;
+    expect(psalmody?.kind).toBe('psalmody');
+    if (psalmody?.kind === 'psalmody') {
+      expect(psalmody.psalms[0]?.antiphonRef).toEqual({
+        path: 'horas/Latin/Sancti/08-06',
+        section: 'Ant Vespera',
+        selector: '1'
+      });
+      expect(psalmody.psalms[0]?.psalmRef).not.toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '1'
       });
     }
   });

@@ -76,6 +76,21 @@ describe('conditionMatches', () => {
     ).toBe(false);
   });
 
+  it('matches active common predicates from the composition context', () => {
+    const version = makeVersion('Rubrics 1960 - 1960', makeTestPolicy('rubrics-1960'));
+    const context = {
+      date: { year: 2026, month: 4, day: 22 },
+      dayOfWeek: 3,
+      season: 'eastertide' as const,
+      version,
+      commonPredicates: ['Summorum Pontificum']
+    };
+
+    expect(conditionMatches(parseCondition('communi Summorum Pontificum'), context)).toBe(true);
+    expect(conditionMatches(parseCondition('commune summorum pontificum'), context)).toBe(true);
+    expect(conditionMatches(parseCondition('communi Doctoris Pontificis'), context)).toBe(false);
+  });
+
   it('fans out rubric tags for monastic, cistercian, dominican, and Newcal handles', () => {
     const monastic = makeVersion(
       'Monastic - 1963 - Barroux',

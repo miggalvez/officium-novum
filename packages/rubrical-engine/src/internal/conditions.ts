@@ -10,6 +10,7 @@ export interface ConditionEvalContext {
   readonly dayOfWeek: number;
   readonly season?: LiturgicalSeason;
   readonly version: ResolvedVersion;
+  readonly commonPredicates?: readonly string[];
 }
 
 export function conditionMatches(
@@ -64,9 +65,20 @@ function matchPredicate(
       return Number(normalized) === context.date.day || matchesNamedDayPredicate(normalized, context.date);
     case 'feria':
       return feriaToDayOfWeek(normalized) === context.dayOfWeek;
+    case 'communi':
+    case 'commune':
+      return commonPredicateTags(context.commonPredicates).has(normalized);
     default:
       return false;
   }
+}
+
+function commonPredicateTags(predicates: readonly string[] | undefined): ReadonlySet<string> {
+  const tags = new Set<string>();
+  for (const predicate of predicates ?? []) {
+    tags.add(normalizeToken(predicate));
+  }
+  return tags;
 }
 
 function matchesNamedDayPredicate(predicate: string, date: CalendarDate): boolean {
