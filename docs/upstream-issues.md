@@ -24,6 +24,53 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-15 — Full-year common-antiphon offices fall back to the weekday psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, third-class
+sanctoral offices routed directly to C2, C3, C4/C4a, C5, or C6 common
+sources keep ordinary weekday psalter antiphons at Matins, Lauds,
+Prime, Terce, Sext, None, or Vespers. Officium Novum emits the assigned
+common antiphons from the selected source common.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177`
+- Representative direct routes:
+  `upstream/web/www/horas/Latin/Sancti/02-04.txt:9-10`,
+  `upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10`,
+  `upstream/web/www/horas/Latin/Sancti/07-10.txt:11-12`,
+  `upstream/web/www/horas/Latin/Sancti/11-14.txt:9-10`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:9-14`
+- `upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-02-04 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-05-17 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-07-10 --no-write-docs --max-report 20
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-11-14 --no-write-docs --max-report 20
+```
+
+Then inspect the first psalmody antiphon at the affected hour.
+Breviary 1960 nos. 169 and 177 keep weekday psalter antiphons for
+III-class offices only unless proper/common antiphons are assigned; the
+selected offices route through source commons that assign the common
+antiphons.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Dates | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-02-03, 2026-02-04, 2026-02-06, 2026-02-09, 2026-05-17, 2026-06-06, 2026-07-10, 2026-07-14, 2026-07-23, 2026-07-28, 2026-08-28, 2026-08-29, 2026-09-05, 2026-09-16, 2026-09-19, 2026-09-22, 2026-09-28, 2026-10-14, 2026-11-04, 2026-11-12, 2026-11-14, 2026-11-17, 2026-11-23, 2026-11-25, 2026-12-29 | Matins, Lauds, Prime, Terce, Sext, None, Vespers where present | 76 row-specific keys in `packages/compositor/test/divergence/adjudications.json`; two 2026-06-17 rows remain unclassified pending separate overlay proof |
+
 ### 2026-05-15 — January common-antiphon offices fall back to the weekday psalter
 
 **Classification.** `perl-bug`

@@ -1420,7 +1420,7 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
-  it('uses assigned January common antiphons for 1960 third-class offices', async () => {
+  it('uses assigned common antiphons for 1960 third-class offices', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const cases: readonly {
       readonly date: string;
@@ -1441,6 +1441,28 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
         date: '2026-01-30',
         hour: 'sext',
         firstAntiphon: 'Hæc est quæ nescívit * torum in delícto: habébit fructum in respectióne animárum sanctárum.'
+      },
+      {
+        date: '2026-02-04',
+        hour: 'terce',
+        firstAntiphon: 'Non est invéntus * símilis illi, qui conserváret legem Excélsi.'
+      },
+      {
+        date: '2026-05-17',
+        hour: 'prime',
+        firstAntiphon:
+          'Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum, allelúja.'
+      },
+      {
+        date: '2026-07-10',
+        hour: 'matins',
+        firstAntiphon:
+          'Secus decúrsus aquárum * plantávit víneam justórum, et in lege Dómini fuit volúntas eórum.'
+      },
+      {
+        date: '2026-11-14',
+        hour: 'none',
+        firstAntiphon: 'Volo Pater, * ut ubi ego sum, illic sit et miníster meus.'
       }
     ];
 

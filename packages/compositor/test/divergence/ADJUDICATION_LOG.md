@@ -22,6 +22,51 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: full-year C2/C3/C4/C4a/C5/C6 common-antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier still contained 78 antiphon-opening rows where Perl kept the
+weekday psalter antiphon and the compositor emitted an assigned common
+antiphon from C2, C3, C4/C4a, C5, or C6. This tranche classifies the
+76 rows whose selected office has direct `Sancti/MM-DD.txt` source
+routing. The two June 17 rows are intentionally left unclassified
+pending separate overlay proof because that witness does not have a
+direct June 17 sanctoral source file.
+
+**Root cause.** This is the same source-backed common-antiphon ownership
+family exposed by the January tranche, now expanded across the civil
+year. The affected offices route to common sources through direct
+`vide`, `ex`, `Psalmi`, or `Antiphonas` instructions. Those common
+sources assign the antiphons the compositor emits, while Breviary 1960
+nos. 169 and 177 preserve the weekday psalter antiphons for third-class
+offices only when no proper or common antiphons are assigned.
+
+**Resolution.** Class `perl-bug`. Added 76 row-key adjudications for the
+directly routed full-year C2/C3/C4/C4a/C5/C6 witnesses. Added broader
+upstream integration coverage for representative February, Paschaltide,
+July, and November witnesses while preserving the January checks.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177`
+- Representative direct routes:
+  `upstream/web/www/horas/Latin/Sancti/02-04.txt:9-10`,
+  `upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10`,
+  `upstream/web/www/horas/Latin/Sancti/07-10.txt:11-12`,
+  `upstream/web/www/horas/Latin/Sancti/11-14.txt:9-10`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:9-14`
+- `upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252`
+
+**Impact.** Expected to keep divergent hours at `1851` and drop
+unadjudicated rows from `584` to `508` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: Matins Te Deum replacement responsory separator and Gloria repeat (compositor fixed)
 
 **Commit.** Current tranche commit.

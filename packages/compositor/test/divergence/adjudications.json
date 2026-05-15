@@ -19254,6 +19254,28 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-02-03/Lauds/931d956e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-03",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dele iniquitátem meam, * Dómine, secúndum multitúdinem miseratiónum tuárum.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-03.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-02-03/Vespers/7ba06f1e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-03",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-03.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-02-04/Lauds/7c9c46cc": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-02-04",
@@ -19297,6 +19319,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-04/Sext/25f86e38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-04",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-04.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-02-04/Terce/a0fdc310": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-04",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-04.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-02-04/Vespers/29b9e575": {
     "policy": "Rubrics 1960 - 1960",
@@ -19363,6 +19407,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-06/Sext/46afe71e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-06",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-06.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-02-06/Terce/309afe65": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-06",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-06.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-02-06/Vespers/871a212b": {
     "policy": "Rubrics 1960 - 1960",
@@ -19531,6 +19597,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-02-09/Sext/b31675c2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-09",
+    "hour": "Sext",
+    "firstExpected": "Ant. In tua justítia * líbera me, Dómine.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-09.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-02-09/Terce/afb4c697": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-02-09",
+    "hour": "Terce",
+    "firstExpected": "Ant. Illuminátio mea * et salus mea Dóminus.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/02-09.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-02-09/Vespers/bcb54929": {
     "policy": "Rubrics 1960 - 1960",
@@ -22093,6 +22181,72 @@
     "notes": "2026 Rubrics 1960 Confessor-common Matins `Beatus vir` antiphon fanout. This extends the already documented simplified Roman Confessor common-antiphon Perl comparison-surface family beyond the previously adjudicated Tuesday rows to all current first-divergence rows with this inherited common antiphon.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-05-17/Lauds/bd6b75d4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-17",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-17/None/c43e1032": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-17",
+    "hour": "None",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Serve bone * et fidélis, intra in gáudium Dómini tui, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-17/Prime/bd6b75d4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-17",
+    "hour": "Prime",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-17/Sext/4f969c93": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-17",
+    "hour": "Sext",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Fidélis servus * et prudens, quem constítuit Dóminus super famíliam suam, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-17/Terce/fe562945": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-17",
+    "hour": "Terce",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Euge, serve bone * in módico fidélis, intra in gáudium Dómini tui, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-17/Vespers/bd6b75d4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-17",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Allelúja, * allelúja, allelúja.",
+    "firstActual": "Ant. Dómine, quinque talénta * tradidísti mihi, ecce ália quinque superlucrátus sum, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-05-19/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-05-19",
@@ -22880,6 +23034,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-06-06/Sext/2e5321fe": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-06",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-06.txt:9-15 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-06-06/Terce/51693d91": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-06",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/06-06.txt:9-15 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-06-06/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -24443,6 +24619,83 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-07-10/Lauds/08c897ba": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Exaltáte * Dóminum Deum nostrum, et adoráte in monte sancto ejus.",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-10/Matins/eceae16a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "Matins",
+    "firstExpected": "Ant. Suscitávit Dóminus * testimónium in Jacob: et legem pósuit in Israël.",
+    "firstActual": "Ant. Secus decúrsus aquárum * plantávit víneam justórum, et in lege Dómini fuit volúntas eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-10/None/5e8c07ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "None",
+    "firstExpected": "Ant. Misericórdia et véritas * præcédent fáciem tuam, Dómine.",
+    "firstActual": "Ant. Mártyrum chorus * laudáte Dóminum de cælis, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-10/Prime/06cda128": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "Prime",
+    "firstExpected": "Ant. Ne discédas a me, * Dómine: quóniam tribulátio próxima est: quóniam non est qui ádjuvet.",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-10/Sext/bc9834e8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Córpora Sanctórum * in pace sepúlta sunt: et vivent nómina eórum in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-10/Terce/d9014ed7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Cum palma * ad regna pervenérunt Sancti, corónas decóris meruérunt de manu Dei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-10/Vespers/89b99c9a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-10",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Dómine, * probásti me et cognovísti me. ‡",
+    "firstActual": "Ant. Isti sunt Sancti, * qui pro testaménto Dei sua córpora tradidérunt, et in sánguine Agni lavérunt stolas suas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-10.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-07-11/Matins/9d86e50c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-11",
@@ -24645,6 +24898,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-07-14/Sext/b8cb82ac": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-14",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-14.txt:13-16 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-14/Terce/30159ee3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-14",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-14.txt:13-16 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-07-14/Vespers/aec81ece": {
     "policy": "Rubrics 1960 - 1960",
@@ -25145,6 +25420,28 @@
     "resolvedAt": "2026-05-13",
     "commitSha": "335dea3"
   },
+  "Rubrics 1960 - 1960/2026-07-23/Lauds/cac9a2a7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-23",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-23.txt:13-14 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-23/Matins/cb2c885e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-23",
+    "hour": "Matins",
+    "firstExpected": "Ant. In Deo salutáre meum * et glória mea: et spes mea in Deo est.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-23.txt:13-14 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-07-23/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-07-23",
@@ -25155,6 +25452,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-23/Vespers/ad9220f6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-23",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-23.txt:13-14 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-07-24/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",
@@ -25276,6 +25584,83 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/Lauds/025386a2": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Cantáte * Dómino et benedícite nómini ejus.",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/Matins/3c980a21": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "Matins",
+    "firstExpected": "Ant. Expúgna, Dómine, * impugnántes me.",
+    "firstActual": "Ant. Secus decúrsus aquárum * plantávit víneam justórum, et in lege Dómini fuit volúntas eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/None/dd843a77": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Mártyrum chorus * laudáte Dóminum de cælis, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/Prime/7bde1d1f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/Sext/55684532": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Córpora Sanctórum * in pace sepúlta sunt: et vivent nómina eórum in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/Terce/78bcf20c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Cum palma * ad regna pervenérunt Sancti, corónas decóris meruérunt de manu Dei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-07-28/Vespers/d9109328": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-07-28",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Qui hábitas in cælis, * miserére nobis.",
+    "firstActual": "Ant. Isti sunt Sancti, * qui pro testaménto Dei sua córpora tradidérunt, et in sánguine Agni lavérunt stolas suas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/07-28.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-07-29/Lauds/1d24f20a": {
     "policy": "Rubrics 1960 - 1960",
@@ -26897,6 +27282,28 @@
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-08-28/Sext/46afe71e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-28",
+    "hour": "Sext",
+    "firstExpected": "Ant. Beáti, qui hábitant * in domo tua, Dómine.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-28.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-08-28/Terce/309afe65": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-28",
+    "hour": "Terce",
+    "firstExpected": "Ant. Éxcita, Dómine, * poténtiam tuam, ut salvos fácias nos.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-28.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-08-28/Vespers/871a212b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-08-28",
@@ -26907,6 +27314,17 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-08-29/Matins/4edfaab5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-08-29",
+    "hour": "Matins",
+    "firstExpected": "Ant. Memor fuit in sǽculum * testaménti sui Dóminus Deus noster.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/08-29.txt:9-13 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-08-29/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -27254,6 +27672,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-09-05/Sext/2e5321fe": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-05",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-05.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-05/Terce/51693d91": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-05",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-05.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-09-05/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -27698,6 +28138,83 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
   },
+  "Rubrics 1960 - 1960/2026-09-16/Lauds/9712d1a9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-16/Matins/b5f090ee": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. Secus decúrsus aquárum * plantávit víneam justórum, et in lege Dómini fuit volúntas eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-16/None/06580650": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "None",
+    "firstExpected": "Ant. Deus meus * misericórdia tua prævéniet me.",
+    "firstActual": "Ant. Mártyrum chorus * laudáte Dóminum de cælis, allelúja.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-16/Prime/05775cbb": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "Prime",
+    "firstExpected": "Ant. Misericórdia tua, * Dómine, ante óculos meos: et complácui in veritáte tua.",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-16/Sext/6eacccf5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Córpora Sanctórum * in pace sepúlta sunt: et vivent nómina eórum in ætérnum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-16/Terce/646273d8": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Cum palma * ad regna pervenérunt Sancti, corónas decóris meruérunt de manu Dei.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-16/Vespers/eb81b01c": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-16",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Isti sunt Sancti, * qui pro testaménto Dei sua córpora tradidérunt, et in sánguine Agni lavérunt stolas suas.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-16.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-09-17/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-17",
@@ -27833,6 +28350,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-09-19/Lauds/78ab2f95": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-19",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Omnes Sancti, * quanta passi sunt torménta, ut secúri pervenírent ad palmam martýrii.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-19.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-19/Matins/9e189d2e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-19",
+    "hour": "Matins",
+    "firstExpected": "Ant. Memor fuit in sǽculum * testaménti sui Dóminus Deus noster.",
+    "firstActual": "Ant. Secus decúrsus aquárum * plantávit víneam justórum, et in lege Dómini fuit volúntas eórum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-19.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-09-19/None/843b6667": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-09-19",
@@ -27944,6 +28483,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-09-22/Sext/b8cb82ac": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-22",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-22.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-22/Terce/30159ee3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-22",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-22.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-09-22/Vespers/aec81ece": {
     "policy": "Rubrics 1960 - 1960",
@@ -28120,6 +28681,28 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Day0 `Vespera` source carries the full opening antiphon `Dixit Dóminus * Dómino meo: Sede a dextris meis.` without a trailing `‡`. The compositor preserves the corpus text; the Perl comparison surface adds an unsupported trailing continuation marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-09-28/Lauds/1a3b4dce": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-28",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * Deo in voce exsultatiónis.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-28.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-28/Matins/f8234d72": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-28",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-28.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-09-30/Lauds/e9e7d01d": {
     "policy": "Rubrics 1960 - 1960",
@@ -28892,6 +29475,39 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-10-14/Lauds/de424e3e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-14",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Dóminus regnávit, * exsúltet terra. ‡",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-14.txt:13-14 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-10-14/Matins/f45b84ec": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-14.txt:13-14 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-10-14/Vespers/d6521d66": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-14",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Beáti omnes * qui timent Dóminum. ‡",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/10-14.txt:13-14 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-10-15/Lauds/366bf533": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-10-15",
@@ -29605,6 +30221,28 @@
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-11-04/Sext/25f86e38": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-04",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-04.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-04/Terce/a0fdc310": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-04",
+    "hour": "Terce",
+    "firstExpected": "Ant. Deus ádjuvat me: * et Dóminus suscéptor est ánimæ meæ.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-04.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-11-04/Vespers/29b9e575": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-04",
@@ -29910,6 +30548,28 @@
     "resolvedAt": "2026-05-05",
     "commitSha": "e1dcb32"
   },
+  "Rubrics 1960 - 1960/2026-11-12/Lauds/cac9a2a7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-12",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Jubiláte * in conspéctu regis Dómini.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-12.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-12/Matins/cb2c885e": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-12",
+    "hour": "Matins",
+    "firstExpected": "Ant. In Deo salutáre meum * et glória mea: et spes mea in Deo est.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-12.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-11-12/Terce/2807ff6e": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-12",
@@ -29920,6 +30580,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:26 — the weekday minor-hour row carries `Feria V = Quam bonus * Israël Deus, his, qui recto sunt corde.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-12/Vespers/ad9220f6": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-12",
+    "hour": "Vespers",
+    "firstExpected": "Ant. Ecce quam bonum * et quam jucúndum habitáre fratres in unum. ‡",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-12.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-11-13/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",
@@ -29953,6 +30624,72 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:121 — the Friday Vespers psalter row carries `Domine, * probasti me et cognovisti me.;;138(1-13)` without a trailing continuation marker. The compositor preserves the source row while the Perl comparison surface appends an unsupported trailing `‡`.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-11-14/Lauds/458142ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-14",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Fílii Sion * exsúltent in Rege suo.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-14.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-14/Matins/4edfaab5": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-14",
+    "hour": "Matins",
+    "firstExpected": "Ant. Memor fuit in sǽculum * testaménti sui Dóminus Deus noster.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-14.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-14/None/8a839efa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-14",
+    "hour": "None",
+    "firstExpected": "Ant. Ne tacúeris Deus, * quia sermónibus ódii circumdedérunt me.",
+    "firstActual": "Ant. Volo Pater, * ut ubi ego sum, illic sit et miníster meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-14.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-14/Prime/b06f0248": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-14",
+    "hour": "Prime",
+    "firstExpected": "Ant. Exaltáre, Dómine, * qui júdicas terram: redde retributiónem supérbis.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-14.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-14/Sext/269affbd": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-14",
+    "hour": "Sext",
+    "firstExpected": "Ant. Dómine, Deus meus * magnificátus es veheménter.",
+    "firstActual": "Ant. Qui mihi minístrat, * me sequátur: et ubi ego sum, illic sit et miníster meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-14.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-14/Terce/20ab8a6a": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-14",
+    "hour": "Terce",
+    "firstExpected": "Ant. Clamor meus, * Dómine, ad te pervéniat: non avértas fáciem tuam a me.",
+    "firstActual": "Ant. Qui séquitur me, * non ámbulat in ténebris, sed habébit lumen vitæ, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-14.txt:7-8 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-11-14/Vespers/b047f132": {
     "policy": "Rubrics 1960 - 1960",
@@ -30089,6 +30826,28 @@
     "citation": "upstream/web/www/horas/Latin/Sancti/01-14.txt:6-18 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18 and upstream/web/www/horas/Latin/Commune/C4a.txt:1-14 and upstream/web/www/horas/Latin/Commune/C4b.txt:1-12 — representative 2026 Confessor pontiff offices route through C4/C4a/C4b, those commons declare Antiphonas horas, and C4 supplies Ecce sacérdos magnus as the first common antiphon for Lauds/Prime/Vespers. The compositor follows the source-backed common; the Perl comparison surface keeps ordinary weekday psalter antiphons.",
     "notes": "2026 Rubrics 1960 Confessor pontiff C4/C4a/C4b Lauds/Prime/Vespers common-antiphon fanout. Representative probes: 2026-01-14 Lauds and Prime.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-11-17/Sext/b8cb82ac": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-17",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Ideo jurejurándo * fecit illum Dóminus créscere in plebem suam.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-17.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-11-17/Terce/30159ee3": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-17",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Non est invéntus * símilis illi, qui conserváret legem Excélsi.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-17.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-11-17/Vespers/aec81ece": {
     "policy": "Rubrics 1960 - 1960",
@@ -30284,6 +31043,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-11-23/Matins/f8234d72": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-23",
+    "hour": "Matins",
+    "firstExpected": "Ant. Dóminus de cælo * prospéxit super fílios hóminum.",
+    "firstActual": "Ant. In lege Dómini * fuit volúntas ejus die ac nocte.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-23.txt:9-10 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-11-24/Compline/c262774b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-11-24",
@@ -30423,6 +31193,17 @@
     "notes": "Second 2026 fanout for source-backed female common antiphon ownership. The selected sanctoral office routes through C6/C6a/C7a and the common supplies assigned Matins, Lauds, Vespers, and hour antiphons; the Perl comparison surface keeps weekday psalter antiphons instead.",
     "resolvedAt": "2026-05-13",
     "commitSha": "335dea3"
+  },
+  "Rubrics 1960 - 1960/2026-11-25/Sext/b9ded070": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-11-25",
+    "hour": "Sext",
+    "firstExpected": "Ant. In Deo sperávi * non timébo quid fáciat mihi homo.",
+    "firstActual": "Ant. Hæc est quæ nescívit * torum in delícto: habébit fructum in respectióne animárum sanctárum.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/11-25.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-11-25/Terce/5641168d": {
     "policy": "Rubrics 1960 - 1960",
@@ -31399,6 +32180,61 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-12-29/Lauds/693e0ab4": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-29",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Quem vidístis, * pastóres? dícite, annuntiáte nobis, in terris quis appáruit? Natum vídimus, et choros Angelórum collaudántes Dóminum, allelúja, allelúja.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-29.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-29/None/45752884": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-29",
+    "hour": "None",
+    "firstExpected": "Ant. Salvásti nos, * Dómine, et in nómine tuo confitébimur in sǽcula.",
+    "firstActual": "Ant. Volo Pater, * ut ubi ego sum, illic sit et miníster meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-29.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-29/Prime/777d345d": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-29",
+    "hour": "Prime",
+    "firstExpected": "Ant. Deus meus * in te confído non erubéscam.",
+    "firstActual": "Ant. Qui me conféssus fúerit * coram homínibus, confitébor et ego eum coram Patre meo.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-29.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-29/Sext/0766c6ed": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-29",
+    "hour": "Sext",
+    "firstExpected": "Ant. Suscepísti me, Dómine: * et confirmásti me in conspéctu tuo.",
+    "firstActual": "Ant. Qui mihi minístrat, * me sequátur: et ubi ego sum, illic sit et miníster meus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-29.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-29/Terce/b1f217ea": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-29",
+    "hour": "Terce",
+    "firstExpected": "Ant. Respéxit me * et exaudívit deprecatiónem meam Dóminus.",
+    "firstActual": "Ant. Qui séquitur me, * non ámbulat in ténebris, sed habébit lumen vitæ, dicit Dóminus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/12-29.txt:11-12 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177 and upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223 and upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270 and upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246 and upstream/web/www/horas/Latin/Commune/C4a.txt:9-14 and upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232 and upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252 — the selected 2026 third-class office routes to a source common with assigned common antiphons; Breviary 1960 nos. 169 and 177 preserve weekday psalter antiphons only unless proper/common antiphons are assigned. The compositor follows the assigned common antiphons, while the Perl comparison surface falls back to weekday psalter antiphons.",
+    "notes": "Rubrics 1960 2026 full-year common-antiphon fanout for C2/C3/C4/C4a/C5/C6 witnesses. Rows are limited to antiphon-opening mismatches with direct Sancti source routing.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-30/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
