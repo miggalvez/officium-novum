@@ -12,6 +12,7 @@ import type {
 
 import { stripLaudsSecretoPrayers } from './compose/incipit.js';
 import { appendContentWithBoundary } from './compose/content-boundary.js';
+import { buildConditionContext } from './compose/condition-context.js';
 import { directiveDrivenSlotContent } from './compose/directive-slot-content.js';
 import { resolveGloriaOmittiturReplacement } from './compose/gloria-omittitur.js';
 import { composeEarlySpecialSections } from './compose/early-specials.js';
@@ -30,6 +31,10 @@ import {
   withMinorHourLaterBlockSeparator
 } from './compose/separators.js';
 import {
+  prepareSubUnicaOrationContent,
+  rendersSubUnicaOrationSeparators
+} from './compose/sub-unica-oration.js';
+import {
   appendExpandedPsalmWrapper,
   buildPsalmHeading,
   containsInlinePsalmRefs,
@@ -45,7 +50,7 @@ import { MAX_DEFERRED_DEPTH, referenceKey } from './compose/shared.js';
 import { buildSlotAccounting } from './compose/slot-accounting.js';
 import { applyDirectives } from './directives/index.js';
 import { isWholeAntiphonSlot, markAntiphonFirstText } from './emit/antiphon-marker.js';
-import { emitSection } from './emit/index.js';
+import { emitConfiguredSection } from './emit/index.js';
 import { flattenConditionals } from './flatten/index.js';
 import { expandDeferredNodes, interleaveSeparators } from './resolve/expand-deferred-nodes.js';
 import { resolveReference } from './resolve/reference-resolver.js';
@@ -88,7 +93,7 @@ export function composeHour(input: ComposeInput): ComposedHour {
     throw new Error(`HourStructure for ${input.hour} is not present on DayOfficeSummary`);
   }
 
-  const context = buildConditionContext(input.summary, input.version);
+  const context = buildConditionContext(input.summary, input.version, input.corpus);
   const sections: Section[] = [];
   const hymnDoxology = hour.slots['doxology-variant'];
   // Phase 3 §3f: warnings surfaced from the reference resolver,
@@ -342,10 +347,15 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
         summary: args.summary,
         slot: args.slot,
         language: lang,
+        conditionContext: args.context,
         ...(args.options.langfb ? { langfb: args.options.langfb } : {}),
         isAntiphon
       });
       const sourceWithCommemorationPrelude = prependCommemorationPrelude(args, lang, namedSourceContent);
+      const sourceWithSubUnicaHeading = prepareSubUnicaOrationContent(
+        subUnicaOrationContext(args),
+        sourceWithCommemorationPrelude
+      );
       if (args.slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(namedSourceContent)) {
         const antiphonOnly = markAntiphonFirstText(extractInlinePsalmAntiphons(namedSourceContent));
         const flattened = flattenConditionals(antiphonOnly, args.context);
@@ -394,7 +404,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithCommemorationPrelude)
+        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithSubUnicaHeading)
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -508,7 +518,25 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
   }
   if (frozen.size === 0) return undefined;
 
-  return emitSection(args.slot, frozen, primary ? referenceKey(primary) : undefined);
+  return emitConfiguredSection(
+    {
+      slot: args.slot,
+      ...(rendersSubUnicaOrationSeparators(subUnicaOrationContext(args))
+        ? { renderSeparators: true }
+        : {})
+    },
+    frozen,
+    primary ? referenceKey(primary) : undefined
+  );
+}
+
+function subUnicaOrationContext(args: ComposeSlotArgs) {
+  return {
+    slot: args.slot,
+    hour: args.hour,
+    conditionContext: args.context,
+    conclusionMode: args.summary.celebrationRules.conclusionMode
+  };
 }
 
 function prependCommemorationPrelude(
@@ -768,21 +796,4 @@ function isSimplifiedTriduumOration(args: ComposeSlotArgs, ref: TextReference): 
     (ref.section === 'Oratio' || ref.section === 'Oratio 2') &&
     /\/Tempora\/Quad6-[456]r?$/u.test(ref.path)
   );
-}
-
-function buildConditionContext(
-  summary: DayOfficeSummary,
-  version: ResolvedVersion
-): ConditionEvalContext {
-  const [yearStr, monthStr, dayStr] = summary.date.split('-');
-  return {
-    date: {
-      year: Number(yearStr),
-      month: Number(monthStr),
-      day: Number(dayStr)
-    },
-    dayOfWeek: summary.temporal.dayOfWeek,
-    season: summary.temporal.season,
-    version
-  };
 }

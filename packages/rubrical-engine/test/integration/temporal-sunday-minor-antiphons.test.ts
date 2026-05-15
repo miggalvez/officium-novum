@@ -506,6 +506,34 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'keeps assigned III-class major-hour antiphons on their source-backed psalm scheme',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine, 'Rubrics 1960 - 1960 engine').toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      const lauds = psalmodyAt(engine, '2026-06-26', 'lauds');
+      expectMajorHour(lauds, 'horas/Latin/Sancti/06-26:Ant Laudes');
+      expectMajorHourPsalmodySection(
+        lauds,
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day0 Laudes1'
+      );
+
+      const vespers = psalmodyAt(engine, '2026-06-26', 'vespers');
+      expectMajorHour(vespers, 'horas/Latin/Sancti/06-26:Ant Vespera 3');
+      expectMajorHourPsalmSlot(vespers, 0, 'Ant Vespera 3', '109');
+      expectMajorHourPsalmSlot(vespers, 1, 'Ant Vespera 3', '110');
+      expectMajorHourPsalmSlot(vespers, 2, 'Ant Vespera 3', '111');
+      expectMajorHourPsalmSlot(vespers, 3, 'Ant Vespera 3', '112');
+      expectMajorHourPsalmSlot(vespers, 4, 'Ant Vespera 3', '116');
+    },
+    240_000
+  );
+
+  it(
     'keeps Easter Octave minor hours on the dominica psalm table while omitting the opening antiphon',
     async () => {
       const engines = await loadEngines([
@@ -561,6 +589,27 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
           '118(145-160)',
           '118(161-176)'
         ]);
+      }
+    },
+    240_000
+  );
+
+  it(
+    'keeps Pentecost octave Terce on the dominica psalm table under Rubrics 1960',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine).toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      for (const date of ['2026-05-27', '2026-05-28', '2026-05-29', '2026-05-30'] as const) {
+        expectMinorHour(
+          psalmodyAt(engine, date, 'terce'),
+          'horas/Latin/Tempora/Pasc7-0:Ant Laudes:2',
+          ['118(33-48)', '118(49-64)', '118(65-80)']
+        );
       }
     },
     240_000
@@ -767,7 +816,12 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
       const summary = engine.resolveDayOfficeSummary('2026-02-23');
       expect(summary.temporal.dayName).toBe('Quad1-1');
 
-      for (const hour of ['prime', 'terce', 'sext', 'none'] as const) {
+      expectSingleRef(
+        summary.hours.prime?.slots.oration,
+        'horas/Ordinarium/Prima:Oratio'
+      );
+
+      for (const hour of ['terce', 'sext', 'none'] as const) {
         expectSingleRef(
           summary.hours[hour]?.slots.oration,
           'horas/Latin/Tempora/Quad1-1:Oratio 2'
