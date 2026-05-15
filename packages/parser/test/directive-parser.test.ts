@@ -174,6 +174,22 @@ describe('cross-reference parsers', () => {
       isPreamble: false
     });
   });
+
+  it('parses substitutions after a spaced section delimiter', () => {
+    expect(parseCrossReference('@:Versum Nona: s/[\\,\\.] al.*/./ig')).toEqual({
+      path: undefined,
+      section: 'Versum Nona',
+      lineSelector: undefined,
+      substitutions: [
+        {
+          pattern: '[\\,\\.] al.*',
+          replacement: '.',
+          flags: 'ig'
+        }
+      ],
+      isPreamble: false
+    });
+  });
 });
 
 describe('lexSourceLine', () => {
