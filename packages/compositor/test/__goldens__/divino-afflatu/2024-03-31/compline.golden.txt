@@ -3,7 +3,7 @@ date: 2024-03-31
 hour: compline
 celebration: Dominica Resurrectionis
 languages: Latin
-section count: 12
+section count: 9
 warning count: 0
 
 [section #0 type=other slot=incipit reference=horas/Ordinarium/Completorium#Incipit languages=Latin]
@@ -31,8 +31,7 @@ warning count: 0
   Latin: text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [v.] text("Allelúja.")
 
-[section #2 type=psalm slot=psalmody reference=horas/Latin/Psalterium/Psalmi/Psalmi minor#Pasch:1 languages=Latin]
-  Latin: [Ant.] text("Allelúja, * allelúja, allelúja.")
+[section #2 type=psalm slot=psalmody reference=horas/Latin/Psalterium/Psalmorum/Psalm4#__preamble:4 languages=Latin]
   Latin: text("Psalmus 4 [1]")
   Latin: text("4:2 Cum invocárem exaudívit me Deus justítiæ meæ: * in tribulatióne dilatásti mihi.")
   Latin: text("4:2 Miserére mei, * et exáudi oratiónem meam.")
@@ -72,31 +71,11 @@ warning count: 0
   Latin: text("133:3 Benedícat te Dóminus ex Sion, * qui fecit cælum et terram.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Allelúja, allelúja, allelúja.")
 
-[section #3 type=chapter slot=chapter reference=horas/Latin/Psalterium/Special/Minor Special#Completorium_ languages=Latin]
-  Latin: text(" ") · citation("Jer 14:9")
-  Latin: [v.] text("Tu autem in nobis es, Dómine, et nomen sanctum tuum invocátum est super nos: ne derelínquas nos, Dómine, Deus noster.")
-  Latin: [R.] text("Deo grátias.")
+[section #3 type=antiphon slot=antiphon-ad-nunc-dimittis reference=horas/Latin/Tempora/Pasc0-0#Ant 43:1 languages=Latin]
+  Latin: [Ant.] text("Allelúja, allelúja, allelúja, allelúja.")
 
-[section #4 type=responsory slot=responsory reference=horas/Latin/Psalterium/Special/Minor Special#Responsory Completorium languages=Latin]
-  Latin: text("_")
-  Latin: [R.br.] text("In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.")
-  Latin: [R.] text("In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.")
-  Latin: [V.] text("Redemísti nos, Dómine, Deus veritátis.")
-  Latin: [R.] text("Allelúia, allelúia.")
-  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
-  Latin: [R.] text("In manus tuas, Dómine, comméndo spíritum meum, * Allelúia, allelúia.")
-  Latin: text("_")
-
-[section #5 type=versicle slot=versicle reference=horas/Latin/Psalterium/Special/Minor Special#Versum 4 languages=Latin]
-  Latin: [V.] text("Custódi nos, Dómine, ut pupíllam óculi, allelúia.")
-  Latin: [R.] text("Sub umbra alárum tuárum prótege nos, allelúia.")
-
-[section #6 type=antiphon slot=antiphon-ad-nunc-dimittis reference=horas/Latin/Psalterium/Special/Minor Special#Ant 4 languages=Latin]
-  Latin: [Ant.] text("Salva nos, * Dómine, vigilántes, custódi nos dormiéntes; ut vigilémus cum Christo, et requiescámus in pace, allelúja.")
-
-[section #7 type=canticle slot=canticle-ad-nunc-dimittis reference=horas/Latin/Psalterium/Psalmorum/Psalm233#__preamble languages=Latin]
+[section #4 type=canticle slot=canticle-ad-nunc-dimittis reference=horas/Latin/Psalterium/Psalmorum/Psalm233#__preamble languages=Latin]
   Latin: text("Canticum Simeonis")
   Latin: text("Luc. 2:29-32")
   Latin: text("2:29 Nunc dimíttis + servum tuum, Dómine, * secúndum verbum tuum in pace:")
@@ -105,9 +84,9 @@ warning count: 0
   Latin: text("2:32 Lumen ad revelatiónem géntium, * et glóriam plebis tuæ Israël.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
-  Latin: [Ant.] text("Salva nos, Dómine, vigilántes, custódi nos dormiéntes; ut vigilémus cum Christo, et requiescámus in pace, allelúja.")
+  Latin: [Ant.] text("Hæc dies * quam fecit Dóminus: exsultémus et lætémur in ea.")
 
-[section #8 type=preces slot=preces reference=horas/Latin/Psalterium/Special/Preces#Preces dominicales Completorium languages=Latin]
+[section #5 type=preces slot=preces reference=horas/Latin/Psalterium/Special/Preces#Preces dominicales Completorium languages=Latin]
   Latin: [V.] text("Benedíctus es, Dómine, Deus patrum nostrórum.")
   Latin: [R.] text("Et laudábilis et gloriósus in sǽcula.")
   Latin: [V.] text("Benedicámus Patrem et Fílium cum Sancto Spíritu.")
@@ -123,12 +102,12 @@ warning count: 0
   Latin: [V.] text("Fiat misericórdia tua, Dómine, super nos.")
   Latin: [R.] text("Quemádmodum sperávimus in te.")
 
-[section #9 type=oration slot=oration reference=horas/Latin/Tempora/Pasc0-0#Oratio languages=Latin]
+[section #6 type=oration slot=oration reference=horas/Latin/Tempora/Pasc0-0#Oratio languages=Latin]
   Latin: text("Deus, qui hodiérna die per Unigénitum tuum æternitátis nobis áditum devícta morte reserásti: vota nostra, quæ præveniéndo aspíras, étiam adjuvándo proséquere.")
   Latin: [r.] text("Per eúmdem Dóminum nostrum Jesum Christum Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
   Latin: [R.] text("Amen.")
 
-[section #10 type=conclusion slot=conclusion reference=horas/Ordinarium/Completorium#Conclusio languages=Latin]
+[section #7 type=conclusion slot=conclusion reference=horas/Ordinarium/Completorium#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
@@ -139,7 +118,7 @@ warning count: 0
   Latin: [Benedictio.] text("Benedícat et custódiat nos omnípotens et miséricors Dóminus, + Pater, et Fílius, et Spíritus Sanctus.")
   Latin: [R.] text("Amen.")
 
-[section #11 type=antiphon slot=final-antiphon-bvm reference=horas/Ordinarium/Completorium#Antiphona finalis languages=Latin]
+[section #8 type=antiphon slot=final-antiphon-bvm reference=horas/Ordinarium/Completorium#Antiphona finalis languages=Latin]
   Latin: rubric("Deinde dicitur secreto")
   Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
   Latin: [v.] text("Ave María, grátia plena; Dóminus tecum: benedícta tu in muliéribus, et benedíctus fructus ventris tui Jesus. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen.")

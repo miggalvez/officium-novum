@@ -385,6 +385,30 @@ export function separatePsalmVerseLines(content: readonly TextContent[]): readon
   return out;
 }
 
+export function materializePairedAntiphonPlaceholders(
+  content: readonly TextContent[],
+  pairedAntiphonRef: TextReference | undefined,
+  language: string,
+  args: MatinsPsalmodyContext
+): readonly TextContent[] {
+  if (!pairedAntiphonRef || !content.some(isAntiphonFormulaRef)) {
+    return content;
+  }
+
+  const antiphon = resolveOpeningAntiphonSourceText(pairedAntiphonRef, language, args);
+  if (!antiphon) {
+    return content;
+  }
+
+  return Object.freeze(
+    content.map((node) =>
+      isAntiphonFormulaRef(node)
+        ? ({ type: 'verseMarker', marker: 'Ant.', text: antiphon } satisfies TextContent)
+        : node
+    )
+  );
+}
+
 function buildInlinePsalmHeading(
   node: Extract<TextContent, { type: 'psalmRef' }>,
   expandedContent: readonly TextContent[],
@@ -409,6 +433,10 @@ function splitLeadingPsalmAntiphon(
     return [content.slice(0, 1), content.slice(1)];
   }
   return [[], content];
+}
+
+function isAntiphonFormulaRef(node: TextContent): boolean {
+  return node.type === 'formulaRef' && node.name.trim().toLowerCase() === 'ant';
 }
 
 function endsWithStandaloneAntiphon(content: readonly TextContent[]): boolean {

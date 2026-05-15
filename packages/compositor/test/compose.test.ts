@@ -20,12 +20,13 @@ function makeFile(path: string, header: string, nodes: ParsedFile['sections'][nu
 
 function makeFileMulti(
   path: string,
-  sections: readonly { header: string; content: ParsedFile['sections'][number]['content'] }[]
+  sections: readonly Pick<ParsedFile['sections'][number], 'header' | 'condition' | 'content'>[]
 ): ParsedFile {
   return {
     path: `${path}.txt`,
     sections: sections.map((section) => ({
       header: section.header,
+      ...(section.condition ? { condition: section.condition } : {}),
       content: section.content,
       startLine: 1,
       endLine: 1
@@ -48,6 +49,8 @@ function buildSummary(
     season?: DayOfficeSummary['temporal']['season'];
     dayName?: string;
     date?: string;
+    celebrationRules?: DayOfficeSummary['celebrationRules'];
+    celebrationPath?: string;
   } = {}
 ): DayOfficeSummary {
   const version = options.version ?? stubVersion;
@@ -73,8 +76,10 @@ function buildSummary(
       rank: {} as never
     },
     warnings: [],
-    celebration: { feastRef: { title: 'Dominica in Albis' } } as never,
-    celebrationRules: {} as never,
+    celebration: {
+      feastRef: { path: options.celebrationPath ?? 'Tempora/Pasc1-0', title: 'Dominica in Albis' }
+    } as never,
+    celebrationRules: options.celebrationRules ?? ({} as never),
     commemorations: [],
     concurrence: {} as never,
     compline: {} as never,
@@ -1761,6 +1766,208 @@ describe('composeHour', () => {
     expect(
       composed.sections[0]!.lines[0]!.texts.Latin?.some((run) => run.type === 'unresolved-reference')
     ).toBe(true);
+  });
+
+  it('keeps common-guarded collect text when the active common owns the predicate', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Commune/C3bp', [
+        {
+          header: 'Officium',
+          condition: {
+            expression: {
+              type: 'match',
+              subject: 'communi',
+              predicate: 'Summorum Pontificum'
+            }
+          },
+          content: [
+            { type: 'text', value: 'Commune plurium Summorum Pontificum Martyrum Tempore Paschali' }
+          ]
+        },
+        {
+          header: 'Oratio',
+          content: [
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'match',
+                  subject: 'communi',
+                  predicate: 'Summorum Pontificum'
+                }
+              },
+              content: [
+                {
+                  type: 'verseMarker',
+                  marker: 'v.',
+                  text: 'Gregem tuum, Pastor ætérne, placátus inténde: et per beátos N. et N. Mártyres.'
+                },
+                { type: 'formulaRef', name: 'Per Dominum' }
+              ]
+            }
+          ]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Sancti/04-22', [
+        {
+          header: 'Name',
+          content: [
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'not',
+                  inner: {
+                    type: 'match',
+                    subject: 'communi',
+                    predicate: 'Summorum Pontificum'
+                  }
+                }
+              },
+              content: [{ type: 'text', value: 'Sotéris et Caji' }]
+            },
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'match',
+                  subject: 'communi',
+                  predicate: 'Summorum Pontificum'
+                }
+              },
+              content: [{ type: 'text', value: 'Sotérem et Cajum' }]
+            }
+          ]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Domine exaudi',
+          content: [{ type: 'verseMarker', marker: 'V.', text: 'Dómine, exáudi oratiónem meam.' }]
+        },
+        {
+          header: 'Oremus',
+          content: [{ type: 'text', value: 'Orémus.' }]
+        },
+        {
+          header: 'Per Dominum',
+          content: [{ type: 'text', value: 'Per Dóminum nostrum.' }]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        oration: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Commune/C3bp', section: 'Oratio' }
+        },
+        conclusion: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Ordinarium/Laudes', section: 'Conclusio' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour, {
+        celebrationPath: 'Sancti/04-22',
+        celebrationRules: {
+          unmapped: [
+            {
+              kind: 'reference',
+              reference: {
+                path: 'Commune/C3b',
+                substitutions: [],
+                isPreamble: false
+              },
+              raw: '@Commune/C3b'
+            }
+          ]
+        } as never
+      }),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    expect(slotLines(composed, 'oration', 'Latin').join('\n')).toContain(
+      'Gregem tuum, Pastor ætérne, placátus inténde: et per beátos Sotérem et Cajum Mártyres.'
+    );
+  });
+
+  it('does not treat every common-guarded line as active for Doctor commons', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Commune/C4a', [
+        {
+          header: 'Officium',
+          content: [{ type: 'text', value: 'Commune Doctoris Pontificis' }]
+        },
+        {
+          header: 'Oratio',
+          content: [
+            { type: 'text', value: 'intercessórem habére mereámur in cœlis.' },
+            {
+              type: 'conditional',
+              condition: {
+                expression: {
+                  type: 'match',
+                  subject: 'communi',
+                  predicate: 'Summorum Pontificum'
+                }
+              },
+              content: [{ type: 'text', value: 'intercessórem habére mereámur in cælis.' }]
+            }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'lauds',
+      slots: {
+        oration: {
+          kind: 'single-ref',
+          ref: { path: 'horas/Latin/Commune/C4a', section: 'Oratio' }
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour, {
+        celebrationRules: {
+          unmapped: [
+            {
+              kind: 'reference',
+              reference: {
+                path: 'Commune/C4a',
+                substitutions: [],
+                isPreamble: false
+              },
+              raw: '@Commune/C4a'
+            }
+          ]
+        } as never
+      }),
+      version: stubVersion,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+
+    const lines = slotLines(composed, 'oration', 'Latin').join('\n');
+    expect(lines).toContain('intercessórem habére mereámur in cœlis.');
+    expect(lines).not.toContain('intercessórem habére mereámur in cælis.');
   });
 
   it('falls back to Latin Prime Martyrologium files for Latin-derived locales', () => {
