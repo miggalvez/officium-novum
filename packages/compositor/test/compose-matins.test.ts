@@ -9,7 +9,10 @@ import type {
 } from '@officium-novum/rubrical-engine';
 
 import { composeHour } from '../src/compose.js';
-import { slicePsalmContentByVerseRange } from '../src/compose/matins-psalmody.js';
+import {
+  materializePairedAntiphonPlaceholders,
+  slicePsalmContentByVerseRange
+} from '../src/compose/matins-psalmody.js';
 
 function makeFile(path: string, header: string, nodes: ParsedFile['sections'][number]['content']): ParsedFile {
   return {
@@ -488,7 +491,13 @@ describe('composeHour(matins)', () => {
     );
     corpus.addFile(
       makeFileMulti('horas/Latin/Tempora/Pasc1-0', [
-        { header: 'Lectio1', content: [{ type: 'text', value: 'Lectio prima paschalis' }] },
+        {
+          header: 'Lectio1',
+          content: [
+            { type: 'text', value: 'Lectio prima paschalis' },
+            { type: 'macroRef', name: 'teDeum' }
+          ]
+        },
         {
           header: 'Responsory1',
           content: [{ type: 'verseMarker', marker: 'R.', text: 'Surréxit Dóminus.' }]
@@ -496,8 +505,18 @@ describe('composeHour(matins)', () => {
       ])
     );
     corpus.addFile(
-      makeFile('horas/Latin/Psalterium/Common/Prayers', 'Te Deum', [
-        { type: 'text', value: 'Te Deum laudámus.' }
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Te Deum',
+          content: [{ type: 'text', value: 'Te Deum laudámus.' }]
+        },
+        {
+          header: 'Tu autem',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Tu autem, Dómine, miserére nobis.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Deo grátias.' }
+          ]
+        }
       ])
     );
 
@@ -584,6 +603,7 @@ describe('composeHour(matins)', () => {
       'versicle',
       'heading',
       'lectio-brevis',
+      'other',
       'responsory',
       'te-deum'
     ]);
@@ -597,6 +617,8 @@ describe('composeHour(matins)', () => {
     expect(composed.sections[1]!.heading).toEqual({ kind: 'nocturn', ordinal: 1 });
     expect(renderRuns(composed.sections[1]!.lines[0]!, 'Latin')).toBe('Ad Nocturnum');
     expect(composed.sections[4]!.heading).toEqual({ kind: 'lesson', ordinal: 1 });
+    expect(composed.sections.filter((section) => section.slot === 'te-deum')).toHaveLength(1);
+    expect(renderRuns(composed.sections[6]!.lines[0]!, 'Latin')).toBe('Tu autem, Dómine, miserére nobis.');
     expect(renderRuns(composed.sections.at(-1)!.lines[0]!, 'Latin')).toBe('_');
     expect(renderRuns(composed.sections.at(-1)!.lines[1]!, 'Latin')).toBe('Te Deum');
     expect(renderRuns(composed.sections.at(-1)!.lines[2]!, 'Latin')).toBe('Te Deum laudámus.');
@@ -626,6 +648,104 @@ describe('composeHour(matins)', () => {
 
     const teDeum = composed.sections.find((s) => s.slot === 'te-deum');
     expect(teDeum).toBeUndefined();
+  });
+
+  it('suppresses embedded Gloria when a non-final Matins responsory carries source-position Gloria', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Sancti/01-01', [
+        {
+          header: 'Nocturn 3 Versum',
+          content: [{ type: 'verseMarker', marker: 'V.', text: 'Notum fecit Dóminus.' }]
+        },
+        { header: 'Lectio7', content: [{ type: 'text', value: 'Lectio septima.' }] },
+        {
+          header: 'Responsory7',
+          content: [
+            { type: 'verseMarker', marker: 'R.', text: 'Sancta et immaculáta virgínitas.' },
+            { type: 'text', value: '* Quia quem cæli cápere non póterant.' },
+            { type: 'verseMarker', marker: 'V.', text: 'Benedícta tu in muliéribus.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Quia quem cæli cápere non póterant.' },
+            { type: 'macroRef', name: 'Gloria' },
+            { type: 'verseMarker', marker: 'R.', text: 'Quia quem cæli cápere non póterant.' }
+          ]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Gloria',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+            {
+              type: 'verseMarker',
+              marker: 'R.',
+              text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+            }
+          ]
+        },
+        {
+          header: 'Tu autem',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Tu autem, Dómine, miserére nobis.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Deo grátias.' }
+          ]
+        }
+      ])
+    );
+
+    const hour: HourStructure = {
+      hour: 'matins',
+      slots: {
+        psalmody: {
+          kind: 'matins-nocturns',
+          nocturns: [
+            {
+              index: 3,
+              psalmody: [],
+              antiphons: [],
+              versicle: {
+                reference: { path: 'horas/Latin/Sancti/01-01', section: 'Nocturn 3 Versum' }
+              },
+              lessonIntroduction: 'ordinary',
+              lessons: [
+                {
+                  index: 7,
+                  source: {
+                    kind: 'patristic',
+                    reference: { path: 'horas/Latin/Sancti/01-01', section: 'Lectio7' }
+                  }
+                }
+              ],
+              responsories: [
+                {
+                  index: 7,
+                  reference: { path: 'horas/Latin/Sancti/01-01', section: 'Responsory7' },
+                  suppressEmbeddedGloria: true
+                }
+              ],
+              benedictions: []
+            }
+          ]
+        }
+      },
+      directives: []
+    };
+
+    const composed = composeHour({
+      corpus,
+      summary: buildSummary(hour),
+      version: stubVersion,
+      hour: 'matins',
+      options: { languages: ['Latin'] }
+    });
+    const rendered = composed.sections.flatMap((section) =>
+      section.lines.map((line) => renderRuns(line, 'Latin'))
+    );
+
+    expect(rendered).toContain('Quia quem cæli cápere non póterant.');
+    expect(rendered).not.toContain('Glória Patri, et Fílio, * et Spirítui Sancto.');
   });
 
   it('strips invitatory division markers from Psalm 94 verses while preserving antiphon stars', () => {
@@ -681,6 +801,51 @@ describe('composeHour(matins)', () => {
       'Ant. Surréxit Dóminus vere, * Allelúja.',
       'v. Veníte, exsultémus Dómino, jubilémus Deo, salutári nostro: præoccupémus fáciem ejus in confessióne.',
       'Ant. Allelúja.'
+    ]);
+  });
+
+  it('materializes paired Matins psalm `$ant` placeholders from the antiphon source', () => {
+    const corpus = new InMemoryTextIndex();
+    corpus.addFile(
+      makeFile('horas/Latin/Sancti/01-06', 'Ant Matutinum', [
+        {
+          type: 'text',
+          value: 'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.;;94'
+        }
+      ])
+    );
+
+    const materialized = materializePairedAntiphonPlaceholders(
+      [
+        { type: 'text', value: '94:1 Veníte, exsultémus Dómino:' },
+        { type: 'formulaRef', name: 'ant' }
+      ],
+      {
+        path: 'horas/Latin/Sancti/01-06',
+        section: 'Ant Matutinum',
+        selector: '1'
+      },
+      'Latin',
+      {
+        corpus,
+        options: { languages: ['Latin'] },
+        directives: [],
+        context: {
+          date: { year: 2026, month: 1, day: 6 },
+          dayOfWeek: 2,
+          season: 'epiphanytide',
+          version: stubVersion
+        }
+      }
+    );
+
+    expect(materialized).toEqual([
+      { type: 'text', value: '94:1 Veníte, exsultémus Dómino:' },
+      {
+        type: 'verseMarker',
+        marker: 'Ant.',
+        text: 'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.'
+      }
     ]);
   });
 

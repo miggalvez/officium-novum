@@ -453,6 +453,49 @@ describe('buildMatinsPlan', () => {
     ]);
   });
 
+  it('keeps sanctoral feasts of the Lord on ordinary third-nocturn benedictions', () => {
+    const corpus = new TestOfficeTextIndex();
+    corpus.add('horas/Latin/Sancti/01-06.txt', festalMatinsSections());
+
+    const result = buildMatinsPlanWithWarnings({
+      celebration: celebration('Sancti/01-06', 'I', 'sanctoral'),
+      celebrationRules: baseRules(),
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2026-01-06', 'Epi1-2', 'epiphanytide', 'I'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+
+    expect(result.plan.nocturnPlan[2]?.benedictions).toEqual([
+      {
+        index: 7,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Evangelica',
+          selector: '1'
+        }
+      },
+      {
+        index: 8,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Nocturn 3',
+          selector: '2'
+        }
+      },
+      {
+        index: 9,
+        reference: {
+          path: 'horas/Latin/Psalterium/Benedictions.txt',
+          section: 'Nocturn 3',
+          selector: '3'
+        }
+      }
+    ]);
+  });
+
   it('uses ferial Matins psalms with one Paschal Alleluia antiphon for 1960 III-class sanctoral weekdays', () => {
     const corpus = new TestOfficeTextIndex();
     corpus.add('horas/Latin/Sancti/04-29.txt', festalMatinsSections());
