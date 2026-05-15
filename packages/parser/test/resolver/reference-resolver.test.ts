@@ -251,6 +251,40 @@ describe('CrossReferenceResolver', () => {
     expect(resolved).toEqual([{ type: 'text', value: 'Section-local text.' }]);
   });
 
+  it('resolves section-only references with substitutions after a spaced delimiter', async () => {
+    const sectionOnlyFile = [
+      '[Source]',
+      '@:Versum Nona: s/[\\,\\.] al.*/./ig',
+      '',
+      '[Versum Nona]',
+      'V. Adjutórium nostrum in nómine Dómini, allelúja.',
+      'R. Qui fecit cælum et terram, allelúja.'
+    ].join('\n');
+    const { resolver, cache } = await createResolver({
+      'section-only-spaced-substitution.txt': sectionOnlyFile
+    });
+
+    await cache.get('section-only-spaced-substitution.txt');
+
+    const resolved = await resolver.resolve(
+      parseCrossReference('@:Versum Nona: s/[\\,\\.] al.*/./ig'),
+      baseContext('section-only-spaced-substitution.txt', 'Source')
+    );
+
+    expect(resolved).toEqual([
+      {
+        type: 'verseMarker',
+        marker: 'V.',
+        text: 'Adjutórium nostrum in nómine Dómini.'
+      },
+      {
+        type: 'verseMarker',
+        marker: 'R.',
+        text: 'Qui fecit cælum et terram.'
+      }
+    ]);
+  });
+
   it('coalesces same-file duplicate text sections with header conditions', async () => {
     const { resolver, cache } = await createResolver({
       'duplicate-variants.txt': [
