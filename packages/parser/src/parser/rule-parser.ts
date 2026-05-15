@@ -80,9 +80,72 @@ export function parseRuleLine(line: string): RuleDirective | null {
 }
 
 export function parseRuleSection(lines: RuleLineInput[]): RuleDirective[] {
-  return lines
-    .map((line) => parseRuleLine(line.text))
-    .filter((directive): directive is RuleDirective => directive !== null);
+  const directives: RuleDirective[] = [];
+  let pendingCondition: Condition | undefined;
+
+  for (const line of lines) {
+    const conditionOnly = parseConditionOnlyLine(line.text);
+    if (conditionOnly) {
+      pendingCondition = pendingCondition
+        ? combineConditions(pendingCondition, conditionOnly)
+        : conditionOnly;
+      continue;
+    }
+
+    const directive = parseRuleLine(line.text);
+    if (!directive) {
+      continue;
+    }
+
+    if (pendingCondition) {
+      directives.push({
+        ...directive,
+        condition: directive.condition
+          ? combineConditions(pendingCondition, directive.condition)
+          : pendingCondition
+      });
+      pendingCondition = undefined;
+      continue;
+    }
+
+    directives.push(directive);
+  }
+
+  return directives;
+}
+
+function parseConditionOnlyLine(line: string): Condition | undefined {
+  const trimmed = line.trim();
+  if (!trimmed.startsWith('(')) {
+    return undefined;
+  }
+
+  const closingIndex = findMatchingClosingParen(trimmed, 0);
+  if (closingIndex < 0) {
+    return undefined;
+  }
+
+  const suffix = trimmed.slice(closingIndex + 1).trim();
+  if (suffix && !suffix.startsWith('#')) {
+    return undefined;
+  }
+
+  try {
+    return parseCondition(trimmed.slice(1, closingIndex).trim());
+  } catch {
+    return undefined;
+  }
+}
+
+function combineConditions(left: Condition, right: Condition): Condition {
+  return {
+    ...left,
+    expression: {
+      type: 'and',
+      left: left.expression,
+      right: right.expression
+    }
+  };
 }
 
 function extractLeadingCondition(input: string): { remainder: string; condition?: Condition } {
