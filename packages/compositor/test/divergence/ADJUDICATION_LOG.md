@@ -22,6 +22,43 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: 2026 Psalm 116 fifth-Vespers override fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier still contained four Vespers rows whose stable key-hashes
+already belonged to source-backed Psalm 116 fifth-slot override
+families. The three Pentecost-octave witnesses on 2026-05-27,
+2026-05-28, and 2026-05-29 had Perl retaining `Psalmus 113 [5]`; the
+2026-09-29 St Michael witness had Perl retaining `Psalmus 137 [5]`.
+The compositor emitted `Psalmus 116 [5]` in each case.
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The Pentecost octave ferias inherit the Pentecost
+rule set by `ex Pasc7-0`, whose `[Rule]` explicitly sets
+`Psalm5 Vespera=116` and `Psalm5 Vespera3=113`. The Dedication of St
+Michael likewise explicitly sets `Psalm5 Vespera=116` and
+`Psalm5 Vespera3=137`. The source-backed first-Vespers fifth slot is
+therefore Psalm 116; Perl keeps the later/default fifth heading.
+
+**Resolution.** Class `perl-bug`. Added four 2026 row-key
+adjudications and upstream-composition coverage for representative
+Pentecost-octave and St Michael witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-3.txt:10-18`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-4.txt:12-20`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-5.txt:7-15`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13`
+- `upstream/web/www/horas/Latin/Sancti/09-29.txt:11-16`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`
+
+**Impact.** Expected to keep divergent hours at `1849` and drop
+unadjudicated rows from `506` to `502` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: Matins Te Deum replacement responsory final Gloria/repeat (engine/compositor fixed)
 
 **Commit.** Current tranche commit.

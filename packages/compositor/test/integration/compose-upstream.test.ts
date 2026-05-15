@@ -2896,6 +2896,44 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Rubrics 1960 2026 Vespers fifth-psalm overrides on Psalm 116', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, expected] of [
+      [
+        '2026-05-27',
+        [
+          'Fontes, et ómnia quæ movéntur in aquis, hymnum dícite Deo, allelúja.',
+          'Loquebántur * váriis linguis Apóstoli magnália Dei, allelúja, allelúja, allelúja.',
+          'Psalmus 116 [5]'
+        ]
+      ],
+      [
+        '2026-09-29',
+        [
+          'Angeli Dómini, Dóminum benedícite in ætérnum.',
+          'Angeli, Archángeli, * Throni et Dominatiónes, Principátus et Potestátes, Virtútes cælórum, laudáte Dóminum de cælis, allelúja.',
+          'Psalmus 116 [5]'
+        ]
+      ]
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+      const lines = psalmodyTexts(composed).map(normalizeLatin);
+      const fifthPsalm = lines.indexOf(normalizeLatin('Psalmus 116 [5]'));
+      expect(fifthPsalm, `${date} Vespers should keep Psalm 116 in the fifth slot`).toBeGreaterThan(1);
+      expect(lines.slice(fifthPsalm - 2, fifthPsalm + 1), `${date} Vespers fifth psalm`).toEqual(
+        expected.map(normalizeLatin)
+      );
+    }
+  }, 240_000);
+
   it('keeps Dec 27 Roman Vespers in chapter-hymn-versicle order after the Christmas second-Vespers psalmody', async () => {
     const expectedChapter = [
       normalizeLatin('Sir 15:1-2'),

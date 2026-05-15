@@ -32353,5 +32353,49 @@
     "notes": "2026 Rubrics 1960 fallback-hymn doxology row. Engine slot coverage in january-hymn-routing.test.ts verifies representative Nat/Epi/Asc/Corp/Heart/local doxology sources for this reusable family.",
     "resolvedAt": "2026-05-05",
     "commitSha": "e6f1475"
+  },
+  "Rubrics 1960 - 1960/2026-05-27/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-27",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-3.txt:10-18 and upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost Wednesday office inherits the Pentecost rule set by `ex Pasc7-0`, and that rule explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`; the source-backed fifth Vespers heading is therefore `Psalmus 116 [5]`, not the Day0 Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 Pentecost-octave fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; covered by the 2026-05-27 upstream-composition witness.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-28/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-28",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-4.txt:12-20 and upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost Thursday office inherits the Pentecost rule set by `ex Pasc7-0`, and that rule explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`; the source-backed fifth Vespers heading is therefore `Psalmus 116 [5]`, not the Day0 Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 Pentecost-octave fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; covered by the 2026-05-27 upstream-composition witness.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-05-29/Vespers/39846534": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-05-29",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 113 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Pasc7-5.txt:7-15 and upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Pentecost Friday office inherits the Pentecost rule set by `ex Pasc7-0`, and that rule explicitly sets `Psalm5 Vespera=116` and `Psalm5 Vespera3=113`; the source-backed fifth Vespers heading is therefore `Psalmus 116 [5]`, not the Day0 Psalm 113 retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 Pentecost-octave fanout for the source-backed `Psalm5 Vespera=116` fifth-Vespers psalm override; covered by the 2026-05-27 upstream-composition witness.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-09-29/Vespers/d312260f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-09-29",
+    "hour": "Vespers",
+    "firstExpected": "Psalmus 137 [5]",
+    "firstActual": "Psalmus 116 [5]",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Sancti/09-29.txt:11-16 and upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20 — the Dedication of St Michael office explicitly sets `Psalm5 Vespera=116`, so the source-backed first-Vespers fifth heading is `Psalmus 116 [5]` rather than the Vespera3 heading `Psalmus 137 [5]` retained by the Perl comparison surface.",
+    "notes": "Rubrics 1960 2026 fanout for the shared Roman proper first-Vespers fifth-psalm override family; covered by the 2026-09-29 upstream-composition witness.",
+    "resolvedAt": "2026-05-15"
   }
 }
