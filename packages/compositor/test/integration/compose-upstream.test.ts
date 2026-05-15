@@ -3116,6 +3116,39 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Rubrics 1960 Advent Matins on the seasonal invitatory when Confessors are commemorated', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, celebrationPath, commemorationPath] of [
+      ['2026-12-03', 'Tempora/Adv1-4', 'Sancti/12-03'],
+      ['2026-12-04', 'Tempora/Adv1-5', 'Sancti/12-04'],
+      ['2026-12-07', 'Tempora/Adv2-1', 'Sancti/12-07'],
+      ['2026-12-11', 'Tempora/Adv2-5', 'Sancti/12-11']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      expect(summary.celebration.feastRef.path, `${date} celebration`).toBe(celebrationPath);
+      expect(
+        summary.commemorations.map((commemoration) => commemoration.feastRef.path),
+        `${date} commemorations`
+      ).toContain(commemorationPath);
+
+      const matins = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+      const invitatory = sectionTexts(matins, 'invitatory');
+      expect(invitatory[0], `${date} Matins invitatory`).toBe(
+        'Regem ventúrum Dóminum, * Veníte, adorémus.'
+      );
+      expect(invitatory, `${date} Matins should not use the Confessor common invitatory`).not.toContain(
+        'Regem Confessórum Dóminum, * Veníte, adorémus.'
+      );
+    }
+  }, 240_000);
+
   it('composes the 2026 Paschaltide third-class sanctoral weekday witnesses through their family directives', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const hours = [

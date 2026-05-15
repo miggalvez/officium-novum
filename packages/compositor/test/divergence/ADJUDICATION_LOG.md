@@ -22,6 +22,39 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Advent Matins invitatory on commemorated Confessors (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained four Advent Matins rows on 2026-12-03, 2026-12-04,
+2026-12-07, and 2026-12-11 where Perl surfaced the Confessor-common
+invitatory `Regem Confessórum Dóminum`; the compositor emitted the
+Advent seasonal invitatory `Regem ventúrum Dóminum`.
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The winning office on each witness date is the
+Advent feria; the Confessor is only commemorated. Under the 1960 rubrics,
+commemorations are made after the office collect and consist of the
+Benedictus/Magnificat antiphon, verse, and collect. They do not replace
+the Matins invitatory of the office of the day.
+
+**Resolution.** Class `perl-bug`. Added four 2026 row-key
+adjudications and upstream-composition coverage proving the temporal
+Advent celebration, sanctoral commemoration, and seasonal Matins
+invitatory on the representative witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:188-191`
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:336-339`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:36-37`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:91-92`
+
+**Impact.** Expected to keep divergent hours at `1844` and drop
+unadjudicated rows from `485` to `481` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: Advent major-hour seasonal later-block fallback (engine fixed)
 
 **Commit.** Current tranche commit.

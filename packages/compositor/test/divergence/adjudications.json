@@ -31545,6 +31545,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-03/Matins/8194eeaa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-03",
+    "hour": "Matins",
+    "firstExpected": "Ant. Regem Confessórum Dóminum, * Veníte, adorémus.",
+    "firstActual": "Ant. Regem ventúrum Dóminum, * Veníte, adorémus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:188-191 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:336-339 and upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:36-37 and upstream/web/www/horas/Latin/Commune/C4.txt:91-92 — the winning Advent feria uses the seasonal Matins invitatory `Regem venturum`; the Confessor is only commemorated, and 1960 commemorations supply Benedictus/Magnificat antiphon, verse, and collect rather than replacing the Matins invitatory.",
+    "notes": "Rubrics 1960 2026 Advent Matins fanout for commemorated Confessors not supplying the office-of-day invitatory; covered by upstream-composition witnesses on 2026-12-03, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-12-03/Lauds/52cc7e9c": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-03",
@@ -31588,6 +31599,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100 — the psalter-major row carries `Ecce quam bonum * et quam jucúndum habitáre fratres in unum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-04/Matins/8194eeaa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-04",
+    "hour": "Matins",
+    "firstExpected": "Ant. Regem Confessórum Dóminum, * Veníte, adorémus.",
+    "firstActual": "Ant. Regem ventúrum Dóminum, * Veníte, adorémus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:188-191 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:336-339 and upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:36-37 and upstream/web/www/horas/Latin/Commune/C4.txt:91-92 — the winning Advent feria uses the seasonal Matins invitatory `Regem venturum`; the Confessor is only commemorated, and 1960 commemorations supply Benedictus/Magnificat antiphon, verse, and collect rather than replacing the Matins invitatory.",
+    "notes": "Rubrics 1960 2026 Advent Matins fanout for commemorated Confessors not supplying the office-of-day invitatory; covered by upstream-composition witnesses on 2026-12-03, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-04/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",
@@ -31665,6 +31687,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:218 - the 1960 Tridentinum Sunday Prime row explicitly orders `Prima Dominica` as `53,117,118(1-16),118(17-32)`. The compositor preserves the source-backed opening Psalm 53, while the Perl comparison surface starts directly at Psalm 117 and drops the first psalm unit.",
     "notes": "Rubrics 1960 2026 fanout for the 1960 Tridentinum Sunday Prime psalm row; stable key-hash 5531f29c extends the existing source-backed Sunday Prime adjudication.",
     "resolvedAt": "2026-05-06"
+  },
+  "Rubrics 1960 - 1960/2026-12-07/Matins/8194eeaa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-07",
+    "hour": "Matins",
+    "firstExpected": "Ant. Regem Confessórum Dóminum, * Veníte, adorémus.",
+    "firstActual": "Ant. Regem ventúrum Dóminum, * Veníte, adorémus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:188-191 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:336-339 and upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:36-37 and upstream/web/www/horas/Latin/Commune/C4.txt:91-92 — the winning Advent feria uses the seasonal Matins invitatory `Regem venturum`; the Confessor is only commemorated, and 1960 commemorations supply Benedictus/Magnificat antiphon, verse, and collect rather than replacing the Matins invitatory.",
+    "notes": "Rubrics 1960 2026 Advent Matins fanout for commemorated Confessors not supplying the office-of-day invitatory; covered by upstream-composition witnesses on 2026-12-03, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-07/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
@@ -31858,6 +31891,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:100 — the psalter-major row carries `Ecce quam bonum * et quam jucúndum habitáre fratres in unum.` without a trailing `‡`; the compositor preserves that source text while the Perl comparison surface appends an unsupported marker.",
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-11/Matins/8194eeaa": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-11",
+    "hour": "Matins",
+    "firstExpected": "Ant. Regem Confessórum Dóminum, * Veníte, adorémus.",
+    "firstActual": "Ant. Regem ventúrum Dóminum, * Veníte, adorémus.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:188-191 and upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:336-339 and upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:36-37 and upstream/web/www/horas/Latin/Commune/C4.txt:91-92 — the winning Advent feria uses the seasonal Matins invitatory `Regem venturum`; the Confessor is only commemorated, and 1960 commemorations supply Benedictus/Magnificat antiphon, verse, and collect rather than replacing the Matins invitatory.",
+    "notes": "Rubrics 1960 2026 Advent Matins fanout for commemorated Confessors not supplying the office-of-day invitatory; covered by upstream-composition witnesses on 2026-12-03, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-11/Lauds/d64d0218": {
     "policy": "Rubrics 1960 - 1960",
