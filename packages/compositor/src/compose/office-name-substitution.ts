@@ -1,10 +1,12 @@
 import { type TextContent, type TextIndex } from '@officium-novum/parser';
 import type {
+  ConditionEvalContext,
   DayOfficeSummary,
   SlotName,
   TextReference
 } from '@officium-novum/rubrical-engine';
 
+import { flattenConditionals } from '../flatten/evaluate-conditionals.js';
 import { resolveAuxiliarySection } from '../resolve/path.js';
 
 interface OfficeNameSubstitutionContext {
@@ -15,6 +17,7 @@ interface OfficeNameSubstitutionContext {
   readonly language: string;
   readonly langfb?: string;
   readonly isAntiphon: boolean;
+  readonly conditionContext: ConditionEvalContext;
 }
 
 interface OfficeNameBinding {
@@ -123,7 +126,8 @@ function resolveOfficeNameBinding(
     return undefined;
   }
 
-  const lines = section.content.flatMap((node) =>
+  const visibleContent = flattenConditionals(section.content, context.conditionContext);
+  const lines = visibleContent.flatMap((node) =>
     node.type === 'text' ? node.value.split(/\r?\n/u).map((line) => line.trim()) : []
   );
   const defaultName = lines.find(

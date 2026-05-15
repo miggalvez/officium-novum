@@ -291,10 +291,12 @@ function buildHymnSource(
       : undefined);
   if (match) {
     const doxologyVariant =
-      input.celebrationRules.doxologyVariant ??
-      (usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
+      usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input)
         ? undefined
-        : seasonalFallbackDoxologyVariant(input.temporal));
+        : input.celebrationRules.doxologyVariant ??
+          (usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
+            ? undefined
+            : seasonalFallbackDoxologyVariant(input.temporal));
     return {
       kind: 'feast',
       reference: officeReference(match.file.path, match.section.header),
@@ -352,6 +354,15 @@ function buildNocturnVersicle(
   totalNocturns: number,
   antiphonCount: number
 ): VersicleSource {
+  if (nocturnIndex === 1 && usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input)) {
+    return {
+      reference: {
+        path: PSALTERIUM_MATINS_CONTENT_PATH,
+        section: postEpiphanyFeriaMatinsVersicleSection(input.temporal)
+      }
+    };
+  }
+
   const sectionName = `Nocturn ${nocturnIndex} Versum`;
   const match = findSection(feastFiles, sectionName, input);
   if (match) {
@@ -636,7 +647,10 @@ function buildResponsory(
   if (match) {
     return {
       index,
-      reference: officeReference(match.file.path, match.section.header)
+      reference: officeReference(match.file.path, match.section.header),
+      ...(referencesDifferentNocturnFinalResponsory(index, match.section.content)
+        ? { suppressEmbeddedGloria: true }
+        : {})
     };
   }
 
@@ -658,6 +672,36 @@ function buildResponsory(
       selector: 'missing'
     }
   };
+}
+
+function referencesDifferentNocturnFinalResponsory(
+  index: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
+  content: readonly TextContent[]
+): boolean {
+  for (const node of content) {
+    if (node.type === 'conditional') {
+      if (referencesDifferentNocturnFinalResponsory(index, node.content)) {
+        return true;
+      }
+      continue;
+    }
+
+    if (node.type !== 'reference') {
+      continue;
+    }
+
+    const target = node.ref.section?.match(/^Responsory([1-9])$/u)?.[1];
+    if (!target) {
+      continue;
+    }
+
+    const targetIndex = Number(target);
+    if (targetIndex !== index && targetIndex % 3 === 0) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function findScriptureResponsory(
@@ -693,17 +737,19 @@ function collectMatinsAntiphons(
     return thirdClassPaschalWeekdayEntries;
   }
 
-  const feastMatches = findSections(feastFiles, 'Ant Matutinum', input);
-  for (const match of feastMatches) {
-    const sourcePath = match.file.path.replace(/\.txt$/u, '');
-    const entries = collectMatinsAntiphonEntriesFromSection(
-      match.section,
-      sourcePath,
-      input,
-      match.file
-    );
-    if (entries.length > 0) {
-      return entries;
+  if (!usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input)) {
+    const feastMatches = findSections(feastFiles, 'Ant Matutinum', input);
+    for (const match of feastMatches) {
+      const sourcePath = match.file.path.replace(/\.txt$/u, '');
+      const entries = collectMatinsAntiphonEntriesFromSection(
+        match.section,
+        sourcePath,
+        input,
+        match.file
+      );
+      if (entries.length > 0) {
+        return entries;
+      }
     }
   }
 
@@ -721,6 +767,21 @@ function collectMatinsAntiphons(
     PSALTERIUM_MATINS_CONTENT_PATH,
     input
   );
+}
+
+function usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input: BuildMatinsPlanInput): boolean {
+  return (
+    input.policy.name === 'rubrics-1960' &&
+    input.celebration.source === 'temporal' &&
+    /^Tempora\/Nat(?:0[7-9]|1[0-2])$/u.test(input.celebration.feastRef.path)
+  );
+}
+
+function postEpiphanyFeriaMatinsVersicleSection(
+  temporal: Pick<TemporalContext, 'dayOfWeek'>
+): string {
+  const ferialIndex = temporal.dayOfWeek <= 3 ? temporal.dayOfWeek : temporal.dayOfWeek - 3;
+  return `Epi ${ferialIndex} Versum`;
 }
 
 function collectThirdClassSanctoralWeekdayPaschalMatinsAntiphons(
@@ -1023,10 +1084,14 @@ function flattenVisibleMatinsAntiphonContent(
 
   const date = normalizeDateInput(input.temporal.date);
   const out: TextContent[] = [];
+  let lastProducedRange: { readonly start: number; readonly end: number } | undefined;
 
   for (const node of content) {
+    const start = out.length;
+
     if (node.type !== 'conditional') {
       out.push(node);
+      lastProducedRange = { start, end: out.length };
       continue;
     }
 
@@ -1041,7 +1106,21 @@ function flattenVisibleMatinsAntiphonContent(
       continue;
     }
 
-    out.push(...flattenVisibleMatinsAntiphonContent(node.content, input));
+    const visibleChildren = flattenVisibleMatinsAntiphonContent(node.content, input);
+    if (node.condition.stopword === 'sed' && visibleChildren.length > 0) {
+      if (lastProducedRange) {
+        out.splice(lastProducedRange.start, lastProducedRange.end - lastProducedRange.start);
+      }
+      const sedStart = out.length;
+      out.push(...visibleChildren);
+      lastProducedRange = { start: sedStart, end: out.length };
+      continue;
+    }
+
+    out.push(...visibleChildren);
+    if (visibleChildren.length > 0) {
+      lastProducedRange = { start, end: out.length };
+    }
   }
 
   return Object.freeze(out);

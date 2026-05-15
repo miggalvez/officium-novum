@@ -58,7 +58,12 @@ export function selectPsalmodyRoman1960(
     // feast's [Rule]) forces the Sunday distribution even on a weekday.
     const useDominicaRule =
       hourRules.psalterScheme === 'dominica' &&
-      !(hour === 'vespers' && params.vespersSide === 'first' && params.celebration.source === 'temporal');
+      !(
+        hour === 'vespers' &&
+        params.vespersSide === 'first' &&
+        params.celebration.source === 'temporal' &&
+        !params.celebrationRules.festumDomini
+      );
     const useSundayPsalmody =
       useDominicaRule || isSundayForMajorHour(hour, temporal);
 
@@ -175,7 +180,8 @@ function complineReferences(params: SelectPsalmodyInput): readonly PsalmAssignme
       : temporal.dayOfWeek;
   const weekdayKey = WEEKDAY_KEYS[weekday] ?? WEEKDAY_KEYS[0] ?? 'Dominica';
   const assignments = resolveWeekdayMinorHourAssignments(corpus, 'Completorium', weekdayKey, {
-    includePrimeBracketPsalm: true
+    includePrimeBracketPsalm: true,
+    suppressAntiphon: hourRules.minorHoursSineAntiphona
   });
   const keyed =
     assignments.length > 0
@@ -185,6 +191,13 @@ function complineReferences(params: SelectPsalmodyInput): readonly PsalmAssignme
             psalmRef: { path: PSALMI_MINOR, section: 'Completorium', selector: weekdayKey }
           }
         ];
+
+  // Upstream treats `Minores sine Antiphona` as covering Roman Compline
+  // psalmody too: the psalms are retained, but no seasonal psalmody antiphon
+  // is applied before or after them.
+  if (hourRules.minorHoursSineAntiphona) {
+    return keyed;
+  }
 
   if (
     temporal.season !== 'eastertide' &&
@@ -261,7 +274,8 @@ function weekdayMinorHourReferences(
   const weekdayKey = WEEKDAY_KEYS[temporal.dayOfWeek] ?? 'Dominica';
   const keyed = resolveWeekdayMinorHourAssignments(corpus, hourSection, weekdayKey, {
     includePrimeBracketPsalm:
-      hour === 'prime' && !params.omitPrimeBracketPsalm && isPenitentialDay(temporal)
+      hour === 'prime' && !params.omitPrimeBracketPsalm && isPenitentialDay(temporal),
+    suppressAntiphon: params.hourRules.minorHoursSineAntiphona
   });
   if (keyed.length > 0) {
     return applySeasonalWeekdayMinorHourAntiphon(keyed, params);
@@ -342,6 +356,7 @@ function resolveWeekdayMinorHourAssignments(
   weekdayKey: string,
   options: {
     readonly includePrimeBracketPsalm: boolean;
+    readonly suppressAntiphon?: boolean;
   }
 ): readonly PsalmAssignment[] {
   const file = corpus.getFile(`${PSALMI_MINOR}.txt`);
@@ -367,7 +382,7 @@ function resolveWeekdayMinorHourAssignments(
   return Object.freeze(
     tokens.map((token, index): PsalmAssignment => ({
       psalmRef: psalmTokenReference(token),
-      ...(index === 0 && hasTextualAntiphon(row.antiphon)
+      ...(index === 0 && !options.suppressAntiphon && hasTextualAntiphon(row.antiphon)
         ? {
             antiphonRef: {
               path: PSALMI_MINOR,

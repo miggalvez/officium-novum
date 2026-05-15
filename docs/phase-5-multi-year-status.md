@@ -26,7 +26,7 @@ Year | Status | Policy | Unadj | No-throw | Schema
 2025 | exploratory | Divino Afflatu - 1954 | 0 | 0 | 0
 2025 | exploratory | Reduced - 1955 | 0 | 0 | 0
 2025 | exploratory | Rubrics 1960 - 1960 | 2573 | 0 | 0
-2026 | exploratory | Rubrics 1960 - 1960 | 803 | 0 | 0
+2026 | exploratory | Rubrics 1960 - 1960 | 797 | 0 | 0
 multi-year status passed
 ```
 
