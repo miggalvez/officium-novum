@@ -220,13 +220,16 @@ function complineReferences(params: SelectPsalmodyInput): readonly PsalmAssignme
 }
 
 function usesActualSaturdayComplineForTemporalSunday(params: SelectPsalmodyInput): boolean {
+  const isFestiveOrSemifestiveTemporalSunday =
+    params.celebration.rank.classSymbol === 'I' || params.celebrationRules.festumDomini;
   return (
     params.policyName === 'rubrics-1960' &&
     params.hour === 'compline' &&
     params.temporal.dayOfWeek === 6 &&
     params.celebration.source === 'temporal' &&
     /-0$/u.test(params.temporal.dayName) &&
-    !params.temporal.dayName.startsWith('Nat')
+    !params.temporal.dayName.startsWith('Nat') &&
+    !isFestiveOrSemifestiveTemporalSunday
   );
 }
 

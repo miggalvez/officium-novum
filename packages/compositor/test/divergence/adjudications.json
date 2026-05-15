@@ -17843,6 +17843,17 @@
     "notes": "Representative entry for the Rubrics 1960 Holy Family Terce/Sext/None fallback-hymn doxology family where the local `[Doxology]` overrides the default `Præsta, Pater piíssime,` close.",
     "resolvedAt": "2026-05-06"
   },
+  "Rubrics 1960 - 1960/2026-01-10/Compline/274511e7": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-01-10",
+    "hour": "Compline",
+    "firstExpected": "Præsta, Pater piíssime,",
+    "firstActual": "Jesu, tuis obédiens",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Tempora/Epi1-0.txt:56-67 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:664-672 and docs/phase-2-rubrical-engine-design.md:1469 — Holy Family provides a local `[Doxology]` stanza (`Jesu, tuis obédiens ...`) for fallback hymns, so the compositor correctly substitutes it instead of the default `Præsta, Pater piíssime,` close. The Perl comparison surface retains the unsubstituted fallback stanza.",
+    "notes": "Rubrics 1960 2026 Holy Family First-Vespers Compline fallback-hymn doxology row exposed after fixing festive First-Vespers psalmody.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-01-11/None/274511e7": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-01-11",
@@ -32737,6 +32748,17 @@
     "class": "perl-bug",
     "citation": "upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15, upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15, upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15, upstream/web/www/horas/Latin/Commune/C1.txt:10-15, upstream/web/www/horas/Latin/Commune/C1.txt:261-262, and docs/file-format-specification.md:638 — these II-class Apostle offices inherit C1/C1a, carry Psalmi Dominica and Antiphonas horas, and C1 aliases Ant Laudes to the Apostle Ant Vespera set; the compositor therefore uses the proper Apostle minor-hour antiphons while the Perl comparison surface falls back to ordinary psalter antiphons.",
     "notes": "Rubrics 1960 2026 Apostle proper-minor-hours fanout; 2026-12-21 None witnesses C1/C1a proper antiphons selected by Antiphonas horas over Perl ordinary psalter antiphons.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-10-24/Compline/04432c19": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-10-24",
+    "hour": "Compline",
+    "firstExpected": "Ant. Miserére * mihi, Dómine, et exáudi oratiónem meam.",
+    "firstActual": "Ant. Intret orátio mea * in conspéctu tuo, Dómine.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:101-103, upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:78-79, and upstream/web/www/horas/Latin/Tempora/Pent22-0.txt:1-10 — the 1960 Sunday Office order says Compline following First Vespers is of Saturday, and the Saturday Compline psalter row supplies Intret with Psalms 87/102/102. The compositor preserves that source-backed Saturday Compline for ordinary temporal Sunday First Vespers while Perl's comparison surface switches to the Sunday Miserere row.",
+    "notes": "Rubrics 1960 2026 ordinary Sunday First Vespers Compline witness; 2026-10-24 remains Saturday Compline under Breviary 1960 no. 166, distinct from festive/semifestive First Vespers.",
     "resolvedAt": "2026-05-15"
   }
 }

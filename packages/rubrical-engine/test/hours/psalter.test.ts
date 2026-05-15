@@ -229,6 +229,45 @@ Feria VI = Allelúja, * allelúja, allelúja.
     });
   });
 
+  it('uses Sunday Compline psalms for temporal festive First Vespers under Rubrics 1960', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Completorium]
+Dominica = Miserére * mihi, Dómine, et exáudi oratiónem meam.
+4,90,133
+Sabbato = Intret orátio mea * in conspéctu tuo, Dómine.
+87,102(1-12),102(13-22)
+`.trim()
+    );
+
+    const rules = {
+      ...baseCelebrationRules(),
+      festumDomini: true
+    };
+    const refs = selectPsalmodyRoman1960({
+      policyName: 'rubrics-1960',
+      hour: 'compline',
+      celebration: {
+        feastRef: { path: 'Tempora/Epi1-0', id: 'Tempora/Epi1-0', title: 'Sanctae Familiae' },
+        rank: { name: 'Duplex II classis', classSymbol: 'II', weight: 800 },
+        source: 'temporal'
+      },
+      celebrationRules: rules,
+      hourRules: hourRules('compline', { psalterScheme: 'dominica' }),
+      temporal: temporal('2026-01-11', 'Epi1-0', 'time-after-epiphany', 6),
+      corpus: textIndex
+    });
+
+    expect(refs.map((entry) => entry.psalmRef.selector)).toEqual(['4', '90', '133']);
+    expect(refs[0]?.antiphonRef).toEqual({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+      section: 'Completorium',
+      selector: 'Dominica#antiphon'
+    });
+  });
+
   it('psalm overrides replace only the targeted Vespers slot (Codex P1 #5)', () => {
     const refs = selectPsalmodyRoman1960({
       hour: 'vespers',

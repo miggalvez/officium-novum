@@ -22,6 +22,47 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: First-Vespers Compline distinguishes festive Sunday from ordinary Sunday Office (engine fixed, perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026 frontier
+carried a three-row Compline family where Perl opened psalmody with the
+Sunday `Miserére` row while the compositor opened with the Saturday
+`Intret` row on Jan 10, May 30, and Oct 24.
+
+**Root cause.** The engine's Rubrics 1960 Compline psalmody selector
+treated every temporal Sunday First Vespers as an ordinary Sunday Office
+and forced the actual Saturday Compline row. That was correct for
+ordinary Sundays, but too broad for festive and semifestive Sunday
+offices: Breviary 1960 nos. 167-168 assign Compline after First Vespers
+to Sunday for first- and second-class festive offices, while no. 166
+assigns Compline after First Vespers of the Sunday Office to Saturday.
+Once the Trinity witness advanced past psalmody, it exposed a compositor
+resolver bug: the synthetic Paschal Compline responsory path used the
+civil day's Pentecost-octave season even when the Compline structure had
+already moved to Trinity and carried no Paschal responsory directive.
+
+**Resolution.** Narrowed the Saturday-Compline exception to ordinary
+temporal Sunday offices, preserving Sunday Compline for first-class
+temporal offices and temporal feasts of the Lord. Added selector and
+compositor coverage for the Holy Family and Trinity 2026 witnesses, and
+locked ordinary-Sunday Saturday Compline for Jan 17 and Oct 24. Removed
+the unconditional synthetic Compline Paschal responsory fallback so
+Compline responsory shaping follows the engine directive. The Oct 24 row
+is classified as `perl-bug`; Jan 10 then advances to the already
+adjudicated Holy Family fallback-hymn doxology family.
+
+**Citation.** `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:101-103`;
+`upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:113-129`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:78-79`;
+`upstream/web/www/horas/Latin/Tempora/Pent22-0.txt:1-10`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1835` to
+`1834`, exact-match hours rise from `1085` to `1086`, Compline
+divergences drop from `83` to `82`, and unadjudicated rows drop from
+`457` to `455`.
+
 ### 2026-05-15 — Pattern: Additional proper first-Vespers Psalm 116 witnesses (perl-bug)
 
 **Commit.** Current tranche commit.

@@ -3612,23 +3612,48 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('uses Sunday Compline psalmody after festive Rubrics 1960 First Vespers in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const date of ['2026-01-10', '2026-05-30'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(psalmodyAntiphons(compline), `${date} Compline psalmody antiphons`).toEqual([
+        'Miserére * mihi, Dómine, et exáudi oratiónem meam.',
+        'Miserére mihi, Dómine, et exáudi oratiónem meam.'
+      ]);
+      expect(psalmodyTexts(compline), `${date} Compline psalmody`).toContain('Psalmus 4 [1]');
+      expect(psalmodyTexts(compline), `${date} Compline psalmody`).not.toContain('Psalmus 87 [1]');
+    }
+  }, 240_000);
+
   it('uses actual Saturday Compline psalmody before temporal Sunday First Vespers in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
-    const summary = engine.resolveDayOfficeSummary('2026-01-17');
-    const compline = composeHour({
-      corpus: resolvedCorpus.index,
-      summary,
-      version: engine.version,
-      hour: 'compline',
-      options: { languages: ['Latin'] }
-    });
 
-    expect(psalmodyAntiphons(compline)).toEqual([
-      'Intret orátio mea * in conspéctu tuo, Dómine.',
-      'Intret orátio mea in conspéctu tuo, Dómine.'
-    ]);
-    expect(psalmodyTexts(compline)).toContain('Psalmus 87 [1]');
-    expect(psalmodyTexts(compline)).not.toContain('Psalmus 4 [1]');
+    for (const date of ['2026-01-17', '2026-10-24'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const compline = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'compline',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(psalmodyAntiphons(compline), `${date} Compline psalmody antiphons`).toEqual([
+        'Intret orátio mea * in conspéctu tuo, Dómine.',
+        'Intret orátio mea in conspéctu tuo, Dómine.'
+      ]);
+      expect(psalmodyTexts(compline), `${date} Compline psalmody`).toContain('Psalmus 87 [1]');
+      expect(psalmodyTexts(compline), `${date} Compline psalmody`).not.toContain('Psalmus 4 [1]');
+    }
   }, 240_000);
 
   it('keeps ordinary Rubrics 1960 Compline responsory separators in 2026', async () => {
