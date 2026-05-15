@@ -22,6 +22,63 @@ anchor.
 
 ## Entries
 
+### 2026-05-13 — Pattern: later 2026 female common antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The live `Rubrics 1960 - 1960` / 2026 frontier still
+contained later-year female saint witnesses whose first divergence was
+the same source-backed common-antiphon ownership already adjudicated for
+the June female-common rows. The repeated rows cover virgin and
+non-virgin female offices routed through `vide C6`, `vide C6a`, or
+`vide C7a`; Perl keeps ordinary weekday psalter antiphons while the
+compositor emits the selected common's Matins, Lauds, Vespers, and
+assigned hour antiphons.
+
+**Root cause.** This is the same comparison-surface fallback as the June
+female-common tranche, not a new compositor or engine defect. The
+selected sanctoral files explicitly route the simplified Roman
+third-class offices to C6/C6a/C7a, and those common files supply
+`Psalmi Dominica`, `Antiphonas horas`, and the relevant common antiphon
+sets. The Perl comparison surface falls back to weekday psalter
+antiphons instead of following the selected female common.
+
+**Resolution.** Class `perl-bug`. Added 45 row-key adjudications for the
+remaining later-2026 C6/C6a/C7a female-common witnesses, excluding the
+separate BVM/C11 and temporal Paschaltide rows so this tranche stays on
+one source family. Covered dates:
+
+- `2026-01-30`, `2026-02-10`
+- `2026-07-08`, `2026-07-22`, `2026-07-29`
+- `2026-08-12`, `2026-08-21`
+- `2026-10-03`, `2026-10-08`, `2026-10-15`, `2026-10-16`, `2026-10-17`
+- `2026-11-16`, `2026-11-19`, `2026-11-25`
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/01-30.txt:4-10`
+- `upstream/web/www/horas/Latin/Sancti/02-10.txt:7-14`
+- `upstream/web/www/horas/Latin/Sancti/07-08.txt:5-8`
+- `upstream/web/www/horas/Latin/Sancti/07-22.txt:5-10`
+- `upstream/web/www/horas/Latin/Sancti/07-29.txt:5-12`
+- `upstream/web/www/horas/Latin/Sancti/08-12.txt:5-10`
+- `upstream/web/www/horas/Latin/Sancti/08-21.txt:5-8`
+- `upstream/web/www/horas/Latin/Sancti/10-03.txt:5-10`
+- `upstream/web/www/horas/Latin/Sancti/10-08.txt:5-10`
+- `upstream/web/www/horas/Latin/Sancti/10-15.txt:5-10`
+- `upstream/web/www/horas/Latin/Sancti/10-16.txt:7-12`
+- `upstream/web/www/horas/Latin/Sancti/10-17.txt:5-8`
+- `upstream/web/www/horas/Latin/Sancti/11-16.txt:7-12`
+- `upstream/web/www/horas/Latin/Sancti/11-19.txt:5-10`
+- `upstream/web/www/horas/Latin/Sancti/11-25.txt:5-12`
+- `upstream/web/www/horas/Latin/Commune/C6a.txt:1-21`
+- `upstream/web/www/horas/Latin/Commune/C7a.txt:1-10`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252`
+- `upstream/web/www/horas/Latin/Commune/C7.txt:1-14,61-67,127-129`
+
+**Impact.** Expected to keep divergent hours at `1855` and drop
+unadjudicated rows from `666` to `621`.
+
 ### 2026-05-13 — Pattern: Ascensiontide Prime special responsory and short lesson (engine + compositor fixed)
 
 **Commit.** Current tranche commit.
