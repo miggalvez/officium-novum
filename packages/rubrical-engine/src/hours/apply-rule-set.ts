@@ -2221,7 +2221,10 @@ function resolveSpecialPrimeChapterOffice(
 }
 
 function primeShortLessonSection(input: ApplyRuleSetInput): string {
-  if (input.temporal.season === 'eastertide' || input.temporal.season === 'ascensiontide') {
+  if (input.temporal.season === 'ascensiontide') {
+    return 'Asc';
+  }
+  if (input.temporal.season === 'eastertide') {
     return 'Pasch';
   }
   if (input.temporal.season === 'pentecost-octave') {
