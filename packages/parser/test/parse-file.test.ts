@@ -4,6 +4,27 @@ import { parseFile } from '../src/parser/parse-file.js';
 import type { TextContent } from '../src/types/schema.js';
 
 describe('parseFile section content', () => {
+  it('uses section-level rule parsing for standalone rule conditions', () => {
+    const content = [
+      '[Rule]',
+      'Psalmi Dominica;',
+      '(sed rubrica cisterciensis)',
+      'Psalmi Feria'
+    ].join('\n');
+
+    const file = parseFile(content, 'horas/Latin/Tempora/Pasc7-3.txt');
+    const rule = file.sections.find((section) => section.header === 'Rule');
+    expect(rule?.rules).toHaveLength(2);
+    expect(rule?.rules?.[1]).toMatchObject({
+      kind: 'action',
+      keyword: 'Psalmi',
+      args: ['Feria'],
+      condition: {
+        expression: { type: 'match', subject: 'rubrica', predicate: 'cisterciensis' }
+      }
+    });
+  });
+
   it('wraps a preceding block in not(condition) when a `sed X omittuntur` line closes it', () => {
     const content = [
       '[Incipit]',
@@ -152,6 +173,48 @@ describe('parseFile section content', () => {
         },
         content: [{ type: 'formulaRef', name: 'Domine labia' }],
         scope: { backwardLines: 0, forwardMode: 'line' }
+      }
+    ]);
+  });
+
+  it('treats named-day `sed ... dicitur` as an additive following-line condition', () => {
+    const content = [
+      '[Ant Matutinum]',
+      'Afférte Dómino, fílii Dei, * adoráte Dóminum in aula sancta ejus.;;28',
+      '(sed die Epiphaniæ dicitur)',
+      'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.;;94',
+      'Adoráte Dóminum, * allelúja: in aula sancta ejus, allelúja.;;95'
+    ].join('\n');
+
+    const file = parseFile(content, 'horas/Latin/test.txt');
+    const section = file.sections[0]!;
+
+    expect(section.content).toEqual([
+      {
+        type: 'psalmRef',
+        psalmNumber: 28,
+        antiphon: 'Afférte Dómino, fílii Dei, * adoráte Dóminum in aula sancta ejus.'
+      },
+      {
+        type: 'conditional',
+        condition: {
+          expression: { type: 'match', subject: 'die', predicate: 'Epiphaniæ' },
+          stopword: 'sed',
+          instruction: 'dicitur'
+        },
+        content: [
+          {
+            type: 'psalmRef',
+            psalmNumber: 94,
+            antiphon: 'Veníte adorémus eum: * quia ipse est Dóminus Deus noster.'
+          }
+        ],
+        scope: { backwardLines: 0, forwardMode: 'line' }
+      },
+      {
+        type: 'psalmRef',
+        psalmNumber: 95,
+        antiphon: 'Adoráte Dóminum, * allelúja: in aula sancta ejus, allelúja.'
       }
     ]);
   });

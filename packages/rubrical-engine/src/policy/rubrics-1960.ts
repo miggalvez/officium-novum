@@ -269,6 +269,16 @@ export const rubrics1960Policy: RubricalPolicy = {
     const base = defaultBuildCelebrationRuleSet(feastFile, commemorations, context);
     let celebrationRules = base.celebrationRules;
 
+    if (isPostEpiphanyFeriaWithEpiphanyVide1960(context)) {
+      celebrationRules = mergeFeastRules(celebrationRules, {
+        festumDomini: false,
+        antiphonScheme: 'default',
+        hourScopedDirectives: celebrationRules.hourScopedDirectives.filter(
+          (entry) => !isEpiphanyFeastOnlyVideDirective1960(entry.directive.raw)
+        )
+      });
+    }
+
     if (
       context.dayName === 'Quad6-4' ||
       context.dayName === 'Quad6-5' ||
@@ -699,6 +709,27 @@ function usesThirdClassSanctoralPaschalAlleluiaPsalmodyAntiphon(
 
 function usesThirdClassSanctoralWeekdayFerialPsalmody(hour: HourName): boolean {
   return usesThirdClassSanctoralPaschalAlleluiaPsalmodyAntiphon(hour);
+}
+
+function isPostEpiphanyFeriaWithEpiphanyVide1960(context: {
+  readonly dayName: string;
+  readonly celebration: Celebration;
+}): boolean {
+  return (
+    /^Nat(?:0[7-9]|1[0-2])$/u.test(context.dayName) &&
+    context.celebration.source === 'temporal' &&
+    context.celebration.feastRef.path === `Tempora/${context.dayName}`
+  );
+}
+
+function isEpiphanyFeastOnlyVideDirective1960(raw: string): boolean {
+  const normalized = raw.trim().replace(/\s+/gu, ' ');
+  return (
+    normalized === 'Psalmi Dominica' ||
+    normalized === 'Antiphonas horas' ||
+    normalized === 'Omit ad Matutinum Incipit Invitatorium Hymnus' ||
+    /^Psalm5 Vespera(?:3)?=/u.test(normalized)
+  );
 }
 
 function compareCandidates1960(a: Candidate, b: Candidate): number {

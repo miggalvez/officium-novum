@@ -100,7 +100,7 @@ warning count: 0
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: [V.] text("Redemísti nos, Dómine, Deus veritátis.")
   Latin: [R.] text("Comméndo spíritum meum.")
-  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Gloria omittitur")
   Latin: [R.] text("In manus tuas, Dómine, * Comméndo spíritum meum.")
   Latin: text("_")
 
