@@ -22,6 +22,40 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Commemorated Confessor common chapters at ferial minor hours (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained twelve Terce/Sext/None rows on 2026-06-22,
+2026-12-04, 2026-12-07, and 2026-12-11. Perl surfaced Confessor-common
+C4 chapter citations (`Sir 44:16-17`, `Sir 44:20; 44:22`, and
+`Sir 45:19-20`); the compositor emitted the ferial minor-hour chapters
+(`Jer 17:14`, `Rom 13:8`, and `1 Pet 1:17-19`).
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The winning office on each witness date is the
+temporal feria; the Confessor office is, at most, a commemoration. The
+1960 rubrics define little chapters at Terce/Sext/None as belonging to
+the office type and define commemorations as antiphon, verse, and collect
+after the collect of the office. A commemorated Confessor therefore does
+not supply the minor-hour chapters for the ferial office.
+
+**Resolution.** Class `perl-bug`. Added twelve 2026 row-key
+adjudications and upstream-composition coverage proving the temporal
+celebration, sanctoral commemoration, and ferial chapter citations on
+representative June and Advent witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:240-295`
+
+**Impact.** Expected to keep divergent hours at `1849` and drop
+unadjudicated rows from `502` to `490` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: 2026 Psalm 116 fifth-Vespers override fanout (perl-bug)
 
 **Commit.** Current tranche commit.

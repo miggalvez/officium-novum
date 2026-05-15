@@ -3040,6 +3040,82 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps Rubrics 1960 commemorated Confessors from supplying ferial minor-hour chapters', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, celebrationPath, commemorationPath, chapters] of [
+      [
+        '2026-06-22',
+        'Tempora/Pent04-1',
+        'Sancti/06-22',
+        {
+          terce: 'Jer 17:14',
+          sext: 'Rom 13:8',
+          none: '1 Pet 1:17-19'
+        }
+      ],
+      [
+        '2026-12-04',
+        'Tempora/Adv1-5',
+        'Sancti/12-04',
+        {
+          terce: 'Jer 17:14',
+          sext: 'Rom 13:8',
+          none: '1 Pet 1:17-19'
+        }
+      ],
+      [
+        '2026-12-07',
+        'Tempora/Adv2-1',
+        'Sancti/12-07',
+        {
+          terce: 'Jer 17:14',
+          sext: 'Rom 13:8',
+          none: '1 Pet 1:17-19'
+        }
+      ],
+      [
+        '2026-12-11',
+        'Tempora/Adv2-5',
+        'Sancti/12-11',
+        {
+          terce: 'Jer 17:14',
+          sext: 'Rom 13:8',
+          none: '1 Pet 1:17-19'
+        }
+      ]
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      expect(summary.celebration.feastRef.path, `${date} celebration`).toBe(celebrationPath);
+      expect(
+        summary.commemorations.map((commemoration) => commemoration.feastRef.path),
+        `${date} commemorations`
+      ).toContain(commemorationPath);
+
+      for (const [hour, chapterCitation] of Object.entries(chapters) as [keyof typeof chapters, string][]) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+
+        const chapterLines = sectionTexts(composed, 'chapter').map((line) => line.trim());
+        expect(chapterLines[0], `${date} ${hour} chapter citation`).toBe(chapterCitation);
+        expect(chapterLines, `${date} ${hour} should not use the Confessor common chapter`).not.toContain(
+          'Sir 44:16-17'
+        );
+        expect(chapterLines, `${date} ${hour} should not use the Confessor common chapter`).not.toContain(
+          'Sir 44:20; 44:22'
+        );
+        expect(chapterLines, `${date} ${hour} should not use the Confessor common chapter`).not.toContain(
+          'Sir 45:19-20'
+        );
+      }
+    }
+  }, 240_000);
+
   it('composes the 2026 Paschaltide third-class sanctoral weekday witnesses through their family directives', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const hours = [

@@ -23897,6 +23897,39 @@
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-06-22/Terce/dff5497f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-22",
+    "hour": "Terce",
+    "firstExpected": "Sir 44:16-17",
+    "firstActual": "Jer 17:14",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-06-22/Sext/9d289de9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-22",
+    "hour": "Sext",
+    "firstExpected": "Sir 44:20; 44:22",
+    "firstActual": "Rom 13:8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-06-22/None/585d5a6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-22",
+    "hour": "None",
+    "firstExpected": "Sir 45:19-20",
+    "firstActual": "1 Pet 1:17-19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-06-22/Vespers/cda3b6ad": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-22",
@@ -31578,6 +31611,39 @@
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-04/Terce/dff5497f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-04",
+    "hour": "Terce",
+    "firstExpected": "Sir 44:16-17",
+    "firstActual": "Jer 17:14",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-04/Sext/9d289de9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-04",
+    "hour": "Sext",
+    "firstExpected": "Sir 44:20; 44:22",
+    "firstActual": "Rom 13:8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-04/None/585d5a6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-04",
+    "hour": "None",
+    "firstExpected": "Sir 45:19-20",
+    "firstActual": "1 Pet 1:17-19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-12-04/Vespers/c057106b": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-04",
@@ -31632,6 +31698,39 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-07/Terce/dff5497f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-07",
+    "hour": "Terce",
+    "firstExpected": "Sir 44:16-17",
+    "firstActual": "Jer 17:14",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-07/Sext/9d289de9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-07",
+    "hour": "Sext",
+    "firstExpected": "Sir 44:20; 44:22",
+    "firstActual": "Rom 13:8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-07/None/585d5a6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-07",
+    "hour": "None",
+    "firstExpected": "Sir 45:19-20",
+    "firstActual": "1 Pet 1:17-19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-07/Vespers/843b6667": {
     "policy": "Rubrics 1960 - 1960",
@@ -31781,6 +31880,39 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
     "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. Representative witness: 2026-01-19 Prime.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-11/Terce/dff5497f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-11",
+    "hour": "Terce",
+    "firstExpected": "Sir 44:16-17",
+    "firstActual": "Jer 17:14",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-11/Sext/9d289de9": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-11",
+    "hour": "Sext",
+    "firstExpected": "Sir 44:20; 44:22",
+    "firstActual": "Rom 13:8",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
+  },
+  "Rubrics 1960 - 1960/2026-12-11/None/585d5a6f": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-11",
+    "hour": "None",
+    "firstExpected": "Sir 45:19-20",
+    "firstActual": "1 Pet 1:17-19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339 and upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132 and upstream/web/www/horas/Latin/Commune/C4.txt:240-295 — the winning office is the feria and the Confessor is only commemorated; 1960 commemorations supply antiphon, verse, and collect, while Terce/Sext/None chapters come from the office of the day. The source-backed ferial chapters are Jer 17:14, Rom 13:8, and 1 Pet 1:17-19; Perl instead surfaces the commemorated Confessor common's C4 chapters.",
+    "notes": "Rubrics 1960 2026 fanout for commemorated Confessors not supplying ferial minor-hour chapters; covered by upstream-composition witnesses on 2026-06-22, 2026-12-04, 2026-12-07, and 2026-12-11.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-11/Vespers/c057106b": {
     "policy": "Rubrics 1960 - 1960",
