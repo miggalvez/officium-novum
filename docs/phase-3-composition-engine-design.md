@@ -210,9 +210,10 @@ Per-Hour preamble composition:
 
 ## 7. Directive Catalog
 
-The twelve `HourDirective` variants are all implemented in
-`packages/compositor/src/directives/apply-directives.ts`. Each runs over
-the slot's flattened `TextContent[]` before emission.
+The text-shaping `HourDirective` variants are implemented in
+`packages/compositor/src/directives/apply-directives.ts`. They run over the
+slot's flattened `TextContent[]` before emission. Directives that carry
+structural or posture metadata may intentionally avoid changing emitted text.
 
 | Directive                     | Purpose                                             | Citation (primary) |
 |-------------------------------|-----------------------------------------------------|--------------------|
@@ -225,7 +226,7 @@ the slot's flattened `TextContent[]` before emission.
 | `suffragium-of-the-saints`    | Insert the Suffragium block                            | Rubricae §IX|
 | `omit-suffragium`             | Suppress Suffragium regardless of rank                 | Rubricarum §110|
 | `short-chapter-only`          | Truncate chapter at responsory marker                  | Rubricae §V|
-| `genuflection-at-oration`     | Wrap oration with kneeling rubrics                      | Rubricae §X|
+| `genuflection-at-oration`     | Preserve Office kneeling posture metadata without adding spoken text | Rubricae §X|
 | `dirge-lauds`                 | "Pro defunctis" banner at Lauds                         | Rubricae §XI|
 | `dirge-vespers`               | "Pro defunctis" banner at Vespers                       | Rubricae §XI|
 

@@ -99,6 +99,24 @@ describe('deriveSeasonalDirectives1960', () => {
     expect(directives.has('paschal-short-responsory')).toBe(true);
   });
 
+  it.each([
+    ['eastertide', 'Pasc1-0'],
+    ['ascensiontide', 'Pasc5-4'],
+    ['pentecost-octave', 'Pasc7-0']
+  ] as const)(
+    'emits the Paschal short-responsory directive for Compline in %s',
+    (season, dayName) => {
+      const directives = deriveSeasonalDirectives1960({
+        hour: 'compline',
+        celebration: celebration(`Tempora/${dayName}`),
+        celebrationRules: celebrationRules(),
+        hourRules: hourRules('compline'),
+        temporal: temporal(dayName, season, 0)
+      });
+      expect(directives.has('paschal-short-responsory')).toBe(true);
+    }
+  );
+
   it('emits omit-alleluia during Lent', () => {
     const directives = deriveSeasonalDirectives1960({
       hour: 'lauds',
@@ -128,6 +146,18 @@ describe('deriveSeasonalDirectives1960', () => {
       celebration: celebration('Tempora/Quad5-0'),
       celebrationRules: celebrationRules(),
       hourRules: hourRules('terce'),
+      temporal: temporal('Quad5-0', 'passiontide', 0)
+    });
+    expect(directives.has('omit-responsory-gloria')).toBe(true);
+    expect(directives.has('omit-gloria-patri')).toBe(false);
+  });
+
+  it('emits omit-responsory-gloria for Passiontide Compline of the season', () => {
+    const directives = deriveSeasonalDirectives1960({
+      hour: 'compline',
+      celebration: celebration('Tempora/Quad5-0'),
+      celebrationRules: celebrationRules(),
+      hourRules: hourRules('compline'),
       temporal: temporal('Quad5-0', 'passiontide', 0)
     });
     expect(directives.has('omit-responsory-gloria')).toBe(true);
