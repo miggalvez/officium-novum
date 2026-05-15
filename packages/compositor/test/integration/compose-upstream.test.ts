@@ -3565,6 +3565,72 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(psalmodyTexts(athanasiusCompline)).not.toContain('Psalmus 4 [1]');
   }, 240_000);
 
+  it('keeps source-backed Rubrics 1960 Paschaltide antiphons in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, hour, antiphon] of [
+      [
+        '2026-04-15',
+        'matins',
+        'Speciósus forma * præ fíliis hóminum, diffúsa est grátia in lábiis tuis.'
+      ],
+      ['2026-04-15', 'lauds', 'Dóminus regnávit, * exsúltet terra, allelúja.'],
+      ['2026-04-15', 'vespers', 'Beáti omnes * qui timent Dóminum, allelúja.'],
+      [
+        '2026-05-22',
+        'matins',
+        'Eleváta est * magnificéntia tua super cælos, Deus, allelúja.'
+      ],
+      [
+        '2026-05-22',
+        'lauds',
+        'Viri Galilǽi, * quid aspícitis in cælum? Hic Jesus qui assúmptus est a vobis in cælum, sic véniet, allelúja.'
+      ],
+      [
+        '2026-05-22',
+        'vespers',
+        'Viri Galilǽi, * quid aspícitis in cælum? Hic Jesus qui assúmptus est a vobis in cælum, sic véniet, allelúja.'
+      ]
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(firstPsalmodyAntiphon(composed), `${date} ${hour} antiphon`).toBe(antiphon);
+    }
+
+    const stMark = engine.resolveDayOfficeSummary('2026-04-25');
+    expect(stMark.celebration.feastRef.path).toBe('Sancti/04-25');
+
+    for (const [hour, antiphon] of [
+      [
+        'prime',
+        'Sancti tui, * Dómine, florébunt sicut lílium, allelúja: et sicut odor bálsami erunt ante te, allelúja.'
+      ],
+      [
+        'terce',
+        'In cæléstibus regnis * Sanctórum habitátio est, allelúja: et in ætérnum réquies eórum, allelúja.'
+      ],
+      ['sext', 'In velaménto * clamábant Sancti tui, Dómine, allelúja, allelúja, allelúja.'],
+      ['none', 'Fulgébunt justi * sicut sol in conspéctu Dei, allelúja.']
+    ] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary: stMark,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      expect(firstPsalmodyAntiphon(composed), `2026-04-25 ${hour} antiphon`).toBe(antiphon);
+    }
+  }, 240_000);
+
   it('wraps ordinary Rubrics 1960 Compline psalmody with one antiphon repeat in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary(new Date(Date.UTC(2026, 0, 1)));

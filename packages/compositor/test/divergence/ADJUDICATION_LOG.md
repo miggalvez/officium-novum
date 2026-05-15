@@ -7929,6 +7929,35 @@ versicle seam.
 `1899`; exact-match hours rise from `1018` to `1021`; unadjudicated rows
 drop from `781` to `780`.
 
+### 2026-05-15 — Pattern: Paschaltide concrete antiphons vs generic Perl Alleluia (source-backed adjudication)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the 1960 Laudes II correction, the Rubrics 1960
+2026 frontier still carried 35 rows where the Perl comparison surface
+expected `Ant. Allelúja, * allelúja, allelúja.`. Thirty-four of those
+rows had source-backed concrete antiphons from the temporal psalter,
+Ascension proper, or St Mark's Paschaltide apostle common; the remaining
+2026-05-18 Matins row exposes a distinct antiphon/heading issue and
+remains unadjudicated.
+
+**Resolution.** Classified the 34 source-backed rows as `perl-bug`.
+Breviary 1960 no. 195 directs adding Alleluia to Paschaltide antiphons
+unless already present; it does not replace the assigned antiphon with a
+generic triple-Alleluia antiphon. Added compositor coverage for the
+representative temporal psalter, Ascension, and St Mark common witnesses.
+
+**Citation.** `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:204-208`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:18-112`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:43-147`;
+`upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:19-24,148-154`;
+`upstream/web/www/horas/Latin/Sancti/04-25.txt:11-17`;
+`upstream/web/www/horas/Latin/Commune/C1p.txt:6-18`.
+
+**Impact.** Rubrics 1960 2026 exact/divergent hours remain `1088/1832`
+because this is an adjudication-only tranche; unadjudicated rows drop
+from `455` to `421`.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)
