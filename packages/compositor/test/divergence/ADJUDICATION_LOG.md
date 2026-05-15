@@ -22,6 +22,42 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Matins Te Deum replacement responsory separator and Gloria repeat (compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The live `Rubrics 1960 - 1960` / 2026 frontier
+contained a four-row Matins family on June 2, June 16, July 17, and
+July 24. Perl emitted the Te Deum replacement responsory with a leading
+`_` separator and repeated the responsory after `Glória Patri`; the
+compositor kept the replacement in the `te-deum` slot without the
+responsory separator and expanded the full `Sicut erat...` response
+from the ordinary Gloria macro.
+
+**Root cause.** The engine correctly marked the final Matins responsory
+as replacing the Te Deum, and the source responsory sections already
+carry the expected responsory text. The compositor, however, rendered
+the replacement through the `te-deum` slot path, so it bypassed the
+responsory-like separator handling and the responsory Gloria
+normalization used by ordinary responsory slots.
+
+**Resolution.** Added an explicit responsory-like rendering flag for
+Te Deum replacement responsories. The replacement remains structurally
+owned by the `te-deum` slot, but it now prepends the responsory
+separator and applies the responsory Gloria repeat normalization instead
+of emitting the ordinary `Sicut erat...` continuation. Added a synthetic
+unit regression and a 2026-06-02 upstream integration witness for the
+real Pentecost ferial Matins source.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pent01-2.txt:55-70`
+- `upstream/web/www/horas/Latin/Tempora/Pent03-2Feria.txt:38-52`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1855` to `1851`, exact-match hours rise from `1065` to `1069`, and
+unadjudicated rows drop from `621` to `617`.
+
 ### 2026-05-13 — Pattern: later 2026 female common antiphon fanout (perl-bug)
 
 **Commit.** Current tranche commit.

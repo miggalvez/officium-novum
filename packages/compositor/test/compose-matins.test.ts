@@ -1909,7 +1909,27 @@ describe('composeHour(matins)', () => {
         {
           header: 'Responsory3',
           content: [
-            { type: 'verseMarker', marker: 'R.', text: 'Replacement responsorium.' }
+            { type: 'verseMarker', marker: 'R.', text: 'Replacement responsorium.' },
+            { type: 'text', value: '* Repeated responsorium.' },
+            { type: 'verseMarker', marker: 'V.', text: 'Replacement versicle.' },
+            { type: 'verseMarker', marker: 'R.', text: 'Repeated responsorium.' },
+            { type: 'macroRef', name: 'Gloria' },
+            { type: 'verseMarker', marker: 'R.', text: 'Repeated responsorium.' }
+          ]
+        }
+      ])
+    );
+    corpus.addFile(
+      makeFileMulti('horas/Latin/Psalterium/Common/Prayers', [
+        {
+          header: 'Gloria',
+          content: [
+            { type: 'verseMarker', marker: 'V.', text: 'Glória Patri, et Fílio, * et Spirítui Sancto.' },
+            {
+              type: 'verseMarker',
+              marker: 'R.',
+              text: 'Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.'
+            }
           ]
         }
       ])
@@ -1965,7 +1985,15 @@ describe('composeHour(matins)', () => {
     const teDeumSection = composed.sections.find((s) => s.slot === 'te-deum');
     expect(teDeumSection).toBeDefined();
     expect(teDeumSection!.type).toBe('te-deum');
-    expect(renderRuns(teDeumSection!.lines[0]!, 'Latin')).toBe('Replacement responsorium.');
+    expect(teDeumSection!.lines.map((line) => renderRuns(line, 'Latin'))).toEqual([
+      '_',
+      'Replacement responsorium.',
+      '* Repeated responsorium.',
+      'Replacement versicle.',
+      'Repeated responsorium.',
+      'Glória Patri, et Fílio, * et Spirítui Sancto.',
+      'Repeated responsorium.'
+    ]);
     expect(composed.sections.find((s) => s.slot === 'responsory')).toBeUndefined();
   });
 

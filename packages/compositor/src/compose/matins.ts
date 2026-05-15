@@ -6,6 +6,7 @@ import type {
   LessonSource,
   NocturnPlan,
   PsalmAssignment,
+  ResponsorySource,
   TextReference
 } from '@officium-novum/rubrical-engine';
 import { conditionMatches } from '@officium-novum/rubrical-engine';
@@ -151,9 +152,16 @@ export function composeMatinsSections(
       // responsory (flagged with `replacesTeDeum: true` in matins-plan.ts)
       // is emitted in lieu of the Te Deum hymn under a `'te-deum'` slot so
       // downstream renderers know it is the wrap-up.
-      const replacementRef = findTeDeumReplacement(psalmody.nocturns);
-      if (replacementRef) {
-        const section = composeReferenceSlot('te-deum', replacementRef, args);
+      const replacement = findTeDeumReplacement(psalmody.nocturns);
+      if (replacement) {
+        const section = prependSeparatorLine(
+          composeReferenceSlot('te-deum', replacement.reference, args, undefined, {
+            appendGloria: replacement.appendGloria === true,
+            suppressEmbeddedGloria: replacement.suppressEmbeddedGloria === true,
+            responsoryLike: true
+          }),
+          args.options.languages
+        );
         if (section) sections.push(section);
         const matinsRubric = composeReferenceSlot('de-officio-capituli', MATINS_LAUDS_SEPARATION_REF, args);
         if (matinsRubric) sections.push(matinsRubric);
@@ -169,11 +177,11 @@ export function composeMatinsSections(
 
 function findTeDeumReplacement(
   nocturns: readonly NocturnPlan[]
-): TextReference | undefined {
+): ResponsorySource | undefined {
   for (const nocturn of nocturns) {
     for (const responsory of nocturn.responsories) {
       if (responsory.replacesTeDeum) {
-        return responsory.reference;
+        return responsory;
       }
     }
   }

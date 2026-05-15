@@ -370,12 +370,12 @@ warning count: 0
   Latin: [R.] text("Deo grátias.")
 
 [section #30 type=te-deum slot=te-deum reference=horas/Latin/Tempora/Quad6-1#Responsory3 languages=Latin]
+  Latin: text("_")
   Latin: [R.] text("Insurrexérunt in me viri iníqui absque misericórdia, quæsiérunt me interfícere: et non pepercérunt in fáciem meam spúere, et lánceis suis vulneravérunt me: et concússa sunt ómnia ossa mea:")
   Latin: text("* Ego autem existimábam me tamquam mórtuum super terram.")
   Latin: [V.] text("Effudérunt furórem suum in me: fremuérunt contra me déntibus suis.")
   Latin: [R.] text("Ego autem existimábam me tamquam mórtuum super terram.")
   Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
-  Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [R.] text("Insurrexérunt in me viri iníqui absque misericórdia, quæsiérunt me interfícere: et non pepercérunt in fáciem meam spúere, et lánceis suis vulneravérunt me: et concússa sunt ómnia ossa mea: * Ego autem existimábam me tamquam mórtuum super terram.")
 
 [section #31 type=other slot=de-officio-capituli reference=horas/Latin/Psalterium/Common/Rubricae#Matutinum languages=Latin]
