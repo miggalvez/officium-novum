@@ -148,6 +148,52 @@ describe('selectPsalmodyRoman1960', () => {
     expect(refs[0]?.psalmRef.section).toBe('Day0 Vespera');
   });
 
+  it('honors Psalmi Dominica for first Vespers of temporal feasts of the Lord', () => {
+    const refs = selectPsalmodyRoman1960({
+      hour: 'vespers',
+      celebration: celebration('Tempora/Nat2-0'),
+      celebrationRules: {
+        ...baseCelebrationRules(),
+        festumDomini: true
+      },
+      hourRules: hourRules('vespers', {
+        psalterScheme: 'dominica',
+        psalmOverrides: [{ key: 'Psalm5 Vespera', value: '115' }]
+      }),
+      temporal: temporal('2026-01-03', 'Nat2-0', 'christmastide', 6),
+      corpus: corpus(),
+      vespersSide: 'first'
+    });
+
+    expect(refs.map((entry) => entry.psalmRef)).toEqual([
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '1'
+      },
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '2'
+      },
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '3'
+      },
+      {
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+        section: 'Day0 Vespera',
+        selector: '4'
+      },
+      {
+        path: 'horas/Latin/Psalterium/Psalmorum/Psalm115',
+        section: '__preamble',
+        selector: '115'
+      }
+    ]);
+  });
+
   it('uses Sunday Compline psalms on high-ranking offices with Psalmi Dominica', () => {
     const textIndex = new TestOfficeTextIndex();
     textIndex.add(

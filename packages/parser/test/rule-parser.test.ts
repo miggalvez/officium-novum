@@ -43,6 +43,59 @@ describe('parseRuleLine', () => {
 });
 
 describe('parseRuleSection', () => {
+  it('attaches standalone condition lines to the following rule directive', () => {
+    const parsed = parseRuleSection([
+      { text: 'Psalmi Dominica;' },
+      { text: '(sed rubrica cisterciensis)' },
+      { text: 'Psalmi Feria' }
+    ]);
+
+    expect(parsed).toHaveLength(2);
+    expect(parsed[0]).toMatchObject({
+      kind: 'action',
+      keyword: 'Psalmi',
+      args: ['Dominica;'],
+      condition: undefined
+    });
+    expect(parsed[1]).toMatchObject({
+      kind: 'action',
+      keyword: 'Psalmi',
+      args: ['Feria']
+    });
+    expect(parsed[1]).toHaveProperty('condition');
+  });
+
+  it('accepts comments after standalone condition lines', () => {
+    const parsed = parseRuleSection([
+      { text: '(tempore Paschali) # upstream note' },
+      { text: 'Alleluia dicitur' }
+    ]);
+
+    expect(parsed).toHaveLength(1);
+    expect(parsed[0]).toMatchObject({
+      kind: 'action',
+      keyword: 'Alleluia',
+      args: ['dicitur']
+    });
+    expect(parsed[0]).toHaveProperty('condition');
+  });
+
+  it('preserves pending condition metadata when conditions are combined', () => {
+    const parsed = parseRuleSection([
+      { text: '(sed rubrica 1960 dicitur)' },
+      { text: 'Psalmi Feria (tempore Quadragesimae)' }
+    ]);
+
+    expect(parsed).toHaveLength(1);
+    expect(parsed[0]?.condition).toMatchObject({
+      stopword: 'sed',
+      instruction: 'dicitur',
+      expression: {
+        type: 'and'
+      }
+    });
+  });
+
   it('parses complex fixture directives including prefixed and suffixed conditions', async () => {
     const content = await loadFixture('rule-directives.txt');
     const section = splitSections(content).find((candidate) => candidate.header === 'Rule');

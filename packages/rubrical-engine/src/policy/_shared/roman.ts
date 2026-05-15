@@ -479,9 +479,29 @@ function thirdSundayOfSeptember(year: number): number {
  *
  * This is an MVP shared by all three Roman policies: it produces the
  * structural Benedictio-before-Lectio output the compositor emits. The
- * cujus/quorum and final-Gospel substitutions (Perl lines 496-530) remain
- * open for later adjudication — see Phase 3 plan §3h.
+ * cujus/quorum substitution applies to sanctoral intercession contexts, but
+ * is suppressed for sanctoral feasts of the Lord. Final-Gospel substitutions
+ * (Perl lines 496-530) remain open for later adjudication — see Phase 3 plan
+ * §3h.
  */
+const SANCTORAL_FEASTS_OF_THE_LORD = new Set<string>([
+  'Sancti/01-00',
+  'Sancti/01-01',
+  'Sancti/01-06',
+  'Sancti/01-13',
+  'Sancti/02-02',
+  'Sancti/07-01',
+  'Sancti/08-06',
+  'Sancti/09-14',
+  'Sancti/10-DU',
+  'Sancti/11-09',
+  'Sancti/11-18',
+  'Sancti/12-24',
+  'Sancti/12-24s',
+  'Sancti/12-24so',
+  'Sancti/12-25'
+]);
+
 export function selectRomanBenedictions(params: {
   readonly nocturnIndex: 1 | 2 | 3;
   readonly lessons: readonly LessonPlan[];
@@ -584,6 +604,7 @@ function benedictionSelector(params: {
   if (
     params.offset === 1 &&
     params.celebration.source === 'sanctoral' &&
+    !SANCTORAL_FEASTS_OF_THE_LORD.has(params.celebration.feastRef.path) &&
     (params.totalLessons === 3 || params.nocturnIndex === 3)
   ) {
     return String(4 + sanctoralCujusOffset(params.celebration.feastRef.title));

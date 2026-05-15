@@ -58,7 +58,12 @@ export function selectPsalmodyRoman1960(
     // feast's [Rule]) forces the Sunday distribution even on a weekday.
     const useDominicaRule =
       hourRules.psalterScheme === 'dominica' &&
-      !(hour === 'vespers' && params.vespersSide === 'first' && params.celebration.source === 'temporal');
+      !(
+        hour === 'vespers' &&
+        params.vespersSide === 'first' &&
+        params.celebration.source === 'temporal' &&
+        !params.celebrationRules.festumDomini
+      );
     const useSundayPsalmody =
       useDominicaRule || isSundayForMajorHour(hour, temporal);
 
