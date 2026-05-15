@@ -3585,6 +3585,31 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     );
   }, 240_000);
 
+  it('renders Laudes II psalmody for Rubrics 1960 no. 197 witnesses in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, antiphon] of [
+      [
+        '2026-06-23',
+        'Dele iniquitátem meam, * Dómine, secúndum multitúdinem miseratiónum tuárum.'
+      ],
+      ['2026-09-23', 'Ámplius lava me, * Dómine, ab injustítia mea.'],
+      ['2026-12-05', 'Benígne fac, Dómine, * in bona voluntáte tua Sion.']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const lauds = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'lauds',
+        options: { languages: ['Latin'] }
+      });
+
+      expect(firstPsalmodyAntiphon(lauds), `${date} Lauds opening antiphon`).toBe(antiphon);
+      expect(psalmodyTexts(lauds), `${date} Lauds psalmody`).toContain('Psalmus 50 [1]');
+    }
+  }, 240_000);
+
   it('renders Easter Octave Rubrics 1960 Compline without psalmody antiphons and with the proper Nunc antiphon in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
 

@@ -68,12 +68,7 @@ export function selectPsalmodyRoman1960(
       useDominicaRule || isSundayForMajorHour(hour, temporal);
 
     if (hour === 'lauds') {
-      assignments = laudsReferences(
-        temporal,
-        celebrationRules,
-        useSundayPsalmody,
-        useDominicaRule
-      );
+      assignments = laudsReferences(params, useSundayPsalmody, useDominicaRule);
     } else if (hour === 'vespers') {
       assignments = vespersReferences(temporal, useSundayPsalmody);
     } else {
@@ -143,19 +138,95 @@ function isSundayForMajorHour(hour: HourName, temporal: TemporalContext): boolea
 }
 
 function laudsReferences(
-  temporal: TemporalContext,
-  celebrationRules: CelebrationRuleSet,
+  params: SelectPsalmodyInput,
   useSundayPsalmody: boolean,
   useDominicaRule: boolean
 ): readonly PsalmAssignment[] {
-  // RI §§170-172: 1960 restores Lauds I (festive) for Sundays and feasts;
-  // Lauds II (penitential) remains for penitential ferias.
-  const usePenitential =
-    isPenitentialDay(temporal) && !celebrationRules.festumDomini && !useDominicaRule;
-  const scheme = usePenitential ? 'Laudes2' : 'Laudes1';
+  const { temporal } = params;
+  const scheme = usesSecondLaudsSchemeRoman1960(params, useDominicaRule)
+    ? 'Laudes2'
+    : 'Laudes1';
   const weekday = useSundayPsalmody ? 0 : temporal.dayOfWeek;
   const section = `Day${weekday} ${scheme}`;
   return numberedSectionAssignments(PSALMI_MAJOR, section, 5);
+}
+
+function usesSecondLaudsSchemeRoman1960(
+  params: SelectPsalmodyInput,
+  useDominicaRule: boolean
+): boolean {
+  // Breviary 1960 no. 197 assigns Laudes II by family: Septuagesima/Lent/
+  // Passiontide Sundays, ferias in the penitential seasons including Advent,
+  // the ferial Office of the September Ember Days, and II/III class vigils
+  // outside Paschaltide.
+  if (params.celebrationRules.festumDomini || useDominicaRule) {
+    return false;
+  }
+
+  const { celebration, temporal } = params;
+  if (isSecondLaudsSunday(temporal)) {
+    return true;
+  }
+
+  if (isFerialOffice(celebration)) {
+    return isSecondLaudsFerialSeason(temporal) || isSeptemberEmberFeria(temporal);
+  }
+
+  return isSecondOrThirdClassVigilOutsidePaschaltide(celebration, temporal);
+}
+
+function isSecondLaudsSunday(temporal: TemporalContext): boolean {
+  return (
+    temporal.dayOfWeek === 0 &&
+    (
+      temporal.season === 'septuagesima' ||
+      temporal.season === 'lent' ||
+      temporal.season === 'passiontide'
+    )
+  );
+}
+
+function isFerialOffice(celebration: Celebration): boolean {
+  return celebration.source === 'temporal' && celebration.kind !== 'vigil';
+}
+
+function isSecondLaudsFerialSeason(temporal: TemporalContext): boolean {
+  return (
+    temporal.dayOfWeek !== 0 &&
+    (
+      temporal.season === 'advent' ||
+      temporal.season === 'septuagesima' ||
+      temporal.season === 'lent' ||
+      temporal.season === 'passiontide' ||
+      temporal.dayName === 'Quadp3-3'
+    )
+  );
+}
+
+function isSeptemberEmberFeria(temporal: TemporalContext): boolean {
+  return (
+    temporal.season === 'time-after-pentecost' &&
+    temporal.rank.classSymbol === 'II-ember-day' &&
+    /^Pent/u.test(temporal.dayName)
+  );
+}
+
+function isSecondOrThirdClassVigilOutsidePaschaltide(
+  celebration: Celebration,
+  temporal: TemporalContext
+): boolean {
+  if (
+    celebration.kind !== 'vigil' ||
+    (celebration.rank.classSymbol !== 'II' && celebration.rank.classSymbol !== 'III')
+  ) {
+    return false;
+  }
+
+  return !isPaschaltideSeason(temporal.season);
+}
+
+function isPaschaltideSeason(season: TemporalContext['season']): boolean {
+  return season === 'eastertide' || season === 'ascensiontide' || season === 'pentecost-octave';
 }
 
 function vespersReferences(

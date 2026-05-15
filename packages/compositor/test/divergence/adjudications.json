@@ -23952,6 +23952,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-06-23/Lauds/76582910": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-06-23",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Deus misereátur * nostri, et benedícat nobis. ‡",
+    "firstActual": "Ant. Deus misereátur * nostri, et benedícat nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:53 — the weekday Lauds psalter source carries the complete antiphon `Deus misereátur * nostri, et benedícat nobis.` without a trailing `‡`. The compositor preserves the source text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-06-25/Lauds/11e2194d": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-06-25",
@@ -31523,6 +31534,17 @@
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-01/Lauds/76582910": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-01",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Deus misereátur * nostri, et benedícat nobis. ‡",
+    "firstActual": "Ant. Deus misereátur * nostri, et benedícat nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:53 — the weekday Lauds psalter source carries the complete antiphon `Deus misereátur * nostri, et benedícat nobis.` without a trailing `‡`. The compositor preserves the source text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-15"
+  },
   "Rubrics 1960 - 1960/2026-12-02/Lauds/a8acbf46": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-02",
@@ -32023,6 +32045,17 @@
     "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm15.txt:1 — the source line places the flex marker before Dixi Domino and the mediant before quoniam; the compositor preserves that source-backed psalm pointing while the Perl comparison surface collapses it to a single asterisk before Dixi Domino.",
     "notes": "Source-backed Psalm 15:1 pointing: the corpus carries the half-verse marker plus original mediant; Perl flattens the displayed pointing on these rows.",
     "resolvedAt": "2026-05-05"
+  },
+  "Rubrics 1960 - 1960/2026-12-15/Lauds/76582910": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-15",
+    "hour": "Lauds",
+    "firstExpected": "Ant. Deus misereátur * nostri, et benedícat nobis. ‡",
+    "firstActual": "Ant. Deus misereátur * nostri, et benedícat nobis.",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:53 — the weekday Lauds psalter source carries the complete antiphon `Deus misereátur * nostri, et benedícat nobis.` without a trailing `‡`. The compositor preserves the source text; the Perl comparison surface adds an unsupported trailing continuation marker.",
+    "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited source carries the complete antiphon or incipit without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
+    "resolvedAt": "2026-05-15"
   },
   "Rubrics 1960 - 1960/2026-12-16/Matins/c12d0e8c": {
     "policy": "Rubrics 1960 - 1960",

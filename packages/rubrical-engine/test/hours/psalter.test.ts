@@ -27,11 +27,12 @@ function temporal(
   };
 }
 
-function celebration(path: string): Celebration {
+function celebration(path: string, overrides: Partial<Celebration> = {}): Celebration {
   return {
     feastRef: { path, id: path, title: path.split('/').at(-1) ?? path },
     rank: { name: 'IV', classSymbol: 'IV', weight: 400 },
-    source: 'temporal'
+    source: 'temporal',
+    ...overrides
   };
 }
 
@@ -116,6 +117,85 @@ describe('selectPsalmodyRoman1960', () => {
       corpus: corpus()
     });
     expect(penitential[0]?.psalmRef.section).toBe('Day1 Laudes2');
+  });
+
+  it('uses Laudes II for 1960 no. 197 ferias and vigils', () => {
+    const adventFeria = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Adv1-2'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-12-01', 'Adv1-2', 'advent', 2),
+      corpus: corpus()
+    });
+    expect(adventFeria[0]?.psalmRef.section).toBe('Day2 Laudes2');
+
+    const septemberEmberFeria = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Pent17-3', {
+        rank: { name: 'Feria', classSymbol: 'II-ember-day', weight: 790 }
+      }),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: {
+        ...temporal('2026-09-23', 'Pent17-3', 'time-after-pentecost', 3),
+        rank: { name: 'Feria', classSymbol: 'II-ember-day', weight: 790 }
+      },
+      corpus: corpus()
+    });
+    expect(septemberEmberFeria[0]?.psalmRef.section).toBe('Day3 Laudes2');
+
+    const secondClassVigil = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Sancti/06-23', {
+        source: 'sanctoral',
+        kind: 'vigil',
+        rank: { name: 'Duplex II classis', classSymbol: 'II', weight: 800 }
+      }),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-06-23', 'Pent04-2', 'time-after-pentecost', 2),
+      corpus: corpus()
+    });
+    expect(secondClassVigil[0]?.psalmRef.section).toBe('Day2 Laudes2');
+  });
+
+  it('keeps Laudes I for Advent Sundays, Advent sanctoral feasts, and Paschaltide vigils', () => {
+    const adventSunday = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Adv1-0'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-11-29', 'Adv1-0', 'advent', 0),
+      corpus: corpus()
+    });
+    expect(adventSunday[0]?.psalmRef.section).toBe('Day0 Laudes1');
+
+    const adventFeast = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Sancti/12-08', {
+        source: 'sanctoral',
+        rank: { name: 'Duplex I classis', classSymbol: 'I', weight: 1000 }
+      }),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-12-08', 'Adv2-2', 'advent', 2),
+      corpus: corpus()
+    });
+    expect(adventFeast[0]?.psalmRef.section).toBe('Day2 Laudes1');
+
+    const ascensionVigil = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Pasc5-3', {
+        kind: 'vigil',
+        rank: { name: 'Feria', classSymbol: 'II', weight: 800 }
+      }),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-05-13', 'Pasc5-3', 'eastertide', 3),
+      corpus: corpus()
+    });
+    expect(ascensionVigil[0]?.psalmRef.section).toBe('Day3 Laudes1');
   });
 
   it('selects proper feast psalmody when psalterScheme is proper', () => {
