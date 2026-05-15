@@ -338,6 +338,52 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Psalterium/Psalmorum/Psalm147:__preamble:147'
       ]);
 
+      // 1960-01-07 through 01-12: post-Epiphany ferias use `vide
+      // Sancti/01-06` for Epiphany texts, but Jan 6's feast-only Matins
+      // opening suppression and proper psalmody rules do not carry over.
+      const jan7Matins = roman1960.resolveDayOfficeSummary('2026-01-07').hours.matins;
+      expect(jan7Matins?.slots.incipit).toEqual({
+        kind: 'single-ref',
+        ref: { path: 'horas/Ordinarium/Matutinum', section: 'Incipit' }
+      });
+      expect(jan7Matins?.slots.invitatory).toEqual({
+        kind: 'matins-invitatorium',
+        source: {
+          kind: 'feast',
+          reference: { path: 'horas/Latin/Sancti/01-06', section: 'Invit' }
+        }
+      });
+      expect(jan7Matins?.slots.hymn).toEqual({
+        kind: 'single-ref',
+        ref: { path: 'horas/Latin/Sancti/01-06', section: 'Hymnus Matutinum' }
+      });
+      expectAntiphonRefs(psalmodyAt(roman1960, '2026-01-07', 'lauds')).toEqual([
+        '-',
+        '-',
+        '-',
+        '-',
+        '-'
+      ]);
+      expectPsalmRefs(psalmodyAt(roman1960, '2026-01-07', 'lauds')).toEqual([
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:1',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:2',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:3',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:4',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:5'
+      ]);
+      const jan9MatinsNocturn = matinsNocturnsAt(roman1960, '2026-01-09')[0];
+      expect(jan9MatinsNocturn?.versicle.reference).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Epi 2 Versum'
+      });
+      expect(jan9MatinsNocturn?.responsories.map((responsory) => ({
+        index: responsory.index,
+        appendGloria: responsory.appendGloria
+      }))).toEqual([
+        { index: 1, appendGloria: undefined },
+        { index: 2, appendGloria: true }
+      ]);
+
       // 1960-01-13: the post-Epiphany Sunday keeps Epiphany's Lauds/Vespers
       // proper antiphons and the festal minor-hour Tridentinum tables.
       expectMinorHour(

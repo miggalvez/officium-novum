@@ -291,10 +291,12 @@ function buildHymnSource(
       : undefined);
   if (match) {
     const doxologyVariant =
-      input.celebrationRules.doxologyVariant ??
-      (usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
+      usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input)
         ? undefined
-        : seasonalFallbackDoxologyVariant(input.temporal));
+        : input.celebrationRules.doxologyVariant ??
+          (usesThirdClassSanctoralWeekdayFerialMatinsPsalmody(input)
+            ? undefined
+            : seasonalFallbackDoxologyVariant(input.temporal));
     return {
       kind: 'feast',
       reference: officeReference(match.file.path, match.section.header),
@@ -352,6 +354,15 @@ function buildNocturnVersicle(
   totalNocturns: number,
   antiphonCount: number
 ): VersicleSource {
+  if (nocturnIndex === 1 && usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input)) {
+    return {
+      reference: {
+        path: PSALTERIUM_MATINS_CONTENT_PATH,
+        section: postEpiphanyFeriaMatinsVersicleSection(input.temporal)
+      }
+    };
+  }
+
   const sectionName = `Nocturn ${nocturnIndex} Versum`;
   const match = findSection(feastFiles, sectionName, input);
   if (match) {
@@ -726,17 +737,19 @@ function collectMatinsAntiphons(
     return thirdClassPaschalWeekdayEntries;
   }
 
-  const feastMatches = findSections(feastFiles, 'Ant Matutinum', input);
-  for (const match of feastMatches) {
-    const sourcePath = match.file.path.replace(/\.txt$/u, '');
-    const entries = collectMatinsAntiphonEntriesFromSection(
-      match.section,
-      sourcePath,
-      input,
-      match.file
-    );
-    if (entries.length > 0) {
-      return entries;
+  if (!usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input)) {
+    const feastMatches = findSections(feastFiles, 'Ant Matutinum', input);
+    for (const match of feastMatches) {
+      const sourcePath = match.file.path.replace(/\.txt$/u, '');
+      const entries = collectMatinsAntiphonEntriesFromSection(
+        match.section,
+        sourcePath,
+        input,
+        match.file
+      );
+      if (entries.length > 0) {
+        return entries;
+      }
     }
   }
 
@@ -754,6 +767,21 @@ function collectMatinsAntiphons(
     PSALTERIUM_MATINS_CONTENT_PATH,
     input
   );
+}
+
+function usesPostEpiphanyFeriaFerialMatinsPsalmody1960(input: BuildMatinsPlanInput): boolean {
+  return (
+    input.policy.name === 'rubrics-1960' &&
+    input.celebration.source === 'temporal' &&
+    /^Tempora\/Nat(?:0[7-9]|1[0-2])$/u.test(input.celebration.feastRef.path)
+  );
+}
+
+function postEpiphanyFeriaMatinsVersicleSection(
+  temporal: Pick<TemporalContext, 'dayOfWeek'>
+): string {
+  const ferialIndex = temporal.dayOfWeek <= 3 ? temporal.dayOfWeek : temporal.dayOfWeek - 3;
+  return `Epi ${ferialIndex} Versum`;
 }
 
 function collectThirdClassSanctoralWeekdayPaschalMatinsAntiphons(

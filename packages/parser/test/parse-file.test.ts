@@ -4,6 +4,27 @@ import { parseFile } from '../src/parser/parse-file.js';
 import type { TextContent } from '../src/types/schema.js';
 
 describe('parseFile section content', () => {
+  it('uses section-level rule parsing for standalone rule conditions', () => {
+    const content = [
+      '[Rule]',
+      'Psalmi Dominica;',
+      '(sed rubrica cisterciensis)',
+      'Psalmi Feria'
+    ].join('\n');
+
+    const file = parseFile(content, 'horas/Latin/Tempora/Pasc7-3.txt');
+    const rule = file.sections.find((section) => section.header === 'Rule');
+    expect(rule?.rules).toHaveLength(2);
+    expect(rule?.rules?.[1]).toMatchObject({
+      kind: 'action',
+      keyword: 'Psalmi',
+      args: ['Feria'],
+      condition: {
+        expression: { type: 'match', subject: 'rubrica', predicate: 'cisterciensis' }
+      }
+    });
+  });
+
   it('wraps a preceding block in not(condition) when a `sed X omittuntur` line closes it', () => {
     const content = [
       '[Incipit]',

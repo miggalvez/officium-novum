@@ -122,7 +122,7 @@ export function composeMergedSlot(
         slot === 'versicle'
           ? extendPsalterMatinsVersicleContent(section.content, ref, lang, args)
           : appendGloria === true && slot === 'responsory'
-            ? withResponsoryGloria(section.content)
+            ? withResponsoryGloria(flattenConditionals(section.content, args.context))
             : section.content;
       if (slot === 'psalmody' && isAntiphon && containsInlinePsalmRefs(sourceContent)) {
         const antiphonOnly = extractInlinePsalmAntiphons(sourceContent);
