@@ -435,8 +435,6 @@ warning count: 0
   Latin: text("* Genuísti qui te fecit, et in ætérnum pérmanes Virgo.")
   Latin: [V.] text("Ave, María, grátia plena; Dóminus tecum.")
   Latin: [R.] text("Genuísti qui te fecit, et in ætérnum pérmanes Virgo.")
-  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
-  Latin: [R.] text("Genuísti qui te fecit, et in ætérnum pérmanes Virgo.")
 
 [section #59 type=heading slot=heading languages=Latin+English]
   heading: nocturn 3
