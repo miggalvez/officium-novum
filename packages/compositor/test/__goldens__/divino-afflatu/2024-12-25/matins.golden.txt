@@ -620,8 +620,8 @@ warning count: 0
   Latin: rubric("Extra Chorum, quando ab uno tantum recitatur Officium dicitur: «Jube, Dómine, benedícere;» et subjungitur congruens Benedictio.")
   Latin: [V.] text("Jube, domne, benedícere.")
 
-[section #74 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 3:4 languages=Latin]
-  Latin: [Benedictio.] text("Cujus festum cólimus, ipse intercédat pro nobis ad Dóminum.")
+[section #74 type=benedictio slot=benedictio reference=horas/Latin/Psalterium/Benedictions.txt#Nocturn 3:2 languages=Latin]
+  Latin: [Benedictio.] text("Divínum auxílium máneat semper nobíscum.")
 
 [section #75 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Amen languages=Latin]
   Latin: [R.] text("Amen.")

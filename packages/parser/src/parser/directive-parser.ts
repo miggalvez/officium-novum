@@ -411,6 +411,9 @@ function applyBareConditionModifier(out: TextContent[], condition: Condition): v
   if (condition.stopword !== 'sed' && condition.stopword !== 'atque') {
     return;
   }
+  if (isNamedDayDiciturAddition(condition)) {
+    return;
+  }
 
   const negated: Condition = {
     ...condition,
@@ -434,6 +437,18 @@ function applyBareConditionModifier(out: TextContent[], condition: Condition): v
       scope: DEFAULT_SCOPE
     });
   }
+}
+
+function isNamedDayDiciturAddition(condition: Condition): boolean {
+  if (condition.instruction !== 'dicitur' && condition.instruction !== 'dicuntur') {
+    return false;
+  }
+  const expression = condition.expression;
+  return (
+    expression.type === 'match' &&
+    expression.subject === 'die' &&
+    Number.isNaN(Number(expression.predicate.trim()))
+  );
 }
 
 function wrapTrailingBlock(out: TextContent[], condition: Condition): boolean {

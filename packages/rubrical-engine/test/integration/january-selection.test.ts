@@ -90,11 +90,19 @@ describeIfUpstream('January selection regressions', () => {
       ]);
       expectPsalmRefs(psalmodyAt(reduced, '2024-01-01', 'vespers')).toEqual([
         'horas/Latin/Psalterium/Psalmorum/Psalm109:__preamble:109',
-        'horas/Latin/Psalterium/Psalmorum/Psalm110:__preamble:110',
-        'horas/Latin/Psalterium/Psalmorum/Psalm111:__preamble:111',
-        'horas/Latin/Psalterium/Psalmorum/Psalm129:__preamble:129',
-        'horas/Latin/Psalterium/Psalmorum/Psalm131:__preamble:131'
+        'horas/Latin/Psalterium/Psalmorum/Psalm112:__preamble:112',
+        'horas/Latin/Psalterium/Psalmorum/Psalm121:__preamble:121',
+        'horas/Latin/Psalterium/Psalmorum/Psalm126:__preamble:126',
+        'horas/Latin/Psalterium/Psalmorum/Psalm147:__preamble:147'
       ]);
+      expectSingleRef(
+        slotAt(reduced, '2024-01-01', 'vespers', 'chapter'),
+        'horas/Latin/Sancti/01-01:Capitulum Laudes'
+      );
+      expectSingleRef(
+        slotAt(reduced, '2024-01-01', 'vespers', 'versicle'),
+        'horas/Latin/Sancti/12-25:Versum 3'
+      );
 
       // 1955-01-06: Epiphany keeps its Sanctoral antiphons at both major
       // hours, while concurrence leaves Jan 6 Vespers on Epiphany's own side
@@ -205,11 +213,24 @@ describeIfUpstream('January selection regressions', () => {
       ]);
       expectPsalmRefs(psalmodyAt(roman1960, '2024-01-01', 'vespers')).toEqual([
         'horas/Latin/Psalterium/Psalmorum/Psalm109:__preamble:109',
-        'horas/Latin/Psalterium/Psalmorum/Psalm110:__preamble:110',
-        'horas/Latin/Psalterium/Psalmorum/Psalm111:__preamble:111',
-        'horas/Latin/Psalterium/Psalmorum/Psalm129:__preamble:129',
-        'horas/Latin/Psalterium/Psalmorum/Psalm131:__preamble:131'
+        'horas/Latin/Psalterium/Psalmorum/Psalm112:__preamble:112',
+        'horas/Latin/Psalterium/Psalmorum/Psalm121:__preamble:121',
+        'horas/Latin/Psalterium/Psalmorum/Psalm126:__preamble:126',
+        'horas/Latin/Psalterium/Psalmorum/Psalm147:__preamble:147'
       ]);
+      expectSingleRef(
+        slotAt(roman1960, '2024-01-01', 'vespers', 'chapter'),
+        'horas/Latin/Sancti/01-01:Capitulum Laudes'
+      );
+      expectSingleRef(
+        slotAt(roman1960, '2024-01-01', 'vespers', 'versicle'),
+        'horas/Latin/Sancti/12-25:Versum 3'
+      );
+      expect(
+        matinsNocturnsAt(roman1960, '2024-01-01')
+          .flatMap((nocturn) => nocturn.responsories)
+          .find((responsory) => responsory.index === 7)?.suppressEmbeddedGloria
+      ).toBe(true);
 
       // 2026-01-03: the Saturday BVM office has no second Vespers, so Holy
       // Name first Vespers wins. Its source-backed `Psalmi Dominica` and
@@ -315,6 +336,52 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Psalterium/Psalmorum/Psalm121:__preamble:121',
         'horas/Latin/Psalterium/Psalmorum/Psalm126:__preamble:126',
         'horas/Latin/Psalterium/Psalmorum/Psalm147:__preamble:147'
+      ]);
+
+      // 1960-01-07 through 01-12: post-Epiphany ferias use `vide
+      // Sancti/01-06` for Epiphany texts, but Jan 6's feast-only Matins
+      // opening suppression and proper psalmody rules do not carry over.
+      const jan7Matins = roman1960.resolveDayOfficeSummary('2026-01-07').hours.matins;
+      expect(jan7Matins?.slots.incipit).toEqual({
+        kind: 'single-ref',
+        ref: { path: 'horas/Ordinarium/Matutinum', section: 'Incipit' }
+      });
+      expect(jan7Matins?.slots.invitatory).toEqual({
+        kind: 'matins-invitatorium',
+        source: {
+          kind: 'feast',
+          reference: { path: 'horas/Latin/Sancti/01-06', section: 'Invit' }
+        }
+      });
+      expect(jan7Matins?.slots.hymn).toEqual({
+        kind: 'single-ref',
+        ref: { path: 'horas/Latin/Sancti/01-06', section: 'Hymnus Matutinum' }
+      });
+      expectAntiphonRefs(psalmodyAt(roman1960, '2026-01-07', 'lauds')).toEqual([
+        '-',
+        '-',
+        '-',
+        '-',
+        '-'
+      ]);
+      expectPsalmRefs(psalmodyAt(roman1960, '2026-01-07', 'lauds')).toEqual([
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:1',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:2',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:3',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:4',
+        'horas/Latin/Psalterium/Psalmi/Psalmi major:Day3 Laudes1:5'
+      ]);
+      const jan9MatinsNocturn = matinsNocturnsAt(roman1960, '2026-01-09')[0];
+      expect(jan9MatinsNocturn?.versicle.reference).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi matutinum',
+        section: 'Epi 2 Versum'
+      });
+      expect(jan9MatinsNocturn?.responsories.map((responsory) => ({
+        index: responsory.index,
+        appendGloria: responsory.appendGloria
+      }))).toEqual([
+        { index: 1, appendGloria: undefined },
+        { index: 2, appendGloria: true }
       ]);
 
       // 1960-01-13: the post-Epiphany Sunday keeps Epiphany's Lauds/Vespers
@@ -473,6 +540,16 @@ describeIfUpstream('January selection regressions', () => {
         'horas/Latin/Psalterium/Psalmorum/Psalm28:__preamble:28',
         'horas/Latin/Psalterium/Psalmorum/Psalm45:__preamble:45',
         'horas/Latin/Psalterium/Psalmorum/Psalm46:__preamble:46'
+      ]);
+      expectAntiphonRefs(jan6Nocturns[2]?.psalmody ?? []).toEqual([
+        'horas/Latin/Sancti/01-06:Ant Matutinum:7',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:8',
+        'horas/Latin/Sancti/01-06:Ant Matutinum:9'
+      ]);
+      expectPsalmRefs(jan6Nocturns[2]?.psalmody ?? []).toEqual([
+        'horas/Latin/Psalterium/Psalmorum/Psalm94:__preamble:94',
+        'horas/Latin/Psalterium/Psalmorum/Psalm95:__preamble:95',
+        'horas/Latin/Psalterium/Psalmorum/Psalm96:__preamble:96'
       ]);
 
       const jan13Matins = engine.resolveDayOfficeSummary('2024-01-13').hours.matins;
@@ -711,7 +788,7 @@ function matinsNocturnsAt(
 function slotAt(
   engine: RubricalEngine,
   date: string,
-  hour: 'terce' | 'sext' | 'none',
+  hour: 'vespers' | 'terce' | 'sext' | 'none',
   slot: 'chapter' | 'responsory' | 'versicle' | 'oration'
 ) {
   return engine.resolveDayOfficeSummary(date).hours[hour]?.slots[slot];
