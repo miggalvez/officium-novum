@@ -24,6 +24,44 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-13 — St Paul minor-hour antiphons fall back to the weekday psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, the June 30
+Commemoration of St Paul keeps weekday psalter antiphons at Prime,
+Terce, Sext, and None. Officium Novum emits the assigned St Paul /
+apostle-common antiphons. The same tranche fixed a local compositor bug
+in the Lauds `Sub unica concl` joined-collect path, so the major-hour
+collect block now follows the source.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:132-137,166`
+- `upstream/web/www/horas/Help/technical.html:323`
+- `upstream/web/www/horas/Latin/Sancti/06-30.txt:4-16,19-24,33-37`
+- `upstream/web/www/horas/Latin/Sancti/01-25.txt:126-137`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:4-8,261-324`
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --date 2026-06-30 --no-write-docs --max-report 20
+```
+
+Then inspect Prime, Terce, Sext, and None. Breviary 1960 nos. 169 and
+177 preserve assigned Proper/Common antiphons and psalmody for III-class
+offices; June 30 is III class under rubrica 196 and declares `Psalmi
+Dominica` / `Antiphonas horas`, while Perl keeps weekday psalter
+antiphons on the remaining divergent minor-hour rows.
+
+**Affected stable divergence-row keys.**
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-06-30 | Prime, Terce, Sext, None | `796ead47`, `e93da8fa`, `e633569c`, `11e8467c` |
+
 ### 2026-05-12 — Ss John and Paul martyr antiphons fall back to the weekday psalter
 
 **Classification.** `perl-bug`
