@@ -278,6 +278,61 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
       }
     }
   }, 240_000);
+
+  it('routes Rubrics 1960 Advent major-hour later blocks through seasonal fallbacks', async () => {
+    const corpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
+    const versionRegistry = buildVersionRegistry(
+      parseVersionRegistry(readFileSync(resolve(UPSTREAM_ROOT, 'Tabulae/data.txt'), 'utf8'))
+    );
+    const engine = createRubricalEngine({
+      corpus: corpus.index,
+      kalendarium: buildKalendariumTable(loadKalendaria()),
+      yearTransfers: buildYearTransferTable(loadTransferTables()),
+      scriptureTransfers: buildScriptureTransferTable(loadScriptureTransferTables()),
+      versionRegistry,
+      version: asVersionHandle('Rubrics 1960 - 1960'),
+      policyMap: VERSION_POLICY
+    });
+
+    for (const date of ['2026-11-28', '2026-12-05', '2026-12-12', '2026-12-19'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      expect(summary.concurrence.sourceSide, `${date} should be first Vespers`).toBe('first');
+      const hymn = summary.hours.vespers?.slots.hymn;
+      expect(hymn?.kind, `${date} Advent first Vespers hymn`).toBe('single-ref');
+      if (hymn?.kind === 'single-ref') {
+        expect(hymn.ref, `${date} Advent first Vespers hymn`).toEqual({
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Hymnus Adv Vespera'
+        });
+      }
+    }
+
+    for (const date of ['2026-12-01', '2026-12-15', '2026-12-22'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const vespers = summary.hours.vespers;
+      expect(vespers?.slots.chapter, `${date} Advent Vespers chapter`).toEqual({
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Adv Vespera'
+        }
+      });
+      expect(vespers?.slots.hymn, `${date} Advent Vespers hymn`).toEqual({
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Hymnus Adv Vespera'
+        }
+      });
+      expect(vespers?.slots.versicle, `${date} Advent Vespers versicle`).toEqual({
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Adv Versum 3'
+        }
+      });
+    }
+  }, 240_000);
 });
 
 function loadKalendaria() {

@@ -22,6 +22,41 @@ anchor.
 
 ## Entries
 
+### 2026-05-15 — Pattern: Advent major-hour seasonal later-block fallback (engine fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained Advent Vespers rows where the engine had selected the
+correct Advent temporal office but the later-block fallback still routed
+through the per-weekday ordinary. Representative first-Vespers witnesses
+on 2026-11-28, 2026-12-05, 2026-12-12, and 2026-12-19 emitted
+`Jam sol recédit ígneus` from Saturday Vespers where the source-backed
+Advent hymn is `Creátor alme síderum`.
+
+**Root cause.** The Rubrics 1960 major-hour fallback already had seasonal
+branches for Paschaltide and Lent/Passiontide, but Advent fell through to
+the year-round ferial branch. First Vespers correctly keys psalmody to
+the actual Saturday evening, but the later block still belongs to the
+Advent season whenever the proper Sunday/feria has no explicit hymn,
+chapter, or versicle section.
+
+**Resolution.** Added a reusable Advent major-hour fallback for Lauds and
+Vespers, routing chapters, hymns, and versicles to the Advent sections in
+`Psalterium/Special/Major Special`. Added upstream Rubrics 1960
+regression coverage for the Advent Saturday first-Vespers hymn witnesses
+and the related weekday Advent Vespers later-block references.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:831-854`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:926-951`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016`
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1849` to
+`1844`; exact-match hours rise from `1071` to `1076`; unadjudicated rows
+drop from `490` to `485`.
+
 ### 2026-05-15 — Pattern: Commemorated Confessor common chapters at ferial minor hours (perl-bug)
 
 **Commit.** Current tranche commit.

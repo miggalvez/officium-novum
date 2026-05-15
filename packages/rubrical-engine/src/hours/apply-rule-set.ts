@@ -1818,6 +1818,9 @@ function majorHourLaterBlockFallbackReference(
     (HOLY_WEEK_MON_WED_KEYS.has(input.temporal.dayName)
       ? majorHourHolyWeekMonWedLaterBlockSection(input.hour, slot)
       : undefined) ??
+    (input.temporal.season === 'advent'
+      ? majorHourAdventFerialLaterBlockSection(input.hour, slot)
+      : undefined) ??
     (input.temporal.season === 'lent' || input.temporal.season === 'passiontide'
       ? majorHourLentFerialLaterBlockSection(input.hour, slot)
       : undefined) ??
@@ -1869,6 +1872,38 @@ function majorHourPaschaltideSundayLaterBlockSection(
   }
 
   return undefined;
+}
+
+function majorHourAdventFerialLaterBlockSection(
+  hour: HourName,
+  slot: SlotName
+): string | undefined {
+  switch (hour) {
+    case 'lauds':
+      switch (slot) {
+        case 'chapter':
+          return 'Adv Laudes';
+        case 'hymn':
+          return 'Hymnus Adv Laudes';
+        case 'versicle':
+          return 'Adv Versum 2';
+        default:
+          return undefined;
+      }
+    case 'vespers':
+      switch (slot) {
+        case 'chapter':
+          return 'Adv Vespera';
+        case 'hymn':
+          return 'Hymnus Adv Vespera';
+        case 'versicle':
+          return 'Adv Versum 3';
+        default:
+          return undefined;
+      }
+    default:
+      return undefined;
+  }
 }
 
 function majorHourLentFerialLaterBlockSection(
