@@ -297,6 +297,7 @@ function minorHourLaterBlockOverrideReference(
 
   const section =
     paschalSundaySection ??
+    minorHourPreLentSundayOrdinaryVersicleSection(input) ??
     minorHourAdventLaterBlockSection(input, slot) ??
     minorHourQuadragesimaLaterBlockSection(input, slot);
   if (!section) {
@@ -307,6 +308,21 @@ function minorHourLaterBlockOverrideReference(
     path: minorHourLaterBlockFallbackPath(input.hour, input.temporal.dayOfWeek),
     section
   };
+}
+
+function minorHourPreLentSundayOrdinaryVersicleSection(
+  input: ApplyRuleSetInput
+): string | undefined {
+  if (
+    input.celebration.source !== 'temporal' ||
+    input.celebration.kind ||
+    input.temporal.dayOfWeek !== 0 ||
+    !/^Quadp[1-3]-0$/u.test(input.temporal.dayName)
+  ) {
+    return undefined;
+  }
+
+  return minorHourSundayLaterBlockFallbackSection(input.hour, 'versicle');
 }
 
 function minorHourPaschaltideSundayLaterBlockSection(
