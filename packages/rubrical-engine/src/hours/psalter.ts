@@ -68,12 +68,7 @@ export function selectPsalmodyRoman1960(
       useDominicaRule || isSundayForMajorHour(hour, temporal);
 
     if (hour === 'lauds') {
-      assignments = laudsReferences(
-        temporal,
-        celebrationRules,
-        useSundayPsalmody,
-        useDominicaRule
-      );
+      assignments = laudsReferences(params, useSundayPsalmody, useDominicaRule);
     } else if (hour === 'vespers') {
       assignments = vespersReferences(temporal, useSundayPsalmody);
     } else {
@@ -143,19 +138,112 @@ function isSundayForMajorHour(hour: HourName, temporal: TemporalContext): boolea
 }
 
 function laudsReferences(
-  temporal: TemporalContext,
-  celebrationRules: CelebrationRuleSet,
+  params: SelectPsalmodyInput,
   useSundayPsalmody: boolean,
   useDominicaRule: boolean
 ): readonly PsalmAssignment[] {
-  // RI §§170-172: 1960 restores Lauds I (festive) for Sundays and feasts;
-  // Lauds II (penitential) remains for penitential ferias.
-  const usePenitential =
-    isPenitentialDay(temporal) && !celebrationRules.festumDomini && !useDominicaRule;
-  const scheme = usePenitential ? 'Laudes2' : 'Laudes1';
+  const { temporal } = params;
+  const useLateAdventAntiphons =
+    isTemporalCelebration(params) && usesLateAdventWeekdayAntiphons(temporal);
+  const scheme = usesSecondLaudsSchemeRoman1960(params, useDominicaRule)
+    ? 'Laudes2'
+    : 'Laudes1';
   const weekday = useSundayPsalmody ? 0 : temporal.dayOfWeek;
   const section = `Day${weekday} ${scheme}`;
-  return numberedSectionAssignments(PSALMI_MAJOR, section, 5);
+  const assignments = numberedSectionAssignments(PSALMI_MAJOR, section, 5);
+  if (!useLateAdventAntiphons) {
+    return assignments;
+  }
+
+  const antiphonSection = `Day${weekday} Laudes3`;
+  return Object.freeze(
+    assignments.map((assignment, index) => ({
+      ...assignment,
+      antiphonRef: {
+        path: PSALMI_MAJOR,
+        section: antiphonSection,
+        selector: String(index + 1)
+      }
+    }))
+  );
+}
+
+function usesSecondLaudsSchemeRoman1960(
+  params: SelectPsalmodyInput,
+  useDominicaRule: boolean
+): boolean {
+  // Breviary 1960 no. 197 assigns Laudes II by family: Septuagesima/Lent/
+  // Passiontide Sundays, ferias in the penitential seasons including Advent,
+  // the ferial Office of the September Ember Days, and II/III class vigils
+  // outside Paschaltide.
+  if (params.celebrationRules.festumDomini || useDominicaRule) {
+    return false;
+  }
+
+  const { celebration, temporal } = params;
+  if (isSecondLaudsSunday(temporal)) {
+    return true;
+  }
+
+  if (isFerialOffice(celebration)) {
+    return isSecondLaudsFerialSeason(temporal) || isSeptemberEmberFeria(temporal);
+  }
+
+  return isSecondOrThirdClassVigilOutsidePaschaltide(celebration, temporal);
+}
+
+function isSecondLaudsSunday(temporal: TemporalContext): boolean {
+  return (
+    temporal.dayOfWeek === 0 &&
+    (
+      temporal.season === 'septuagesima' ||
+      temporal.season === 'lent' ||
+      temporal.season === 'passiontide'
+    )
+  );
+}
+
+function isFerialOffice(celebration: Celebration): boolean {
+  return celebration.source === 'temporal' && celebration.kind !== 'vigil';
+}
+
+function isSecondLaudsFerialSeason(temporal: TemporalContext): boolean {
+  return (
+    temporal.dayOfWeek !== 0 &&
+    (
+      temporal.season === 'advent' ||
+      temporal.season === 'septuagesima' ||
+      temporal.season === 'lent' ||
+      temporal.season === 'passiontide' ||
+      temporal.dayName === 'Quadp3-3'
+    )
+  );
+}
+
+function isSeptemberEmberFeria(temporal: TemporalContext): boolean {
+  return (
+    temporal.season === 'time-after-pentecost' &&
+    temporal.rank.classSymbol === 'II-ember-day' &&
+    /^Pent/u.test(temporal.dayName)
+  );
+}
+
+function isSecondOrThirdClassVigilOutsidePaschaltide(
+  celebration: Celebration,
+  temporal: TemporalContext
+): boolean {
+  if (
+    celebration.kind !== 'vigil' ||
+    (celebration.rank.classSymbol !== 'II' && celebration.rank.classSymbol !== 'III')
+  ) {
+    return false;
+  }
+
+  return !isPaschaltideSeason(temporal.season);
+}
+
+function isPaschaltideSeason(season: TemporalContext['season']): boolean {
+  return season === 'eastertide' || season === 'ascensiontide' || season === 'pentecost-octave';
 }
 
 function vespersReferences(
@@ -220,13 +308,16 @@ function complineReferences(params: SelectPsalmodyInput): readonly PsalmAssignme
 }
 
 function usesActualSaturdayComplineForTemporalSunday(params: SelectPsalmodyInput): boolean {
+  const isFestiveOrSemifestiveTemporalSunday =
+    params.celebration.rank.classSymbol === 'I' || params.celebrationRules.festumDomini;
   return (
     params.policyName === 'rubrics-1960' &&
     params.hour === 'compline' &&
     params.temporal.dayOfWeek === 6 &&
     params.celebration.source === 'temporal' &&
     /-0$/u.test(params.temporal.dayName) &&
-    !params.temporal.dayName.startsWith('Nat')
+    !params.temporal.dayName.startsWith('Nat') &&
+    !isFestiveOrSemifestiveTemporalSunday
   );
 }
 
@@ -292,7 +383,7 @@ function weekdayMinorHourReferences(
   ];
 }
 
-const LENTEN_MINOR_HOUR_ANTIPHON_SELECTOR: Readonly<
+const SEASONAL_MINOR_HOUR_ANTIPHON_SELECTOR: Readonly<
   Record<'prime' | 'terce' | 'sext' | 'none', string>
 > = {
   prime: '1',
@@ -323,7 +414,7 @@ function applySeasonalWeekdayMinorHourAntiphon(
       antiphonRef: {
         path: PSALMI_MINOR,
         section,
-        selector: `${LENTEN_MINOR_HOUR_ANTIPHON_SELECTOR[params.hour]}#antiphon`
+        selector: `${SEASONAL_MINOR_HOUR_ANTIPHON_SELECTOR[params.hour]}#antiphon`
       }
     },
     ...assignments.slice(1)
@@ -334,9 +425,14 @@ function seasonalWeekdayMinorHourAntiphonSection(
   params: SelectPsalmodyInput & {
     readonly hour: 'prime' | 'terce' | 'sext' | 'none';
   }
-): 'Quad' | 'Quad5_' | undefined {
+): 'Adv42' | 'Adv43' | 'Adv44' | 'Adv45' | 'Adv46' | 'Adv47' | 'Quad' | 'Quad5_' | undefined {
   if (!isTemporalCelebration(params) || params.temporal.dayOfWeek === 0) {
     return undefined;
+  }
+
+  const adventSection = adventWeekdayMinorHourAntiphonSection(params.temporal);
+  if (adventSection) {
+    return adventSection;
   }
 
   if (/^Quad[56]-[1-6]/u.test(params.temporal.dayName)) {
@@ -345,6 +441,38 @@ function seasonalWeekdayMinorHourAntiphonSection(
 
   if (/^Quad(?:p3-[3-6]|[1-4]-[1-6])/u.test(params.temporal.dayName)) {
     return 'Quad';
+  }
+
+  return undefined;
+}
+
+function usesLateAdventWeekdayAntiphons(temporal: TemporalContext): boolean {
+  const [, month, day] = temporal.date.match(/^\d{4}-(\d{2})-(\d{2})$/u) ?? [];
+  return (
+    temporal.season === 'advent' &&
+    temporal.dayOfWeek > 0 &&
+    month === '12' &&
+    day !== undefined &&
+    Number(day) > 16 &&
+    Number(day) < 24
+  );
+}
+
+function adventWeekdayMinorHourAntiphonSection(
+  temporal: TemporalContext
+): 'Adv42' | 'Adv43' | 'Adv44' | 'Adv45' | 'Adv46' | 'Adv47' | undefined {
+  if (temporal.season !== 'advent' || temporal.dayOfWeek === 0) {
+    return undefined;
+  }
+
+  if (usesLateAdventWeekdayAntiphons(temporal)) {
+    return `Adv4${temporal.dayOfWeek + 1}` as
+      | 'Adv42'
+      | 'Adv43'
+      | 'Adv44'
+      | 'Adv45'
+      | 'Adv46'
+      | 'Adv47';
   }
 
   return undefined;

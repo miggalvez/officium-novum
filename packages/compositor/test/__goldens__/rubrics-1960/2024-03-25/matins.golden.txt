@@ -367,7 +367,7 @@ warning count: 0
   Latin: text("* Ego autem existimábam me tamquam mórtuum super terram.")
   Latin: [V.] text("Effudérunt furórem suum in me: fremuérunt contra me déntibus suis.")
   Latin: [R.] text("Ego autem existimábam me tamquam mórtuum super terram.")
-  Latin: [V.] text("Glória Patri, et Fílio, * et Spirítui Sancto.")
+  Latin: text("Gloria omittitur")
   Latin: [R.] text("Insurrexérunt in me viri iníqui absque misericórdia, quæsiérunt me interfícere: et non pepercérunt in fáciem meam spúere, et lánceis suis vulneravérunt me: et concússa sunt ómnia ossa mea: * Ego autem existimábam me tamquam mórtuum super terram.")
 
 [section #31 type=other slot=de-officio-capituli reference=horas/Latin/Psalterium/Common/Rubricae#Matutinum languages=Latin]
@@ -377,6 +377,9 @@ warning count: 0
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [v.] text("Orémus.")
+  Latin: text("Da, quǽsumus, omnípotens Deus: ut, qui in tot advérsis ex nostra infirmitáte defícimus; intercedénte unigéniti Fílii tui passióne respirémus:")
+  Latin: [r.] text("Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.")
+  Latin: [R.] text("Amen.")
 
 [section #33 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")

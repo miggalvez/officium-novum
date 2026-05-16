@@ -22,6 +22,482 @@ anchor.
 
 ## Entries
 
+### 2026-05-16 — Pattern: Additional late-Advent ferial Prime short-lesson witnesses (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the late-Advent psalmody fixes, Dec 17,
+Dec 18, Dec 19, and Dec 22 advanced from opening-antiphon mismatches to
+the already-known Prime short-lesson signature: Perl keeps the Sunday
+`1 Tim. 1:17` citation while the compositor emits the ferial
+`Zach 8:19` citation.
+
+**Root cause.** Same source-backed family as the May 5 Rubrics 1960
+Prime fanout. `Prima Special` distinguishes `[Dominica]` from `[Feria]`;
+these are temporal Advent weekdays, so the source-backed ferial Prime
+chapter is `Zach 8:19`, followed by the ordinary Prime responsory. The
+Perl comparison surface retains the Sunday chapter citation.
+
+**Resolution.** Class `perl-bug`. Added four late-Advent 2026 row-key
+adjudications for the stable `1 Tim. 1:17` -> `Zach 8:19` first
+divergence and added a compositor regression proving the 2026-12-17
+Prime chapter renders the ferial `Zach 8:19` source.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `242` to
+`238`; divergent-hour totals are unchanged because this is an
+adjudication fanout of already-rendered source-backed output.
+
+### 2026-05-16 — Pattern: Rubrics 1960 late-Advent weekday psalmody and canticle antiphons (engine/compositor fixed, perl-bug fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier carried repeated late-Advent weekday rows on Dec 17-19 and
+Dec 22-23. The visible signatures were Lauds and minor-hour antiphons
+using ordinary weekday material instead of the assigned late-Advent
+tables, Terce/Sext/None chapters using the ordinary per-annum block, and
+Dec 23 Lauds using the temporal feria Benedictus antiphon instead of
+the named late-Advent Lauds antiphon.
+
+**Root cause.** Phase 2 selected Laudes II for Advent ferias but did not
+attach the separate `Laudes3` antiphon table for Dec 17-23 weekdays,
+and minor-hour selection did not route those weekdays to the `Adv42`-
+`Adv47` tables. Phase 3 also treated those `Psalmi minor` rows as raw
+numbered text instead of keyed antiphon rows. The later-block resolver
+used ordinary Terce/Sext/None chapters on late-Advent ferias, and the
+major-hour resolver allowed the temporal `[Ant 2]` / `[Ant 3]` to win
+over the date-keyed `Major Special` Advent canticle antiphons. Once
+these bugs were fixed, the Dec 23 Prime row advanced to the already
+source-backed ferial Prime short-lesson family; its new row key is
+classified as `perl-bug`.
+
+**Resolution.** Rubrics 1960 psalmody now keeps the source weekday
+psalm rows while attaching `DayN Laudes3` antiphon refs for Dec 17-23
+temporal weekdays, and routes minor hours through `Adv42`-`Adv47`.
+The compositor resolver now parses those Advent minor-hour rows as
+numbered antiphons. The later-block resolver selects `Adv Tertia`,
+`Adv Sexta`, and `Adv Nona` for late-Advent weekday minor hours, and
+the major-hour resolver gives the `Major Special` O-antiphon sections
+priority for Dec 17-23 Vespers plus the Dec 21/23 Lauds antiphons.
+Added engine and compositor regressions using representative 2026
+witnesses.
+
+**Citation.** `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:145-149`;
+`upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166`;
+`upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:203`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:269-309`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:116-156`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:154-209`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1018-1043`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1784` to
+`1763`, exact-match hours rise from `1136` to `1157`, Lauds divergences
+drop from `243` to `242`, Vespers divergences drop from `294` to `293`,
+and unadjudicated rows drop from `243` to `242`.
+
+### 2026-05-16 — Pattern: Rubrics 1960 separated Matins uses the proper `Oratio 2` collect (engine-bug fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026 frontier
+carried a 16-row Matins family across Lent and Passiontide ferias. The
+Perl comparison surface reached the proper collect after the separated
+Matins `Orémus.`, while the compositor jumped from `Orémus.` to the
+closing `Dómine, exáudi` / `Benedicámus` conclusion.
+
+**Root cause.** The Matins hour structurer correctly kept the Ordinarium
+`Matutinum` wrapper for the separated conclusion, but its proper-oration
+lookup only considered `[Oratio]` for Matins. Rubrics 1960 temporal
+Lenten ferias, and other proper/common offices such as All Souls, place
+the post-Matins/Lauds collect in `[Oratio 2]`, the same source section
+used by Lauds. When `[Oratio]` was absent, the engine fell back to the
+empty Ordinarium `#Oratio` wrapper and omitted the source-backed collect.
+
+**Resolution.** Rubrics 1960 Matins now searches `[Oratio 2]` before
+`[Oratio]`, preserving the Ordinarium wrapper while selecting the
+proper temporal collect. Added engine coverage for the 2026-02-21 and
+2026-03-03 slot refs, compositor coverage proving the collect renders
+before the Matins conclusion, and updated the Rubrics 1960 Appendix-A
+Matins goldens whose source-backed collects now appear.
+
+**Citation.** `upstream/web/www/horas/Ordinarium/Matutinum.txt:44-52`;
+`upstream/web/www/horas/Latin/Tempora/Quadp3-6.txt:43-45`;
+`upstream/web/www/horas/Latin/Tempora/Quad2-2.txt:38-40`;
+`upstream/web/www/horas/Latin/Commune/C9.txt:262-264`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1800` to
+`1784`, exact-match hours rise from `1120` to `1136`, Matins divergences
+drop from `321` to `305`, and unadjudicated rows drop from `259` to
+`243`.
+
+### 2026-05-15 — Pattern: First-Vespers Compline distinguishes festive Sunday from ordinary Sunday Office (engine fixed, perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026 frontier
+carried a three-row Compline family where Perl opened psalmody with the
+Sunday `Miserére` row while the compositor opened with the Saturday
+`Intret` row on Jan 10, May 30, and Oct 24.
+
+**Root cause.** The engine's Rubrics 1960 Compline psalmody selector
+treated every temporal Sunday First Vespers as an ordinary Sunday Office
+and forced the actual Saturday Compline row. That was correct for
+ordinary Sundays, but too broad for festive and semifestive Sunday
+offices: Breviary 1960 nos. 167-168 assign Compline after First Vespers
+to Sunday for first- and second-class festive offices, while no. 166
+assigns Compline after First Vespers of the Sunday Office to Saturday.
+Once the Trinity witness advanced past psalmody, it exposed a compositor
+resolver bug: the synthetic Paschal Compline responsory path used the
+civil day's Pentecost-octave season even when the Compline structure had
+already moved to Trinity and carried no Paschal responsory directive.
+
+**Resolution.** Narrowed the Saturday-Compline exception to ordinary
+temporal Sunday offices, preserving Sunday Compline for first-class
+temporal offices and temporal feasts of the Lord. Added selector and
+compositor coverage for the Holy Family and Trinity 2026 witnesses, and
+locked ordinary-Sunday Saturday Compline for Jan 17 and Oct 24. Removed
+the unconditional synthetic Compline Paschal responsory fallback so
+Compline responsory shaping follows the engine directive. The Oct 24 row
+is classified as `perl-bug`; Jan 10 then advances to the already
+adjudicated Holy Family fallback-hymn doxology family.
+
+**Citation.** `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:101-103`;
+`upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:113-129`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:78-79`;
+`upstream/web/www/horas/Latin/Tempora/Pent22-0.txt:1-10`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1835` to
+`1834`, exact-match hours rise from `1085` to `1086`, Compline
+divergences drop from `83` to `82`, and unadjudicated rows drop from
+`457` to `455`.
+
+### 2026-05-15 — Pattern: Additional proper first-Vespers Psalm 116 witnesses (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained three more Vespers rows on 2026-08-10, 2026-11-01,
+and 2026-11-23 where Perl retained `Psalmus 115 [5]`; the compositor
+emitted `Psalmus 116 [5]`.
+
+**Root cause.** This is the same source-backed proper first-Vespers
+fifth-psalm override family as the earlier Psalm 116 tranche. St
+Lawrence and All Saints explicitly set `Psalm5 Vespera=116` and
+`Psalm5 Vespera3=115`; St Clement keys its fifth Vespers antiphon
+directly to Psalm 116 with `;;116`.
+
+**Resolution.** Class `perl-bug`. Added three 2026 row-key
+adjudications and extended the upstream-composition Psalm 116 regression
+with St Lawrence, All Saints, and St Clement witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/08-10.txt:11-17`
+- `upstream/web/www/horas/Latin/Sancti/11-01.txt:9-15`
+- `upstream/web/www/horas/Latin/Sancti/11-23.txt:17-23`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmorum/Psalm116.txt:1-2`
+
+**Impact.** Expected to keep divergent hours at `1835` and drop
+unadjudicated rows from `460` to `457` once the 2026 ledger is
+regenerated.
+
+### 2026-05-15 — Pattern: Advent `Oratio Dominica` must not replace the fixed Compline collect (engine-bug fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained Advent Compline rows where the compositor jumped from
+the Nunc dimittis antiphon directly into the Advent Sunday collect
+(`Excita...` / `Aurem tuam...`) instead of the ordinary Compline prayer
+sequence with `Vísita, quǽsumus, Dómine...`.
+
+**Root cause.** The previous `Oratio Dominica` engine fix correctly
+routed weekday Lauds, Vespers, and minor-hour orations to the Sunday
+collect, but the hour flag was still allowed to apply to Compline.
+Rubrics 1960 explicitly keeps the Prime and Compline collects fixed
+except for the named exceptions; the ordinary Compline skeleton and
+common-prayer corpus provide the `Dómine, exáudi` / `Orémus` prelude and
+`Vísita` collect.
+
+**Resolution.** Fixed the engine so `dominicalOration` does not override
+Compline's oration slot. Added upstream-composition coverage for the
+Advent 2026 witnesses that previously leaked Sunday/seasonal collects
+into Compline.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:328-332`
+- `upstream/web/www/horas/Ordinarium/Completorium.txt:47-60`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:364-368`
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1844` to
+`1835`; exact-match hours rise from `1076` to `1085`; unadjudicated rows
+drop from `469` to `460`.
+
+### 2026-05-15 — Pattern: Apostle proper minor-hour antiphons under `Antiphonas horas` (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained Prime, Terce, Sext, and None rows for the Apostle
+feasts on 2026-08-24, 2026-09-21, and 2026-12-21. Perl surfaced the
+ordinary psalter antiphons, while the compositor emitted the Apostle
+proper minor-hour antiphons inherited from the C1/C1a common.
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The three sanctoral offices carry `ex C1` or
+`ex C1a`, `Psalmi Dominica`, and `Antiphonas horas`; the Apostle common
+maps `[Ant Laudes]` to `[Ant Vespera]`, whose first, second, third, and
+fifth antiphons are the proper minor-hour antiphons for Prime, Terce,
+Sext, and None. The file-format contract records `Antiphonas horas` as
+the instruction to use proper antiphons for the Hours.
+
+**Resolution.** Class `perl-bug`. Added twelve 2026 row-key
+adjudications and upstream-composition coverage proving that these
+II-class Apostle offices keep the C1/C1a antiphon set at the minor
+Hours instead of falling back to ordinary psalter antiphons.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Sancti/08-24.txt:11-15`
+- `upstream/web/www/horas/Latin/Sancti/09-21.txt:11-15`
+- `upstream/web/www/horas/Latin/Sancti/12-21.txt:11-15`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:10-15`
+- `upstream/web/www/horas/Latin/Commune/C1.txt:261-262`
+- `docs/file-format-specification.md:638`
+
+**Impact.** Expected to keep divergent hours at `1844` and drop
+unadjudicated rows from `481` to `469` once the 2026 ledger is
+regenerated.
+
+### 2026-05-15 — Pattern: Advent Matins invitatory on commemorated Confessors (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained four Advent Matins rows on 2026-12-03, 2026-12-04,
+2026-12-07, and 2026-12-11 where Perl surfaced the Confessor-common
+invitatory `Regem Confessórum Dóminum`; the compositor emitted the
+Advent seasonal invitatory `Regem ventúrum Dóminum`.
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The winning office on each witness date is the
+Advent feria; the Confessor is only commemorated. Under the 1960 rubrics,
+commemorations are made after the office collect and consist of the
+Benedictus/Magnificat antiphon, verse, and collect. They do not replace
+the Matins invitatory of the office of the day.
+
+**Resolution.** Class `perl-bug`. Added four 2026 row-key
+adjudications and upstream-composition coverage proving the temporal
+Advent celebration, sanctoral commemoration, and seasonal Matins
+invitatory on the representative witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:188-191`
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:336-339`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Matutinum Special.txt:36-37`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:91-92`
+
+**Impact.** Expected to keep divergent hours at `1844` and drop
+unadjudicated rows from `485` to `481` once the 2026 ledger is
+regenerated.
+
+### 2026-05-15 — Pattern: Advent major-hour seasonal later-block fallback (engine fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained Advent Vespers rows where the engine had selected the
+correct Advent temporal office but the later-block fallback still routed
+through the per-weekday ordinary. Representative first-Vespers witnesses
+on 2026-11-28, 2026-12-05, 2026-12-12, and 2026-12-19 emitted
+`Jam sol recédit ígneus` from Saturday Vespers where the source-backed
+Advent hymn is `Creátor alme síderum`.
+
+**Root cause.** The Rubrics 1960 major-hour fallback already had seasonal
+branches for Paschaltide and Lent/Passiontide, but Advent fell through to
+the year-round ferial branch. First Vespers correctly keys psalmody to
+the actual Saturday evening, but the later block still belongs to the
+Advent season whenever the proper Sunday/feria has no explicit hymn,
+chapter, or versicle section.
+
+**Resolution.** Added a reusable Advent major-hour fallback for Lauds and
+Vespers, routing chapters, hymns, and versicles to the Advent sections in
+`Psalterium/Special/Major Special`. Added upstream Rubrics 1960
+regression coverage for the Advent Saturday first-Vespers hymn witnesses
+and the related weekday Advent Vespers later-block references.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:831-854`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:926-951`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1014-1016`
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1849` to
+`1844`; exact-match hours rise from `1071` to `1076`; unadjudicated rows
+drop from `490` to `485`.
+
+### 2026-05-15 — Pattern: Commemorated Confessor common chapters at ferial minor hours (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained twelve Terce/Sext/None rows on 2026-06-22,
+2026-12-04, 2026-12-07, and 2026-12-11. Perl surfaced Confessor-common
+C4 chapter citations (`Sir 44:16-17`, `Sir 44:20; 44:22`, and
+`Sir 45:19-20`); the compositor emitted the ferial minor-hour chapters
+(`Jer 17:14`, `Rom 13:8`, and `1 Pet 1:17-19`).
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The winning office on each witness date is the
+temporal feria; the Confessor office is, at most, a commemoration. The
+1960 rubrics define little chapters at Terce/Sext/None as belonging to
+the office type and define commemorations as antiphon, verse, and collect
+after the collect of the office. A commemorated Confessor therefore does
+not supply the minor-hour chapters for the ferial office.
+
+**Resolution.** Class `perl-bug`. Added twelve 2026 row-key
+adjudications and upstream-composition coverage proving the temporal
+celebration, sanctoral commemoration, and ferial chapter citations on
+representative June and Advent witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:320-339`
+- `upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:86-132`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:240-295`
+
+**Impact.** Expected to keep divergent hours at `1849` and drop
+unadjudicated rows from `502` to `490` once the 2026 ledger is
+regenerated.
+
+### 2026-05-15 — Pattern: 2026 Psalm 116 fifth-Vespers override fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier still contained four Vespers rows whose stable key-hashes
+already belonged to source-backed Psalm 116 fifth-slot override
+families. The three Pentecost-octave witnesses on 2026-05-27,
+2026-05-28, and 2026-05-29 had Perl retaining `Psalmus 113 [5]`; the
+2026-09-29 St Michael witness had Perl retaining `Psalmus 137 [5]`.
+The compositor emitted `Psalmus 116 [5]` in each case.
+
+**Root cause.** This is a Perl comparison-surface fanout, not an engine
+or compositor defect. The Pentecost octave ferias inherit the Pentecost
+rule set by `ex Pasc7-0`, whose `[Rule]` explicitly sets
+`Psalm5 Vespera=116` and `Psalm5 Vespera3=113`. The Dedication of St
+Michael likewise explicitly sets `Psalm5 Vespera=116` and
+`Psalm5 Vespera3=137`. The source-backed first-Vespers fifth slot is
+therefore Psalm 116; Perl keeps the later/default fifth heading.
+
+**Resolution.** Class `perl-bug`. Added four 2026 row-key
+adjudications and upstream-composition coverage for representative
+Pentecost-octave and St Michael witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-3.txt:10-18`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-4.txt:12-20`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-5.txt:7-15`
+- `upstream/web/www/horas/Latin/Tempora/Pasc7-0.txt:7-13`
+- `upstream/web/www/horas/Latin/Sancti/09-29.txt:11-16`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:15-20`
+
+**Impact.** Expected to keep divergent hours at `1849` and drop
+unadjudicated rows from `506` to `502` once the 2026 ledger is
+regenerated.
+
+### 2026-05-15 — Pattern: Matins Te Deum replacement responsory final Gloria/repeat (engine/compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier contained a fifteen-row Matins family where the compositor
+rendered the third or ninth responsory in place of the omitted Te Deum,
+then moved directly to the `Reliqua omittuntur...` Matins-Lauds
+separation rubric. Perl expected the replacement responsory to receive
+the last-responsory ending first: `Glória Patri` plus the final response
+outside Passiontide, and `Gloria omittitur` plus the whole responsory
+repeat in Passiontide. Representative witnesses include 2026-02-13 and
+2026-03-27.
+
+**Root cause.** This was a reusable Matins structure bug, not a
+date-specific overlay issue. The engine marked the final responsory as a
+Te Deum replacement but did not mark it for the last-responsory
+Gloria/repeat ending. The compositor also treated responsory-like
+`te-deum` replacement slots as `te-deum` for directive transforms, so
+Passiontide Matins did not route through the same responsory directive
+path as ordinary responsories.
+
+**Resolution.** Marked Te Deum replacement responsories with
+`appendGloria`, taught the merged Matins slot renderer to apply
+responsory directives to responsory-like `te-deum` slots, and emitted
+Rubrics 1960 Passiontide `omit-responsory-gloria` directives for Matins
+as well as the minor hours. Added engine unit coverage plus 2026
+upstream-composition witnesses for an ordinary Septuagesima responsory
+and a Passiontide responsory before the Matins-Lauds separation rubric.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:277-317`
+- `upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:69-72`
+- `upstream/web/www/horas/Latin/Tempora/Quadp2-0.txt:99-103`
+- `upstream/web/www/horas/Latin/Tempora/Quad5-0.txt:96-101`
+
+**Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
+`1851` to `1849`, exact-match hours rise from `1069` to `1071`, and
+unadjudicated rows drop from `508` to `506`.
+
+### 2026-05-15 — Pattern: full-year C2/C3/C4/C4a/C5/C6 common-antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier still contained 78 antiphon-opening rows where Perl kept the
+weekday psalter antiphon and the compositor emitted an assigned common
+antiphon from C2, C3, C4/C4a, C5, or C6. This tranche classifies the
+76 rows whose selected office has direct `Sancti/MM-DD.txt` source
+routing. The two June 17 rows are intentionally left unclassified
+pending separate overlay proof because that witness does not have a
+direct June 17 sanctoral source file.
+
+**Root cause.** This is the same source-backed common-antiphon ownership
+family exposed by the January tranche, now expanded across the civil
+year. The affected offices route to common sources through direct
+`vide`, `ex`, `Psalmi`, or `Antiphonas` instructions. Those common
+sources assign the antiphons the compositor emits, while Breviary 1960
+nos. 169 and 177 preserve the weekday psalter antiphons for third-class
+offices only when no proper or common antiphons are assigned.
+
+**Resolution.** Class `perl-bug`. Added 76 row-key adjudications for the
+directly routed full-year C2/C3/C4/C4a/C5/C6 witnesses. Added broader
+upstream integration coverage for representative February, Paschaltide,
+July, and November witnesses while preserving the January checks.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177`
+- Representative direct routes:
+  `upstream/web/www/horas/Latin/Sancti/02-04.txt:9-10`,
+  `upstream/web/www/horas/Latin/Sancti/05-17.txt:9-10`,
+  `upstream/web/www/horas/Latin/Sancti/07-10.txt:11-12`,
+  `upstream/web/www/horas/Latin/Sancti/11-14.txt:9-10`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:9-14`
+- `upstream/web/www/horas/Latin/Commune/C5.txt:9-19,131-140,223-232`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252`
+
+**Impact.** Expected to keep divergent hours at `1851` and drop
+unadjudicated rows from `584` to `508` once the 2026 ledger is
+regenerated.
+
 ### 2026-05-15 — Pattern: Matins Te Deum replacement responsory separator and Gloria repeat (compositor fixed)
 
 **Commit.** Current tranche commit.
@@ -57,6 +533,54 @@ real Pentecost ferial Matins source.
 **Impact.** `Rubrics 1960 - 1960` / 2026 divergent hours drop from
 `1855` to `1851`, exact-match hours rise from `1065` to `1069`, and
 unadjudicated rows drop from `621` to `617`.
+
+### 2026-05-15 — Pattern: January C2/C3/C4/C4a/C6 common-antiphon fanout (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The live `Rubrics 1960 - 1960` / 2026 January
+frontier still contained third-class sanctoral offices where the first
+divergence was the same source-backed common-antiphon ownership already
+adjudicated for later 2026 witnesses. Perl keeps weekday psalter
+antiphons at Matins, Lauds, Prime, Terce, Sext, None, or Vespers, while
+the compositor emits assigned common antiphons from C2, C3, C4/C4a, or
+C6.
+
+**Root cause.** This is not a new engine or compositor defect. The
+affected January offices route through common families such as `vide
+C2b`, `vide C3`, `vide C4a`, and `vide C6`. Those source commons either
+declare `Psalmi Dominica` / `Antiphonas horas` directly or inherit the
+assigned common antiphons. Breviary 1960 nos. 169 and 177 retain the
+weekday psalter for third-class offices only unless proper or common
+antiphons are assigned.
+
+**Resolution.** Class `perl-bug`. Added 33 row-key adjudications for
+the January C2/C3/C4/C4a/C6 common-antiphon witnesses, keeping distinct
+Compline, Sunday, and psalm-heading seams unclassified for separate
+review. Added an upstream integration regression for representative
+January 2026 C2, C3, and C6 witnesses.
+
+**Citation.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166-177`
+- `upstream/web/www/horas/Latin/Sancti/01-14.txt:17-20`
+- `upstream/web/www/horas/Latin/Sancti/01-16.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-20.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-22.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-24.txt:11-12`
+- `upstream/web/www/horas/Latin/Sancti/01-26.txt:11-12`
+- `upstream/web/www/horas/Latin/Sancti/01-27.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-29.txt:9-10`
+- `upstream/web/www/horas/Latin/Sancti/01-30.txt:9-10`
+- `upstream/web/www/horas/Latin/Commune/C2.txt:7-18,70-79,214-223`
+- `upstream/web/www/horas/Latin/Commune/C3.txt:7-18,128-137,261-270`
+- `upstream/web/www/horas/Latin/Commune/C4.txt:7-18,106-115,237-246`
+- `upstream/web/www/horas/Latin/Commune/C4a.txt:9-14`
+- `upstream/web/www/horas/Latin/Commune/C6.txt:7-16,116-125,246-252`
+
+**Impact.** Expected to keep divergent hours at `1851` and drop
+unadjudicated rows from `617` to `584` once the 2026 ledger is
+regenerated.
 
 ### 2026-05-13 — Pattern: later 2026 female common antiphon fanout (perl-bug)
 
@@ -7515,6 +8039,35 @@ versicle seam.
 **Impact.** Rubrics 1960 2026 divergent hours drop from `1902` to
 `1899`; exact-match hours rise from `1018` to `1021`; unadjudicated rows
 drop from `781` to `780`.
+
+### 2026-05-15 — Pattern: Paschaltide concrete antiphons vs generic Perl Alleluia (source-backed adjudication)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the 1960 Laudes II correction, the Rubrics 1960
+2026 frontier still carried 35 rows where the Perl comparison surface
+expected `Ant. Allelúja, * allelúja, allelúja.`. Thirty-four of those
+rows had source-backed concrete antiphons from the temporal psalter,
+Ascension proper, or St Mark's Paschaltide apostle common; the remaining
+2026-05-18 Matins row exposes a distinct antiphon/heading issue and
+remains unadjudicated.
+
+**Resolution.** Classified the 34 source-backed rows as `perl-bug`.
+Breviary 1960 no. 195 directs adding Alleluia to Paschaltide antiphons
+unless already present; it does not replace the assigned antiphon with a
+generic triple-Alleluia antiphon. Added compositor coverage for the
+representative temporal psalter, Ascension, and St Mark common witnesses.
+
+**Citation.** `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:204-208`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi matutinum.txt:18-112`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:43-147`;
+`upstream/web/www/horas/Latin/Tempora/Pasc5-4.txt:19-24,148-154`;
+`upstream/web/www/horas/Latin/Sancti/04-25.txt:11-17`;
+`upstream/web/www/horas/Latin/Commune/C1p.txt:6-18`.
+
+**Impact.** Rubrics 1960 2026 exact/divergent hours remain `1088/1832`
+because this is an adjudication-only tranche; unadjudicated rows drop
+from `455` to `421`.
 
 ## See also
 

@@ -44,7 +44,10 @@ describe('buildMatinsPlan', () => {
     expect(result.plan.totalLessons).toBe(3);
     expect(result.plan.teDeum).toBe('replace-with-responsory');
     const replaced = result.plan.nocturnPlan[0]?.responsories[2];
-    expect(replaced?.replacesTeDeum).toBe(true);
+    expect(replaced).toMatchObject({
+      appendGloria: true,
+      replacesTeDeum: true
+    });
     expect(result.plan.nocturnPlan[0]?.benedictions).toEqual([
       {
         index: 1,
@@ -1231,7 +1234,10 @@ describe('buildMatinsPlan', () => {
     expect(result.plan.totalLessons).toBe(4);
     expect(result.plan.teDeum).toBe('replace-with-responsory');
     const replaced = result.plan.nocturnPlan[0]?.responsories[2];
-    expect(replaced?.replacesTeDeum).toBe(true);
+    expect(replaced).toMatchObject({
+      appendGloria: true,
+      replacesTeDeum: true
+    });
   });
 
   it('omits Te Deum in the Sacred Triduum without responsory replacement markers', () => {

@@ -134,16 +134,19 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
         const cases = [
           {
             hour: 'terce',
+            chapter: 'horas/Latin/Psalterium/Special/Minor Special:Adv Tertia',
             responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Tertia',
             versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Tertia'
           },
           {
             hour: 'sext',
+            chapter: 'horas/Latin/Psalterium/Special/Minor Special:Adv Sexta',
             responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Sexta',
             versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Sexta'
           },
           {
             hour: 'none',
+            chapter: 'horas/Latin/Psalterium/Special/Minor Special:Adv Nona',
             responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Nona',
             versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Nona'
           }
@@ -154,6 +157,12 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
             expectSingleRef(slotAt(engine, date, entry.hour, 'responsory'), entry.responsory);
             expectSingleRef(slotAt(engine, date, entry.hour, 'versicle'), entry.versicle);
           }
+        }
+
+        for (const entry of cases) {
+          expectSingleRef(slotAt(engine, '2024-12-17', entry.hour, 'chapter'), entry.chapter);
+          expectSingleRef(slotAt(engine, '2024-12-17', entry.hour, 'responsory'), entry.responsory);
+          expectSingleRef(slotAt(engine, '2024-12-17', entry.hour, 'versicle'), entry.versicle);
         }
       }
     },
@@ -364,6 +373,51 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
           'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:5#antiphon',
           ['58(2-11)', '58(12-18)', '59']
         );
+      }
+
+      const roman1960 = engines.get('Rubrics 1960 - 1960');
+      expect(roman1960, 'Rubrics 1960 - 1960 engine').toBeDefined();
+      if (roman1960) {
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'prime'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:1#antiphon',
+          ['22', '71(2-8)', '71(9-19)']
+        );
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'terce'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:2#antiphon',
+          ['72(1-9)', '72(10-17)', '72(18-28)']
+        );
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'sext'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:3#antiphon',
+          ['73(1-9)', '73(10-17)', '73(18-23)']
+        );
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'none'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:5#antiphon',
+          ['74', '75(2-7)', '75(8-13)']
+        );
+      }
+    },
+    240_000
+  );
+
+  it(
+    'uses the source-backed Oratio 2 collect for separated Rubrics 1960 Lenten Matins',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine).toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      for (const [date, officePath] of [
+        ['2026-02-21', 'horas/Latin/Tempora/Quadp3-6'],
+        ['2026-03-03', 'horas/Latin/Tempora/Quad2-2']
+      ] as const) {
+        expectSingleRef(slotAt(engine, date, 'matins', 'oration'), `${officePath}:Oratio 2`);
       }
     },
     240_000
@@ -1071,7 +1125,7 @@ function expectVersum2LaterBlock(
 function slotAt(
   engine: RubricalEngine,
   date: string,
-  hour: 'prime' | 'terce' | 'sext' | 'none' | 'compline',
+  hour: 'matins' | 'prime' | 'terce' | 'sext' | 'none' | 'compline',
   slotName:
     | 'chapter'
     | 'responsory'

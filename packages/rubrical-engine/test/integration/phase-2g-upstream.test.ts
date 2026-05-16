@@ -134,6 +134,38 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
       expect(benedictus.ref.section).toBe('Ant 2');
       expect(benedictus.ref.path).toMatch(/^horas\/Latin\/Tempora\/Pent\d{2}-0$/u);
     }
+
+    const majorSpecialPath = 'horas/Latin/Psalterium/Special/Major Special';
+    expect(summary.hours.lauds?.slots.chapter).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Laudes' }
+    });
+    expect(summary.hours.lauds?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Hymnus Day0 Laudes' }
+    });
+    expect(summary.hours.lauds?.slots.versicle).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Versum 2' }
+    });
+    expect(summary.hours.vespers?.slots.chapter).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Vespera' }
+    });
+    expect(summary.hours.vespers?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Hymnus Day0 Vespera' }
+    });
+    expect(summary.hours.vespers?.slots.versicle).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Versum 3' }
+    });
+
+    const epiphanySunday = engine.resolveDayOfficeSummary('2026-01-18');
+    expect(epiphanySunday.hours.lauds?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Hymnus Day0 Laudes hiemalis' }
+    });
   }, 240_000);
 
   it('Codex follow-up P1: Ordinarium heading rubrics suppress final-antiphon-bvm under 1960', async () => {
@@ -277,6 +309,79 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
         });
       }
     }
+  }, 240_000);
+
+  it('routes Rubrics 1960 Advent major-hour later blocks through seasonal fallbacks', async () => {
+    const corpus = await loadCorpus(UPSTREAM_ROOT, { resolveReferences: false });
+    const versionRegistry = buildVersionRegistry(
+      parseVersionRegistry(readFileSync(resolve(UPSTREAM_ROOT, 'Tabulae/data.txt'), 'utf8'))
+    );
+    const engine = createRubricalEngine({
+      corpus: corpus.index,
+      kalendarium: buildKalendariumTable(loadKalendaria()),
+      yearTransfers: buildYearTransferTable(loadTransferTables()),
+      scriptureTransfers: buildScriptureTransferTable(loadScriptureTransferTables()),
+      versionRegistry,
+      version: asVersionHandle('Rubrics 1960 - 1960'),
+      policyMap: VERSION_POLICY
+    });
+
+    for (const date of ['2026-11-28', '2026-12-05', '2026-12-12', '2026-12-19'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      expect(summary.concurrence.sourceSide, `${date} should be first Vespers`).toBe('first');
+      const hymn = summary.hours.vespers?.slots.hymn;
+      expect(hymn?.kind, `${date} Advent first Vespers hymn`).toBe('single-ref');
+      if (hymn?.kind === 'single-ref') {
+        expect(hymn.ref, `${date} Advent first Vespers hymn`).toEqual({
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Hymnus Adv Vespera'
+        });
+      }
+    }
+
+    for (const date of ['2026-12-01', '2026-12-15', '2026-12-22'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const vespers = summary.hours.vespers;
+      expect(vespers?.slots.chapter, `${date} Advent Vespers chapter`).toEqual({
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Adv Vespera'
+        }
+      });
+      expect(vespers?.slots.hymn, `${date} Advent Vespers hymn`).toEqual({
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Hymnus Adv Vespera'
+        }
+      });
+      expect(vespers?.slots.versicle, `${date} Advent Vespers versicle`).toEqual({
+        kind: 'single-ref',
+        ref: {
+          path: 'horas/Latin/Psalterium/Special/Major Special',
+          section: 'Adv Versum 3'
+        }
+      });
+    }
+
+    const lateAdventVespers = engine.resolveDayOfficeSummary('2026-12-22').hours.vespers;
+    expect(lateAdventVespers?.slots['antiphon-ad-magnificat']).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Adv Ant 22'
+      }
+    });
+
+    const lateAdventLauds = engine.resolveDayOfficeSummary('2026-12-23').hours.lauds;
+    expect(lateAdventLauds?.slots['antiphon-ad-benedictus']).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Adv Ant 23L'
+      }
+    });
   }, 240_000);
 });
 

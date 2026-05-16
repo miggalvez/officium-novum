@@ -1087,7 +1087,7 @@ function isPrivilegedCommemoration1960(entry: Commemoration): boolean {
     return true;
   }
 
-  if (/^Tempora\/Pent17-[356]$/u.test(path)) {
+  if (/^Tempora\/(?:Pent17|093)-[356]$/u.test(path)) {
     return true;
   }
 

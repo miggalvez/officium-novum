@@ -217,13 +217,6 @@ function synthesizePaschalSpecialResponsory(
     );
   }
 
-  if (
-    reference.section === 'Responsory Completorium' &&
-    reference.path.endsWith('/Psalterium/Special/Minor Special')
-  ) {
-    return synthesizeComplinePaschalResponsory(index, reference, language, resolveSectionByName);
-  }
-
   return undefined;
 }
 
@@ -266,29 +259,6 @@ function primePaschalResponsorySection(season: ResolveOptions['season']): string
     default:
       return 'Responsory Pasch';
   }
-}
-
-function synthesizeComplinePaschalResponsory(
-  index: TextIndex,
-  reference: TextReference,
-  language: string,
-  resolveSectionByName: SectionResolver
-): ResolvedSection | undefined {
-  const localizedPath = swapLanguageSegment(reference.path, language);
-  const responsory = firstSection(index, [localizedPath], 'Responsory Completorium', resolveSectionByName);
-  const firstResponse = firstResponsoryResponse(responsory?.section.content);
-  const versicle = firstVerseMarker(responsory?.section.content, /^v\.?$/iu);
-  if (!responsory || !firstResponse) {
-    return undefined;
-  }
-
-  return buildPaschalShortResponsorySection({
-    source: responsory,
-    header: reference.section,
-    responseBase: normalizeStarredShortResponsoryBase(firstResponse.text),
-    language,
-    ...(versicle ? { versicle: versicle.text } : {})
-  });
 }
 
 function synthesizePaschalCommonShortResponsory(

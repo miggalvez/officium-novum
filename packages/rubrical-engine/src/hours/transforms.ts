@@ -60,7 +60,8 @@ export function deriveSeasonalDirectives1960(
   if (
     isOfficeOfSeason(params.celebration) &&
     temporal.season === 'passiontide' &&
-    (hour === 'prime' ||
+    (hour === 'matins' ||
+      hour === 'prime' ||
       hour === 'terce' ||
       hour === 'sext' ||
       hour === 'none' ||
