@@ -3704,6 +3704,57 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Rubrics 1960 ordinary Sunday major-hour later blocks from Major Special in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, laudsHymnLine] of [
+      ['2026-01-18', 'Ætérne rerum Cónditor,'],
+      ['2026-06-07', 'Ecce, jam noctis tenuátur umbra,']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      expect(summary.temporal.dayOfWeek, date).toBe(0);
+
+      const lauds = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'lauds',
+        options: { languages: ['Latin'] }
+      });
+      expect(
+        sectionTexts(lauds, 'chapter').map((line) => line.trim()),
+        `${date} Lauds chapter`
+      ).toContain('Apo 7:12');
+      expect(sectionTexts(lauds, 'hymn'), `${date} Lauds hymn`).toContain('Hymnus');
+      expect(sectionTexts(lauds, 'hymn'), `${date} Lauds hymn source`).toContain(
+        laudsHymnLine
+      );
+      expect(sectionTexts(lauds, 'versicle'), `${date} Lauds versicle`).toEqual([
+        'Dóminus regnávit, decórem índuit.',
+        'Índuit Dóminus fortitúdinem, et præcínxit se virtúte.'
+      ]);
+
+      const vespers = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'vespers',
+        options: { languages: ['Latin'] }
+      });
+      expect(
+        sectionTexts(vespers, 'chapter').map((line) => line.trim()),
+        `${date} Vespers chapter`
+      ).toContain(
+        '2 Cor 1:3-4'
+      );
+      expect(sectionTexts(vespers, 'hymn'), `${date} Vespers hymn`).toContain('Hymnus');
+      expect(sectionTexts(vespers, 'versicle'), `${date} Vespers versicle`).toEqual([
+        'Dirigátur, Dómine, orátio mea.',
+        'Sicut incénsum in conspéctu tuo.'
+      ]);
+    }
+  }, 240_000);
+
   it('wraps ordinary Rubrics 1960 Compline psalmody with one antiphon repeat in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary(new Date(Date.UTC(2026, 0, 1)));

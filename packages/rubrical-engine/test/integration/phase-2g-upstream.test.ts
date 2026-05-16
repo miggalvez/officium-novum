@@ -134,6 +134,38 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
       expect(benedictus.ref.section).toBe('Ant 2');
       expect(benedictus.ref.path).toMatch(/^horas\/Latin\/Tempora\/Pent\d{2}-0$/u);
     }
+
+    const majorSpecialPath = 'horas/Latin/Psalterium/Special/Major Special';
+    expect(summary.hours.lauds?.slots.chapter).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Laudes' }
+    });
+    expect(summary.hours.lauds?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Hymnus Day0 Laudes' }
+    });
+    expect(summary.hours.lauds?.slots.versicle).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Versum 2' }
+    });
+    expect(summary.hours.vespers?.slots.chapter).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Vespera' }
+    });
+    expect(summary.hours.vespers?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Hymnus Day0 Vespera' }
+    });
+    expect(summary.hours.vespers?.slots.versicle).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Dominica Versum 3' }
+    });
+
+    const epiphanySunday = engine.resolveDayOfficeSummary('2026-01-18');
+    expect(epiphanySunday.hours.lauds?.slots.hymn).toEqual({
+      kind: 'single-ref',
+      ref: { path: majorSpecialPath, section: 'Hymnus Day0 Laudes hiemalis' }
+    });
   }, 240_000);
 
   it('Codex follow-up P1: Ordinarium heading rubrics suppress final-antiphon-bvm under 1960', async () => {

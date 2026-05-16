@@ -1801,6 +1801,13 @@ function majorHourLaterBlockFallbackReference(
       section: paschaltideSundaySection
     };
   }
+  const ordinarySundaySection = majorHourOrdinarySundayLaterBlockSection(input, slot);
+  if (ordinarySundaySection) {
+    return {
+      path: MAJOR_SPECIAL_PATH,
+      section: ordinarySundaySection
+    };
+  }
 
   // Weekday 1960 Lauds/Vespers still say `#Capitulum Hymnus Versus` in the
   // Ordinarium, but Perl expands that wrapper from the ferial sections in
@@ -1872,6 +1879,55 @@ function majorHourPaschaltideSundayLaterBlockSection(
   }
 
   return undefined;
+}
+
+function majorHourOrdinarySundayLaterBlockSection(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): string | undefined {
+  if (
+    input.policy.name !== 'rubrics-1960' ||
+    input.celebration.source !== 'temporal' ||
+    input.temporal.dayOfWeek !== 0 ||
+    !/^(?:Epi\d+|Pent\d{2})-0$/u.test(input.temporal.dayName)
+  ) {
+    return undefined;
+  }
+
+  if (input.hour === 'lauds') {
+    switch (slot) {
+      case 'chapter':
+        return 'Dominica Laudes';
+      case 'hymn':
+        return usesOrdinarySundayWinterLaudsHymn(input.temporal.date)
+          ? 'Hymnus Day0 Laudes hiemalis'
+          : 'Hymnus Day0 Laudes';
+      case 'versicle':
+        return 'Dominica Versum 2';
+      default:
+        return undefined;
+    }
+  }
+
+  if (input.hour === 'vespers') {
+    switch (slot) {
+      case 'chapter':
+        return 'Dominica Vespera';
+      case 'hymn':
+        return 'Hymnus Day0 Vespera';
+      case 'versicle':
+        return 'Dominica Versum 3';
+      default:
+        return undefined;
+    }
+  }
+
+  return undefined;
+}
+
+function usesOrdinarySundayWinterLaudsHymn(isoDate: string): boolean {
+  const month = Number(isoDate.slice(5, 7));
+  return month <= 2 || month >= 10;
 }
 
 function majorHourAdventFerialLaterBlockSection(
