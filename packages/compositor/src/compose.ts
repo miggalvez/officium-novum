@@ -11,6 +11,7 @@ import type {
 } from '@officium-novum/rubrical-engine';
 
 import { stripLaudsSecretoPrayers } from './compose/incipit.js';
+import { prependCommemorationAntiphonHeading } from './compose/commemoration-title.js';
 import { appendContentWithBoundary } from './compose/content-boundary.js';
 import { buildConditionContext } from './compose/condition-context.js';
 import { directiveDrivenSlotContent } from './compose/directive-slot-content.js';
@@ -566,24 +567,6 @@ function commemorationOrationPrelude(language: string): string {
     COMMEMORATION_ORATION_PRELUDES[language.split('-', 1)[0] ?? ''] ??
     COMMEMORATION_ORATION_PRELUDES.Latin!
   );
-}
-
-function prependCommemorationAntiphonHeading(
-  corpus: TextIndex,
-  ref: TextReference,
-  content: readonly TextContent[]
-): readonly TextContent[] {
-  const title = commemorationTitle(corpus, ref.nameSourcePath ?? ref.path);
-  return title
-    ? [{ type: 'text', value: `Commemoratio ${title}` }, { type: 'separator' }, ...content]
-    : content;
-}
-
-function commemorationTitle(corpus: TextIndex, path: string): string | undefined {
-  const file = corpus.getFile(path) ?? corpus.getFile(`${path}.txt`);
-  const officium = file?.sections.find((section) => section.header === 'Officium');
-  const firstText = officium?.content.find((node) => node.type === 'text');
-  return firstText?.value.split(/\r?\n/u).find((line) => line.trim().length > 0)?.trim();
 }
 
 function taggedReferencesFrom(

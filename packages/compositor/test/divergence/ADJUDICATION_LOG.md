@@ -22,6 +22,43 @@ anchor.
 
 ## Entries
 
+### 2026-05-16 — Pattern: Rubrics 1960 Passion Week ferial major-hour later block and `S.` Officium commemoration headings (engine/compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 frontier exposed
+the same Passion Week Lauds first-divergence signature on Mar 26,
+Mar 27, and Mar 28: Perl rendered the Passion Week `[Quad5 Laudes]`
+chapter citation `Jer 11:19`, hymn `Lustra sex`, and Passiontide
+versicle, while the compositor fell back to the generic Lenten
+`[Quad Laudes]` block (`Isa 58:1` / `O sol salútis`). After that fix,
+Mar 27 and Mar 28 exposed common-backed sanctoral commemoration headings
+whose `[Officium]` titles begin with `S.` and therefore parse as
+`verseMarker` nodes rather than plain text.
+
+**Root cause.** The Rubrics 1960 major-hour later-block fallback treated
+all Lent and Passiontide ferias as the generic `Quad` family unless Holy
+Week had already handled the day. Passion Week ferias are still
+`Quad5-*` temporal days and use the `Quad5` major-hour source family.
+Separately, the compositor's commemoration-heading helper only read
+plain-text Officium titles, so common-backed commemorations with
+`S. ...` titles could not synthesize their `Commemoratio ...` heading.
+
+**Resolution.** Route Rubrics 1960 Passion Week feria Lauds and Vespers
+later-block fallbacks through the `Quad5` family. Teach the compositor
+to derive commemoration titles from either plain-text or `verseMarker`
+Officium content. Added compositor regressions for Mar 26, Mar 27, and
+Mar 28 Lauds proving the `Quad5` chapter, hymn, versicle, and the exposed
+`S.` commemoration headings.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1045-1060`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1181-1305`;
+`upstream/web/www/horas/Latin/Sancti/03-27.txt:1-10`;
+`upstream/web/www/horas/Latin/Sancti/03-28.txt:1-12`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1760` to
+`1744`; unadjudicated rows drop from `235` to `219`.
+
 ### 2026-05-16 — Pattern: Rubrics 1960 pre-Lent Sunday None ordinary versicle (engine-bug fixed)
 
 **Commit.** Current tranche commit.

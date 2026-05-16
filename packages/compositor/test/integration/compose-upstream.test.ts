@@ -1276,6 +1276,59 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Passion Week feria Lauds from the Quad5 major-hour later block', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const date of ['2026-03-26', '2026-03-27', '2026-03-28'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'lauds',
+        options: { languages: ['Latin'] }
+      });
+
+      const chapterLines = sectionTexts(composed, 'chapter').map((line) => normalizeLatin(line.trim()));
+      expect(
+        chapterLines.some((line) => line.includes(normalizeLatin('Jer 11:19'))),
+        `${date} Lauds chapter citation`
+      ).toBe(true);
+      expect(
+        chapterLines.some((line) =>
+          line.includes(
+            normalizeLatin(
+              'Veníte, mittámus lignum in panem ejus, et eradámus eum de terra vivéntium, et nomen ejus non memorétur ámplius.'
+            )
+          )
+        ),
+        `${date} Lauds chapter text`
+      ).toBe(true);
+
+      const hymnLines = sectionTexts(composed, 'hymn').map((line) => normalizeLatin(line.trim()));
+      expect(hymnLines, `${date} Passiontide Lauds hymn`).toContain(normalizeLatin('Lustra sex qui jam perégit,'));
+      expect(hymnLines, `${date} generic Lenten Lauds hymn`).not.toContain(normalizeLatin('O sol salútis, íntimis,'));
+
+      expect(
+        sectionTexts(composed, 'versicle').map((line) => normalizeLatin(line.trim())),
+        `${date} Lauds versicle`
+      ).toEqual([
+        normalizeLatin('Éripe me de inimícis meis, Deus meus.'),
+        normalizeLatin('Et ab insurgéntibus in me líbera me.')
+      ]);
+
+      const lines = canonicalLatinLines(composed);
+      if (date === '2026-03-27') {
+        expect(lines).toContain(
+          normalizeLatin('Commemoratio S. Joannis Damasceni Confessoris et Ecclesiæ Doctoris')
+        );
+      }
+      if (date === '2026-03-28') {
+        expect(lines).toContain(normalizeLatin('Commemoratio S. Joannis a Capistrano Confessoris'));
+      }
+    }
+  }, 240_000);
+
   it('opens January 6 and January 13 Roman Matins directly at Nocturn I when the inherited Epiphany omit rules suppress the wrapper block', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);

@@ -146,6 +146,7 @@ warning count: 0
 
 [section #5 type=commemoration slot=commemoration-antiphons reference=horas/Latin/Commune/C2a#Ant 2 languages=Latin]
   Latin: text("_")
+  Latin: text("Commemoratio S. Valentini Presbyteri et Martyris")
   Latin: [Ant.] text("Qui odit ánimam suam in hoc mundo, in vitam ætérnam custódit eam.")
 
 [section #6 type=commemoration slot=commemoration-versicles reference=horas/Latin/Commune/C2a#Versum 2 languages=Latin]
