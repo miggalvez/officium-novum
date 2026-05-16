@@ -24,6 +24,58 @@ entry here and re-run the adjudication harness.
 
 ## Current entries
 
+### 2026-05-16 — Rubrics 1960 source-backed minor-hour antiphons fall back to the weekday psalter
+
+**Classification.** `perl-bug`
+
+**Summary.** In the Rubrics 1960 2026 comparison surface, Prime,
+Terce, Sext, and None rows that should use a seasonal or active-office
+proper antiphon instead keep the ordinary weekday psalter antiphon on
+the Perl side. Officium Novum keeps the weekday psalm distribution where
+the rubrics require it, but takes the opening antiphon from the assigned
+Advent/Lent seasonal table or from the office/common selected by
+`Antiphonas horas`.
+
+**Primary source.**
+
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:145-149`
+- `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166`
+- `upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:88-163`
+- `docs/file-format-specification.md:638`
+- `docs/phase-2-rubrical-engine-design.md:1426`
+
+Breviary 1960 no. 171 says ferial Prime, Terce, Sext, and None use
+the current weekday psalms but take a proper antiphon when one is
+assigned; no. 177 preserves special proper/common assignments for
+third-class offices. The `Psalmi minor` source supplies the Advent and
+Lent antiphon tables, and the file-format contract identifies
+`Antiphonas horas` as the directive for proper Hour antiphons.
+
+**Reproduction.**
+Run:
+
+```bash
+pnpm -C packages/compositor compare:phase-3-perl -- --version "Rubrics 1960 - 1960" --year 2026 --no-write-docs --max-report 2000
+```
+
+Then inspect rows whose first divergence is the opening Prime
+antiphon at line 31 or the opening Terce/Sext/None antiphon at line 21.
+The source-backed compositor output shows the assigned seasonal or
+active-office antiphon; Perl shows the ordinary weekday psalter
+antiphon.
+
+**Affected stable divergence-row keys.**
+
+The 130 sidecar entries resolved on 2026-05-16 with the
+`Rubrics 1960 2026 source-backed minor-hour antiphon fanout` note are
+the affected rows. Representative row-key suffixes:
+
+| Policy | Date | Hours | Row key suffixes |
+|---|---|---|---|
+| Rubrics 1960 - 1960 | 2026-02-19 | Prime, Terce, Sext, None | `c0c62aed`, `f4d54f97`, `367af551`, `0a3aa9c3` |
+| Rubrics 1960 - 1960 | 2026-07-25 | Prime, Terce, Sext, None | `b19d3902`, `79e81d98`, `f5894330`, `e18463a4` |
+| Rubrics 1960 - 1960 | 2026-12-13 | Prime, Terce, Sext, None | `6bd54d9e`, `45915181`, `6739c9cc`, `a74de27a` |
+
 ### 2026-05-15 — Full-year common-antiphon offices fall back to the weekday psalter
 
 **Classification.** `perl-bug`

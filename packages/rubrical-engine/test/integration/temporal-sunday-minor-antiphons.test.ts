@@ -365,6 +365,31 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
           ['58(2-11)', '58(12-18)', '59']
         );
       }
+
+      const roman1960 = engines.get('Rubrics 1960 - 1960');
+      expect(roman1960, 'Rubrics 1960 - 1960 engine').toBeDefined();
+      if (roman1960) {
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'prime'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:1#antiphon',
+          ['22', '71(2-8)', '71(9-19)']
+        );
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'terce'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:2#antiphon',
+          ['72(1-9)', '72(10-17)', '72(18-28)']
+        );
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'sext'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:3#antiphon',
+          ['73(1-9)', '73(10-17)', '73(18-23)']
+        );
+        expectMinorHour(
+          psalmodyAt(roman1960, '2026-02-19', 'none'),
+          'horas/Latin/Psalterium/Psalmi/Psalmi minor:Quad:5#antiphon',
+          ['74', '75(2-7)', '75(8-13)']
+        );
+      }
     },
     240_000
   );

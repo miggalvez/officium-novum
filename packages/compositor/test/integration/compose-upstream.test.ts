@@ -2091,6 +2091,53 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Rubrics 1960 Lent weekday minor-hour seasonal antiphons in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-02-19');
+
+    for (const [hour, expected] of [
+      [
+        'prime',
+        [
+          'Vivo ego * dicit Dóminus: nolo mortem peccatóris, sed ut magis convertátur et vivat.',
+          'Psalmus 22 [1]'
+        ]
+      ],
+      [
+        'terce',
+        [
+          'Advenérunt nobis * dies pœniténtiæ ad rediménda peccáta, ad salvándas ánimas.',
+          'Psalmus 72(1-9) [1]'
+        ]
+      ],
+      [
+        'sext',
+        [
+          'Commendémus nosmetípsos * in multa patiéntia, in jejúniis multis, per arma justítiæ.',
+          'Psalmus 73(1-9) [1]'
+        ]
+      ],
+      [
+        'none',
+        [
+          'Per arma justítiæ * virtútis Dei commendémus nosmetípsos in multa patiéntia.',
+          'Psalmus 74 [1]'
+        ]
+      ]
+    ] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+      expect(psalmodyTexts(composed).map(normalizeLatin).slice(0, 2), hour).toEqual(
+        expected.map(normalizeLatin)
+      );
+    }
+  }, 240_000);
+
   it('renders Reduced 1955 weekday psalter antiphons without Perl-only trailing markers', async () => {
     const { engine, resolvedCorpus } = await createHarness('Reduced - 1955');
     const summary = engine.resolveDayOfficeSummary('2024-06-20');
