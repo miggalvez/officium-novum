@@ -174,6 +174,62 @@ describe('createRubricalEngine', () => {
     expect(summary.commemorations.map((entry) => entry.feastRef.path)).toEqual([]);
   });
 
+  it('routes Rubrics 1960 September Ember ferias to their proper temporal source files', () => {
+    const corpus = new TestOfficeTextIndex();
+    seedTemporalYear(corpus, 2026);
+    corpus.add(
+      'horas/Latin/Tempora/093-3.txt',
+      ['[Officium]', 'Feria Quarta Quattuor Temporum Septembris', '', '[Rank]', ';;Feria;;1;;'].join(
+        '\n'
+      )
+    );
+    corpus.add(
+      'horas/Latin/Tempora/093-5.txt',
+      ['[Officium]', 'Feria Sexta Quattuor Temporum Septembris', '', '[Rank]', ';;Feria;;1;;'].join(
+        '\n'
+      )
+    );
+    corpus.add(
+      'horas/Latin/Tempora/093-6.txt',
+      ['[Officium]', 'Sabbato Quattuor Temporum Septembris', '', '[Rank]', ';;Feria;;1;;'].join(
+        '\n'
+      )
+    );
+
+    const registry = buildVersionRegistry([
+      {
+        version: 'Rubrics 1960 - 1960',
+        kalendar: '1960',
+        transfer: '1960',
+        stransfer: '1960'
+      }
+    ]);
+    const kalendarium = buildKalendariumTable([{ name: '1960', entries: parseKalendarium('') }]);
+
+    const engine = createRubricalEngine({
+      corpus,
+      kalendarium,
+      yearTransfers: buildYearTransferTable([]),
+      scriptureTransfers: buildScriptureTransferTable([]),
+      versionRegistry: registry,
+      version: asVersionHandle('Rubrics 1960 - 1960'),
+      policyMap: VERSION_POLICY
+    });
+
+    for (const [date, dayName, properPath] of [
+      ['2026-09-23', 'Pent17-3', 'Tempora/093-3'],
+      ['2026-09-25', 'Pent17-5', 'Tempora/093-5'],
+      ['2026-09-26', 'Pent17-6', 'Tempora/093-6']
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+
+      expect(summary.temporal.dayName, date).toBe(dayName);
+      expect(summary.temporal.feastRef.path, date).toBe(properPath);
+      expect(summary.celebration.feastRef.path, date).toBe(properPath);
+      expect(summary.celebration.rank.classSymbol, date).toBe('II-ember-day');
+    }
+  });
+
   it('computes concurrence and compline when tomorrow outranks at Vespers', () => {
     const corpus = new TestOfficeTextIndex();
     seedTemporalYear(corpus, 2024);

@@ -3631,6 +3631,79 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('keeps source-backed Rubrics 1960 September Ember propers in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const witness of [
+      {
+        date: '2026-09-23',
+        path: 'Tempora/093-3',
+        antiphon:
+          'Hoc genus * dæmoniórum in nullo potest exíre, nisi in oratióne et jejúnio.',
+        collect:
+          'Misericórdiæ tuæ remédiis, quǽsumus, Dómine, fragílitas nostra subsístat: ut, quæ sua conditióne attéritur, tua cleméntia reparétur.'
+      },
+      {
+        date: '2026-09-25',
+        path: 'Tempora/093-5',
+        antiphon:
+          'Múlier, * quæ erat in civitáte peccátrix, stans retro secus pedes Dómini, lácrimis cœpit rigáre pedes ejus et capíllis cápitis sui tergébat, et deosculabátur pedes ejus et unguénto ungébat.',
+        collect:
+          'Præsta, quǽsumus, omnípotens Deus: ut observatiónes sacras ánnua devotióne recoléntes, et córpore tibi placeámus, et mente.',
+        gospel: 'Luc 7:36-50'
+      },
+      {
+        date: '2026-09-26',
+        path: 'Tempora/093-6',
+        antiphon:
+          'Illúmina, Dómine, * sedéntes in ténebris et umbra mortis, et dírige pedes nostros in viam pacis.',
+        collect:
+          'Omnípotens sempitérne Deus, qui per continéntiam salutárem corpóribus medéris et méntibus: majestátem tuam súpplices exorámus; ut pia jejunántium deprecatióne placátus, et præséntia nobis subsídia tríbuas, et futúra.',
+        gospel: 'Luc 13:6-17'
+      }
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(witness.date);
+      expect(summary.temporal.dayName, witness.date).toMatch(/^Pent\d+-[356]$/u);
+      expect(summary.celebration.feastRef.path, witness.date).toBe(witness.path);
+
+      const lauds = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'lauds',
+        options: { languages: ['Latin'] }
+      });
+      expect(
+        sectionTexts(lauds, 'antiphon-ad-benedictus'),
+        `${witness.date} Benedictus antiphon`
+      ).toContain(witness.antiphon);
+
+      const terce = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'terce',
+        options: { languages: ['Latin'] }
+      });
+      expect(canonicalLatinLines(terce), `${witness.date} terce collect`).toContain(
+        witness.collect
+      );
+
+      if (witness.gospel) {
+        const matins = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour: 'matins',
+          options: { languages: ['Latin'] }
+        });
+        expect(canonicalLatinLines(matins), `${witness.date} matins gospel`).toContain(
+          witness.gospel
+        );
+      }
+    }
+  }, 240_000);
+
   it('wraps ordinary Rubrics 1960 Compline psalmody with one antiphon repeat in 2026', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary(new Date(Date.UTC(2026, 0, 1)));
@@ -3979,6 +4052,7 @@ function sectionTexts(
     | 'preces'
     | 'oration'
     | 'conclusion'
+    | 'antiphon-ad-benedictus'
     | 'final-antiphon-bvm'
     | 'martyrology'
     | 'antiphon-ad-nunc-dimittis'
