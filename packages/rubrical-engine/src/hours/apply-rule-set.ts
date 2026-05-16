@@ -217,10 +217,11 @@ function resolveSlot(
   }
 
   const minorHourLaterBlockOverride = minorHourLaterBlockOverrideReference(input, slot.name);
+  const majorHourCanticleAntiphonOverride = majorHourAdventCanticleAntiphonOverrideReference(input, slot.name);
   const primeOrdinaryLaterBlock = primeOrdinaryLaterBlockReference(input, slot.name, properFiles);
   const complineOrdinaryRef = complineOrdinarySlotReference(input, slot.name);
   const properRef =
-    minorHourLaterBlockOverride || primeOrdinaryLaterBlock || complineOrdinaryRef
+    minorHourLaterBlockOverride || majorHourCanticleAntiphonOverride || primeOrdinaryLaterBlock || complineOrdinaryRef
       ? undefined
       : findProperReference(properFiles, slot, input);
   const inheritedSecondVespersRef = properRef
@@ -240,6 +241,7 @@ function resolveSlot(
   }
   const ref =
     minorHourLaterBlockOverride ??
+    majorHourCanticleAntiphonOverride ??
     primeOrdinaryLaterBlock ??
     complineOrdinaryRef ??
     properRef ??
@@ -1655,6 +1657,8 @@ function minorHourAdventLaterBlockSection(
   switch (input.hour) {
     case 'terce':
       switch (slot) {
+        case 'chapter':
+          return usesLateAdventWeekdayLaterBlock(input) ? 'Adv Tertia' : undefined;
         case 'responsory':
           return 'Responsory breve Adv Tertia';
         case 'versicle':
@@ -1664,6 +1668,8 @@ function minorHourAdventLaterBlockSection(
       }
     case 'sext':
       switch (slot) {
+        case 'chapter':
+          return usesLateAdventWeekdayLaterBlock(input) ? 'Adv Sexta' : undefined;
         case 'responsory':
           return 'Responsory breve Adv Sexta';
         case 'versicle':
@@ -1673,6 +1679,8 @@ function minorHourAdventLaterBlockSection(
       }
     case 'none':
       switch (slot) {
+        case 'chapter':
+          return usesLateAdventWeekdayLaterBlock(input) ? 'Adv Nona' : undefined;
         case 'responsory':
           return 'Responsory breve Adv Nona';
         case 'versicle':
@@ -1683,6 +1691,18 @@ function minorHourAdventLaterBlockSection(
     default:
       return undefined;
   }
+}
+
+function usesLateAdventWeekdayLaterBlock(input: ApplyRuleSetInput): boolean {
+  const [, month, day] = input.temporal.date.match(/^\d{4}-(\d{2})-(\d{2})$/u) ?? [];
+  return (
+    input.temporal.season === 'advent' &&
+    input.temporal.dayOfWeek > 0 &&
+    month === '12' &&
+    day !== undefined &&
+    Number(day) > 16 &&
+    Number(day) < 24
+  );
 }
 
 function minorHourQuadragesimaLaterBlockSection(
@@ -1788,6 +1808,46 @@ function minorHourHolyWeekMonWedLaterBlockSection(
     default:
       return undefined;
   }
+}
+
+function majorHourAdventCanticleAntiphonOverrideReference(
+  input: ApplyRuleSetInput,
+  slot: SlotName
+): TextReference | undefined {
+  if (
+    input.policy.name !== 'rubrics-1960' ||
+    input.celebration.source !== 'temporal' ||
+    input.celebration.kind ||
+    input.temporal.season !== 'advent'
+  ) {
+    return undefined;
+  }
+
+  const month = Number(input.temporal.date.slice(5, 7));
+  const day = Number(input.temporal.date.slice(8, 10));
+  if (month !== 12 || day < 17 || day > 23) {
+    return undefined;
+  }
+
+  if (input.hour === 'vespers' && slot === 'antiphon-ad-magnificat') {
+    return {
+      path: MAJOR_SPECIAL_PATH,
+      section: `Adv Ant ${day}`
+    };
+  }
+
+  if (
+    input.hour === 'lauds' &&
+    slot === 'antiphon-ad-benedictus' &&
+    (day === 21 || day === 23)
+  ) {
+    return {
+      path: MAJOR_SPECIAL_PATH,
+      section: `Adv Ant ${day}L`
+    };
+  }
+
+  return undefined;
 }
 
 function majorHourLaterBlockFallbackReference(

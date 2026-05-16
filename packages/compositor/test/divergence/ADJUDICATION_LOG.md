@@ -22,6 +22,55 @@ anchor.
 
 ## Entries
 
+### 2026-05-16 — Pattern: Rubrics 1960 late-Advent weekday psalmody and canticle antiphons (engine/compositor fixed, perl-bug fanout)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026
+frontier carried repeated late-Advent weekday rows on Dec 17-19 and
+Dec 22-23. The visible signatures were Lauds and minor-hour antiphons
+using ordinary weekday material instead of the assigned late-Advent
+tables, Terce/Sext/None chapters using the ordinary per-annum block, and
+Dec 23 Lauds using the temporal feria Benedictus antiphon instead of
+the named late-Advent Lauds antiphon.
+
+**Root cause.** Phase 2 selected Laudes II for Advent ferias but did not
+attach the separate `Laudes3` antiphon table for Dec 17-23 weekdays,
+and minor-hour selection did not route those weekdays to the `Adv42`-
+`Adv47` tables. Phase 3 also treated those `Psalmi minor` rows as raw
+numbered text instead of keyed antiphon rows. The later-block resolver
+used ordinary Terce/Sext/None chapters on late-Advent ferias, and the
+major-hour resolver allowed the temporal `[Ant 2]` / `[Ant 3]` to win
+over the date-keyed `Major Special` Advent canticle antiphons. Once
+these bugs were fixed, the Dec 23 Prime row advanced to the already
+source-backed ferial Prime short-lesson family; its new row key is
+classified as `perl-bug`.
+
+**Resolution.** Rubrics 1960 psalmody now keeps the source weekday
+psalm rows while attaching `DayN Laudes3` antiphon refs for Dec 17-23
+temporal weekdays, and routes minor hours through `Adv42`-`Adv47`.
+The compositor resolver now parses those Advent minor-hour rows as
+numbered antiphons. The later-block resolver selects `Adv Tertia`,
+`Adv Sexta`, and `Adv Nona` for late-Advent weekday minor hours, and
+the major-hour resolver gives the `Major Special` O-antiphon sections
+priority for Dec 17-23 Vespers plus the Dec 21/23 Lauds antiphons.
+Added engine and compositor regressions using representative 2026
+witnesses.
+
+**Citation.** `upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:145-149`;
+`upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:166`;
+`upstream/web/www/horas/Help/Rubrics/Breviary 1960.html:203`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi major.txt:269-309`;
+`upstream/web/www/horas/Latin/Psalterium/Psalmi/Psalmi minor.txt:116-156`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:154-209`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Major Special.txt:1018-1043`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1784` to
+`1763`, exact-match hours rise from `1136` to `1157`, Lauds divergences
+drop from `243` to `242`, Vespers divergences drop from `294` to `293`,
+and unadjudicated rows drop from `243` to `242`.
+
 ### 2026-05-16 — Pattern: Rubrics 1960 separated Matins uses the proper `Oratio 2` collect (engine-bug fixed)
 
 **Commit.** Current tranche commit.

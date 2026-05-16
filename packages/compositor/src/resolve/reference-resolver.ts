@@ -617,6 +617,7 @@ function isPsalmiMinorAntiphonSection(sectionName: string): boolean {
     sectionName === 'Tridentinum' ||
     sectionName === 'Quad' ||
     sectionName === 'Quad5_' ||
+    /^Adv4[2-7]$/u.test(sectionName) ||
     isKeyedPsalterSection(sectionName)
   );
 }

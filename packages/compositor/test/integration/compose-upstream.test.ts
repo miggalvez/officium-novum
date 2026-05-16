@@ -2171,6 +2171,59 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Rubrics 1960 late-Advent weekday psalmody antiphons in 2026', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const [date, expectations] of [
+      [
+        '2026-12-17',
+        {
+          lauds: 'De Sion * véniet Dóminus omnípotens, ut salvum fáciat pópulum suum.',
+          prime: 'De Sion * véniet Dóminus omnípotens, ut salvum fáciat pópulum suum.',
+          terce: 'Convértere, Dómine, * aliquántulum, et ne tardes veníre ad servos tuos.',
+          sext: 'De Sion * véniet, qui regnatúrus est Dóminus, Emmánuel magnum nomen ejus.',
+          none: 'Dóminus * légifer noster, Dóminus Rex noster, ipse véniet, et salvábit nos.'
+        }
+      ],
+      [
+        '2026-12-22',
+        {
+          lauds: 'Roráte, cæli, désuper, * et nubes pluant justum: aperiátur terra, et gérminet Salvatórem.',
+          prime: 'Roráte, cæli, désuper, * et nubes pluant justum: aperiátur terra, et gérminet Salvatórem.',
+          terce: 'Emítte Agnum, Dómine, * Dominatórem terræ, de Petra desérti, ad montem fíliæ Sion.',
+          sext: 'Ut cognoscámus, Dómine, * in terra viam tuam, in ómnibus géntibus salutáre tuum.',
+          none: 'Lex per Móysen data est; * grátia et véritas per Jesum Christum facta est.'
+        }
+      ]
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      for (const [hour, antiphon] of Object.entries(expectations) as Array<
+        [Extract<HourName, 'lauds' | 'prime' | 'terce' | 'sext' | 'none'>, string]
+      >) {
+        const composed = composeHour({
+          corpus: resolvedCorpus.index,
+          summary,
+          version: engine.version,
+          hour,
+          options: { languages: ['Latin'] }
+        });
+        expect(firstPsalmodyAntiphon(composed), `${date} ${hour} antiphon`).toBe(antiphon);
+      }
+    }
+
+    const dec23 = engine.resolveDayOfficeSummary('2026-12-23');
+    const dec23Lauds = composeHour({
+      corpus: resolvedCorpus.index,
+      summary: dec23,
+      version: engine.version,
+      hour: 'lauds',
+      options: { languages: ['Latin'] }
+    });
+    expect(sectionTexts(dec23Lauds, 'antiphon-ad-benedictus')).toEqual([
+      'Ecce compléta sunt * ómnia, quæ dicta sunt per Ángelum de Vírgine María.'
+    ]);
+  }, 240_000);
+
   it('renders Reduced 1955 weekday psalter antiphons without Perl-only trailing markers', async () => {
     const { engine, resolvedCorpus } = await createHarness('Reduced - 1955');
     const summary = engine.resolveDayOfficeSummary('2024-06-20');

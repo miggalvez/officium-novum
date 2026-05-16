@@ -160,6 +160,38 @@ describe('selectPsalmodyRoman1960', () => {
     expect(secondClassVigil[0]?.psalmRef.section).toBe('Day2 Laudes2');
   });
 
+  it('uses the late-Advent weekday Laudes III antiphon table before Christmas Eve', () => {
+    const thursday = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Adv3-4'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-12-17', 'Adv3-4', 'advent', 4),
+      corpus: corpus()
+    });
+    expect(thursday[0]?.psalmRef).toEqual({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+      section: 'Day4 Laudes2',
+      selector: '1'
+    });
+    expect(thursday[0]?.antiphonRef).toEqual({
+      path: 'horas/Latin/Psalterium/Psalmi/Psalmi major',
+      section: 'Day4 Laudes3',
+      selector: '1'
+    });
+
+    const tuesday = selectPsalmodyRoman1960({
+      hour: 'lauds',
+      celebration: celebration('Tempora/Adv4-2'),
+      celebrationRules: baseCelebrationRules(),
+      hourRules: hourRules('lauds'),
+      temporal: temporal('2026-12-22', 'Adv4-2', 'advent', 2),
+      corpus: corpus()
+    });
+    expect(tuesday[0]?.psalmRef.section).toBe('Day2 Laudes2');
+    expect(tuesday[0]?.antiphonRef?.section).toBe('Day2 Laudes3');
+  });
+
   it('keeps Laudes I for Advent Sundays, Advent sanctoral feasts, and Paschaltide vigils', () => {
     const adventSunday = selectPsalmodyRoman1960({
       hour: 'lauds',
@@ -469,6 +501,52 @@ Feria IV = Misericórdia tua, * Dómine, ante óculos meos: et complácui in ver
     ]);
     expect(refs[0]?.antiphonRef?.section).toBe('Quad');
     expect(refs[0]?.antiphonRef?.selector).toBe('3#antiphon');
+  });
+
+  it('applies late-Advent weekday antiphons to the ferial minor-hour psalter', () => {
+    const textIndex = new TestOfficeTextIndex();
+    textIndex.add(
+      'horas/Latin/Psalterium/Psalmi/Psalmi minor.txt',
+      `
+[Prima]
+Feria V = Ne discedas a me, * Dómine.
+53,118(1-16),118(17-32)
+
+[Tertia]
+Feria V = Excita, Dómine, * poténtiam tuam.
+118(33-48),118(49-64)
+
+[Sexta]
+Feria V = Beáti immaculáti * in via.
+118(81-96),118(97-112)
+
+[Nona]
+Feria V = Misericórdia tua, * Dómine.
+118(129-144),118(145-160)
+`.trim()
+    );
+
+    for (const [hour, selector] of [
+      ['prime', '1#antiphon'],
+      ['terce', '2#antiphon'],
+      ['sext', '3#antiphon'],
+      ['none', '5#antiphon']
+    ] as const) {
+      const refs = selectPsalmodyRoman1960({
+        hour,
+        celebration: celebration('Tempora/Adv3-4'),
+        celebrationRules: baseCelebrationRules(),
+        hourRules: hourRules(hour),
+        temporal: temporal('2026-12-17', 'Adv3-4', 'advent', 4),
+        corpus: textIndex
+      });
+
+      expect(refs[0]?.antiphonRef, hour).toEqual({
+        path: 'horas/Latin/Psalterium/Psalmi/Psalmi minor',
+        section: 'Adv45',
+        selector
+      });
+    }
   });
 
   it('does not emit a minor-hour antiphon reference for underscore sentinels', () => {

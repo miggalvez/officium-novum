@@ -364,6 +364,24 @@ describeIfReady('Phase 2g Hour structuring against upstream 1960 corpus', () => 
         }
       });
     }
+
+    const lateAdventVespers = engine.resolveDayOfficeSummary('2026-12-22').hours.vespers;
+    expect(lateAdventVespers?.slots['antiphon-ad-magnificat']).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Adv Ant 22'
+      }
+    });
+
+    const lateAdventLauds = engine.resolveDayOfficeSummary('2026-12-23').hours.lauds;
+    expect(lateAdventLauds?.slots['antiphon-ad-benedictus']).toEqual({
+      kind: 'single-ref',
+      ref: {
+        path: 'horas/Latin/Psalterium/Special/Major Special',
+        section: 'Adv Ant 23L'
+      }
+    });
   }, 240_000);
 });
 

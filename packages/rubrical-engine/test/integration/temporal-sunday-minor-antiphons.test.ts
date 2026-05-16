@@ -134,16 +134,19 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
         const cases = [
           {
             hour: 'terce',
+            chapter: 'horas/Latin/Psalterium/Special/Minor Special:Adv Tertia',
             responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Tertia',
             versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Tertia'
           },
           {
             hour: 'sext',
+            chapter: 'horas/Latin/Psalterium/Special/Minor Special:Adv Sexta',
             responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Sexta',
             versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Sexta'
           },
           {
             hour: 'none',
+            chapter: 'horas/Latin/Psalterium/Special/Minor Special:Adv Nona',
             responsory: 'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Adv Nona',
             versicle: 'horas/Latin/Psalterium/Special/Minor Special:Versum Adv Nona'
           }
@@ -154,6 +157,12 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
             expectSingleRef(slotAt(engine, date, entry.hour, 'responsory'), entry.responsory);
             expectSingleRef(slotAt(engine, date, entry.hour, 'versicle'), entry.versicle);
           }
+        }
+
+        for (const entry of cases) {
+          expectSingleRef(slotAt(engine, '2024-12-17', entry.hour, 'chapter'), entry.chapter);
+          expectSingleRef(slotAt(engine, '2024-12-17', entry.hour, 'responsory'), entry.responsory);
+          expectSingleRef(slotAt(engine, '2024-12-17', entry.hour, 'versicle'), entry.versicle);
         }
       }
     },

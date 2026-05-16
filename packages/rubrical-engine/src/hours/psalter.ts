@@ -143,12 +143,29 @@ function laudsReferences(
   useDominicaRule: boolean
 ): readonly PsalmAssignment[] {
   const { temporal } = params;
+  const useLateAdventAntiphons =
+    isTemporalCelebration(params) && usesLateAdventWeekdayAntiphons(temporal);
   const scheme = usesSecondLaudsSchemeRoman1960(params, useDominicaRule)
     ? 'Laudes2'
     : 'Laudes1';
   const weekday = useSundayPsalmody ? 0 : temporal.dayOfWeek;
   const section = `Day${weekday} ${scheme}`;
-  return numberedSectionAssignments(PSALMI_MAJOR, section, 5);
+  const assignments = numberedSectionAssignments(PSALMI_MAJOR, section, 5);
+  if (!useLateAdventAntiphons) {
+    return assignments;
+  }
+
+  const antiphonSection = `Day${weekday} Laudes3`;
+  return Object.freeze(
+    assignments.map((assignment, index) => ({
+      ...assignment,
+      antiphonRef: {
+        path: PSALMI_MAJOR,
+        section: antiphonSection,
+        selector: String(index + 1)
+      }
+    }))
+  );
 }
 
 function usesSecondLaudsSchemeRoman1960(
@@ -366,7 +383,7 @@ function weekdayMinorHourReferences(
   ];
 }
 
-const LENTEN_MINOR_HOUR_ANTIPHON_SELECTOR: Readonly<
+const SEASONAL_MINOR_HOUR_ANTIPHON_SELECTOR: Readonly<
   Record<'prime' | 'terce' | 'sext' | 'none', string>
 > = {
   prime: '1',
@@ -397,7 +414,7 @@ function applySeasonalWeekdayMinorHourAntiphon(
       antiphonRef: {
         path: PSALMI_MINOR,
         section,
-        selector: `${LENTEN_MINOR_HOUR_ANTIPHON_SELECTOR[params.hour]}#antiphon`
+        selector: `${SEASONAL_MINOR_HOUR_ANTIPHON_SELECTOR[params.hour]}#antiphon`
       }
     },
     ...assignments.slice(1)
@@ -408,9 +425,14 @@ function seasonalWeekdayMinorHourAntiphonSection(
   params: SelectPsalmodyInput & {
     readonly hour: 'prime' | 'terce' | 'sext' | 'none';
   }
-): 'Quad' | 'Quad5_' | undefined {
+): 'Adv42' | 'Adv43' | 'Adv44' | 'Adv45' | 'Adv46' | 'Adv47' | 'Quad' | 'Quad5_' | undefined {
   if (!isTemporalCelebration(params) || params.temporal.dayOfWeek === 0) {
     return undefined;
+  }
+
+  const adventSection = adventWeekdayMinorHourAntiphonSection(params.temporal);
+  if (adventSection) {
+    return adventSection;
   }
 
   if (/^Quad[56]-[1-6]/u.test(params.temporal.dayName)) {
@@ -419,6 +441,38 @@ function seasonalWeekdayMinorHourAntiphonSection(
 
   if (/^Quad(?:p3-[3-6]|[1-4]-[1-6])/u.test(params.temporal.dayName)) {
     return 'Quad';
+  }
+
+  return undefined;
+}
+
+function usesLateAdventWeekdayAntiphons(temporal: TemporalContext): boolean {
+  const [, month, day] = temporal.date.match(/^\d{4}-(\d{2})-(\d{2})$/u) ?? [];
+  return (
+    temporal.season === 'advent' &&
+    temporal.dayOfWeek > 0 &&
+    month === '12' &&
+    day !== undefined &&
+    Number(day) > 16 &&
+    Number(day) < 24
+  );
+}
+
+function adventWeekdayMinorHourAntiphonSection(
+  temporal: TemporalContext
+): 'Adv42' | 'Adv43' | 'Adv44' | 'Adv45' | 'Adv46' | 'Adv47' | undefined {
+  if (temporal.season !== 'advent' || temporal.dayOfWeek === 0) {
+    return undefined;
+  }
+
+  if (usesLateAdventWeekdayAntiphons(temporal)) {
+    return `Adv4${temporal.dayOfWeek + 1}` as
+      | 'Adv42'
+      | 'Adv43'
+      | 'Adv44'
+      | 'Adv45'
+      | 'Adv46'
+      | 'Adv47';
   }
 
   return undefined;

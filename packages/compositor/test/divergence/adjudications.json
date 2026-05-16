@@ -32179,6 +32179,17 @@
     "notes": "Fanout entry for the Rubrics 1960 2026 complete-antiphon trailing-marker family. The cited psalter source carries the complete antiphon without a final continuation marker; Perl appends unsupported trailing `‡` on the comparison surface.",
     "resolvedAt": "2026-05-05"
   },
+  "Rubrics 1960 - 1960/2026-12-23/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-23",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
+    "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. This witness surfaced after the late-Advent psalmody and major-hour antiphon fixes advanced December 23 Prime past the former opening-antiphon divergence.",
+    "resolvedAt": "2026-05-16"
+  },
   "Rubrics 1960 - 1960/2026-12-24/Compline/318cf47a": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-24",
