@@ -1905,7 +1905,7 @@ function majorHourLaterBlockFallbackReference(
       ? majorHourAdventFerialLaterBlockSection(input.hour, slot)
       : undefined) ??
     (input.temporal.season === 'lent' || input.temporal.season === 'passiontide'
-      ? majorHourLentFerialLaterBlockSection(input.hour, slot)
+      ? majorHourLentFerialLaterBlockSection(input, slot)
       : undefined) ??
     majorHourLaterBlockFallbackSection(input.hour, slot, input.temporal.dayOfWeek);
   if (!section) {
@@ -2039,36 +2039,35 @@ function majorHourAdventFerialLaterBlockSection(
 }
 
 function majorHourLentFerialLaterBlockSection(
-  hour: HourName,
+  input: ApplyRuleSetInput,
   slot: SlotName
 ): string | undefined {
   // `Major Special.txt` carries `[Quad Laudes]` (Isa 58:1) /
   // `[Hymnus Quad Laudes]` (`O sol salútis`) and `[Quad Vespera]` /
-  // `[Hymnus Quad Vespera]` for the generic Lent / Passiontide ferial later
-  // block, distinct from the year-round `[Feria Laudes]` (Rom 13:12-13) and
-  // the per-day `[Hymnus DayN Laudes]`. Holy Week Mon–Wed already routes to
-  // `[Quad5 ...]` above; this branch fills in the Lent-but-not-Holy-Week
-  // ferial fallback.
-  switch (hour) {
+  // `[Hymnus Quad Vespera]` for generic Lent, while Passion Week ferias
+  // use the dedicated `[Quad5 ...]` family. Holy Week Mon-Wed also routes
+  // to `[Quad5 ...]` above; this branch covers the Passion Week ferias.
+  const family = /^Quad5-/u.test(input.temporal.dayName) ? 'Quad5' : 'Quad';
+  switch (input.hour) {
     case 'lauds':
       switch (slot) {
         case 'chapter':
-          return 'Quad Laudes';
+          return `${family} Laudes`;
         case 'hymn':
-          return 'Hymnus Quad Laudes';
+          return `Hymnus ${family} Laudes`;
         case 'versicle':
-          return 'Quad Versum 2';
+          return `${family} Versum 2`;
         default:
           return undefined;
       }
     case 'vespers':
       switch (slot) {
         case 'chapter':
-          return 'Quad Vespera';
+          return `${family} Vespera`;
         case 'hymn':
-          return 'Hymnus Quad Vespera';
+          return `Hymnus ${family} Vespera`;
         case 'versicle':
-          return 'Quad Versum 3';
+          return `${family} Versum 3`;
         default:
           return undefined;
       }
