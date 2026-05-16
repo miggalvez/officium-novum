@@ -2222,6 +2222,17 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     expect(sectionTexts(dec23Lauds, 'antiphon-ad-benedictus')).toEqual([
       'Ecce compléta sunt * ómnia, quæ dicta sunt per Ángelum de Vírgine María.'
     ]);
+
+    const dec17Prime = composeHour({
+      corpus: resolvedCorpus.index,
+      summary: engine.resolveDayOfficeSummary('2026-12-17'),
+      version: engine.version,
+      hour: 'prime',
+      options: { languages: ['Latin'] }
+    });
+    expect(sectionTexts(dec17Prime, 'chapter').map((line) => normalizeLatin(line).trim())).toContain(
+      normalizeLatin('Zach 8:19')
+    );
   }, 240_000);
 
   it('renders Reduced 1955 weekday psalter antiphons without Perl-only trailing markers', async () => {

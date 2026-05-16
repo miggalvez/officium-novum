@@ -32168,6 +32168,50 @@
     "resolvedAt": "2026-05-06",
     "commitSha": "58323bf"
   },
+  "Rubrics 1960 - 1960/2026-12-17/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-17",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
+    "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. These late-Advent witnesses surfaced after the late-Advent psalmody fixes advanced Prime past the former opening-antiphon divergence.",
+    "resolvedAt": "2026-05-16"
+  },
+  "Rubrics 1960 - 1960/2026-12-18/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-18",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
+    "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. These late-Advent witnesses surfaced after the late-Advent psalmody fixes advanced Prime past the former opening-antiphon divergence.",
+    "resolvedAt": "2026-05-16"
+  },
+  "Rubrics 1960 - 1960/2026-12-19/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-19",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
+    "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. These late-Advent witnesses surfaced after the late-Advent psalmody fixes advanced Prime past the former opening-antiphon divergence.",
+    "resolvedAt": "2026-05-16"
+  },
+  "Rubrics 1960 - 1960/2026-12-22/Prime/b7853e49": {
+    "policy": "Rubrics 1960 - 1960",
+    "date": "2026-12-22",
+    "hour": "Prime",
+    "firstExpected": "1 Tim. 1:17",
+    "firstActual": "Zach 8:19",
+    "class": "perl-bug",
+    "citation": "upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7 and upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:45-59 — the source-backed ferial Prime fallback has the `Zach 8:19` chapter and then begins `[Responsory]` directly with `R.br. Christe, Fili Dei vivi...`; the Rubrics 1960 Perl comparison surface keeps the Sunday `1 Tim. 1:17` citation on these ferial Prime rows.",
+    "notes": "Rubrics 1960 2026 fanout for the ferial Prime fallback chapter family. These late-Advent witnesses surfaced after the late-Advent psalmody fixes advanced Prime past the former opening-antiphon divergence.",
+    "resolvedAt": "2026-05-16"
+  },
   "Rubrics 1960 - 1960/2026-12-23/Vespers/cc3c00d8": {
     "policy": "Rubrics 1960 - 1960",
     "date": "2026-12-23",

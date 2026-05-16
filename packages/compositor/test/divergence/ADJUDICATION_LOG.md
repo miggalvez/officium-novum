@@ -22,6 +22,33 @@ anchor.
 
 ## Entries
 
+### 2026-05-16 — Pattern: Additional late-Advent ferial Prime short-lesson witnesses (perl-bug)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** After the late-Advent psalmody fixes, Dec 17,
+Dec 18, Dec 19, and Dec 22 advanced from opening-antiphon mismatches to
+the already-known Prime short-lesson signature: Perl keeps the Sunday
+`1 Tim. 1:17` citation while the compositor emits the ferial
+`Zach 8:19` citation.
+
+**Root cause.** Same source-backed family as the May 5 Rubrics 1960
+Prime fanout. `Prima Special` distinguishes `[Dominica]` from `[Feria]`;
+these are temporal Advent weekdays, so the source-backed ferial Prime
+chapter is `Zach 8:19`, followed by the ordinary Prime responsory. The
+Perl comparison surface retains the Sunday chapter citation.
+
+**Resolution.** Class `perl-bug`. Added four late-Advent 2026 row-key
+adjudications for the stable `1 Tim. 1:17` -> `Zach 8:19` first
+divergence and added a compositor regression proving the 2026-12-17
+Prime chapter renders the ferial `Zach 8:19` source.
+
+**Citation.** `upstream/web/www/horas/Latin/Psalterium/Special/Prima Special.txt:1-7,45-59`.
+
+**Impact.** Rubrics 1960 2026 unadjudicated rows drop from `242` to
+`238`; divergent-hour totals are unchanged because this is an
+adjudication fanout of already-rendered source-backed output.
+
 ### 2026-05-16 — Pattern: Rubrics 1960 late-Advent weekday psalmody and canticle antiphons (engine/compositor fixed, perl-bug fanout)
 
 **Commit.** Current tranche commit.
