@@ -77,14 +77,12 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
-    'keeps 1955 Sunday minor-hour later blocks on the source-backed Minor Special responsories',
+    'keeps simplified Roman pre-Lent Sunday minor-hour later blocks on the source-backed Minor Special responsories',
     async () => {
-      const engines = await loadEngines(['Reduced - 1955']);
-      const engine = engines.get('Reduced - 1955');
-      expect(engine).toBeDefined();
-      if (!engine) {
-        return;
-      }
+      const engines = await loadEngines([
+        'Reduced - 1955',
+        'Rubrics 1960 - 1960'
+      ]);
 
       const cases = [
         {
@@ -107,10 +105,40 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
         }
       ] as const;
 
-      for (const entry of cases) {
-        expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'chapter'), entry.chapter);
-        expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'responsory'), entry.responsory);
-        expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'versicle'), entry.versicle);
+      for (const handle of ['Reduced - 1955', 'Rubrics 1960 - 1960'] as const) {
+        const engine = engines.get(handle);
+        expect(engine, `${handle} engine`).toBeDefined();
+        if (!engine) {
+          continue;
+        }
+
+        for (const entry of cases) {
+          expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'chapter'), entry.chapter);
+          expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'responsory'), entry.responsory);
+          expectSingleRef(slotAt(engine, '2024-01-28', entry.hour, 'versicle'), entry.versicle);
+        }
+      }
+
+      const rubrics1960 = engines.get('Rubrics 1960 - 1960');
+      expect(rubrics1960).toBeDefined();
+      if (!rubrics1960) {
+        return;
+      }
+
+      for (const [date, chapter] of [
+        ['2026-02-01', 'horas/Latin/Tempora/Quadp1-0:Capitulum Nona'],
+        ['2026-02-08', 'horas/Latin/Tempora/Quadp2-0:Capitulum Nona'],
+        ['2026-02-15', 'horas/Latin/Tempora/Quadp3-0:Capitulum Nona']
+      ] as const) {
+        expectSingleRef(slotAt(rubrics1960, date, 'none', 'chapter'), chapter);
+        expectSingleRef(
+          slotAt(rubrics1960, date, 'none', 'responsory'),
+          'horas/Latin/Psalterium/Special/Minor Special:Responsory breve Dominica Nona'
+        );
+        expectSingleRef(
+          slotAt(rubrics1960, date, 'none', 'versicle'),
+          'horas/Latin/Psalterium/Special/Minor Special:Versum Dominica Nona'
+        );
       }
     },
     240_000

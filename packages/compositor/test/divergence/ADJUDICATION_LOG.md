@@ -22,6 +22,35 @@ anchor.
 
 ## Entries
 
+### 2026-05-16 — Pattern: Rubrics 1960 pre-Lent Sunday None ordinary versicle (engine-bug fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The `Rubrics 1960 - 1960` / 2026 frontier exposed
+the same None first-divergence signature on Septuagesima, Sexagesima,
+and Quinquagesima Sundays: Perl rendered the ordinary Sunday None
+versicle `Ab occúltis meis`, while the compositor rendered the temporal
+office's `[Versum 2]` text `Dómine, refúgium factus es nobis`.
+
+**Root cause.** The Rubrics 1960 later-block resolver let the pre-Lent
+Sunday temporal `[Versum 2]` win for the None versicle slot. These
+pre-Lent Sunday offices supply proper minor-hour antiphons and chapters,
+but their temporal files do not supply `[Versum Nona]`; the ordinary
+Sunday None responsory and versicle remain in `Minor Special`.
+
+**Resolution.** Fixed the Rubrics 1960 / Reduced 1955 minor-hour
+later-block override so temporal pre-Lent Sundays use the source-backed
+ordinary Sunday versicle section for Terce/Sext/None while keeping the
+proper temporal chapter. Added engine regressions covering the existing
+1955 source-backed rule plus 2026 Rubrics 1960 None witnesses on Feb 1,
+Feb 8, and Feb 15.
+
+**Citation.** `upstream/web/www/horas/Latin/Tempora/Quadp1-0.txt:164-186`;
+`upstream/web/www/horas/Latin/Psalterium/Special/Minor Special.txt:56-80`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1763` to
+`1760`; unadjudicated rows drop from `238` to `235`.
+
 ### 2026-05-16 — Pattern: Additional late-Advent ferial Prime short-lesson witnesses (perl-bug)
 
 **Commit.** Current tranche commit.
