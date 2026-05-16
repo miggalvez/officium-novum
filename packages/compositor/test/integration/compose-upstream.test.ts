@@ -1243,6 +1243,39 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders the proper Lenten collect before the separated Rubrics 1960 Matins conclusion', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const { date, collect } of [
+      {
+        date: '2026-02-21',
+        collect:
+          'Adésto, Dómine, supplicatiónibus nostris: et concéde; ut hoc solémne jejúnium, quod animábus corporibúsque curándis salúbriter institútum est, devóto servítio celebrémus.'
+      },
+      {
+        date: '2026-03-03',
+        collect:
+          'Pérfice, quǽsumus, Dómine, benígnus in nobis observántiæ sanctæ subsídium: ut, quæ te auctóre faciénda cognóvimus, te operánte impleámus.'
+      }
+    ] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const orationIndex = composed.sections.findIndex((section) => section.slot === 'oration');
+      const conclusionIndex = composed.sections.findIndex((section) => section.slot === 'conclusion');
+      const orationLines = sectionTexts(composed, 'oration').map(normalizeLatin);
+
+      expect(orationLines, `${date} Matins proper collect`).toContain(normalizeLatin(collect));
+      expect(conclusionIndex, `${date} Matins conclusion after collect`).toBeGreaterThan(orationIndex);
+    }
+  }, 240_000);
+
   it('opens January 6 and January 13 Roman Matins directly at Nocturn I when the inherited Epiphany omit rules suppress the wrapper block', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);

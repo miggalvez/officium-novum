@@ -395,6 +395,26 @@ describeIfUpstream('temporal Sunday minor-hour antiphon ownership', () => {
   );
 
   it(
+    'uses the source-backed Oratio 2 collect for separated Rubrics 1960 Lenten Matins',
+    async () => {
+      const engines = await loadEngines(['Rubrics 1960 - 1960']);
+      const engine = engines.get('Rubrics 1960 - 1960');
+      expect(engine).toBeDefined();
+      if (!engine) {
+        return;
+      }
+
+      for (const [date, officePath] of [
+        ['2026-02-21', 'horas/Latin/Tempora/Quadp3-6'],
+        ['2026-03-03', 'horas/Latin/Tempora/Quad2-2']
+      ] as const) {
+        expectSingleRef(slotAt(engine, date, 'matins', 'oration'), `${officePath}:Oratio 2`);
+      }
+    },
+    240_000
+  );
+
+  it(
     'keeps festal Sunday Prime on Prima Festis when Psalmi Dominica combines with proper minor-hour antiphons',
     async () => {
       const engines = await loadEngines([
@@ -1096,7 +1116,7 @@ function expectVersum2LaterBlock(
 function slotAt(
   engine: RubricalEngine,
   date: string,
-  hour: 'prime' | 'terce' | 'sext' | 'none' | 'compline',
+  hour: 'matins' | 'prime' | 'terce' | 'sext' | 'none' | 'compline',
   slotName:
     | 'chapter'
     | 'responsory'

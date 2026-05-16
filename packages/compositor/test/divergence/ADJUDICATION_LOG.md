@@ -22,6 +22,41 @@ anchor.
 
 ## Entries
 
+### 2026-05-16 — Pattern: Rubrics 1960 separated Matins uses the proper `Oratio 2` collect (engine-bug fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The refreshed `Rubrics 1960 - 1960` / 2026 frontier
+carried a 16-row Matins family across Lent and Passiontide ferias. The
+Perl comparison surface reached the proper collect after the separated
+Matins `Orémus.`, while the compositor jumped from `Orémus.` to the
+closing `Dómine, exáudi` / `Benedicámus` conclusion.
+
+**Root cause.** The Matins hour structurer correctly kept the Ordinarium
+`Matutinum` wrapper for the separated conclusion, but its proper-oration
+lookup only considered `[Oratio]` for Matins. Rubrics 1960 temporal
+Lenten ferias, and other proper/common offices such as All Souls, place
+the post-Matins/Lauds collect in `[Oratio 2]`, the same source section
+used by Lauds. When `[Oratio]` was absent, the engine fell back to the
+empty Ordinarium `#Oratio` wrapper and omitted the source-backed collect.
+
+**Resolution.** Rubrics 1960 Matins now searches `[Oratio 2]` before
+`[Oratio]`, preserving the Ordinarium wrapper while selecting the
+proper temporal collect. Added engine coverage for the 2026-02-21 and
+2026-03-03 slot refs, compositor coverage proving the collect renders
+before the Matins conclusion, and updated the Rubrics 1960 Appendix-A
+Matins goldens whose source-backed collects now appear.
+
+**Citation.** `upstream/web/www/horas/Ordinarium/Matutinum.txt:44-52`;
+`upstream/web/www/horas/Latin/Tempora/Quadp3-6.txt:43-45`;
+`upstream/web/www/horas/Latin/Tempora/Quad2-2.txt:38-40`;
+`upstream/web/www/horas/Latin/Commune/C9.txt:262-264`.
+
+**Impact.** Rubrics 1960 2026 divergent hours drop from `1800` to
+`1784`, exact-match hours rise from `1120` to `1136`, Matins divergences
+drop from `321` to `305`, and unadjudicated rows drop from `259` to
+`243`.
+
 ### 2026-05-15 — Pattern: First-Vespers Compline distinguishes festive Sunday from ordinary Sunday Office (engine fixed, perl-bug)
 
 **Commit.** Current tranche commit.

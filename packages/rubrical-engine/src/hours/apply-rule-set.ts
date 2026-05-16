@@ -2535,6 +2535,9 @@ function properHeadersForSlot(
         ? ['Ant 43', 'Ant Completorium', 'Ant Nunc dimittis', 'Ant 4']
         : ['Ant Completorium', 'Ant Nunc dimittis', 'Ant 4'];
     case 'oration':
+      if (hour === 'matins' && input?.policy.name === 'rubrics-1960') {
+        return ['Oratio 2', 'Oratio'];
+      }
       if (hour === 'lauds') {
         return ['Oratio 2', 'Oratio'];
       }
