@@ -7,6 +7,7 @@ import type { ConcurrenceResult, DayConcurrencePreview } from '../../types/concu
 import type { Commemoration } from '../../types/ordo.js';
 import type { ComplineSource, HourDirective } from '../../types/hour-structure.js';
 import type { BenedictioEntry, LessonPlan, MatinsPlan, ScriptureCourse } from '../../types/matins.js';
+import type { CelebrationRuleSet } from '../../types/rule-set.js';
 
 const TRIDUUM_KEYS = new Set(['Quad6-4', 'Quad6-5', 'Quad6-6']);
 const HOLY_WEEK_MON_WED_KEYS = new Set(['Quad6-1', 'Quad6-2', 'Quad6-3']);
@@ -506,6 +507,7 @@ export function selectRomanBenedictions(params: {
   readonly nocturnIndex: 1 | 2 | 3;
   readonly lessons: readonly LessonPlan[];
   readonly celebration: FeastReferenceCarrier;
+  readonly celebrationRules: CelebrationRuleSet;
   readonly temporal: TemporalContext;
   readonly totalLessons: MatinsPlan['totalLessons'];
 }): readonly BenedictioEntry[] {
@@ -539,7 +541,8 @@ export function selectRomanBenedictions(params: {
       nocturnIndex,
       offset,
       totalLessons,
-      celebration: params.celebration
+      celebration: params.celebration,
+      celebrationRules: params.celebrationRules
     });
     entries.push({
       index: lesson.index,
@@ -600,6 +603,7 @@ function benedictionSelector(params: {
   readonly offset: number;
   readonly totalLessons: MatinsPlan['totalLessons'];
   readonly celebration: FeastReferenceCarrier;
+  readonly celebrationRules: CelebrationRuleSet;
 }): string {
   if (
     params.offset === 1 &&
@@ -607,10 +611,28 @@ function benedictionSelector(params: {
     !SANCTORAL_FEASTS_OF_THE_LORD.has(params.celebration.feastRef.path) &&
     (params.totalLessons === 3 || params.nocturnIndex === 3)
   ) {
+    if (usesBlessedVirginCujusBenediction(params.celebration, params.celebrationRules)) {
+      return '8';
+    }
     return String(4 + sanctoralCujusOffset(params.celebration.feastRef.title));
   }
 
   return String(params.offset + 1);
+}
+
+function usesBlessedVirginCujusBenediction(
+  celebration: FeastReferenceCarrier,
+  celebrationRules: CelebrationRuleSet
+): boolean {
+  if (celebrationRules.comkey === 'C11') {
+    return true;
+  }
+
+  if (/^Sancti\/(?:08-15|09-08|12-08)$/u.test(celebration.feastRef.path)) {
+    return true;
+  }
+
+  return /Beat(?:æ|ae)\s+Mari(?:æ|ae)\s+Virginis/iu.test(celebration.feastRef.title);
 }
 
 function sanctoralCujusOffset(title: string): number {

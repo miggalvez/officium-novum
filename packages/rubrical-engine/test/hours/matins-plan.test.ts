@@ -657,6 +657,29 @@ describe('buildMatinsPlan', () => {
       '6',
       '3'
     ]);
+
+    const blessedVirginCelebration = celebration('Sancti/09-15', 'III', 'sanctoral');
+    const blessedVirginResult = buildMatinsPlanWithWarnings({
+      celebration: {
+        ...blessedVirginCelebration,
+        feastRef: {
+          ...blessedVirginCelebration.feastRef,
+          title: 'Septem Dolorum Beatæ Mariæ Virginis'
+        }
+      },
+      celebrationRules: { ...baseRules(), comkey: 'C11' },
+      commemorations: [],
+      hourRules: HOUR_RULES,
+      temporal: temporal('2026-09-15', 'Pent16-2', 'time-after-pentecost', 'IV'),
+      policy: rubrics1960Policy,
+      corpus,
+      version: version1960()
+    });
+    expect(blessedVirginResult.plan.nocturnPlan[0]?.benedictions.map((entry) => entry.reference.selector)).toEqual([
+      '1',
+      '8',
+      '3'
+    ]);
   });
 
   it('uses Paschaltide common variants for inherited Matins invitatories', () => {
