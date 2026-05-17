@@ -8135,6 +8135,47 @@ representative temporal psalter, Ascension, and St Mark common witnesses.
 because this is an adjudication-only tranche; unadjudicated rows drop
 from `455` to `421`.
 
+### 2026-05-17 — Pattern: Rubrics 1960 full-secret-Pater Matins and Office of the Dead Requiem Gloria (compositor fixed)
+
+**Commit.** Current tranche commit.
+
+**Ledger signal.** The live Rubrics 1960 2026 frontier exposed the All
+Souls / Office of the Dead Matins invitatory doxology as ordinary
+`Glória Patri`; after that moved, the same November 2 witness joined the
+Holy Thursday / Good Friday full-secret-Pater Matins family that was
+emitting ordinary lesson-heading separators and `Tu autem`.
+
+**Root cause.** `Requiem gloria` was classified only as a Mass-side
+directive, so the compositor never replaced psalmic Gloria Patri with
+the Office of the Dead Requiem couplet. Separately, the Matins comparator
+and heading helper assumed every lesson heading carries an ordinary
+separator, and the compositor always appended `Tu autem` after lessons,
+even in the source-backed `Pater totum secreto` form selected by
+`Limit Benedictiones Oratio`.
+
+**Resolution.** Classified `Requiem gloria` as an hour directive,
+expanded `$Requiem` through the existing Gloria-omission replacement
+path, and taught the invitatory transform to replace the interior Psalm
+94 Gloria couplet. For `pater-totum-secreto` Matins, suppressed lesson
+heading separators and ordinary `Tu autem`, and made the comparator
+honor the heading section's separator state. The existing Matins-Lauds
+separation rubric is now emitted for omitted Te Deum as well as said or
+responsory-replaced Te Deum.
+
+**Citation.** `upstream/web/www/horas/Latin/Sancti/11-02.txt:7-19`;
+`upstream/web/www/horas/Latin/Commune/C9.txt:8-18`;
+`upstream/web/www/horas/Latin/Psalterium/Invitatorium.txt:1-15`;
+`upstream/web/www/horas/Latin/Psalterium/Common/Prayers.txt:28-30`;
+`upstream/web/www/horas/Latin/Psalterium/Common/Rubricae.txt:69-72`;
+`upstream/web/www/horas/Latin/Tempora/Quad6-4.txt:7-15`;
+`upstream/web/www/horas/Latin/Tempora/Quad6-5.txt:12-19`.
+
+**Impact.** Rubrics 1960 2026 divergent hours remain `1744` and
+unadjudicated rows remain `219`; best prefix remains `392`, while
+average matching prefix improves from `44.9` to `45.4`. The remaining
+November 2 and Triduum Matins mismatches are later closing-oration /
+conclusion questions and remain live frontier work.
+
 ## See also
 
 - [ADR-011 — Divergence adjudication protocol](../../../../docs/adr/011-phase-3-divergence-adjudication.md)

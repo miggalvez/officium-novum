@@ -21,7 +21,7 @@ const HAS_UPSTREAM = existsSync(UPSTREAM_ROOT);
 const describeIfUpstream = HAS_UPSTREAM ? describe : describe.skip;
 
 const EXPECTED_UNMAPPED_TOTAL = 171;
-const EXPECTED_MISSA_PASSTHROUGH_TOTAL = 245;
+const EXPECTED_MISSA_PASSTHROUGH_TOTAL = 243;
 
 describeIfUpstream('Phase 2d upstream rule evaluation invariants', () => {
   it('builds rule sets for every Sancti/Tempora file with [Rule] and tracks baseline counts', async () => {

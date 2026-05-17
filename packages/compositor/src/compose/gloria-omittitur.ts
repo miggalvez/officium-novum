@@ -23,12 +23,14 @@ export function resolveGloriaOmittiturReplacement(
 ): readonly TextContent[] | undefined {
   if (
     !args.directives.includes('omit-gloria-patri') &&
-    !args.directives.includes('omit-responsory-gloria')
+    !args.directives.includes('omit-responsory-gloria') &&
+    !args.directives.includes('requiem-gloria')
   ) {
     return undefined;
   }
 
-  const expanded = expandDeferredNodes([{ type: 'formulaRef', name: 'Gloria omittitur' }], {
+  const formula = args.directives.includes('requiem-gloria') ? 'Requiem' : 'Gloria omittitur';
+  const expanded = expandDeferredNodes([{ type: 'formulaRef', name: formula }], {
     index: args.corpus,
     language: args.language,
     langfb: args.langfb,

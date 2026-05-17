@@ -1329,6 +1329,70 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('renders Office of the Dead psalm doxology as Requiem instead of Gloria Patri', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const summary = engine.resolveDayOfficeSummary('2026-11-02');
+
+    for (const hour of ['matins', 'vespers'] as const) {
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour,
+        options: { languages: ['Latin'] }
+      });
+
+      const lines = canonicalLatinLines(composed);
+      expect(lines, `${hour} Requiem versicle`).toContain(
+        normalizeLatin('Réquiem ætérnam * dona eis, Dómine.')
+      );
+      expect(lines, `${hour} Requiem response`).toContain(
+        normalizeLatin('Et lux perpétua * lúceat eis.')
+      );
+
+      if (hour === 'matins') {
+        const psalm94Tail = lines.findIndex((line) =>
+          line.startsWith(normalizeLatin('Quadragínta annis próximus fui'))
+        );
+        expect(psalm94Tail, 'Matins invitatory Psalm 94 tail witness').toBeGreaterThanOrEqual(0);
+        expect(lines.slice(psalm94Tail + 2, psalm94Tail + 4)).toEqual([
+          normalizeLatin('Réquiem ætérnam * dona eis, Dómine.'),
+          normalizeLatin('Et lux perpétua * lúceat eis.')
+        ]);
+      }
+    }
+  }, 240_000);
+
+  it('continues directly from the full secret Pater Noster to the first Matins lesson', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    for (const date of ['2026-04-02', '2026-04-03', '2026-11-02'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+
+      const lines = canonicalLatinLines(composed);
+      const lessonHeadings = lines
+        .map((line, index) => ({ line, index }))
+        .filter(({ line }) => /^Lectio \d+$/u.test(line));
+      expect(lessonHeadings.length, `${date} lesson heading witnesses`).toBeGreaterThan(0);
+      for (const { line, index } of lessonHeadings) {
+        expect(lines[index - 1], `${date} should not emit a separator before ${line}`).not.toBe('_');
+      }
+      expect(lines, `${date} should not emit Tu autem in the full secret Pater Matins form`).not.toContain(
+        normalizeLatin('Tu autem, Dómine, miserére nobis.')
+      );
+      expect(lines, `${date} Matins-Lauds separation rubric`).toContain(
+        normalizeLatin('Reliqua omittuntur, nisi %Laudes% separandæ sint.')
+      );
+    }
+  }, 240_000);
+
   it('opens January 6 and January 13 Roman Matins directly at Nocturn I when the inherited Epiphany omit rules suppress the wrapper block', async () => {
     for (const version of PHASE_3_ROMAN_HANDLES) {
       const { engine, resolvedCorpus } = await createHarness(version);

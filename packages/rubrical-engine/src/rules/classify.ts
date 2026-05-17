@@ -100,6 +100,7 @@ export type HourEffect =
         | 'versum-feria'
         | 'responsory-feria'
         | 'gloria-responsory'
+        | 'requiem-gloria'
         | 'vespers-defunctorum';
       readonly hours?: readonly HourName[];
     };
@@ -566,12 +567,18 @@ function classifyAction(directive: RuleActionDirective): ClassifiedDirective {
     };
   }
 
-  if (
-    normalized === 'credo' ||
-    normalized === 'gloria' ||
-    normalized === 'requiem gloria' ||
-    normalized === 'no gloria'
-  ) {
+  if (normalized === 'requiem gloria') {
+    return {
+      target: 'hour',
+      effect: {
+        kind: 'hour-flag',
+        value: 'requiem-gloria',
+        hours
+      }
+    };
+  }
+
+  if (normalized === 'credo' || normalized === 'gloria' || normalized === 'no gloria') {
     return { target: 'missa' };
   }
 

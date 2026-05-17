@@ -120,6 +120,14 @@ function addExplicitRuleDirectives(
     ) {
       directives.add('preces-feriales');
     }
+
+    if (
+      classified.target === 'hour' &&
+      classified.effect.kind === 'hour-flag' &&
+      classified.effect.value === 'requiem-gloria'
+    ) {
+      directives.add('requiem-gloria');
+    }
   }
 }
 

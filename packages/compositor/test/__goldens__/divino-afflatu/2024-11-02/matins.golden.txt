@@ -3,7 +3,7 @@ date: 2024-11-02
 hour: matins
 celebration: In Commemoratione Omnium Fidelium Defunctorum
 languages: Latin
-section count: 51
+section count: 43
 warning count: 0
 
 [section #0 type=invitatory slot=invitatory reference=horas/Latin/Commune/C9#Invit languages=Latin]
@@ -99,8 +99,6 @@ warning count: 0
 
 [section #5 type=heading slot=heading languages=Latin+English]
   heading: lesson 1
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 1")
   Latin: text("Lectio 1")
 
@@ -113,25 +111,19 @@ warning count: 0
   Latin: text("20 Peccávi, quid fáciam tibi, o custos hóminum? quare posuísti me contrárium tibi, et factus sum mihimetípsi gravis?")
   Latin: text("21 Cur non tollis peccátum meum, et quare non aufers iniquitátem meam? Ecce nunc in púlvere dórmiam: et, si mane me quæsíeris, non subsístam.")
 
-[section #7 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #8 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory1 languages=Latin]
+[section #7 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory1 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Credo quod Redémptor meus vivit, et in novíssimo die de terra surrectúrus sum,")
   Latin: text("* Et in carne mea vidébo Deum Salvatórem meum.")
   Latin: [V.] text("Quem visúrus sum ego ipse, et non álius; et óculi mei conspectúri sunt.")
   Latin: [R.] text("Et in carne mea vidébo Deum Salvatórem meum.")
 
-[section #9 type=heading slot=heading languages=Latin+English]
+[section #8 type=heading slot=heading languages=Latin+English]
   heading: lesson 2
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 2")
   Latin: text("Lectio 2")
 
-[section #10 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio2 languages=Latin]
+[section #9 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio2 languages=Latin]
   Latin: text(" ") · citation("Job 14:1-6")
   Latin: text("1 Homo natus de mulíere, brevi vivens témpore, replétur multis misériis.")
   Latin: text("2 Qui quasi flos egréditur et contéritur, et fugit velut umbra, et nunquam in eódem statu pérmanet.")
@@ -140,25 +132,19 @@ warning count: 0
   Latin: text("5 Breves dies hóminis sunt: númerus ménsium ejus apud te est: constituísti términos ejus, qui præteríri non póterunt.")
   Latin: text("6 Recéde páululum ab eo, ut quiéscat, donec optáta véniat, sicut mercenárii, dies ejus.")
 
-[section #11 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #12 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory2 languages=Latin]
+[section #10 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory2 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Qui Lázarum resuscitásti a monuménto fœ́tidum,")
   Latin: text("* Tu eis, Dómine, dona réquiem, et locum indulgéntiæ.")
   Latin: [V.] text("Qui ventúrus es judicáre vivos et mórtuos, et sǽculum per ignem.")
   Latin: [R.] text("Tu eis, Dómine, dona réquiem, et locum indulgéntiæ.")
 
-[section #13 type=heading slot=heading languages=Latin+English]
+[section #11 type=heading slot=heading languages=Latin+English]
   heading: lesson 3
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 3")
   Latin: text("Lectio 3")
 
-[section #14 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio3 languages=Latin]
+[section #12 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio3 languages=Latin]
   Latin: text(" ") · citation("Job 19:20-27")
   Latin: text("20 Pelli meæ, consúmptis cárnibus, adhǽsit os meum, et derelícta sunt tantúmmodo lábia circa dentes meos.")
   Latin: text("21 Miserémini mei, miserémini mei saltem vos, amíci mei, quia manus Dómini tétigit me.")
@@ -169,11 +155,7 @@ warning count: 0
   Latin: text("26 Et rursum circúmdabor pelle mea, et in carne mea vidébo Deum meum:")
   Latin: text("27 Quem visúrus sum ego ipse, et óculi mei conspectúri sunt, et non álius: repósita est hæc spes mea in sinu meo.")
 
-[section #15 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #16 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory3 languages=Latin]
+[section #13 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory3 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Dómine, quando véneris judicáre terram, ubi me abscóndam a vultu iræ tuæ?")
   Latin: text("* Quia peccávi nimis in vita mea.")
@@ -183,12 +165,12 @@ warning count: 0
   Latin: [R.] text("Et lux perpétua * lúceat eis.")
   Latin: [R.] text("Quia peccávi nimis in vita mea.")
 
-[section #17 type=heading slot=heading languages=Latin+English]
+[section #14 type=heading slot=heading languages=Latin+English]
   heading: nocturn 2
   English: text("At the Nocturn")
   Latin: text("Ad Nocturnum")
 
-[section #18 type=psalm slot=psalmody reference=horas/Latin/Commune/C9#Ant Matutinum:4 languages=Latin]
+[section #15 type=psalm slot=psalmody reference=horas/Latin/Commune/C9#Ant Matutinum:4 languages=Latin]
   Latin: [Ant.] text("In loco páscuæ * ibi me collocávit.")
   Latin: text("Psalmus 22 [4]")
   Latin: text("22:1 Dóminus regit me, et nihil mihi déerit: * in loco páscuæ ibi me collocávit.")
@@ -257,75 +239,57 @@ warning count: 0
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [Ant.] text("Credo vidére bona Dómini in terra vivéntium.")
 
-[section #19 type=versicle slot=versicle reference=horas/Latin/Commune/C9#Nocturn 2 Versum languages=Latin]
+[section #16 type=versicle slot=versicle reference=horas/Latin/Commune/C9#Nocturn 2 Versum languages=Latin]
   Latin: [V.] text("Cóllocet eos Dóminus cum princípibus.")
   Latin: [R.] text("Cum princípibus pópuli sui.")
 
-[section #20 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater totum secreto languages=Latin]
+[section #17 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater totum secreto languages=Latin]
   Latin: rubric("« Pater Noster » dicitur totum secreto.")
   Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
 
-[section #21 type=heading slot=heading languages=Latin+English]
+[section #18 type=heading slot=heading languages=Latin+English]
   heading: lesson 4
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 4")
   Latin: text("Lectio 4")
 
-[section #22 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio4 languages=Latin]
+[section #19 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio4 languages=Latin]
   Latin: text("Ex Libro sancti Augustíni Epíscopi de cura pro mórtuis gerénda")
   Latin: rubric("Cap 2 et 3")
   Latin: text("Curátio fúneris, condítio sepultúræ, pompa exsequiárum magis sunt vivórum solácia quam subsídia mortuórum. Nec ídeo tamen contemnénda et abiciénda sunt córpora defunctórum, maximéque justórum ac fidélium, quibus tamquam órganis et vasis ad ómnia bona ópera sancte usus est spíritus. Si enim patérna vestis et ánulus, ac si quid hujúsmodi, tanto cárius est pósteris, quanto erga paréntes major afféctus; nullo modo ipsa spernénda sunt córpora, quæ útique multo familiárius atque conjúnctius quam quǽlibet induménta gestámus. Hæc enim non ad ornaméntum vel adjutórium, quod adhibétur extrínsecus, sed ad ipsam natúram hóminis pértinent. Unde et antiquórum justórum fúnera officiósa pietáte curáta sunt, et exséquiæ celebrátæ, et sepultúra provísa; ipsíque, cum víverent, de sepeliéndis vel étiam transferéndis suis corpóribus fíliis mandavérunt.")
 
-[section #23 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #24 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory4 languages=Latin]
+[section #20 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory4 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Meménto mei, Deus, quia ventus est vita mea,")
   Latin: text("* Nec aspíciat me visus hóminis.")
   Latin: [V.] text("De profúndis clamávi ad te, Dómine: Dómine, exáudi vocem meam.")
   Latin: [R.] text("Nec aspíciat me visus hóminis.")
 
-[section #25 type=heading slot=heading languages=Latin+English]
+[section #21 type=heading slot=heading languages=Latin+English]
   heading: lesson 5
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 5")
   Latin: text("Lectio 5")
 
-[section #26 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio5 languages=Latin]
+[section #22 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio5 languages=Latin]
   Latin: text(" ") · citation("Cap. 4")
   Latin: text("Recordántis et precántis afféctus cum defúnctis a fidélibus caríssimis exhibétur, eum prodésse non dúbium est iis, qui cum in córpore víverent, tália sibi post hanc vitam prodésse meruérunt. Verum, etsi áliqua necéssitas vel humári córpora, vel in sacris locis humári nulla data facultáte permíttat, non sunt prætermitténdæ supplicatiónes pro spirítibus mortuórum: quas faciéndas pro ómnibus in christiána et cathólica societáte defúnctis, étiam tácitis eórum nomínibus, sub generáli commemoratióne suscépit Ecclésia; ut quibus ad ista desunt paréntes, aut fílii, aut quicúmque cognáti vel amíci, ab una eis exhibeántur pia matre commúni. Si autem deéssent istæ supplicatiónes, quæ fiunt recta fide ac pietáte pro mórtuis, puto quod nihil prodésset spirítibus eórum, quámlibet in locis sanctis exánima córpora poneréntur.")
 
-[section #27 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #28 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory5 languages=Latin]
+[section #23 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory5 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Hei mihi, Dómine, quia peccávi nimis in vita mea: Quid fáciam, miser? ubi fúgiam, nisi ad te, Deus meus?")
   Latin: text("* Miserére mei, dum véneris in novíssimo die.")
   Latin: [V.] text("Anima mea turbáta est valde, sed tu, Dómine, succúrre ei.")
   Latin: [R.] text("Miserére mei, dum véneris in novíssimo die.")
 
-[section #29 type=heading slot=heading languages=Latin+English]
+[section #24 type=heading slot=heading languages=Latin+English]
   heading: lesson 6
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 6")
   Latin: text("Lectio 6")
 
-[section #30 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio6 languages=Latin]
+[section #25 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio6 languages=Latin]
   Latin: text(" ") · citation("Cap. 18")
   Latin: text("Quæ cum ita sint, non existimémus ad mórtuos, pro quibus curam gérimus, perveníre, nisi quod pro eis sive altáris, sive oratiónum, sive eleemosynárum sacrifíciis solémniter supplicámus: quamvis non pro quibus fiunt, ómnibus prosint; sed iis tantum pro quibus, dum vivunt, comparátur, ut prosint. Sed quia non discérnimus qui sunt, opórtet ea pro regenerátis ómnibus fácere, ut nullus eórum prætermittátur, ad quos hæc benefícia possint et débeant perveníre. Mélius enim supérerunt ista eis, quibus nec obsunt nec prosunt; quam eis déerunt, quibus prosunt. Diligéntius tamen facit hæc quisque pro necessáriis suis, quo pro illo fiat simíliter a suis. Córpori autem humándo quidquid impénditur, non est præsídium salútis, sed humanitátis offícium, secúndum afféctum quo nemo unquam carnem suam ódio habet. Unde opórtet ut quam potest pro carne próximi curam gerat, cum ille inde recésserit, qui gerébat. Et si hæc fáciunt, qui carnis resurrectiónem non credunt, quanto magis debent fácere qui credunt; ut córpori mórtuo, sed tamen resurrectúro et in æternitáte mansúro, impénsum ejúsmodi offícium sit étiam quodámmodo ejúsdem fídei testimónium!")
 
-[section #31 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #32 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory6 languages=Latin]
+[section #26 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory6 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Ne recordéris peccáta mea, Dómine,")
   Latin: text("* Dum véneris judicáre sǽculum per ignem.")
@@ -335,12 +299,12 @@ warning count: 0
   Latin: [R.] text("Et lux perpétua * lúceat eis.")
   Latin: [R.] text("Dum véneris judicáre sǽculum per ignem.")
 
-[section #33 type=heading slot=heading languages=Latin+English]
+[section #27 type=heading slot=heading languages=Latin+English]
   heading: nocturn 3
   English: text("At the Nocturn")
   Latin: text("Ad Nocturnum")
 
-[section #34 type=psalm slot=psalmody reference=horas/Latin/Commune/C9#Ant Matutinum:7 languages=Latin]
+[section #28 type=psalm slot=psalmody reference=horas/Latin/Commune/C9#Ant Matutinum:7 languages=Latin]
   Latin: [Ant.] text("Compláceat * tibi, Dómine, ut erípias me: Dómine, ad adjuvándum me réspice.")
   Latin: text("Psalmus 39 [7]")
   Latin: text("39:2 Exspéctans exspectávi Dóminum, * et inténdit mihi.")
@@ -411,22 +375,20 @@ warning count: 0
   Latin: [R.] text("Sicut erat in princípio, et nunc, et semper, * et in sǽcula sæculórum. Amen.")
   Latin: [Ant.] text("Sitívit ánima mea ad Deum vivum: quando véniam, et apparébo ante fáciem Dómini?")
 
-[section #35 type=versicle slot=versicle reference=horas/Latin/Commune/C9#Nocturn 3 Versum languages=Latin]
+[section #29 type=versicle slot=versicle reference=horas/Latin/Commune/C9#Nocturn 3 Versum languages=Latin]
   Latin: [V.] text("Ne tradas béstiis ánimas confiténtes tibi.")
   Latin: [R.] text("Et ánimas páuperum tuórum ne obliviscáris in finem.")
 
-[section #36 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater totum secreto languages=Latin]
+[section #30 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Pater totum secreto languages=Latin]
   Latin: rubric("« Pater Noster » dicitur totum secreto.")
   Latin: [v.] text("Pater noster, qui es in cælis, sanctificétur nomen tuum: advéniat regnum tuum: fiat volúntas tua, sicut in cælo et in terra. Panem nostrum cotidiánum da nobis hódie: et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris: et ne nos indúcas in tentatiónem: sed líbera nos a malo. Amen.")
 
-[section #37 type=heading slot=heading languages=Latin+English]
+[section #31 type=heading slot=heading languages=Latin+English]
   heading: lesson 7
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 7")
   Latin: text("Lectio 7")
 
-[section #38 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio7 languages=Latin]
+[section #32 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio7 languages=Latin]
   Latin: text("De Epístola prima beáti Pauli Apóstoli ad Corínthios")
   Latin: text(" ") · citation("1 Cor 15:12-22")
   Latin: text("12 Si Christus prædicátur quod resurréxit a mórtuis, quómodo quidam dicunt in vobis, quóniam resurréctio mortuórum non est?")
@@ -441,25 +403,19 @@ warning count: 0
   Latin: text("21 Quóniam quidem per hóminem mors, et per hóminem resurréctio mortuórum.")
   Latin: text("22 Et sicut in Adam omnes moriúntur, ita et in Christo omnes vivificabúntur.")
 
-[section #39 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #40 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory7 languages=Latin]
+[section #33 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory7 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Peccántem me cotídie, et non me pœniténtem, timor mortis contúrbat me:")
   Latin: text("* Quia in inférno nulla est redémptio, miserére mei, Deus, et salva me.")
   Latin: [V.] text("Deus, in nómine tuo salvum me fac, et in virtúte tua líbera me.")
   Latin: [R.] text("Quia in inférno nulla est redémptio, miserére mei, Deus, et salva me.")
 
-[section #41 type=heading slot=heading languages=Latin+English]
+[section #34 type=heading slot=heading languages=Latin+English]
   heading: lesson 8
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 8")
   Latin: text("Lectio 8")
 
-[section #42 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio8 languages=Latin]
+[section #35 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio8 languages=Latin]
   Latin: text(" ") · citation("1 Cor 15:35-44")
   Latin: text("35 Sed dicet áliquis: Quómodo resúrgunt mórtui? qualíve córpore vénient?")
   Latin: text("36 Insípiens, tu quod séminas non vivificátur, nisi prius moriátur:")
@@ -472,25 +428,19 @@ warning count: 0
   Latin: text("43 Seminátur in ignobilitáte, surget in glória: seminátur in infirmitáte, surget in virtúte:")
   Latin: text("44 Seminátur corpus animále, surget corpus spiritále.")
 
-[section #43 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #44 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory8 languages=Latin]
+[section #36 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory8 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Dómine, secúndum actum meum noli me judicáre: nihil dignum in conspéctu tuo egi; ídeo déprecor majestátem tuam,")
   Latin: text("* Ut tu, Deus, déleas iniquitátem meam.")
   Latin: [V.] text("Amplius lava me, Dómine, ab injustítia mea, et a delícto meo munda me.")
   Latin: [R.] text("Ut tu, Deus, déleas iniquitátem meam.")
 
-[section #45 type=heading slot=heading languages=Latin+English]
+[section #37 type=heading slot=heading languages=Latin+English]
   heading: lesson 9
-  English: text("_")
-  Latin: text("_")
   English: text("Reading 9")
   Latin: text("Lectio 9")
 
-[section #46 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio9 languages=Latin]
+[section #38 type=lectio-brevis slot=lectio-brevis reference=horas/Latin/Sancti/11-02#Lectio9 languages=Latin]
   Latin: text(" ") · citation("1 Cor 15:51-58")
   Latin: text("51 Ecce mystérium vobis dico: Omnes quidem resurgémus, sed non omnes immutábimur.")
   Latin: text("52 In moménto, in ictu óculi, in novíssima tuba: canet enim tuba, et mórtui resúrgent incorrúpti: et nos immutábimur.")
@@ -501,11 +451,7 @@ warning count: 0
   Latin: text("57 Deo autem grátias, qui dedit nobis victóriam per Dóminum nostrum Jesum Christum.")
   Latin: text("58 Itaque fratres mei dilécti, stábiles estóte, et immóbiles: abundántes in ópere Dómini semper, sciéntes quod labor vester non est inánis in Dómino.")
 
-[section #47 type=other slot=other reference=horas/Latin/Psalterium/Common/Prayers#Tu autem languages=Latin]
-  Latin: [V.] text("Tu autem, Dómine, miserére nobis.")
-  Latin: [R.] text("Deo grátias.")
-
-[section #48 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory9 languages=Latin]
+[section #39 type=responsory slot=responsory reference=horas/Latin/Commune/C9#Responsory9 languages=Latin]
   Latin: text("_")
   Latin: [R.] text("Líbera me, Dómine, de morte ætérna in die illa treménda,")
   Latin: text("* Quando cæli movéndi sunt et terra, * Dum véneris judicáre sǽculum per ignem.")
@@ -517,12 +463,15 @@ warning count: 0
   Latin: [R.] text("Et lux perpétua * lúceat eis.")
   Latin: [R.] text("Líbera me, Dómine, de morte ætérna in die illa treménda, * Quando cæli movéndi sunt et terra, * Dum véneris judicáre sǽculum per ignem.")
 
-[section #49 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
+[section #40 type=other slot=de-officio-capituli reference=horas/Latin/Psalterium/Common/Rubricae#Matutinum languages=Latin]
+  Latin: rubric("Reliqua omittuntur, nisi %Laudes% separandæ sint.")
+
+[section #41 type=oration slot=oration reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [v.] text("Orémus.")
 
-[section #50 type=conclusion slot=conclusion reference=horas/Ordinarium/Matutinum#Conclusio languages=Latin]
+[section #42 type=conclusion slot=conclusion reference=horas/Ordinarium/Matutinum#Conclusio languages=Latin]
   Latin: [V.] text("Dóminus vobíscum.")
   Latin: [R.] text("Et cum spíritu tuo.")
   Latin: [V.] text("Dómine, exáudi oratiónem meam.")

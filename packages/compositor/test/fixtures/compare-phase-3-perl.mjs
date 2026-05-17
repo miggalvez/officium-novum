@@ -527,7 +527,11 @@ function normalizeComposedLines(composed, language) {
       const rendered = renderHeading(section.heading, { nocturnHeadingCount });
       const normalized = rendered ? renderCanonicalText(rendered) : '';
       if (normalized) {
-        if (section.heading?.kind === 'lesson' && lines.at(-1) !== '_') {
+        if (
+          section.heading?.kind === 'lesson' &&
+          headingSectionHasLeadingSeparator(section, language) &&
+          lines.at(-1) !== '_'
+        ) {
           lines.push('_');
         }
         lines.push(normalized);
@@ -545,6 +549,15 @@ function normalizeComposedLines(composed, language) {
   }
 
   return lines;
+}
+
+function headingSectionHasLeadingSeparator(section, language) {
+  for (const line of section.lines) {
+    const rendered = renderCanonicalText(renderComposedLine(line, language));
+    if (!rendered) continue;
+    return rendered === '_';
+  }
+  return false;
 }
 
 function renderHeading(heading, context = {}) {
