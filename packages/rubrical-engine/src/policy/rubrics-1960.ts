@@ -507,6 +507,7 @@ export const rubrics1960Policy: RubricalPolicy = {
         nocturnIndex: params.nocturnIndex,
         lessons: params.lessons,
         celebration: params.celebration,
+        celebrationRules: params.celebrationRules,
         temporal: params.temporal,
         totalLessons: params.totalLessons
       }).map((entry) =>
@@ -526,6 +527,7 @@ export const rubrics1960Policy: RubricalPolicy = {
       nocturnIndex: params.nocturnIndex,
       lessons: params.lessons,
       celebration: params.celebration,
+      celebrationRules: params.celebrationRules,
       temporal: params.temporal,
       totalLessons: params.totalLessons
     });

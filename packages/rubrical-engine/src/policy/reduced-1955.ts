@@ -398,6 +398,7 @@ export const reduced1955Policy: RubricalPolicy = {
       nocturnIndex: params.nocturnIndex,
       lessons: params.lessons,
       celebration: params.celebration,
+      celebrationRules: params.celebrationRules,
       temporal: params.temporal,
       totalLessons: params.totalLessons
     });

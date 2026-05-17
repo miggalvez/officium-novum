@@ -3324,6 +3324,30 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('uses the Blessed Virgin C11 Matins cujus benediction family', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+    const expected = normalizeLatin(
+      'Cujus festum cólimus, ipsa Virgo vírginum intercédat pro nobis ad Dóminum.'
+    );
+    const forbidden = normalizeLatin(
+      'Cujus festum cólimus, ipsa intercédat pro nobis ad Dóminum.'
+    );
+
+    for (const date of ['2026-09-15', '2026-10-07', '2026-12-08'] as const) {
+      const summary = engine.resolveDayOfficeSummary(date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: 'matins',
+        options: { languages: ['Latin'] }
+      });
+      const lines = canonicalLatinLines(composed);
+      expect(lines, `${date} Matins BVM C11 benediction`).toContain(expected);
+      expect(lines, `${date} Matins generic cujus benediction`).not.toContain(forbidden);
+    }
+  }, 240_000);
+
   it('keeps Jan 14 1960 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2024-01-14');
