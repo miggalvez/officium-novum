@@ -1,4 +1,4 @@
-import type { ParsedFile, RuleDirective } from '@officium-novum/parser';
+import type { ConditionExpression, ParsedFile, RuleDirective } from '@officium-novum/parser';
 
 import { conditionMatches } from '../internal/conditions.js';
 import type { RubricalWarning } from '../types/directorium.js';
@@ -99,6 +99,8 @@ export function buildCelebrationRuleSet(
         break;
     }
   }
+
+  builder.comkey ??= activeRankCommonKey(feastFile, context);
 
   const baseRuleSet = freezeCelebrationRuleSet({
     matins: builder.matins,
@@ -279,4 +281,67 @@ function isVideOrExDirective(directive: RuleDirective): boolean {
 
   const keyword = directive.keyword.trim().toLowerCase();
   return keyword === 'vide' || keyword === 'ex';
+}
+
+function activeRankCommonKey(
+  feastFile: ParsedFile,
+  context: RuleEvaluationContext
+): string | undefined {
+  for (const section of feastFile.sections) {
+    if (section.header !== 'Rank' || !section.rank) {
+      continue;
+    }
+    if (section.condition && !conditionMatches(section.condition, context)) {
+      continue;
+    }
+    for (const rankLine of section.rank) {
+      if (rankLine.rank.condition && !conditionMatches(rankLine.rank.condition, context)) {
+        continue;
+      }
+      const key = commonKeyFromDerivation(rankLine.rank.derivation);
+      if (key && commonKeyActivatesSummorumPontificum(key, context)) {
+        return key;
+      }
+    }
+  }
+  return undefined;
+}
+
+function commonKeyFromDerivation(derivation: string | undefined): string | undefined {
+  if (!derivation) {
+    return undefined;
+  }
+  const match = /^(?:vide|ex)\s+(.+)$/iu.exec(derivation.trim());
+  const key = match?.[1]?.replace(/\.txt$/iu, '').trim();
+  return key && /^C[0-9]/iu.test(key) ? key : undefined;
+}
+
+function commonKeyActivatesSummorumPontificum(key: string, context: RuleEvaluationContext): boolean {
+  const commonFile = context.corpus.getFile(`horas/Latin/Commune/${key}.txt`);
+  if (!commonFile) {
+    return false;
+  }
+  return commonFile.sections.some((section) => expressionMentionsSummorumPontificum(section.condition?.expression));
+}
+
+function expressionMentionsSummorumPontificum(expression: ConditionExpression | undefined): boolean {
+  if (!expression) {
+    return false;
+  }
+
+  switch (expression.type) {
+    case 'match':
+      return (
+        (expression.subject === 'communi' || expression.subject === 'commune') &&
+        expression.predicate === 'Summorum Pontificum'
+      );
+    case 'not':
+      return expressionMentionsSummorumPontificum(expression.inner);
+    case 'and':
+    case 'or':
+      return (
+        expressionMentionsSummorumPontificum(expression.left) ||
+        expressionMentionsSummorumPontificum(expression.right)
+      );
+  }
 }

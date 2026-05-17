@@ -1,4 +1,5 @@
 import type {
+  ConditionExpression,
   ParsedFile,
   TextContent
 } from '@officium-novum/parser';
@@ -491,6 +492,7 @@ function findProperReference(
   }
 
   const headers = properHeadersForSlot(slot.name, input.hour, input);
+  const conditionContext = conditionContextForReferenceSelection(input, files);
   if (
     slot.name === 'hymn' &&
     input.hour === 'vespers' &&
@@ -499,13 +501,13 @@ function findProperReference(
     return findReferenceInFilesPreservingFileOrder(files, [
       ...postCumNostraConfessorVespersHymnHeaders(input),
       ...headers
-    ]);
+    ], conditionContext);
   }
 
   const ref =
     slot.name === 'chapter' && input.hour === 'vespers'
-      ? findReferenceInFilesPreservingFileOrder(files, headers)
-      : findReferenceInFiles(files, headers);
+      ? findReferenceInFilesPreservingFileOrder(files, headers, conditionContext)
+      : findReferenceInFiles(files, headers, conditionContext);
   return splitComplineNuncAntiphonOpeningRef(ref, slot.name, input);
 }
 
@@ -2250,11 +2252,12 @@ function findCommuneReferenceByHeaders(
 
 function findReferenceInFiles(
   files: readonly ParsedFile[],
-  headers: readonly string[]
+  headers: readonly string[],
+  conditionContext?: ConditionEvalContext
 ): TextReference | undefined {
   for (const header of headers) {
     for (const file of files) {
-      if (file.sections.some((section) => section.header === header)) {
+      if (file.sections.some((section) => section.header === header && sectionMatches(section, conditionContext))) {
         return {
           path: file.path.replace(/\.txt$/u, ''),
           section: header
@@ -2268,10 +2271,11 @@ function findReferenceInFiles(
 
 function findReferenceInFilesPreservingFileOrder(
   files: readonly ParsedFile[],
-  headers: readonly string[]
+  headers: readonly string[],
+  conditionContext?: ConditionEvalContext
 ): TextReference | undefined {
   for (const file of files) {
-    const ref = findReferenceInFile(file, file.path.replace(/\.txt$/u, ''), headers);
+    const ref = findReferenceInFile(file, file.path.replace(/\.txt$/u, ''), headers, conditionContext);
     if (ref) {
       return ref;
     }
@@ -2283,10 +2287,11 @@ function findReferenceInFilesPreservingFileOrder(
 function findReferenceInFile(
   file: ParsedFile,
   path: string,
-  headers: readonly string[]
+  headers: readonly string[],
+  conditionContext?: ConditionEvalContext
 ): TextReference | undefined {
   for (const header of headers) {
-    if (file.sections.some((section) => section.header === header)) {
+    if (file.sections.some((section) => section.header === header && sectionMatches(section, conditionContext))) {
       return {
         path,
         section: header
@@ -2295,6 +2300,76 @@ function findReferenceInFile(
   }
 
   return undefined;
+}
+
+function sectionMatches(
+  section: ParsedFile['sections'][number],
+  conditionContext: ConditionEvalContext | undefined
+): boolean {
+  if (!section.condition || !conditionContext) {
+    return true;
+  }
+  return conditionMatches(section.condition, conditionContext);
+}
+
+function conditionContextForReferenceSelection(
+  input: ApplyRuleSetInput,
+  files: readonly ParsedFile[]
+): ConditionEvalContext | undefined {
+  if (!input.version) {
+    return undefined;
+  }
+
+  const base: ConditionEvalContext = {
+    date: normalizeDateInput(input.temporal.date),
+    dayOfWeek: input.temporal.dayOfWeek,
+    season: input.temporal.season,
+    version: input.version
+  };
+  const commonFiles = input.celebrationRules.comkey
+    ? commonKeyVariants(input.celebrationRules.comkey, input.hourRules.commonSourceVariant)
+        .map((key) => input.corpus.getFile(`horas/Latin/Commune/${key}.txt`))
+        .filter((file): file is ParsedFile => Boolean(file))
+    : [];
+  const commonPredicates = commonPredicatesFromFiles(commonFiles).filter(
+    (predicate) => predicate === 'Summorum Pontificum'
+  );
+  return commonPredicates.length > 0
+    ? { ...base, commonPredicates }
+    : undefined;
+}
+
+function commonPredicatesFromFiles(files: readonly ParsedFile[]): readonly string[] {
+  const predicates = new Set<string>();
+  for (const file of files) {
+    for (const section of file.sections) {
+      collectCommonPredicatesFromExpression(section.condition?.expression, predicates);
+    }
+  }
+  return [...predicates];
+}
+
+function collectCommonPredicatesFromExpression(
+  expression: ConditionExpression | undefined,
+  predicates: Set<string>
+): void {
+  if (!expression) return;
+
+  switch (expression.type) {
+    case 'match':
+      if (expression.subject === 'communi' || expression.subject === 'commune') {
+        predicates.add(expression.predicate);
+      }
+      return;
+    case 'not':
+      collectCommonPredicatesFromExpression(expression.inner, predicates);
+      return;
+    case 'and':
+    case 'or':
+      collectCommonPredicatesFromExpression(expression.left, predicates);
+      collectCommonPredicatesFromExpression(expression.right, predicates);
+      return;
+  }
 }
 
 function sameReference(left: TextReference, right: TextReference): boolean {
