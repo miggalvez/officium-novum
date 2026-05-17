@@ -115,7 +115,10 @@ function omitGloriaPatri(
   content: readonly TextContent[],
   replacement: readonly TextContent[] = DEFAULT_GLORIA_OMITTITUR_REPLACEMENT
 ): readonly TextContent[] {
-  if (slot !== 'psalmody' && slot !== 'invitatory' && !isCanticleSlot(slot)) return content;
+  if (slot !== 'psalmody' && slot !== 'invitatory' && slot !== 'conclusion' && !isCanticleSlot(slot)) {
+    return content;
+  }
+  if (slot === 'conclusion') return replaceGloriaPatriOccurrences(content, replacement);
   if (slot === 'invitatory') return replaceGloriaPatriOccurrences(content, replacement);
 
   let end = content.length;

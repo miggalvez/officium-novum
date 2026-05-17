@@ -23,6 +23,7 @@ interface CelebrationRuleBuilder {
   festumDomini: boolean;
   papalNames?: CelebrationRuleSet['papalNames'];
   conclusionMode: CelebrationRuleSet['conclusionMode'];
+  specialConclusion: boolean;
   antiphonScheme: CelebrationRuleSet['antiphonScheme'];
   doxologyVariant?: string;
   omitCommemoration: boolean;
@@ -109,6 +110,7 @@ export function buildCelebrationRuleSet(
     festumDomini: builder.festumDomini,
     ...(builder.papalNames ? { papalNames: builder.papalNames } : {}),
     conclusionMode: builder.conclusionMode,
+    specialConclusion: builder.specialConclusion,
     antiphonScheme: builder.antiphonScheme,
     ...(builder.doxologyVariant ? { doxologyVariant: builder.doxologyVariant } : {}),
     omitCommemoration: builder.omitCommemoration,
@@ -144,6 +146,7 @@ function defaultCelebrationRuleBuilder(): CelebrationRuleBuilder {
     lessonSetAlternates: [],
     festumDomini: false,
     conclusionMode: 'separate',
+    specialConclusion: false,
     antiphonScheme: 'default',
     omitCommemoration: false,
     noSuffragium: false,
@@ -211,6 +214,9 @@ function applyCelebrationEffect(builder: CelebrationRuleBuilder, effect: Celebra
       break;
     case 'conclusion-mode':
       builder.conclusionMode = effect.value;
+      break;
+    case 'special-conclusion':
+      builder.specialConclusion = true;
       break;
     case 'antiphon-scheme':
       builder.antiphonScheme = effect.value;

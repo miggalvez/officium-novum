@@ -34,6 +34,7 @@ export type CelebrationEffect =
   | { readonly kind: 'papal-office-name'; readonly value: string }
   | { readonly kind: 'papal-commemoration-name'; readonly value: string }
   | { readonly kind: 'conclusion-mode'; readonly value: 'sub-unica' }
+  | { readonly kind: 'special-conclusion' }
   | { readonly kind: 'antiphon-scheme'; readonly value: 'proper-minor-hours' }
   | { readonly kind: 'doxology'; readonly value: string }
   | { readonly kind: 'omit-commemoration' }
@@ -308,6 +309,17 @@ function classifyAction(directive: RuleActionDirective): ClassifiedDirective {
       effect: {
         kind: 'conclusion-mode',
         value: 'sub-unica'
+      }
+    };
+  }
+
+  // Corpus examples: Commune/C9 and Sancti/11-02. The feast supplies its
+  // own [Conclusio] instead of the ordinary major-hour conclusion.
+  if (normalized === 'special conclusio') {
+    return {
+      target: 'celebration',
+      effect: {
+        kind: 'special-conclusion'
       }
     };
   }

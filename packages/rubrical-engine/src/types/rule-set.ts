@@ -56,6 +56,7 @@ export interface CelebrationRuleSet {
   readonly festumDomini: boolean;
   readonly papalNames?: PapalNameBindings;
   readonly conclusionMode: 'separate' | 'sub-unica';
+  readonly specialConclusion: boolean;
   readonly antiphonScheme: AntiphonScheme;
   readonly doxologyVariant?: string;
   readonly omitCommemoration: boolean;

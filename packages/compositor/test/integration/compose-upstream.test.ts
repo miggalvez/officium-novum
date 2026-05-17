@@ -1390,6 +1390,24 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
       expect(lines, `${date} Matins-Lauds separation rubric`).toContain(
         normalizeLatin('Reliqua omittuntur, nisi %Laudes% separandæ sint.')
       );
+      const oration = sectionTexts(composed, 'oration').map(normalizeLatin);
+      if (date === '2026-11-02') {
+        expect(oration, `${date} Matins should use the explicit Oratio Matutinum collect`).toContain(
+          normalizeLatin(
+            'Fidélium, Deus, ómnium Cónditor et Redémptor, animábus famulórum famularúmque tuárum remissiónem cunctórum tríbue peccatórum: ut indulgéntiam, quam semper optavérunt, piis supplicatiónibus consequántur:'
+          )
+        );
+        expect(oration, `${date} Matins should not use the generic Office of the Dead preces bridge`).not.toContain(
+          normalizeLatin('A porta ínferi.')
+        );
+        expect(lines, `${date} Matins should use the source-backed special conclusion`).toContain(
+          normalizeLatin('Conclusio specialis')
+        );
+      } else {
+        expect(oration, `${date} Matins should not keep the cistercian dismissal rubric`).not.toContain(
+          normalizeLatin('Et dato signo a Superiore omnes surgunt et discedunt.')
+        );
+      }
     }
   }, 240_000);
 

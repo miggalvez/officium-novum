@@ -749,6 +749,7 @@ function matinsRules(overrides: Partial<CelebrationRuleSet> = {}): CelebrationRu
     lessonSetAlternates: [],
     festumDomini: false,
     conclusionMode: 'separate',
+    specialConclusion: false,
     antiphonScheme: 'default',
     omitCommemoration: false,
     noSuffragium: false,

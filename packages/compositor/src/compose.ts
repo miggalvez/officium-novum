@@ -36,6 +36,10 @@ import {
   rendersSubUnicaOrationSeparators
 } from './compose/sub-unica-oration.js';
 import {
+  stripWrappedMatinsOrationDuplicateOremus,
+  stripWrappedMatinsOrationOpening
+} from './compose/wrapped-matins-oration.js';
+import {
   appendExpandedPsalmWrapper,
   buildPsalmHeading,
   containsInlinePsalmRefs,
@@ -296,7 +300,7 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const bucket = perLanguage.get(lang);
       if (!bucket) continue;
       const gloriaOmittiturReplacement =
-        args.slot === 'psalmody' || args.slot === 'responsory'
+        args.slot === 'psalmody' || args.slot === 'responsory' || args.slot === 'conclusion'
           ? resolveGloriaOmittiturReplacement({
               directives: args.directives,
               corpus: args.corpus,
@@ -405,7 +409,11 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
       const sourceForExpansion = stripTridentineFerialPrecesPsalmBlock(
         args,
         ref,
-        prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithSubUnicaHeading)
+        stripWrappedMatinsOrationOpening(
+          args,
+          ref,
+          prependSimplifiedTriduumOrationPrelude(args, ref, sourceWithSubUnicaHeading)
+        )
       );
       const expandedContent = expandDeferredNodes(
         args.slot === 'psalmody' && !isAntiphon && psalmIndex !== undefined
@@ -422,8 +430,15 @@ function composeSlot(args: ComposeSlotArgs): Section | undefined {
           ...(args.onWarning ? { onWarning: args.onWarning } : {})
         }
       );
+      const withMatinsOrationFilter = stripWrappedMatinsOrationDuplicateOremus(
+        args,
+        ref,
+        expandedContent
+      );
       const expanded =
-        args.slot === 'responsory' ? normalizeResponsoryGloria(expandedContent) : expandedContent;
+        args.slot === 'responsory'
+          ? normalizeResponsoryGloria(withMatinsOrationFilter)
+          : withMatinsOrationFilter;
       const flattened = flattenConditionals(expanded, args.context);
       // Directives run before final emission. For psalmody antiphon refs we
       // synthesize the `Ant.` marker first so transforms like `add-alleluia`
@@ -768,15 +783,17 @@ function isDirectPsalmFileRef(ref: TextReference): boolean {
 function isSimplifiedTriduumOration(args: ComposeSlotArgs, ref: TextReference): boolean {
   return (
     args.slot === 'oration' &&
-    (args.hour === 'lauds' ||
+    (args.hour === 'matins' ||
+      args.hour === 'lauds' ||
       args.hour === 'vespers' ||
       args.hour === 'prime' ||
       args.hour === 'terce' ||
       args.hour === 'sext' ||
       args.hour === 'none') &&
+    (args.hour !== 'matins' || args.context.version.handle.includes('1960')) &&
     args.structure.slots.conclusion?.kind === 'empty' &&
     Boolean(args.context.version.handle.match(/(?:1955|1960)/u)) &&
-    (ref.section === 'Oratio' || ref.section === 'Oratio 2') &&
+    (ref.section === 'Oratio Matutinum' || ref.section === 'Oratio' || ref.section === 'Oratio 2') &&
     /\/Tempora\/Quad6-[456]r?$/u.test(ref.path)
   );
 }

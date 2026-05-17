@@ -27,6 +27,7 @@ describe('buildCelebrationRuleSet', () => {
       'Antiphonas horas',
       'Doxology=Nat',
       'Sub unica concl',
+      'Special Conclusio',
       'Psalm5 Vespera=116'
     ]);
 
@@ -36,6 +37,7 @@ describe('buildCelebrationRuleSet', () => {
     expect(result.celebrationRules.antiphonScheme).toBe('proper-minor-hours');
     expect(result.celebrationRules.doxologyVariant).toBe('Nat');
     expect(result.celebrationRules.conclusionMode).toBe('sub-unica');
+    expect(result.celebrationRules.specialConclusion).toBe(true);
     expect(result.celebrationRules.hourScopedDirectives).toHaveLength(1);
   });
 
