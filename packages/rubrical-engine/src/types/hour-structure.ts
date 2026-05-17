@@ -79,6 +79,7 @@ export type SlotContent =
 export type HourDirective =
   | 'omit-gloria-patri'
   | 'omit-responsory-gloria'
+  | 'requiem-gloria'
   | 'omit-alleluia'
   | 'add-alleluia'
   | 'add-versicle-alleluia'

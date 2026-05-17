@@ -54,13 +54,16 @@ export function prependSeparatorLine(
   });
 }
 
-export function headingSection(heading: HeadingDescriptor): Section {
+export function headingSection(
+  heading: HeadingDescriptor,
+  options: { readonly leadingSeparator?: boolean } = {}
+): Section {
   const text =
     heading.kind === 'nocturn'
       ? { Latin: 'Ad Nocturnum', English: 'At the Nocturn' }
       : { Latin: `Lectio ${heading.ordinal}`, English: `Reading ${heading.ordinal}` };
   const lines =
-    heading.kind === 'lesson'
+    heading.kind === 'lesson' && options.leadingSeparator !== false
       ? [
           Object.freeze({
             texts: Object.freeze({

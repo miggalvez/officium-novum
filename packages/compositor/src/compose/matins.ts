@@ -13,6 +13,7 @@ import { conditionMatches } from '@officium-novum/rubrical-engine';
 
 import { applyDirectives } from '../directives/apply-directives.js';
 import { resolveHymnDoxologyByLanguage } from './major-hour-hymn.js';
+import { resolveGloriaOmittiturReplacement } from './gloria-omittitur.js';
 import { emitSection } from '../emit/sections.js';
 import { flattenConditionals } from '../flatten/evaluate-conditionals.js';
 import { expandDeferredNodes } from '../resolve/expand-deferred-nodes.js';
@@ -166,10 +167,10 @@ export function composeMatinsSections(
         const matinsRubric = composeReferenceSlot('de-officio-capituli', MATINS_LAUDS_SEPARATION_REF, args);
         if (matinsRubric) sections.push(matinsRubric);
       }
+    } else if (teDeum.decision === 'omit') {
+      const matinsRubric = composeReferenceSlot('de-officio-capituli', MATINS_LAUDS_SEPARATION_REF, args);
+      if (matinsRubric) sections.push(matinsRubric);
     }
-    // `decision === 'omit'` emits nothing, per RI §196 (Sacred Triduum) and
-    // other suppressing contexts; the `if` arms above are the only ones
-    // that emit.
   }
 
   return sections;
@@ -211,10 +212,20 @@ function composeInvitatorium(
       ...(args.onWarning ? { onWarning: args.onWarning } : {})
     });
     const flattened = flattenConditionals(expanded, args.context);
+    const gloriaOmittiturReplacement = resolveGloriaOmittiturReplacement({
+      directives: args.directives,
+      corpus: args.corpus,
+      language,
+      langfb: args.options.langfb,
+      context: args.context,
+      maxDepth: MAX_DEFERRED_DEPTH,
+      ...(args.onWarning ? { onWarning: args.onWarning } : {})
+    });
     const transformed = applyDirectives('invitatory', flattened, {
       hour: 'matins',
       language,
-      directives: args.directives
+      directives: args.directives,
+      gloriaOmittiturReplacement
     });
     if (transformed.length > 0) {
       perLanguage.set(language, Object.freeze([...transformed]));
@@ -385,7 +396,10 @@ function composeNocturn(
       : undefined;
     const jubeSection = benedictioSection ? composeOtherReferenceSection(JUBE_DOMNE_REF, args) : undefined;
     const amenSection = benedictioSection ? composeOtherReferenceSection(AMEN_REF, args) : undefined;
-    const tuAutemSection = lessonSection ? composeOtherReferenceSection(TU_AUTEM_REF, args) : undefined;
+    const tuAutemSection =
+      lessonSection && nocturn.lessonIntroduction !== 'pater-totum-secreto'
+        ? composeOtherReferenceSection(TU_AUTEM_REF, args)
+        : undefined;
 
     // Only emit a heading when at least one downstream section resolves;
     // otherwise the client would see an orphan "Lectio N" label with no text.
@@ -402,7 +416,12 @@ function composeNocturn(
     if (benedictioSection) out.push(benedictioSection);
     if (amenSection) out.push(amenSection);
     if (hasLessonBlock) {
-      out.push(headingSection({ kind: 'lesson', ordinal: lesson.index }));
+      out.push(
+        headingSection(
+          { kind: 'lesson', ordinal: lesson.index },
+          { leadingSeparator: nocturn.lessonIntroduction !== 'pater-totum-secreto' }
+        )
+      );
     }
     if (lessonSection) out.push(lessonSection);
     if (tuAutemSection) out.push(tuAutemSection);

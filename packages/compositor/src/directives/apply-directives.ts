@@ -60,7 +60,7 @@ function transformsFor(
 
   // Structural clip-offs before surface-text manipulations.
   if (flags.has('short-chapter-only')) pipeline.push(shortChapterOnly);
-  if (flags.has('omit-gloria-patri')) {
+  if (flags.has('omit-gloria-patri') || flags.has('requiem-gloria')) {
     pipeline.push((slot, content) =>
       omitGloriaPatri(slot, content, context.gloriaOmittiturReplacement)
     );
@@ -115,7 +115,8 @@ function omitGloriaPatri(
   content: readonly TextContent[],
   replacement: readonly TextContent[] = DEFAULT_GLORIA_OMITTITUR_REPLACEMENT
 ): readonly TextContent[] {
-  if (slot !== 'psalmody' && !isCanticleSlot(slot)) return content;
+  if (slot !== 'psalmody' && slot !== 'invitatory' && !isCanticleSlot(slot)) return content;
+  if (slot === 'invitatory') return replaceGloriaPatriOccurrences(content, replacement);
 
   let end = content.length;
   while (end > 0 && content[end - 1]!.type === 'separator') {
@@ -146,12 +147,50 @@ function omitGloriaPatri(
   return Object.freeze(out);
 }
 
+function replaceGloriaPatriOccurrences(
+  content: readonly TextContent[],
+  replacement: readonly TextContent[]
+): readonly TextContent[] {
+  const out: TextContent[] = [];
+  let replaced = false;
+
+  for (let index = 0; index < content.length; index += 1) {
+    const node = content[index]!;
+    if (isGloriaInvocationNode(node)) {
+      out.push(...replacement);
+      replaced = true;
+      const nextIndex = nextNonSeparatorIndex(content, index + 1);
+      if (nextIndex !== undefined && isSicutEratNode(content[nextIndex]!)) {
+        index = nextIndex;
+      }
+      continue;
+    }
+    out.push(node);
+  }
+
+  return replaced ? Object.freeze(out) : content;
+}
+
+function nextNonSeparatorIndex(
+  content: readonly TextContent[],
+  start: number
+): number | undefined {
+  for (let index = start; index < content.length; index += 1) {
+    if (content[index]!.type !== 'separator') return index;
+  }
+  return undefined;
+}
+
 function isGloriaPatriNode(node: TextContent): boolean {
+  return isGloriaInvocationNode(node) || isSicutEratNode(node);
+}
+
+function isGloriaInvocationNode(node: TextContent): boolean {
   if (node.type === 'text') {
-    return GLORIA_PATRI_RX.test(node.value) || SICUT_ERAT_RX.test(node.value);
+    return GLORIA_PATRI_RX.test(node.value);
   }
   if (node.type === 'verseMarker') {
-    return GLORIA_PATRI_RX.test(node.text) || SICUT_ERAT_RX.test(node.text);
+    return GLORIA_PATRI_RX.test(node.text);
   }
   return false;
 }
