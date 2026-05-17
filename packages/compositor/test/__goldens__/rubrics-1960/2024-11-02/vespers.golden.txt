@@ -190,10 +190,9 @@ warning count: 0
   Latin: [R.] text("Et clamor meus ad te véniat.")
   Latin: [v.] text("Orémus.")
 
-[section #5 type=conclusion slot=conclusion reference=horas/Latin/Psalterium/Common/Prayers#Domine exaudi languages=Latin]
-  Latin: [V.] text("Dómine, exáudi oratiónem meam.")
-  Latin: [R.] text("Et clamor meus ad te véniat.")
-  Latin: [V.] text("Benedicámus Dómino.")
-  Latin: [R.] text("Deo grátias.")
-  Latin: [V.] text("Fidélium ánimæ per misericórdiam Dei requiéscant in pace.")
+[section #5 type=conclusion slot=conclusion reference=horas/Latin/Sancti/11-02#Conclusio languages=Latin]
+  Latin: rubric("Conclusio specialis")
+  Latin: [V.] text("Réquiem ætérnam * dona eis, Dómine.")
+  Latin: [R.] text("Et lux perpétua * lúceat eis.")
+  Latin: [V.] text("Requiéscant in pace.")
   Latin: [R.] text("Amen.")

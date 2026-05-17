@@ -24,6 +24,7 @@ export interface CelebrationRulePatch {
   readonly festumDomini?: boolean;
   readonly papalNames?: CelebrationRuleSet['papalNames'];
   readonly conclusionMode?: CelebrationRuleSet['conclusionMode'];
+  readonly specialConclusion?: boolean;
   readonly antiphonScheme?: CelebrationRuleSet['antiphonScheme'];
   readonly doxologyVariant?: string;
   readonly omitCommemoration?: boolean;
@@ -52,6 +53,7 @@ export function mergeFeastRules(
     festumDomini: patch.festumDomini ?? base.festumDomini,
     papalNames: patch.papalNames ?? base.papalNames,
     conclusionMode: patch.conclusionMode ?? base.conclusionMode,
+    specialConclusion: patch.specialConclusion ?? base.specialConclusion,
     antiphonScheme: patch.antiphonScheme ?? base.antiphonScheme,
     doxologyVariant: patch.doxologyVariant ?? base.doxologyVariant,
     omitCommemoration: patch.omitCommemoration ?? base.omitCommemoration,

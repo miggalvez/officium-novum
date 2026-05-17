@@ -110,6 +110,7 @@ function makeCelebrationRuleSet(lines: readonly string[]): CelebrationRuleSet {
     lessonSetAlternates: [],
     festumDomini: false,
     conclusionMode: 'separate',
+    specialConclusion: false,
     antiphonScheme: 'default',
     omitCommemoration: false,
     noSuffragium: false,

@@ -177,6 +177,7 @@ function makeRuleSet(hasFirstVespers: boolean, hasSecondVespers: boolean): Celeb
     lessonSetAlternates: [],
     festumDomini: false,
     conclusionMode: 'separate',
+    specialConclusion: false,
     antiphonScheme: 'default',
     omitCommemoration: false,
     noSuffragium: false,

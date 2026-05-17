@@ -2610,8 +2610,10 @@ function properHeadersForSlot(
         ? ['Ant 43', 'Ant Completorium', 'Ant Nunc dimittis', 'Ant 4']
         : ['Ant Completorium', 'Ant Nunc dimittis', 'Ant 4'];
     case 'oration':
-      if (hour === 'matins' && input?.policy.name === 'rubrics-1960') {
-        return ['Oratio 2', 'Oratio'];
+      if (hour === 'matins') {
+        return input?.policy.name === 'rubrics-1960'
+          ? ['Oratio Matutinum', 'Oratio 2', 'Oratio']
+          : ['Oratio'];
       }
       if (hour === 'lauds') {
         return ['Oratio 2', 'Oratio'];
@@ -2628,6 +2630,10 @@ function properHeadersForSlot(
           : ['Oratio'];
       }
       return ['Oratio'];
+    case 'conclusion':
+      return input?.policy.name === 'rubrics-1960' && input.celebrationRules.specialConclusion
+        ? ['Conclusio']
+        : [];
     case 'invitatory':
       return ['Invit', 'Invitatorium'];
     case 'lectio-brevis':

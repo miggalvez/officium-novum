@@ -20,7 +20,7 @@ const UPSTREAM_ROOT = resolve(PACKAGE_ROOT, '../../upstream/web/www');
 const HAS_UPSTREAM = existsSync(UPSTREAM_ROOT);
 const describeIfUpstream = HAS_UPSTREAM ? describe : describe.skip;
 
-const EXPECTED_UNMAPPED_TOTAL = 171;
+const EXPECTED_UNMAPPED_TOTAL = 169;
 const EXPECTED_MISSA_PASSTHROUGH_TOTAL = 243;
 
 describeIfUpstream('Phase 2d upstream rule evaluation invariants', () => {
