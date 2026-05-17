@@ -2,8 +2,10 @@ import type { ConditionExpression, TextIndex } from '@officium-novum/parser';
 import type {
   ConditionEvalContext,
   DayOfficeSummary,
+  FeastReference,
   ResolvedVersion
 } from '@officium-novum/rubrical-engine';
+import { conditionMatches } from '@officium-novum/rubrical-engine';
 
 export function buildConditionContext(
   summary: DayOfficeSummary,
@@ -11,8 +13,7 @@ export function buildConditionContext(
   corpus: TextIndex
 ): ConditionEvalContext {
   const [yearStr, monthStr, dayStr] = summary.date.split('-');
-  const commonPredicates = activeCommonPredicates(summary, corpus);
-  return {
+  const baseContext = {
     date: {
       year: Number(yearStr),
       month: Number(monthStr),
@@ -20,15 +21,23 @@ export function buildConditionContext(
     },
     dayOfWeek: summary.temporal.dayOfWeek,
     season: summary.temporal.season,
-    version,
+    version
+  } satisfies ConditionEvalContext;
+  const commonPredicates = activeCommonPredicates(summary, corpus, baseContext);
+  return {
+    ...baseContext,
     ...(commonPredicates.length > 0 ? { commonPredicates } : {})
   };
 }
 
-function activeCommonPredicates(summary: DayOfficeSummary, corpus: TextIndex): readonly string[] {
+function activeCommonPredicates(
+  summary: DayOfficeSummary,
+  corpus: TextIndex,
+  context: ConditionEvalContext
+): readonly string[] {
   const predicates = new Set<string>();
 
-  for (const path of activeCommonPaths(summary)) {
+  for (const path of activeCommonPaths(summary, corpus, context)) {
     const file = corpus.getFile(path);
     if (!file) continue;
 
@@ -41,7 +50,11 @@ function activeCommonPredicates(summary: DayOfficeSummary, corpus: TextIndex): r
   return [...predicates];
 }
 
-function activeCommonPaths(summary: DayOfficeSummary): readonly string[] {
+function activeCommonPaths(
+  summary: DayOfficeSummary,
+  corpus: TextIndex,
+  context: ConditionEvalContext
+): readonly string[] {
   const keys = new Set<string>();
   const rules = summary.celebrationRules;
   if (rules.comkey) keys.add(rules.comkey);
@@ -55,6 +68,26 @@ function activeCommonPaths(summary: DayOfficeSummary): readonly string[] {
           : undefined;
     const key = commonKeyFromReferencePath(referencePath);
     if (key) keys.add(key);
+  }
+
+  const feastRefs: FeastReference[] = [
+    summary.celebration.feastRef,
+    ...summary.commemorations.map((commemoration) => commemoration.feastRef)
+  ];
+  for (const feastRef of feastRefs) {
+    const file = corpus.getFile(`horas/Latin/${feastRef.path}.txt`);
+    if (!file) continue;
+    for (const section of file.sections) {
+      if (section.header !== 'Rank' || !section.rank) continue;
+      if (section.condition && !conditionMatches(section.condition, context)) continue;
+      for (const rankLine of section.rank) {
+        if (rankLine.rank.condition && !conditionMatches(rankLine.rank.condition, context)) {
+          continue;
+        }
+        const key = commonKeyFromRankDerivation(rankLine.rank.derivation);
+        if (key) keys.add(key);
+      }
+    }
   }
 
   const paths = new Set<string>();
@@ -72,6 +105,13 @@ function commonKeyFromReferencePath(path: string | undefined): string | undefine
   const normalized = path.replace(/\.txt$/iu, '').trim();
   const match = /^(?:(?:horas\/Latin\/)?Commune\/)?([^/]+)$/iu.exec(normalized);
   return match?.[1];
+}
+
+function commonKeyFromRankDerivation(derivation: string | undefined): string | undefined {
+  if (!derivation) return undefined;
+
+  const match = /^(?:vide|ex)\s+(.+)$/iu.exec(derivation.trim());
+  return commonKeyFromReferencePath(match?.[1]);
 }
 
 function commonKeyVariantsForSummary(key: string, summary: DayOfficeSummary): readonly string[] {

@@ -3290,6 +3290,40 @@ describeIfUpstream('Phase 3 composition smoke against upstream corpus (Roman pol
     }
   }, 240_000);
 
+  it('activates Summorum Pontificum common predicates from rank-derived common references', async () => {
+    const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
+
+    const witnesses = [
+      {
+        date: '2026-11-23',
+        hour: 'sext' as const,
+        expected:
+          'Gregem tuum, Pastor ætérne, placátus inténde: et, per beátum Cleméntem Mártyrem tuum atque Summum Pontíficem, perpétua protectióne custódi; quem totíus Ecclésiæ præstitísti esse pastórem.',
+        forbidden:
+          'Deus, qui nos ánnua beáti Cleméntis Mártyris tui atque Pontíficis solemnitáte lætíficas: concéde propítius; ut cujus natalítia cólimus, virtútem quoque passiónis imitémur.'
+      }
+    ];
+
+    for (const witness of witnesses) {
+      const summary = engine.resolveDayOfficeSummary(witness.date);
+      const composed = composeHour({
+        corpus: resolvedCorpus.index,
+        summary,
+        version: engine.version,
+        hour: witness.hour,
+        options: { languages: ['Latin'] }
+      });
+      const orationLines = sectionTexts(composed, 'oration').map(normalizeLatin);
+      expect(orationLines, `${witness.date} ${witness.hour} common pope-martyr collect`).toContain(
+        normalizeLatin(witness.expected)
+      );
+      expect(
+        orationLines,
+        `${witness.date} ${witness.hour} proper collect guarded by nisi communi`
+      ).not.toContain(normalizeLatin(witness.forbidden));
+    }
+  }, 240_000);
+
   it('keeps Jan 14 1960 minor hours in chapter-responsory-versicle-oration order after psalmody', async () => {
     const { engine, resolvedCorpus } = await createHarness('Rubrics 1960 - 1960');
     const summary = engine.resolveDayOfficeSummary('2024-01-14');
