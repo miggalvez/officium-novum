@@ -36,6 +36,10 @@ import {
   rendersSubUnicaOrationSeparators
 } from './compose/sub-unica-oration.js';
 import {
+  stripWrappedMatinsOrationDuplicateOremus,
+  stripWrappedMatinsOrationOpening
+} from './compose/wrapped-matins-oration.js';
+import {
   appendExpandedPsalmWrapper,
   buildPsalmHeading,
   containsInlinePsalmRefs,
@@ -715,65 +719,6 @@ function stripSimplifiedTriduumDismissal(
         node.value.includes('Et dato signo a Superiore omnes surgunt et discedunt.')
       )
   );
-}
-
-function stripWrappedMatinsOrationOpening(
-  args: ComposeSlotArgs,
-  ref: TextReference,
-  content: readonly TextContent[]
-): readonly TextContent[] {
-  if (
-    args.slot !== 'oration' ||
-    args.hour !== 'matins' ||
-    !args.context.version.handle.includes('1960') ||
-    ref.section !== 'Oratio Matutinum'
-  ) {
-    return content;
-  }
-
-  const firstContentIndex = content.findIndex((node) => node.type !== 'separator');
-  const first = firstContentIndex >= 0 ? content[firstContentIndex] : undefined;
-  if (first?.type !== 'macroRef' || first.name !== 'Dominus_vobiscum') {
-    return content;
-  }
-
-  return content.filter((_, index) => index !== firstContentIndex);
-}
-
-function stripWrappedMatinsOrationDuplicateOremus(
-  args: ComposeSlotArgs,
-  ref: TextReference,
-  content: readonly TextContent[]
-): readonly TextContent[] {
-  if (
-    args.slot !== 'oration' ||
-    args.hour !== 'matins' ||
-    !args.context.version.handle.includes('1960') ||
-    ref.section !== 'Oratio Matutinum'
-  ) {
-    return content;
-  }
-
-  const firstContentIndex = content.findIndex((node) => node.type !== 'separator');
-  const first = firstContentIndex >= 0 ? content[firstContentIndex] : undefined;
-  if (!first || !isOremusNode(first)) {
-    return content;
-  }
-
-  return content.filter((_, index) => index !== firstContentIndex);
-}
-
-function isOremusNode(node: TextContent): boolean {
-  if (node.type === 'formulaRef') {
-    return /^oremus$/iu.test(node.name.trim());
-  }
-  if (node.type === 'text') {
-    return /^or[ée]mus\.?$/iu.test(node.value.trim());
-  }
-  if (node.type === 'verseMarker') {
-    return /^or[ée]mus\.?$/iu.test(node.text.trim());
-  }
-  return false;
 }
 
 function stripTridentineFerialPrecesPsalmBlock(
